@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='utf-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:afh="http://myfaces.apache.org/trinidad/html"
+          version="1.2" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:tr="http://myfaces.apache.org/trinidad">
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:pageTemplate
+      id="template"
+      viewId="/templates/pageTemplateDefs/tagDemoPortletTemplate2.jspx">
+      <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+      <f:attribute name="mode" value="index"/>
+      <f:facet name="center">
+         <af:panelGroupLayout layout="scroll" halign="left" valign="top">
+          <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            <f:facet name="toolbar"/>
+            <af:popup id="p1">
+              <af:dialog id="d1" type="none">
+                <af:panelGroupLayout id="pgl2">
+                  <h:panelGrid columns="1" id="pg4">
+                    <af:table var="row" rowBandingInterval="0" id="t2"
+                              value="#{bindings.User.collectionModel}"
+                              rows="#{bindings.User.rangeSize}"
+                              emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.User.rangeSize}"
+                              filterModel="#{bindings.UserQuery.queryDescriptor}"
+                              queryListener="#{bindings.UserQuery.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectionListener="#{roleManipulation.sysSelectedList}"
+                              rowSelection="single"
+                              binding="#{roleManipulation.systems}">
+                      <af:column sortProperty="sysCode" filterable="true"
+                                 sortable="true"
+                                 headerText="#{bindings.User.hints.sysCode.label}"
+                                 id="c9" visible="false">
+                        <af:outputText value="#{row.sysCode}" id="ot8"/>
+                      </af:column>
+                      <af:column sortProperty="sysShtDesc" filterable="true"
+                                 sortable="true" headerText="Sys Sht Desc"
+                                 id="c7">
+                        <af:outputText value="#{row.sysShtDesc}" id="ot9"/>
+                      </af:column>
+                      <af:column sortProperty="sysName" filterable="true"
+                                 sortable="true" headerText="Sys Name" id="c8"
+                                 width="200">
+                        <af:outputText value="#{row.sysName}" id="ot7"/>
+                      </af:column>
+                    </af:table>
+                    <h:panelGrid columns="2" id="pg5">
+                      <af:commandButton text="OK" id="cb3"
+                                        action="#{roleManipulation.systemSelected}"/>
+                      <af:commandButton text="Cancel" id="cb4"/>
+                    </h:panelGrid>
+                  </h:panelGrid>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:spacer width="10" height="10" id="s3"/>
+            <h:panelGrid columns="3" id="pg3">
+              <af:outputLabel value="System" id="ol7"/>
+              <af:inputText label="Label 1" id="it3" simple="true"
+                            disabled="true"
+                            binding="#{roleManipulation.sysVal}"/>
+              <af:commandButton id="cb2" icon="/images/dropdown.gif">
+                <af:showPopupBehavior popupId="p1"/>
+              </af:commandButton>
+            </h:panelGrid>
+            <af:spacer width="10" height="30" id="s4"/>
+            <af:outputLabel value="Process Role Definition" id="ol4"
+                            inlineStyle="font-weight:bold;"/>
+            <af:panelCollection id="pc1"
+                                inlineStyle="width:90%; height:150.0px;">
+              <f:facet name="menus">
+                <af:menu text="Role Manipulation" id="m1">
+                  <af:commandMenuItem text="Create Role" id="cmi1">
+                    <af:showPopupBehavior popupId="p2"/>
+                  </af:commandMenuItem>
+                  <af:commandMenuItem text="Edit Role" id="cmi2"
+                                      action="#{roleManipulation.editRole}"/>
+                  <af:commandMenuItem text="Drop Role" id="cmi3"
+                                      action="#{roleManipulation.DropRole}"/>
+                  <af:commandMenuItem text="Restore Role" id="cmi4"
+                                      action="#{roleManipulation.RestoreRole}"/>
+                </af:menu>
+              </f:facet>
+              <f:facet name="toolbar"/>
+              <f:facet name="statusbar"/>
+              <af:popup id="p2">
+                <af:dialog id="d2" type="none" title="Role Details">
+                  <af:panelGroupLayout id="pgl1">
+                    <h:panelGrid columns="2" id="pg1">
+                      <af:outputLabel value="Role Name" id="ol10"/>
+                      <af:inputText label="Label 2" id="it4" simple="true"
+                                    binding="#{roleManipulation.sysRoleName}"/>
+                      <af:outputLabel value="Role Sht Desc" id="ol11"/>
+                      <af:inputText label="Label 3" id="it5" simple="true"
+                                    binding="#{roleManipulation.sysRoleShtDesc}"/>
+                      <af:outputLabel value="Process" id="ol12"/>
+                      <af:selectOneChoice value="#{bindings.processCode.inputValue}"
+                                          label="#{bindings.processCode.label}"
+                                          required="#{bindings.processCode.hints.mandatory}"
+                                          shortDesc="#{bindings.processCode.hints.tooltip}"
+                                          id="soc1" simple="true"
+                                          binding="#{roleManipulation.sysProcessVal}">
+                        <f:selectItems value="#{bindings.processCode.items}"
+                                       id="si1"/>
+                      </af:selectOneChoice>
+                      <h:panelGrid columns="2" id="pg6">
+                        <af:commandButton text="Create Role" id="cb5"
+                                          action="#{roleManipulation.createRole}"
+                                          binding="#{roleManipulation.saveBtn}"/>
+                        <af:commandButton text="Edit Role" id="cb7"
+                                          action="#{roleManipulation.saveEditRole}"
+                                          binding="#{roleManipulation.editBtn}"
+                                          rendered="false"/>
+                        <af:commandButton text="Cancel" id="cb6"/>
+                      </h:panelGrid>
+                    </h:panelGrid>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>
+              <af:table value="#{bindings.Role.collectionModel}" var="row"
+                        rows="#{bindings.Role.rangeSize}"
+                        emptyText="#{bindings.Role.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.Role.rangeSize}"
+                        rowBandingInterval="0"
+                        filterModel="#{bindings.RoleQuery.queryDescriptor}"
+                        queryListener="#{bindings.RoleQuery.processQuery}"
+                        filterVisible="true" varStatus="vs"
+                        selectionListener="#{roleManipulation.rolesSelected}"
+                        rowSelection="single" id="t1"
+                        inlineStyle="width:80%"
+                        binding="#{roleManipulation.sysRoles}">
+                <af:column sortProperty="processCode" filterable="true"
+                           sortable="true"
+                           headerText="#{bindings.Role.hints.processCode.label}"
+                           id="c4" visible="false">
+                  <af:outputText value="#{row.processCode}" id="ot4"/>
+                </af:column>
+                <af:column sortProperty="roleProcessCode" sortable="false"
+                           headerText="#{bindings.Role.hints.roleProcessCode.label}"
+                           id="c6" visible="false">
+                  <af:outputText value="#{row.roleProcessCode}" id="ot1"/>
+                </af:column>
+                <af:column sortProperty="processName" filterable="true"
+                           sortable="true" headerText="Process" id="c2"
+                           width="200">
+                  <af:outputText value="#{row.processName}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="roleName" filterable="true"
+                           sortable="true" headerText="Role" id="c3"
+                           width="200">
+                  <af:outputText value="#{row.roleName}" id="ot3"/>
+                </af:column>
+                <af:column sortProperty="roleCrtDate" filterable="false"
+                           sortable="true" headerText="Date Created" id="c5"
+                           align="right">
+                  <af:outputText value="#{row.roleCrtDate}" id="ot5">
+                    <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="roleStatus" filterable="true"
+                           sortable="true" headerText="Status" id="c1"
+                           align="right">
+                  <af:outputText value="#{row.roleStatus}" id="ot6"/>
+                </af:column>
+                <af:column sortProperty="roleShtDesc" sortable="false"
+                           headerText="#{bindings.Role.hints.roleShtDesc.label}"
+                           id="c10" visible="false">
+                  <af:outputText value="#{row.roleShtDesc}" id="ot10"/>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+            <af:separator id="s1"/>
+            <af:spacer width="10" height="30" id="s2"/>
+            <af:outputLabel value="Role Areas And Sub Areas" id="ol3"
+                            inlineStyle="font-weight:bold; text-align:center;"/>
+            <af:panelBox text="PanelBox2" id="pb2" showHeader="never"
+                         inlineStyle="text-align:center;">
+              <f:facet name="toolbar"/>
+              <h:panelGrid columns="1" id="pg2">
+                <af:commandButton text="Grant/Revoke" id="cb1"
+                                  action="#{roleManipulation.grantRevokeAreas}"/>
+              </h:panelGrid>
+              <af:tree value="#{bindings.Role4.treeModel}" var="node"
+                       rowSelection="single" id="t4"
+                       binding="#{roleManipulation.roleAreaSubAreas}" immediate="true"
+                       contentDelivery="immediate" initiallyExpanded="true"
+                       inlineStyle="height:150.0px; width:80%;">
+                <f:facet name="nodeStamp">
+                  <af:group id="g1">
+                    <h:selectBooleanCheckbox id="sbc2"
+                                             rendered="#{node.processArea!=null}"
+                                             value="#{node.processAreaSelected}"
+                                             immediate="true"
+                                             binding="#{roleManipulation.roleAreaCheck}"
+                                             valueChangeListener="#{roleManipulation.roleAreaValue}"/>
+                    <af:outputLabel value="#{node.processAreaCode}" id="ol6"/>
+                    <af:outputLabel value="#{node.processArea}" id="ol2"
+                                    rendered="#{node.processArea!=null}"/>
+                    <h:selectBooleanCheckbox id="sbc1"
+                                             value="#{node.processSubAreaSelected}"
+                                             rendered="#{node.processSubArea!=null}"
+                                             immediate="true"
+                                             valueChangeListener="#{roleManipulation.roleSubAreaValue}"
+                                             binding="#{roleManipulation.roleSubAreaCheck}"/>
+                    <af:outputLabel value="#{node.processSubAreaCode}" id="ol5"/>
+                    <h:outputLabel value="#{node.processSubArea}" id="ol1"
+                                   rendered="#{node.processSubArea!=null}"/>
+                    <af:outputLabel value="Dr limit" id="ol8"
+                                    rendered='#{node.processSubAreaType=="A"}'/>
+                    <h:inputText id="it1"
+                                 value="#{node.processSubAreaDebitLimit}"
+                                 rendered='#{node.processSubAreaType=="A"}'
+                                 size="10" immediate="true"
+                                 converter="javax.faces.Number"
+                                 binding="#{roleManipulation.debitLimit}"
+                                 valueChangeListener="#{roleManipulation.debitValueList}"/>
+                    <af:outputLabel value="Cr limit" id="ol9"
+                                    rendered='#{node.processSubAreaType=="A"}'/>
+                    <h:inputText id="it2"
+                                 value="#{node.processSubAredCreditLimit}"
+                                 rendered='#{node.processSubAreaType=="A"}'
+                                 converter="javax.faces.Number" size="10"
+                                 binding="#{roleManipulation.creditLimit}"
+                                 immediate="true"
+                                 valueChangeListener="#{roleManipulation.creditValueList}"/>
+                  </af:group>
+                </f:facet>
+              </af:tree>
+            </af:panelBox>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </f:facet>
+     
+    </af:pageTemplate>
+  </f:view>
+</jsp:root>
+

@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            <af:panelGroupLayout id="pgl1">
+              
+            <table width="100%">
+            <tr><td  align="right">
+            <h:panelGrid columns="2" id="pg33">
+                <af:inputText id="it1" helpTopicId="CRMcurrencyDefinitions" columns="13"
+                              readOnly="true" shortDesc="Help"/>
+                <af:statusIndicator id="si1"/>
+              </h:panelGrid>
+            </td></tr>
+            </table>
+            
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="Currency Definition" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              
+                <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                  
+                  <h:panelGrid columns="2" id="pg2">
+                    <af:outputLabel value="Currencies" id="ol3"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s2"/>
+                  
+                  <h:panelGrid columns="3" id="pg3">
+                    
+                  <af:commandButton text="New"
+                                    id="btnNewCurrency" 
+                                    icon="/images/create.gif"
+                                    
+                                    action="#{currencyDefBacking.actionNewCurrency}"
+                                    partialSubmit="true"/>
+                                    
+                  <af:commandButton text="Edit" disabled="true"
+                                    id="btnEditCurrency" 
+                                    icon="/images/update.gif"
+                                    visible="false"
+                                    action="#{currencyDefBacking.actionEditCurrency}"
+                                    binding="#{currencyDefBacking.btnActionEditCurrency}"
+                                    partialSubmit="true"/>
+                                    
+                  <af:commandButton text="Delete"  disabled="true"
+                                    id="btnDeleteCurrency" 
+                                    icon="/images/delete.gif"
+                                    action="#{currencyDefBacking.actionShowDeleteCurrency}"
+                                    binding="#{currencyDefBacking.btnActionDeleteCurrency}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+                <af:separator id="s3"/>
+                
+                  <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:200.0px;">
+                    <af:table value="#{bindings.Currency.collectionModel}"
+                              var="row" rows="#{bindings.Currency.rangeSize}"
+                              emptyText="#{bindings.Currency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.Currency.rangeSize}"
+                              rowBandingInterval="1"
+                              filterModel="#{bindings.CurrencyQuery.queryDescriptor}"
+                              queryListener="#{bindings.CurrencyQuery.processQuery}"
+                              filterVisible="false" varStatus="vs"
+                              selectionListener="#{currencyDefBacking.tblCurrencyListener}"
+                              rowSelection="single" 
+                              id="t1"
+                              binding="#{currencyDefBacking.tblCurrency}">
+                      <af:column sortProperty="symbol" filterable="true"  filterFeatures="caseInsensitive"
+                                 sortable="true" headerText="Symbol" id="c3">
+                        <af:outputText value="#{row.symbol}" id="ot3"/>
+                      </af:column> 
+                      <af:column sortProperty="description" filterable="true"  filterFeatures="caseInsensitive"
+                                 sortable="true" headerText="Description"
+                                 id="c5" width="200">
+                        <af:outputText value="#{row.description}" id="ot6"/>
+                      </af:column>
+                      <af:column sortProperty="round" filterable="true"  filterFeatures="caseInsensitive"
+                                 sortable="true" headerText="Round" id="c6">
+                        <af:outputText value="#{row.round}" id="ot1"/>
+                      </af:column>
+                      <af:column sortProperty="curNumWord" sortable="false"
+                                 headerText="Num Words"
+                                 id="c4">
+                        <af:outputText value="#{row.curNumWord}" id="ot2"/>
+                      </af:column>
+                      <af:column sortProperty="curDecimalWord" sortable="false"
+                                 headerText="Decimal Words"
+                                 id="c8">
+                        <af:outputText value="#{row.curDecimalWord}" id="ot8"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  
+                  <af:spacer width="10" height="20" id="s6"/>
+                  
+                  <h:panelGrid columns="2" id="pg6">
+                    <af:outputLabel value="Currency Denominations" id="ol2"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s5"/>
+                  
+                  <h:panelGrid columns="3" id="pg4">
+                    
+                  <af:commandButton text="New"
+                  
+                                    id="btnNewCurrencyDenomination" 
+                                    icon="/images/create.gif"
+                                    action="#{currencyDefBacking.actionNewCurrencyDenomination}"
+                                    binding="#{currencyDefBacking.btnActionNewCurrencyDenomination}"
+                                    disabled="true" partialSubmit="true"/>
+                                    
+                  <af:commandButton text="Edit" 
+                                    id="btnEditCurrencyDenomination" 
+                                    icon="/images/update.gif"
+                                    action="#{currencyDefBacking.actionEditCurrencyDenomination}"
+                                    binding="#{currencyDefBacking.btnActionEditCurrencyDenomination}"
+                                    disabled="true"
+                                    partialSubmit="true"/>
+                                    
+                  <af:commandButton text="Delete" 
+                                    id="btnDeleteCurrencyDenomination" 
+                                    icon="/images/delete.gif"
+                                    action="#{currencyDefBacking.actionShowDeleteDenominitions}"
+                                    binding="#{currencyDefBacking.btnActionDeleteCurrencyDenomination}"
+                                    disabled="true" 
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+                <af:separator id="s4"/>
+                
+                <af:panelCollection id="pc2" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:200.0px;">
+                    <af:table value="#{bindings.CurrencyDenomination.collectionModel}"
+                              var="row"
+                              rows="#{bindings.CurrencyDenomination.rangeSize}"
+                              emptyText="#{bindings.CurrencyDenomination.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.CurrencyDenomination.rangeSize}"
+                              rowBandingInterval="1"
+                              filterModel="#{bindings.CurrencyDenominationQuery.queryDescriptor}"
+                              queryListener="#{bindings.CurrencyDenominationQuery.processQuery}"
+                              filterVisible="false" varStatus="vs"
+                              selectionListener="#{currencyDefBacking.tblDenominations}"
+                              rowSelection="single" 
+                              id="t2"
+                              binding="#{currencyDefBacking.tblCurrencyDenomination}">
+                      <af:column sortProperty="value" filterable="true" filterFeatures="caseInsensitive"
+                                 sortable="true" headerText="Value" id="c7">
+                        <af:outputText value="#{row.value}" id="ot4"/>
+                      </af:column>
+                      <af:column sortProperty="name" filterable="true"  filterFeatures="caseInsensitive"
+                                 sortable="true" headerText="Name" id="c1" 
+                                 width="200">
+                        <af:outputText value="#{row.name}" id="ot7"/>
+                      </af:column>
+                      <af:column sortProperty="wef" filterable="true"  filterFeatures="caseInsensitive"
+                                 sortable="true" headerText="WEF" id="c2">
+                        <f:facet name="filter">
+                          <af:inputDate value="#{vs.filterCriteria.wef}"
+                                        id="id1"/>
+                        </f:facet>
+                        <af:outputText value="#{row.wef}" id="ot5">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  
+                </af:panelBox>
+                
+              </af:panelGroupLayout>
+            </af:panelBox>
+            
+            <af:popup id="currencyPop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Currency Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                  <af:panelFormLayout id="pfl1">
+                  
+                    <af:inputText label="Code : " id="it2"
+                                  binding="#{currencyDefBacking.txtCurCode}" 
+                                  visible="false" 
+                                  showRequired="true"/>
+                    
+                    <af:inputText label="Symbol : " id="it3"
+                                  binding="#{currencyDefBacking.txtCurSymbol}"
+                                  showRequired="true"/>
+                    
+                    <af:inputText label="Description : " id="it4"
+                                  binding="#{currencyDefBacking.txtCurDescription}"
+                                  showRequired="true"/>
+                    
+                    <af:inputNumberSpinbox label="Round : " id="ins1"
+                                           binding="#{currencyDefBacking.txtCurRound}"/>
+                    
+                    <af:inputText label="Number Word : " id="it5"
+                                  binding="#{currencyDefBacking.txtCurNumWord}" />
+                    
+                    <af:inputText label="Decimal Word : " id="it6"
+                                  binding="#{currencyDefBacking.txtCurDecimalWord}" />
+                    
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg5">
+                    <af:commandButton text="Save" id="cb1"
+                                      binding="#{currencyDefBacking.btnSaveUpdateCurrency}"
+                                      action="#{currencyDefBacking.actionSaveUpdateCurrency}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb2"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="currencyDenominationPop"
+                      contentDelivery="lazyUncached">
+              <af:dialog id="d3" title="Currency Denomination Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                  <af:panelFormLayout id="pfl2">
+                  
+                    <af:inputText label="Code : " id="it7"
+                                  binding="#{currencyDefBacking.txtCudCode}" 
+                                  visible="false" 
+                                  showRequired="true"/>
+                    
+                    <af:inputText label="Currency Code : " id="it8"
+                                  binding="#{currencyDefBacking.txtCudCurCode}"
+                                  visible="false"
+                                  showRequired="true"/>
+                    
+                    <af:inputNumberSpinbox label="Value : " id="ins2"
+                                           binding="#{currencyDefBacking.txtCudValue}"
+                                           showRequired="true"/>
+                    
+                    <af:inputText label="Name : " id="it9"
+                                  binding="#{currencyDefBacking.txtCudName}"
+                                  showRequired="true"/>
+                    
+                    <af:inputDate label="WEF Date : " id="id2"
+                                  binding="#{currencyDefBacking.txtCudWefDate}"
+                                  showRequired="true"/>
+                    
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg7">
+                    <af:commandButton text="Save" id="cb4"
+                                      binding="#{currencyDefBacking.btnSaveUpdateCurrencyDenomination}"
+                                      action="#{currencyDefBacking.actionSaveUpdateCurrencyDenomination}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb3"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+               <af:popup id="confirmDenominationDeleteDialog"
+                         contentDelivery="lazyUncached">
+                <af:dialog title="Confirm Action" id="confirmChangeDialog"
+                            type="yesNo"
+                           dialogListener="#{currencyDefBacking.currencyDenominationDialogListener}">
+                                
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="olConfirmMsgValue"/>
+                </af:dialog>
+            </af:popup>
+              <af:popup id="confirmDeleteCurrency"
+                        contentDelivery="lazyUncached">
+                <af:dialog title="Confirm Action" id="d4"
+                            type="yesNo"
+                           dialogListener="#{currencyDefBacking.currencyDialogListener}">
+                                
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="ol4"/>
+                </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

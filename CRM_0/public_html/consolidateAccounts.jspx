@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:trh="http://myfaces.apache.org/trinidad/html">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    
+    <f:facet name="metaContainer">
+            <af:group>
+              <trh:script text="
+                    function launchMessageDialog() {
+                        var popup = AdfPage.PAGE.findComponent('confirmMessage');                     
+                        popup.show();
+                        event.cancel();                   
+                    } ">              
+              </trh:script>
+            </af:group>
+          </f:facet>
+    
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        
+        
+        
+               
+        <f:facet name="center">
+        
+        
+        
+          <af:group id="g1">
+            <af:panelBox text="PanelBox5" id="pb2" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="panelGrid1">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Accounts Consolidation" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s3"/>
+              <af:panelBox text="PanelBox3" id="pb4" showHeader="never"
+                           showDisclosure="false">
+                <f:facet name="toolbar"/>
+                <af:separator id="separator2"/>
+                <af:selectOneRadio label="Label 1" id="sor1" layout="horizontal"
+                                   simple="true"
+                                   binding="#{AccountSetUpBack.accType}">
+                  <af:selectItem label="Agent/Broker" value="A" id="si1"/>
+                  <af:selectItem label="Direct Client" value="C" id="si2"/>
+                </af:selectOneRadio>
+                <h:panelGrid columns="2" id="pg14">
+                  <af:outputLabel value="From Account" id="ol20"/>
+                  <h:panelGrid columns="2" id="pg13">
+                    <af:inputText label="Label 4" id="it3" simple="true"
+                                  disabled="true"
+                                  binding="#{AccountSetUpBack.txtFromAgentAccount}"/>
+                    <af:commandButton id="cb8" icon="/images/dropdown.gif"
+                                      >
+                      <af:showPopupBehavior popupId="fromAgency"/>
+                    </af:commandButton>
+                    <af:popup id="fromAgency">
+                      <af:dialog id="d7" title="Select Account"
+                                 type="none">
+                        <af:panelGroupLayout id="pgl7">
+                       <h:panelGrid columns="2" id="pg67">
+                  <af:outputText value="Agent Name" id="ot180"/>
+   <h:panelGrid columns="1" id="pg72">
+                     <af:inputText value="#{bindings.agentName.inputValue}"
+                              label="Agent Name"
+                               simple="true"
+                                required="#{bindings.agentName.hints.mandatory}"
+                                columns="#{bindings.agentName.hints.displayWidth}"
+                                maximumLength="#{bindings.agentName.hints.precision}"
+                                shortDesc="#{bindings.agentName.hints.tooltip}"
+                                id="it46">
+                    <f:validator binding="#{bindings.agentName.validator}"/>
+                  </af:inputText>
+</h:panelGrid>
+  <af:outputText value="Agent Id" id="ot181"/>
+                 <h:panelGrid columns="1" id="pg73">
+                    
+                      <af:inputText value="#{bindings.agentId.inputValue}"
+                                 label="Agent Id"
+                                 simple="true"
+                                required="#{bindings.agentId.hints.mandatory}"
+                                columns="#{bindings.agentId.hints.displayWidth}"
+                                maximumLength="#{bindings.agentId.hints.precision}"
+                                shortDesc="#{bindings.agentId.hints.tooltip}"
+                                id="it47"  >
+                    <f:validator binding="#{bindings.agentId.validator}"/>
+                  </af:inputText>
+</h:panelGrid>
+                 <h:panelGrid columns="1" id="pg74">
+   <af:commandButton actionListener="#{bindings.fetchAllAgencies.execute}"
+                                    text="Search"
+                                    disabled="#{!bindings.fetchAllAgencies.enabled}"
+                                    id="cb66"
+                                    partialSubmit="true"
+                                     partialTriggers="t1"/>
+</h:panelGrid>
+</h:panelGrid>
+                          <af:table value="#{bindings.Agency.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Agency.rangeSize}"
+                                    emptyText="#{bindings.Agency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Agency.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.AgencyQuery.queryDescriptor}"
+                                    queryListener="#{bindings.AgencyQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.Agency.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.Agency.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t1"
+                                    binding="#{AccountSetUpBack.tblAgentAccountFrom}"
+                                    partialTriggers="::cb66">
+                            <af:column sortProperty="shortDesc"
+                                       filterable="true" sortable="true"
+                                       headerText="Short Desc"
+                                       id="c40"
+                                       filterFeatures="caseInsensitive">
+                              <af:outputText value="#{row.shortDesc}"
+                                             id="ot35"/>
+                            </af:column>
+                            <af:column sortProperty="name" filterable="true"
+                                       sortable="true"
+                                       headerText="Name"
+                                       id="c27"
+                                       filterFeatures="caseInsensitive">
+                              <af:outputText value="#{row.name}" id="ot12"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelGroupLayout>
+                        <h:panelGrid columns="3" id="pg2">
+                          <af:commandButton text="Ok" id="cb1"
+                                            action="#{AccountSetUpBack.clientAccSelectedFrom}"/>
+                          <af:commandButton text="Cancel"
+                                            id="commandButton1"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="toAgency">
+                      <af:dialog id="d8"
+                                 type="none">
+                        <af:panelGroupLayout id="pgl8">
+                          <af:table value="#{bindings.Agency1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Agency1.rangeSize}"
+                                    emptyText="#{bindings.Agency1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Agency1.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.AgencyQuery.queryDescriptor}"
+                                    queryListener="#{bindings.AgencyQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.Agency1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.Agency1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t2"
+                                    binding="#{AccountSetUpBack.tblAgentAccountTo}">
+                            <af:column sortProperty="shortDesc"
+                                       filterable="true" sortable="true"
+                                       headerText="Short Desc" id="column2"
+                                       filterFeatures="caseInsensitive">
+                              <af:outputText value="#{row.shortDesc}"
+                                             id="outputText2"/>
+                            </af:column>
+                            <af:column sortProperty="name" filterable="true"
+                                       sortable="true" headerText="Name"
+                                       id="column1"
+                                       filterFeatures="caseInsensitive">
+                              <af:outputText value="#{row.name}"
+                                             id="outputText1"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelGroupLayout>
+                        <h:panelGrid columns="3" id="panelGrid2">
+                          <af:commandButton text="Ok" id="commandButton2"
+                                            action="#{AccountSetUpBack.clientAccSelectedTo}"/>
+                          <af:commandButton text="Cancel" id="commandButton3"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                  </h:panelGrid>
+                  <af:outputLabel value="To Account" id="ol21"/>
+                  <h:panelGrid columns="2" id="panelGrid12">
+                    <af:inputText label="Label 4" id="inputText9" simple="true"
+                                  disabled="true"
+                                  binding="#{AccountSetUpBack.txtToAgentAccount}"/>
+                    <af:commandButton id="commandButton15"
+                                      icon="/images/dropdown.gif"
+                                     >
+                      <af:showPopupBehavior popupId="toAgency"/>
+                    </af:commandButton>
+                  </h:panelGrid>
+                </h:panelGrid>
+                <af:spacer width="10" height="20" id="s17"/>
+                <h:panelGrid columns="5" id="panelGrid3">
+                  <af:selectOneRadio label="Label 1" id="selectOneRadio1"
+                                     layout="horizontal" simple="true"
+                                     binding="#{AccountSetUpBack.txtSystem}">
+                    <af:selectItem label="LMS" value="L"
+                                  id="si5"/>
+                    <af:selectItem label="GIS" value="G"
+                                 id="si4"
+                                   />
+                                    <af:selectItem label="Both" value="B"
+                                   id="si3"/>
+                  </af:selectOneRadio>
+                </h:panelGrid>
+                <af:commandButton text="Transfer to Account" id="cb9"
+                                  action="#{AccountSetUpBack.transferToAccount}"/>
+              </af:panelBox>
+            </af:panelBox>
+                  
+                  
+               
+           
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

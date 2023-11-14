@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+        <f:attribute name="mode" value="index"/>
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox2" id="pb3" showHeader="never">
+              <f:facet name="toolbar"/>
+              
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="panelGrid2">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+            </table>
+            
+              <h:panelGrid columns="1" id="pg5">
+                <af:outputLabel value="Memorandum SetUps" id="ol7"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s3"/>
+              <af:panelBox text="PanelBox3" id="pb6" showHeader="never">
+                <f:facet name="toolbar"/>
+                <af:panelSplitter id="ps1" splitterPosition="300"
+                                  inlineStyle="height:600.0px;"
+                                  styleClass="AFStretchWidth">
+                  <f:facet name="first">
+                    <af:panelGroupLayout
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl1">
+                      <h:panelGrid columns="2" id="pg3">
+                        <af:commandButton id="cb1" icon="/images/create.gif"
+                                          text="New"
+                                          action="#{memosBean.AddMemoType}"/>
+                        <af:commandButton id="commandButton2"
+                                          icon="/images/delete.gif"
+                                          text="Delete" partialSubmit="true">
+                          <af:showPopupBehavior popupId="confirmDeleteMemoType"
+                                                triggerType="action"/>
+                        </af:commandButton>
+                      </h:panelGrid>
+                      <af:tree value="#{bindings.Memo.treeModel}" var="node"
+                               selectionListener="#{memosBean.MemoListenerSelectionListener}"
+                               rowSelection="single" id="t4"
+                               binding="#{memosBean.memoTypeTree}"
+                               inlineStyle="height:550px; width:250.0px;">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node.name}" id="ot1"/>
+                        </f:facet>
+                      </af:tree>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout id="pgl3" partialTriggers="t1"
+                                         binding="#{memosBean.memoTypesPanDetails}">
+                      <af:panelBox id="pb2" showHeader="never"
+                                   binding="#{memosBean.memoTypesPan}"
+                                   rendered="false">
+                        <h:panelGrid columns="1" id="pg4">
+                          <af:outputLabel value="Memo Type Details" id="ol6"
+                                          inlineStyle="font-weight:bold;"/>
+                          <af:separator id="s2"/>
+                          <h:panelGrid columns="2" id="pg1">
+                            <h:panelGrid columns="1" id="panelGrid4">
+                              <af:outputLabel value="Memo Type" id="ol1"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid10">
+                              <af:inputText label="Memo Type" id="it5"
+                                            simple="true"
+                                            binding="#{memosBean.memoType}"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid8">
+                              <af:outputLabel value="Memo Applicable At?"
+                                              id="outputLabel7"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid9">
+                              <af:panelLabelAndMessage
+                                                       id="plam1">
+                                <af:inputText label="App Area Desc" id="it1"
+                                              binding="#{memosBean.txtAppAreaDesc}"
+                                              simple="true" disabled="true"/>
+                                <af:commandButton id="cb4"
+                                                  icon="/images/dropdown.gif"
+                                                  partialSubmit="true">
+                                  <af:showPopupBehavior popupId="AppAreasPop"/>
+                                </af:commandButton>
+                              </af:panelLabelAndMessage>
+                              <af:popup id="AppAreasPop"
+                                        contentDelivery="lazyUncached">
+                                <af:dialog id="d5" type="none">
+                                  <af:panelBox text="PanelBox4" id="pb7"
+                                               showHeader="never">
+                                    <f:facet name="toolbar"/>
+                                    <af:table value="#{bindings.SysApplicableArea.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.SysApplicableArea.rangeSize}"
+                                              emptyText="#{bindings.SysApplicableArea.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.SysApplicableArea.rangeSize}"
+                                              rowBandingInterval="1"
+                                              filterModel="#{bindings.SysApplicableAreaQuery.queryDescriptor}"
+                                              queryListener="#{bindings.SysApplicableAreaQuery.processQuery}"
+                                              filterVisible="false"
+                                              varStatus="vs"
+                                              selectedRowKeys="#{bindings.SysApplicableArea.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.SysApplicableArea.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t3"
+                                              binding="#{memosBean.tblAppAreaLOV}">
+                                      <af:column sortProperty="sysAppAreaDesc"
+                                                 filterable="true"
+                                                 sortable="true"
+                                                 headerText="Applicable Area"
+                                                 id="c5" width="200"
+                                                 filterFeatures="caseInsensitive">
+                                        <af:outputText value="#{row.sysAppAreaDesc}"
+                                                       id="ot5"/>
+                                      </af:column>
+                                    </af:table>
+                                  </af:panelBox>
+                                  <h:panelGrid columns="4" id="pg12">
+                                    <af:commandButton text="Ok" id="cb6"
+                                                      action="#{memosBean.actionAcceptAppArea}"
+                                                      partialSubmit="true"/>
+                                    <af:spacer width="10" height="10" id="s4"/>
+                                    <af:commandButton text="Cancel" id="cb7"
+                                                      partialSubmit="true"
+                                                      action="#{memosBean.actionHideAppAreas}"/>
+                                  </h:panelGrid>
+                                </af:dialog>
+                              </af:popup>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid11">
+                              <af:outputLabel value="Sub Class"
+                                              id="outputLabel8"
+                                              visible="#{Rendering.memoApplicable ? true : false}"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="pg9">
+                              <af:panelLabelAndMessage id="plam2">
+                                <af:inputText label="Sub Class desc" id="it3"
+                                              simple="true"
+                                              visible="#{Rendering.memoApplicable ? true : false}"
+                                              disabled="true"
+                                              binding="#{memosBean.sclDesc}"/>
+                                <af:commandButton id="cb5"
+                                                  visible="#{Rendering.memoApplicable ? true : false}"
+                                                  icon="/images/dropdown.gif"
+                                                  partialSubmit="true">
+                                  <af:showPopupBehavior popupId="p2"/>
+                                </af:commandButton>
+                              </af:panelLabelAndMessage>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="pg13">
+                              <af:outputLabel value="Applicable Level" id="ol2"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="pg14">
+                              <af:selectOneChoice label="Label 4" id="soc2"
+                                                  simple="true"
+                                                  binding="#{memosBean.applLvl}">
+                                <af:selectItem label="Claims" value="C"
+                                               id="si3"/>
+                                <af:selectItem label="Underwriting" value="U"
+                                               id="si1"/>
+                                <af:selectItem label="Quotations" value="Q"
+                                               id="si4"/>
+                              </af:selectOneChoice>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid12">
+                              <af:outputLabel value="Status" id="ol4"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid7">
+                              <af:selectOneChoice label="Label 3" id="soc1"
+                                                  binding="#{memosBean.mtypStatus}"
+                                                  simple="true"
+                                                  unselectedLabel="---select---">
+                                <af:selectItem label="ACTIVE" value="A"
+                                               id="si2"/>
+                                <af:selectItem label="INACTIVE" value="I"
+                                               id="si7"/>
+                              </af:selectOneChoice>
+                            </h:panelGrid>
+                            <h:panelGrid columns="6" id="panelGrid6">
+                              <af:inputText label="sub Class Code" id="it2"
+                                            binding="#{memosBean.mtypSubCode}"
+                                            simple="true" visible="false"/>
+                              <af:inputNumberSpinbox label="System Code"
+                                                     id="ins2"
+                                                     binding="#{memosBean.mtypSysCode}"
+                                                     simple="true"
+                                                     visible="false"/>
+                              <af:inputNumberSpinbox label="Type Code" id="ins1"
+                                                     binding="#{memosBean.mtypCode}"
+                                                     simple="true"
+                                                     visible="false"/>
+                              <af:inputText label="App Area Code" id="it6"
+                                            binding="#{memosBean.txtAppAreaCode}"
+                                            disabled="true" visible="false"/>
+                            </h:panelGrid>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg2">
+                          <af:commandButton id="commandButton1"
+                                            icon="/images/save.gif" text="Save"
+                                            action="#{memosBean.SaveMemoType}"
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                        <af:panelBox text="PanelBox1" id="pb1"
+                                     showHeader="never">
+                          <h:panelGrid columns="1" id="pg6">
+                            <af:outputLabel value="Memo Subject And Details"
+                                            id="ol8"
+                                            inlineStyle="font-weight:bold;"/>
+                            <af:separator id="s1"/>
+                          </h:panelGrid>
+                          <af:panelSplitter id="ps2"
+                                            styleClass="AFStretchWidth">
+                            <f:facet name="first">
+                              <af:panelGroupLayout id="pgl5">
+                                <h:panelGrid columns="3" id="pg7">
+                                  <af:commandButton id="commandButton3"
+                                                    icon="/images/create.gif"
+                                                    text="New"
+                                                    action="#{memosBean.AddMemoDetails}"/>
+                                  <af:commandButton id="commandButton4"
+                                                    icon="/images/delete.gif"
+                                                    text="Delete">
+                                    <af:showPopupBehavior popupId="confirmDeleteMemoDetails"
+                                                          triggerType="action"/>
+                                  </af:commandButton>
+                                </h:panelGrid>
+                                <af:tree value="#{bindings.Memo1.treeModel}"
+                                         var="node"
+                                         selectionListener="#{memosBean.SubjectSelectionListener}"
+                                         rowSelection="single" id="t1"
+                                         binding="#{memosBean.subjectTree}">
+                                  <f:facet name="nodeStamp">
+                                    <af:outputText value="#{node.memoSubject}"
+                                                   id="ot3"/>
+                                  </f:facet>
+                                </af:tree>
+                              </af:panelGroupLayout>
+                            </f:facet>
+                            <f:facet name="second">
+                              <af:panelGroupLayout layout="scroll"
+                                                   xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                   id="pgl4"
+                                                   binding="#{memosBean.memoDetails}"
+                                                   rendered="true">
+                                <af:panelBox id="pb4" showHeader="never"
+                                             binding="#{memosBean.memoDetailsPan}"
+                                             rendered="false">
+                                  <f:facet name="toolbar"/>
+                                  <h:panelGrid columns="2" id="pg10">
+                                    <h:panelGrid columns="2" id="panelGrid3"/>
+                                  </h:panelGrid>
+                                  <h:panelGrid columns="4" id="panelGrid1"
+                                               rendered="false">
+                                    <af:outputLabel value="Code" id="ol9"/>
+                                    <af:inputNumberSpinbox label="Label 3"
+                                                           id="ins3"
+                                                           simple="true"
+                                                           binding="#{memosBean.memoCode}"/>
+                                    <af:outputLabel value="mtypCode" id="ol10"/>
+                                    <af:inputNumberSpinbox label="Label 4"
+                                                           id="ins4"
+                                                           simple="true"
+                                                           binding="#{memosBean.memoMtypCode}"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Memo Subject"
+                                                  id="outputLabel1"
+                                                  inlineStyle="font-weight:bold;"/>
+                                  <af:inputText label="Label 5" id="it4"
+                                                columns="100" rows="2"
+                                                simple="true"
+                                                binding="#{memosBean.memoSubject}"/>
+                                  <h:panelGrid columns="2" id="panelGrid5">
+                                    <af:spacer width="10" height="10"
+                                               id="spacer1"/>
+                                  </h:panelGrid>
+                                  <af:spacer width="10" height="10"
+                                             id="spacer2"/>
+                                  <af:outputLabel value="Memo Contents"
+                                                  id="outputLabel11"
+                                                  inlineStyle="font-weight:bold;"/>
+                                  <af:inputText label="Label 5" id="inputText2"
+                                                columns="100" rows="9"
+                                                simple="true"
+                                                binding="#{memosBean.memdetContent}"/>
+                                  <af:outputLabel value="Memdet Code" id="ol11"
+                                                  visible="false"/>
+                                  <af:inputNumberSpinbox label="Label 5"
+                                                         id="ins5" simple="true"
+                                                         binding="#{memosBean.memdetCode}"
+                                                         visible="false"/>
+                                  <af:outputLabel value="Memdet Memo Code"
+                                                  id="ol12" visible="false"/>
+                                  <af:inputNumberSpinbox label="Label 6"
+                                                         id="ins6" simple="true"
+                                                         binding="#{memosBean.memdetMemoCode}"
+                                                         visible="false"/>
+                                  <h:panelGrid columns="1" id="pg8">
+                                    <af:commandButton id="commandButton5"
+                                                      icon="/images/save.gif"
+                                                      text="Save"
+                                                      action="#{memosBean.SaveMemoDetails}"/>
+                                  </h:panelGrid>
+                                </af:panelBox>
+                              </af:panelGroupLayout>
+                            </f:facet>
+                          </af:panelSplitter>
+                        </af:panelBox>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelBox>
+            </af:panelBox>
+            <af:popup id="p2" contentDelivery="lazyUncached">
+                        <af:dialog id="d2" type="none" title="Sub Classes">
+                          <af:panelBox id="pb5"
+                                       showHeader="never">
+                            <f:facet name="toolbar"/>
+                            <af:table value="#{bindings.Memo2.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Memo2.rangeSize}"
+                                      emptyText="#{bindings.Memo2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Memo2.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.Memo2Query.queryDescriptor}"
+                                      queryListener="#{bindings.Memo2Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single" id="t2"
+                                      binding="#{memosBean.subClassLOV}">
+                              <af:column sortProperty="sclCode"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" id="c3">
+                                <af:outputText value="#{row.sclCode}" id="ot6"/>
+                              </af:column>
+                              <af:column sortProperty="sclDesc"
+                                         filterable="true" sortable="true"
+                                         headerText="Description" id="c4"
+                                         width="200">
+                                <af:outputText value="#{row.sclDesc}" id="ot2"/>
+                              </af:column>
+                            </af:table>
+                            <h:panelGrid columns="2" id="pg11">
+                              <af:commandButton text="Ok"
+                                                id="cb2"
+                                                action="#{memosBean.SubClassSelected}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Cancel"
+                                                id="cb3" partialSubmit="true"
+                                                action="#{memosBean.actionHideSubclass}"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </af:dialog>
+                      </af:popup>
+                      
+                     <af:popup id="confirmDeleteMemoType"
+                               contentDelivery="lazyUncached">
+               <af:dialog id="d4" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{memosBean.actionConfirmDeleteMemoType1}">
+                
+                  <af:panelFormLayout id="pfl4" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="outputText1"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog>
+            </af:popup>
+            <af:popup id="confirmDeleteMemoDetails"
+                      contentDelivery="lazyUncached">
+              <af:dialog id="d3" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{memosBean.actionConfirmDeleteMemoDetails1}">
+                
+                  <af:panelFormLayout id="pfl1" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="ot4"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

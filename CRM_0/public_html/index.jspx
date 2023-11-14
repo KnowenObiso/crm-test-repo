@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:form id="f1">
+        <h:outputText escape="false"
+                            value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'/>
+        <af:panelGroupLayout layout="scroll"
+                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                             id="pt_pgl1" halign="center">
+          <af:image source="/images/CRM.jpg" id="pt_i1"/>
+          <h:panelGrid columns="1" id="pt_pg1">
+            <af:spacer width="10" height="10" id="pt_s1"/>
+            <af:panelBox text="PanelBox1" id="pt_pb1" showHeader="never">
+              <f:facet name="toolbar"/>
+               <af:image source="/imageservlet" id="tmhpt_i2"
+                      shortDesc="Organization Logo"
+                      />
+              
+            </af:panelBox>
+          </h:panelGrid>
+           <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="System Login" id="ol5"
+                                inlineStyle="font-weight:bold;"/>
+                <af:separator id="s2"/>
+                 <af:image source="#{ImageBean.file}" id="i1" visible="false"/>
+                <af:subform id="s1" defaultCommand="cb1">
+                <h:panelGrid columns="2" id="pg2">
+                
+                  <af:outputLabel value="Username" id="ol1"
+                                 binding="#{login.usernameLabel}" />
+                  
+                  <af:inputText label="Label 1" id="it1" simple="true"
+                                binding="#{login.sysUsername}"/>
+                                
+                  <af:outputLabel value="Password" id="ol2"
+                                  binding="#{login.passLabel}"/>
+                                  
+                  <af:inputText label="Label 2" id="it2" simple="true"
+                                secret="true" binding="#{login.sysPassword}"
+                               />
+                    <af:outputLabel value="Security Questions" id="ol18" rendered="false"
+                                showRequired="false"
+                                    binding="#{login.txtSecuritylabel}"/>
+                 <af:selectOneChoice label="Label 2" id="soc3" simple="true" rendered="false"
+                                    binding="#{login.txtSecurityQuestions}"
+                                    unselectedLabel="Select Security Question">
+                    <f:selectItems value="#{userBean.securityQuestions}"
+                                       id="si5"/>
+                </af:selectOneChoice>
+                 <af:outputLabel value="Security Answer" id="ol19" rendered="false"
+                                showRequired="false"
+                                 binding="#{login.txtSecurityAnswerLabel}"/>
+                <af:inputText label="Label 1" id="it14" simple="true" rendered="false"
+                              binding="#{login.txtSecurityAnswer}" 
+                              secret="true" 
+                              /> 
+                              
+                              
+                <af:outputLabel value="Verification Code" id="ol3k"
+                                  binding="#{login.verifCodeLabel}"                                  
+                                  rendered="false"/>
+                                  
+                  <af:inputText label="Label 3" id="it3k" simple="true"
+                                binding="#{login.verifCode}"                               
+                                rendered="false"/>
+                              
+                  <af:outputLabel value="New Password" id="ol3"
+                                  binding="#{login.resetLabel}"                                  
+                                  rendered="false"/>
+                                  
+                  <af:inputText label="Label 3" id="it3" simple="true"
+                                binding="#{login.resetPass}" 
+                                secret="true"
+                                rendered="false"/>
+                                
+                  <af:outputLabel value="Confirm Password" id="ol4"
+                                  binding="#{login.confirmLabel}"
+                                  rendered="false"/>
+                                  
+                  <af:inputText label="Label 4" id="it4" simple="true"
+                                binding="#{login.confirmPass}"
+                                secret="true"
+                                rendered="false"/>
+                </h:panelGrid>
+                
+                <h:panelGrid columns="2" id="pg3">
+                <af:commandButton text="Check" id="cb4" rendered="false"
+                                  binding="#{login.txtCheck}"
+                                  action="#{login.checkSecurityQuestion}"/>
+                <af:commandButton text="Login" id="cb1"
+                                    binding="#{login.logBtn}"
+                                    action="#{login.UserAuthenticate}"/>
+                <af:commandLink text="[Forgot Password]" id="cl1"
+                                action="#{login.forgotPassword}"
+                                inlineStyle="color:Black; font-weight:bold; text-decoration:underline;"
+                                binding="#{login.forgotPass}"
+                                rendered="#{login.notLdapRequired}"/>
+                <af:commandButton text="Reset" id="cb2"
+                                    binding="#{login.rstBtn}" rendered="false"
+                                    action="#{login.resetUserPassword}"/>
+                                    
+               <af:commandButton text="Submit" id="subVerifCode"
+                                    binding="#{login.subVerifCode}" rendered="false"
+                                    action="#{login.verifyConfirmationCode}"/>
+                                    
+                  <af:commandButton text="Cancel" id="cb3" rendered="false"
+                                    binding="#{login.cnclBtn}"
+                                    action="#{login.actionCancelReset}"/>
+                </h:panelGrid>
+                </af:subform>
+                
+                
+                <af:separator id="s3"/>
+              </h:panelGrid>
+              <af:popup id="popContintue" contentDelivery="immediate">
+                <af:dialog type="none" contentWidth="230"
+                           contentHeight="30" closeIconVisible="false"> 
+                 <h:panelGrid columns="1"  >
+                    <af:outputText id="lblContinue" value="#{sessionScope['loginInfo']}" />
+                  </h:panelGrid>
+                  <h:panelGrid columns="2"  >
+                    <af:commandButton text="Change Password"  
+                    action="#{login.showResetPwd}" />
+                    <af:commandButton text="Continue"  
+                    action="#{login.goHome}" />
+                  </h:panelGrid>
+                </af:dialog>
+              </af:popup>  
+              
+        </af:panelGroupLayout>
+      </af:form>
+      </af:document>
+      </f:view>
+      </jsp:root>
+      

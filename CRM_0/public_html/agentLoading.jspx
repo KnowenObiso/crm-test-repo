@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1"  id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <af:inputText id="it1" 
+                                helpTopicId="CRMsectors" 
+                                columns="13"
+                                readOnly="true" 
+                                shortDesc="Help"/>
+                </td>
+                <td width="100%" align="right">
+                
+                <af:statusIndicator id="si1"/>
+                </td>
+              </tr>
+            </table>
+              
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Agents Loading" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>                
+              </h:panelGrid>
+                <h:panelGrid columns="4" id="pg26">
+                  <af:outputLabel value="Select Option" id="ol23"/>
+                  <af:selectOneChoice label="Label 2" id="soc2" simple="true"
+                                      autoSubmit="true" 
+                                     value="N" 
+                                      valueChangeListener="#{uploadClients.setValues}"
+                                      binding="#{uploadClients.optionSelected}">
+                    <af:selectItem label="Show Not Loaded" value="N" id="si5"/>
+                    <af:selectItem label="Show Loaded" value="L" id="si3"/>
+                    <af:selectItem label="Show All" value="A" id="si4"/>
+                  </af:selectOneChoice>
+                   <af:commandButton text="Select All" id="cb11"
+                  action="#{uploadClients.selectAllAgents}" />
+                   <af:commandButton text="Un Select All" id="cb13"
+                  action="#{uploadClients.unSelectAllAgents}" />
+                </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="7" id="pg2">
+                  <af:commandButton text="Edit" id="btnEditSector"
+                                    icon="/images/update.gif"
+                                    action="#{uploadClients.editAgent}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteSector"
+                                    icon="/images/delete.gif"
+                                    partialSubmit="true"
+                                    action="#{uploadClients.deleteAgent}"/>
+               <af:inputFile label="Select A File to Upload" id="if111"
+                                binding="#{uploadClients.upFile}"
+                                valueChangeListener="#{uploadClients.fileChangeListenerAgn}"
+                  autoSubmit="true"/>
+                   <af:commandButton  text="Download Template" id="cb2">
+                    <af:fileDownloadActionListener method="#{uploadClients.downloadTemplate}"
+                                                   filename="agent_upload_template.csv"
+                                                   contentType="text/csv"/>
+                  </af:commandButton>
+                   <af:commandButton text="Assign All To Gis" id="cbdt2"
+                     action="#{uploadClients.selectAllActionAgents}" />
+                   <af:commandButton text="Assign All To Lms" id="cb3"
+                     action="#{uploadClients.selectAllActionLmsAgents}"/>
+                     
+                     <af:commandButton  text="Download Template" id="cb2opp">
+                    <af:fileDownloadActionListener method="#{uploadClients.downloadTemplate}"
+                                                   filename="client_upload_template.csv"
+                                                   contentType="text/csv"/>
+</af:commandButton>
+                     
+                  <af:commandButton text="UnAsn All Frm GIS" id="cb6"
+                    action="#{uploadClients.unselectAllGisActionAgents}" />
+                   <af:commandButton text="UnAsgn All Frm LMS" id="cb5"
+                    action="#{uploadClients.unselectAllLmsActionAgents}" />
+                </h:panelGrid>
+                <af:table value="#{bindings.Agents2.collectionModel}" var="row"
+                          rows="#{bindings.Agents2.rangeSize}"
+                          emptyText="#{bindings.Agents2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Agents2.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.AgentsQuery.queryDescriptor}"
+                          queryListener="#{bindings.AgentsQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.Agents2.collectionModel.selectedRow}"
+                          selectionListener="#{uploadClients.selectAgent}"
+                          rowSelection="single" id="t1"
+                          inlineStyle="width:860px; height:300.0px;"
+                          binding="#{uploadClients.agentsLoadingTbl}">
+                 <af:column filterFeatures="caseInsensitive" sortProperty="checked" id="c48" headerText="Select Agent To Load">
+                       <af:selectBooleanCheckbox value="#{row.checked}"
+                                                label="Label 1" id="sbc1"
+                                                binding="#{uploadClients.rowChecked}"/>
+                    </af:column>
+                  <af:column sortProperty="code" sortable="false"
+                               headerText="Assign Client To Gis"
+                               id="c11">
+                       <af:selectBooleanCheckbox value="#{row.selected}"
+                                                label="Label 1" id="sbc522421"
+                                                binding="#{uploadClients.selected}"/>
+                  </af:column>
+                    <af:column sortProperty="code" sortable="false"
+                               headerText="Assign Client To Lms"
+                               id="c20">
+                       <af:selectBooleanCheckbox value="#{row.select}"
+                                                label="Label 1" id="sbc2"
+                                                binding="#{uploadClients.select}"/>
+                  </af:column>
+                  <af:column sortProperty="agnlCode" filterable="true" 
+                             sortable="true" headerText="Agnl Code" id="c15">
+                    <af:outputText value="#{row.agnlCode}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="agnlAccountCode" filterable="true"
+                             sortable="true" headerText="Account Code" id="c8">
+                    <af:outputText value="#{row.agnlAccountCode}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="agnlaccountType" filterable="true" visible="false"
+                             sortable="true" headerText="Account Type" id="c3">
+                    <af:outputText value="#{row.agnlaccountType}" id="ot11"/>
+                  </af:column>
+                  <af:column sortProperty="agnlaccountName" filterable="true"
+                             sortable="true" headerText="Account Name" id="c2">
+                    <af:outputText value="#{row.agnlaccountName}" id="ot10"/>
+                  </af:column>
+                  <af:column sortProperty="agnlphysicalAddress"
+                             filterable="true" sortable="true"
+                             headerText="Physical Address" id="c10">
+                    <af:outputText value="#{row.agnlphysicalAddress}" id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="agnlpostalAddress" filterable="true"
+                             sortable="true" headerText="Postal Address"
+                             id="c9">
+                    <af:outputText value="#{row.agnlpostalAddress}" id="ot12"/>
+                  </af:column>
+                  <af:column sortProperty="agnlTownName" filterable="true"
+                             sortable="true" headerText="Town Name" id="c6">
+                    <af:outputText value="#{row.agnlTownName}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="agnlregCode" filterable="true"
+                             sortable="true" headerText="Registration Number" id="c4">
+                    <af:outputText value="#{row.agnlregCode}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="agnlcontactperson" filterable="true"
+                             sortable="true" headerText="Contact Person"
+                             id="c14">
+                    <af:outputText value="#{row.agnlcontactperson}" id="ot14"/>
+                  </af:column>
+                  <af:column sortProperty="agnltelephoneNumber"
+                             filterable="true" sortable="true"
+                             headerText="Telephone Number" id="c13">
+                    <af:outputText value="#{row.agnltelephoneNumber}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="agnlfaxNumber" filterable="true"
+                             sortable="true" headerText="Fax Number" id="c5">
+                    <af:outputText value="#{row.agnlfaxNumber}" id="ot2"/>
+                  </af:column>
+                  <af:column sortProperty="agnlemailAddress" filterable="true"
+                             sortable="true" headerText="Email Address" id="c7">
+                    <af:outputText value="#{row.agnlemailAddress}" id="ot8"/>
+                  </af:column>
+                  <af:column sortProperty="agnldateCreated" filterable="true"
+                             sortable="true" headerText="Date Created" id="c1">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.agnldateCreated}"
+                                    id="id2"/>
+                    </f:facet>
+                    <af:outputText value="#{row.agnldateCreated}" id="ot13">
+                      <af:convertDateTime pattern="#{bindings.Agents2.hints.agnldateCreated.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="agnlcheckDate" filterable="true"
+                             sortable="true" headerText="Check Date" id="c12">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.agnlcheckDate}"
+                                    id="id1"/>
+                    </f:facet>
+                    <af:outputText value="#{row.agnlcheckDate}" id="ot9">
+                      <af:convertDateTime pattern="#{bindings.Agents2.hints.agnlcheckDate.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="branchName" sortable="false"
+                             headerText="Branch Name"
+                             id="c16">
+                    <af:outputText value="#{row.branchName}" id="ot15"/>
+                  </af:column>
+                </af:table>
+                <af:separator id="s2"/>
+              </af:panelBox>
+               <af:spacer width="10" height="20" id="s3"/>
+                  <af:commandButton text="Load Selected Agent" id="cb4"
+                                    action="#{uploadClients.loadAgentAction}"
+                                  />
+            </af:panelBox>
+              <af:popup id="editAgentPopup" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Edit Agent" type="none">
+                <af:panelBox text="PanelBox3" id="pb4" showHeader="never">
+                  <f:facet name="toolbar"/>
+                  <af:panelFormLayout id="pfl1" inlineStyle="width:330.0px;">
+                    <af:inputText label="Agent Account Code :" id="txtHoldCompCode"
+                                  visible="false" disabled="true"
+                                  binding="#{uploadClients.txtAccountCode}"/>
+                    <af:inputText label="Account Type :" id="txtHoldCompName"
+                                  showRequired="true"
+                                  binding="#{uploadClients.txtAccountType}"/>
+                    <af:inputText label="Account Name :" id="it2"
+                                  binding="#{uploadClients.txtAccountName}"/>
+                    <af:inputText label="Physical Address :" id="it3"
+                                  binding="#{uploadClients.txtPhysicalAddress}"/>
+                   <af:inputText label="Postal Address :" id="it7"
+                                  binding="#{uploadClients.txtpostalAddressAgnt}"/>
+                    <af:inputText label="Email Address :" id="it4"
+                                  binding="#{uploadClients.txtEmailAddress}"/>              
+                  <af:inputText label="Town Name :" id="it9"
+                                  binding="#{uploadClients.txtTownNamed}"/>
+                   <af:inputText label="Id Number :" id="it11"
+                                  binding="#{uploadClients.txtIdNumber}"/>
+                   <af:inputText label="Contact Person :" id="it5"
+                                  binding="#{uploadClients.txtContactPerson}"/>
+                    <af:inputText label="Account Number :" id="it8"
+                                  binding="#{uploadClients.txtAccountNumberAgents}"/>
+                  <af:inputText label="Phone Number :" id="it10"
+                                  binding="#{uploadClients.txtPhoneNumber}"/>
+                    <af:inputText label="Fax Number :" id="it6"
+                                  binding="#{uploadClients.txtFaxNumbers}"/>
+               
+                   
+                 <af:inputText label="Branch Name:" id="it12" disabled="true"
+                                  binding="#{uploadClients.txtBranchname}"/>
+                    <af:commandButton   id="cb7"   icon="/images/dropdown.gif">
+                       <af:showPopupBehavior popupId="BranchPopup"/>
+                       </af:commandButton>      
+                   
+                    <af:inputDate label="Date Created" id="id6"
+                                  binding="#{uploadClients.txtCreateddateAgent}">
+                                     <af:convertDateTime pattern="dd/MM/yyyy" secondaryPattern="ddMMyyyy"/>  
+                      </af:inputDate>
+                      <af:inputDate label="Posted Date" id="id3"
+                                  binding="#{uploadClients.txtPostedDate}">
+                                     <af:convertDateTime pattern="dd/MM/yyyy" secondaryPattern="ddMMyyyy"/>  
+                      </af:inputDate>
+                   </af:panelFormLayout>
+                </af:panelBox>
+                <h:panelGrid columns="2" id="pg4">
+                 <af:commandButton text="Save" id="btnCreateUpdateHoldComp"
+                                   action="#{uploadClients.saveAgentsDetails}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="cb1"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="BranchPopup" contentDelivery="lazyUncached">
+              <af:dialog id="d3" title="Select Branch" type="okCancel"
+                         dialogListener="#{uploadClients.selectBranch}">
+                <af:table value="#{bindings.Agents1.collectionModel}" var="row"
+                          rows="#{bindings.Agents1.rangeSize}"
+                          emptyText="#{bindings.Agents1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Agents1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.Agents1Query.queryDescriptor}"
+                          queryListener="#{bindings.Agents1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.Agents1.collectionModel.selectedRow}"
+                          selectionListener="#{uploadClients.selectBranchDetails}"
+                          rowSelection="single" id="t2"
+                          binding="#{uploadClients.branchesTbl}">
+                  <af:column sortProperty="branchCodelov" filterable="true" visible="false"
+                             sortable="true" headerText="Branch Code" id="c22">
+                    <af:outputText value="#{row.branchCodelov}" id="ot18"/>
+                  </af:column>
+                  <af:column sortProperty="branchShtDesc" filterable="true" visible="false"
+                             sortable="true" headerText="Branch Sht Desc"
+                             id="c21">
+                    <af:outputText value="#{row.branchShtDesc}" id="ot22"/>
+                  </af:column>
+                  <af:column sortProperty="branchName" filterable="true" 
+                             sortable="true" headerText="Branch name" id="c25">
+                    <af:outputText value="#{row.branchName}" id="ot21"/>
+                  </af:column>
+                  <af:column sortProperty="branchRegCode" filterable="true" visible="false"
+                             sortable="true" headerText="Branch  Reg Number"
+                             id="c18">
+                    <af:outputText value="#{row.branchRegCode}" id="ot20"/>
+                  </af:column>
+                  <af:column sortProperty="regCode" filterable="true"
+                             sortable="true" headerText="Reg code" id="c19">
+                    <af:outputText value="#{row.regCode}" id="ot19"/>
+                  </af:column>
+                </af:table>
+              </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

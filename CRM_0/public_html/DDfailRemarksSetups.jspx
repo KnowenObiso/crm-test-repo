@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+   <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="left">
+                    <af:inputText id="it1" helpTopicId="CRMclientTitles"
+                                  columns="13" readOnly="true"
+                                  shortDesc="Help"/>
+                  </td>
+                  <td width="100%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg2">
+                <af:outputLabel value="Failed Remarks Setups" id="o23"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <af:panelGroupLayout id="pgl1">
+                  <h:panelGrid columns="3" id="pg10">
+                    <af:commandButton text="New" id="btnNewFailedRemark"
+                                      icon="/images/create.gif"
+                                      action="#{clientTitleBacking.newFailedRemarks}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Edit" id="btnEditFailedRemark"
+                                      icon="/images/update.gif"
+                                      action="#{clientTitleBacking.editFailedRemarks}"
+                                      binding="#{clientTitleBacking.btnEditRemark}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Delete" id="btnDeleteFailedRemark"
+                                      icon="/images/delete.gif"
+                                      action="#{clientTitleBacking.deleteFailedRemarks}"
+                                      binding="#{clientTitleBacking.btnDeleteRemark}"
+                                      partialSubmit="true"/>
+                  </h:panelGrid>
+                  <af:separator id="s10"/>
+                  <af:table value="#{bindings.DirectDebitReport.collectionModel}"
+                            var="row"
+                            rows="#{bindings.DirectDebitReport.rangeSize}"
+                            emptyText="#{bindings.DirectDebitReport.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.DirectDebitReport.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.DirectDebitReportQuery.queryDescriptor}"
+                            queryListener="#{bindings.DirectDebitReportQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectionListener="#{bindings.DirectDebitReport.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1"
+                            binding="#{clientTitleBacking.ddFailedRemarksTbl}"
+                            inlineStyle="width:100.0%;">
+                    <af:column sortProperty="dfrCode" filterable="true"
+                               visible="false" sortable="true" headerText="Code"
+                               id="c3">
+                      <af:outputText value="#{row.dfrCode}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="dfrFailedRemarks" filterable="true" width="250"
+                               sortable="true" headerText="Failed remarks"
+                               id="c2">
+                      <af:outputText value="#{row.dfrFailedRemarks}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="dfrApplicationLevel" width="250"
+                               filterable="true" sortable="true"
+                               headerText="Application Level" id="c1">
+                      <af:outputText value="#{row.dfrApplicationLevel}"
+                                     id="ot2"/>
+                    </af:column>
+                  </af:table>
+                </af:panelGroupLayout>
+              </af:panelBox>
+            </af:panelBox>
+            <af:popup id="failedRemarksPop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Failed Remarks" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelFormLayout id="pfl1">
+                  <af:inputText label="Failed Remarks : " id="txtTitleShortDesc"
+                                binding="#{clientTitleBacking.txtFailedRemarks}"/>
+                  <af:inputText label="Application Level : " id="txtTitleDesc"
+                                binding="#{clientTitleBacking.txtApplicationLevel}"/>
+                </af:panelFormLayout>
+                <af:commandButton text="Save" id="btnSaveTitle"
+                                  binding="#{clientTitleBacking.btnSaveRemark}"
+                                  partialSubmit="true"
+                                  action="#{clientTitleBacking.actionSaveFailRmks}"/>
+                <af:commandButton text="Cancel" id="btnCancel"/>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="confirmationDialog"
+                      binding="#{clientTitleBacking.confirmationDialog}"
+                      contentDelivery="lazyUncached">
+              <af:dialog title="Confirm Action" id="confirmChangeDialog"
+                         type="yesNo"
+                         dialogListener="#{clientTitleBacking.comfirmDeleteAction}">
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="olConfirmMsgValue"
+                                binding="#{clientTitleBacking.olConfirmMsgValue}"/>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

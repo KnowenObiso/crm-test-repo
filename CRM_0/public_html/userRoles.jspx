@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='utf-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:afh="http://myfaces.apache.org/trinidad/html"
+          version="1.2" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:tr="http://myfaces.apache.org/trinidad"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+  <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+     <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                   id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="fms">
+      <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+      <f:attribute name="mode" value="index"/>
+      <f:facet name="center">
+         <af:panelGroupLayout layout="scroll" halign="left" valign="top">
+            <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="left">
+                    <af:inputText id="inputText1" helpTopicId="CRMsingleMessage"
+                                  columns="13" readOnly="true"
+                                  shortDesc="Help"/>
+                  </td>
+                  <td width="100%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="panelGrid1">
+                <af:separator id="separator1"/>
+                <af:outputLabel value="User Roles Management" id="outputLabel1"
+                                  inlineStyle="font-weight:bold;"/>
+                <af:separator id="s3"/>
+              </h:panelGrid>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="2" id="pg4">
+                  <af:inputText label="User System" id="it2" disabled="true"
+                                binding="#{roleManipulation.systemDesc}"/>
+                  <af:commandButton id="cb4" icon="/images/dropdown.gif">
+                    <af:showPopupBehavior popupId="systems"/>
+                  </af:commandButton>
+                  <af:popup id="systems">
+                    <af:dialog id="d2" title="Available Systems" type="none">
+                      <af:table value="#{bindings.User2.collectionModel}"
+                                var="row" rows="#{bindings.User2.rangeSize}"
+                                emptyText="#{bindings.User2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.User2.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.User2Query.queryDescriptor}"
+                                queryListener="#{bindings.User2Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.User2.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.User2.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t3"
+                                binding="#{roleManipulation.systemsLOV}">
+                        <af:column sortProperty="sysShtDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c10">
+                          <af:outputText value="#{row.sysShtDesc}" id="ot9"/>
+                        </af:column>
+                        <af:column sortProperty="sysName" filterable="true"
+                                   sortable="true" headerText="System Name"
+                                   id="c9" width="200">
+                          <af:outputText value="#{row.sysName}" id="ot10"/>
+                        </af:column>
+                      </af:table>
+                      <h:panelGrid columns="2" id="pg5">
+                        <af:commandButton text="OK" id="cb5"
+                                          action="#{roleManipulation.findSystemSelected}"/>
+                        <af:commandButton text="Cancel" id="commandButton1"/>
+                      </h:panelGrid>
+                    </af:dialog>
+                  </af:popup>
+                </h:panelGrid>
+                <af:spacer width="10" height="10" id="spacer2"/>
+                <af:table value="#{bindings.User3.collectionModel}" var="row"
+                          rows="#{bindings.User3.rangeSize}"
+                          emptyText="#{bindings.User3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.User3.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.User3.collectionModel.selectedRow}"
+                          selectionListener="#{roleManipulation.sysUsersSelected}"
+                          rowSelection="single" id="t4"
+                          inlineStyle="width:90%; height:150.0px; border-style:none;"
+                          binding="#{roleManipulation.systemUsersLOV}">
+                  <af:column sortProperty="userCode" sortable="true"
+                             headerText="#{bindings.User3.hints.userCode.label}"
+                             id="c11" visible="false">
+                    <af:outputText value="#{row.userCode}" id="ot13"/>
+                  </af:column>
+                  <af:column sortProperty="username" sortable="true"
+                             headerText="Username" id="c15">
+                    <af:outputText value="#{row.username}" id="ot12"/>
+                  </af:column>
+                  <af:column sortProperty="userFullname" sortable="true"
+                             headerText="Full Name" id="c13" width="200">
+                    <af:outputText value="#{row.userFullname}" id="ot15"/>
+                  </af:column>
+                  <af:column sortProperty="userType" sortable="true"
+                             headerText="User Type" id="c14">
+                    <af:outputText value="#{row.userType}" id="ot11"/>
+                  </af:column>
+                  <af:column sortProperty="userStatus" sortable="true"
+                             headerText="User Status" id="c12" width="200">
+                    <af:outputText value="#{row.userStatus}" id="ot14"/>
+                  </af:column>
+                </af:table>
+                <af:table value="#{bindings.User.collectionModel}" var="row"
+                          rows="#{bindings.User.rangeSize}"
+                          emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.User.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.UserQuery.queryDescriptor}"
+                          queryListener="#{bindings.UserQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectionListener="#{roleManipulation.sysUsersSelected}"
+                          rowSelection="single" id="t1"
+                          inlineStyle="width:90%; height:150.0px; border-style:none;"
+                          rendered="false">
+                  <af:column sortProperty="userCode" filterable="true"
+                             sortable="true"
+                             headerText="#{bindings.User.hints.userCode.label}"
+                             id="c3" visible="false">
+                    <af:outputText value="#{row.userCode}" id="ot2"/>
+                  </af:column>
+                  <af:column sortProperty="username" filterable="true"
+                             sortable="true" headerText="Username" id="c4">
+                    <af:outputText value="#{row.username}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="userFullname" filterable="true"
+                             sortable="true" headerText="Fullnames" id="c5"
+                             width="200">
+                    <af:outputText value="#{row.userFullname}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="userType" filterable="true"
+                             sortable="true" headerText="User Type" id="c1"
+                             align="right">
+                    <af:outputText value="#{row.userType}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="userStatus" filterable="true"
+                             sortable="true" headerText="User Status" id="c2"
+                             align="right" width="200">
+                    <af:outputText value="#{row.userStatus}" id="ot1"/>
+                  </af:column>
+                </af:table>
+                <af:spacer width="10" height="10" id="s1"/>
+                <af:popup id="p1">
+                  <af:dialog id="d17" type="none">
+                    <af:panelGroupLayout id="pgl1">
+                      <h:panelGrid columns="1" id="pg2">
+                        <af:table value="#{bindings.User1.collectionModel}"
+                                  var="row" rows="#{bindings.User1.rangeSize}"
+                                  emptyText="#{bindings.User1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.User1.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.User1Query.queryDescriptor}"
+                                  queryListener="#{bindings.User1Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{bindings.User1.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t2"
+                                  binding="#{roleManipulation.sysUserSystems}">
+                          <af:column sortProperty="sysCode" filterable="true"
+                                     sortable="true"
+                                     headerText="#{bindings.User1.hints.sysCode.label}"
+                                     id="c7" visible="false">
+                            <af:outputText value="#{row.sysCode}" id="ot7"/>
+                          </af:column>
+                          <af:column sortProperty="sysShtDesc" filterable="true"
+                                     sortable="true" headerText="Sys Sht Desc"
+                                     id="c6">
+                            <af:outputText value="#{row.sysShtDesc}" id="ot8"/>
+                          </af:column>
+                          <af:column sortProperty="sysName" filterable="true"
+                                     sortable="true" headerText="Sys Name"
+                                     id="c8" width="200">
+                            <af:outputText value="#{row.sysName}" id="ot6"/>
+                          </af:column>
+                        </af:table>
+                        <h:panelGrid columns="2" id="pg3">
+                          <af:commandButton text="Ok" id="cb2"
+                                            action="#{roleManipulation.sysUserSystemSelected}"/>
+                          <af:commandButton text="Cancel" id="cb3"/>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                    </af:panelGroupLayout>
+                  </af:dialog>
+                </af:popup>
+                <h:panelGrid columns="3" id="pg1" rendered="false">
+                  <af:outputLabel value="User System" id="ol1"/>
+                  <af:inputText label="Label 1" id="it1" simple="true"
+                                disabled="true"
+                                binding="#{roleManipulation.userSystem}"/>
+                  <af:commandButton id="cb1" icon="/images/dropdown.gif">
+                    <af:showPopupBehavior popupId="p1"/>
+                  </af:commandButton>
+                </h:panelGrid>
+                <af:spacer width="10" height="30" id="s2"/>
+                <af:selectManyShuttle label="Label 1"
+                                      value="#{roleManipulation.displayValue}"
+                                      simple="true" size="5"
+                                      trailingHeader="Assigned Roles"
+                                      leadingHeader="Available Roles"
+                                      autoSubmit="true"
+                                      binding="#{roleManipulation.userSystemRoles}"
+                                      valueChangeListener="#{roleManipulation.userRolesGrant}"
+                                      immediate="true">
+                  <f:selectItems value="#{roleManipulation.selectValues}"
+                                 binding="#{roleManipulation.userSystemRoleSelect}"/>
+                </af:selectManyShuttle>
+              </af:panelBox>
+            </af:panelBox>
+        </af:panelGroupLayout>
+      </f:facet>
+     
+    </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>
+

@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+  <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+ 
+    
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        
+        <f:facet name="center">
+        
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" styleClass="AFAuxiliaryStretchWidth" showHeader="never"
+                         inlineStyle="height:800px;" >
+              <f:facet name="toolbar"/>
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMorganization"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+               <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Printer Server Setups" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="gridOrgDivButtons">
+                  <af:commandButton text="New" id="btnNewOrgDivision"
+                                    icon="/images/create.gif"
+                                    action="#{BaseSetupsBacking1.actionNewPrintServer}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Edit" id="btnEditOrgDivision"
+                                    icon="/images/update.gif"
+                                    action="#{BaseSetupsBacking1.actionEditPrintServer}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteOrgDivision"
+                                    icon="/images/delete.gif"
+                                    action="#{BaseSetupsBacking1.actionDeletePrintServer}"
+                                    partialSubmit="true"/>
+                  <af:separator id="s6"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc5"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    inlineStyle="height:350.0px;">
+                  <af:table value="#{bindings.PrintServer.collectionModel}"
+                            var="row" rows="#{bindings.PrintServer.rangeSize}"
+                            emptyText="#{bindings.PrintServer.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.PrintServer.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.PrintServerQuery.queryDescriptor}"
+                            queryListener="#{bindings.PrintServerQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            selectionListener="#{bindings.PrintServer.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1"
+                            binding="#{BaseSetupsBacking1.tblPrinterServers}">
+                    <af:column sortProperty="name" filterable="true" width="220"
+                               filterFeatures="caseInsensitive" sortable="true"
+                               headerText="Server Name" id="c9">
+                      <af:outputText value="#{row.name}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="uri" filterable="true" width="250"
+                               filterFeatures="caseInsensitive" sortable="true"
+                               headerText="Uri" id="c3">
+                      <af:outputText value="#{row.uri}" id="ot3"/>
+                    </af:column>
+                    <!-- <af:column sortProperty="filter_command" filterable="true"  filterFeatures="caseInsensitive"
+                             sortable="true" headerText="FilterCommand" id="c6">
+                    <af:outputText value="#{row.filter_command}" id="ot11"/>
+                  </af:column>
+                   <af:column sortProperty="filter" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Filter" id="c11">
+                    <af:outputText value="#{row.filter}" id="ot2"/>
+                  </af:column>
+                  <af:column sortProperty="sec_username" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Sec_UserName" id="c2">
+                    <af:outputText value="#{row.sec_username}" id="ot13"/>
+                  </af:column>
+                
+                  <af:column sortProperty="sec_auth_type" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Sec_Auth_Type" id="c8">
+                    <af:outputText value="#{row.sec_auth_type}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="sec_encrpt_type" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Sec_Encrpt_Type"
+                             id="c5">
+                    <af:outputText value="#{row.sec_encrpt_type}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="proxy_host" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Proxy_Host" id="c4">
+                    <af:outputText value="#{row.proxy_host}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="proxy_port" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Proxy_port" id="c7">
+                    <af:outputText value="#{row.proxy_port}" id="ot12"/>
+                  </af:column>
+                  <af:column sortProperty="proxy_username" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Proxy_UserName"
+                             id="c14">
+                    <af:outputText value="#{row.proxy_username}" id="ot5"/>
+                  </af:column>
+               
+                  <af:column sortProperty="proxy_authen_type" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Proxy_Auth_Type"
+                             id="c12">
+                    <af:outputText value="#{row.proxy_authen_type}" id="ot10"/>
+                  </af:column> -->
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+              
+            </af:panelBox>
+            <af:popup id="printerServer" contentDelivery="lazyUncached">
+              <af:dialog id="d2" type="none" title="Printer Server Settings">
+              
+                <h:panelGrid columns="1" id="pg2" styleClass="AFAuxiliaryStretchWidth">
+                  <af:outputLabel value="General" id="ol2"
+                                  inlineStyle=" color:Black; font-weight:bolder;"/>
+                  <af:separator id="s2" styleClass="AFAuxiliaryStretchWidth"/>
+                </h:panelGrid>
+                <af:panelFormLayout id="pfl1" inlineStyle="color:Blue;">
+                  <f:facet name="footer"/>
+                 
+                  <af:inputText label="Code" id="it2" visible="false"
+                                binding="#{BaseSetupsBacking1.txtCode}"/>
+                  <af:inputText label="Server Name" id="it3"
+                                binding="#{BaseSetupsBacking1.txtServerName}"/>
+                  <af:inputText label="URI" id="it10"
+                                binding="#{BaseSetupsBacking1.txtUri}"/>
+                                  <af:outputText value="(Example: ipp://myhost:631/printers/myprinter )" id="ot1"
+                                                 inlineStyle="color:Blue;"/>
+                  <af:selectOneChoice label="Filter" id="soc1"
+                                      binding="#{BaseSetupsBacking1.txtFilter}">
+                    <af:selectItem label="Pdf to Post Script"
+                                   value="Pdf to Post Script" id="si4"/>
+                    <af:selectItem label="None" value="none" id="si3"/>
+                    <af:selectItem label="Custom Filter" value="Custom Filter"
+                                   id="si2"/>
+                  </af:selectOneChoice>
+                   <af:inputText label="Filter Command" id="it7"
+                                 binding="#{BaseSetupsBacking1.txtFilterCommand}"/>
+                  <af:outputText value="(Example: pdf2ps {infile} {outfile} )"
+                                 id="ot2" inlineStyle="color:Blue;"/>
+                </af:panelFormLayout>
+                  <h:panelGrid columns="1" id="pg3">
+                  <af:outputLabel value="Security" id="ol3"
+                                  inlineStyle="text-align:center; font-weight:bolder; color:Black;"/>
+                  <af:separator id="s3"/>
+                </h:panelGrid>
+                  <af:panelFormLayout id="pfl2"
+                                      >
+                  <af:inputText label="Username" id="it4" binding="#{BaseSetupsBacking1.txtSecUsename}"/>
+                  <af:inputText label="Password" id="it5" secret="true"
+                                binding="#{BaseSetupsBacking1.txtSecPassword}"/>
+                   <af:selectOneChoice label="Authentication Type" id="soc2"
+                                       binding="#{BaseSetupsBacking1.txtSecAuthType}">
+                   <af:selectItem label="None" value="None" id="si10"/>
+                     <af:selectItem label="Digest"
+                                   value="Digest" id="si5"/>
+                    <af:selectItem label="Basic" value="Basic"
+                                   id="si6"/>
+                  </af:selectOneChoice>
+                   <af:selectOneChoice label="Encryption Type" id="soc3"
+                                       binding="#{BaseSetupsBacking1.txtSecEncryptType}">
+                    <af:selectItem label="None"
+                                   value="None" id="si7"/>
+                    <af:selectItem label="SSL" value="SSL" id="si8"/>
+                   
+                  </af:selectOneChoice>
+                  </af:panelFormLayout>
+                  <h:panelGrid columns="1" id="pg4">
+                  <af:outputLabel value="Proxy Server" id="ol4" 
+                                  inlineStyle="text-align:center; color:Black; font-weight:bold;"/>
+                  <af:separator id="s4"/>
+                </h:panelGrid>
+                  <af:panelFormLayout id="pfl3">
+                   <af:inputText label="Host" id="it6"
+                                 binding="#{BaseSetupsBacking1.txtProxyHost}"/>
+                 
+                  <af:inputNumberSpinbox label="Port" id="ins1"  binding="#{BaseSetupsBacking1.txtProxyPort}"/>
+                  <af:inputText label="Username" id="it8"
+                                 binding="#{BaseSetupsBacking1.txtProxyUsername}"/>
+                  <af:inputText label="Password" id="it9" secret="true"
+                                binding="#{BaseSetupsBacking1.txtProxyPassword}"/>
+                 <af:selectOneChoice label="Authentication Type" id="soc4"
+                                     binding="#{BaseSetupsBacking1.txtProxyAuthType}">
+                   <af:selectItem label="None" value="None" id="si9"/>
+                     <af:selectItem label="Digest"
+                                   value="Digest" id="si11"/>
+                    <af:selectItem label="Basic" value="Basic"
+                                   id="si12"/>
+                  </af:selectOneChoice>
+                </af:panelFormLayout>
+                <h:panelGrid columns="1" id="pg5">
+                  <af:commandButton text="Save" id="cb1" partialSubmit="true"  
+                                    action="#{BaseSetupsBacking1.actionSavePrinterServer}"
+                                    binding="#{BaseSetupsBacking1.btnSavePrintServer}"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+             <af:popup id="confirmDeletePrinterServer"
+                       contentDelivery="lazyUncached">
+              <af:dialog id="d16" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{BaseSetupsBacking1.actionConfirmDeletePrinterServer}">
+                
+                  <af:panelFormLayout id="pfl7" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="ot107"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog></af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

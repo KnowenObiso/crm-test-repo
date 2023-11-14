@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+         <f:facet name="center">
+          <af:panelGroupLayout layout="scroll" id="pgl2">
+            <af:panelBox id="pb1" showHeader="never">
+              <f:facet name="toolbar"/>
+              <af:panelBox text="Bank Details." id="pb5"
+                           binding="#{bankDefinitionsBacking.bankTab}">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="2" id="pg2">
+                  <af:outputLabel value="Select A Bank" id="ol2"/>
+                  <h:panelGrid columns="2" id="pg3">
+                    <af:inputText label="Label 2" id="it2" simple="true"
+                                  disabled="true"
+                                  binding="#{bankDefinitionsBacking.txtBank}"/>
+                    <af:commandButton id="cb1" icon="/images/dropdown.gif">
+                      <af:showPopupBehavior popupId="p1"/>
+                    </af:commandButton>
+                    <af:popup id="p1">
+                      <af:dialog id="d2" type="none" title="Banks">
+                        <af:panelBox id="pb7">
+                          <f:facet name="toolbar"/>
+                          <af:table value="#{bindings.Bank.collectionModel}"
+                                    var="row" rows="#{bindings.Bank.rangeSize}"
+                                    emptyText="#{bindings.Bank.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Bank.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.BankQuery.queryDescriptor}"
+                                    queryListener="#{bindings.BankQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                     selectionListener="#{bindings.Bank.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t1"
+                                    binding="#{bankDefinitionsBacking.bankTbl}">
+                            <af:column sortProperty="bankCode" filterable="true"
+                                       sortable="true" headerText="Bank Code"
+                                       id="c1">
+                              <af:outputText value="#{row.bankCode}" id="ot2"/>
+                            </af:column>
+                            <af:column sortProperty="bankName" filterable="true"
+                                       sortable="true" headerText="Name"
+                                       id="c3">
+                              <af:outputText value="#{row.bankName}" id="ot1"/>
+                            </af:column>
+                            <af:column sortProperty="remarks" filterable="true"
+                                       sortable="true" headerText="Remarks"
+                                       id="c2">
+                              <af:outputText value="#{row.remarks}" id="ot3"/>
+                            </af:column>
+                          </af:table>
+                          <h:panelGrid columns="2" id="pg4">
+                            <af:commandButton text="OK" id="cb2"
+                                              action="#{bankDefinitionsBacking.selectBankDtls}"/>
+                            <af:commandButton text="Cancel"
+                                              id="commandButton1"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </af:dialog>
+                    </af:popup>
+                  </h:panelGrid>
+                  <af:outputLabel value="Table Name" id="outputLabel2"/>
+                  <af:inputText label="Label 3" id="it3" simple="true"
+                                columns="50"
+                                binding="#{bankDefinitionsBacking.txtBankTableName}"/>
+                </h:panelGrid>
+              </af:panelBox>
+              <af:panelBox text="Bank Import Template Details." id="pb6"
+                           rendered="false"
+                           binding="#{bankDefinitionsBacking.bankDtlsTempTab}">
+                <f:facet name="toolbar"/>
+                <af:spacer width="10" height="10" id="spacer2"/>
+                <h:panelGrid columns="8" id="pg5">
+                  <af:outputLabel value="Bank:" id="ol1"
+                                  inlineStyle="text-decoration:underline;"/>
+                  <af:outputFormatted id="of1" inlineStyle="font-weight:bold;"/>
+                  <af:spacer width="30" height="10" id="spacer1"/>
+                  <af:outputLabel value="Table Name:" id="outputLabel1"
+                                  inlineStyle="text-decoration:underline;"/>
+                  <af:outputFormatted id="outputFormatted1"
+                                      inlineStyle="font-weight:bold;"/>
+                  <af:spacer width="30" height="10" id="spacer3"/>
+                  <af:commandButton text="Save Template" id="cb4"/>
+                  <af:commandLink text="[Print Template]" id="cl1"
+                                  inlineStyle="font-weight:bold;"/>
+                  <af:inputFile label="File To Upload" autoSubmit="true"
+                                immediate="true" id="if1" rendered="false"/>
+                </h:panelGrid>
+                <af:spacer width="10" height="10" id="s2"/>
+                <af:separator id="s1"/>
+                <h:panelGrid columns="7" id="pg6"/>
+              </af:panelBox>
+              <h:panelGrid columns="2" id="pg1">
+                <af:commandButton text="Previous" id="commandButton2"
+                                  rendered="false"/>
+                <af:commandButton text="Next" id="cb3"
+                                  action="#{bankDefinitionsBacking.selectNextTransition}"/>
+              </h:panelGrid>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

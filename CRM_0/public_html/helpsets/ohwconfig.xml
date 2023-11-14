@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<helpConfiguration version="2.0" xmlns="http://xmlns.oracle.com/help/web/config">
+	<brandings>
+		<branding text="Embedded Help"/>
+	</brandings>
+
+	<!-- Different locale setups. -->
+	<locales>
+		<locale language="en">
+			<books>
+				<helpSet id="test" location="test/test.hs"/>
+			</books>
+		</locale>
+	</locales>
+
+	<!-- Custom Protocol Definitions -->
+	<customProtocolRegistry>
+		<customProtocol name="xlink" class="oracle.help.web.converter.ConfigurableCustomProtocolConverter">
+			<parameters>
+				<prepend>http://10.176.18.11:7001/TurnQuestHelp/faces/helppages/main.jspx?config=OHW+Links+Servlet&amp;locale=en&amp;</prepend>
+				<targetFrame>_blank</targetFrame>
+			</parameters>
+		</customProtocol>
+		<customProtocol name="ylink" class="oracle.help.web.converter.ConfigurableCustomProtocolConverter">
+			<parameters>
+				<append>&amp;locale=en</append>
+				<targetFrame>_blank</targetFrame>
+			</parameters>
+		</customProtocol>
+	</customProtocolRegistry>
+
+	<!-- Navigator aliases - to allow for legacy navigator names. -->
+	<navigatorAliases>
+		<!-- Uncomment for Tree Based TOC Navigator
+		<alias name="oracle.help.navigator.tocNavigator.TOCNavigator" 
+			 value="oracle.help.web.navigator.tocNavigator.TOCTreeNavigator" /> -->
+	</navigatorAliases>
+
+	<parameters>
+		<combineBooks>false</combineBooks>
+		<useLabelInfo>true</useLabelInfo>
+		<!-- 
+	      Number of locales that are kept in memory all the time. 
+	      Please see the OHW documentation for more information on
+	      this parameter.
+	      <cacheSize>3</cacheSize>
+		-->
+	</parameters>
+</helpConfiguration>

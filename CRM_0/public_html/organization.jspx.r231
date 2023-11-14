@@ -1,0 +1,2502 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="fms">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb2" showHeader="never" 
+                         inlineStyle="height:500.0px;"
+                         binding="#{OrganizationManip.mainOrgPanelBox}">
+            
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMorganization"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Organization Definitions" id="ol1"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelSplitter id="ps2" styleClass="AFAuxiliaryStretchWidth"
+                                inlineStyle="height:550px;" splitterPosition="250">
+                <f:facet name="first">
+                  <af:panelGroupLayout id="pgl3">
+                    <h:panelGrid columns="2" id="pg2">
+                      <af:commandButton text="New" id="cb2"
+                                        icon="/images/create.gif"
+                                        action="#{OrganizationManip.newOrganization}"/>
+                   
+                   <af:commandButton text="Delete" id="btnDeleteOrg"
+                                              icon="/images/delete.gif"
+                                     action="#{OrganizationManip.actionDeleteOrg}"/>
+                    </h:panelGrid>
+                    
+                    <af:tree value="#{bindings.Organization.treeModel}"
+                             var="node"
+                             selectionListener="#{OrganizationManip.organizationSelected}"
+                             rowSelection="single" id="t1"
+                             binding="#{OrganizationManip.orgTree}">
+                      <f:facet name="nodeStamp">
+                        <af:outputText value="#{node}" id="ot1"/>
+                      </f:facet>
+                    </af:tree>
+                  </af:panelGroupLayout>
+                </f:facet>
+                
+                
+                <f:facet name="second">
+                  <af:panelTabbed id="pt1" styleClass="AFAuxiliaryStretchWidth" 
+                                  binding="#{OrganizationManip.mainTabPanel}" 
+                                  visible="false">
+                    <af:showDetailItem text=" Organization Details" id="sdi6"
+                                       binding="#{OrganizationManip.orgTab}">
+                      <af:panelGroupLayout id="orgDetails"
+                                        binding="#{OrganizationManip.orgDetails}">
+                        <af:panelBox text="PanelBox2" id="panelOrgDetails"
+                                     showHeader="never" 
+                                     styleClass="AFAuxiliaryStretchWidth">
+                            
+                            <h:panelGrid columns="1" id="pg65">
+                            <af:outputLabel value="DETAILS" id="lblOrgDetails"
+                                            inlineStyle="font-weight:bold;"/>
+                              </h:panelGrid>
+                              <af:separator id="s3"/>
+                              
+                              <h:panelGrid columns="3" id="gridButtons"> 
+                              <af:commandButton text="Save" id="cb1"
+                                                action="#{OrganizationManip.saveOrganization}"
+                                                icon="/images/save.gif"/>
+                              </h:panelGrid>
+                              <af:separator id="s54"/>
+                          
+                          <table width="100%">
+                          <tr>
+                          
+                              <td valign="top">
+                                <af:panelFormLayout id="pfl4">
+                                  
+                                  <af:inputNumberSpinbox label="Code : " 
+                                                   id="ins2"
+                                                   simple="true" 
+                                                   columns="15"
+                                                   binding="#{OrganizationManip.orgCode}"
+                                                   visible="false"/>
+                                                   
+                                    <af:inputNumberSpinbox label="Language Code : " id="ins7"
+                                                   simple="true" 
+                                                   columns="15"
+                                                   binding="#{OrganizationManip.orgLangCode}"
+                                                   visible="false"/>
+                                                   
+                                    <af:inputNumberSpinbox label="BRN Code : " id="ins6"
+                                                   columns="15"
+                                                   binding="#{OrganizationManip.orgWebBrnCode}"
+                                                   visible="false"/>
+                                                   
+                                    <af:inputNumberSpinbox label="AGN Code : " 
+                                                   id="ins1"
+                                                   columns="20"
+                                                   binding="#{OrganizationManip.orgAgnCode}"
+                                                   visible="false"/>
+                                                   
+                                    <af:inputNumberSpinbox label="Town Code : " 
+                                                   id="orgTwnCode"
+                                                   columns="20"
+                                                   binding="#{OrganizationManip.orgTwnCode}"
+                                                   visible="false"/>
+                                                   
+                                    <af:inputNumberSpinbox label="Currency Code : " 
+                                                   id="orgCurCode"
+                                                   columns="20"
+                                                   binding="#{OrganizationManip.orgCurCode}"
+                                                   visible="false"/>
+                                                   
+                                    <af:inputText label="Id : " id="it17"
+                                                  columns="20" 
+                                                  showRequired="true"
+                                                  binding="#{OrganizationManip.orgShortDesc}"/>
+                                                  
+                                    <af:inputText label="Name : " 
+                                                  id="it3" 
+                                                  columns="20" 
+                                                  binding="#{OrganizationManip.orgName}"
+                                                  showRequired="true"/>
+                                                  
+                                    <af:inputText label="Address : " 
+                                                  id="orgAddrs"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgAddrs}"/>
+                                                  
+                                    <af:inputText label="Physical Address : " 
+                                                  id="orgPhyAddrs" 
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgPhyAddrs}"/>
+                                                  
+                                    <af:inputText label="Postal Code : " id="orgZip"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgZip}"/>
+                                                  
+                                    <af:inputText label="Fax Number : " id="it2" 
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgFax}"/>
+                                                  
+                                    <af:inputText label="Tel Number 1 : " 
+                                                  id="orgTel1"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgTel1}"/>
+                                     
+                                     <af:inputText label="Tel Number 2 : " id="it15"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgTel2}"/>
+                                       
+                                    <af:inputText label="Other Names : " id="it20"
+                                                  columns="20" 
+                                                  binding="#{OrganizationManip.orgOtherName}" 
+                                                  visible="false"
+                                                  showRequired="true" />
+                                      
+                                    <af:inputText label="Web Address : " 
+                                                  id="orgWebAddrs"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgWebAddrs}"/>
+                                        
+                                    <af:inputText label="Email Address : " id="orgEmail" 
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgEmail}">
+                                                  <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" 
+                                                  messageDetailNoMatch="&quot;The value {1} is not a valid email address &quot;"/>
+
+                                    </af:inputText>
+                                                  
+                                    
+                                  
+                                </af:panelFormLayout>
+                              </td>
+                          
+                              <td valign="top">
+                                <af:panelFormLayout id="pfl5">
+                                  
+                                    <af:inputNumberSpinbox label="Country Code : " id="ins3"
+                                                   columns="20"
+                                                   binding="#{OrganizationManip.orgCouCode}"
+                                                   visible="false"/>
+                                                  
+                                  <af:panelLabelAndMessage label="Country : "
+                                                           id="plam1" 
+                                                           showRequired="true">
+                                    <af:panelGroupLayout id="pgl4">
+                                    <af:inputText label="Country : " id="orgCountry"
+                                            simple="true" 
+                                            columns="20" 
+                                            disabled="true"
+                                            binding="#{OrganizationManip.orgCountry}"/>
+                                            
+                                      <af:commandButton id="cb8"
+                                                        icon="/images/dropdown.gif">
+                                        <af:showPopupBehavior popupId="countriesLovPopUp"/>
+                                      </af:commandButton>
+                                    </af:panelGroupLayout>
+                                  </af:panelLabelAndMessage>
+                                  
+                                  <af:inputText label="State Code : " 
+                                                id="txtStateCode" 
+                                                visible="false"
+                                                binding="#{OrganizationManip.txtStateCode}"/>
+                                  
+                                  <af:panelLabelAndMessage label="State Name : "
+                                                           id="plam5" 
+                                                           showRequired="true">
+                                    <af:panelGroupLayout id="pgl8">
+                                      <af:inputText label="State Name : " id="txtStateName"
+                                                    simple="true" 
+                                                    disabled="true"
+                                                    columns="20"
+                                                    binding="#{OrganizationManip.txtStateName}"/>
+                                      <af:commandButton id="cb3" icon="/images/dropdown.gif">
+                                      <af:showPopupBehavior popupId="statesLovPop" />
+                                      </af:commandButton>
+                                    </af:panelGroupLayout>
+                                  </af:panelLabelAndMessage>
+                                                           
+                                  <af:panelLabelAndMessage label="#{Rendering.localSite ? 'Town : ' : 'Local Govt. Area : '}"
+                                                           id="plam3" showRequired="true">
+                                    <af:panelGroupLayout id="pgl6">
+                                    <af:inputText label="Town : " id="it9"
+                                                    simple="true" 
+                                                    columns="20" 
+                                                    disabled="true"
+                                                    binding="#{OrganizationManip.orgTown}"/>
+                                      <af:commandButton id="cb9"
+                                                        action="#{OrganizationManip.newTown}"
+                                                        icon="/images/dropdown.gif"/>
+                                    </af:panelGroupLayout>
+                                  </af:panelLabelAndMessage>
+                                  
+                                  <af:panelLabelAndMessage label="Base Currency : "
+                                                           id="plam2" 
+                                                           showRequired="true">
+                                    <af:panelGroupLayout id="pgl5">
+                                    <af:inputText label="Base Currency : " id="it8"
+                                                    simple="true" 
+                                                    columns="20" 
+                                                    disabled="true"
+                                                    binding="#{OrganizationManip.orgBaseCurrency}"/>
+                                      <af:commandButton id="cb10"
+                                                        icon="/images/dropdown.gif">
+                                        <af:showPopupBehavior popupId="currenciesLovPopUp"/>
+                                      </af:commandButton>
+                                    </af:panelGroupLayout>
+                                  </af:panelLabelAndMessage>
+                                  
+                                  <af:panelLabelAndMessage label="Manager : "
+                                                           id="plam4">
+                                    <af:panelGroupLayout id="pgl7">
+                                    <af:inputText label="Manager : " id="it16"
+                                                    simple="true" 
+                                                    columns="20" 
+                                                    disabled="true"
+                                                    binding="#{OrganizationManip.orgManager}"/>
+                                      <af:commandButton id="cb44"
+                                                        icon="/images/dropdown.gif">
+                                        <af:showPopupBehavior popupId="orgManagersLovPopUp"/>
+                                      </af:commandButton>
+                                    </af:panelGroupLayout>
+                                  </af:panelLabelAndMessage>
+                                  
+                                  <af:inputText label="Item Account Code : " 
+                                                  id="orgItemAccCode"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgItemAccCode}"/>
+                                      
+                                     <af:inputText label="RC Number" id="it14"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgEdCode}"/>
+                                                  
+                                  
+                                  <af:inputText label="TIN Code : " id="orgPinNo"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgPinNo}"/>
+                                                  
+                                  <af:selectOneChoice label="Type : " id="soc1"
+                                                        binding="#{OrganizationManip.orgType}"
+                                                        showRequired="true" 
+                                                        unselectedLabel="- Select Type -">
+                                      <af:selectItem label="Insurance" value="INS"
+                                                     id="si4"/>
+                                      <af:selectItem label="Broker" value="BRK"
+                                                     id="si2"/>
+                                      <af:selectItem label="Bancassurance" value="BNK"
+                                                     id="si3"/>
+                                       <af:selectItem label="Asset Mngt" value="ASM"
+                                                     id="si5"/>
+                                    </af:selectOneChoice>                     
+                                  
+                                                  
+                                </af:panelFormLayout>
+                              </td>
+                          
+                              <td valign="top">
+                                <af:panelFormLayout id="pfl6">
+                                  
+                                     <af:inputText label="Motto : " id="orgMotto"
+                                                  columns="20" 
+                                                  rows="5"
+                                                  binding="#{OrganizationManip.orgMotto}"/>                                              
+                                    
+                                    
+                                    <af:inputText label="Logo : " 
+                                                  id="it22"
+                                                  columns="20" 
+                                                  simple="true"
+                                                  binding="#{OrganizationManip.orgRptLogo}" 
+                                                  visible="false"/>
+                                                  
+                                    <af:inputText label="Directors : " id="it18"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgDirectors}"
+                                                  visible="false"/>
+                                                  
+                                    <af:inputText label="AVATAR : " id="it19"
+                                                  columns="20"
+                                                  binding="#{OrganizationManip.orgAvatar}"
+                                                  visible="false"/>
+                                                  <af:outputLabel value="Uploaded Organization Logo "
+                                                      id="ol21"
+                                                     inlineStyle="font-weight:bold;"/>
+                                           <af:separator id="s9"/>
+                                  <af:image source=''
+                                                            shortDesc="Organization Logo" 
+                                                            id="i1"
+                                                            binding="#{OrganizationManip.orgLogoImg}" 
+                                                            inlineStyle="height:100.0px; width:150.0px;"/>
+                                   
+                                                 <af:inputFile id="if2" 
+                                                  columns="15" 
+                                                  simple="true"                                               
+                                                               binding="#{OrganizationManip.inputFileOrgImgFile}"
+                                                               changed="false"/>
+                                                  <af:outputLabel value="Uploaded Organization Group  Logo"
+                                                      id="ol10"
+                                                     inlineStyle="font-weight:bold;"/>
+                                  <af:separator id="s8"/>
+                                  <af:image source=''
+                                                            shortDesc="Group Logo" 
+                                                            id="i2"
+                                                            binding="#{OrganizationManip.orgGrpLogoImg}" 
+                                                            inlineStyle="height:100.0px; width:150.0px;"
+                                                           />
+                                             <af:inputFile id="if1" 
+                                                  columns="15" 
+                                                  simple="true"                                                 
+                                                  partialTriggers="i2"                                                
+                                                           binding="#{OrganizationManip.uploadOrgGrpImg}"/>
+                                  
+                                </af:panelFormLayout>
+                              </td>
+                          
+                          </tr>
+                          </table>
+                         
+                          
+                          <af:separator id="s2"/>
+                          <af:commandButton text="Generate Report" id="cl1" 
+                                            icon="/images/report.png"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                      
+                    </af:showDetailItem>
+                    <af:showDetailItem text="BranchName" id="sdi9">
+                      <h:panelGrid columns="3">
+                        <af:commandButton text="New" id="cb48"
+                                          icon="/images/create.gif"
+                                          action="#{OrganizationManip.actionNewBranchName}"/>
+                        <af:commandButton text="Edit" id="cb49"
+                                          icon="/images/update.gif"
+                                          action="#{OrganizationManip.actionEditBranchName}"/>
+                        <af:commandButton text="Delete" id="cb50"
+                                          icon="/images/delete.gif"
+                                          action="#{OrganizationManip.actionShowDeleteBranchName}"/>
+                      </h:panelGrid>
+                      <af:panelGroupLayout id="pgl10" layout="scroll">
+                        <af:panelCollection id="pc8"
+                                            inlineStyle="height:200.0px;"
+                                            styleClass="AFAuxiliaryStretchWidth"
+                                            binding="#{OrganizationManip.tblBranchNames}">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.BranchName.collectionModel}"
+                                    var="row" inlineStyle="width:700.0px;"
+                                    rows="#{bindings.BranchName.rangeSize}"
+                                    emptyText="#{bindings.BranchName.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.BranchName.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.BranchNameQuery.queryDescriptor}"
+                                    queryListener="#{bindings.BranchNameQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectionListener="#{bindings.BranchName.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t3"
+                                    binding="#{OrganizationManip.tblBranchName}">
+                            <af:column sortProperty="bns_sht_desc"
+                                       filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Short Desc" id="c105">
+                              <af:outputText value="#{row.bns_sht_desc}"
+                                             id="ot120"/>
+                            </af:column>
+                            <af:column sortProperty="bns_name" width="200"
+                                       filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Name" id="c109">
+                              <af:outputText value="#{row.bns_name}"
+                                             id="ot117"/>
+                            </af:column>
+                            <af:column sortProperty="bns_phy_addrs"
+                                       filterFeatures="caseInsensitive"
+                                       width="200" filterable="true"
+                                       sortable="true"
+                                       headerText="Physical Addr" id="c111">
+                              <af:outputText value="#{row.bns_phy_addrs}"
+                                             id="ot116"/>
+                            </af:column>
+                            <af:column sortProperty="bns_email_addrs"
+                                       filterFeatures="caseInsensitive"
+                                       width="200" filterable="true"
+                                       sortable="true" headerText="Email Addr"
+                                       id="c108">
+                              <af:outputText value="#{row.bns_email_addrs}"
+                                             id="ot119"/>
+                            </af:column>
+                            <af:column sortProperty="bns_post_addrs"
+                                       filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Postal Addr" id="c116">
+                              <af:outputText value="#{row.bns_post_addrs}"
+                                             id="ot115"/>
+                            </af:column>
+                            <af:column sortProperty="bns_contact"
+                                       filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Contact" id="c113">
+                              <af:outputText value="#{row.bns_contact}"
+                                             id="ot112"/>
+                            </af:column>
+                            <af:column sortProperty="bns_tel"
+                                       filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Tel" id="c114">
+                              <af:outputText value="#{row.bns_tel}" id="ot122"/>
+                            </af:column>
+                            <af:column sortProperty="bns_fax"
+                                       filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Fax" id="c110">
+                              <af:outputText value="#{row.bns_fax}" id="ot118"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                      </af:panelGroupLayout>
+                    </af:showDetailItem>
+                    <af:showDetailItem text="Divisions" id="sdi7" rendered="#{Rendering.divisionApplicable ? true : false }">
+                      <!-- <af:panelBox text="PanelBox3" id="pb1" showHeader="never"> -->
+                      
+                        <af:panelSplitter id="ps1" orientation="vertical" splitterPosition="180"
+                                          inlineStyle="height:500.0px;"
+                                          styleClass="AFStretchWidth">
+                          <f:facet name="first">
+                            <af:panelGroupLayout id="pgl1">
+                            <h:panelGrid columns="1" id="gridOrgDivisions">
+                            <af:outputLabel value="Organization Divisions" id="lblOrgDivisions"
+                                            inlineStyle="font-weight:bold;"/>                
+                          </h:panelGrid>
+                          <af:separator id="s75"/>
+                          
+                          <h:panelGrid columns="3" id="gridOrgDivButtons">
+                            <af:commandButton text="New" id="btnNewOrgDivision"
+                                              icon="/images/create.gif"
+                                              action="#{OrganizationManip.actionNewOrgDivision}"/>
+                                              
+                            <af:commandButton text="Edit" id="btnEditOrgDivision"
+                                              icon="/images/update.gif"
+                                              action="#{OrganizationManip.actionEditOrgDivision}"/>
+                                              
+                            <af:commandButton text="Delete" id="btnDeleteOrgDivision"
+                                              icon="/images/delete.gif"
+                                              action="#{OrganizationManip.actionDeleteOrgDivision}"/>
+                          </h:panelGrid>
+                          <af:separator id="s6"/>
+                            <af:panelCollection id="pc5" styleClass="AFAuxiliaryStretchWidth" 
+                                                inlineStyle="height:150.0px;">
+                              
+                             <af:table value="#{bindings.Division.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Division.rangeSize}"
+                                    emptyText="#{bindings.Division.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Division.rangeSize}"
+                                    rowBandingInterval="0"
+                                    selectionListener="#{OrganizationManip.tblOrgDivisionsSelectionListener}"
+                                    rowSelection="single" 
+                                    styleClass="AFAuxiliaryStretchWidth"                                     
+                                    id="tblOrgDivisions"
+                                    binding="#{OrganizationManip.tblOrgDivisions}">
+                            <af:column sortProperty="DIV_NAME" sortable="true"
+                                       headerText="Division Name" id="c82"
+                                       width="250">
+                              <af:outputText value="#{row.DIV_NAME}" id="ot83"/>
+                            </af:column>
+                            <af:column sortProperty="DIV_SHT_DESC"
+                                       sortable="true"
+                                       headerText="Short Description" id="c83"
+                                       width="250">
+                              <af:outputText value="#{row.DIV_SHT_DESC}"
+                                             id="ot82"/>
+                            </af:column>
+                            <af:column sortProperty="DIV_DIVISION_STATUS"
+                                       sortable="true"
+                                       headerText="Division Status" id="c81"
+                                       width="150">
+                              <af:outputText value="#{row.DIV_DIVISION_STATUS}"
+                                             id="ot84"/>
+                            </af:column>
+                          </af:table> 
+                          </af:panelCollection>
+                          </af:panelGroupLayout>
+                          </f:facet>
+                          
+                          
+                          <f:facet name="second">
+                            <af:panelGroupLayout id="pgl2">
+                          
+                          
+                          
+                          <h:panelGrid columns="1" id="gridDivSubDivisions">
+                            <af:outputLabel value="Division Subdivions" id="lblDivSubDivisions"
+                                            inlineStyle="font-weight:bold;"/>                
+                          </h:panelGrid>
+                          <af:separator id="s86"/>
+                          
+                        
+                        
+                          
+                            <h:panelGrid columns="3" id="gridDivSubDivButtons">
+                            <af:commandButton text="New" id="btnNewDivSubDivision"
+                                              icon="/images/create.gif"
+                                              action="#{OrganizationManip.actionNewDivSubDivision}"/>
+                            <af:commandButton text="Edit" id="btnEditDivsubDivision"
+                                              icon="/images/update.gif"
+                                              action="#{OrganizationManip.actionEditDivsubDivision}"/>
+                            <af:commandButton text="Delete" id="btnDeleteDivSubDivision"
+                                              icon="/images/delete.gif"
+                                              action="#{OrganizationManip.actionDeleteDivSubDivision}"/>
+                          </h:panelGrid>
+                          <af:separator id="s77"/>
+                          
+                          
+                            <af:panelCollection id="pc6" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:200.0px;">                             
+                            
+                            <af:table value="#{bindings.Division1.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Division1.rangeSize}"
+                                  emptyText="#{bindings.Division1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Division1.rangeSize}"
+                                  rowBandingInterval="0"
+                                  rowSelection="single" 
+                                  styleClass="AFAuxiliaryStretchWidth" 
+                                  id="tblDivSubDivisions"
+                                  binding="#{OrganizationManip.tblDivSubDivisions}">
+                          <af:column sortProperty="SDIV_NAME" sortable="true"
+                                     headerText="SubDivision Name" id="c85">
+                            <af:outputText value="#{row.SDIV_NAME}" id="ot85"/>
+                          </af:column>
+                          <af:column sortProperty="SDIV_SHT_DESC"
+                                     sortable="true"
+                                     headerText="Short Description" id="c84">
+                            <af:outputText value="#{row.SDIV_SHT_DESC}"
+                                           id="ot86"/>
+                          </af:column>
+                        </af:table>
+                        </af:panelCollection>
+                        </af:panelGroupLayout>
+                          </f:facet>
+                        </af:panelSplitter>
+                        
+                        
+                          
+                          
+                     <!--  </af:panelBox> -->
+                    </af:showDetailItem>
+                    
+                    <af:showDetailItem text="Regions" id="sdi1"
+                                       binding="#{OrganizationManip.regTab}">
+                    
+                      
+                      <h:panelGrid columns="3" id="pg13">
+                        <af:commandButton text="New" id="cb19"
+                                          icon="/images/create.gif"
+                                          action="#{OrganizationManip.newOrgRegion}"/>
+                        <af:commandButton text="Edit" id="cb20" disabled="true"
+                                          icon="/images/update.gif"
+                                          action="#{OrganizationManip.viewOrgRegion}"
+                                          binding="#{OrganizationManip.btnEditRegions}"/>
+                        <af:commandButton text="Delete" id="cb21"
+                                          icon="/images/delete.gif" disabled="true"
+                                          action="#{OrganizationManip.deleteOrgRegion}"
+                                          binding="#{OrganizationManip.btnDeleteRegions}"/>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc1"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:220.0px;">
+                        <af:table value="#{bindings.Organization4.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Organization4.rangeSize}"
+                                  emptyText="#{bindings.Organization4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Organization4.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.Organization4Query.queryDescriptor}"
+                                  queryListener="#{bindings.Organization4Query.processQuery}"
+                                  filterVisible="false" varStatus="vs"
+                                  rowSelection="single" id="regionsTab"
+                                  binding="#{OrganizationManip.regionsTab}"
+                                  styleClass="AFAuxiliaryStretchWidth"
+                                  selectionListener="#{OrganizationManip.regionSelected}">
+                          <af:column sortProperty="regCode" filterable="true"
+                                     sortable="true" headerText="Code" id="c16"
+                                     visible="false">
+                            <af:outputText value="#{row.regCode}" id="ot20"/>
+                          </af:column>
+                          <af:column sortProperty="regOrgCode" filterable="true"
+                                     sortable="true" headerText="Org Code"
+                                     id="c17" visible="false">
+                            <af:outputText value="#{row.regOrgCode}" id="ot21"/>
+                          </af:column>
+                          <af:column sortProperty="regShortDesc"
+                                     filterable="true" sortable="true"
+                                     headerText="Id" id="c19">
+                            <af:outputText value="#{row.regShortDesc}"
+                                           id="ot17"/>
+                          </af:column>
+                          <af:column sortProperty="regName" filterable="true"
+                                     sortable="true" headerText="Name" id="c21">
+                            <af:outputText value="#{row.regName}" id="ot22"/>
+                          </af:column>
+                          <af:column sortProperty="regWef" sortable="true"
+                                     headerText="WEF" id="c22">
+                            <af:outputText value="#{row.regWef}" id="ot25">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="regWet" filterable="true"
+                                     sortable="true" headerText="WET" id="c18">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.regWet}"
+                                            id="id1"/>
+                            </f:facet>
+                            <af:outputText value="#{row.regWet}" id="ot19">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="regAgnCode" filterable="true"
+                                     sortable="true" headerText="AGN Code"
+                                     id="c25" visible="false">
+                            <af:outputText value="#{row.regAgnCode}" id="ot18"/>
+                          </af:column>
+                          <af:column sortProperty="regPostLevel"
+                                     filterable="true" sortable="true"
+                                     headerText="Post Level" id="c24">
+                            <af:outputText value="#{row.regPostLevel}" id="ot26"
+                                           visible="false"/>
+                            <af:selectOneChoice label="Label 10" id="soc10"
+                                                simple="true" readOnly="true"
+                                                value="#{row.regPostLevel}">
+                              <af:selectItem label="Normal" value="N"
+                                             id="si21"/>
+                              <af:selectItem label="Senior" value="S"
+                                             id="si20"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column sortProperty="regMngrAllowed"
+                                     filterable="true" sortable="true"
+                                     headerText="Manager Allowed?" id="c20">
+                            <af:outputText value="#{row.regMngrAllowed}"
+                                           id="ot24" visible="false"/>
+                            <af:selectOneChoice label="Label 11" id="soc11"
+                                                simple="true" readOnly="true"
+                                                value="#{row.regMngrAllowed}">
+                              <af:selectItem label="Yes" value="Y" id="si23"/>
+                              <af:selectItem label="No" value="N" id="si22"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column sortProperty="regOverideCommEarned"
+                                     sortable="true"
+                                     headerText="Overide Comm Earned" id="c23">
+                            <af:outputText value="#{row.regOverideCommEarned}"
+                                           id="ot23" visible="false"/>
+                            <af:selectOneChoice label="Label 12" id="soc12"
+                                                readOnly="true" simple="true"
+                                                value="#{row.regOverideCommEarned}">
+                              <af:selectItem label="Yes" value="Y" id="si25"/>
+                              <af:selectItem label="No" value="N" id="si24"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column sortProperty="regName" sortable="false"
+                                     headerText="Manager" id="c69">
+                            <af:outputText value="#{row.regManager}" id="ot70"/>
+                          </af:column>
+                          
+                          <af:column sortProperty="regBrnMngrSeq_no" sortable="false"
+                                     headerText="Branch MGR Seq No" id="c98">
+                            <af:outputText value="#{row.regBrnMngrSeq_no}"
+                                           id="ot100"/>
+                          </af:column>
+                          <af:column sortProperty="regAgnSeqNo" sortable="false"
+                                     headerText="Branch Seq No" id="c100">
+                            <af:outputText value="#{row.regAgnSeqNo}"
+                                           id="ot101"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:showDetailItem>
+                    
+                    
+                    <af:showDetailItem text="Branches" id="sdi2"
+                                       binding="#{OrganizationManip.sdBranchTab}" 
+                                       visible="false"  >                    
+                      <h:panelGrid columns="3" id="pg12">
+                        <af:commandButton text="New" id="cb16"
+                                          icon="/images/create.gif"
+                                          action="#{OrganizationManip.newBranch}"/>
+                        <af:commandButton text="Edit" id="cb17" disabled="true"
+                                          icon="/images/update.gif"
+                                          action="#{OrganizationManip.viewBranch}"
+                                          binding="#{OrganizationManip.btnEditBranch}"/>
+                        <af:commandButton text="Delete" id="cb18"
+                                          icon="/images/delete.gif"
+                                          disabled="true"
+                                          action="#{OrganizationManip.deleteBranch}"
+                                          binding="#{OrganizationManip.btnDeleteBranch}"/>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc2"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:200.0px;">
+                        <af:table value="#{bindings.Organization5.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Organization5.rangeSize}"
+                                  emptyText="#{bindings.Organization5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Organization5.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.Organization5Query.queryDescriptor}"
+                                  queryListener="#{bindings.Organization5Query.processQuery}"
+                                  filterVisible="false" varStatus="vs"
+                                  selectionListener="#{OrganizationManip.branchSelected}"
+                                  rowSelection="single" id="branchesTab"
+                                  binding="#{OrganizationManip.branchesTab}"
+                                  styleClass="AFAuxiliaryStretchWidth">
+                          <af:column sortProperty="brnCode" filterable="true"
+                                     sortable="true" headerText="Code" id="c31"
+                                     visible="false">
+                            <af:outputText value="#{row.brnCode}" id="ot43"/>
+                          </af:column>
+                          <af:column sortProperty="brnShortDesc"
+                                     filterable="true" sortable="true"
+                                     headerText="Id" id="c39">
+                            <af:outputText value="#{row.brnShortDesc}"
+                                           id="ot40"/>
+                          </af:column>
+                          <af:column sortProperty="brnRegCode" filterable="true"
+                                     sortable="true" headerText="Reg Code"
+                                     id="c26" visible="false">
+                            <af:outputText value="#{row.brnRegCode}" id="ot37"/>
+                          </af:column>
+                          <af:column sortProperty="brnName" filterable="true"
+                                     sortable="true" headerText="Name" id="c27">
+                            <af:outputText value="#{row.brnName}" id="ot39"/>
+                          </af:column>
+                          <af:column sortProperty="brnPhyAddrs"
+                                     filterable="true" sortable="true"
+                                     headerText="Physical Address" id="c36">
+                            <af:outputText value="#{row.brnPhyAddrs}"
+                                           id="ot42"/>
+                          </af:column>
+                          <af:column sortProperty="brnEmail" filterable="true"
+                                     sortable="true" headerText="Email "
+                                     id="c34">
+                            <af:outputText value="#{row.brnEmail}" id="ot27"/>
+                          </af:column>
+                          <af:column sortProperty="brnPostAddrs"
+                                     filterable="true" sortable="true"
+                                     headerText="Postal Address" id="c30">
+                            <af:outputText value="#{row.brnPostAddrs}"
+                                           id="ot35"/>
+                          </af:column>
+                          <af:column sortProperty="brnTwnCode" filterable="true"
+                                     sortable="true" headerText="Town Code"
+                                     id="c35" visible="false">
+                            <af:outputText value="#{row.brnTwnCode}" id="ot41"/>
+                          </af:column>
+                          <af:column sortProperty="brnCouCode" filterable="true"
+                                     sortable="true" headerText="Country Code"
+                                     id="c32" visible="false">
+                            <af:outputText value="#{row.brnCouCode}" id="ot38"/>
+                          </af:column>
+                          <af:column sortProperty="brnContact" filterable="true"
+                                     sortable="true" headerText="Contact"
+                                     id="c37">
+                            <af:outputText value="#{row.brnContact}" id="ot30"/>
+                          </af:column>
+                          <af:column sortProperty="brnManager" filterable="true"
+                                     sortable="true" headerText="Manager"
+                                     id="c42">
+                            <af:outputText value="#{row.brnManager}" id="ot28"/>
+                          </af:column>
+                          <af:column sortProperty="brnMngrAllowed"
+                                     filterable="true" sortable="true"
+                                     headerText="Manager Allowed" id="c94">
+                            <af:outputText value="#{row.brnMngrAllowed}"
+                                           id="ot96"/>
+                          </af:column>
+                          <af:column sortProperty="brnOverideCommEarned"
+                                     filterable="true" sortable="true"
+                                     headerText="Overide Comm Earned" id="c95">
+                            <af:outputText value="#{row.brnOverideCommEarned}"
+                                           id="ot97"/>
+                          </af:column>
+                          <af:column sortProperty="brnTel" filterable="true"
+                                     sortable="true" headerText="Telephone"
+                                     id="c33">
+                            <af:outputText value="#{row.brnTel}" id="ot29"/>
+                          </af:column>
+                          <af:column sortProperty="brnFax" filterable="true"
+                                     sortable="true" headerText="Fax" id="c28">
+                            <af:outputText value="#{row.brnFax}" id="ot36"/>
+                          </af:column>
+                          <af:column sortProperty="brnGenPolClm"
+                                     filterable="true" sortable="true"
+                                     headerText="Gen Policy Claim" id="c29"
+                                     visible="false">
+                            <af:outputText value="#{row.brnGenPolClm}"
+                                           id="ot32"/>
+                          </af:column>
+                          <af:column sortProperty="brnBnsCode" filterable="true"
+                                     sortable="true" headerText="BNS Code"
+                                     id="c38" visible="false">
+                            <af:outputText value="#{row.brnBnsCode}" id="ot33"/>
+                          </af:column>
+                          <af:column sortProperty="brnAgnCode" filterable="true"
+                                     sortable="true" headerText="AGN Code"
+                                     id="c41" visible="false">
+                            <af:outputText value="#{row.brnAgnCode}" id="ot34"/>
+                          </af:column>
+                          <af:column sortProperty="brnPostLevel"
+                                     filterable="true" sortable="true"
+                                     headerText="Post Level" id="c40">
+                            <af:selectOneChoice label="Label 13" id="soc13"
+                                                value="#{row.brnPostLevel}"
+                                                simple="true" readOnly="true">
+                              <af:selectItem label="Normal" value="N"
+                                             id="si26"/>
+                              <af:selectItem label="Senior" value="S"
+                                             id="si27"/>
+                            </af:selectOneChoice>
+                            <af:outputText value="#{row.brnPostLevel}" id="ot31"
+                                           visible="false"/>
+                          </af:column>
+                          <af:column sortProperty="brnBrnMngrSeq_no"
+                                     sortable="false"
+                                     headerText="Agency MGR Seq No" id="c99">
+                            <af:outputText value="#{row.brnBrnMngrSeq_no}"
+                                           id="ot102"/>
+                          </af:column>
+                          <af:column sortProperty="brnAgnSeqNo" sortable="true"
+                                     headerText="Agn Seq No" id="c101">
+                            <af:outputText value="#{row.brnAgnSeqNo}"
+                                           id="ot103"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <center>
+                        <table>
+                          <tr>
+                            <af:panelGroupLayout id="pgl9"
+                                                 rendered="#{Rendering.divisionApplicable ? true : false}">
+                              <td valign="top">
+                                <af:panelAccordion id="pa1"
+                                                   inlineStyle="width:200.0px; height:200.0px;">
+                                  <af:showDetailItem text="Available Branch Divisions"
+                                                     id="sdi5">
+                                    <af:tree value="#{bindings.Division2.treeModel}"
+                                             var="node"
+                                             selectionListener="#{OrganizationManip.treeUnassignedBranchDivsListener}"
+                                             rowSelection="single"
+                                             id="treeUnassignedBranchDivs"
+                                             binding="#{OrganizationManip.treeUnassignedBranchDivs}">
+                                      <f:facet name="nodeStamp">
+                                        <af:outputText value="#{node}"
+                                                       id="ot87"/>
+                                      </f:facet>
+                                    </af:tree>
+                                  </af:showDetailItem>
+                                </af:panelAccordion>
+                              </td>
+                              <td>
+                                <af:spacer width="10" height="10" id="s625"/>
+                                 
+                                <af:panelBox text="PanelBox6"
+                                             id="panelDetailDivisions"
+                                             rendered="false"
+                                             binding="#{OrganizationManip.panelDetailDivisions}">
+                                  <af:inputText label="Division Code : "
+                                                id="txtSelectedBranchDivisionCode"
+                                                visible="false" disabled="true"
+                                                binding="#{OrganizationManip.txtSelectedBranchDivisionCode}"/>
+                                  <af:inputText label="Branch Division Code : "
+                                                id="txtSelectedBranchBDIVCode"
+                                                visible="false" disabled="true"
+                                                binding="#{OrganizationManip.txtSelectedBranchBDIVCode}"/>
+                                </af:panelBox>
+                                 
+                                <af:spacer width="10" height="10" id="s626"/>
+                                 
+                                <af:panelFormLayout id="pfl1">
+                                  <af:commandButton text="Add >"
+                                                    id="btnAddBranchDivision"
+                                                    inlineStyle="width:80.0px;"
+                                                    action="#{OrganizationManip.processAddBranchDivision}"/>
+                                  <af:commandButton text="&lt; Remove"
+                                                    id="btnRemoveBranchDivision"
+                                                    inlineStyle="width:80.0px;"
+                                                    action="#{OrganizationManip.processRemoveBranchDivision}"/>
+                                </af:panelFormLayout>
+                              </td>
+                              <td valign="top">
+                                <h:panelGrid columns="1" id="pg147">
+                                  <af:outputLabel value="Branch Divisions"
+                                                  id="ol745"
+                                                  inlineStyle="font-weight:bold;"/>
+                                </h:panelGrid>
+                                 
+                                <af:separator id="s445"/>
+                                 
+                                <h:panelGrid columns="3" id="pg92">
+                                  <af:commandButton text="Edit"
+                                                    id="btnEditBranchDivision"
+                                                    icon="/images/update.gif"
+                                                    action="#{OrganizationManip.actionEditBranchDivision}"/>
+                                </h:panelGrid>
+                                 
+                                <af:separator id="s96"/>
+                                <af:table value="#{bindings.Division5.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.Division5.rangeSize}"
+                                          emptyText="#{bindings.Division5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.Division5.rangeSize}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.Division5.collectionModel.selectedRow}"
+                                          selectionListener="#{OrganizationManip.tblBranchDivsListener}"
+                                          rowSelection="single"
+                                          id="tblBranchDivs"
+                                          inlineStyle="width:500.0px;"
+                                          binding="#{OrganizationManip.tblBranchDivs}">
+                                  <af:column sortProperty="DIV_NAME"
+                                             sortable="true"
+                                             headerText="#{bindings.Division5.hints.DIV_NAME.label}"
+                                             id="c87">
+                                    <af:outputText value="#{row.DIV_NAME}"
+                                                   id="ot90"/>
+                                  </af:column>
+                                  <af:column sortProperty="BRN_NAME"
+                                             sortable="true"
+                                             headerText="#{bindings.Division5.hints.BRN_NAME.label}"
+                                             id="c88">
+                                    <af:outputText value="#{row.BRN_NAME}"
+                                                   id="ot91"/>
+                                  </af:column>
+                                  <af:column sortProperty="BDIV_WEF"
+                                             sortable="true"
+                                             headerText="#{bindings.Division5.hints.BDIV_WEF.label}"
+                                             id="c89">
+                                    <af:outputText value="#{row.BDIV_WEF}"
+                                                   id="ot88">
+                                      <af:convertDateTime pattern="#{bindings.Division5.hints.BDIV_WEF.format}"/>
+                                    </af:outputText>
+                                  </af:column>
+                                  <af:column sortProperty="BDIV_WET"
+                                             sortable="true"
+                                             headerText="#{bindings.Division5.hints.BDIV_WET.label}"
+                                             id="c86">
+                                    <af:outputText value="#{row.BDIV_WET}"
+                                                   id="ot89">
+                                      <af:convertDateTime pattern="#{bindings.Division5.hints.BDIV_WET.format}"/>
+                                    </af:outputText>
+                                  </af:column>
+                                </af:table>
+                              </td>
+                            </af:panelGroupLayout>
+                          </tr>
+                        </table>
+                      </center>
+                    </af:showDetailItem>
+                    <af:showDetailItem text="Agencies" id="sdi4"
+                                       binding="#{OrganizationManip.sdAgenciesTab}"
+                                       visible="false">
+                      <h:panelGrid columns="3" id="pg27">
+                        <af:commandButton text="New" id="cb36"
+                                          icon="/images/create.gif"
+                                          action="#{OrganizationManip.newBranchAgency}"/>
+                        <af:commandButton text="Edit" id="cb37" disabled="true"
+                                          icon="/images/update.gif"
+                                          action="#{OrganizationManip.viewBranchAgency}"
+                                          binding="#{OrganizationManip.btnEditBranchAgency}"/>
+                        <af:commandButton text="Delete" id="cb38"
+                                          disabled="true"
+                                          icon="/images/delete.gif"
+                                          action="#{OrganizationManip.deleteBranchAgency}"
+                                          binding="#{OrganizationManip.btnDeleteBranchAgency}"/>
+                      </h:panelGrid>
+                      <af:popup id="agenciesPopUp"
+                                binding="#{OrganizationManip.agenciesPopUp}">
+                        <af:dialog id="d10" type="none"
+                                   title="ADD/EDIT BRANCH AGENCIES">
+                          <af:separator id="s7"/>
+                          <h:panelGrid columns="2" id="pg28" width="350">
+                            <af:outputLabel value="Code" id="ol72"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 34" id="ins15"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.braCode}"
+                                                   visible="false"/>
+                            <af:outputLabel value="BRN Code" id="ol73"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 35" id="ins16"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.braBrnCode}"
+                                                   visible="false"/>
+                            <af:outputLabel value="Id" id="ol74"/>
+                            <af:inputText label="Label 46" id="it40"
+                                          simple="true"
+                                          binding="#{OrganizationManip.braShortDesc}"/>
+                            <af:outputLabel value="Name" id="ol75"/>
+                            <af:inputText label="Label 47" id="it41"
+                                          simple="true"
+                                          binding="#{OrganizationManip.braName}"/>
+                            <af:outputLabel value="Status" id="ol76"/>
+                            <af:selectOneChoice label="Label 8" id="soc8"
+                                                simple="true"
+                                                binding="#{OrganizationManip.braStatus}">
+                              <af:selectItem label="Active" value="A"
+                                             id="si16"/>
+                              <af:selectItem label="Inactive" value="I"
+                                             id="si17"/>
+                            </af:selectOneChoice>
+                            <af:outputLabel value="Manager" id="ol77"
+                                            visible="false"
+                                            binding="#{OrganizationManip.outlBraMgr}"/>
+                            <h:panelGrid columns="2" id="pg30" width="150"
+                                         frame="0" border="0" cellpadding="0"
+                                         cellspacing="0">
+                              <af:inputText label="Label 49" id="it43"
+                                            simple="true" visible="false"
+                                            binding="#{OrganizationManip.braManager}"
+                                            disabled="true"/>
+                              <af:commandButton id="cb41" visible="false"
+                                                icon="/images/dropdown.gif"
+                                                binding="#{OrganizationManip.btnShowBraMgrlov}">
+                                <af:showPopupBehavior popupId="braManagersLovPopUp"/>
+                              </af:commandButton>
+                            </h:panelGrid>
+                            <af:outputLabel value="Post Level" id="ol79"/>
+                            <af:selectOneChoice label="Label 9" id="soc9"
+                                                simple="true"
+                                                binding="#{OrganizationManip.braPostLevel}">
+                              <af:selectItem label="Normal" value="N"
+                                             id="si19"/>
+                              <af:selectItem label="Senior" value="S"
+                                             id="si18"/>
+                            </af:selectOneChoice>
+                            <af:outputLabel value="AGN Code" id="ol78"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 36" id="ins19"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.braAgnCode}"
+                                                   visible="false"/>
+                            <af:outputLabel value="Unit Mngr Seq  No" id="ol4"/>
+                            <af:inputText label="Label 53" id="it10"
+                                          binding="#{OrganizationManip.txtBraBranchMgrSeqNo}"
+                                          simple="true"/>
+                            <af:outputLabel value="Agency Seq No" id="ol5"/>
+                            <af:inputText label="Label 54" id="it11"
+                                          simple="true"
+                                          binding="#{OrganizationManip.txtBraAgnSeqNo}"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="pg29" width="100">
+                            <af:commandButton text="Save" id="cb39"
+                                              partialSubmit="true"
+                                              action="#{OrganizationManip.saveBranchAgency}"/>
+                            <af:commandButton text="Cancel" id="cb40"
+                                              action="#{OrganizationManip.cancelBranchAgency}"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      <af:popup id="braManagersLovPopUp"
+                                binding="#{OrganizationManip.braManagersLovPopUp}">
+                        <af:dialog id="dialog3" type="none"
+                                   title="SELECT AGENCY MANAGER">
+                          <af:table value="#{bindings.Organization8.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Organization8.rangeSize}"
+                                    emptyText="#{bindings.Organization8.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Organization8.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.Organization8Query.queryDescriptor}"
+                                    queryListener="#{bindings.Organization8Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    rowSelection="single" id="braManagersLovTab"
+                                    binding="#{OrganizationManip.braManagersLovTab}"
+                                    width="423">
+                            <af:column sortProperty="agnCode" filterable="true"
+                                       sortable="true" headerText="Code"
+                                       id="column9" visible="false">
+                              <af:outputText value="#{row.agnCode}"
+                                             id="outputText9"/>
+                            </af:column>
+                            <af:column sortProperty="agnShortDesc"
+                                       filterable="true" sortable="true"
+                                       headerText="Id" id="column10">
+                              <af:outputText value="#{row.agnShortDesc}"
+                                             id="outputText10"/>
+                            </af:column>
+                            <af:column sortProperty="agnName" filterable="true"
+                                       sortable="true" headerText="Name"
+                                       id="column11" width="300">
+                              <af:outputText value="#{row.agnName}"
+                                             id="outputText11"/>
+                            </af:column>
+                            <af:column sortProperty="agnTwnName"
+                                       filterable="true" sortable="true"
+                                       headerText="Town Name" id="column12"
+                                       visible="false">
+                              <af:outputText value="#{row.agnTwnName}"
+                                             id="outputText12"/>
+                            </af:column>
+                          </af:table>
+                          <h:panelGrid columns="2" id="panelGrid3" width="100">
+                            <af:commandButton text="Select" id="commandButton5"
+                                              partialSubmit="true"
+                                              action="#{OrganizationManip.selectAgencyManager}"/>
+                            <af:commandButton text="Cancel"
+                                              id="commandButton6"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      <af:panelCollection id="pc3"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:220.0px;">
+                        <af:table value="#{bindings.Organization9.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Organization9.rangeSize}"
+                                  emptyText="#{bindings.Organization9.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Organization9.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.Organization9Query.queryDescriptor}"
+                                  queryListener="#{bindings.Organization9Query.processQuery}"
+                                  filterVisible="false" varStatus="vs"
+                                  rowSelection="single" id="agenciesTab"
+                                  binding="#{OrganizationManip.agenciesTab}"
+                                  styleClass="AFAuxiliaryStretchWidth"
+                                  selectionListener="#{OrganizationManip.branchAgencySelected}">
+                          <af:column sortProperty="braCode" filterable="true"
+                                     sortable="true" headerText="Code" id="c71"
+                                     visible="false">
+                            <af:outputText value="#{row.braCode}" id="ot71"/>
+                          </af:column>
+                          <af:column sortProperty="braBrnCode" filterable="true"
+                                     sortable="true" headerText="BRN Code"
+                                     id="c70" visible="false">
+                            <af:outputText value="#{row.braBrnCode}" id="ot76"/>
+                          </af:column>
+                          <af:column sortProperty="braShortDesc"
+                                     filterable="true" sortable="true"
+                                     headerText="Id" id="c76">
+                            <af:outputText value="#{row.braShortDesc}"
+                                           id="ot77"/>
+                          </af:column>
+                          <af:column sortProperty="braName" filterable="true"
+                                     sortable="true" headerText="Name" id="c74"
+                                     width="200">
+                            <af:outputText value="#{row.braName}" id="ot74"/>
+                          </af:column>
+                          <af:column sortProperty="braStatus" filterable="true"
+                                     sortable="true" headerText="Status"
+                                     id="c77">
+                            <af:outputText value="#{row.braStatus}" id="ot73"
+                                           visible="false"/>
+                            <af:selectOneChoice label="Label 14" id="soc14"
+                                                simple="true" readOnly="true"
+                                                value="#{row.braStatus}">
+                              <af:selectItem label="Active" value="A"
+                                             id="si28"/>
+                              <af:selectItem label="Inactive" value="I"
+                                             id="si29"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column sortProperty="braManager" filterable="true"
+                                     sortable="true" headerText="Manager"
+                                     id="c72" width="200">
+                            <af:outputText value="#{row.braManager}" id="ot75"/>
+                          </af:column>
+                          <af:column sortProperty="braMngrAllowed"
+                                     filterable="true" sortable="true"
+                                     headerText="Manager Allowed" id="c90"
+                                     width="200">
+                            <af:outputText value="#{row.braMngrAllowed}"
+                                           id="ot92"/>
+                          </af:column>
+                          <af:column sortProperty="braOverideCommEarned"
+                                     filterable="true" sortable="true"
+                                     headerText="Overide Comm Earned" id="c93"
+                                     width="200">
+                            <af:outputText value="#{row.braOverideCommEarned}"
+                                           id="ot94"/>
+                          </af:column>
+                          <af:column sortProperty="braAgnCode" filterable="true"
+                                     sortable="true" headerText="AGN Code"
+                                     id="c75" visible="false">
+                            <af:outputText value="#{row.braAgnCode}" id="ot78"/>
+                          </af:column>
+                          <af:column sortProperty="braPostLevel"
+                                     filterable="true" sortable="true"
+                                     headerText="Post Level" id="c73"
+                                     width="120">
+                            <af:outputText value="#{row.braPostLevel}" id="ot72"
+                                           visible="false"/>
+                            <af:selectOneChoice label="Label 15" id="soc15"
+                                                readOnly="true" simple="true"
+                                                value="#{row.braPostLevel}">
+                              <af:selectItem label="Normal" value="N"
+                                             id="si31"/>
+                              <af:selectItem label="Senior" value="S"
+                                             id="si30"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column sortProperty="braBrnMngrSeq_no"
+                                     sortable="false"
+                                     headerText="Unit MGR Seq No" id="c102">
+                            <af:outputText value="#{row.braBrnMngrSeq_no}"
+                                           id="ot104"/>
+                          </af:column>
+                          <af:column sortProperty="braAgnSeqNo" sortable="true"
+                                     headerText="Unit Seq No" id="c103">
+                            <af:outputText value="#{row.braAgnSeqNo}"
+                                           id="ot105"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:showDetailItem>
+                    <af:showDetailItem text="Units" id="sdi3" 
+                                       binding="#{OrganizationManip.sdUnitsTab}" 
+                                       visible="false">
+                      <af:popup id="branchUnitsPopUp"
+                                binding="#{OrganizationManip.branchUnitsPopUp}">
+                        <af:dialog id="d8" type="none"
+                                   title="ADD/EDIT BRANCH AGENCY UNIT">
+                          <af:separator id="s76"/>
+                          <h:panelGrid columns="2" id="pg21">
+                            <af:outputLabel value="Code" id="ol61"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 26" id="ins12"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.bruCode}"
+                                                   visible="false"/>
+                            <af:outputLabel value="BRN Code" id="ol62"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 27" id="ins14"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.bruBrnCode}"
+                                                   visible="false"/>
+                            <af:outputLabel value="Id" id="ol63"/>
+                            <af:inputText label="Label 40" id="it35"
+                                          simple="true"
+                                          binding="#{OrganizationManip.bruShortDesc}"/>
+                            <af:outputLabel value="Name" id="ol64"/>
+                            <af:inputText label="Label 41" id="it36"
+                                          simple="true"
+                                          binding="#{OrganizationManip.bruName}"/>
+                            <af:outputLabel value="Supervisor" id="ol65"/>
+                            <af:inputText label="Label 42" id="it37"
+                                          simple="true"
+                                          binding="#{OrganizationManip.bruSupervisor}"/>
+                            <af:outputLabel value="Status" id="ol66"/>
+                            <af:selectOneChoice label="Label 7" id="soc7"
+                                                simple="true"
+                                                unselectedLabel="---select---"
+                                                binding="#{OrganizationManip.bruStatus}">
+                              <af:selectItem label="Active" value="A"
+                                             id="si15"/>
+                              <af:selectItem label="Inactive" id="si36"
+                                             value="I"/>
+                            </af:selectOneChoice>
+                            <af:outputLabel value="Manager" id="ol69" visible="false"
+                                            binding="#{OrganizationManip.outputlbMgr}"/>
+                            <h:panelGrid columns="2" id="pg26" width="150"
+                                         frame="0" border="0" cellpadding="0"
+                                         cellspacing="0">
+                              <af:inputText label="Label 44" id="it39"
+                                            simple="true" visible="false"
+                                            binding="#{OrganizationManip.bruManager}"
+                                            disabled="true"/>
+                              <af:commandButton id="cb35"
+                                                icon="/images/dropdown.gif" visible="false"
+                                                binding="#{OrganizationManip.btnShowBruManager}">
+                                <af:showPopupBehavior popupId="bruManagersLovPopUp"/>
+                              </af:commandButton>
+                            </h:panelGrid>
+                            <af:outputLabel value="Post Level" id="ol70"/>
+                            <af:selectOneChoice label="Label 6" id="soc6"
+                                                simple="true"
+                                                unselectedLabel="---select---"
+                                                binding="#{OrganizationManip.bruPostLevel}">
+                              <af:selectItem label="Normal" value="N"
+                                             id="si13"/>
+                              <af:selectItem label="Senior" value="S"
+                                             id="si14"/>
+                            </af:selectOneChoice>
+                            <af:outputLabel value="AGN Code" id="ol67"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 32" id="ins21"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.bruAgnCode}"
+                                                   visible="false"/>
+                            <af:outputLabel value="BRA Code" id="ol68"
+                                            visible="false"/>
+                                            
+                            <af:inputNumberSpinbox label="Label 33" id="ins22"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.bruBraCode}"
+                                                   visible="false"/>
+                                                 
+                  
+                               <af:outputLabel value="Unit Seq No" id="ol9"/>
+                            <af:inputText label="Label 55" id="it12" simple="true"
+                                         binding="#{OrganizationManip.txtBruAgnSeqNo}"/>
+                            
+                          </h:panelGrid>
+                          
+                          
+                          <h:panelGrid columns="2" id="pg22" width="100">
+                            <af:commandButton text="Save" id="cb29"
+                                              action="#{OrganizationManip.saveBranchUnit}"/>
+                            <af:commandButton text="Cancel" id="cb30"
+                                              action="#{OrganizationManip.cancelBranchUnit}"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      <af:popup id="bruManagersLovPopUp"
+                                binding="#{OrganizationManip.bruManagersLovPopUp}">
+                        <af:dialog id="dialog2" type="none"
+                                   title="SELECT UNIT  MANAGER">
+                          <af:table value="#{bindings.Organization8.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Organization8.rangeSize}"
+                                    emptyText="#{bindings.Organization8.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Organization8.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.Organization8Query.queryDescriptor}"
+                                    queryListener="#{bindings.Organization8Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    rowSelection="single" id="bruManagersLovTab"
+                                    binding="#{OrganizationManip.bruManagersLovTab}"
+                                    width="423">
+                            <af:column sortProperty="agnCode" filterable="true"
+                                       sortable="true" headerText="Code"
+                                       id="column5" visible="false">
+                              <af:outputText value="#{row.agnCode}"
+                                             id="outputText5"/>
+                            </af:column>
+                            <af:column sortProperty="agnShortDesc"
+                                       filterable="true" sortable="true"
+                                       headerText="Id" id="column6">
+                              <af:outputText value="#{row.agnShortDesc}"
+                                             id="outputText6"/>
+                            </af:column>
+                            <af:column sortProperty="agnName" filterable="true"
+                                       sortable="true" headerText="Name"
+                                       id="column7" width="300">
+                              <af:outputText value="#{row.agnName}"
+                                             id="outputText7"/>
+                            </af:column>
+                            <af:column sortProperty="agnTwnName"
+                                       filterable="true" sortable="true"
+                                       headerText="Town Name" id="column8"
+                                       visible="false">
+                              <af:outputText value="#{row.agnTwnName}"
+                                             id="outputText8"/>
+                            </af:column>
+                          </af:table>
+                          <h:panelGrid columns="2" id="panelGrid2" width="100">
+                            <af:commandButton text="Select" id="commandButton3"
+                                              partialSubmit="true"
+                                              action="#{OrganizationManip.selectUnitManager}"/>
+                            <af:commandButton text="Cancel"
+                                              id="commandButton4"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      <h:panelGrid columns="3" id="pg11">
+                        <af:commandButton text="New" id="cb13"
+                                          icon="/images/create.gif"
+                                          action="#{OrganizationManip.newBranchUnit}"/>
+                                          
+                        <af:commandButton text="Edit" id="cb14"
+                                          icon="/images/update.gif" disabled="true"
+                                          action="#{OrganizationManip.viewBranchUnit}"
+                                          binding="#{OrganizationManip.btnEditBranchUnit}"/>
+                                          
+                        <af:commandButton text="Delete" id="cb15"
+                                          icon="/images/delete.gif" disabled="true"
+                                          action="#{OrganizationManip.deleteBranchUnit}"
+                                          binding="#{OrganizationManip.btnDeleteBranchUnit}"/>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc4"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:220.0px;">
+                        <af:table value="#{bindings.Organization6.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Organization6.rangeSize}"
+                                  emptyText="#{bindings.Organization6.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Organization6.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.Organization6Query.queryDescriptor}"
+                                  queryListener="#{bindings.Organization6Query.processQuery}"
+                                  filterVisible="false" varStatus="vs"
+                                  rowSelection="single" 
+                                  id="unitsTab"
+                                  binding="#{OrganizationManip.unitsTab}"
+                                  styleClass="AFAuxiliaryStretchWidth"
+                                  selectionListener="#{OrganizationManip.actionTblUnitsTabListener}">
+                          <af:column sortProperty="bruCode" filterable="true"
+                                     sortable="true" headerText="Code" id="c47"
+                                     visible="false">
+                            <af:outputText value="#{row.bruCode}" id="ot45"/>
+                          </af:column>
+                          <af:column sortProperty="bruBrnCode" filterable="true"
+                                     sortable="true" headerText="BRN Code"
+                                     id="c50" visible="false">
+                            <af:outputText value="#{row.bruBrnCode}" id="ot48"/>
+                          </af:column>
+                          <af:column sortProperty="bruShortDesc"
+                                     filterable="true" sortable="true"
+                                     headerText="Id" id="c44">
+                            <af:outputText value="#{row.bruShortDesc}"
+                                           id="ot50"/>
+                          </af:column>
+                          <af:column sortProperty="bruName" filterable="true"
+                                     sortable="true" headerText="Name" id="c46"
+                                     width="200">
+                            <af:outputText value="#{row.bruName}" id="ot46"/>
+                          </af:column>
+                          <af:column sortProperty="bruSupervisor"
+                                     filterable="true" sortable="true"
+                                     headerText="Supervisor" id="c51"
+                                     width="100">
+                            <af:outputText value="#{row.bruSupervisor}"
+                                           id="ot53"/>
+                          </af:column>
+                          <af:column sortProperty="bruStatus" filterable="true"
+                                     sortable="true" headerText="Status"
+                                     id="c48">
+                            <af:outputText value="#{row.bruStatus}" id="ot52"
+                                           visible="false"/>
+                            <af:selectOneChoice label="Label 16" id="soc16"
+                                                readOnly="true" simple="true"
+                                                value="#{row.bruStatus}">
+                              <af:selectItem label="Active" value="A"
+                                             id="si32"/>
+                              <af:selectItem label="Inactive" value="I"
+                                             id="si33"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column sortProperty="bruAgnCode" filterable="true"
+                                     sortable="true" headerText="AGN  Code"
+                                     id="c49" visible="false">
+                            <af:outputText value="#{row.bruAgnCode}" id="ot51"/>
+                          </af:column>
+                          <af:column sortProperty="bruBraCode" filterable="true"
+                                     sortable="true" headerText="BRA Code"
+                                     id="c45" visible="false">
+                            <af:outputText value="#{row.bruBraCode}" id="ot44"/>
+                          </af:column>
+                          <af:column sortProperty="bruManager" filterable="true"
+                                     sortable="true" headerText="Manager"
+                                     id="c43" width="100">
+                            <af:outputText value="#{row.bruManager}" id="ot47"/>
+                          </af:column>
+                           <af:column sortProperty="bruMngrAllowed" filterable="true"
+                                     sortable="true" headerText="Manager Allowed"
+                                     id="c96" width="100">
+                            <af:outputText value="#{row.bruMngrAllowed}"
+                                           id="ot98"/>
+                          </af:column>
+                           <af:column sortProperty="bruOverideCommEarned" filterable="true"
+                                     sortable="true" headerText="Overide Comm Earned"
+                                     id="c97" width="100">
+                            <af:outputText value="#{row.bruOverideCommEarned}"
+                                           id="ot99"/>
+                          </af:column>
+                          <af:column sortProperty="bruPostLevel"
+                                     filterable="true" sortable="true"
+                                     headerText="Post Level" id="c52">
+                            <af:outputText value="#{row.bruPostLevel}" id="ot49"
+                                           visible="false"/>
+                            <af:selectOneChoice label="Label 17" id="soc17"
+                                                simple="true" readOnly="true"
+                                                value="#{row.bruPostLevel}">
+                              <af:selectItem label="Normal" value="N"
+                                             id="si35"/>
+                              <af:selectItem label="Senior" value="S"
+                                             id="si34"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                        
+                          <af:column sortProperty="bruAgnSeqNo" sortable="true"
+                                     headerText="Agent Seq No" id="c104">
+                            <af:outputText value="#{row.bruAgnSeqNo}"
+                                           id="ot106"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </f:facet>
+              </af:panelSplitter>
+            </af:panelBox>
+            <!-- <af:panelGroupLayout layout="scroll"
+                                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                             id="orgDetails"
+                                             binding="#{OrganizationManip.orgDetails}">  -->
+            <af:popup id="countriesLovPopUp"
+                      binding="#{OrganizationManip.countriesLovPopUp}">
+              <af:dialog id="d2" type="none" title="SELECT COUNTRY">
+                <af:table value="#{bindings.Organization1.collectionModel}"
+                          var="row" rows="#{bindings.Organization1.rangeSize}"
+                          emptyText="#{bindings.Organization1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Organization1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.Organization1Query.queryDescriptor}"
+                          queryListener="#{bindings.Organization1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          rowSelection="single" 
+                          id="countriesLovTab" 
+                          width="324"
+                          binding="#{OrganizationManip.countriesLovTab}">
+                  <af:column sortProperty="couCode" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Code" id="c1"
+                             visible="false">
+                    <af:outputText value="#{row.couCode}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="couShortDesc" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Short Desc" id="c2">
+                    <af:outputText value="#{row.couShortDesc}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="couName" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Name" id="c6"
+                             width="200">
+                    <af:outputText value="#{row.couName}" id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="couBaseCurr" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Base Currency" id="c3"
+                             visible="false">
+                    <af:outputText value="#{row.couBaseCurr}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="couNationality" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Nationality" id="c5"
+                             visible="false">
+                    <af:outputText value="#{row.couNationality}" id="ot2"/>
+                  </af:column>
+                  <af:column sortProperty="couZipCode" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Zip Code" id="c4"
+                             visible="false">
+                    <af:outputText value="#{row.couZipCode}" id="ot3"/>
+                  </af:column>
+                </af:table>
+                <h:panelGrid columns="3" id="pg5" width="100">
+                  <af:commandButton text="Select" id="cb4"
+                                    action="#{OrganizationManip.selectCountry}"
+                                    binding="#{OrganizationManip.btnSelectCountry1}"/>
+                  <af:commandButton text="Select" id="cb52" rendered="false" partialSubmit="true"
+                                    action="#{OrganizationManip.actionAcceptCountry2}"
+                                    binding="#{OrganizationManip.btnSelectCountry2}"/>
+                  <af:commandButton text="Cancel" id="cb5"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="statesLovPop">
+              <af:dialog id="d15" title="States List" type="none" inlineStyle="width:380.0px;">
+                <af:panelCollection id="pc7" styleClass="AFAuxiliaryStretchWidth">
+                  <af:table value="#{bindings.State.collectionModel}" var="row"
+                            rows="#{bindings.State.rangeSize}"
+                            emptyText="#{bindings.State.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.State.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.StateQuery.queryDescriptor}"
+                            queryListener="#{bindings.StateQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            rowSelection="single" id="t2"
+                            binding="#{OrganizationManip.tblStatesLOV}">
+                    <af:column sortProperty="stateShortDesc" filterable="true" filterFeatures="caseInsensitive"
+                               sortable="true" headerText="Short Desc" id="c92">
+                      <af:outputText value="#{row.stateShortDesc}" id="ot95"/>
+                    </af:column>
+                    <af:column sortProperty="stateName" filterable="true" filterFeatures="caseInsensitive"
+                               sortable="true" headerText="State Name" 
+                               id="c91" width="200">
+                      <af:outputText value="#{row.stateName}" id="ot93"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>               
+                
+                <h:panelGrid columns="3" id="pg3">
+                  <af:commandButton text="Ok" 
+                                    id="btnAcceptState"
+                                    action="#{OrganizationManip.actionAcceptState}"
+                                    binding="#{OrganizationManip.btnStateLov1}"/>
+              <af:commandButton text="Ok" 
+                                    id="btnAcceptState2" rendered="false" partialSubmit="true"
+                                 action="#{OrganizationManip.actionAcceptState2}"
+                                binding="#{OrganizationManip.btnStateLov2}"/>
+                  <af:commandButton text="Cancel" id="btnCancelState"/>
+                </h:panelGrid>
+                
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="townsLovPopUp"
+                      binding="#{OrganizationManip.townsLovPopUp}">
+              <af:dialog id="d3" type="none" title="SELECT TOWN">
+                <af:table value="#{bindings.Organization2.collectionModel}"
+                          var="row" rows="#{bindings.Organization2.rangeSize}"
+                          emptyText="#{bindings.Organization2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Organization2.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.Organization2Query.queryDescriptor}"
+                          queryListener="#{bindings.Organization2Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          rowSelection="single" 
+                          id="townsLovTab" 
+                          width="329"
+                          binding="#{OrganizationManip.townsLovTab}">
+                  <af:column sortProperty="twnCode" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Code" id="c8"
+                             visible="false">
+                    <af:outputText value="#{row.twnCode}" id="ot8"/>
+                  </af:column>
+                  <af:column sortProperty="twnCouCode" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Country Code" id="c10"
+                             visible="false">
+                    <af:outputText value="#{row.twnCouCode}" id="ot9"/>
+                  </af:column>
+                  <af:column sortProperty="twnShortDesc" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Short Desc" id="c9">
+                    <af:outputText value="#{row.twnShortDesc}" id="ot11"/>
+                  </af:column>
+                  <af:column sortProperty="twnName" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Name" id="c7"
+                             width="200">
+                    <af:outputText value="#{row.twnName}" id="ot10"/>
+                  </af:column>
+                  <af:column sortProperty="twnStsCode" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="STS Code" id="c11"
+                             visible="false">
+                    <af:outputText value="#{row.twnStsCode}" id="ot12"/>
+                  </af:column>
+                </af:table>
+                <h:panelGrid columns="3" id="pg6" width="100">
+                  <af:commandButton text="Select" id="cb6"
+                                    action="#{OrganizationManip.selectTown}"
+                                    binding="#{OrganizationManip.btnSelectTwnfirst}"/>
+                   <af:commandButton text="Select" id="cb51" rendered="false" partialSubmit="true"
+                                    action="#{OrganizationManip.actionAcceptTown}"
+                                     binding="#{OrganizationManip.btnSelectTown}"/>
+                  <af:commandButton text="Cancel" id="cb7"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="currenciesLovPopUp"
+                      binding="#{OrganizationManip.currenciesLovPopUp}">
+              <af:dialog id="d4" title="SELECT CURRENCY" type="none">
+                <af:table value="#{bindings.Organization3.collectionModel}"
+                          var="row" rows="#{bindings.Organization3.rangeSize}"
+                          emptyText="#{bindings.Organization3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Organization3.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.Organization3Query.queryDescriptor}"
+                          queryListener="#{bindings.Organization3Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          rowSelection="single" 
+                          id="currenciesLovTab"
+                          binding="#{OrganizationManip.currenciesLovTab}"
+                          width="326">
+                  <af:column sortProperty="curCode" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Code" id="c15"
+                             visible="false">
+                    <af:outputText value="#{row.curCode}" id="ot16"/>
+                  </af:column>
+                  <af:column sortProperty="curSymbol" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Symbol" id="c14">
+                    <af:outputText value="#{row.curSymbol}" id="ot13"/>
+                  </af:column>
+                  <af:column sortProperty="curDesc" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Currency" id="c13"
+                             width="200">
+                    <af:outputText value="#{row.curDesc}" id="ot15"/>
+                  </af:column>
+                  <af:column sortProperty="curRnd" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="RND" id="c12"
+                             visible="false">
+                    <af:outputText value="#{row.curRnd}" id="ot14"/>
+                  </af:column>
+                </af:table>
+                <h:panelGrid columns="2" id="pg10" width="100">
+                  <af:commandButton text="Select" id="cb11"
+                                    action="#{OrganizationManip.selectCurrency}"/>
+                  <af:commandButton text="Cancel" id="cb12"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="orgManagersLovPopUp"
+                      binding="#{OrganizationManip.orgManagersLovPopUp}">
+              <af:dialog id="d11" type="none"
+                         title="SELECT ORGANIZATION MANAGER">
+                <af:table value="#{bindings.Organization10.collectionModel}"
+                          var="row" rows="#{bindings.Organization10.rangeSize}"
+                          emptyText="#{bindings.Organization10.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Organization10.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.Organization10Query.queryDescriptor}"
+                          queryListener="#{bindings.Organization10Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          rowSelection="single" 
+                          id="orgManagersLovTab"
+                          width="325"
+                          binding="#{OrganizationManip.orgManagersLovTab}">
+                  <af:column sortProperty="agnCode" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Code" id="c79"
+                             visible="false">
+                    <af:outputText value="#{row.agnCode}" id="ot80"/>
+                  </af:column>
+                  <af:column sortProperty="agnShortDesc" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Short Desc" id="c78">
+                    <af:outputText value="#{row.agnShortDesc}" id="ot81"/>
+                  </af:column>
+                  <af:column sortProperty="agnName" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="Name" id="c80"
+                             width="200">
+                    <af:outputText value="#{row.agnName}" id="ot79"/>
+                  </af:column>
+                </af:table>
+                <h:panelGrid columns="2" id="pg31" width="100">
+                  <af:commandButton text="Select" id="cb42"
+                                    action="#{OrganizationManip.selectOrgManager}"/>
+                  <af:commandButton text="Cancel" id="cb43"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="regionsPopUp"
+                                binding="#{OrganizationManip.regionsPopUp}">
+                        <af:dialog id="d5" type="none"
+                                   title="ADD/EDIT ORGANIZATION REGION">
+                          <af:separator id="s4"/>
+                          <h:panelGrid columns="2" id="pg15" width="350">
+                            <af:outputLabel value="Code" id="ol34"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 8" id="ins8"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.regCode}"
+                                                   visible="false"/>
+                            <af:outputLabel value="Org Code" id="ol35"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 9" id="ins9"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.regOrgCode}"
+                                                   visible="false"/>
+                                                   
+                            <af:outputLabel value="Short Desc : " id="ol36" showRequired="true"/>
+                            <af:inputText label="Label 24" id="it24"
+                                          simple="true" 
+                                          showRequired="true" 
+                                          columns="20"
+                                          binding="#{OrganizationManip.regShortDesc}"
+                                          disabled="false"/>
+                                          
+                            <af:outputLabel value="Name" id="ol44" showRequired="true"/>
+                            <af:inputText label="Label 30" id="it30"
+                                          simple="true" 
+                                          showRequired="true" 
+                                          columns="20"
+                                          binding="#{OrganizationManip.regName}"
+                                          disabled="false"/>
+                                          
+                            <af:outputLabel value="WEF" id="ol37" showRequired="true"/>
+                            <af:inputDate label="Label 1" id="id3" 
+                                          simple="true" 
+                                          showRequired="true"
+                                          binding="#{OrganizationManip.regWef}">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:inputDate>
+                            
+                            <af:outputLabel value="WET" id="ol38"/>
+                            <af:inputDate label="Label 2" id="id4" simple="true"
+                                          binding="#{OrganizationManip.regWet}">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:inputDate>
+                         
+                            <af:outputLabel value="Manager" id="ol71"  visible="false"
+                                            binding="#{OrganizationManip.outputLbManager}"/>
+                           
+                           
+                            <h:panelGrid columns="2" id="pg24" width="150" 
+                                         frame="0" border="0" cellpadding="0"
+                                         cellspacing="0">
+                              <af:inputText label="Label 45" id="it38"
+                                            simple="true" 
+                                            columns="20"
+                                            binding="#{OrganizationManip.regManager}"
+                                            disabled="true" visible="false"/>
+                              <af:commandButton id="cb33" visible="false" 
+                                                icon="/images/dropdown.gif"
+                                                binding="#{OrganizationManip.btnShowManagerLov}">
+                                <af:showPopupBehavior popupId="regManagerslovPopUp"/>
+                              </af:commandButton>
+                            </h:panelGrid>
+                            <af:outputLabel value="Post Level" id="ol40"/>
+                            <af:selectOneChoice label="Label 2" id="soc2"
+                                                simple="true"
+                                                unselectedLabel="---select---"
+                                                binding="#{OrganizationManip.regPostLevel}">
+                              <af:selectItem label="Normal" value="N" id="si6"/>
+                              <af:selectItem label="senior" value="S" id="si55"/>
+                            </af:selectOneChoice>
+                            <af:outputLabel value="Manager Allowed" id="ol41"/>
+                            <af:selectOneChoice label="Label 3" id="soc3"
+                                                simple="true"
+                                                unselectedLabel="---select---"
+                                                binding="#{OrganizationManip.regMngrAllowed}">
+                              <af:selectItem label="Yes" value="Y" id="si8"/>
+                              <af:selectItem label="No" value="N" id="si7"/>
+                            </af:selectOneChoice>
+                            <af:outputLabel value="Overide Comm Earned"
+                                            id="ol42"/>
+                            <af:selectOneChoice label="Label 4" id="soc4"
+                                                simple="true"
+                                                unselectedLabel="---select---"
+                                                binding="#{OrganizationManip.regOverideCommEarned}">
+                              <af:selectItem label="Yes" value="Y" id="si9"/>
+                              <af:selectItem label="No" value="N" id="si10"/>
+                            </af:selectOneChoice>
+                            <af:outputLabel value="AGN Code" id="ol39"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 10" id="ins10"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.regAgnCode}"
+                                                   visible="false"/>
+                   <af:outputLabel value="Branch Mngr Seq  No" id="ol2" />
+                  <af:inputText label=" Branch Mngr Seq  No" id="it4" binding="#{OrganizationManip.txtRegBranchMgrSeqNo}" simple="true"/>
+             
+                               <af:outputLabel value="Agency Seq No" id="ol3"/>
+                  <af:inputText label="Label 50" id="it5" simple="true"
+                                         binding="#{OrganizationManip.txtRegAgnSeqNo}"/>
+              
+                                      
+                </h:panelGrid>
+                          <h:panelGrid columns="2" id="pg16" width="100">
+                            <af:commandButton text="Save" id="cb22" partialSubmit="true"
+                                              action="#{OrganizationManip.saveOrgRegion}"/>
+                            <af:commandButton text="Cancel" id="cb23"
+                                              action="#{OrganizationManip.cancelOrgRegion}"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      
+                      <af:popup id="branchNamesLovPopUp"
+                                binding="#{OrganizationManip.branchNamesLovPopUp}">
+                        <af:dialog id="d7" type="none"
+                                   title="SELECT BRANCH NAME">
+                          <af:table value="#{bindings.Organization7.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Organization7.rangeSize}"
+                                    emptyText="#{bindings.Organization7.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Organization7.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.Organization7Query.queryDescriptor}"
+                                    queryListener="#{bindings.Organization7Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    rowSelection="single" id="branchNamesLovTab"
+                                    width="324" inlineStyle="height:293px;"
+                                    binding="#{OrganizationManip.branchNamesLovTab}">
+                            <af:column sortProperty="bnsCode" filterable="true" filterFeatures="caseInsensitive"
+                                       sortable="true" headerText="Code"
+                                       id="c59" visible="false">
+                              <af:outputText value="#{row.bnsCode}" id="ot62"/>
+                            </af:column>
+                            <af:column sortProperty="bnsShortDesc" filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Short Desc" id="c54">
+                              <af:outputText value="#{row.bnsShortDesc}"
+                                             id="ot63"/>
+                            </af:column>
+                            <af:column sortProperty="bnsName" filterable="true" filterFeatures="caseInsensitive"
+                                       sortable="true" headerText="Name"
+                                       id="c62" width="200">
+                              <af:outputText value="#{row.bnsName}" id="ot60"/>
+                            </af:column>
+                            <af:column sortProperty="bnsPhyAddrs" filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Physical Address" id="c64"
+                                       visible="false">
+                              <af:outputText value="#{row.bnsPhyAddrs}"
+                                             id="ot57"/>
+                            </af:column>
+                            <af:column sortProperty="bnsEmail" filterable="true" filterFeatures="caseInsensitive"
+                                       sortable="true" headerText="Email"
+                                       id="c61" visible="false">
+                              <af:outputText value="#{row.bnsEmail}" id="ot58"/>
+                            </af:column>
+                            <af:column sortProperty="bnsPostAddrs" filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Post Address" id="c56"
+                                       visible="false">
+                              <af:outputText value="#{row.bnsPostAddrs}"
+                                             id="ot61"/>
+                            </af:column>
+                            <af:column sortProperty="bnsTwnCode" filterFeatures="caseInsensitive" 
+                                       filterable="true" sortable="true"
+                                       headerText="Town Code" id="c57"
+                                       visible="false">
+                              <af:outputText value="#{row.bnsTwnCode}"
+                                             id="ot64"/>
+                            </af:column>
+                            <af:column sortProperty="bnsCouCode" filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Country Code" id="c55"
+                                       visible="false">
+                              <af:outputText value="#{row.bnsCouCode}"
+                                             id="ot59"/>
+                            </af:column>
+                            <af:column sortProperty="bnsContact" filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Contact" id="c60"
+                                       visible="false">
+                              <af:outputText value="#{row.bnsContact}"
+                                             id="ot55"/>
+                            </af:column>
+                            <af:column sortProperty="bnsManager" filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Manager" id="c58"
+                                       visible="false">
+                              <af:outputText value="#{row.bnsManager}"
+                                             id="ot65"/>
+                            </af:column>
+                            <af:column sortProperty="bnsTel" filterable="true" filterFeatures="caseInsensitive"
+                                       sortable="true" headerText="Telephone"
+                                       id="c53" visible="false">
+                              <af:outputText value="#{row.bnsTel}" id="ot54"/>
+                            </af:column>
+                            <af:column sortProperty="bnsFax" filterable="true" filterFeatures="caseInsensitive"
+                                       sortable="true" headerText="Fax" id="c63"
+                                       visible="false">
+                              <af:outputText value="#{row.bnsFax}" id="ot56"/>
+                            </af:column>
+                          </af:table>
+                          <h:panelGrid columns="2" id="pg20" width="100">
+                            <af:commandButton text="Select" id="cb27"
+                                              partialSubmit="true"
+                                              action="#{OrganizationManip.selectBranchName}"/>
+                            <af:commandButton text="Cancel" id="cb28"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      
+                      <af:popup id="branchesPopUp"
+                                binding="#{OrganizationManip.branchesPopUp}">
+                        <af:dialog id="d6" type="none"
+                                   title="ADD/EDIT BRANCHES">
+                          <af:separator id="s5"/>
+                          <h:panelGrid columns="2" id="pg17" width="400">
+                          
+                            <af:outputLabel value="Code" 
+                                            id="ol43"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 11" id="ins11"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.brnCode}"
+                                                   visible="false"/>
+                                                   
+                            <af:outputLabel value="REG Code" id="ol46"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 13" id="ins13"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.brnRegCode}"
+                                                   visible="false"/>
+                                                   
+                            <af:outputLabel value="Short Description : " id="ol45" 
+                                            showRequired="true"/>
+                            <af:inputText label="Label 31" id="it25"
+                                          simple="true" disabled="true"
+                                          binding="#{OrganizationManip.brnShortDesc}"/>
+                                          
+                            <af:outputLabel value="Name " id="ol47" 
+                                        showRequired="true" 
+                                        />
+                  <af:panelLabelAndMessage id="plam9">
+                    <af:inputText label="Name : " id="it26" simple="true"  columns="20" disabled="true"
+                                  binding="#{OrganizationManip.brnName}"/>
+                                   <af:commandButton id="cb4758" partialSubmit="true"  
+                                                icon="/images/dropdown.gif"
+                                    >
+                      <af:showPopupBehavior popupId="showBranchNameLov"
+                                            triggerType="action"/>
+                    </af:commandButton>
+                                  
+                  </af:panelLabelAndMessage>
+                  <af:outputLabel value="Physical Address" id="ol48"/>
+                            <af:inputText label="Label 33" id="it27" disabled="true"
+                                          simple="true"
+                                          binding="#{OrganizationManip.brnPhyAddrs}"/>
+                                          
+                            <af:outputLabel value="Email Address" id="ol60" ></af:outputLabel>
+                            <af:inputText label="Label 39" id="it34" disabled="true"
+                                          simple="true"
+                                          binding="#{OrganizationManip.brnEmail}">
+                                          <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" 
+                                                    messageDetailNoMatch="&quot;The value {1} is not a valid email address &quot;"/>
+</af:inputText>
+                                          
+                            <af:outputLabel value="Post Address" id="ol49"/>
+                            <af:inputText label="Label 34" id="it28" disabled="true"
+                                          simple="true"
+                                          binding="#{OrganizationManip.brnPostAddrs}"/>
+                                          
+                            <af:outputLabel value="Contact" id="ol52"/>
+                            <af:inputText label="Label 35" id="it29" disabled="true"
+                                          simple="true"
+                                          binding="#{OrganizationManip.brnContact}"/>
+                                          
+                            <af:outputLabel value="Manager" id="ol53" visible="false"
+                            
+                                            binding="#{OrganizationManip.outputLbBrnMgr}"/>
+                            <h:panelGrid columns="2" id="pg25" width="150"
+                                         frame="0" border="0" cellpadding="0"
+                                         cellspacing="0">
+                              <af:inputText label="Label 36" id="it31" visible="false"
+                                            simple="true" 
+                                            binding="#{OrganizationManip.brnManager}"
+                                            disabled="true"/>
+                              <af:commandButton id="cb34"  visible="false"
+                                                icon="/images/dropdown.gif"
+                                                binding="#{OrganizationManip.btnShowBranchMgrLov}">
+                                <af:showPopupBehavior popupId="brnManagersLovPopUp"/>
+                              </af:commandButton>
+                            </h:panelGrid>
+                            <af:outputLabel value="Telephone " id="ol54"/>
+                            <af:inputText label="Label 37" id="it32" disabled="true"
+                                          simple="true"
+                                          binding="#{OrganizationManip.brnTel}"/>
+                                          
+                            <af:outputLabel value="Fax" id="ol55"/>
+                            <af:inputText label="Label 38" id="it33" disabled="true"
+                                          simple="true"
+                                          binding="#{OrganizationManip.brnFax}"/>
+                                          
+                            <af:outputLabel value="Post Level" id="ol59"/>
+                            <af:selectOneChoice label="Label 5" id="soc5"
+                                                simple="true"
+                                                unselectedLabel="---select---"
+                                                binding="#{OrganizationManip.brnPostLevel}">
+                              <af:selectItem label="Normal" value="N"
+                                             id="si12"/>
+                              <af:selectItem label="Senior" value="S"
+                                             id="si11"/>
+                            </af:selectOneChoice>
+                            <af:outputLabel value="Gen Pol Clm" id="ol56"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 23" id="ins23"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.brnGenPolClm}"
+                                                   visible="false"/>
+                                                   
+                            <af:outputLabel value="BNS Code" id="ol57" visible="false" 
+                                             showRequired="true"/> 
+                            <af:inputNumberSpinbox label="Label 24" id="ins24" visible="false" 
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.brnBnsCode}"
+                                                   />  
+                                                   
+                  <!-- <af:outputLabel value="BNS Name : " id="ol17" showRequired="true"/>
+                  <af:inputText label="BNS Name : " 
+                                id="txtBnsName" 
+                                columns="15"
+                                binding="#{OrganizationManip.txtBnsName}" 
+                                simple="true"/>                  
+                  <af:commandButton id="cb26" partialSubmit="true"
+                                                icon="/images/dropdown.gif">
+                                <af:showPopupBehavior popupId="branchNamesLovPopUp"/>
+                              </af:commandButton> -->
+                                                   
+                            <af:outputLabel value="AGN Code" id="ol58"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 25" id="ins25"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.brnAgnCode}"
+                                                   visible="false"/>
+                            <af:outputLabel value="Town Code" id="ol50"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 17" id="ins17"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.brnTwnCode}"
+                                                   visible="false"/>
+                            <af:outputLabel value="Country Code" id="ol51"
+                                            visible="false"/>
+                            <af:inputNumberSpinbox label="Label 18" id="ins18"
+                                                   simple="true" columns="15"
+                                                   binding="#{OrganizationManip.brnCouCode}"
+                                                   visible="false"/>
+                         <af:outputLabel value="Agency Mngr Seq  No" id="ol6" />
+                  <af:inputText label="Label 51" id="it6" binding="#{OrganizationManip.txtBrnBranchMgrSeqNo}" simple="true"/>
+                 
+                               <af:outputLabel value="Agency Seq No" id="ol7"/>
+                  <af:inputText label="Label 52" id="it7" simple="true" 
+                                         binding="#{OrganizationManip.txtBrnAgnSeqNo}"/>
+                 
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="pg18" width="100">
+                            <af:commandButton text="Save" id="cb24"
+                                             action="#{OrganizationManip.saveBranch}"
+                                              binding="#{OrganizationManip.btnSaveBranch}"/>
+                            <af:commandButton text="Cancel" id="cb25"
+                                              action="#{OrganizationManip.cancelBranch}"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      
+                      <af:popup id="brnManagersLovPopUp"
+                                binding="#{OrganizationManip.brnManagersLovPopUp}">
+                        <af:dialog id="dialog1" type="none"
+                                   title="SELECT BRANCH  MANAGER">
+                          <af:table value="#{bindings.Organization8.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Organization8.rangeSize}"
+                                    emptyText="#{bindings.Organization8.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Organization8.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.Organization8Query.queryDescriptor}"
+                                    queryListener="#{bindings.Organization8Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    rowSelection="single" id="brnManagersLovTab"
+                                    binding="#{OrganizationManip.brnManagersLovTab}"
+                                    width="423">
+                            <af:column sortProperty="agnCode" filterable="true"
+                                       sortable="true" headerText="Code"
+                                       id="column1" visible="false">
+                              <af:outputText value="#{row.agnCode}"
+                                             id="outputText1"/>
+                            </af:column>
+                            <af:column sortProperty="agnShortDesc"
+                                       filterable="true" sortable="true"
+                                       headerText="Id" id="column2">
+                              <af:outputText value="#{row.agnShortDesc}"
+                                             id="outputText2"/>
+                            </af:column>
+                            <af:column sortProperty="agnName" filterable="true"
+                                       sortable="true" headerText="Name"
+                                       id="column3" width="300">
+                              <af:outputText value="#{row.agnName}"
+                                             id="outputText3"/>
+                            </af:column>
+                            <af:column sortProperty="agnTwnName"
+                                       filterable="true" sortable="true"
+                                       headerText="Town Name" id="column4"
+                                       visible="false">
+                              <af:outputText value="#{row.agnTwnName}"
+                                             id="outputText4"/>
+                            </af:column>
+                          </af:table>
+                          <h:panelGrid columns="2" id="panelGrid1" width="100">
+                            <af:commandButton text="Select" id="commandButton1"
+                                              partialSubmit="true"
+                                              action="#{OrganizationManip.selectBranchManager}"/>
+                            <af:commandButton text="Cancel"
+                                              id="commandButton2"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      
+                      <af:popup id="regManagerslovPopUp"
+                                binding="#{OrganizationManip.regManagerslovPopUp}">
+                        <af:dialog id="d9" type="none"
+                                   title="SELECT  REGION MANAGER">
+                          <af:table value="#{bindings.Organization8.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Organization8.rangeSize}"
+                                    emptyText="#{bindings.Organization8.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Organization8.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.Organization8Query.queryDescriptor}"
+                                    queryListener="#{bindings.Organization8Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    rowSelection="single" id="regManagerslovTab"
+                                    binding="#{OrganizationManip.regManagerslovTab}"
+                                    width="423">
+                            <af:column sortProperty="agnCode" filterable="true" filterFeatures="caseInsensitive"
+                                       sortable="true" headerText="Code"
+                                       id="c68" visible="false">
+                              <af:outputText value="#{row.agnCode}" id="ot67"/>
+                            </af:column>
+                            <af:column sortProperty="agnShortDesc" filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Id" id="c67">
+                              <af:outputText value="#{row.agnShortDesc}"
+                                             id="ot66"/>
+                            </af:column>
+                            <af:column sortProperty="agnName" filterable="true" filterFeatures="caseInsensitive"
+                                       sortable="true" headerText="Name"
+                                       id="c66" width="300">
+                              <af:outputText value="#{row.agnName}" id="ot68"/>
+                            </af:column>
+                            <af:column sortProperty="agnTwnName" filterFeatures="caseInsensitive"
+                                       filterable="true" sortable="true"
+                                       headerText="Town Name" id="c65"
+                                       visible="false">
+                              <af:outputText value="#{row.agnTwnName}"
+                                             id="ot69"/>
+                            </af:column>
+                          </af:table>
+                          <h:panelGrid columns="2" id="pg23" width="100">
+                            <af:commandButton text="Select" id="cb31"
+                                              action="#{OrganizationManip.selectRegionManager}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Cancel" id="cb32"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+            
+            <af:popup id="orgDivisionPop" >
+              <af:dialog id="d12" title="Division Definition" type="none"
+                            inlineStyle="width:380.0px;">
+                <af:panelFormLayout id="pfl31">
+                  <af:inputText label="Division Code : " id="txtDivCodePop"
+                                binding="#{OrganizationManip.txtDivCodePop}" visible="false"/>
+                  <af:inputText label="Short Description : " id="txtDivShtDescPop"
+                                binding="#{OrganizationManip.txtDivShtDescPop}"/>
+                  <af:inputText label="Name : " id="txtDivNamePop"
+                                binding="#{OrganizationManip.txtDivNamePop}"/>
+                  <af:selectOneChoice label="Status" id="txtDivStatusPop"
+                                      simple="true" value="A"
+                                      binding="#{OrganizationManip.txtDivStatusPop}">
+                    <af:selectItem label="Active" value="A" id="si111"/>
+                    <af:selectItem label="Inactive" value="I" id="si112"/>
+                  </af:selectOneChoice>
+                  
+                </af:panelFormLayout>
+                <af:commandButton text="Save" id="btnSaveOrgDivisionPop"
+                                  binding="#{OrganizationManip.btnSaveOrgDivisionPop}"
+                                  action="#{OrganizationManip.actionSaveOrgDivisionPop}"/>
+                <af:commandButton text="Cancel" id="btnCancelOrgDivPop"/>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="divSubDivisionPop">
+              <af:dialog id="d13" title="Sub Division" type="none">
+                <af:panelFormLayout id="pfl2">
+                  <af:inputText label="Code : " id="btnSubDivCode" visible="false"
+                                binding="#{OrganizationManip.btnSubDivCode}"/>
+                  <af:inputText label="Short Description : " id="btnSubDivShtDesc"
+                                binding="#{OrganizationManip.btnSubDivShtDesc}"/>
+                  <af:inputText label="Name : " id="btnSubDivName"
+                                binding="#{OrganizationManip.btnSubDivName}"/>
+                </af:panelFormLayout>
+                <af:commandButton text="Save" id="btnSaveDivSubDivision"
+                                  action="#{OrganizationManip.btnSaveDivSubDivision}"
+                                  binding="#{OrganizationManip.btnSaveDivSubDivision}"/>
+                <af:commandButton text="Cancel" id="btnCancelDivSubDivision"/>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="branchDivisionPop">
+              <af:dialog id="d14" title="" type="none">
+                <af:panelFormLayout id="pfl3">
+                  <af:inputText label="Branch division Code : " id="bdCodePop"
+                                binding="#{OrganizationManip.bdCodePop}" 
+                                disabled="true"/>
+                  <af:inputText label="Branch Code : " id="bdBranchCodePop"
+                                binding="#{OrganizationManip.bdBranchCodePop}"
+                                disabled="true"/>
+                  <af:inputText label="Division Code : " id="bdDivisionCodePop"
+                                binding="#{OrganizationManip.bdDivisionCodePop}"
+                                disabled="true"/>
+                  <af:inputDate label="WEF Date : " id="bdWEFPop"
+                                binding="#{OrganizationManip.bdWEFPop}"/>
+                  <af:inputDate label="WET Date : " id="bdWETPop"
+                                binding="#{OrganizationManip.bdWETPop}"/>
+                </af:panelFormLayout>
+                <af:commandButton text="Save" id="btnSaveBranchDivisionPop"
+                                  binding="#{OrganizationManip.btnSaveBranchDivisionPop}"
+                                  action="#{OrganizationManip.actionSaveBranchDivisionPop}"/>
+                <af:commandButton text="Cancel" id="btnCancelDivisionPop"/>
+              </af:dialog>
+            </af:popup>
+           <af:popup id="confirmDeleteRegion">
+              <af:dialog id="d16" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{OrganizationManip.actionConfirmDeleteRegionListener}">
+                
+                  <af:panelFormLayout id="pfl7" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="ot107"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog>
+            </af:popup> 
+             <af:popup id="confirmDeleteBranches">
+              <af:dialog id="d17" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{OrganizationManip.actionConfirmDeleteBranchesListener}">
+                
+                  <af:panelFormLayout id="pfl8" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="ot108"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog>
+            </af:popup> 
+             <af:popup id="confirmDeleteBranchAgencies">
+              <af:dialog id="d18" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{OrganizationManip.actionConfirmDeleteBranchAgencyListener}">
+                
+                  <af:panelFormLayout id="pfl9" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="ot109"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog>
+            </af:popup> 
+             <af:popup id="confirmDeleteUnits">
+              <af:dialog id="d19" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{OrganizationManip.actionConfirmDeleteUnitsListener}">
+                
+                  <af:panelFormLayout id="pfl10" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="ot110"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog>
+            </af:popup> 
+             <af:popup id="confirmDeleteOrg">
+              <af:dialog id="d20" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{OrganizationManip.actionConfirmDeleteOrgListener}">
+                
+                  <af:panelFormLayout id="pfl11" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="ot111"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog>
+            </af:popup>
+            <af:popup id="addBranchName" >
+              <af:dialog id="d21" type="none" title="ADD/EDIT BRANCH NAME">
+                <af:panelFormLayout id="pfl12">
+                  <f:facet name="footer"/>
+               
+                <af:inputText label="code" id="it13" visible="false"
+                              binding="#{OrganizationManip.bnsCode}"/>
+               <af:inputText label="Short Desc" id="it54" visible="true" showRequired="true"
+                              binding="#{OrganizationManip.bnsShortDesc}"/>
+                <af:inputText label="Name" id="it21" showRequired="true"
+                              binding="#{OrganizationManip.bnsName}"/>
+                <af:inputText label="Physical Addr" id="it23" 
+                              binding="#{OrganizationManip.bnsPhysicalAddr}"/>
+                <af:inputText label="Postal Addr" id="it42"
+                              binding="#{OrganizationManip.bnsPostalAddr}"/>
+                <af:inputText label="Country Code" id="it46" visible="false"
+                              binding="#{OrganizationManip.bnsCountryCode}"/>
+                <af:panelLabelAndMessage label="Country" id="plam6">
+                <af:inputText label="Country" id="it45" simple="true" columns="15" disabled="true" showRequired="true"
+                              binding="#{OrganizationManip.bnsCountryName}"/>
+                 <af:commandButton id="cb26" partialSubmit="true"
+                                                icon="/images/dropdown.gif"
+                                   action="#{OrganizationManip.actionShowCountry}"></af:commandButton>
+                </af:panelLabelAndMessage>
+                <af:inputText label="StateCode" id="it44" visible="false" columns="15" disabled="true"
+                              binding="#{OrganizationManip.bnsStateCode}"/>
+                <af:panelLabelAndMessage label="State" id="plam7">
+                  <af:inputText label="Label 56" id="it51" simple="true" columns="15"  disabled="true"
+                                binding="#{OrganizationManip.bnsStateName}"/>
+                   <af:commandButton id="cb45" partialSubmit="true"
+                                                icon="/images/dropdown.gif"
+                                     action="#{OrganizationManip.actionShowState}"></af:commandButton>
+                </af:panelLabelAndMessage>
+                <af:inputText label="Town Code" visible="false" id="it47"
+                              binding="#{OrganizationManip.bnsTownCode}"/>
+                <af:panelLabelAndMessage label="Town" id="plam8">
+                  <af:inputText label="Town" id="it48" simple="true" columns="15" disabled="true"
+                                binding="#{OrganizationManip.bnsTownName}"/>
+                   <af:commandButton id="cb47" partialSubmit="true" 
+                                                icon="/images/dropdown.gif"
+                                     action="#{OrganizationManip.actionShowTown}"></af:commandButton>
+                </af:panelLabelAndMessage>
+                <af:inputText label="Telephone" id="it49"
+                              binding="#{OrganizationManip.bnsTel}"/>
+                <af:inputText label="fax" id="it50"
+                              binding="#{OrganizationManip.bnsFax}"/>
+                 
+                 <af:inputText label="Email" id="it52"
+                               binding="#{OrganizationManip.bnsEmail}"><af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}" 
+                                                    messageDetailNoMatch="&quot;The value {1} is not a valid email address &quot;"/></af:inputText>
+                <af:inputText label="Contact" id="it53"
+                              binding="#{OrganizationManip.bnsContact}"/>
+                              
+               <h:panelGrid columns="2" id="pg4">
+                  <af:commandButton text="Save" id="cb46" partialSubmit="true"
+                                    action="#{OrganizationManip.actionSaveBranchName}"
+                                    binding="#{OrganizationManip.btnSaveBranchName}"/>
+                </h:panelGrid></af:panelFormLayout>
+              </af:dialog>
+            
+            </af:popup>
+            <af:popup id="showBranchNameLov">
+              <af:dialog id="d22" type="none" title="Branch Names">
+                <af:panelCollection id="pc9">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.BranchName1.collectionModel}"
+                            var="row" rows="#{bindings.BranchName1.rangeSize}"
+                            emptyText="#{bindings.BranchName1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.BranchName1.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.BranchNameQuery.queryDescriptor}"
+                            queryListener="#{bindings.BranchNameQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            
+                            selectionListener="#{bindings.BranchName1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t4"
+                            binding="#{OrganizationManip.tblBranchNameListing}">
+                   
+                    <af:column sortProperty="bns_sht_desc" filterable="true" filterFeatures="caseInsensitive"
+                               sortable="true" headerText="Sht Desc" id="c115">
+                      <af:outputText value="#{row.bns_sht_desc}" id="ot121"/>
+                    </af:column>
+                    <af:column sortProperty="bns_name" filterable="true" filterFeatures="caseInsensitive"
+                               sortable="true" headerText="Name" id="c112">
+                      <af:outputText value="#{row.bns_name}" id="ot134"/>
+                    </af:column>
+                    <af:column sortProperty="bns_phy_addrs" filterable="true" filterFeatures="caseInsensitive"
+                               sortable="true" headerText="Phy Addr" id="c125">
+                      <af:outputText value="#{row.bns_phy_addrs}" id="ot133"/>
+                    </af:column>
+                    <af:column sortProperty="bns_email_addrs" filterable="true" filterFeatures="caseInsensitive"
+                               sortable="true" headerText="Email" id="c123">
+                      <af:outputText value="#{row.bns_email_addrs}" id="ot135"/>
+                    </af:column>
+                   
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="1" id="pg7">
+                  <af:commandButton text="ok" id="cb53" partialSubmit="true" immediate="true"
+                                    action="#{OrganizationManip.actionAcceptBranchName}"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+             <af:popup id="confirmDeleteBranchName">
+              <af:dialog id="d23" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{OrganizationManip.actionConfirmDeleteBranchName}">
+                
+                  <af:panelFormLayout id="pfl13" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="ot113"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

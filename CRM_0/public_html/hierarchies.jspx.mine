@@ -1,0 +1,850 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="right"><h:panelGrid columns="2"
+                                                                                             id="pg14">
+                      <af:inputText id="it1" helpTopicId="CRMhierarchies"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+              </tr>
+            </table>
+              <h:panelGrid columns="2" id="panelGrid1">
+                <af:outputLabel value="Hierarchy Definition" id="outputLabel1"
+                                inlineStyle="font-weight:bolder; font-size:medium;"/>
+              </h:panelGrid>
+              <af:separator id="separator1"/>
+              <af:panelSplitter id="ps1" styleClass="AFAuxiliaryStretchWidth" 
+                                splitterPosition="320" inlineStyle="height:700.0px;">
+              
+                <f:facet name="first">
+                  <af:panelGroupLayout id="pgl1">
+                  
+                  <h:panelGrid columns="1" id="pg1">
+                    <af:outputLabel value="Systems" id="ol1"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s1"/>
+                  
+                  <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:500.0px;">
+                      <af:table value="#{bindings.System.collectionModel}"
+                                var="row" rows="#{bindings.System.rangeSize}"
+                                emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.System.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                                queryListener="#{bindings.SystemQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{hierarchiesBacking.tblSystemsListener}"
+                                rowSelection="single" 
+                                id="t1"
+                                binding="#{hierarchiesBacking.tblSystems}">
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="System Name"
+                                   id="c7" width="314">
+                          <af:outputText value="#{row.name}" id="ot2"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  
+                  </af:panelGroupLayout>
+                </f:facet>
+                
+                <f:facet name="second">
+                  <af:panelGroupLayout id="pgl2">
+                  
+                    <af:spacer width="10" height="20" id="s7"/>
+                    
+                    <af:panelBox text="PanelBox2" id="pb2" showHeader="never" >
+                      <af:panelGroupLayout id="pgl5" inlineStyle="height:700.0px;">
+                      
+                      <h:panelGrid columns="1" id="pg2">
+                        <af:outputLabel value="Hierarchy Types" id="ol2"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s2"/>
+                      
+                      <h:panelGrid columns="3" id="pg3">
+                    
+                      <af:commandButton text="New"
+                                        id="btnNewHierarchy" 
+                                        icon="/images/create.gif"
+                                        action="#{hierarchiesBacking.actionNewHierarchy}"/>
+                                        
+                      <af:commandButton text="Edit" 
+                                        id="btnEditHierarchy" 
+                                        icon="/images/update.gif"
+                                        action="#{hierarchiesBacking.actionEditHierarchy}"/>
+                                        
+                      <af:commandButton text="Delete" 
+                                        id="btnDeleteHierarchy" 
+                                        icon="/images/delete.gif"
+                                        action="#{hierarchiesBacking.confirmDeleteAction}"/>
+                    </h:panelGrid>
+                    <af:separator id="s3"/>
+                    
+                      <af:panelCollection id="pc2" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:200.0px;">
+                        <af:table value="#{bindings.OrgDivisionLevelType.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.OrgDivisionLevelType.rangeSize}"
+                                  emptyText="#{bindings.OrgDivisionLevelType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.OrgDivisionLevelType.rangeSize}"
+                                  rowBandingInterval="1"
+                                  filterModel="#{bindings.OrgDivisionLevelTypeQuery.queryDescriptor}"
+                                  queryListener="#{bindings.OrgDivisionLevelTypeQuery.processQuery}"
+                                  filterVisible="false" varStatus="vs"
+                                  selectionListener="#{hierarchiesBacking.tblDivLevelTypesListener}"
+                                  rowSelection="single" 
+                                  id="t2"
+                                  binding="#{hierarchiesBacking.tblDivLevelTypes}">
+                          <af:column sortProperty="dltCode" filterable="true"
+                                     sortable="true" headerText="Code" id="c2">
+                            <af:outputText value="#{row.dltCode}" id="ot1"/>
+                          </af:column>
+                          <af:column sortProperty="dltDesc" filterable="true"
+                                     sortable="true" headerText="Description"
+                                     id="c3" width="300">
+                            <af:outputText value="#{row.dltDesc}" id="ot3"/>
+                          </af:column>
+                          <af:column sortProperty="accountTypeName" filterable="true"
+                                     sortable="true" headerText="Account Type"
+                                     id="c5" width="200">
+                            <af:outputText value="#{row.accountTypeName}"
+                                           id="ot8"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      
+                      <af:spacer width="10" height="30" id="s4"/>
+                      
+                      <af:panelTabbed id="pt1" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:300.0px;">
+                      
+                        <af:showDetailItem text="Hierarchy Levels" id="sdi1">
+                          <af:panelGroupLayout id="pgl3">
+                            <af:panelBox text="PanelBox5" id="pb5" showHeader="never">
+                            
+                            <h:panelGrid columns="1" id="pg4">
+                        <af:outputLabel value="Hierarchy Levels" id="ol3"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s5"/>
+                      
+                      <h:panelGrid columns="3" id="pg5">
+                    
+                      <af:commandButton text="New"
+                                        id="btnNewHierarchyLevel" 
+                                        icon="/images/create.gif"
+                                        action="#{hierarchiesBacking.actionNewHierarchyLevel}"/>
+                                        
+                      <af:commandButton text="Edit" 
+                                        id="btnEditHierarchyLevel" 
+                                        icon="/images/update.gif"
+                                        action="#{hierarchiesBacking.actionEditHierarchyLevel}"/>
+                                        
+                      <af:commandButton text="Delete" 
+                                        id="btnDeleteHierarchyLevel" 
+                                        icon="/images/delete.gif"
+                                        action="#{hierarchiesBacking.actionDeleteHierarchyLevel}"/>
+                    </h:panelGrid>
+                    <af:separator id="s6"/>
+                      
+                      <af:panelCollection id="pc3" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:180.0px;">
+                        <af:table value="#{bindings.OrgDivisionLevel.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.OrgDivisionLevel.rangeSize}"
+                                  emptyText="#{bindings.OrgDivisionLevel.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.OrgDivisionLevel.rangeSize}"
+                                  rowBandingInterval="1"
+                                  filterModel="#{bindings.OrgDivisionLevelQuery.queryDescriptor}"
+                                  queryListener="#{bindings.OrgDivisionLevelQuery.processQuery}"
+                                  filterVisible="false" varStatus="vs"
+                                  selectionListener="#{bindings.OrgDivisionLevel.collectionModel.makeCurrent}"
+                                  rowSelection="single" 
+                                  id="t3"
+                                  binding="#{hierarchiesBacking.tblDivLevels}">
+                          <af:column sortProperty="odlcode" filterable="true"
+                                     sortable="true" headerText="Code" id="c4">
+                            <af:outputText value="#{row.odlcode}" id="ot7"/>
+                          </af:column>
+                          <af:column sortProperty="odlDesc" filterable="true"
+                                     sortable="true" headerText="Description"
+                                     id="c6" 
+                                     width="300">
+                            <af:outputText value="#{row.odlDesc}" id="ot6"/>
+                          </af:column>
+                          <af:column sortProperty="odlRanking" filterable="true"
+                                     sortable="true" headerText="Ranking"
+                                     id="c1">
+                            <af:outputText value="#{row.odlRanking}" id="ot5"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                              
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        
+                        <af:showDetailItem text="Org Sub Divisions" id="sdi2">
+                          <af:panelGroupLayout id="pgl4">
+                            <af:panelBox text="PanelBox6" id="pb6" showHeader="never">
+                            
+                            <af:panelSplitter id="ps2" splitterPosition="200" styleClass="AFAuxiliaryStretchWidth">
+                            
+                              <f:facet name="first">
+                                <af:panelGroupLayout layout="scroll"
+                                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                     id="pgl6">
+                                  <af:panelGroupLayout id="pgl7">
+                                  <af:panelCollection id="pc4"
+                                                      inlineStyle="height:200.0px; width:230.0px;">
+                                    <f:facet name="toolbar">
+                                    <af:toolbar>
+                                      <af:commandButton text="New" id="cb4" 
+                                                        icon="/images/create.gif" 
+                                                        action="#{hierarchiesBacking.actionNewOrgSubDiv}"/>
+                                                        
+                                      <af:commandButton text="Delete" id="cb5" 
+                                                        icon="/images/delete.gif"
+                                                        action="#{hierarchiesBacking.actionDeleteOrgSubDiv}"/>
+                                    </af:toolbar>
+                                  </f:facet>
+                      
+                                    <af:tree value="#{bindings.OrgSubDivision.treeModel}"
+                                             var="node"
+                                             selectionListener="#{hierarchiesBacking.treeDltSubDivisionsListener}"
+                                             rowSelection="single" id="t4"
+                                             binding="#{hierarchiesBacking.treeDltSubDivisions}">
+                                      <f:facet name="nodeStamp">
+                                        <af:outputText value="#{node}"
+                                                       id="ot4"/>
+                                      </f:facet>
+                                    </af:tree>
+                                  </af:panelCollection>
+                                  </af:panelGroupLayout>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                              
+                              <f:facet name="second">
+                                <af:panelGroupLayout layout="scroll"
+                                                     xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                                     id="pgl11">
+                                  <af:panelTabbed id="pt2"
+                                                  styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:230.0px;">
+                                                  
+                                    <af:showDetailItem text="Org SubDivision Details"
+                                                       id="sdi3">
+                                      <af:panelGroupLayout id="pgl8">
+                                            <af:panelBox text="PanelBox7"
+                                                         id="pb7" showHeader="never"
+                                                          binding="#{hierarchiesBacking.panelOrgSubDivDetail}">
+                                              
+                                              <h:panelGrid columns="1" id="pg8">
+                    
+                      <af:commandButton text="Save"
+                                        id="btnSaveUpdateOrgSubDivision" 
+                                        icon="/images/create.gif"
+                                        action="#{hierarchiesBacking.actionSaveUpdateOrgSubDivision}"
+                                        binding="#{hierarchiesBacking.btnSaveUpdateOrgSubDivision}"/>
+                    </h:panelGrid>
+                    <af:separator id="s8"/>
+                      
+                      <af:panelFormLayout id="pfl1">
+                          <af:inputText label="Parent Division"
+                                        id="it25"
+                                        visible="false"
+                                        binding="#{hierarchiesBacking.txtParentDivision}"
+                                        readOnly="true"
+                                        inlineStyle="font-weight:bold;"/>
+                           <af:inputText label="Code : " id="it2" 
+                                      showRequired="true"
+                                      binding="#{hierarchiesBacking.txtOsdCode}"/>
+                        
+                        <af:inputText label="Parent Code : " id="it3" 
+                                      visible="false"
+                                      binding="#{hierarchiesBacking.txtOsdParentOsdCode}"/>
+                        
+                        <af:inputText label="DLT Code : " id="it4" 
+                                      visible="false"
+                                      showRequired="true"
+                                      binding="#{hierarchiesBacking.txtOsdDltCode}"/>
+                                      
+                        <af:inputText label="Division Level Type : " id="it10"
+                                        disabled="true"
+                                        binding="#{hierarchiesBacking.txtOsdDltDesc}"/>
+                        
+                        <!--<af:panelLabelAndMessage label="Division Level Type : " 
+                                                 id="plam1"
+                                                 showRequired="true">
+                          
+                          <af:commandButton id="cb2" 
+                                            icon="/images/dropdown.gif"
+                                            action="#{hierarchiesBacking.actionShowOrgDivLevelTypes}"/>
+                        </af:panelLabelAndMessage>-->
+                        
+                        <af:inputText label="ODL Code : " id="it5"
+                                      visible="false"
+                                      showRequired="true"
+                                      binding="#{hierarchiesBacking.txtOsdOdlCode}"/>
+                                      
+                        <af:panelLabelAndMessage label="Division Level : " 
+                                                 id="plam2"
+                                                 showRequired="true">
+                          <af:inputText label="Division Level : " id="it9" 
+                                        simple="true"
+                                        disabled="true"
+                                        binding="#{hierarchiesBacking.txtOsdOdlDesc}"/>
+                          
+                          <af:commandButton id="cb1"
+                                            icon="/images/dropdown.gif"
+                                            action="#{hierarchiesBacking.actionShowOrgDivLevel}"/>
+                        </af:panelLabelAndMessage>
+                        
+                        <af:inputText label="Name : " id="it6"
+                                      showRequired="true"
+                                      binding="#{hierarchiesBacking.txtOsdName}"/>
+                        
+                        <af:inputDate label="WEF : " id="id1"
+                                      showRequired="true"
+                                      binding="#{hierarchiesBacking.txtOsdWef}">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:inputDate>
+                        
+                        <af:inputText label="Division Head Code : " id="it7" 
+                                      visible="false"
+                                      showRequired="true"
+                                      binding="#{hierarchiesBacking.txtOsdDivHeadAgnCode}"/>
+                        
+                        <af:panelLabelAndMessage label="Division Head : " 
+                                                 id="plam3"
+                                                 showRequired="true">
+                          <af:inputText label="Label 3" id="it11"
+                                        simple="true" 
+                                        disabled="true"
+                                        binding="#{hierarchiesBacking.txtOsdDivHeadAgnName}"/>
+                          <af:commandButton id="cb3"
+                                            icon="/images/dropdown.gif"
+                                            action="#{hierarchiesBacking.actionShowHeadAgents}"/>
+                        </af:panelLabelAndMessage>
+                        
+                        <af:inputText label="System Code : " id="it8" 
+                                      visible="false"
+                                      showRequired="true"
+                                      binding="#{hierarchiesBacking.txtOsdSysCode}"/>
+                        
+                      </af:panelFormLayout>
+                                              
+                                            </af:panelBox>
+                                          </af:panelGroupLayout>
+                                    </af:showDetailItem>
+                                    
+                                    <af:showDetailItem text="Previous SubDivision Heads"
+                                                       id="sdi4">
+                                      <af:panelGroupLayout id="pgl9">
+                                            <af:panelBox text="PanelBox8"
+                                                         id="pb8" showHeader="never">
+                                                         
+                                    <h:panelGrid columns="3" id="pg11">
+                    
+                                      <af:commandButton text="New"
+                                                        id="btnNewPrevHead" 
+                                                        icon="/images/create.gif"
+                                                        action="#{hierarchiesBacking.actionNewPrevHead}"/>
+                                                        
+                                      <af:commandButton text="Edit" 
+                                                        id="btnEditPrevHead" 
+                                                        icon="/images/update.gif"
+                                                        action="#{hierarchiesBacking.actionEditPrevHead}"/>
+                                                        
+                                      <af:commandButton text="Delete" 
+                                                        id="btnDeletePrevHead" 
+                                                        icon="/images/delete.gif"
+                                                        action="#{hierarchiesBacking.actionDeletePrevHead}"/>
+                                    </h:panelGrid>
+                                    <af:separator id="s9"/>
+                                    
+                                    <af:panelCollection id="pc8" styleClass="AFAuxiliaryStretchWidth" 
+                                                        inlineStyle="height:150.0px;">
+                                                <af:table value="#{bindings.OrgSubDivPreviousHead.collectionModel}"
+                                                          var="row"
+                                                          rows="#{bindings.OrgSubDivPreviousHead.rangeSize}"
+                                                          emptyText="#{bindings.OrgSubDivPreviousHead.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                          fetchSize="#{bindings.OrgSubDivPreviousHead.rangeSize}"
+                                                          rowBandingInterval="1"
+                                                          filterModel="#{bindings.OrgSubDivPreviousHeadQuery.queryDescriptor}"
+                                                          queryListener="#{bindings.OrgSubDivPreviousHeadQuery.processQuery}"
+                                                          filterVisible="false"
+                                                          varStatus="vs"
+                                                          rowSelection="single"
+                                                          id="t8"
+                                                          binding="#{hierarchiesBacking.tblPrevHeads}">
+                                                  <af:column sortProperty="osdName"
+                                                             filterable="true"
+                                                             sortable="true"
+                                                             headerText="Org SubDivision"
+                                                             id="c16">
+                                                    <af:outputText value="#{row.osdName}"
+                                                                   id="ot18"/>
+                                                  </af:column>
+                                                  <af:column sortProperty="agencyName"
+                                                             filterable="true"
+                                                             sortable="true"
+                                                             headerText="Name"
+                                                             id="c18" width="200">
+                                                    <af:outputText value="#{row.agencyName}"
+                                                                   id="ot21"/>
+                                                  </af:column>
+                                                  <af:column sortProperty="osdphWet"
+                                                             filterable="true"
+                                                             sortable="true"
+                                                             headerText="WET"
+                                                             id="c20">
+                                                    <f:facet name="filter">
+                                                      <af:inputDate value="#{vs.filterCriteria.osdphWet}"
+                                                                    id="id2"/>
+                                                    </f:facet>
+                                                    <af:outputText value="#{row.osdphWet}"
+                                                                   id="ot22">
+                                                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                                    </af:outputText>
+                                                  </af:column>
+                                                </af:table>
+                                              </af:panelCollection>
+                                              
+                                            </af:panelBox>
+                                          </af:panelGroupLayout>
+                                    </af:showDetailItem>
+                                    
+                                  </af:panelTabbed>
+                                </af:panelGroupLayout>
+                              </f:facet>
+                              
+                            </af:panelSplitter>                              
+                              
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        
+                      </af:panelTabbed>           
+                      
+                    </af:panelGroupLayout>  
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </f:facet>
+                
+              </af:panelSplitter>
+            </af:panelBox>
+            
+            <af:popup id="divLevelTypePop">
+              <af:dialog id="d2" title="Hierarchy Type Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox3" id="pb3" showHeader="never"
+                              binding="#{hierarchiesBacking.panelDivLevelTypePop}">
+                  <af:panelFormLayout id="pfl3">
+                  
+                    <af:inputText label="Code : " id="it12"
+                                  binding="#{hierarchiesBacking.txtDltCode}" 
+                                  showRequired="true" />
+                    
+                    <af:inputText label="System Code : " id="it13"
+                                  binding="#{hierarchiesBacking.txtDltSysCode}" 
+                                  visible="false" 
+                                  showRequired="true"/>
+                    
+                    <af:inputText label="Description : " id="it14"
+                                  binding="#{hierarchiesBacking.txtDltDesc}" 
+                                  showRequired="true"/>
+                                  
+                    <af:inputText label="Account Type Code : " id="it18" 
+                                      visible="false"
+                                      showRequired="true"
+                                      binding="#{hierarchiesBacking.txtDltActCode}"/>
+                        
+                    <af:panelLabelAndMessage label="Account Type : " 
+                                             id="plam1">
+                      <af:inputText label="Label 2" id="it19"
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{hierarchiesBacking.txtDltActName}"/>
+                      <af:commandButton id="cb2" 
+                                        icon="/images/dropdown.gif"
+                                        action="#{hierarchiesBacking.actionShowAccountTypes}" 
+                                        partialSubmit="true"/>
+                    </af:panelLabelAndMessage>
+                    
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg7">
+                    <af:commandButton text="Save" id="cb8"
+                                      binding="#{hierarchiesBacking.btnSaveUpdateDivLevelType}"
+                                      action="#{hierarchiesBacking.actionSaveUpdateDivLevelType}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb9"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="divLevelPop">
+              <af:dialog id="d3" title="Hierarchy Level Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                  <af:panelFormLayout id="pfl2">
+                  
+                    <af:inputText label="Code : " id="it15"
+                                  binding="#{hierarchiesBacking.txtOdlCode}" 
+                                  showRequired="true"/>
+                    
+                    <af:inputText label="DLT Code : " id="it16"
+                                  binding="#{hierarchiesBacking.txtOdlDltCode}" 
+                                  visible="false"
+                                  showRequired="true"/>
+                    
+                    <af:inputText label="Description : " id="it17"
+                                  binding="#{hierarchiesBacking.txtOdlDesc}"
+                                  showRequired="true"/>
+                    
+                    <af:inputNumberSpinbox label="Ranking : " id="ins1"
+                                           binding="#{hierarchiesBacking.txtOdlRanking}"
+                                           showRequired="true"/>
+                    
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg6">
+                    <af:commandButton text="Save" id="cb6"
+                                      binding="#{hierarchiesBacking.btnSaveUpdateDivLevel}"
+                                      action="#{hierarchiesBacking.actionSaveUpdateDivLevel}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb7"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="accountTypesPop">
+              <af:dialog id="d4" title="Account Type List" type="none"
+                         inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl10">
+                  <af:panelBox text="PanelBox3" id="pb9" showHeader="never">
+                    <af:panelCollection id="pc5" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.AccountsType.collectionModel}"
+                                var="row"
+                                rows="#{bindings.AccountsType.rangeSize}"
+                                emptyText="#{bindings.AccountsType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.AccountsType.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.AccountsTypeQuery.queryDescriptor}"
+                                queryListener="#{bindings.AccountsTypeQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" 
+                                id="t5"
+                                binding="#{hierarchiesBacking.tblAccountTypesPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c8">
+                          <af:outputText value="#{row.code}" id="ot10"/>
+                        </af:column>
+                        <af:column sortProperty="accountTypeShortDesc"
+                                   filterable="true" sortable="true"
+                                   headerText="Short Desc" id="c10">
+                          <af:outputText value="#{row.accountTypeShortDesc}"
+                                         id="ot11"/>
+                        </af:column>
+                        <af:column sortProperty="accountType" filterable="true"
+                                   sortable="true" headerText="Account Type"
+                                   id="c9" width="150">
+                          <af:outputText value="#{row.accountType}" id="ot9"/>
+                        </af:column>
+                      </af:table>
+                      <!--<af:table value="#{bindings.AccountsType.collectionModel}"
+                                var="row"
+                                rows="#{bindings.AccountsType.rangeSize}"
+                                emptyText="#{bindings.AccountsType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.AccountsType.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.AccountsTypeQuery.queryDescriptor}"
+                                queryListener="#{bindings.AccountsTypeQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" 
+                                id="t5"
+                                binding="#{hierarchiesBacking.tblAccountTypesPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c10">
+                          <af:outputText value="#{row.code}" id="ot10"/>
+                        </af:column>
+                        <af:column sortProperty="accountTypeShortDesc"
+                                   filterable="true" sortable="true"
+                                   headerText="Short Desc" id="c9">
+                          <af:outputText value="#{row.accountTypeShortDesc}"
+                                         id="ot11"/>
+                        </af:column>
+                        <af:column sortProperty="accountType" filterable="true"
+                                   sortable="true" headerText="Account Type"
+                                   id="c8" width="150">
+                          <af:outputText value="#{row.accountType}" id="ot9"/>
+                        </af:column>
+                      </af:table>-->
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg30">
+                      <af:commandButton text="Ok" id="btnAcceptAccountType"
+                                        action="#{hierarchiesBacking.actionAcceptAccountType}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelAccountType"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="orgSubDivLevel">
+              <af:dialog id="d5" title="Division Level List" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl12">
+                  <af:panelBox text="PanelBox4" id="pb10" showHeader="never">
+                    <af:panelCollection id="pc6" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.OrgDivisionLevel3.collectionModel}"
+                                var="row"
+                                rows="#{bindings.OrgDivisionLevel3.rangeSize}"
+                                emptyText="#{bindings.OrgDivisionLevel3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.OrgDivisionLevel3.rangeSize}"
+                              
+                                rowBandingInterval="0" id="t6"
+                                binding="#{hierarchiesBacking.tblorgSubDivLevelPop}"
+                                rowSelection="single">
+                        
+                        <af:column sortProperty="odlcode" sortable="true"
+                                   headerText="ODL CODE" 
+                                   id="c13">
+                          <af:outputText value="#{row.odlcode}" id="ot23"/>
+                        </af:column>
+                        <af:column sortProperty="odlDltCode" sortable="false"
+                                   headerText="ODT CODE"
+                                   id="c24">
+                          <af:outputText value="#{row.odlDltCode}" id="ot25"/>
+                        </af:column>
+                        <af:column sortProperty="odlDesc" sortable="false"
+                                   headerText="DESCRIPTION"
+                                   id="c23">
+                          <af:outputText value="#{row.odlDesc}" id="ot12"/>
+                        </af:column>
+                        <af:column sortProperty="odlRanking" sortable="false"
+                                   headerText="RANK"
+                                   id="c22">
+                          <af:outputText value="#{row.odlRanking}" id="ot15"/>
+                        </af:column>
+                      </af:table>
+                      <!-- <af:table value="#{bindings.OrgDivisionLevel1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.OrgDivisionLevel1.rangeSize}"
+                                emptyText="#{bindings.OrgDivisionLevel1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.OrgDivisionLevel1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.OrgDivisionLevelQuery.queryDescriptor}"
+                                queryListener="#{bindings.OrgDivisionLevelQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.OrgDivisionLevel1.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t6"
+                                binding="#{hierarchiesBacking.tblorgSubDivLevelPop}">
+                        <af:column sortProperty="odlcode" filterable="true"
+                                   sortable="true" headerText="Code" id="c12">
+                          <af:outputText value="#{row.odlcode}" id="ot12"/>
+                        </af:column>
+                        <af:column sortProperty="odlDesc" filterable="true"
+                                   sortable="true" headerText="Description"
+                                   id="c13" width="200">
+                          <af:outputText value="#{row.odlDesc}" id="ot15"/>
+                        </af:column>
+                      </af:table>-->
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg9">
+                      <af:commandButton text="Ok" id="btnAcceptOrgSubDivLevel"
+                                        action="#{hierarchiesBacking.actionAcceptOrgSubDivLevel}"/>
+                      <af:commandButton text="Cancel" id="btnCancelOrgSubDivLevel"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="agentsListPop">
+              <af:dialog id="d6" title="Head Agents List" type="none"
+                         inlineStyle="width:580.0px;">
+                <af:panelGroupLayout id="pgl13">
+                  <af:panelBox text="PanelBox5" id="pb11" showHeader="never">
+                    <af:panelCollection id="pc7" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Agency.collectionModel}"
+                                var="row" rows="#{bindings.Agency.rangeSize}"
+                                emptyText="#{bindings.Agency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Agency.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.AgencyQuery.queryDescriptor}"
+                                queryListener="#{bindings.AgencyQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.Agency.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t7"
+                                binding="#{hierarchiesBacking.tblHeadAgentsPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c11">
+                          <af:outputText value="#{row.code}" id="ot14"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c15" width="150">
+                          <af:outputText value="#{row.shortDesc}" id="ot16"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c14" 
+                                   width="250">
+                          <af:outputText value="#{row.name}" id="ot13"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg10">
+                      <af:commandButton text="Ok" id="btnAcceptHeadAgent"
+                                        action="#{hierarchiesBacking.actionAcceptHeadAgent}"/>
+                      <af:commandButton text="Cancel" id="btnCancelHeadAgent"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="agentsListPop2">
+              <af:dialog id="d8" title="Head Agents List" type="none"
+                         inlineStyle="width:580.0px;">
+                <af:panelGroupLayout id="pgl14">
+                  <af:panelBox text="PanelBox5" id="pb13" showHeader="never">
+                    <af:panelCollection id="pc9" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Agency2.collectionModel}"
+                                var="row" rows="#{bindings.Agency2.rangeSize}"
+                                emptyText="#{bindings.Agency2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Agency2.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.Agency2Query.queryDescriptor}"
+                                queryListener="#{bindings.Agency2Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" 
+                                id="t9"
+                                binding="#{hierarchiesBacking.tblHeadAgentsPop2}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c19">
+                          <af:outputText value="#{row.code}" id="ot19"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c21" width="150">
+                          <af:outputText value="#{row.shortDesc}" id="ot17"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c17" 
+                                   width="250">
+                          <af:outputText value="#{row.name}" id="ot20"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg13">
+                      <af:commandButton text="Ok" id="btnAcceptHeadAgent2"
+                                        action="#{hierarchiesBacking.actionAcceptHeadAgent2}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelHeadAgent2"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="prevHeadPop">
+              <af:dialog id="d7" title="Previous Head Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox4" id="pb12" showHeader="never"
+                              binding="#{hierarchiesBacking.panelPrevHeads}">
+                  <af:panelFormLayout id="pfl4">
+                  
+                    <af:inputText label="Code : " id="it20"
+                                  binding="#{hierarchiesBacking.txtOsdphCode}" 
+                                  visible="false"/>
+                    
+                    <af:inputText label="Org SubDivision Code : " id="it21"
+                                  binding="#{hierarchiesBacking.txtOsdphOsdCode}" 
+                                  visible="false"/>
+                                  
+                    <af:inputText label="Org SubDivision : " id="it24"
+                                  binding="#{hierarchiesBacking.txtOsdphOsdName}" 
+                                  visible="false"/>
+                    
+                    <af:inputText label="Agent Code : " id="it22"
+                                  binding="#{hierarchiesBacking.txtOsdphPrevAgnCode}" 
+                                  visible="false"/>
+                                  
+                    <af:panelLabelAndMessage label="Agent Name : " id="plam4" 
+                                              showRequired="true">
+                      <af:inputText label="Agent Name : " id="it23" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{hierarchiesBacking.txtAgencyName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" 
+                                        id="cb12" 
+                                        partialSubmit="true"
+                                        action="#{hierarchiesBacking.actionShowHeadAgentPop}"/>
+                    </af:panelLabelAndMessage>
+                    
+                    <af:inputDate label="WET : " id="id3"
+                                  binding="#{hierarchiesBacking.txtOsdphWet}" 
+                                  showRequired="true"/>
+                    
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg12">
+                    <af:commandButton text="Save" id="cb11"
+                                      binding="#{hierarchiesBacking.btnSaveUpdatePrevHead}"
+                                      action="#{hierarchiesBacking.actionSaveUpdatePrevHead}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb10"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="confirmationHierarchyTypeDialog">
+                <af:dialog title="Confirm Action" id="confirmDeleteDialog"
+                            type="yesNo"
+                           dialogListener="#{hierarchiesBacking.hierarchyTypeConfirmationDialogListener}">
+                                
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (Make sure the record has no child records. This action is not reversible.)" id="olConfirmMsgValue"/>
+                </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

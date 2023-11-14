@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:trh="http://myfaces.apache.org/trinidad/html">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <f:facet name="metaContainer">
+        <af:group>
+          <trh:script text="
+                    function launchMessageDialog() {
+                        var popup = AdfPage.PAGE.findComponent('confirmMessage');                     
+                        popup.show();
+                        event.cancel();                   
+                    } "> 
+          </trh:script>
+        </af:group>
+      </f:facet>
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox5" id="pb2" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="panelGrid1">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="User Group Categories" id="ol1"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s3"/>
+              <af:panelBox text="PanelBox6" id="pb1" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="pg3">
+                  <af:commandButton text="Add" id="cb1"
+                                    icon="/images/create.gif" rendered="true"
+                                    action="#{userBean.actionNewGroupType}"/>
+                  <af:commandButton text="Edit" id="cb2"
+                                    icon="/images/update.gif"
+                                    action="#{userBean.showEditAccountTypesPop}"/>
+                  <af:commandButton text="Delete" id="cb3"
+                                    icon="/images/delete.gif" rendered="true"
+                                    action="#{userBean.actionDeleteCategoryGroupType}"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc1"
+                                    inlineStyle="height:554px; width:895px;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.UserGrpType.collectionModel}"
+                            var="row" rows="#{bindings.UserGrpType.rangeSize}"
+                            emptyText="#{bindings.UserGrpType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.UserGrpType.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.UserGrpTypeQuery.queryDescriptor}"
+                            queryListener="#{bindings.UserGrpTypeQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            
+                            
+                            rowSelection="single" id="t1"
+                            binding="#{userBean.tblUserGroupTypes}">
+                    <af:column sortProperty="#{bindings.UserGrpType.hints.code.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.UserGrpType.hints.code.label}"
+                               id="c1" rendered="false">
+                      <af:outputText value="#{row.code}" id="ot2">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.UserGrpType.hints.code.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.UserGrpType.hints.shortDesc.name}"
+                               filterable="true" sortable="true"
+                               headerText="Short Description" id="c4"
+                               width="100">
+                      <af:outputText value="#{row.shortDesc}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.UserGrpType.hints.typeId.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.UserGrpType.hints.typeId.label}"
+                               id="c3" rendered="false">
+                      <af:outputText value="#{row.typeId}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.UserGrpType.hints.idSerialFormat.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.UserGrpType.hints.idSerialFormat.label}"
+                               id="c5" rendered="false">
+                      <af:outputText value="#{row.idSerialFormat}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.UserGrpType.hints.groupType.name}"
+                               filterable="true" sortable="true"
+                               headerText="Group Category" id="c2" width="200">
+                      <af:outputText value="#{row.groupType}" id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.UserGrpType.hints.teamLeader.name}"
+                               filterable="true" sortable="true"
+                               headerText="#{bindings.UserGrpType.hints.teamLeader.label}"
+                               id="c6" rendered="false">
+                      <af:outputText value="#{row.teamLeader}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.UserGrpType.hints.branchCode.name}" sortable="true"
+                               headerText="#{bindings.UserGrpType.hints.branchCode.label}"
+                               id="c7" rendered="false">
+                      <af:outputText value="#{row.branchCode}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.UserGrpType.hints.branchName.name}"
+                               sortable="true"
+                               headerText="Branch Name"
+                               id="c21" width="200" filterable="true">
+                      <af:outputText value="#{row.branchName}" id="ot21"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+            </af:panelBox>
+            <af:popup id="branchesPopup">
+              <af:dialog id="d4" title="Select a Branch" type="none">
+                <af:panelBox text="PanelBox9" id="pb5" showHeader="never">
+                  <af:panelCollection id="pc3">
+                    <af:table value="#{bindings.Organization1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.Organization1.rangeSize}"
+                              emptyText="#{bindings.Organization1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.Organization1.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.OrganizationQuery.queryDescriptor}"
+                              queryListener="#{bindings.OrganizationQuery.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              
+                              selectionListener="#{bindings.Organization1.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t3"
+                              binding="#{userBean.tblGroupTypeBranches}">
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.Organization1.hints.bnsCode.label}"
+                                 id="c17" rendered="false">
+                        <af:outputText value="#{row.bnsCode}" id="ot20"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsShortDesc.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Short Desc"
+                                 id="c16">
+                        <af:outputText value="#{row.bnsShortDesc}" id="ot16"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsName.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Branch Name"
+                                 id="c14" width="250">
+                        <af:outputText value="#{row.bnsName}" id="ot15"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsPhyAddrs.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.Organization1.hints.bnsPhyAddrs.label}"
+                                 id="c10" rendered="false">
+                        <af:outputText value="#{row.bnsPhyAddrs}" id="ot14"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsEmail.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.Organization1.hints.bnsEmail.label}"
+                                 id="c13" rendered="false">
+                        <af:outputText value="#{row.bnsEmail}" id="ot19"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsPostAddrs.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.Organization1.hints.bnsPostAddrs.label}"
+                                 id="c19" rendered="false">
+                        <af:outputText value="#{row.bnsPostAddrs}" id="ot11"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsTwnCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.Organization1.hints.bnsTwnCode.label}"
+                                 id="c18" rendered="false">
+                        <af:outputText value="#{row.bnsTwnCode}" id="ot17"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsCouCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.Organization1.hints.bnsCouCode.label}"
+                                 id="c15" rendered="false">
+                        <af:outputText value="#{row.bnsCouCode}" id="ot12"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsContact.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.Organization1.hints.bnsContact.label}"
+                                 id="c20" rendered="false">
+                        <af:outputText value="#{row.bnsContact}" id="ot10"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsManager.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.Organization1.hints.bnsManager.label}"
+                                 id="c12" rendered="false">
+                        <af:outputText value="#{row.bnsManager}" id="ot18"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Organization1.hints.bnsTel.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="#{bindings.Organization1.hints.bnsTel.label}"
+                                 id="c11" rendered="false">
+                        <af:outputText value="#{row.bnsTel}" id="ot13"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  <h:panelGrid columns="2" id="pg30">
+                      <af:commandButton text="Ok" id="btnAcceptBranches"
+                                        partialSubmit="true"
+                                        action="#{userBean.actionAcceptBranches}"/>
+                      <af:commandButton text="Cancel"
+                                        id="btnCancelAccountTypes"/>
+                    </h:panelGrid>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="groupTypePopup">
+              <af:dialog id="d3" type="none" title="Select Group Type"
+                         inlineStyle="width:300px">
+                <af:panelBox text="PanelBox8" id="pb4" showHeader="never">
+                  <af:panelCollection id="pc2">
+                    <af:table value="#{bindings.GroupType.collectionModel}"
+                              var="row" rows="#{bindings.GroupType.rangeSize}"
+                              emptyText="#{bindings.GroupType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.GroupType.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.GroupTypeQuery.queryDescriptor}"
+                              queryListener="#{bindings.GroupTypeQuery.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              
+                              selectionListener="#{bindings.GroupType.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t2"
+                              binding="#{userBean.tblGroupTypes}">
+                      <af:column sortProperty="#{bindings.GroupType.hints.typeId.name}"
+                                 filterable="true" sortable="false"
+                                 headerText="Sht Desc"
+                                 id="c9" rendered="true" width="150">
+                        <af:outputText value="#{row.typeId}" id="ot9"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.GroupType.hints.typeName.name}"
+                                 filterable="true" sortable="false"
+                                 headerText="Group Type"
+                                 id="c8" width="250">
+                        <af:outputText value="#{row.typeName}" id="ot8"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  <h:panelGrid columns="2" id="pg300">
+                      <af:commandButton text="Ok" id="btnAcceptGrouptype"
+                                        partialSubmit="true"
+                                        action="#{userBean.actionAcceptGroupType}"/>
+                      <af:commandButton text="Cancel"
+                                        id="btnCancelGroupType"/>
+                    </h:panelGrid>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="addNewGroupType" contentDelivery="lazy">
+              <af:dialog id="d2" title="Add Group Type"
+                         inlineStyle="width:480.0px" type="none">
+                <af:panelBox text="PanelBox7" id="pb3" showHeader="never">
+                  <af:panelFormLayout id="pfl1">
+                    <af:panelLabelAndMessage label="Group Type: " id="plam1"
+                                             showRequired="true">
+                      <af:inputText label="Label 1" id="it1" simple="true"
+                                    disabled="true"
+                                    binding="#{userBean.txtGroupTypeName}"/>
+                      <af:commandButton icon="/images/dropdown.gif"
+                                        partialSubmit="true" id="cb4">
+                        <af:showPopupBehavior popupId="groupTypePopup"/>
+                      </af:commandButton>
+                    </af:panelLabelAndMessage>
+                    <af:inputText showRequired="true" label="Group Type Name"
+                                  id="it3"
+                                  binding="#{userBean.txtGroupShtDesc}"/>
+                    <af:panelLabelAndMessage label="Branch Name : " id="plam2"
+                                             showRequired="true">
+                      <af:inputText label="Label 2" id="it2" simple="true"
+                                    disabled="true"
+                                    binding="#{userBean.txtGroupTypeBranch}"/>
+                      <af:commandButton icon="/images/dropdown.gif"
+                                        partialSubmit="true" id="cb5">
+                        <af:showPopupBehavior popupId="branchesPopup"/>
+                      </af:commandButton>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage id="plam3"
+                                             inlineStyle="height:50px"/>
+                  </af:panelFormLayout>
+                  <h:panelGrid columns="2" id="pg5">
+                    <af:commandButton text="Save" id="cb10"
+                                      partialSubmit="true"
+                                      action="#{userBean.actionSaveGroupType}"
+                                      binding="#{userBean.btnSaveGroupTypes}"/>
+                    <af:commandButton text="Cancel" id="cb22"/>
+                  </h:panelGrid>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="confirmDeleteCategoryGroupTypePopup">
+              <af:dialog id="d12" title="Confirm REMOVE Action" type="yesNo"
+                         dialogListener="#{userBean.actionConfirmDeleteCategoryGroupType}">
+                <af:panelFormLayout id="pfl5" inlineStyle="width:300.0px;">
+                  <af:outputText value="Are you sure you want to REMOVE this Category group?"
+                                 id="ot40"/>
+                </af:panelFormLayout>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

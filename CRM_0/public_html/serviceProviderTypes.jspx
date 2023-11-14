@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="left">
+                    <af:inputText id="it1" helpTopicId="CRMserviceProviderTypes"
+                                  columns="13" readOnly="true"
+                                  shortDesc="Help"/>
+                  </td>
+                  <td width="100%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="SERVICE PROVIDER TYPE DEFINITIONS"
+                                id="ol1" inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <h:panelGrid columns="3" id="pg2">
+                <af:commandButton text="New" id="btnNewServiceProviderType"
+                                  icon="/images/create.gif" disabled="false"
+                                  action="#{baseSetupBacking.actionNewServiceProviderType}"
+                                  partialSubmit="true"/>
+                <af:commandButton text="Edit" id="btnEditServiceProviderType"
+                                  icon="/images/update.gif" disabled="false"
+                                  action="#{baseSetupBacking.actionEditSerProv}"
+                                  partialSubmit="true"/>
+                <af:commandButton text="Delete"
+                                  id="btnDeleteServiceProviderType"
+                                  icon="/images/delete.gif" disabled="false"
+                                 
+                                  partialSubmit="true"
+                                  action="#{baseSetupBacking.actionDelServProvider}"/>
+              </h:panelGrid>
+             
+                                  
+              
+                <af:table value="#{bindings.ServiceProviderType.collectionModel}"
+                          var="row"
+                          rows="#{bindings.ServiceProviderType.rangeSize}"
+                          emptyText="#{bindings.ServiceProviderType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.ServiceProviderType.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.ServiceProviderTypeQuery.queryDescriptor}"
+                          queryListener="#{bindings.ServiceProviderTypeQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                           styleClass="AFStretchWidth"
+                          binding="#{baseSetupBacking.tblServiceProviderType}"
+                          selectionListener="#{baseSetupBacking.actionSelectServiceProvider}"
+                          rowSelection="single">
+                  <af:column sortable="true" sortProperty="shortDesc" headerText="Id" filterable="true" id="c1">
+                    <af:outputText value="#{row.shortDesc}" id="ot33"/>
+                  </af:column>
+                  <af:column sortable="true"   sortProperty="name" filterable="true"  headerText="Name" id="c5">
+                    <af:outputText value="#{row.name}" id="ot30"/>
+                  </af:column>
+                  <af:column sortable="true"   sortProperty="status"   filterable="true"  headerText="Status" id="c2">
+                    <af:outputText value="#{row.status}" id="ot32"/>
+                  </af:column>
+                  <af:column sortable="true"   sortProperty="shortDesc"    filterable="true"  headerText="Short Desc" id="c3">
+                    <af:outputText value="#{row.shortDesc}" id="ot31"/>
+                  </af:column>
+                  <af:column sortable="true"  sortProperty="whtxRate" filterable="true"  headerText="WH/Tx Rate" id="c6">
+                    <af:outputText value="#{row.whtxRate}" id="ot1"/>
+                  </af:column>
+                  <af:column sortable="true"    sortProperty="vatRate"  filterable="true" headerText="VAT Rate" id="c31">
+                    <af:outputText value="#{row.vatRate}" id="ot3"/>
+                  </af:column>
+                  <af:column sortable="true"    sortProperty="suffix"   filterable="true" headerText="Suffixes" id="c4">
+                    <af:outputText value="#{row.suffix}" id="ot2"/>
+                  </af:column>
+                </af:table>
+          
+              <af:spacer width="10" height="30" id="s4"/>
+              <af:separator id="s2"/>
+              <af:outputLabel value="SERVICE PROVIDER TYPE ACTIVITIES" id="ot4"
+                              inlineStyle="font-weight:bold;"/>
+              <af:spacer width="10" height="10" id="s3"/>
+              <h:panelGrid columns="3" id="pg3">
+                <af:commandButton text="New" id="cb1" icon="/images/create.gif"
+                                  action="#{baseSetupBacking.addSErvActivities}"
+                                  partialSubmit="true"/>
+                <af:commandButton text="Edit" id="cb2" icon="/images/update.gif"
+                                  action="#{baseSetupBacking.editServActivities}"
+                                  partialSubmit="true"/>
+                <af:commandButton text="Delete" id="cb3"
+                                  icon="/images/delete.gif"
+                                  action="#{baseSetupBacking.deleteServActivities}"
+                                  partialSubmit="true"/>
+                <af:popup id="p1" contentDelivery="lazyUncached">
+                  <af:dialog id="d3"
+                             title="Add Service Provider Type Activities"
+                             type="none">
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:outputLabel value="Activity ID" id="ol2"/>
+                      <af:inputText label="Label 1" id="it5" simple="true"
+                                    binding="#{baseSetupBacking.txtActivityId}"/>
+                      <af:outputLabel value="Activity" id="ol3"/>
+                      <af:inputText label="Label 2" id="it6" simple="true"
+                                    binding="#{baseSetupBacking.txtActivityDesc}"/>
+                      <af:outputLabel value="Sms Templates" id="ol4"/>
+                      <h:panelGrid columns="2" id="pg0">
+                        <af:inputText id="er545" simple="true" label="sms"
+                                      disabled="true"
+                                      binding="#{baseSetupBacking.txtSmsTemplates}"/>
+                        <af:commandButton id="cb6" icon="/images/dropdown.gif"
+                                          action="#{baseSetupBacking.showSmsTemplates}"
+                                          partialSubmit="true"/>
+                      </h:panelGrid>
+                      <af:outputLabel value="Email Templates" id="ol5"/>
+                      <h:panelGrid columns="2" id="pg6">
+                        <af:inputText id="it7" simple="true" label="sms"
+                                      disabled="true"
+                                      binding="#{baseSetupBacking.txtEmailTemplates}"/>
+                        <af:commandButton id="cb7" icon="/images/dropdown.gif"
+                                          action="#{baseSetupBacking.showEmailTempates}"
+                                          partialSubmit="true"/>
+                      </h:panelGrid>
+                      <af:outputLabel value="Default Send Sms?" id="ol6"/>
+                      <af:selectBooleanCheckbox simple="true" label="Label 1"
+                                                id="sbc1"
+                                                binding="#{baseSetupBacking.smsCheck}"
+                                                immediate="true"
+                                                clientComponent="true"/>
+                      <af:outputLabel value="Default Send Email?" id="ol7"/>
+                      <af:selectBooleanCheckbox simple="true" label="Label 2"
+                                                id="sbc2" immediate="true"
+                                                binding="#{baseSetupBacking.emailCheck}"/>
+                      <af:outputLabel value="Preliminary Report Days" id="ol8"/>
+                      <af:inputNumberSpinbox label="Label 1" id="ins1"
+                                             simple="true"
+                                             binding="#{baseSetupBacking.reportDays}"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="pg5">
+                      <af:commandButton text="Save" id="cb8"
+                                        action="#{baseSetupBacking.saveServActivities}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="cb5"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+              </h:panelGrid>
+              <af:table value="#{bindings.ServiceProviderType1.collectionModel}"
+                        var="row"
+                        rows="#{bindings.ServiceProviderType1.rangeSize}"
+                        emptyText="#{bindings.ServiceProviderType1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.ServiceProviderType1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectionListener="#{baseSetupBacking.selectServiceProviderType}"
+                        rowSelection="single" id="t1"
+                        inlineStyle="height:150px;"
+                        binding="#{baseSetupBacking.servProviderTypesAct}"
+                        styleClass="AFStretchWidth">
+                <af:column sortProperty="code" sortable="true"
+                           headerText="#{bindings.ServiceProviderType1.hints.code.label}"
+                           id="c8" visible="false">
+                  <af:outputText value="#{row.code}" id="ot6"/>
+                </af:column>
+                <af:column sortProperty="shortDesc" sortable="true"
+                           headerText="Activity ID" id="c7" width="120">
+                  <af:outputText value="#{row.shortDesc}" id="ot7"/>
+                </af:column>
+                <af:column sortProperty="name" sortable="true"
+                           headerText="Activity" id="c9" width="200">
+                  <af:outputText value="#{row.name}" id="ot5"/>
+                </af:column>
+                <af:column sortProperty="smsmessage" sortable="false"
+                           width="200" headerText="Sms Template" id="c10">
+                  <af:outputText value="#{row.smsmessage}" id="ot8"/>
+                </af:column>
+                <af:column sortProperty="emailmessage" sortable="false"
+                           width="200" headerText="Email Message" id="c11">
+                  <af:outputText value="#{row.emailmessage}" id="ot9"/>
+                </af:column>
+                <af:column sortProperty="smsDefault" sortable="false"
+                           headerText="Sms Default" id="c12">
+                  <af:outputText value="#{row.smsDefault}" id="ot10"/>
+                </af:column>
+                <af:column sortProperty="emailDefault" sortable="false"
+                           headerText="Email Default" id="c14">
+                  <af:outputText value="#{row.emailDefault}" id="ot11"/>
+                </af:column>
+                <af:column sortProperty="reportDays" sortable="true"
+                           headerText="Report Days" id="c30">
+                  <af:outputText value="#{row.reportDays}" id="ot29"/>
+                </af:column>
+                <af:column sortProperty="smsCode" sortable="false"
+                           visible="false" headerText="Sms Code" id="c28">
+                  <af:outputText value="#{row.smsCode}" id="ot27"/>
+                </af:column>
+                <af:column sortProperty="emailCode" sortable="false"
+                           visible="false" headerText="Email Code" id="c29">
+                  <af:outputText value="#{row.emailCode}" id="ot28"/>
+                </af:column>
+              </af:table>
+              <af:commandButton text="Save" id="cb11" visible="false"
+                                actionListener="#{baseSetupBacking.saveRequiredDocs}"/>
+              <af:commandButton text="Delete" id="cb12" visible="false"
+                                actionListener="#{baseSetupBacking.deleteRequiredDocs}"/>
+              <af:panelGroupLayout id="pgl0">
+                <af:panelSplitter id="ps4" inlineStyle="width:100.0%;">
+                  <f:facet name="first">
+                    <af:tree value="#{bindings.SysApplicableArea2.treeModel}"
+                             var="node" visible="false"
+                             selectionListener="#{baseSetupBacking.selectSystems}"
+                             rowSelection="single" id="t4"
+                             binding="#{baseSetupBacking.systemTree}">
+                      <f:facet name="nodeStamp">
+                        <af:outputText value="#{node}" id="ot13"/>
+                      </f:facet>
+                    </af:tree>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:table value="#{bindings.SysApplicableArea3.collectionModel}"
+                              var="row" visible="false"
+                              rows="#{bindings.SysApplicableArea3.rangeSize}"
+                              emptyText="#{bindings.SysApplicableArea3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.SysApplicableArea3.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.SysApplicableArea3Query.queryDescriptor}"
+                              queryListener="#{bindings.SysApplicableArea3Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectionListener="#{baseSetupBacking.selectActivity}"
+                              rowSelection="single" id="t5"
+                              binding="#{baseSetupBacking.requiredDocTbl}">
+                      <af:column filterFeatures="caseInsensitive"
+                                 sortProperty="checked" id="c48"
+                                 headerText="Select Required Doc">
+                        <af:selectBooleanCheckbox value="#{row.checked}"
+                                                  label="Label 1" id="sbc3"
+                                                  binding="#{baseSetupBacking.rowChecked}"/>
+                      </af:column>
+                      <af:column sortProperty="docId" filterable="true"
+                                 visible="false" sortable="true"
+                                 headerText="Doc Id" id="c20">
+                        <af:outputText value="#{row.docId}" id="ot15"/>
+                      </af:column>
+                      <af:column sortProperty="docSht" filterable="true"
+                                 visible="false" sortable="true"
+                                 headerText="Sht Desc" id="c26">
+                        <af:outputText value="#{row.docSht}" id="ot25"/>
+                      </af:column>
+                      <af:column sortProperty="docDesc" filterable="true"
+                                 sortable="true" headerText="Desc" id="c15">
+                        <af:outputText value="#{row.docDesc}" id="ot19"/>
+                      </af:column>
+                      <af:column sortProperty="mandatory" filterable="true"
+                                 sortable="true" headerText="Mandatory?"
+                                 id="c21">
+                        <af:outputText value="#{row.mandatory}" id="ot21"/>
+                      </af:column>
+                      <af:column sortProperty="ndDoc" filterable="true"
+                                 sortable="true" headerText="NB Doc" id="c22">
+                        <af:outputText value="#{row.ndDoc}" id="ot23"/>
+                      </af:column>
+                      <af:column sortProperty="enDoc" filterable="true"
+                                 sortable="true" headerText="EN Doc" id="c24">
+                        <af:outputText value="#{row.enDoc}" id="ot24"/>
+                      </af:column>
+                      <af:column sortProperty="rnDoc" filterable="true"
+                                 sortable="true" headerText="RN Doc" id="c18">
+                        <af:outputText value="#{row.rnDoc}" id="ot17"/>
+                      </af:column>
+                      <af:column sortProperty="certDoc" filterable="true"
+                                 sortable="true" headerText="Cert Doc" id="c25">
+                        <af:outputText value="#{row.certDoc}" id="ot22"/>
+                      </af:column>
+                      <af:column sortProperty="lopDoc" filterable="true"
+                                 sortable="true" headerText="Lop Doc" id="c19">
+                        <af:outputText value="#{row.lopDoc}" id="ot14"/>
+                      </af:column>
+                      <af:column sortProperty="clmPayDoc" filterable="true"
+                                 sortable="true" headerText="Clm pay" id="c23">
+                        <af:outputText value="#{row.clmPayDoc}" id="ot20"/>
+                      </af:column>
+                      <af:column sortProperty="validPrd" filterable="true"
+                                 sortable="true" headerText="Valid Pay"
+                                 id="c16">
+                        <af:outputText value="#{row.validPrd}" id="ot18"/>
+                      </af:column>
+                      <af:column sortProperty="rqcCode" sortable="false"
+                                 headerText="Required Doc Code" id="c27">
+                        <af:outputText value="#{row.rqcCode}" id="ot26"/>
+                      </af:column>
+                    </af:table>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelGroupLayout>
+              <af:separator id="s5"/>
+              <af:commandButton text="Generate Report" id="cl1"
+                                icon="/images/report.png"/>
+            </af:panelBox>
+            <af:popup id="serviceProviderTypePopup"
+                      contentDelivery="lazyUncached">
+              <af:dialog id="d5" title="New Service Provider Type" type="none">
+                <af:panelGroupLayout id="pgl1">
+                  <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                    <af:panelFormLayout id="pfl1" inlineStyle="width:300.0px;"
+                                        labelWidth="150px">
+                      <af:inputText label="Code : " id="txtProviderTypeCodePop"
+                                    binding="#{baseSetupBacking.txtProviderTypeCodePop}"
+                                    disabled="true" showRequired="true"
+                                    visible="false"/>
+                      <af:inputText label="Short Desc : "
+                                    id="txtProviderTypeShtDescPop"
+                                    binding="#{baseSetupBacking.txtProviderTypeShtDescPop}"
+                                    columns="25" showRequired="true"/>
+                      <af:inputText label="Name : " id="txtProviderTypeNamePop"
+                                    binding="#{baseSetupBacking.txtProviderTypeNamePop}"
+                                    columns="25" showRequired="true"/>
+                    
+                      <af:inputNumberSpinbox label="Suffix:" id="txt_Suffix"
+                                             columns="15" showRequired="true"
+                                             binding="#{baseSetupBacking.txtSuffix}"/>
+                      <af:selectOneChoice label="Status : "
+                                          id="txtProviderTypeStatus"
+                                          binding="#{baseSetupBacking.txtProviderTypeStatus}"
+                                          showRequired="true" value="A">
+                        <af:selectItem label="Active" value="A" id="si2"/>
+                        <af:selectItem label="Inactive" value="I" id="si17"/>
+                      </af:selectOneChoice>
+                      <af:inputNumberSpinbox label="Withholding Tax Rate : "
+                                             id="txtProviderTypeWhtxRatePop2"
+                                             binding="#{baseSetupBacking.txtProviderTypeWhtxRatePop2}"/>
+                      <af:inputNumberSpinbox label="VAT Rate : "
+                                             id="txtProviderVatRatePop2"
+                                             binding="#{baseSetupBacking.txtProviderVatRatePop2}"/>
+                      <af:inputText label="Withholding Tax Rate : "
+                                    id="txtProviderTypeWhtxRatePop"
+                                    rendered="false"
+                                    binding="#{baseSetupBacking.txtProviderTypeWhtxRatePop}"/>
+                      <af:inputText label="VAT Rate : "
+                                    id="txtProviderVatRatePop" rendered="false"
+                                    binding="#{baseSetupBacking.txtProviderVatRatePop}"/>
+                      <f:facet name="footer"/>
+                    </af:panelFormLayout>
+                    <af:commandButton text="Save"
+                                      id="btnCreateUpdateProviderType"
+                                      partialSubmit="true"
+                                      binding="#{baseSetupBacking.btnCreateUpdateProviderType}"
+                                      action="#{baseSetupBacking.actionCreateUpdateProviderType}"/>
+                    <af:commandButton text="Cancel" id="btnCancelProviderType"/>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="smsTempPop" contentDelivery="immediate">
+              <af:dialog id="d2" title="Select Sms Template" type="none">
+                <af:panelGroupLayout id="pgl3">
+                  <af:panelCollection id="pc2" inlineStyle="width:260.0px;">
+                    <af:table value="#{bindings.SysApplicableArea1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.SysApplicableArea1.rangeSize}"
+                              emptyText="#{bindings.SysApplicableArea1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.SysApplicableArea1.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.SysApplicableArea1Query.queryDescriptor}"
+                              queryListener="#{bindings.SysApplicableArea1Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectedRowKeys="#{bindings.SysApplicableArea1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.SysApplicableArea1.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t3"
+                              binding="#{baseSetupBacking.smsTbl}">
+                      <af:column sortProperty="message" width="250"
+                                 filterable="true" sortable="true"
+                                 headerText="Message" id="c17">
+                        <af:outputText value="#{row.message}" id="ot16"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  <af:commandButton text="OK" id="btnSelectCountryPop"
+                                    action="#{baseSetupBacking.selectSmsTemplate}"
+                                    partialSubmit="false"/>
+                  <af:commandButton text="CANCEL" id="cb4"/>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="emailTemPop" contentDelivery="lazyUncached">
+              <af:dialog id="d4" title="Select Email Template" type="none">
+                <af:panelGroupLayout id="pgl4">
+                  <af:table value="#{bindings.SysApplicableArea.collectionModel}"
+                            var="row"
+                            rows="#{bindings.SysApplicableArea.rangeSize}"
+                            emptyText="#{bindings.SysApplicableArea.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.SysApplicableArea.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.SysApplicableAreaQuery.queryDescriptor}"
+                            queryListener="#{bindings.SysApplicableAreaQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectionListener="#{bindings.SysApplicableArea.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t2"
+                            binding="#{baseSetupBacking.emailTbl}">
+                    <af:column sortProperty="message" width="250"
+                               filterable="true" sortable="true"
+                               headerText="Message" id="c13">
+                      <af:outputText value="#{row.message}" id="ot12"/>
+                    </af:column>
+                  </af:table>
+                  <af:commandButton text="OK" id="cb9"
+                                    action="#{baseSetupBacking.selectEmailTemplate}"
+                                    partialSubmit="false"/>
+                  <af:commandButton text="CANCEL" id="cb10"/>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

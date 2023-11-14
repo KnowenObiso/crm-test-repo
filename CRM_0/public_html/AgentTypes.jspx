@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <af:inputText id="it1" 
+                                helpTopicId="CRMsectors" 
+                                columns="13"
+                                readOnly="true" 
+                                shortDesc="Help"/>
+                </td>
+                <td width="100%" align="right">
+                
+                <af:statusIndicator id="si1"/>
+                </td>
+              </tr>
+            </table>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Agent Type Definition" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>                
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="pg2">
+                  <af:commandButton text="New" id="btnNewAgentType"
+                                    icon="/images/create.gif"
+                                    action="#{baseSetupBacking.actionNewAgentType}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Edit" id="btnEditAgentType"
+                                    icon="/images/update.gif"
+                                    action="#{baseSetupBacking.actionEditAgentType}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteAgentType"
+                                    icon="/images/delete.gif"
+                                    action="#{baseSetupBacking.actionDeleteAgentType}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+                <af:table value="#{bindings.Agent.collectionModel}" var="row"
+                          rows="#{bindings.Agent.rangeSize}"
+                          emptyText="#{bindings.Agent.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Agent.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.AgentQuery.queryDescriptor}"
+                          queryListener="#{bindings.AgentQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.Agent.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.Agent.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1"
+                          binding="#{baseSetupBacking.txtAgentTypeTbl}"
+                     >
+                  <af:column sortProperty="#{bindings.Agent.hints.AGNTY_CODE.name}"
+                             filterable="true" sortable="true" rendered="false"
+                             headerText="AGENT CODE"
+                             id="c3">
+                    <af:outputText value="#{row.AGNTY_CODE}" id="ot1"/>
+                  </af:column>
+                  
+                  <af:column sortProperty="#{bindings.Agent.hints.AGNTY_TYPE.name}"
+                             filterable="true" sortable="true"
+                             headerText="AGENT TYPE"
+                             id="c1">
+                    <af:outputText value="#{row.AGNTY_TYPE}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.Agent.hints.AGNTY_TYPE_SHT_DESC.name}"
+                             filterable="true" sortable="true"
+                             headerText="SHORT DESC"
+                             id="c2">
+                    <af:outputText value="#{row.AGNTY_TYPE_SHT_DESC}" id="ot2"/>
+                  </af:column>
+                   <af:column sortProperty="#{bindings.Agent.hints.AGNTY_ACT_CODE.name}"
+                             filterable="true" sortable="true" visible="false"
+                             headerText="ACCOUNT TYPE CODE">
+                    <af:outputText value="#{row.AGNTY_ACT_CODE}" />
+                  </af:column>
+                   <af:column sortProperty="#{bindings.Agent.hints.ACT_ACCOUNT_TYPE.name}"
+                             filterable="true" sortable="true" visible="false"
+                             headerText="ACCOUNT TYPE" >
+                    <af:outputText value="#{row.ACT_ACCOUNT_TYPE}" />
+                  </af:column>
+                </af:table>
+                <af:separator id="s2"/>
+              </af:panelBox>
+            </af:panelBox>
+            
+            <af:popup id="AgentTypePop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Add/Edit Agent Types" type="none">
+                <af:panelGroupLayout id="pgl1">
+                <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                 
+                  
+                    <af:panelFormLayout id="pfl1" inlineStyle="width:360.0px;">
+                    <af:inputText label="Agent Type : " id="txtAgentType"
+                                    binding="#{baseSetupBacking.txtAgentType}" 
+                                    showRequired="true"
+                                    shortDesc="Agent Type"/>
+                    <af:selectOneChoice label="Short Desc :  "
+                                      binding="#{baseSetupBacking.txtAgentTypeShtDesc}"
+                                      autoSubmit="true" > 
+                                <af:selectItem value="BADSE" label="BANCASSURANCE DSE" />
+                                <af:selectItem value="BDSE" label="BANK DSE" />
+                                <af:selectItem value="DSR" label="DIRECT SALES REPRESENTATIVES" />
+                                <af:selectItem value="MTAANI AGENTS" label="MTAANI AGENTS" />
+                                <af:selectItem value="OTHERS" label="OTHER SUB AGENTS" />
+                                <af:selectItem value="BSR" label="BANCASSURANCE SALES REPRESENTATIVES" />
+                                <af:selectItem value="MARKETERS" label="MARKETERS" />
+                   </af:selectOneChoice>
+                    <af:panelLabelAndMessage label="Account Type : "  showRequired="true">
+                        <af:panelGroupLayout id="pgl13" 
+                                             layout="horizontal">
+                          <af:inputText label="Account Type : "
+                                        id="txtAccountType"  
+                                        columns="20" simple="true"
+                                        binding="#{baseSetupBacking.txtAccountType}"
+                                        disabled="true"/>
+                          <af:commandButton id="btnShowAccountTypePop"
+                                            icon="/images/dropdown.gif"
+                                            shortDesc="Click to select a Account Type">
+                            <af:showPopupBehavior popupId="accountTypesPop"/>
+                          </af:commandButton>
+                        </af:panelGroupLayout>
+                      </af:panelLabelAndMessage>
+                     </af:panelFormLayout>
+                     <af:commandButton text="Save" id="btnCreateUpdateAgentType"
+                                      action="#{baseSetupBacking.actionCreateUpdateDeleteAgentType}"/>
+                      <af:commandButton text="Cancel" />
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="accountTypesPop" contentDelivery="lazyUncached">
+              <af:dialog id="d47" title="Select a Account Type" type="none"
+                         inlineStyle="width:360.0px;">
+                <af:panelGroupLayout id="pgl3">
+                  <af:panelCollection id="pc2" inlineStyle="width:360.0px;">
+                    <af:table value="#{bindings.AccountType.collectionModel}"
+                              var="row" rows="#{bindings.AccountType.rangeSize}"
+                              emptyText="#{bindings.AccountType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.AccountType.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.AccountTypeQuery.queryDescriptor}"
+                              queryListener="#{bindings.AccountTypeQuery.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              binding="#{baseSetupBacking.tblAccountTypesPop}"
+                              selectedRowKeys="#{bindings.AccountType.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.AccountType.collectionModel.makeCurrent}"
+                              rowSelection="single" id="tblAccountTypesPop">
+                      <af:column sortProperty="#{bindings.AccountType.hints.ACT_CODE.name}"
+                                 filterable="true" sortable="true" visible="false"
+                                 headerText="#{bindings.AccountType.hints.ACT_CODE.label}"
+                                 id="c4">
+                        <af:outputText value="#{row.ACT_CODE}" id="ot4"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.AccountType.hints.ACT_ACCOUNT_TYPE.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="ACCOUNT TYPE"
+                                 id="c5">
+                        <af:outputText value="#{row.ACT_ACCOUNT_TYPE}"
+                                       id="ot5"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.AccountType.hints.ACT_TYPE_SHT_DESC.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="TYPE SHT DESC."
+                                 id="c6">
+                        <af:outputText value="#{row.ACT_TYPE_SHT_DESC}"
+                                       id="ot6"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  <af:commandButton text="OK" id="btnSelectAccountTypePop"
+                                    action="#{baseSetupBacking.actionSelectAccountTypePop}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="CANCEL" />
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

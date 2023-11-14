@@ -1,0 +1,473 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+          <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="inputText1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg71">
+                <af:outputLabel value="System Branches" id="ol71"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s71"
+                            inlineStyle="font-size:large; font-weight:bold;"/>
+              <af:panelBox text="PanelBox6" id="pb5" showHeader="never">
+                <f:facet name="toolbar"/>
+                <af:panelSplitter id="ps1" styleClass="AFAuxiliaryStretchWidth"
+                                  splitterPosition="320"
+                                  inlineStyle="height:700.0px;">
+                  <f:facet name="first">
+                    <af:panelGroupLayout id="pgl1">
+                      <h:panelGrid columns="1" id="pg1">
+                        <af:outputLabel value="Systems Branches" id="ol1"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s1"/>
+                      <af:panelCollection id="pc1"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:500.0px;">
+                        <af:table value="#{bindings.System4.collectionModel}"
+                                  var="row" rows="#{bindings.System4.rangeSize}"
+                                  emptyText="#{bindings.System4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.System4.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.System2Query.queryDescriptor}"
+                                  queryListener="#{bindings.System2Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectedRowKeys="#{bindings.System4.collectionModel.selectedRow}"
+                                  selectionListener="#{postLevelsBacking.populateBankBranches}"
+                                  rowSelection="single" id="t1"
+                                  binding="#{postLevelsBacking.tblbranches}">
+                          <af:column sortProperty="brn_code" filterable="true"
+                                     sortable="true" visible="false"
+                                     headerText="Branch Code"
+                                     id="c4">
+                            <af:outputText value="#{row.brn_code}" id="ot13"/>
+                          </af:column>
+                          <af:column sortProperty="brn_sht_desc" 
+                                     filterable="true" sortable="true"
+                                     headerText="Branch Short Description"
+                                     id="c10">
+                            <af:outputText value="#{row.brn_sht_desc}"
+                                           id="ot10"/>
+                          </af:column>
+                          <af:column sortProperty="brn_reg_code" 
+                                     filterable="true" sortable="true"
+                                     headerText="Branch Reg Code"
+                                     id="c12">
+                            <af:outputText value="#{row.brn_reg_code}"
+                                           id="ot12"/>
+                          </af:column>
+                          <af:column sortProperty="brn_name" filterable="true"
+                                     sortable="true"
+                                     headerText="Branch Name"
+                                     id="c11">
+                            <af:outputText value="#{row.brn_name}" id="ot11"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout id="pgl2">
+                      <af:spacer width="10" height="20" id="s7"/>
+                      <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                        <af:panelGroupLayout id="pgl3">
+                          <h:panelGrid columns="1" id="pg2">
+                            <af:outputLabel value="Bank Branch" id="ol2"
+                                            inlineStyle="font-weight:bold;"/>
+                          </h:panelGrid>
+                          <af:separator id="s4"/>
+                         
+                          <af:separator id="s3"/>
+                         
+                          <af:panelCollection id="pc2"
+                                              styleClass="AFAuxiliaryStretchWidth"
+                                              inlineStyle="height:200.0px;">
+                            <af:table value="#{bindings.SystemPost1.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.SystemPost1.rangeSize}"
+                                      emptyText="#{bindings.SystemPost1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.SystemPost1.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.SystemPost1Query.queryDescriptor}"
+                                      queryListener="#{bindings.SystemPost1Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectedRowKeys="#{bindings.SystemPost1.collectionModel.selectedRow}"
+                                      selectionListener="#{postLevelsBacking.populateBankBranchestbl}"
+                                      rowSelection="single" id="t2"
+                                      binding="#{postLevelsBacking.tblBranch}"
+                                      inlineStyle="width:400.0px;">
+                              <af:column sortProperty="BBR_CODE" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Branch Code"
+                                         id="c18">
+                                <af:outputText value="#{row.BBR_CODE}"
+                                               id="ot2"/>
+                              </af:column>
+                              <af:column sortProperty="BBR_BNK_CODE"
+                                         headerText="Bank Code"
+                                         id="c13">
+                                <af:outputText value="#{row.BBR_BNK_CODE}"
+                                               id="ot18"/>
+                              </af:column>
+                              <af:column sortProperty="BBR_BRANCH_NAME"
+                                         filterable="true" sortable="true" 
+                                         headerText="Branch Name" visible="false"
+                                         id="c6">
+                                <af:outputText value="#{row.BBR_BRANCH_NAME}"
+                                               id="ot19"/>
+                              </af:column>
+                              <af:column sortProperty="BBR_REMARKS" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Remarks"
+                                         id="c19">
+                                <af:outputText value="#{row.BBR_REMARKS}"
+                                               id="ot15"/>
+                              </af:column>
+                              <af:column sortProperty="BBR_SHT_DESC" visible="true"
+                                         filterable="true" sortable="true"
+                                         headerText="Branch Sht Desc"
+                                         id="c14">
+                                <af:outputText value="#{row.BBR_SHT_DESC}"
+                                               id="ot5"/>
+                              </af:column>
+                              <af:column sortProperty="BBR_REF_CODE" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Ref Code"
+                                         id="c5">
+                                <af:outputText value="#{row.BBR_REF_CODE}"
+                                               id="ot16"/>
+                              </af:column>
+                               <af:column sortProperty="BBR_CREATED_BY" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Created By"
+                                         id="c3">
+                                <af:outputText value="#{row.BBR_CREATED_BY}"
+                                               id="ot17"/>
+                              </af:column>
+                              <af:column sortProperty="BBR_PHYSICAL_ADDRS" 
+                                         filterable="true" sortable="true"
+                                         headerText="Bank Branch"
+                                         id="c2" >
+                                <af:outputText value="#{row.BBR_PHYSICAL_ADDRS}"
+                                               id="ot6"/>
+                              </af:column>
+                              <af:column sortProperty="BBR_DATE_CREATED" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Date Created"
+                                         id="c15">
+                                <f:facet name="filter">
+                                  <af:inputDate value="#{vs.filterCriteria.BBR_DATE_CREATED}"
+                                                id="id1"/>
+                                </f:facet>
+                                <af:outputText value="#{row.BBR_DATE_CREATED}"
+                                               id="ot20">
+                                  <af:convertDateTime pattern="#{bindings.SystemPost1.hints.BBR_DATE_CREATED.format}"/>
+                                </af:outputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:spacer width="10" height="20" id="s2"/>
+                          <h:panelGrid columns="1" id="pg4">
+                            <af:outputLabel value="" id="ol3"
+                                            inlineStyle="font-weight:bold;"/>
+                          </h:panelGrid>
+                          <af:separator id="s5"/>
+                          <af:panelBox text="PanelBox4" id="pb4"
+                                       showHeader="never"
+                                       binding="#{postLevelsBacking.panelSysPosts}">
+                            <af:panelGroupLayout id="pgl4">
+                              <af:panelSplitter id="ps2"
+                                                styleClass="AFAuxiliaryStretchWidth"
+                                                splitterPosition="0"
+                                                orientation="vertical">
+                               
+                                <f:facet name="second">
+                                  <af:panelGroupLayout id="pgl5">
+                                    <af:separator id="s8"/>
+                              <h:panelGrid columns="3" id="pg11">
+                                <af:commandButton text="New"
+                                                  id="btnNewAgencyDirector"
+                                                  icon="/images/create.gif"
+                                                  action="#{postLevelsBacking.addBranchesDetails}"
+                                                  partialSubmit="true"/>
+                                <af:commandButton text="Edit"
+                                                  id="btnEditAgency"
+                                                  icon="/images/update.gif"
+                                                  action="#{postLevelsBacking.editbrnDetails}"
+                                                  partialSubmit="true"/>
+                                <af:commandButton text="Delete"
+                                                  id="btnDeleteAgencyDirector"
+                                                  icon="/images/delete.gif"
+                                                  action="#{postLevelsBacking.deleteBrnDetails}"
+                                                  partialSubmit="true"/>
+                              </h:panelGrid>
+                              
+                              <af:separator id="s11"/>
+                                    <af:separator id="s6"/>
+                                    <af:table value="#{bindings.SystemPost2.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.SystemPost2.rangeSize}"
+                                              emptyText="#{bindings.SystemPost2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.SystemPost2.rangeSize}"
+                                              rowBandingInterval="0"
+                                              filterModel="#{bindings.SystemPost2Query.queryDescriptor}"
+                                              queryListener="#{bindings.SystemPost2Query.processQuery}"
+                                              filterVisible="true"
+                                              varStatus="vs"
+                                              selectedRowKeys="#{bindings.SystemPost2.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.SystemPost2.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t3"
+                                              binding="#{postLevelsBacking.branchtb}"
+                                              inlineStyle="width:800.0px;">
+                                      <af:column sortProperty="BBB_CODE" visible="false"
+                                                 sortable="true"
+                                                 headerText="Branch code"
+                                                 id="c21">
+                                        <af:outputText value="#{row.BBB_CODE}"
+                                                       id="ot3"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BRN_CODE"
+                                                 sortable="true"
+                                                 headerText="Branch Code"
+                                                 id="c29">
+                                        <af:outputText value="#{row.BBB_BRN_CODE}"
+                                                       id="ot21"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BRN_SHT_DESC"
+                                                 sortable="true"
+                                                 headerText="Branch Sht Desc"
+                                                 id="c24">
+                                        <af:outputText value="#{row.BBB_BRN_SHT_DESC}"
+                                                       id="ot22"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BRN_REG_CODE"
+                                                 sortable="true"
+                                                 headerText="Reg Code"
+                                                 id="c26">
+                                        <af:outputText value="#{row.BBB_BRN_REG_CODE}"
+                                                       id="ot23"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BRN_NAME"
+                                                 sortable="true"
+                                                 headerText="Branch Name"
+                                                 id="c23">
+                                        <af:outputText value="#{row.BBB_BRN_NAME}"
+                                                       id="ot24"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BRN_PHY_ADDRS"
+                                                 sortable="true"
+                                                 headerText="Physical Address"
+                                                 id="c30">
+                                        <af:outputText value="#{row.BBB_BRN_PHY_ADDRS}"
+                                                       id="ot30"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BBR_CODE" visible="false"
+                                                 sortable="true"
+                                                 headerText="Bank Branch Code"
+                                                 id="c22">
+                                        <af:outputText value="#{row.BBB_BBR_CODE}"
+                                                       id="ot25"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BBR_BNK_CODE"
+                                                 sortable="true" visible="false"
+                                                 headerText="#{bindings.SystemPost2.hints.BBB_BBR_BNK_CODE.label}"
+                                                 id="c25">
+                                        <af:outputText value="#{row.BBB_BBR_BNK_CODE}"
+                                                       id="ot26"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BBR_BRANCH_NAME"
+                                                 sortable="true" 
+                                                 headerText="#{bindings.SystemPost2.hints.BBB_BBR_BRANCH_NAME.label}"
+                                                 id="c27">
+                                        <af:outputText value="#{row.BBB_BBR_BRANCH_NAME}"
+                                                       id="ot27"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BBR_SHT_DESC"
+                                                 sortable="true"
+                                                 headerText="#{bindings.SystemPost2.hints.BBB_BBR_SHT_DESC.label}"
+                                                 id="c28">
+                                        <af:outputText value="#{row.BBB_BBR_SHT_DESC}"
+                                                       id="ot28"/>
+                                      </af:column>
+                                      <af:column sortProperty="BBB_BBR_PHYSICAL_ADDRS"
+                                                 sortable="true"
+                                                 headerText="#{bindings.SystemPost2.hints.BBB_BBR_PHYSICAL_ADDRS.label}"
+                                                 id="c20">
+                                        <af:outputText value="#{row.BBB_BBR_PHYSICAL_ADDRS}"
+                                                       id="ot29"/>
+                                      </af:column>
+                                    </af:table>
+                
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                              </af:panelSplitter>
+                            </af:panelGroupLayout>
+                          </af:panelBox>
+                        </af:panelGroupLayout>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelBox>
+            </af:panelBox>
+            <af:popup id="addBranchBankDetails" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Add/edit Bank Branch Details" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                  
+                    <h:panelGrid columns="2" id="pg3">
+                    <af:inputText label="Branch Name:" id="it1" disabled="true"
+                                  binding="#{postLevelsBacking.txtBranchesCode}"/>
+                    <af:commandButton   id="cb4"   icon="/images/dropdown.gif">
+                       <af:showPopupBehavior popupId="showAllBranches"/>
+                       </af:commandButton>
+                   </h:panelGrid>
+                  
+                     <h:panelGrid columns="2" id="pg9">
+                    <af:inputText label="Bnk Brc Code :" id="it5"
+                                showRequired="true" disabled="true" 
+                                  binding="#{postLevelsBacking.brnBankCode}"/>
+                     <af:commandButton   id="cb1"   icon="/images/dropdown.gif">
+                       <af:showPopupBehavior popupId="showbankBranches"/>
+                       </af:commandButton>
+                     </h:panelGrid>
+                  <h:panelGrid columns="2" id="pg7">
+                    <af:commandButton text="Save" id="cb8"
+                                      binding="#{postLevelsBacking.btnSaveUpdateSysPostLevel}"
+                                      action="#{postLevelsBacking.saveBankDetails}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb9"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="showAllBranches" contentDelivery="lazyUncached">
+              <af:dialog id="d10" title="Show All Branches" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl14">
+                  <af:panelBox text="PanelBox5" id="pb13" showHeader="never">
+                    <af:panelCollection id="pc9" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.System9.collectionModel}"
+                                var="row" rows="#{bindings.System9.rangeSize}"
+                                emptyText="#{bindings.System9.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.System9.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.System9Query.queryDescriptor}"
+                                queryListener="#{bindings.System9Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.System9.collectionModel.selectedRow}"
+                                selectionListener="#{postLevelsBacking.selectBranch}"
+                                rowSelection="single" id="t4"
+                                binding="#{postLevelsBacking.tblBrn}">
+                        <af:column sortProperty="brn_code" filterable="true"
+                                   sortable="true" visible="false"
+                                   headerText="Branch Code"
+                                   id="c1">
+                          <af:outputText value="#{row.brn_code}" id="ot7"/>
+                        </af:column>
+                        <af:column sortProperty="brn_sht_desc" filterable="true"
+                                   sortable="true" visible="false"
+                                   headerText="Branch Short Desc"
+                                   id="c31">
+                          <af:outputText value="#{row.brn_sht_desc}" id="ot31"/>
+                        </af:column>
+                        <af:column sortProperty="brn_name" filterable="true"
+                                   sortable="true"
+                                   headerText="Branch Name"
+                                   id="c7">
+                          <af:outputText value="#{row.brn_name}" id="ot4"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg13">
+                      <af:commandButton text="Ok" id="btnAcceptSubDivision"
+                                        action="#{postLevelsBacking.actionsetCode}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelSystemPost"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="showbankBranches" contentDelivery="lazyUncached">
+                  <af:dialog id="d12" type="none" title="Select a Branch">
+                    <af:panelGroupLayout id="pgl8">
+                      <af:panelCollection id="pc4" inlineStyle="width:260.0px;">
+                    <af:table value="#{bindings.System10.collectionModel}"
+                              var="row" rows="#{bindings.System10.rangeSize}"
+                              emptyText="#{bindings.System10.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.System10.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.System10Query.queryDescriptor}"
+                              queryListener="#{bindings.System10Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectedRowKeys="#{bindings.System10.collectionModel.selectedRow}"
+                              selectionListener="#{postLevelsBacking.selectbankBranch}"
+                              rowSelection="single" id="t5"
+                              binding="#{postLevelsBacking.tblBran}">
+                      <af:column sortProperty="v_bbr_code"
+                                 sortable="true"  visible="false"
+                                 headerText="Branch Code"
+                                 id="c32">
+                        <af:outputText value="#{row.v_bbr_code}" id="ot8"/>
+                      </af:column>
+                      <af:column sortProperty="v_bbr_branch_name" sortable="true"  
+                                 headerText="Bank Branch Name"
+                                 id="c8">
+                        <af:outputText value="#{row.v_bbr_branch_name}"
+                                       id="ot9"/>
+                      </af:column>
+                      <af:column sortProperty="v_bbr_sht_desc"
+                                 sortable="true" visible="false"
+                                 headerText="Branch Short Desc"
+                                 id="c33">
+                        <af:outputText value="#{row.v_bbr_sht_desc}" id="ot32"/>
+                      </af:column>
+                      <af:column sortProperty="v_bbr_bnk_code" visible="false"
+                                 sortable="true"
+                                 headerText="Branch Bank Code"
+                                 id="c9">
+                        <af:outputText value="#{row.v_bbr_bnk_code}" id="ot33"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                      <af:commandButton text="OK" id="cb23"
+                                        action="#{postLevelsBacking.saveBranchDetails}"
+                                        partialSubmit="true"/>
+                    </af:panelGroupLayout>
+                  </af:dialog>
+                </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

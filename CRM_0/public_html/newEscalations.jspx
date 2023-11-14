@@ -1,0 +1,850 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="crmDc1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+        <f:attribute name="mode" value="index"/>
+        <f:facet name="center">
+        <af:group id="g1">
+        
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+        
+        <table cellspacing="2" cellpadding="3" border="0" width="100%">
+                <tr>
+                  <td width="50%">
+                    <af:inputText id="it1" 
+                                    readOnly="true" 
+                                    simple="false"
+                                    helpTopicId="CRMdivisions"/>
+                  </td>
+                  
+                  <td width="50%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" >
+                <af:outputLabel value="Escalations Definitions"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="separator1"/>
+              <af:panelGroupLayout layout="scroll" halign="left" valign="top"
+                               id="pgl1">
+                <af:panelSplitter id="ps1" inlineStyle="height:550.0px;"
+                                  styleClass="AFAuxiliaryStretchWidth"
+                                  splitterPosition="250">
+                  <f:facet name="first">
+                    <af:panelBox text="System Processes"  showHeader="never"
+                                 inlineStyle="width:300.0px;">
+                     
+                     <!--
+                      <af:tree value="#{bindings.Escalations.treeModel}"
+                               var="node"
+                               selectionListener="#{EscalationsManip.treeSysProcessSelectionListener}"
+                               rowSelection="single" id="t1"
+                               binding="#{EscalationsManip.systemProcesses}"
+                               inlineStyle="height:500.0px;">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node.name}"  />
+                        </f:facet>
+                      </af:tree>
+                        -->
+                      <af:tree value="#{bindings.Escalations.treeModel}"
+                               var="node"
+                               selectionListener="#{bindings.Escalations.treeModel.makeCurrent}"
+                               rowSelection="single" id="t1">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node}" id="ot1"/>
+                        </f:facet>
+                      </af:tree> 
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout layout="scroll"
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl3">
+                   <!--
+                      <af:panelTabbed id="pt1"
+                                      inlineStyle="width:100%; height:600.0px;">
+                        <af:showDetailItem text="Activities" id="sdi2">
+                          <af:panelBox id="pb2"
+                                       styleClass="AFAuxiliaryStretchWidth">
+                            <f:facet name="toolbar"/>
+                            <af:panelCollection id="pc1"
+                                                inlineStyle="width:99%; height:200.0px;">
+                              <f:facet name="menus"/>
+                              <f:facet name="toolbar"/>
+                              <f:facet name="statusbar"/>
+                              <af:table value="#{bindings.Escalations1.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.Escalations1.rangeSize}"
+                                        emptyText="#{bindings.Escalations1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.Escalations1.rangeSize}"
+                                        rowBandingInterval="0"
+                                        filterModel="#{bindings.Escalations1Query.queryDescriptor}"
+                                        queryListener="#{bindings.Escalations1Query.processQuery}"
+                                        varStatus="vs"
+                                        selectionListener="#{EscalationsManip.activitiesSelected}"
+                                        rowSelection="single" id="t2"
+                                        inlineStyle="width:inherit;"
+                                        binding="#{EscalationsManip.activities}">
+                                <af:column sortProperty="activityType"
+                                           filterable="true" sortable="true"
+                                           headerText="Activity Type" id="c1"
+                                           width="150">
+                                  <af:outputText value="#{row.activityType}"
+                                                 id="ot1"/>
+                                </af:column>
+                                <af:column sortProperty="activityName"
+                                           filterable="true" sortable="true"
+                                           headerText="Activity Name" id="c2"
+                                           width="150">
+                                  <af:outputText value="#{row.activityName}"
+                                                 id="ot2"/>
+                                </af:column>
+                              </af:table>
+                            </af:panelCollection>
+                            <h:panelGrid columns="1" id="pg1">
+                        <af:spacer width="10" height="10" id="s1"/>
+                        <af:outputLabel value="EscalationLevels" id="ol1"/>
+                        <af:separator id="s2"/>
+                      </h:panelGrid>
+                      <af:panelGroupLayout id="pgl4"
+                                           binding="#{EscalationsManip.dtls}">
+                        <af:commandButton text="Save" id="cb12"
+                                          icon="/images/save.gif"
+                                          action="#{EscalationsManip.saveEscalations}"
+                                          partialSubmit="true"/>
+                        <h:panelGrid columns="10" id="pg4">
+                          <af:outputLabel value="Level One" id="ol6"/>
+                          <af:selectBooleanCheckbox label="Label 1" id="sbc1"
+                                                    simple="true"
+                                                    value="#{bindings.select.inputValue}"
+                                                    binding="#{EscalationsManip.lvlCheck}"/>
+                          <af:outputLabel value="Code" id="ol2"
+                                          visible="false"/>
+                          <af:inputText label="Label 1" id="it2" visible="false"
+                                        binding="#{EscalationsManip.escCode}"
+                                        value="#{bindings.code.inputValue}"/>
+                          <af:outputLabel value="Duration (days)" id="ol5"/>
+                          <af:inputNumberSpinbox label="Label 1" id="ins1"
+                                                 simple="true"
+                                                 binding="#{EscalationsManip.escDuration}"
+                                                 value="#{bindings.duration.inputValue}"
+                                                 columns="10"/>
+                          <af:outputLabel value="Assignee" id="ol4"/>
+                          <h:panelGrid columns="2" id="pg6">
+                            <af:inputText label="#{bindings.userCode.inputValue}"
+                                          id="it3" simple="true" disabled="true"
+                                          binding="#{EscalationsManip.escAssignee}"
+                                          value="#{bindings.username.inputValue}"
+                                          columns="30"/>
+                            <af:commandButton id="cb4"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true"
+                                              action="#{EscalationsManip.launchUser}"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="CC" id="ol18"/>
+                          <h:panelGrid columns="2" id="pg20">
+                            <af:inputText label="#{bindings.ccUser.inputValue}"
+                                          id="it10" simple="true"
+                                          disabled="true"
+                                          binding="#{EscalationsManip.ccAssignee}"
+                                          value="#{bindings.ccUsername.inputValue}"
+                                          columns="30"/>
+                            <af:commandButton id="cb13"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true"
+                                              action="#{EscalationsManip.launchCCUser}"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="Level Two" id="ol3"/>
+                          <af:selectBooleanCheckbox label="Label 1" id="sbc2"
+                                                    simple="true"
+                                                    value="#{bindings.select1.inputValue}"
+                                                    binding="#{EscalationsManip.lvlCheck1}"/>
+                          <af:outputLabel value="Code" id="ol7"
+                                          visible="false"/>
+                          <af:inputText label="Label 1" id="it4" visible="false"
+                                        binding="#{EscalationsManip.escCode1}"
+                                        value="#{bindings.code1.inputValue}"/>
+                          <af:outputLabel value="Duration (days)" id="ol8"/>
+                          <af:inputNumberSpinbox label="Label 1" id="ins2"
+                                                 simple="true"
+                                                 binding="#{EscalationsManip.escDuration1}"
+                                                 value="#{bindings.duration1.inputValue}"
+                                                 columns="10"/>
+                          <af:outputLabel value="Assignee" id="ol9"/>
+                          <h:panelGrid columns="2" id="pg9">
+                            <af:inputText label="#{bindings.userCode1.inputValue}"
+                                          id="it5" simple="true" disabled="true"
+                                          binding="#{EscalationsManip.escAssignee1}"
+                                          value="#{bindings.username1.inputValue}"
+                                          columns="30"/>
+                            <af:commandButton id="cb26"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true"
+                                              action="#{EscalationsManip.launchUserTwo}"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="CC" id="ol20"/>
+                          <h:panelGrid columns="2" id="pg25">
+                            <af:inputText label="#{bindings.ccUser1.inputValue}"
+                                          id="it11" simple="true"
+                                          disabled="true"
+                                          binding="#{EscalationsManip.ccAssignee1}"
+                                          value="#{bindings.ccUsername1.inputValue}"
+                                          columns="30"/>
+                            <af:commandButton id="cb14"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true"
+                                              action="#{EscalationsManip.launchCCUserTwo}"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="Level Three" id="ol10"/>
+                          <af:selectBooleanCheckbox label="Label 1" id="sbc3"
+                                                    simple="true"
+                                                    value="#{bindings.select2.inputValue}"
+                                                    binding="#{EscalationsManip.lvlCheck2}"/>
+                          <af:outputLabel value="Code" id="ol11"
+                                          visible="false"/>
+                          <af:inputText label="Label 1" id="it6" visible="false"
+                                        binding="#{EscalationsManip.escCode2}"
+                                        value="#{bindings.code2.inputValue}"/>
+                          <af:outputLabel value="Duration (days)" id="ol12"/>
+                          <af:inputNumberSpinbox label="Label 1" id="ins3"
+                                                 simple="true"
+                                                 binding="#{EscalationsManip.escDuration2}"
+                                                 value="#{bindings.duration2.inputValue}"
+                                                 columns="10"/>
+                          <af:outputLabel value="Assignee" id="ol13"/>
+                          <h:panelGrid columns="2" id="pg10">
+                            <af:inputText label="#{bindings.userCode2.inputValue}"
+                                          id="it7" simple="true" disabled="true"
+                                          binding="#{EscalationsManip.escAssignee2}"
+                                          value="#{bindings.username2.inputValue}"
+                                          columns="30"/>
+                            <af:commandButton id="cb27"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true"
+                                              action="#{EscalationsManip.launchUserThree}"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="CC" id="ol19"/>
+                          <h:panelGrid columns="2" id="pg26">
+                            <af:inputText label="#{bindings.ccUser2.inputValue}"
+                                          id="it12" simple="true"
+                                          disabled="true"
+                                          binding="#{EscalationsManip.ccAssignee2}"
+                                          value="#{bindings.ccUsername2.inputValue}"
+                                          columns="30"/>
+                            <af:commandButton id="cb15"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true"
+                                              action="#{EscalationsManip.launchCCUserThree}"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="Level Four" id="ol14"/>
+                          <af:selectBooleanCheckbox label="Label 1" id="sbc4"
+                                                    simple="true"
+                                                    value="#{bindings.select3.inputValue}"
+                                                    binding="#{EscalationsManip.lvlCheck3}"/>
+                          <af:outputLabel value="Code" id="ol15"
+                                          visible="false"/>
+                          <af:inputText label="Label 1" id="it8" visible="false"
+                                        binding="#{EscalationsManip.escCode3}"
+                                        value="#{bindings.code3.inputValue}"/>
+                          <af:outputLabel value="Duration (days)" id="ol16"/>
+                          <af:inputNumberSpinbox label="Label 1" id="ins4"
+                                                 simple="true"
+                                                 binding="#{EscalationsManip.escDuration3}"
+                                                 value="#{bindings.duration3.inputValue}"
+                                                 columns="10"/>
+                          <af:outputLabel value="Assignee" id="ol17"/>
+                          <h:panelGrid columns="2" id="pg19">
+                            <af:inputText label="#{bindings.userCode3.inputValue}"
+                                          id="it9" simple="true" disabled="true"
+                                          binding="#{EscalationsManip.escAssignee3}"
+                                          value="#{bindings.username3.inputValue}"
+                                          columns="30"/>
+                            <af:commandButton id="cb11"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true"
+                                              action="#{EscalationsManip.launchUserFour}"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="CC" id="ol21"/>
+                          <h:panelGrid columns="2" id="pg15">
+                            <af:inputText label="#{bindings.ccUser3.inputValue}"
+                                          id="it13" simple="true"
+                                          disabled="true"
+                                          binding="#{EscalationsManip.ccAssignee3}"
+                                          value="#{bindings.ccUsername3.inputValue}"
+                                          columns="30"/>
+                            <af:commandButton id="cb16"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true"
+                                              action="#{EscalationsManip.launchCCUserFour}"/>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                        
+                      </af:panelGroupLayout>
+                          </af:panelBox>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Service Requests"
+                                           id="showDetailItem1">
+                          <af:panelBox id="panelBox1"
+                                       styleClass="AFAuxiliaryStretchWidth">
+                            <f:facet name="toolbar"/>
+                                <af:separator id="s21"/>
+                  <h:panelGrid columns="3" id="pg31">
+                    <af:commandButton text="New" id="btnNewBank"
+                                      icon="/images/create.gif"                                     
+                                      partialSubmit="true"
+                                      action="#{EscalationsManip.actionNewEscalation}"/>
+                    <af:commandButton text="Edit" 
+                                      id="btnEditBank" icon="/images/update.gif"                                     
+                                      partialSubmit="true"
+                                      action="#{EscalationsManip.actionEditEscalation}"/>
+                    <af:commandButton text="Delete" 
+                                      id="btnDeleteBank"
+                                      icon="/images/delete.gif"                                      
+                                      partialSubmit="true"
+                                      action="#{EscalationsManip.actionShowDeleteEscalation}"/>
+                  </h:panelGrid>
+                   <af:popup id="confirmDeleteEsc" contentDelivery="lazyUncached">
+              <af:dialog id="d6" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{EscalationsManip.actionConfirmDeleteEsc}">
+                <af:panelFormLayout id="pfl4" inlineStyle="width:300.0px;">
+                  <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                 id="outputText1"/>
+                </af:panelFormLayout>
+              </af:dialog>
+              </af:popup>
+              
+               <af:popup id="escPop" contentDelivery="lazyUncached">
+              <af:dialog id="d4" title="Service Requests Escalations" type="none"
+                         inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl2">
+                  <af:panelBox text="PanelBox5" id="pb5" showHeader="never">
+                    <h:panelGrid columns="1" id="pg30">
+                    <h:panelGrid columns="2" id="pg17">
+                                 <af:outputLabel value="Request Category"
+                                                        id="ol22"/>
+                                    <h:panelGrid columns="2" id="pg171">
+                                        
+                                        <af:inputText label="Request Category" id="it18"
+                                                    binding="#{EscalationsManip.sreSrDesc}"
+                                                    disabled="true"
+                                                     simple="true"/>
+                                     <af:commandButton icon="/images/dropdown.gif" id="cb6"
+                                        partialSubmit="true"
+                                        action="#{EscalationsManip.actionShowServReqLvls}"/>
+  
+                                    </h:panelGrid>
+                                    
+                                      <af:outputLabel value="Level One Duration"
+                                                      id="ol23"/>
+                                      <af:inputNumberSpinbox label="Label 2"
+                                                             id="ins5"
+                                                             binding="#{EscalationsManip.sreLvlOneDur}"
+                                                              simple="true"/>
+                                      <af:outputLabel value="Level One Assignee"
+                                                      id="ol24"/>
+                                      <h:panelGrid columns="2" id="pg21">             
+                                      <af:inputText label="Level One Assignee" id="it15"
+                                                    binding="#{EscalationsManip.sreLvlOneAssignee}"
+                                                     simple="true"
+                                                     disabled="true"
+                                                     />
+                                    <af:commandButton icon="/images/dropdown.gif"
+                                                      id="cb22"
+                                        partialSubmit="true"
+                                        action="#{EscalationsManip.actionShowLvlOneAssignee}"/>
+  
+                                    </h:panelGrid>
+                                      <af:outputLabel value="Level Two Duration"
+                                                      id="ol25"/>
+                                      <af:inputNumberSpinbox label="Label 2"
+                                                             id="ins6"
+                                                            binding="#{EscalationsManip.sreLvlTwoDurat}"
+                                                             simple="true"/>
+                                      <af:outputLabel value="Level Two Assignee"
+                                                      id="ol26"/>
+                                      <h:panelGrid columns="2" id="pg22"> 
+                                      <af:inputText label="Level Two Assignee" id="it17"
+                                                    binding="#{EscalationsManip.sreLvlTwoAssignee}"
+                                                     simple="true"
+                                                     disabled="true"
+                                                     />
+                                      <af:commandButton icon="/images/dropdown.gif"
+                                                        id="cb23"
+                                        partialSubmit="true"
+                                        action="#{EscalationsManip.actionShowLvlTwoAssignee}"/>
+      
+       <af:popup id="usersLevelOne">
+       
+                            <af:dialog id="d5" type="none" title="Users">
+                              <af:panelBox text="PanelBox23" id="pb9"
+                                           showHeader="never">
+                                <f:facet name="toolbar"/>
+                                <af:panelGroupLayout id="pgl7">
+                                  <h:panelGrid columns="1" id="pg13">
+                                                  <af:table value="#{bindings.User1.collectionModel}"
+                                                            var="row"
+                                                            rows="#{bindings.User1.rangeSize}"
+                                                            emptyText="#{bindings.User1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                            fetchSize="#{bindings.User1.rangeSize}"
+                                                            rowBandingInterval="0"
+                                                            filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                                            queryListener="#{bindings.UserQuery.processQuery}"
+                                                            filterVisible="true"
+                                                            varStatus="vs"
+                                                            selectedRowKeys="#{bindings.User1.collectionModel.selectedRow}"
+                                                            selectionListener="#{bindings.User1.collectionModel.makeCurrent}"
+                                                            rowSelection="single"
+                                                            id="t7"
+                                                            binding="#{EscalationsManip.usersLvlOneTbl}">
+                                                    <af:column sortProperty="#{bindings.User1.hints.userCode.name}"
+                                                               filterable="true"
+                                                               sortable="true"
+                                                               headerText="#{bindings.User1.hints.userCode.label}"
+                                                               id="c12">
+                                                      <af:outputText value="#{row.userCode}"
+                                                                     id="ot12"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.User1.hints.username.name}"
+                                                               filterable="true"
+                                                               sortable="true"
+                                                               headerText="#{bindings.User1.hints.username.label}"
+                                                               id="c23">
+                                                      <af:outputText value="#{row.username}"
+                                                                     id="ot14"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.User1.hints.userFullname.name}"
+                                                               filterable="true"
+                                                               sortable="true"
+                                                               headerText="#{bindings.User1.hints.userFullname.label}"
+                                                               id="c13">
+                                                      <af:outputText value="#{row.userFullname}"
+                                                                     id="ot24"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.User1.hints.userEmail.name}"
+                                                               filterable="true"
+                                                               sortable="true"
+                                                               headerText="#{bindings.User1.hints.userEmail.label}"
+                                                               id="c11">
+                                                      <af:outputText value="#{row.userEmail}"
+                                                                     id="ot13"/>
+                                                    </af:column>
+                                                  </af:table>
+                                                  <h:panelGrid columns="2" id="pg14">
+                                      <af:commandButton text="Ok"
+                                                        id="cb9"
+                                                        partialSubmit="true"
+                                                        action="#{EscalationsManip.userLevelOneSelected}"/>
+                                      <af:commandButton text="Cancel"
+                                                        id="cb10"
+                                                        partialSubmit="true"
+                                                        action="#{EscalationsManip.cancelUserLevelOne}"/>
+                                    </h:panelGrid>
+                                  </h:panelGrid>
+                                </af:panelGroupLayout>
+                              </af:panelBox>
+                            </af:dialog>
+                          </af:popup>
+      <af:popup id="usersLevelTwo">
+                            <af:dialog id="d7" type="none" title="Users">
+                              <af:panelBox text="PanelBox23" id="pb7"
+                                           showHeader="never">
+                                <f:facet name="toolbar"/>
+                                <af:panelGroupLayout id="pgl8">
+                                  <h:panelGrid columns="1" id="pg23">
+                                                  <af:table value="#{bindings.User1.collectionModel}"
+                                                            var="row"
+                                                            rows="#{bindings.User1.rangeSize}"
+                                                            emptyText="#{bindings.User1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                            fetchSize="#{bindings.User1.rangeSize}"
+                                                            rowBandingInterval="0"
+                                                            filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                                            queryListener="#{bindings.UserQuery.processQuery}"
+                                                            filterVisible="true"
+                                                            varStatus="vs"
+                                                            selectedRowKeys="#{bindings.User1.collectionModel.selectedRow}"
+                                                            selectionListener="#{bindings.User1.collectionModel.makeCurrent}"
+                                                            rowSelection="single"
+                                                            id="t8"
+                                                            binding="#{EscalationsManip.usersLvlTwoTbl}">
+                                                    <af:column sortProperty="#{bindings.User1.hints.userCode.name}"
+                                                               filterable="true"
+                                                               sortable="true"
+                                                               headerText="#{bindings.User1.hints.userCode.label}"
+                                                               id="c24">
+                                                      <af:outputText value="#{row.userCode}"
+                                                                     id="ot25"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.User1.hints.username.name}"
+                                                               filterable="true"
+                                                               sortable="true"
+                                                               headerText="#{bindings.User1.hints.username.label}"
+                                                               id="c25">
+                                                      <af:outputText value="#{row.username}"
+                                                                     id="ot26"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.User1.hints.userFullname.name}"
+                                                               filterable="true"
+                                                               sortable="true"
+                                                               headerText="#{bindings.User1.hints.userFullname.label}"
+                                                               id="c26">
+                                                      <af:outputText value="#{row.userFullname}"
+                                                                     id="ot27"/>
+                                                    </af:column>
+                                                    <af:column sortProperty="#{bindings.User1.hints.userEmail.name}"
+                                                               filterable="true"
+                                                               sortable="true"
+                                                               headerText="#{bindings.User1.hints.userEmail.label}"
+                                                               id="c27">
+                                                      <af:outputText value="#{row.userEmail}"
+                                                                     id="ot28"/>
+                                                    </af:column>
+                                                  </af:table>
+                                                  <h:panelGrid columns="2"
+                                                               id="pg24">
+                                      <af:commandButton text="Ok"
+                                                        id="cb24"
+                                                        partialSubmit="true"
+                                                        action="#{EscalationsManip.userLevelTwoSelected}"/>
+                                      <af:commandButton text="Cancel"
+                                                        id="cb25"
+                                                        partialSubmit="true"
+                                                        action="#{EscalationsManip.cancelUserLevelTwo}"/>
+                                    </h:panelGrid>
+                                  </h:panelGrid>
+                                </af:panelGroupLayout>
+                              </af:panelBox>
+                            </af:dialog>
+                          </af:popup>
+                                    </h:panelGrid>
+                                    </h:panelGrid>
+                                      <h:panelGrid columns="2" id="pg16">
+                      <af:commandButton text="Ok" id="cb17"
+                                       
+                                        partialSubmit="true"
+                                        action="#{EscalationsManip.saveUpdateEsc}"
+                                        binding="#{EscalationsManip.btnSaveUpdateEsc}"/>
+                      <af:commandButton text="Cancel"
+                                        id="cb18"
+                                        partialSubmit="true"
+                                        action="#{EscalationsManip.cancelServReqPop}"/>
+                    </h:panelGrid>
+                     </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+                 
+                 
+                   <af:popup id="categoryType">
+                            <af:dialog id="d3" type="none"
+                                       title="Request Categories">
+                              <af:panelBox text="PanelBox22" id="pb8"
+                                           showHeader="never">
+                                <f:facet name="toolbar"/>
+                                <af:panelGroupLayout id="pgl6">
+                                  <h:panelGrid columns="1" id="pg11">
+                                      <af:table value="#{bindings.ServiceReq.collectionModel}"
+                                                var="row"
+                                                rows="#{bindings.ServiceReq.rangeSize}"
+                                                emptyText="#{bindings.ServiceReq.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                fetchSize="#{bindings.ServiceReq.rangeSize}"
+                                                rowBandingInterval="0"
+                                                filterModel="#{bindings.ServiceReqQuery.queryDescriptor}"
+                                                queryListener="#{bindings.ServiceReqQuery.processQuery}"
+                                                filterVisible="true"
+                                                varStatus="vs"
+                                                selectedRowKeys="#{bindings.ServiceReq.collectionModel.selectedRow}"
+                                                selectionListener="#{bindings.ServiceReq.collectionModel.makeCurrent}"
+                                                rowSelection="single" id="t5"
+                                                binding="#{EscalationsManip.servReqCatTbl}">
+                                        <af:column sortProperty="#{bindings.ServiceReq.hints.srtCode.name}"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="#{bindings.ServiceReq.hints.srtCode.label}"
+                                                   id="c10">
+                                          <af:outputText value="#{row.srtCode}"
+                                                         id="ot8"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ServiceReq.hints.srtShtDesc.name}"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="#{bindings.ServiceReq.hints.srtShtDesc.label}"
+                                                   id="c7">
+                                          <af:outputText value="#{row.srtShtDesc}"
+                                                         id="ot9"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.ServiceReq.hints.srtDesc.name}"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="#{bindings.ServiceReq.hints.srtDesc.label}"
+                                                   id="c6">
+                                          <af:outputText value="#{row.srtDesc}"
+                                                         id="ot11"/>
+                                        </af:column>
+                                      </af:table>
+                                      <h:panelGrid columns="2" id="pg12">
+                                      <af:commandButton text="Ok"
+                                                        id="cb7"
+                                                        partialSubmit="true"
+                                                        action="#{EscalationsManip.selectCategoryType}"/>
+                                      <af:commandButton text="Cancel"
+                                                        id="cb8"
+                                                        partialSubmit="true"
+                                                        action="#{ServiceRequest.cancelCategory}"/>
+                                    </h:panelGrid>
+                                  </h:panelGrid>
+                                </af:panelGroupLayout>
+                              </af:panelBox>
+                            </af:dialog>
+                          </af:popup>
+                 
+                 
+                   <af:popup id="servReqLvlsPop" contentDelivery="lazyUncached">
+              <af:dialog id="d1" title="Service Requests Categories" type="none"
+                         inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl5">
+                  <af:panelBox text="PanelBox5" id="pb6" showHeader="never">
+                    <af:panelCollection id="pc3"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                   
+                    </af:panelCollection>
+                    <h:panelGrid columns="2" id="pg18">
+                      <af:commandButton text="Ok" id="btnAcceptForwadingBank"
+                                        action="#{bankDefinitionsBacking.actionAcceptForwadingBank}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel"
+                                        id="btnCancelForwadingBank"
+                                        partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.actionCancelFwdingBnk}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+                  <af:separator id="s31"/>
+                            <af:panelCollection id="panelCollection1"
+                                                inlineStyle="width:99%; height:200.0px;">
+                              <f:facet name="menus"/>
+                              <f:facet name="toolbar"/>
+                    
+                              <f:facet name="statusbar"/>
+                                     
+                            
+                              <af:table value="#{bindings.Escalations5.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.Escalations5.rangeSize}"
+                                        emptyText="#{bindings.Escalations5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.Escalations5.rangeSize}"
+                                        rowBandingInterval="0"
+                                        filterModel="#{bindings.Escalations4Query.queryDescriptor}"
+                                        queryListener="#{bindings.Escalations4Query.processQuery}"
+                                        filterVisible="true" varStatus="vs"
+                                        selectedRowKeys="#{bindings.Escalations5.collectionModel.selectedRow}"
+                                        selectionListener="#{bindings.Escalations5.collectionModel.makeCurrent}"
+                                        rowSelection="single" id="t6"
+                                         binding="#{EscalationsManip.escalationTbl}">
+                                <af:column sortProperty="#{bindings.Escalations5.hints.sreCode.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.Escalations5.hints.sreCode.label}"
+                                           id="c17"
+                                           visible="false">
+                                  <af:outputText value="#{row.sreCode}"
+                                                 id="ot20"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Escalations5.hints.sreSrtCode.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.Escalations5.hints.sreSrtCode.label}"
+                                           id="c22"
+                                           visible="false">
+                                  <af:outputText value="#{row.sreSrtCode}"
+                                                 id="ot21"/>
+                                </af:column>
+                                 <af:column sortProperty="#{bindings.Escalations5.hints.sreSrtName.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="Service Rquest Category"
+                                           id="c15">
+                                  <af:outputText value="#{row.sreSrtName}"
+                                                 id="ot16"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Escalations5.hints.sreLvlDuration.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="Level One Duration"
+                                           id="c21">
+                                  <af:outputText value="#{row.sreLvlDuration}"
+                                                 id="ot22"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Escalations5.hints.sreLvlOneAssignee.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="Level One Assignee"
+                                           id="c16"
+                                           visible="false">
+                                  <af:outputText value="#{row.sreLvlOneAssignee}"
+                                                 id="ot15"/>
+                                </af:column>
+                                   <af:column sortProperty="#{bindings.Escalations5.hints.sreLvlOneAssigneeName.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="Level One Assignee"
+                                           id="c14">
+                                  <af:outputText value="#{row.sreLvlOneAssigneeName}"
+                                                 id="ot19"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Escalations5.hints.sreLvlTwoDuration.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="Level Two Duration"
+                                           id="c18">
+                                  <af:outputText value="#{row.sreLvlTwoDuration}"
+                                                 id="ot17"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Escalations5.hints.sreLvlTwoAssignee.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="Level Two Assignee"
+                                           id="c19"
+                                           visible="false">
+                                  <af:outputText value="#{row.sreLvlTwoAssignee}"
+                                                 id="ot18"/>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.Escalations5.hints.sreLvlTwoAssigneeName.name}"
+                                           filterable="true" sortable="true"
+                                           headerText="Level Two Assignee"
+                                           id="c20">
+                                  <af:outputText value="#{row.sreLvlTwoAssigneeName}"
+                                                 id="ot23"/>
+                                </af:column>
+                               
+                             
+                                
+                              </af:table>
+                            </af:panelCollection>
+                          </af:panelBox>
+                        </af:showDetailItem>
+                      </af:panelTabbed>
+                        -->
+                   <!--   <af:popup id="users">
+                        <af:dialog id="d8" type="none" title="Users">
+                          <af:panelBox text="PanelBox3" id="pb4"
+                                       showHeader="never">
+                            <f:facet name="toolbar"/>
+                            <h:panelGrid columns="1" id="pg7">
+                              <af:table value="#{bindings.User.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.User.rangeSize}"
+                                        emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.User.rangeSize}"
+                                        rowBandingInterval="0"
+                                        filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                        queryListener="#{bindings.UserQuery.processQuery}"
+                                        filterVisible="true" varStatus="vs"
+                                        selectionListener="#{bindings.User.collectionModel.makeCurrent}"
+                                        rowSelection="single" id="t4"
+                                        binding="#{EscalationsManip.users}">
+                                <af:column sortProperty="username"
+                                           filterable="true" sortable="true"
+                                           headerText="Username" id="c3">
+                                  <af:outputText value="#{row.username}"
+                                                 id="ot7"/>
+                                </af:column>
+                                <af:column sortProperty="userFullname"
+                                           filterable="true" sortable="true"
+                                           headerText="Fullname" id="c5"
+                                           width="200">
+                                  <af:outputText value="#{row.userFullname}"
+                                                 id="ot3"/>
+                                </af:column>
+                              </af:table>
+                              <h:panelGrid columns="2" id="pg8">
+                                <af:commandButton text="OK" id="cb21"
+                                                  partialSubmit="true"
+                                                  action="#{EscalationsManip.selectUser}"/>
+                                <af:commandButton text="Cancel" id="cb20"/>
+                              </h:panelGrid>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </af:dialog>
+                      </af:popup>
+                      <h:panelGrid columns="3" id="pg2" rendered="false">
+                        <af:commandButton text="Add" id="cb1"
+                                          icon="/images/create.gif"
+                                          action="#{EscalationsManip.newEsc}"/>
+                        <af:commandButton text="Edit" id="cb2"
+                                          icon="/images/update.gif"
+                                          action="#{EscalationsManip.editEsc}"/>
+                        <af:commandButton text="Delete" id="cb3"
+                                          icon="/images/delete.gif"
+                                          action="#{EscalationsManip.deleteEsc}"/>
+                        <af:popup id="escalations"
+                                  contentDelivery="lazyUncached">
+                          <af:dialog id="d2" type="none" title="Escalations">
+                            <af:panelBox text="PanelBox2" id="pb3"
+                                         showHeader="never">
+                              <f:facet name="toolbar"/>
+                              <h:panelGrid columns="1" id="pg3">
+                                <h:panelGrid columns="2" id="pg5">
+                                  <af:commandButton text="Save" id="cb5"
+                                                    action="#{EscalationsManip.saveEsc}"/>
+                                  <af:commandButton text="Cancel" id="cb19"/>
+                                </h:panelGrid>
+                              </h:panelGrid>
+                            </af:panelBox>
+                          </af:dialog>
+                        </af:popup>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc2"
+                                          inlineStyle="width:99%; height:200.0px;"
+                                          rendered="false">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.Escalations2.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Escalations2.rangeSize}"
+                                  emptyText="#{bindings.Escalations2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Escalations2.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.Escalations2Query.queryDescriptor}"
+                                  queryListener="#{bindings.Escalations2Query.processQuery}"
+                                  varStatus="vs"
+                                  selectionListener="#{bindings.Escalations2.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t3"
+                                  inlineStyle="width:inherit;"
+                                  binding="#{EscalationsManip.levels}">
+                          <af:column sortProperty="level" filterable="true"
+                                     sortable="true" headerText="Level" id="c9"
+                                     width="50">
+                            <af:outputText value="#{row.level}" id="ot6"/>
+                          </af:column>
+                          <af:column sortProperty="Duration (days)"
+                                     filterable="true" sortable="true"
+                                     headerText="Level" id="c4" width="100">
+                            <af:outputText value="#{row.duration}" id="ot4"/>
+                          </af:column>
+                          <af:column sortProperty="username" filterable="true"
+                                     sortable="true" headerText="Assignee"
+                                     id="c8" width="200">
+                            <af:outputText value="#{row.username}" id="ot5"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                         -->
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+          </af:panelGroupLayout>
+            </af:panelBox></af:group>  
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>
+

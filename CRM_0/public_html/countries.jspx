@@ -1,0 +1,975 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox10" id="pb11" showHeader="never">
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="inputText1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <f:facet name="toolbar"/>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Countries Definition" id="ol1"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s13"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <af:panelSplitter id="ps1" inlineStyle="height:590.0px;"
+                                  styleClass="AFAuxiliaryStretchWidth"
+                                  splitterPosition="250">
+                  <f:facet name="first">
+                    <af:panelGroupLayout layout="scroll"
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl1">
+                      <h:panelGrid columns="2" id="pg8">
+                        <af:commandButton text="New" id="btnNewCountry"
+                                          icon="/images/create.gif"
+                                          action="#{baseSetupBacking.actionNewCountry}"/>
+                        <af:commandButton text="Delete" id="btnDeleteCountry"
+                                          icon="/images/delete.gif"
+                                          action="#{baseSetupBacking.confirmCountryDeleteAction}"/>
+                      </h:panelGrid>
+                      <af:panelBox text="PanelBox11" id="pb12"
+                                   showHeader="never"
+                                   inlineStyle="width:250px;">
+                        <f:facet name="toolbar"/>
+                        <af:table value="#{bindings.Country1.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Country1.rangeSize}"
+                                  emptyText="#{bindings.Country1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Country1.rangeSize}"
+                                  rowBandingInterval="1"
+                                  filterModel="#{bindings.Country1Query.queryDescriptor}"
+                                  queryListener="#{bindings.Country1Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{baseSetupBacking.tblCountriesSelectionListener}"
+                                  rowSelection="single" id="t3"
+                                  binding="#{baseSetupBacking.tblCountries}"
+                                  inlineStyle="width:99%; height:530px;">
+                          <af:column sortProperty="name" filterable="true"
+                                     sortable="true" headerText="Country Name"
+                                     id="c20" width="200"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.name}" id="ot13"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelTabbed id="pt2">
+                      <af:showDetailItem text="Country Information" id="sdi1">
+                        <af:panelGroupLayout id="pgl7">
+                          <af:panelBox text="PanelBox2" id="panelCountryDetails"
+                                       showHeader="never"
+                                       binding="#{baseSetupBacking.panelCountryDetails}">
+                            <h:panelGrid columns="3" id="pg2">
+                              <af:commandButton text="Edit" id="btnEditCountry"
+                                                icon="/images/update.gif"
+                                                rendered="false"
+                                                action="#{baseSetupBacking.actionEditCountry}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Save"
+                                                id="btnCreateUpdateCountry"
+                                                icon="/images/save.gif"
+                                                binding="#{baseSetupBacking.btnCreateUpdateCountry}"
+                                                action="#{baseSetupBacking.actionCreateUpdateCountry}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Cancel"
+                                                id="btnCancelCountry"
+                                                binding="#{baseSetupBacking.btnCancelCountry}"
+                                                action="#{baseSetupBacking.btnCancelCountry}"
+                                                partialSubmit="true"/>
+                            </h:panelGrid>
+                            <af:separator id="s2"/>
+                            <af:panelFormLayout id="pfl1"
+                                                inlineStyle="width:420.0px;">
+                              <af:inputText label="Code : " id="txtCountryCode"
+                                            binding="#{baseSetupBacking.txtCountryCode}"
+                                            disabled="true" showRequired="true"
+                                            visible="false"/>
+                              <af:inputText label="#{sessionScope['FX_COUNTRY_SHT_DESC.label']}"
+                                            id="txtCountryShtDesc"
+                                            visible="#{sessionScope['FX_COUNTRY_SHT_DESC.visible']=='Y'}"
+                                            disabled="#{sessionScope['FX_COUNTRY_SHT_DESC.disabled']=='Y'}"
+                                            showRequired="#{sessionScope['FX_COUNTRY_SHT_DESC.required']=='Y'}"
+                                            binding="#{baseSetupBacking.txtCountryShtDesc}"/>
+                              <af:inputText label="#{sessionScope['FX_COUNTRY_NAME.label']}"
+                                            id="txtCountryName"
+                                            visible="#{sessionScope['FX_COUNTRY_NAME.visible']=='Y'}"
+                                            disabled="#{sessionScope['FX_COUNTRY_NAME.disabled']=='Y'}"
+                                            showRequired="#{sessionScope['FX_COUNTRY_NAME.required']=='Y'}"
+                                            binding="#{baseSetupBacking.txtCountryName}"/>
+                              <af:inputText label="Base Currency Code : "
+                                            id="txtCountryBaseCurrency"
+                                            binding="#{baseSetupBacking.txtCountryBaseCurrency}"
+                                            visible="false" disabled="true"/>
+                              <af:panelLabelAndMessage label="#{sessionScope['FX_COUNTRY_BASE_CURRENCY.label']}"
+                                                       visible="#{sessionScope['FX_COUNTRY_BASE_CURRENCY.visible']=='Y'}"
+                                                       showRequired="#{sessionScope['FX_COUNTRY_BASE_CURRENCY.required']=='Y'}"
+                                                       id="plam1">
+                                <af:inputText label="#{sessionScope['FX_COUNTRY_BASE_CURRENCY.label']}"
+                                              id="txtCountryBaseCurrencySymbol"
+                                              binding="#{baseSetupBacking.txtCountryBaseCurrencySymbol}"
+                                              visible="#{sessionScope['FX_COUNTRY_BASE_CURRENCY.visible']=='Y'}"
+                                              simple="true" disabled="true"/>
+                                <af:commandButton id="cb8"
+                                                  icon="/images/dropdown.gif"
+                                                  shortDesc="Click To select Base Currency"
+                                                  visible="#{sessionScope['FX_COUNTRY_BASE_CURRENCY.visible']=='Y'}"
+                                                  disabled="#{sessionScope['FX_COUNTRY_BASE_CURRENCY.disabled']=='Y'}"
+                                                  partialSubmit="true">
+                                  <af:showPopupBehavior popupId="currencyListPopup"/>
+                                </af:commandButton>
+                              </af:panelLabelAndMessage>
+                              <af:inputText label="#{sessionScope['FX_COUNTRY_NATIONALITY.label']}"
+                                            id="txtCountryNationality"
+                                            binding="#{baseSetupBacking.txtCountryNationality}"
+                                            visible="#{sessionScope['FX_COUNTRY_NATIONALITY.visible']=='Y'}"
+                                            disabled="#{sessionScope['FX_COUNTRY_NATIONALITY.disabled']=='Y'}"
+                                            showRequired="#{sessionScope['FX_COUNTRY_NATIONALITY.required']=='Y'}"/>
+                              <af:inputText label="#{sessionScope['FX_COUNTRY_ZIP_CODE.label']}"
+                                            id="txtCountryZIPCode"
+                                            binding="#{baseSetupBacking.txtCountryZIPCode}"
+                                            visible="#{sessionScope['FX_COUNTRY_ZIP_CODE.visible']=='Y'}"
+                                            disabled="#{sessionScope['FX_COUNTRY_ZIP_CODE.disabled']=='Y'}"
+                                            showRequired="#{sessionScope['FX_COUNTRY_ZIP_CODE.required']=='Y'}"/>
+                              <af:selectOneChoice label="#{sessionScope['FX_COUNTRY_ADMINISTRATIVE_UNITS.label']}"
+                                                  id="chAdminUnits"
+                                                  visible="#{sessionScope['FX_COUNTRY_ADMINISTRATIVE_UNITS.visible']=='Y'}"
+                                                  disabled="#{sessionScope['FX_COUNTRY_ADMINISTRATIVE_UNITS.disabled']=='Y'}"
+                                                  showRequired="#{sessionScope['FX_COUNTRY_ADMINISTRATIVE_UNITS.required']=='Y'}"
+                                                  binding="#{baseSetupBacking.chAdminUnits}"
+                                                  value="S">
+                                <af:selectItem label="Counties" value="C"
+                                               id="si2"/>
+                                <af:selectItem label="States" value="S"
+                                               id="si1"/>
+                                <af:selectItem label="Provinces" value="P"
+                                               id="si3"/>
+                                <af:selectItem label="Regions" value="R"
+                                               id="si6"/>
+                              </af:selectOneChoice>
+                              <af:selectOneChoice label="#{sessionScope['FX_COUNTRY_SCHENGEN_COUNTRY.label']}"
+                                                  id="chSchengen" value="N"
+                                                  visible="#{sessionScope['FX_COUNTRY_SCHENGEN_COUNTRY.visible']=='Y'}"
+                                                  disabled="#{sessionScope['FX_COUNTRY_SCHENGEN_COUNTRY.disabled']=='Y'}"
+                                                  showRequired="#{sessionScope['FX_COUNTRY_SCHENGEN_COUNTRY.required']=='Y'}"
+                                                  binding="#{baseSetupBacking.chSchengen}">
+                                <af:selectItem label="Yes" value="Y" id="si4"/>
+                                <af:selectItem label="No" value="N" id="si5"/>
+                              </af:selectOneChoice>
+                              <af:inputText label="#{sessionScope['FX_COUNTRY_EMBASSY_CODE.label']}"
+                                            id="txtEmbCode"
+                                            binding="#{baseSetupBacking.txtEmbCode}"
+                                            visible="#{sessionScope['FX_COUNTRY_EMBASSY_CODE.visible']=='Y'}"
+                                            disabled="#{sessionScope['FX_COUNTRY_EMBASSY_CODE.disabled']=='Y'}"
+                                            showRequired="#{sessionScope['FX_COUNTRY_EMBASSY_CODE.required']=='Y'}"/>
+                              <af:inputNumberSpinbox label="#{sessionScope['FX_COUNTRY_CURRENT_SERIAL.label']}"
+                                                     id="txtCurrentSerial"
+                                                     binding="#{baseSetupBacking.txtCurrentSerial}"
+                                                     visible="#{sessionScope['FX_COUNTRY_CURRENT_SERIAL.visible']=='Y'}"
+                                                     disabled="#{sessionScope['FX_COUNTRY_CURRENT_SERIAL.disabled']=='Y'}"
+                                                     showRequired="#{sessionScope['FX_COUNTRY_CURRENT_SERIAL.required']=='Y'}"/>
+                            </af:panelFormLayout>
+                            <af:separator id="s7"/>
+                            <af:commandButton text="Generate Report" id="cl1"
+                                              icon="/images/report.png"
+                                              partialSubmit="true"/>
+                          </af:panelBox>
+                        </af:panelGroupLayout>
+                      </af:showDetailItem>
+                      <af:group id="g2"
+                                binding="#{baseSetupBacking.groupCountryDivisions}"
+                                rendered="false">
+                        <af:showDetailItem text="Administrative Units" id="sdi4"
+                                           binding="#{baseSetupBacking.shDetailAdminUnits}">
+                          <af:panelBox text="PanelBox6" id="pb7"
+                                       showHeader="never">
+                            <h:panelGrid columns="1" id="pg9">
+                              <af:outputLabel value="States" id="ol2"
+                                              inlineStyle="font-weight:bold;"
+                                              binding="#{baseSetupBacking.lblAdminUnit}"/>
+                            </h:panelGrid>
+                            <af:separator id="s10"/>
+                            <h:panelGrid columns="3" id="pg3">
+                              <af:commandButton text="New" id="btnNewState"
+                                                icon="/images/create.gif"
+                                                action="#{baseSetupBacking.actionNewState}"/>
+                              <af:commandButton text="Edit" id="btnEditState"
+                                                icon="/images/update.gif"
+                                                action="#{baseSetupBacking.actionEditState}"/>
+                              <af:commandButton text="Delete"
+                                                id="btnDeleteState"
+                                                icon="/images/delete.gif"
+                                                action="#{baseSetupBacking.actionDeleteState}"/>
+                            </h:panelGrid>
+                            <af:separator id="s9"/>
+                            <af:table value="#{bindings.State.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.State.rangeSize}"
+                                      emptyText="#{bindings.State.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.State.rangeSize}"
+                                      rowBandingInterval="1"
+                                      filterModel="#{bindings.StateQuery.queryDescriptor}"
+                                      queryListener="#{bindings.StateQuery.processQuery}"
+                                      filterVisible="false" varStatus="vs"
+                                      selectionListener="#{baseSetupBacking.tblCountryStatesSelectionListener}"
+                                      rowSelection="single"
+                                      styleClass="AFAuxiliaryStretchWidth"
+                                      id="tblCountryStates"
+                                      binding="#{baseSetupBacking.tblCountryStates}"
+                                      inlineStyle="width:99%;">
+                              <af:column sortProperty="stateShortDesc"
+                                         filterable="true" sortable="true"
+                                         headerText="ID" id="c8">
+                                <af:outputText value="#{row.stateShortDesc}"
+                                               id="ot9"/>
+                              </af:column>
+                              <af:column sortProperty="stateName"
+                                         filterable="true" sortable="true"
+                                         headerText="Name" id="c7" width="200">
+                                <af:outputText value="#{row.stateName}"
+                                               id="ot8"/>
+                              </af:column>
+                            </af:table>
+                            <af:separator id="s11"/>
+                            <af:commandButton text="Generate Report" id="cb1"
+                                              icon="/images/report.png"/>
+                          </af:panelBox>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Districts" id="sdi2"
+                                           rendered="#{Rendering.district}">
+                          <af:panelBox text="Districts" id="pb2"
+                                       showHeader="never">
+                            <h:panelGrid columns="1" id="pg5">
+                              <af:outputLabel value="Districts" id="ol3"
+                                              inlineStyle="font-weight:bold;"/>
+                            </h:panelGrid>
+                            <af:separator id="s3"/>
+                            <h:panelGrid columns="5" id="pg4">
+                              <af:commandButton text="New" id="btnNewDist"
+                                                icon="/images/create.gif"
+                                                action="#{baseSetupBacking.actionNewDist}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Edit" id="btnEditDist"
+                                                icon="/images/update.gif"
+                                                action="#{baseSetupBacking.actionEditDist}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Delete" id="btnDeleteDist"
+                                                icon="/images/delete.gif"
+                                                action="#{baseSetupBacking.actionDeleteDist}"
+                                                partialSubmit="true"/>
+                              <af:spacer width="300" height="10" id="s5"/>
+                              <af:commandButton text="Generate Report" id="cb3"
+                                                icon="/images/report.png"
+                                                partialSubmit="true"/>
+                            </h:panelGrid>
+                            <af:separator id="s4"/>
+                            <af:panelCollection id="pc1"
+                                                styleClass="AFAuxiliaryStretchWidth"
+                                                inlineStyle="height:200.0px">
+                              <af:table value="#{bindings.District1.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.District1.rangeSize}"
+                                        emptyText="#{bindings.District1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.District1.rangeSize}"
+                                        rowBandingInterval="0"
+                                        filterModel="#{bindings.District1Query.queryDescriptor}"
+                                        queryListener="#{bindings.District1Query.processQuery}"
+                                        filterVisible="true" varStatus="vs"
+                                        styleClass="AFAuxiliaryStretchWidth"
+                                        rowSelection="single" id="t2"
+                                        binding="#{baseSetupBacking.tblCountryDists}">
+                                <af:column sortProperty="shortDesc"
+                                           filterable="true" sortable="true"
+                                           headerText="Id" id="c13">
+                                  <af:outputText value="#{row.shortDesc}"
+                                                 id="ot1"/>
+                                </af:column>
+                                <af:column sortProperty="name" filterable="true"
+                                           sortable="true"
+                                           headerText="District Name" id="c12"
+                                           width="200">
+                                  <af:outputText value="#{row.name}" id="ot3"/>
+                                </af:column>
+                              </af:table>
+                            </af:panelCollection>
+                            <af:separator id="s12"/>
+                          </af:panelBox>
+                          <af:popup id="countryDistPopup"
+                                    contentDelivery="lazyUncached">
+                            <af:dialog id="d2" title="New District" type="none">
+                              <af:panelGroupLayout id="pgl2">
+                                <af:panelBox text="PanelBox3" id="pb4"
+                                             showHeader="never">
+                                  <f:facet name="toolbar"/>
+                                  <af:panelFormLayout id="pfl2"
+                                                      inlineStyle="width:300.0px;">
+                                    <af:inputText label="CODE : "
+                                                  visible="false"
+                                                  binding="#{baseSetupBacking.txtDistCodePopup}"/>
+                                    <af:inputText label="Country Code : "
+                                                  visible="false"
+                                                  binding="#{baseSetupBacking.txtDistCountryPopup}"
+                                                  showRequired="true"/>
+                                    <af:inputText label="Short Desc : "
+                                                  binding="#{baseSetupBacking.txtDistShtDescPopup}"
+                                                  showRequired="true"/>
+                                    <af:inputText label="Name : "
+                                                  binding="#{baseSetupBacking.txtDistNamePopup}"
+                                                  showRequired="true"/>
+                                    <af:inputText label="STS Code : "
+                                                  binding="#{baseSetupBacking.txtDistSTSCodePopup}"
+                                                  showRequired="true"
+                                                  visible="false"/>
+                                    <f:facet name="footer"/>
+                                  </af:panelFormLayout>
+                                </af:panelBox>
+                              </af:panelGroupLayout>
+                              <af:commandButton text="Save"
+                                                id="btnCreateUpdateDist"
+                                                binding="#{baseSetupBacking.btnCreateUpdateDist}"
+                                                action="#{baseSetupBacking.actionCreateUpdateDist}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Cancel"
+                                                id="btnCancelDist"/>
+                            </af:dialog>
+                          </af:popup>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="#{Labeling.towns}" id="sdi6">
+                          <af:panelBox text="#{Labeling.towns}" id="pb13"
+                                       showHeader="never">
+                            <h:panelGrid columns="1" id="pg11">
+                              <af:outputLabel value="#{Rendering.localSite ? 'TOWNS' : 'Local Govt. Areas'}"
+                                              id="ol4"
+                                              inlineStyle="font-weight:bold;"/>
+                            </h:panelGrid>
+                            <af:separator id="s1"/>
+                            <h:panelGrid columns="5" id="pg12">
+                              <af:commandButton text="New" id="cb4"
+                                                icon="/images/create.gif"
+                                                action="#{baseSetupBacking.actionNewTown}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Edit" id="btnEditTown"
+                                                icon="/images/update.gif"
+                                                action="#{baseSetupBacking.actionEditTown}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Delete" id="btnDeleteTown"
+                                                icon="/images/delete.gif"
+                                                action="#{baseSetupBacking.actionDeleteTown}"
+                                                partialSubmit="true"/>
+                              <af:spacer width="300" height="10" id="s14"/>
+                              <af:commandButton text="Generate Report" id="cb5"
+                                                icon="/images/report.png"
+                                                partialSubmit="true"/>
+                            </h:panelGrid>
+                            <af:separator id="s15"/>
+                            <af:panelCollection id="pc4"
+                                                styleClass="AFAuxiliaryStretchWidth"
+                                                inlineStyle="height:200.0px">
+                              <af:table value="#{bindings.Town1.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.Town1.rangeSize}"
+                                        emptyText="#{bindings.Town1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.Town1.rangeSize}"
+                                        rowBandingInterval="0"
+                                        filterModel="#{bindings.Town1Query.queryDescriptor}"
+                                        queryListener="#{bindings.Town1Query.processQuery}"
+                                        filterVisible="true" varStatus="vs"
+                                        styleClass="AFAuxiliaryStretchWidth"
+                                        selectionListener="#{baseSetupBacking.tblCountryTownsSelectionListener}"
+                                        rowSelection="single" id="t5"
+                                        binding="#{baseSetupBacking.tblCountryTowns}">
+                                <af:column sortProperty="shortDesc"
+                                           filterable="true" sortable="true"
+                                           headerText="Id" id="c2">
+                                  <af:outputText value="#{row.shortDesc}"
+                                                 id="ot10"/>
+                                </af:column>
+                                <af:column sortProperty="name" filterable="true"
+                                           sortable="true"
+                                           headerText="Town Name" id="c10"
+                                           width="200">
+                                  <af:outputText value="#{row.name}" id="ot14"/>
+                                </af:column>
+                              </af:table>
+                            </af:panelCollection>
+                            <af:separator id="s16"/>
+                            <af:panelTabbed id="pt3"
+                                            styleClass="AFAuxiliaryStretchWidth">
+                              <af:showDetailItem text="Localities" id="sdi3"
+                                                 binding="#{baseSetupBacking.locationTab}">
+                                <af:panelGroupLayout id="pgl3">
+                                  <af:panelBox text="LOCATIONS" id="pb3"
+                                               showHeader="never">
+                                    <f:facet name="toolbar"/>
+                                    <h:panelGrid columns="3" id="pg7">
+                                      <af:commandButton text="New"
+                                                        id="btnNewLocation"
+                                                        icon="/images/create.gif"
+                                                        action="#{baseSetupBacking.actionNewLocation}"
+                                                        partialSubmit="true"/>
+                                      <af:commandButton text="Edit"
+                                                        id="btnEditLocation"
+                                                        icon="/images/update.gif"
+                                                        action="#{baseSetupBacking.actionEditLocation}"
+                                                        partialSubmit="true"/>
+                                      <af:commandButton text="Delete"
+                                                        id="btnDeleteLocation"
+                                                        icon="/images/delete.gif"
+                                                        action="#{baseSetupBacking.actionDeleteLocation}"
+                                                        partialSubmit="true"/>
+                                    </h:panelGrid>
+                                    <af:separator id="s6"/>
+                                    <af:panelCollection id="pc2"
+                                                        styleClass="AFAuxiliaryStretchWidth"
+                                                        inlineStyle="height:180.0px;">
+                                      <af:table value="#{bindings.Location.collectionModel}"
+                                                var="row"
+                                                rows="#{bindings.Location.rangeSize}"
+                                                emptyText="#{bindings.Location.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                fetchSize="#{bindings.Location.rangeSize}"
+                                                rowBandingInterval="0"
+                                                rowSelection="single"
+                                                id="tblTownLocations"
+                                                binding="#{baseSetupBacking.tblTownLocations}">
+                                        <af:column sortProperty="shortDesc"
+                                                   sortable="true"
+                                                   headerText="Id" id="c4">
+                                          <af:outputText value="#{row.shortDesc}"
+                                                         id="ot5"/>
+                                        </af:column>
+                                        <af:column sortProperty="name"
+                                                   sortable="true"
+                                                   headerText="Name" id="c3"
+                                                   width="200">
+                                          <af:outputText value="#{row.name}"
+                                                         id="ot4"/>
+                                        </af:column>
+                                        <af:column sortProperty="landmark"
+                                                   sortable="true"
+                                                   headerText="Landmark" id="c1"
+                                                   width="200">
+                                          <af:outputText value="#{row.landmark}"
+                                                         id="ot2"/>
+                                        </af:column>
+                                      </af:table>
+                                    </af:panelCollection>
+                                  </af:panelBox>
+                                </af:panelGroupLayout>
+                              </af:showDetailItem>
+                              <af:showDetailItem text="Postal Codes" id="sdi5">
+                                <af:panelGroupLayout id="pgl8">
+                                  <af:panelBox text="PanelBox8" id="pb9"
+                                               showHeader="never">
+                                    <h:panelGrid columns="3" id="pg6">
+                                      <af:commandButton text="New"
+                                                        id="btnNewPostalCode"
+                                                        icon="/images/create.gif"
+                                                        action="#{baseSetupBacking.actionNewPostalCode}"
+                                                        partialSubmit="true"/>
+                                      <af:commandButton text="Edit"
+                                                        id="btnEdiPostalCode"
+                                                        icon="/images/update.gif"
+                                                        action="#{baseSetupBacking.actionEditPostalCode}"
+                                                        partialSubmit="true"/>
+                                      <af:commandButton text="Delete"
+                                                        id="btnDeletePostalCode"
+                                                        icon="/images/delete.gif"
+                                                        action="#{baseSetupBacking.actionDeletePostalCode}"
+                                                        partialSubmit="true"/>
+                                    </h:panelGrid>
+                                    <af:separator id="s8"/>
+                                    <af:panelCollection id="pc3"
+                                                        styleClass="AFAuxiliaryStretchWidth"
+                                                        inlineStyle="height:180.0px;">
+                                      <af:table value="#{bindings.PostalCode.collectionModel}"
+                                                var="row"
+                                                rows="#{bindings.PostalCode.rangeSize}"
+                                                emptyText="#{bindings.PostalCode.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                fetchSize="#{bindings.PostalCode.rangeSize}"
+                                                rowBandingInterval="0"
+                                                filterModel="#{bindings.PostalCodeQuery.queryDescriptor}"
+                                                queryListener="#{bindings.PostalCodeQuery.processQuery}"
+                                                filterVisible="true"
+                                                varStatus="vs"
+                                                rowSelection="single" id="t1"
+                                                binding="#{baseSetupBacking.tblPostalCodes}">
+                                        <af:column sortProperty="pstDesc"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Description"
+                                                   id="c9" width="200">
+                                          <af:outputText value="#{row.pstDesc}"
+                                                         id="ot11"/>
+                                        </af:column>
+                                        <af:column sortProperty="pstZipCode"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Zip Code"
+                                                   id="c11" width="150">
+                                          <af:outputText value="#{row.pstZipCode}"
+                                                         id="ot12"/>
+                                        </af:column>
+                                      </af:table>
+                                    </af:panelCollection>
+                                  </af:panelBox>
+                                </af:panelGroupLayout>
+                              </af:showDetailItem>
+                            </af:panelTabbed>
+                          </af:panelBox>
+                          <af:popup id="countryTownPopup"
+                                    contentDelivery="lazyUncached">
+                            <af:dialog id="d7" title="New Town" type="none">
+                              <af:panelGroupLayout id="pgl11">
+                                <af:panelBox text="PanelBox3" id="pb14"
+                                             showHeader="never">
+                                  <f:facet name="toolbar"/>
+                                  <af:panelFormLayout id="pfl6"
+                                                      inlineStyle="width:300.0px;">
+                                    <af:inputText label="CODE : "
+                                                  id="txtTownCodePopup"
+                                                  visible="false"
+                                                  binding="#{baseSetupBacking.txtTownCodePopup}"/>
+                                    <af:inputText label="Country Code : "
+                                                  id="txtTownCountryPopup"
+                                                  visible="false"
+                                                  binding="#{baseSetupBacking.txtTownCountryPopup}"
+                                                  showRequired="true"/>
+                                    <af:inputText label="Short Desc : "
+                                                  id="txtTownShtDescPopup"
+                                                  binding="#{baseSetupBacking.txtTownShtDescPopup}"
+                                                  showRequired="true"/>
+                                    <af:inputText label="Name : "
+                                                  id="txtTownNamePopup"
+                                                  binding="#{baseSetupBacking.txtTownNamePopup}"
+                                                  showRequired="true"/>
+                                    <af:inputText label="STS Code : "
+                                                  id="txtTownSTSCodePopup"
+                                                  binding="#{baseSetupBacking.txtTownSTSCodePopup}"
+                                                  showRequired="true"
+                                                  visible="false"/>
+                                    <f:facet name="footer"/>
+                                  </af:panelFormLayout>
+                                </af:panelBox>
+                              </af:panelGroupLayout>
+                              <af:commandButton text="Save"
+                                                id="btnCreateUpdateTown"
+                                                binding="#{baseSetupBacking.btnCreateUpdateTown}"
+                                                action="#{baseSetupBacking.actionCreateUpdateTown}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Cancel"
+                                                id="btnCancelTown"/>
+                            </af:dialog>
+                          </af:popup>
+                          <af:popup id="townLocationPopup"
+                                    contentDelivery="lazyUncached">
+                            <af:dialog id="d3" title="New Location" type="none">
+                              <af:panelGroupLayout id="pgl4">
+                                <af:panelBox text="PanelBox4" id="pb5"
+                                             showHeader="never">
+                                  <af:panelFormLayout id="pfl3"
+                                                      inlineStyle="width:300.0px;">
+                                    <af:inputText label="CODE : "
+                                                  id="txtLocationCodePopup"
+                                                  binding="#{baseSetupBacking.txtLocationCodePopup}"
+                                                  visible="false"
+                                                  showRequired="true"/>
+                                    <af:inputText label="Town Code : "
+                                                  id="txtLocationTownCodePopup"
+                                                  binding="#{baseSetupBacking.txtLocationTownCodePopup}"
+                                                  visible="false"
+                                                  showRequired="true"/>
+                                    <af:inputText label="Short Desc : "
+                                                  id="txtLocationShtDescPopup"
+                                                  binding="#{baseSetupBacking.txtLocationShtDescPopup}"
+                                                  showRequired="true"/>
+                                    <af:inputText label="Name : "
+                                                  id="txtLocationNamePopup"
+                                                  binding="#{baseSetupBacking.txtLocationNamePopup}"
+                                                  showRequired="true"/>
+                                    <af:inputText label="Landmark : "
+                                                  id="txtLandmark"
+                                                  binding="#{baseSetupBacking.txtLandmark}"
+                                                  showRequired="true"/>
+                                  </af:panelFormLayout>
+                                </af:panelBox>
+                              </af:panelGroupLayout>
+                              <af:commandButton text="Save"
+                                                id="btnCreateUpdateLocation"
+                                                action="#{baseSetupBacking.actionCreateUpdateLocation}"
+                                                binding="#{baseSetupBacking.btnCreateUpdateLocation}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Cancel"
+                                                id="btnCancelLocation"/>
+                            </af:dialog>
+                          </af:popup>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="User Web Accounts" id="sdi7">
+                          <af:panelGroupLayout id="pgl10">
+                            <af:panelBox text="PanelBox12" id="panelBox1"
+                                         showHeader="never">
+                              <h:panelGrid columns="1" id="panelGrid1">
+                                <af:outputLabel value="USER WEB ACCOUNTS DETAILS"
+                                                id="ol26"
+                                                inlineStyle="font-weight:bold;"/>
+                              </h:panelGrid>
+                              <af:separator id="separator1"/>
+                              <h:panelGrid columns="3" id="pg13">
+                                <af:commandButton text="New"
+                                                  id="btnNewWebAccount"
+                                                  icon="/images/create.gif"
+                                                  action="#{baseSetupBacking.addEmbWebUserAction}"/>
+                                <af:commandButton text="Edit"
+                                                  id="btnEditWebAccount"
+                                                  icon="/images/update.gif"
+                                                  action="#{baseSetupBacking.updateEmbWebUserAction}"/>
+                                <af:commandButton text="Delete"
+                                                  id="btnDeleteWebAccount"
+                                                  icon="/images/delete.gif"
+                                                  action="#{baseSetupBacking.deleteEmbWebUserAction}"/>
+                              </h:panelGrid>
+                              <af:separator id="separator2"/>
+                              <af:table value="#{bindings.AccountType.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.AccountType.rangeSize}"
+                                        emptyText="#{bindings.AccountType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.AccountType.rangeSize}"
+                                        rowBandingInterval="1"
+                                        filterModel="#{bindings.AccountTypeQuery.queryDescriptor}"
+                                        queryListener="#{bindings.AccountTypeQuery.processQuery}"
+                                        filterVisible="false" varStatus="vs"
+                                        selectedRowKeys="#{bindings.AccountType.collectionModel.selectedRow}"
+                                        selectionListener="#{bindings.AccountType.collectionModel.makeCurrent}"
+                                        rowSelection="single" id="t4"
+                                        binding="#{baseSetupBacking.webUsersTable}"
+                                        inlineStyle="width:99.0%;">
+                                <af:column sortProperty="id" sortable="true"
+                                           filterFeatures="caseInsensitive"
+                                           headerText="ID" id="column10">
+                                  <af:outputText value="#{row.id}"
+                                                 id="outputText10"/>
+                                </af:column>
+                                <af:column sortProperty="username"
+                                           filterFeatures="caseInsensitive"
+                                           sortable="true" headerText="USERNAME"
+                                           id="column9">
+                                  <af:outputText value="#{row.username}"
+                                                 id="outputText9"/>
+                                </af:column>
+                                <af:column sortProperty="name" sortable="true"
+                                           filterFeatures="caseInsensitive"
+                                           headerText="NAME" id="column8">
+                                  <af:outputText value="#{row.name}"
+                                                 id="outputText8"/>
+                                </af:column>
+                                <af:column sortProperty="email" sortable="true"
+                                           filterFeatures="caseInsensitive"
+                                           headerText="EMAIL" id="column7">
+                                  <af:outputText value="#{row.email}"
+                                                 id="outputText7"/>
+                                </af:column>
+                                <af:column sortProperty="personalrank"
+                                           filterFeatures="caseInsensitive"
+                                           sortable="true"
+                                           headerText="PERSONAL RANK"
+                                           id="column6">
+                                  <af:outputText value="#{row.personalrank}"
+                                                 id="outputText6"/>
+                                </af:column>
+                                <af:column sortProperty="createdby"
+                                           filterFeatures="caseInsensitive"
+                                           sortable="true"
+                                           headerText="CREATED BY" id="column5">
+                                  <af:outputText value="#{row.createdby}"
+                                                 id="outputText5"/>
+                                </af:column>
+                                <af:column sortProperty="datecreated"
+                                           filterFeatures="caseInsensitive"
+                                           sortable="true"
+                                           headerText="DATE CREATED"
+                                           id="column4">
+                                  <af:outputText value="#{row.datecreated}"
+                                                 id="outputText4">
+                                    <af:convertDateTime pattern="#{bindings.AccountType.hints.datecreated.format}"/>
+                                  </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="allowlogin"
+                                           filterFeatures="caseInsensitive"
+                                           sortable="true"
+                                           headerText="ALLOW LOGIN"
+                                           id="column3">
+                                  <af:outputText value="#{row.allowlogin}"
+                                                 id="outputText3"/>
+                                </af:column>
+                                <af:column sortProperty="status" sortable="true"
+                                           filterFeatures="caseInsensitive"
+                                           headerText="STATUS" id="column2">
+                                  <af:outputText value="#{row.status}"
+                                                 id="outputText2"/>
+                                </af:column>
+                                <af:column sortProperty="reset" sortable="true"
+                                           filterFeatures="caseInsensitive"
+                                           headerText="RESET" id="column1">
+                                  <af:outputText value="#{row.reset}"
+                                                 id="outputText1"/>
+                                </af:column>
+                              </af:table>
+                              <af:popup id="webUserPop"
+                                        contentDelivery="lazyUncached">
+                                <af:dialog id="d9" type="none"
+                                           title="Add New User">
+                                  <af:panelGroupLayout id="pgl14">
+                                    <h:panelGrid columns="1" id="pg68">
+                                      <af:inputText label="Label 49"
+                                                    id="webUserId" simple="true"
+                                                    visible="false"
+                                                    binding="#{baseSetupBacking.webUserId}"/>
+                                      <h:panelGrid columns="2" id="pg69">
+                                        <af:outputLabel value="Username:"
+                                                        id="ol49"/>
+                                        <h:panelGrid columns="1" id="pg70">
+                                          <af:inputText label="Label 44"
+                                                        id="webusername"
+                                                        simple="true"
+                                                        binding="#{baseSetupBacking.webusername}"/>
+                                        </h:panelGrid>
+                                        <af:outputLabel value="Full Names:"
+                                                        id="ol50"/>
+                                        <h:panelGrid columns="1" id="pg71">
+                                          <af:inputText label="Label 45"
+                                                        id="webfullNames"
+                                                        simple="true"
+                                                        binding="#{baseSetupBacking.webfullNames}"/>
+                                        </h:panelGrid>
+                                        <af:outputLabel value="Password:"
+                                                        id="ol56"/>
+                                        <h:panelGrid columns="1" id="pg77">
+                                          <af:inputText label="Label 48"
+                                                        id="webPassword"
+                                                        secret="true"
+                                                        simple="true"
+                                                        binding="#{baseSetupBacking.webPassword}"/>
+                                        </h:panelGrid>
+                                        <af:outputLabel value="User Email:"
+                                                        id="ol51"/>
+                                        <h:panelGrid columns="1" id="pg72">
+                                          <af:inputText label="Label 46"
+                                                        id="webEmail"
+                                                        simple="true"
+                                                        binding="#{baseSetupBacking.webEmail}">
+                                            <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"
+                                                               messageDetailNoMatch='"The value {1} is not a valid email address "'/>
+                                          </af:inputText>
+                                        </h:panelGrid>
+                                        <af:outputLabel value="Personel Rank"
+                                                        id="ol52"/>
+                                        <h:panelGrid columns="1" id="pg73">
+                                          <af:inputText label="Label 47"
+                                                        id="webPersonalRank"
+                                                        simple="true"
+                                                        binding="#{baseSetupBacking.webPersonalRank}"/>
+                                        </h:panelGrid>
+                                        <af:outputLabel value="Allow Login"
+                                                        id="ol53"/>
+                                        <h:panelGrid columns="2" id="pg74">
+                                          <af:selectOneRadio label="Label 1"
+                                                             id="webAllowLogin"
+                                                             simple="true"
+                                                             binding="#{baseSetupBacking.webAllowLogin}">
+                                            <af:selectItem label="Yes" value="Y"
+                                                           id="si35"/>
+                                            <af:selectItem label="No" value="N"
+                                                           id="si36"/>
+                                          </af:selectOneRadio>
+                                        </h:panelGrid>
+                                        <af:outputLabel value="User Status:"
+                                                        id="ol54"/>
+                                        <h:panelGrid columns="1" id="pg75">
+                                          <af:selectOneChoice label="Label 5"
+                                                              id="webUserStatus"
+                                                              simple="true"
+                                                              binding="#{baseSetupBacking.webUserStatus}">
+                                            <af:selectItem label="Active"
+                                                           value="A" id="si38"/>
+                                            <af:selectItem label="Inactive"
+                                                           value="I" id="si37"/>
+                                          </af:selectOneChoice>
+                                        </h:panelGrid>
+                                        <af:outputLabel value="Reset?"
+                                                        id="ol55"/>
+                                        <h:panelGrid columns="1" id="pg76">
+                                          <af:selectOneRadio label="Label 2"
+                                                             id="webReset"
+                                                             simple="true"
+                                                             binding="#{baseSetupBacking.webReset}">
+                                            <af:selectItem label="Yes" value="Y"
+                                                           id="si40"/>
+                                            <af:selectItem label="No" value="N"
+                                                           id="si39"/>
+                                          </af:selectOneRadio>
+                                        </h:panelGrid>
+                                      </h:panelGrid>
+                                      <af:commandButton text="Save"
+                                                        action="#{baseSetupBacking.saveEmbWebUsersOperation}"
+                                                        partialSubmit="true"
+                                                        id="cb2"/>
+                                    </h:panelGrid>
+                                  </af:panelGroupLayout>
+                                </af:dialog>
+                              </af:popup>
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                          <af:popup id="confirmDeleteWebAccPop"
+                                    contentDelivery="lazyUncached">
+                            <af:dialog id="d25" title="Confirm Delete Action"
+                                       type="yesNo"
+                                       dialogListener="#{baseSetupBacking.actionConfirmDeleteEmbWebAcc}">
+                              <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                             id="ot74"/>
+                            </af:dialog>
+                          </af:popup>
+                        </af:showDetailItem>
+                      </af:group>
+                    </af:panelTabbed>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelBox>
+            </af:panelBox>
+            <af:popup id="countryStatePopup">
+              <af:dialog id="d5" title="Administrative Unit Definition"
+                         type="none"
+                         binding="#{baseSetupBacking.dlgNewEditAdminUnit}">
+                <af:panelGroupLayout id="pgl6">
+                  <af:panelBox text="PanelBox7" id="pb8" showHeader="never">
+                    <af:panelFormLayout id="pfl4" inlineStyle="width:300.0px;">
+                      <af:inputText label="State Code : " id="txtStateCodePopup"
+                                    binding="#{baseSetupBacking.txtStateCodePopup}"
+                                    visible="false"/>
+                      <af:inputText label="Country Code : "
+                                    id="txtCountryCodePopup"
+                                    binding="#{baseSetupBacking.txtCountryCodePopup}"
+                                    visible="false"/>
+                      <af:inputText label="Short Description : "
+                                    id="txtStateShtDescPopup"
+                                    binding="#{baseSetupBacking.txtStateShtDescPopup}"
+                                    showRequired="true"/>
+                      <af:inputText label="Name : " id="txtStateNamePopup"
+                                    binding="#{baseSetupBacking.txtStateNamePopup}"
+                                    showRequired="true"/>
+                    </af:panelFormLayout>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+                <af:commandButton text="Save" id="btnCreateUpdateState"
+                                  binding="#{baseSetupBacking.btnCreateUpdateState}"
+                                  action="#{baseSetupBacking.actionCreateUpdateState}"
+                                  partialSubmit="true"/>
+                <af:commandButton text="Cancel" id="btnCancelState"
+                                  binding="#{baseSetupBacking.btnCancelState}"/>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="currencyListPopup" contentDelivery="lazyUncached">
+              <af:dialog id="d4" title="Base Currency" type="none">
+                <af:panelGroupLayout id="pgl5">
+                  <af:panelBox text="PanelBox5" id="pb6" showHeader="never"
+                               inlineStyle="width:300.0px;">
+                    <af:table value="#{bindings.Currency.collectionModel}"
+                              var="row" rows="#{bindings.Currency.rangeSize}"
+                              emptyText="#{bindings.Currency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.Currency.rangeSize}"
+                              rowBandingInterval="1"
+                              selectionListener="#{baseSetupBacking.tblCountryBaseCurrenciesSelectionListener}"
+                              rowSelection="single"
+                              id="tblCountryBaseCurrencies"
+                              binding="#{baseSetupBacking.tblCountryBaseCurrencies}"
+                              filterVisible="false" inlineStyle="width:99%;">
+                      <af:column sortProperty="symbol" sortable="true"
+                                 headerText="ID" id="c6" filterable="true">
+                        <af:outputText value="#{row.symbol}" id="ot6"/>
+                      </af:column>
+                      <af:column sortProperty="description" sortable="true"
+                                 headerText="DESCRIPTION" id="c5"
+                                 filterable="true">
+                        <af:outputText value="#{row.description}" id="ot7"/>
+                      </af:column>
+                    </af:table>
+                    <af:commandButton text="Ok" id="btnAcceptBaseCurrency"
+                                      action="#{baseSetupBacking.actionAcceptBaseCurrency}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="btnCancelBaseCurrency"
+                                      partialSubmit="true"/>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="postalCodesPop" contentDelivery="lazyUncached">
+              <af:dialog id="d6" title="Postal Code Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl9">
+                  <af:panelBox text="PanelBox9" id="pb10" showHeader="never">
+                    <af:panelFormLayout id="pfl5">
+                      <af:inputText label="Code : " id="it2" visible="false"
+                                    binding="#{baseSetupBacking.txtPstCode}"
+                                    showRequired="true"/>
+                      <af:inputText label="Town Code : " id="it3"
+                                    visible="false"
+                                    binding="#{baseSetupBacking.txtPstTwnCode}"
+                                    showRequired="true"/>
+                      <af:inputText label="Description : " id="it4"
+                                    binding="#{baseSetupBacking.txtPstDesc}"
+                                    showRequired="true"/>
+                      <af:inputText label="ZIP Code : " id="it5"
+                                    binding="#{baseSetupBacking.txtPstZipCode}"/>
+                    </af:panelFormLayout>
+                    <h:panelGrid columns="2" id="pg10">
+                      <af:commandButton text="Save" id="cb6"
+                                        binding="#{baseSetupBacking.btnSaveUpdatePostalCode}"
+                                        action="#{baseSetupBacking.actionSaveUpdatePostalCode}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="cb7"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="countryConfirmationDialog">
+              <af:dialog title="Confirm Action" id="countryConfirmChangeDialog"
+                         type="yesNo"
+                         dialogListener="#{baseSetupBacking.countryConfirmationDialogListener}">
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="olConfirmMsgValue"/>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="ServerMessage">
+              <af:dialog id="d24" title="Server Response" type="ok"
+                         inlineStyle="width:300.0px;">
+                <af:outputText id="textToShow"
+                               binding="#{baseSetupBacking.textToShow}"/>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

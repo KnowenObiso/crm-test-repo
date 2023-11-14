@@ -1,0 +1,1158 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              
+              <table width="100%">
+            <tr><td  align="right">
+            <h:panelGrid columns="2" id="pg33">
+                <af:inputText id="it1" helpTopicId="CRMcurrencies" columns="13"
+                              readOnly="true" shortDesc="Help"/>
+                <af:statusIndicator id="si1"/>
+              </h:panelGrid>
+            </td></tr>
+              </table>
+              <af:panelBox text="PanelBox20" id="pb3"
+                           showHeader="never" rendered="true">
+                <f:facet name="toolbar"/>
+                <af:panelSplitter id="ps1"
+                                  inlineStyle="width:99%; height:500.0px;">
+                  <f:facet name="first">
+                    <af:panelGroupLayout
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl2">
+                      <h:panelGrid columns="6" id="pg2">
+                        <af:outputLabel value="Systems" id="ol3"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s2"/>
+                      <af:table value="#{bindings.System.collectionModel}"
+                                var="row" rows="#{bindings.System.rangeSize}"
+                                emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.System.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                                queryListener="#{bindings.SystemQuery.processQuery}"
+                                filterVisible="false" varStatus="vs"
+                                selectionListener="#{Scheduler.tblSystemsListener}"
+                                rowSelection="single" id="t1"
+                                binding="#{Scheduler.tblSystems}"
+                                inlineStyle="width:inherit;">
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="System Name"
+                                   id="c2" width="200"
+                                   filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.name}" id="ot3"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl5">
+                      <af:outputLabel value="Scheduler Setup" id="ol20"
+                                      inlineStyle="font-weight:bold;"/>
+                      <af:separator id="s4"/>
+                      <h:panelGrid columns="3" id="pg1">
+                        <af:commandButton icon="/images/create.gif" id="cb1"
+                                          action="#{Scheduler.addAlert}"
+                                          text="New" partialSubmit="true"/>
+                        <af:commandButton icon="/images/update.gif" id="cb2"
+                                          text="Edit" partialSubmit="true"
+                                          action="#{Scheduler.editSchedule}"/>
+                        <af:commandButton icon="/images/delete.gif" id="cb3"
+                                          text="Delete" partialSubmit="true"
+                                          action="#{Scheduler.deleteAlert}"/>
+                        <af:popup id="schedule" contentDelivery="lazyUncached">
+                          <af:dialog id="d2" title="Schedule Information"
+                                     type="none">
+                            <af:panelBox text="PanelBox21" id="pb9"
+                                         showHeader="never">
+                              <f:facet name="toolbar"/>
+                              <af:panelGroupLayout id="pgl3">
+                                <af:popup id="template">
+                                  <af:dialog id="d3" type="none"
+                                             title="Message Template">
+                                    <af:panelBox text="PanelBox25" id="pb6"
+                                                 showHeader="never">
+                                      <f:facet name="toolbar"/>
+                                      <af:panelGroupLayout id="pgl1">
+                                        <h:panelGrid columns="1" id="pg31">
+                                          <af:table value="#{bindings.MessageBean.collectionModel}"
+                                                    var="row"
+                                                    rows="#{bindings.MessageBean.rangeSize}"
+                                                    emptyText="#{bindings.MessageBean.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                    fetchSize="#{bindings.MessageBean.rangeSize}"
+                                                    rowBandingInterval="0"
+                                                    filterModel="#{bindings.MessageBeanQuery.queryDescriptor}"
+                                                    queryListener="#{bindings.MessageBeanQuery.processQuery}"
+                                                    filterVisible="true"
+                                                    varStatus="vs"
+                                                    selectedRowKeys="#{bindings.MessageBean.collectionModel.selectedRow}"
+                                                    selectionListener="#{bindings.MessageBean.collectionModel.makeCurrent}"
+                                                    rowSelection="single"
+                                                    id="t2"
+                                                    binding="#{Scheduler.messageTemp}">
+                                            <af:column sortProperty="msgtShtDesc"
+                                                       filterable="true"
+                                                       sortable="true"
+                                                       headerText="Sht Desc"
+                                                       id="c16"
+                                                       filterFeatures="caseInsensitive">
+                                              <af:outputText value="#{row.msgtShtDesc}"
+                                                             id="ot18"/>
+                                            </af:column>
+                                            <af:column sortProperty="msgtMsg"
+                                                       filterable="true"
+                                                       sortable="true"
+                                                       headerText="Message"
+                                                       id="c14" width="200"
+                                                       filterFeatures="caseInsensitive">
+                                              <af:outputText value="#{row.msgtMsg}"
+                                                             id="ot32"/>
+                                            </af:column>
+                                          </af:table>
+                                          <h:panelGrid columns="2" id="pg32">
+                                            <af:commandButton text="OK"
+                                                              id="cb14"
+                                                              partialSubmit="true"
+                                                              action="#{Scheduler.templateSelected}"/>
+                                            <af:commandButton text="Cancel"
+                                                              id="cb15"
+                                                              partialSubmit="true"
+                                                              action="#{Scheduler.templateCancel}"/>
+                                          </h:panelGrid>
+                                        </h:panelGrid>
+                                      </af:panelGroupLayout>
+                                    </af:panelBox>
+                                  </af:dialog>
+                                </af:popup>
+                                <h:panelGrid columns="2" id="pg34">
+                                  <af:outputLabel value="Code" id="ol23"
+                                                  visible="false"/>
+                                  <af:inputNumberSpinbox label="Label 7"
+                                                         id="ins7" simple="true"
+                                                         visible="false"
+                                                         binding="#{Scheduler.qtCode}"/>
+                                  <af:outputLabel value="Job Name" id="ol1"
+                                                  rendered="true"
+                                                  showRequired="true"/>
+                                  <h:panelGrid columns="1" id="pg12">
+                                    <af:inputText label="Label 1" id="it9"
+                                                  simple="true"
+                                                  binding="#{Scheduler.txtJobName}"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Job Description"
+                                                  id="ol2" rendered="true"
+                                                  showRequired="true"/>
+                                  <h:panelGrid columns="1" id="pg16">
+                                    <af:inputText label="Label 2" id="it2"
+                                                  simple="true"
+                                                  binding="#{Scheduler.txtJobDesc}"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Job Type" id="ol8"
+                                                  rendered="true"
+                                                  showRequired="true"/>
+                                  <h:panelGrid columns="1" id="pg21">
+                                    <af:selectOneChoice label="Label 1"
+                                                        id="soc1" simple="true"
+                                                        binding="#{Scheduler.txtJobType}"
+                                                        unselectedLabel="Job Type"
+                                                        autoSubmit="true"
+                                                        valueChangeListener="#{Scheduler.jobTypeSelected}">
+                                      <af:selectItem label="Alert" value="A"
+                                                     id="si3"/>
+                                      <af:selectItem label="Report" value="R"
+                                                     id="si2"/>
+                                      <af:selectItem label="Routine" id="si49"
+                                                     value="J"/>
+                                      <af:selectItem label="Tasks" value="S"
+                                                     id="si40"/>
+                                    </af:selectOneChoice>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Execution Object"
+                                                  id="ol9" rendered="true"
+                                                  binding="#{Scheduler.execObjLbl}"
+                                                  visible="false"/>
+                                  <h:panelGrid columns="2" id="pg22"
+                                               rendered="true">
+                                    <af:inputText label="Label 6" id="it6"
+                                                  simple="true" rows="1"
+                                                  binding="#{Scheduler.txtJobTemplate}"
+                                                  disabled="true"
+                                                  visible="false"/>
+                                    <af:commandButton id="cb17"
+                                                      partialSubmit="true"
+                                                      icon="/images/dropdown.gif"
+                                                      binding="#{Scheduler.execBtn}"
+                                                      visible="false"
+                                                      action="#{Scheduler.launchExecObject}"/>
+                                    <af:popup id="execObj"
+                                              contentDelivery="lazyUncached">
+                                      <af:dialog id="d5" type="none"
+                                                 title="Execution Object">
+                                        <af:panelBox text="PanelBox26" id="pb7"
+                                                     showHeader="never">
+                                          <f:facet name="toolbar"/>
+                                          <h:panelGrid columns="1" id="pg35">
+                                            <af:table value="#{bindings.AlertBean1.collectionModel}"
+                                                      var="row"
+                                                      rows="#{bindings.AlertBean1.rangeSize}"
+                                                      emptyText="#{bindings.AlertBean1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      fetchSize="#{bindings.AlertBean1.rangeSize}"
+                                                      rowBandingInterval="0"
+                                                      filterModel="#{bindings.AlertBean1Query.queryDescriptor}"
+                                                      queryListener="#{bindings.AlertBean1Query.processQuery}"
+                                                      filterVisible="true"
+                                                      varStatus="vs"
+                                                      selectionListener="#{bindings.AlertBean1.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      id="t5"
+                                                      binding="#{Scheduler.execTab}">
+                                              <af:column sortProperty="objDesc"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Description"
+                                                         id="c39" width="200"
+                                                         filterFeatures="caseInsensitive">
+                                                <af:outputText value="#{row.objDesc}"
+                                                               id="ot41"/>
+                                              </af:column>
+                                            </af:table>
+                                            <h:panelGrid columns="2" id="pg36">
+                                              <af:commandButton text="OK"
+                                                                id="cb18"
+                                                                partialSubmit="true"
+                                                                action="#{Scheduler.execSelected}"/>
+                                              <af:commandButton text="Cancel"
+                                                                id="cb19"
+                                                                partialSubmit="true"
+                                                                action="#{Scheduler.cancelExec}"/>
+                                            </h:panelGrid>
+                                          </h:panelGrid>
+                                        </af:panelBox>
+                                      </af:dialog>
+                                    </af:popup>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Assignee" id="ol6"
+                                                  binding="#{Scheduler.assigneeLbl}"
+                                                  visible="false"/>
+                                  <h:panelGrid columns="2" id="pg8"
+                                               binding="#{Scheduler.assigneePnl}">
+                                    <af:inputText label="Label 4" id="it4"
+                                                  simple="true" disabled="true"
+                                                  binding="#{Scheduler.txtAssignee}"
+                                                  visible="false"/>
+                                    <af:commandButton id="cb250"
+                                                      icon="/images/dropdown.gif"
+                                                      binding="#{Scheduler.assigneeBtn}"
+                                                      visible="false">
+                                      <af:showPopupBehavior popupId="p3"/>
+                                    </af:commandButton>
+                                    <af:popup id="p3"
+                                              contentDelivery="lazyUncached">
+                                      <af:dialog id="d4" title="Select User"
+                                                 type="none">
+                                        <af:panelGroupLayout id="pgl4">
+                                          <af:panelBox text="PanelBox22"
+                                                       id="pb10"
+                                                       showHeader="never">
+                                            <f:facet name="toolbar"/>
+                                            <h:panelGrid columns="1" id="pg5">
+                                              <af:table value="#{bindings.User.collectionModel}"
+                                                        var="row"
+                                                        rows="#{bindings.User.rangeSize}"
+                                                        emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                        fetchSize="#{bindings.User.rangeSize}"
+                                                        rowBandingInterval="0"
+                                                        filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                                        queryListener="#{bindings.UserQuery.processQuery}"
+                                                        filterVisible="true"
+                                                        varStatus="vs"
+                                                        selectedRowKeys="#{bindings.User.collectionModel.selectedRow}"
+                                                        selectionListener="#{bindings.User.collectionModel.makeCurrent}"
+                                                        rowSelection="single"
+                                                        id="t3"
+                                                        binding="#{Scheduler.userSelected}"
+                                                        inlineStyle="width:325.0px;">
+                                                <af:column sortProperty="username"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Username"
+                                                           id="c12"
+                                                           filterFeatures="caseInsensitive">
+                                                  <af:outputText value="#{row.username}"
+                                                                 id="ot26"/>
+                                                </af:column>
+                                                <af:column sortProperty="userFullname"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Fullname"
+                                                           id="c4"
+                                                           filterFeatures="caseInsensitive">
+                                                  <af:outputText value="#{row.userFullname}"
+                                                                 id="ot5"/>
+                                                </af:column>
+                                                <af:column sortProperty="userEmail"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Email"
+                                                           id="c19"
+                                                           filterFeatures="caseInsensitive">
+                                                  <af:outputText value="#{row.userEmail}"
+                                                                 id="ot29"/>
+                                                </af:column>
+                                              </af:table>
+                                            </h:panelGrid>
+                                            <h:panelGrid columns="2" id="pg24">
+                                              <af:commandButton text="OK"
+                                                                id="cb5"
+                                                                partialSubmit="true"
+                                                                action="#{Scheduler.assigneeSelected}"/>
+                                              <af:commandButton text="Cancel"
+                                                                id="cb8"
+                                                                partialSubmit="true"
+                                                                action="#{Scheduler.cancelAssignee}"/>
+                                            </h:panelGrid>
+                                          </af:panelBox>
+                                        </af:panelGroupLayout>
+                                      </af:dialog>
+                                    </af:popup>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Execution Time"
+                                                  id="ol22"/>
+                                  <h:panelGrid columns="1" id="pg23">
+                                    <af:inputDate label="Label 1" id="id1"
+                                                  simple="true" columns="25"
+                                                  binding="#{Scheduler.txtStartTime}"
+                                                  autoSubmit="true">
+                                      <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss a"/>
+                                    </af:inputDate>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Repeat" id="ol5"/>
+                                  <h:panelGrid columns="2" id="pg4">
+                                    <af:selectOneChoice label="Label 2"
+                                                        id="soc2" simple="true"
+                                                        binding="#{Scheduler.repeatSelect}"
+                                                       valueChangeListener="#{Scheduler.changeRepeatType}"
+                                                        immediate="true"
+                                                        clientComponent="true"
+                                                        autoSubmit="true">
+                                     <af:selectItem label="Repeat" value="R"
+                                                     id="si50"/>
+                                      <af:selectItem label="None" value="N"
+                                                     id="si4"/>
+                                     <af:selectItem label="Daily" value="D"
+                                                     id="si5"/>
+                                      <af:selectItem label="Weekly" value="W"
+                                                     id="si6"/>
+                                      <af:selectItem label="Monthly" value="M"
+                                                     id="si8"/>
+                                      <af:selectItem label="Yearly" value="Y"
+                                                     id="si7"/>
+                                    </af:selectOneChoice>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Occurence" id="ol4"
+                                                  rendered="true"
+                                                  binding="#{Scheduler.occurence}"
+                                                  visible="false"/>
+                                  <h:panelGrid columns="1" id="pg7">
+                                    <af:panelBox text="PanelBox2" id="pb2"
+                                                 showHeader="never"
+                                                 showDisclosure="false"
+                                                 binding="#{Scheduler.dailyPanel}"
+                                                 visible="false"
+                                                 rendered="true">
+                                      <f:facet name="toolbar"/>
+                                      <h:panelGrid columns="1" id="pg10">
+                                        <af:selectBooleanRadio text="Every Day"
+                                                               label="Label 1"
+                                                               id="sbr1"
+                                                               simple="true"
+                                                               group="daily"
+                                                               binding="#{Scheduler.rdEveryDay}"/>
+                                      </h:panelGrid>
+                                      <h:panelGrid columns="1" id="pg11">
+                                        <af:selectBooleanRadio text="Every WeekDay"
+                                                               label="Label 1"
+                                                               id="selectBooleanRadio1"
+                                                               simple="true"
+                                                               group="daily"
+                                                               binding="#{Scheduler.rdEveryWeekday}"/>
+                                      </h:panelGrid>
+                                      <h:panelGrid columns="3" id="pg9">
+                                        <af:selectBooleanRadio text="Every"
+                                                               label="Label 1"
+                                                               id="selectBooleanRadio2"
+                                                               simple="true"
+                                                               group="daily"
+                                                               binding="#{Scheduler.rdEveryDayOption}"/>
+                                        <af:inputNumberSpinbox label="Label 1"
+                                                               id="ins1"
+                                                               simple="true"
+                                                               columns="4"
+                                                               binding="#{Scheduler.txtEveryDays}"/>
+                                        <af:outputLabel value="Days" id="ol13"/>
+                                      </h:panelGrid>
+                                    </af:panelBox>
+                                    <af:panelBox text="PanelBox3" id="panelBox1"
+                                                 showDisclosure="false"
+                                                 showHeader="never"
+                                                 binding="#{Scheduler.weeklyPanel}"
+                                                 visible="false"
+                                                 rendered="true">
+                                      <f:facet name="toolbar"/>
+                                      <h:panelGrid columns="2" id="pg13">
+                                        <af:selectBooleanRadio text="Every"
+                                                               label="Label 2"
+                                                               id="sbr2"
+                                                               simple="true"
+                                                               group="weekly"
+                                                               binding="#{Scheduler.rdEveryWeek}"/>
+                                        <af:selectOneChoice label="Label 3"
+                                                            id="soc3"
+                                                            simple="true"
+                                                            binding="#{Scheduler.rdWeekDaily}"
+                                                            unselectedLabel="Select">
+                                          <af:selectItem label="Monday"
+                                                         value="1" id="si13"/>
+                                          <af:selectItem label="Tuesday"
+                                                         value="2" id="si10"/>
+                                          <af:selectItem label="Wednesday"
+                                                         value="3" id="si12"/>
+                                          <af:selectItem label="Thursday"
+                                                         value="4" id="si9"/>
+                                          <af:selectItem label="Friday"
+                                                         value="5" id="si14"/>
+                                          <af:selectItem label="Saturday"
+                                                         value="6" id="si11"/>
+                                          <af:selectItem label="Sunday"
+                                                         value="7" id="si15"/>
+                                        </af:selectOneChoice>
+                                      </h:panelGrid>
+                                      <h:panelGrid columns="3" id="pg14">
+                                        <af:selectBooleanRadio text="Every"
+                                                               label="Label 1"
+                                                               id="sbc1"
+                                                               simple="true"
+                                                               group="weekly"
+                                                               binding="#{Scheduler.rdWeekNo}"/>
+                                        <af:inputNumberSpinbox label="Label 2"
+                                                               id="ins2"
+                                                               simple="true"
+                                                               columns="4"
+                                                               binding="#{Scheduler.txtWeekNo}"/>
+                                        <af:outputLabel value="Weeks on"
+                                                        id="ol14"/>
+                                      </h:panelGrid>
+                                      <h:panelGrid columns="2" id="pg15">
+                                        <af:spacer width="10" height="0"
+                                                   id="s3"/>
+                                        <af:selectManyCheckbox label="Label 1"
+                                                               id="smc1"
+                                                               simple="true"
+                                                               layout="horizontal"
+                                                               binding="#{Scheduler.chkWeek}">
+                                          <af:selectItem label="Mon" value="1"
+                                                         id="si21"/>
+                                          <af:selectItem label="Tue" value="2"
+                                                         id="si20"/>
+                                          <af:selectItem label="Wed" value="3"
+                                                         id="si16"/>
+                                          <af:selectItem label="Thur" value="4"
+                                                         id="si18"/>
+                                          <af:selectItem label="Fri" value="5"
+                                                         id="si22"/>
+                                          <af:selectItem label="Sat" value="6"
+                                                         id="si19"/>
+                                          <af:selectItem label="Sun" value="7"
+                                                         id="si17"/>
+                                        </af:selectManyCheckbox>
+                                      </h:panelGrid>
+                                    </af:panelBox>
+                                    <af:panelBox text="PanelBox4" id="pb4"
+                                                 showHeader="never"
+                                                 showDisclosure="false"
+                                                 binding="#{Scheduler.monthlyPanel}"
+                                                 visible="false"
+                                                 rendered="true">
+                                      <f:facet name="toolbar"/>
+                                      <h:panelGrid columns="5" id="pg17">
+                                        <af:selectBooleanRadio text="Day"
+                                                               label="Label 3"
+                                                               id="sbr3"
+                                                               simple="true"
+                                                               group="monthly"
+                                                               binding="#{Scheduler.rdMonth}"/>
+                                        <af:inputNumberSpinbox label="Label 3"
+                                                               id="ins3"
+                                                               simple="true"
+                                                               columns="4"
+                                                               binding="#{Scheduler.txtDay}"/>
+                                        <af:outputLabel value=" of every "
+                                                        id="ol15"/>
+                                        <af:inputNumberSpinbox label="Label 4"
+                                                               id="ins4"
+                                                               simple="true"
+                                                               columns="4"
+                                                               binding="#{Scheduler.txtEveryMonth}"/>
+                                        <af:outputLabel value=" Month(s)"
+                                                        id="ol16"/>
+                                      </h:panelGrid>
+                                      <h:panelGrid columns="6" id="pg18">
+                                        <af:selectBooleanRadio text="The "
+                                                               label="Label 4"
+                                                               id="sbr4"
+                                                               simple="true"
+                                                               group="monthly"
+                                                               binding="#{Scheduler.rdMonth2}"/>
+                                        <af:selectOneChoice label="Label 4"
+                                                            id="soc4"
+                                                            simple="true"
+                                                            binding="#{Scheduler.txtMonthLevel}"
+                                                            unselectedLabel="Select">
+                                          <af:selectItem label="first" value="1"
+                                                         id="si24"/>
+                                          <af:selectItem label="second"
+                                                         value="2" id="si23"/>
+                                          <af:selectItem label="third" value="3"
+                                                         id="si26"/>
+                                          <af:selectItem label="fourth"
+                                                         value="4" id="si25"/>
+                                          <af:selectItem label="last" value="5"
+                                                         id="si27"/>
+                                        </af:selectOneChoice>
+                                        <af:selectOneChoice label="Label 3"
+                                                            id="selectOneChoice1"
+                                                            simple="true"
+                                                            binding="#{Scheduler.txtMonthDay}"
+                                                            unselectedLabel="Select">
+                                          <af:selectItem label="Monday"
+                                                         value="1"
+                                                         id="selectItem1"/>
+                                          <af:selectItem label="Tuesday"
+                                                         value="2"
+                                                         id="selectItem2"/>
+                                          <af:selectItem label="Wednesday"
+                                                         value="3"
+                                                         id="selectItem3"/>
+                                          <af:selectItem label="Thursday"
+                                                         value="4"
+                                                         id="selectItem4"/>
+                                          <af:selectItem label="Friday"
+                                                         value="5"
+                                                         id="selectItem5"/>
+                                          <af:selectItem label="Saturday"
+                                                         value="6"
+                                                         id="selectItem6"/>
+                                          <af:selectItem label="Sunday"
+                                                         value="7"
+                                                         id="selectItem7"/>
+                                        </af:selectOneChoice>
+                                        <af:outputLabel value=" of every "
+                                                        id="ol17"/>
+                                        <af:inputNumberSpinbox label="Label 5"
+                                                               id="ins5"
+                                                               columns="4"
+                                                               simple="true"
+                                                               binding="#{Scheduler.txtmonthEvery}"/>
+                                        <af:outputLabel value=" Month(s)"
+                                                        id="ol18"/>
+                                      </h:panelGrid>
+                                    </af:panelBox>
+                                    <af:panelBox text="PanelBox5" id="pb5"
+                                                 showHeader="never"
+                                                 showDisclosure="false"
+                                                 binding="#{Scheduler.yearlyPanel}"
+                                                 visible="false"
+                                                 rendered="true">
+                                      <f:facet name="toolbar"/>
+                                      <h:panelGrid columns="3" id="pg19"
+                                                   rendered="true">
+                                        <af:selectBooleanRadio text="Every year on "
+                                                               label="Label 5"
+                                                               id="sbr5"
+                                                               simple="true"
+                                                               group="yearly"
+                                                               binding="#{Scheduler.rdYearly}"/>
+                                        <af:selectOneChoice label="Label 5"
+                                                            id="soc5"
+                                                            simple="true"
+                                                            binding="#{Scheduler.rdYearMonth}">
+                                          <af:selectItem label="January"
+                                                         value="1" id="si34"/>
+                                          <af:selectItem label="February"
+                                                         value="2" id="si35"/>
+                                          <af:selectItem label="March" value="3"
+                                                         id="si29"/>
+                                          <af:selectItem label="April" value="4"
+                                                         id="si38"/>
+                                          <af:selectItem label="May" value="5"
+                                                         id="si36"/>
+                                          <af:selectItem label="June" value="6"
+                                                         id="si37"/>
+                                          <af:selectItem label="July" value="7"
+                                                         id="si31"/>
+                                          <af:selectItem label="August"
+                                                         value="8" id="si32"/>
+                                          <af:selectItem label="September"
+                                                         value="9" id="si33"/>
+                                          <af:selectItem label="October"
+                                                         value="10" id="si30"/>
+                                          <af:selectItem label="November"
+                                                         value="11" id="si39"/>
+                                          <af:selectItem label="December"
+                                                         value="12" id="si28"/>
+                                        </af:selectOneChoice>
+                                        <af:inputNumberSpinbox label="Label 6"
+                                                               id="ins6"
+                                                               simple="true"
+                                                               columns="4"
+                                                               binding="#{Scheduler.txtYearlyNoMonths}"/>
+                                      </h:panelGrid>
+                                      <h:panelGrid columns="5" id="pg20">
+                                        <af:selectBooleanRadio text="The "
+                                                               label="Label 6"
+                                                               id="sbr6"
+                                                               simple="true"
+                                                               group="yearly"
+                                                               binding="#{Scheduler.rdYearly2}"/>
+                                        <af:selectOneChoice label="Label 4"
+                                                            id="selectOneChoice2"
+                                                            simple="true"
+                                                            binding="#{Scheduler.rdYearLevel}">
+                                          <af:selectItem label="first" value="1"
+                                                         id="selectItem8"/>
+                                          <af:selectItem label="second"
+                                                         value="2"
+                                                         id="selectItem9"/>
+                                          <af:selectItem label="third" value="3"
+                                                         id="selectItem10"/>
+                                          <af:selectItem label="fourth"
+                                                         value="4"
+                                                         id="selectItem11"/>
+                                          <af:selectItem label="last" value="5"
+                                                         id="selectItem12"/>
+                                        </af:selectOneChoice>
+                                        <af:selectOneChoice label="Label 3"
+                                                            id="selectOneChoice3"
+                                                            simple="true"
+                                                            binding="#{Scheduler.rdYearDay}">
+                                          <af:selectItem label="Monday"
+                                                         value="1"
+                                                         id="selectItem13"/>
+                                          <af:selectItem label="Tuesday"
+                                                         value="2"
+                                                         id="selectItem14"/>
+                                          <af:selectItem label="Wednesday"
+                                                         value="3"
+                                                         id="selectItem15"/>
+                                          <af:selectItem label="Thursday"
+                                                         value="4"
+                                                         id="selectItem16"/>
+                                          <af:selectItem label="Friday"
+                                                         value="5"
+                                                         id="selectItem17"/>
+                                          <af:selectItem label="Saturday"
+                                                         value="6"
+                                                         id="selectItem18"/>
+                                          <af:selectItem label="Sunday"
+                                                         value="7"
+                                                         id="selectItem19"/>
+                                        </af:selectOneChoice>
+                                        <af:outputLabel value=" of every "
+                                                        id="ol19"/>
+                                        <af:selectOneChoice label="Label 5"
+                                                            id="selectOneChoice4"
+                                                            simple="true"
+                                                            binding="#{Scheduler.rdYearlyMonth}">
+                                          <af:selectItem label="January"
+                                                         value="1"
+                                                         id="selectItem20"/>
+                                          <af:selectItem label="February"
+                                                         value="2"
+                                                         id="selectItem21"/>
+                                          <af:selectItem label="March" value="3"
+                                                         id="selectItem22"/>
+                                          <af:selectItem label="April" value="4"
+                                                         id="selectItem23"/>
+                                          <af:selectItem label="May" value="5"
+                                                         id="selectItem24"/>
+                                          <af:selectItem label="June" value="6"
+                                                         id="selectItem25"/>
+                                          <af:selectItem label="July" value="7"
+                                                         id="selectItem26"/>
+                                          <af:selectItem label="August"
+                                                         value="8"
+                                                         id="selectItem27"/>
+                                          <af:selectItem label="September"
+                                                         value="9"
+                                                         id="selectItem28"/>
+                                          <af:selectItem label="October"
+                                                         value="10"
+                                                         id="selectItem29"/>
+                                          <af:selectItem label="November"
+                                                         value="10"
+                                                         id="selectItem30"/>
+                                          <af:selectItem label="December"
+                                                         value="12"
+                                                         id="selectItem31"/>
+                                        </af:selectOneChoice>
+                                      </h:panelGrid>
+                                    </af:panelBox>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Notified Succeed User"
+                                                  id="outputLabel1"
+                                                  binding="#{Scheduler.notifyUsrLbl}"/>
+                                  <h:panelGrid columns="2" id="panelGrid1">
+                                    <af:inputText label="Label 5"
+                                                  id="inputText1" simple="true"
+                                                  disabled="true"
+                                                  binding="#{Scheduler.txtNotSucc}"/>
+                                    <af:commandButton id="commandButton1"
+                                                      icon="/images/dropdown.gif">
+                                      <af:showPopupBehavior popupId="popup2"/>
+                                    </af:commandButton>
+                                    <af:popup id="popup2">
+                                      <af:dialog id="dialog2"
+                                                 title="Select User"
+                                                 type="none">
+                                        <af:panelGroupLayout id="panelGroupLayout2">
+                                          <af:panelBox text="PanelBox24"
+                                                       id="pb12"
+                                                       showHeader="never">
+                                            <f:facet name="toolbar"/>
+                                            <h:panelGrid columns="1" id="pg29">
+                                              <af:table value="#{bindings.User2.collectionModel}"
+                                                        var="row"
+                                                        rows="#{bindings.User2.rangeSize}"
+                                                        emptyText="#{bindings.User2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                        fetchSize="#{bindings.User2.rangeSize}"
+                                                        rowBandingInterval="0"
+                                                        filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                                        queryListener="#{bindings.UserQuery.processQuery}"
+                                                        filterVisible="true"
+                                                        varStatus="vs"
+                                                        selectedRowKeys="#{bindings.User2.collectionModel.selectedRow}"
+                                                        selectionListener="#{bindings.User2.collectionModel.makeCurrent}"
+                                                        rowSelection="single"
+                                                        id="table2"
+                                                        binding="#{Scheduler.notifySucceed}"
+                                                        inlineStyle="width:325.0px;">
+                                                <af:column sortProperty="username"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Username"
+                                                           id="c21"
+                                                           filterFeatures="caseInsensitive">
+                                                  <af:outputText value="#{row.username}"
+                                                                 id="ot11"/>
+                                                </af:column>
+                                                <af:column sortProperty="userFullname"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Fullname"
+                                                           id="c10"
+                                                           filterFeatures="caseInsensitive">
+                                                  <af:outputText value="#{row.userFullname}"
+                                                                 id="ot7"/>
+                                                </af:column>
+                                                <af:column sortProperty="userEmail"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Email"
+                                                           id="c9"
+                                                           filterFeatures="caseInsensitive">
+                                                  <af:outputText value="#{row.userEmail}"
+                                                                 id="ot10"/>
+                                                </af:column>
+                                              </af:table>
+                                              <h:panelGrid columns="2"
+                                                           id="pg30">
+                                                <af:commandButton text="Ok"
+                                                                  id="cb11"
+                                                                  partialSubmit="true"
+                                                                  action="#{Scheduler.notifiedSuccSelected}"/>
+                                                <af:commandButton text="Cancel"
+                                                                  id="cb12"
+                                                                  partialSubmit="true"
+                                                                  action="#{Scheduler.cancNotSucceed}"/>
+                                              </h:panelGrid>
+                                            </h:panelGrid>
+                                          </af:panelBox>
+                                        </af:panelGroupLayout>
+                                      </af:dialog>
+                                    </af:popup>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Success Notify Template"
+                                                  id="ol11"
+                                                  binding="#{Scheduler.notUsrTmpLbl}"/>
+                                  <h:panelGrid columns="2" id="pg26">
+                                    <af:inputText label="Label 8" id="it8"
+                                                  simple="true" rows="1"
+                                                  binding="#{Scheduler.txtSuccessTemplate}"
+                                                  disabled="true"/>
+                                    <af:commandButton id="cb13"
+                                                      icon="/images/dropdown.gif"
+                                                      action="#{Scheduler.launchSuccTemp}"
+                                                      partialSubmit="true"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Notified Failed User"
+                                                  id="ol7"/>
+                                  <h:panelGrid columns="2" id="pg3">
+                                    <af:inputText label="Label 5" id="it5"
+                                                  simple="true" disabled="true"
+                                                  binding="#{Scheduler.txtNotifyFail}"/>
+                                    <af:commandButton id="cb4"
+                                                      icon="/images/dropdown.gif">
+                                      <af:showPopupBehavior popupId="popup1"/>
+                                    </af:commandButton>
+                                    <af:popup id="popup1">
+                                      <af:dialog id="dialog1"
+                                                 title="Select User"
+                                                 type="none">
+                                        <af:panelGroupLayout id="panelGroupLayout1">
+                                          <af:panelBox text="PanelBox23"
+                                                       id="pb11"
+                                                       showHeader="never">
+                                            <f:facet name="toolbar"/>
+                                            <h:panelGrid columns="1" id="pg27">
+                                              <af:table value="#{bindings.User1.collectionModel}"
+                                                        var="row"
+                                                        rows="#{bindings.User1.rangeSize}"
+                                                        emptyText="#{bindings.User1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                        fetchSize="#{bindings.User1.rangeSize}"
+                                                        rowBandingInterval="0"
+                                                        filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                                        queryListener="#{bindings.UserQuery.processQuery}"
+                                                        filterVisible="true"
+                                                        varStatus="vs"
+                                                        selectedRowKeys="#{bindings.User1.collectionModel.selectedRow}"
+                                                        selectionListener="#{bindings.User1.collectionModel.makeCurrent}"
+                                                        rowSelection="single"
+                                                        id="table1"
+                                                        binding="#{Scheduler.notifiedLov}"
+                                                        inlineStyle="width:325.0px;">
+                                                <af:column sortProperty="username"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Username"
+                                                           id="c7"
+                                                           filterFeatures="caseInsensitive">
+                                                  <af:outputText value="#{row.username}"
+                                                                 id="ot6"/>
+                                                </af:column>
+                                                <af:column sortProperty="userFullname"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Fullname"
+                                                           id="c5"
+                                                           filterFeatures="caseInsensitive">
+                                                  <af:outputText value="#{row.userFullname}"
+                                                                 id="ot4"/>
+                                                </af:column>
+                                                <af:column sortProperty="userEmail"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Email"
+                                                           id="c6"
+                                                           filterFeatures="caseInsensitive">
+                                                  <af:outputText value="#{row.userEmail}"
+                                                                 id="ot8"/>
+                                                </af:column>
+                                              </af:table>
+                                              <h:panelGrid columns="2"
+                                                           id="pg28">
+                                                <af:commandButton text="OK"
+                                                                  id="cb9"
+                                                                  partialSubmit="true"
+                                                                  action="#{Scheduler.notifiedSelected}"/>
+                                                <af:commandButton text="Cancel"
+                                                                  id="cb10"
+                                                                  partialSubmit="true"
+                                                                  action="#{Scheduler.cancelNotify}"/>
+                                              </h:panelGrid>
+                                            </h:panelGrid>
+                                          </af:panelBox>
+                                        </af:panelGroupLayout>
+                                      </af:dialog>
+                                    </af:popup>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Fail Notify Template"
+                                                  id="ol10"/>
+                                  <h:panelGrid columns="2" id="pg25">
+                                    <af:inputText label="Label 7" id="it7"
+                                                  simple="true" rows="1"
+                                                  binding="#{Scheduler.txtFailTemplate}"
+                                                  disabled="true"/>
+                                    <af:commandButton id="cb16"
+                                                      icon="/images/dropdown.gif"
+                                                      action="#{Scheduler.launchFailTemp}"
+                                                      partialSubmit="true"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Recurrence" id="ol12"
+                                                  visible="false"/>
+                                  <af:inputText label="Label 9" id="it3"
+                                                binding="#{Scheduler.txtRecurrence}"
+                                                simple="true" visible="false"/>
+                                  <af:outputLabel value="Status" id="ol21"/>
+                                  <af:selectOneChoice label="Label 6" id="soc6"
+                                                      simple="true"
+                                                      unselectedLabel="Status"
+                                                      binding="#{Scheduler.status}">
+                                    <af:selectItem label="Active" value="A"
+                                                   id="si42"/>
+                                    <af:selectItem label="InActive" value="I"
+                                                   id="si41"/>
+                                  </af:selectOneChoice>
+                                  <af:outputLabel value="Threshold Type"
+                                                  id="ol24"/>
+                                  <af:selectOneChoice label="Label 7" id="soc7"
+                                                      simple="true"
+                                                      binding="#{Scheduler.threshType}">
+                                  <af:selectItem label="Hours" value="H"
+                                                   id="si45"/>
+                                    <af:selectItem label="Days" value="D"
+                                                   id="si51"/>
+                                    <af:selectItem label="Months" value="M"
+                                                   id="si43"/>
+                                    <af:selectItem label="Quarter" value="Q"
+                                                   id="si44"/>
+                                  </af:selectOneChoice>
+                                  <af:outputLabel value="Threshold Value"
+                                                  id="ol25"/>
+                                  <af:inputNumberSpinbox label="Label 8"
+                                                         id="ins8" simple="true"
+                                                         binding="#{Scheduler.threshValue}"/>
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" id="pg6">
+                                  <af:commandButton text="Save" id="cb6"
+                                                    action="#{Scheduler.saveAction}"
+                                                    partialSubmit="true"/>
+                                  <af:commandButton text="Cancel" id="cb7"/>
+                                </h:panelGrid>
+                              </af:panelGroupLayout>
+                            </af:panelBox>
+                          </af:dialog>
+                        </af:popup>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc2" inlineStyle="width:99%;">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.AlertBean.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.AlertBean.rangeSize}"
+                                  emptyText="#{bindings.AlertBean.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.AlertBean.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.AlertBeanQuery.queryDescriptor}"
+                                  queryListener="#{bindings.AlertBeanQuery.processQuery}"
+                                  filterVisible="false" varStatus="vs"
+                                  rowSelection="single" id="t4"
+                                  inlineStyle="width:inherit;"
+                                  binding="#{Scheduler.schedulerTable}"
+                                  visible="true">
+                          <af:column sortProperty="qtJobName" filterable="true"
+                                     sortable="true" headerText="Job Name"
+                                     id="c26" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtJobName}" id="ot24"/>
+                          </af:column>
+                          <af:column sortProperty="qtDescription"
+                                     filterable="true" sortable="true"
+                                     headerText="Description" id="c17"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtDescription}"
+                                           id="ot23"/>
+                          </af:column>
+                          <af:column sortProperty="qtStartTime" width="150"
+                                     filterable="false" sortable="true"
+                                     headerText="Execution Time" id="c13"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtStartTime}" id="ot22">
+                              <af:convertDateTime type="both"
+                                                  pattern="dd-MMM-yyyy hh:mm a"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="qtRecurrenceType"
+                                     filterable="true" sortable="true"
+                                     headerText="Recurrence" id="c24"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtRecurrenceType}"
+                                           id="ot31"/>
+                          </af:column>
+                          <af:column sortProperty="qtJobAssignee" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.qtJobAssignee.label}"
+                                     id="c18" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtJobAssignee}"
+                                           id="ot35"/>
+                          </af:column>
+                          <af:column sortProperty="assignee" filterable="true"
+                                     sortable="true" headerText="Assignee"
+                                     id="c30" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.assignee}" id="ot17"/>
+                          </af:column>
+                          <af:column sortProperty="qtNotifiedFailUser" visible="false"
+                                     filterable="true" sortable="true" 
+                                     headerText="#{bindings.AlertBean.hints.qtNotifiedFailUser.label}"
+                                     id="c34" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtNotifiedFailUser}"
+                                           id="ot15"/>
+                          </af:column>
+                          <af:column sortProperty="failUser" filterable="true"
+                                     sortable="true"
+                                     headerText="Failure Notification User"
+                                     id="c31" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.failUser}" id="ot33"/>
+                          </af:column>
+                          <af:column sortProperty="qtNotifiedSuccUser"
+                                     filterable="true" sortable="true" visible="false"
+                                     headerText="#{bindings.AlertBean.hints.qtNotifiedSuccUser.label}"
+                                     id="c11" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtNotifiedSuccUser}"
+                                           id="ot27"/>
+                          </af:column>
+                          <af:column sortProperty="succUser" filterable="true"
+                                     sortable="true"
+                                     headerText="Success Notification User"
+                                     id="c32" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.succUser}" id="ot30"/>
+                          </af:column>
+                          <af:column sortProperty="qtRecurrence" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.qtRecurrence.label}"
+                                     id="c29" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtRecurrence}"
+                                           id="ot9"/>
+                          </af:column>
+                          <af:column sortProperty="qtJobType" filterable="true" visible="false"
+                                     sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.qtJobType.label}"
+                                     id="c22" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtJobType}" id="ot36"/>
+                          </af:column>
+                          <af:column sortProperty="qtJobTemplate" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.qtJobTemplate.label}"
+                                     id="c36" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtJobTemplate}"
+                                           id="ot12"/>
+                          </af:column>
+                          <af:column sortProperty="qtFailNotifyTemplate" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.qtFailNotifyTemplate.label}"
+                                     id="c33" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtFailNotifyTemplate}"
+                                           id="ot25"/>
+                          </af:column>
+                          <af:column sortProperty="qtSuccNotifyTemplate" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.qtSuccNotifyTemplate.label}"
+                                     id="c35" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtSuccNotifyTemplate}"
+                                           id="ot20"/>
+                          </af:column>
+                          <af:column sortProperty="qtCode" filterable="true" visible="false"
+                                     sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.qtCode.label}"
+                                     id="c27" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtCode}" id="ot16"/>
+                          </af:column>
+                          <af:column sortProperty="jobTemplate" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.jobTemplate.label}"
+                                     id="c8" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.jobTemplate}"
+                                           id="ot37"/>
+                          </af:column>
+                          <af:column sortProperty="failTemplate" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.failTemplate.label}"
+                                     id="c37" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.failTemplate}"
+                                           id="ot14"/>
+                          </af:column>
+                          <af:column sortProperty="succTemplate" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.AlertBean.hints.succTemplate.label}"
+                                     id="c28" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.succTemplate}"
+                                           id="ot34"/>
+                          </af:column>
+                          <af:column sortProperty="assigneeEmail"
+                                     filterable="true" sortable="true"
+                                     headerText="Email To" width="120"
+                                     id="c23" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.assigneeEmail}"
+                                           id="ot28"/>
+                          </af:column>
+                          <af:column sortProperty="failEmail" filterable="true"
+                                     sortable="true" width="120"
+                                     headerText="Failed Email Notification"
+                                     id="c15" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.failEmail}" id="ot13"/>
+                          </af:column>
+                          <af:column sortProperty="succEmail" filterable="true"
+                                     sortable="true" width="120"
+                                     headerText="Successfull Email Notification"
+                                     id="c20" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.succEmail}" id="ot19"/>
+                          </af:column>
+                          <af:column sortProperty="qtStatus" filterable="true"
+                                     sortable="true" visible="false"
+                                     headerText="#{bindings.AlertBean.hints.qtStatus.label}"
+                                     id="c25" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtStatus}" id="ot21"/>
+                          </af:column>
+                          <af:column sortProperty="qtThreshType" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="Threshold Type" id="c38"
+                                     filterFeatures="caseInsensitive">
+                            <af:selectOneChoice label="Label 7" id="soc8"
+                                                simple="true"
+                                                value="#{row.qtThreshType}"
+                                                readOnly="true">
+                              <af:selectItem label="Days" value="D" id="si46"/>
+                              <af:selectItem label="Months" value="M"
+                                             id="si47"/>
+                              <af:selectItem label="Quarter" value="Q"
+                                             id="si48"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column sortProperty="qtThreshValue"  visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="Threshold Value" id="c40"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.qtThreshValue}"
+                                           id="ot39"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+            
+              </af:panelBox>
+            </af:panelBox>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

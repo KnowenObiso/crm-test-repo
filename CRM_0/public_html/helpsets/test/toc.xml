@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<toc version="1.0">
+	<tocitem text="chapter node">
+		<tocitem target="topic_1" text="File 1"/>
+		<tocitem text="More">
+			<tocitem target="topic_2" text="File 2 Anchor a1"/>
+			<tocitem target="topic_3" text="File 1 via topic_3"/>
+		</tocitem>
+		<tocitem target="concise_expanded" text="Concise &amp; Expanded Help"/>
+	</tocitem>
+	<tocitem text="Invalid Links">
+		<tocitem target="topic_1"/>
+		<tocitem target="topic_2" text=""/>
+		<tocitem target="nonexisting_file" text="topicid referencing non-existing file"/>
+		<tocitem target="invalid_id" text="Invalid ID"/>
+		<tocitem target="" text="Empty ID"/>
+	</tocitem>
+</toc>

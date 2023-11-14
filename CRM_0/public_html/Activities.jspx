@@ -1,0 +1,1028 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM | Activities">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox2" id="pb3" showHeader="never"
+                         showDisclosure="false">
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="pg25">
+                <af:outputLabel value="Activities" id="ol18"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <f:facet name="toolbar"/>
+              <af:panelBox text="Activities" id="pb1" showDisclosure="false"
+                           showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="6" id="pg1">
+                  <af:commandButton text="New" id="cb1"
+                                    icon="/images/create.gif"
+                                    action="#{ActivityBacking.actionNewActivity}"/>
+                  <af:spacer width="10" height="10" id="s2"/>
+                  <af:commandButton text="Edit" id="cb2"
+                                    icon="/images/update.gif"
+                                    action="#{ActivityBacking.actionEditActivity}"/>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:commandButton text="Delete" id="cb3"
+                                    icon="/images/delete.gif"
+                                    action="#{ActivityBacking.actionDeleteActivity}"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc1"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    inlineStyle="height:200.0px;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Activity.collectionModel}"
+                            var="row" rows="#{bindings.Activity.rangeSize}"
+                            emptyText="#{bindings.Activity.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Activity.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.ActivityQuery.queryDescriptor}"
+                            queryListener="#{bindings.ActivityQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            selectionListener="#{ActivityBacking.actiontblActivitiesSelected}"
+                            rowSelection="single" id="t1"
+                            binding="#{ActivityBacking.tblActivities}">
+                    <af:column sortProperty="activitysubject" sortable="true"
+                               headerText="Subject" id="c2" filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activitysubject}" id="ot13"/>
+                    </af:column>
+                    <af:column sortProperty="activityWEF" sortable="true"
+                               headerText="From" id="c8" filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityWEF}" id="ot15">
+                      <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss aaa"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="activityWET" sortable="true"
+                               headerText="To" id="c18" filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityWET}" id="ot18">
+ <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss aaa"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="activityDuration" sortable="true"
+                               headerText="Duration(hrs)" id="c16"
+                               filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityDuration}" id="ot11"/>
+                    </af:column>
+                    <af:column sortProperty="activityLocation" sortable="true"
+                               headerText="Location" id="c13" filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityLocation}" id="ot10"/>
+                    </af:column>
+                    <af:column sortProperty="activityAssignedUser"
+                               sortable="true" headerText="Assigned To" id="c3"
+                               filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityAssignedUser}"
+                                     id="ot16"/>
+                    </af:column>
+                    <af:column sortProperty="activityRelatedAccount"
+                               sortable="true" headerText="Related To" id="c7"
+                               filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityRelatedAccount}"
+                                     id="ot14"/>
+                    </af:column>
+                    <af:column sortProperty="activityStatus" sortable="true"
+                               headerText="Status" id="c10" filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityStatus}" id="ot17"/>
+                    </af:column>
+                    <af:column sortProperty="activityType" sortable="true"
+                               headerText="Type" id="c5" filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityType}" id="ot19"/>
+                    </af:column>
+                    <af:column sortProperty="activityDescription"
+                               sortable="true" headerText="Description" id="c19"
+                               width="200" filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityDescription}"
+                                     id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="activityReminder" sortable="true"
+                               headerText="Send Reminder?" id="c12"
+                               filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityReminder}" id="ot12"/>
+                    </af:column>
+                    <af:column sortProperty="activityReminderTime"
+                               sortable="false" headerText="Reminder Time"
+                               id="c41" filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityReminderTime}"
+                                     id="ot34">
+                       <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss aaa"/></af:outputText>
+                    </af:column>
+                    <af:column sortProperty="activityTeamName" sortable="true"
+                               headerText="Team" id="c11" filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.activityTeamName}" id="ot9"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+              <af:panelTabbed id="pt1" inlineStyle="width:99.0%;">
+                <af:showDetailItem text="Notes and Attachments" id="sdi1">
+                  <h:panelGrid columns="6" id="pg34">
+                    <af:commandButton text="New" id="cb22"
+                                      icon="/images/create.gif"
+                                      action="#{ActivityBacking.actionNewNote}"/>
+                    <af:spacer width="10" height="10" id="s4"/>
+                    <af:commandButton text="Edit" id="cb23"
+                                      icon="/images/update.gif"
+                                      action="#{ActivityBacking.actionEditNote}"/>
+                    <af:spacer width="10" height="10" id="s5"/>
+                    <af:commandButton text="Delete" id="cb21"
+                                      icon="/images/delete.gif"
+                                      action="#{ActivityBacking.actionDeleteNote}"/>
+                  </h:panelGrid>
+                  <af:panelCollection id="pc6" inlineStyle="width:99%;">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{bindings.Note.collectionModel}" var="row"
+                              rows="#{bindings.Note.rangeSize}"
+                              emptyText="#{bindings.Note.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.Note.rangeSize}"
+                              rowBandingInterval="1"
+                              filterModel="#{bindings.NoteQuery.queryDescriptor}"
+                              queryListener="#{bindings.NoteQuery.processQuery}"
+                              filterVisible="false" varStatus="vs"
+                              selectionListener="#{bindings.Note.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t6"
+                              binding="#{ActivityBacking.tblNotes}"
+                              inlineStyle="width:99%;">
+                      <af:column sortProperty="noteSubject" filterable="true"
+                                 sortable="true" headerText="Subject" id="c30"
+                                 filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.noteSubject}" id="ot25"/>
+                      </af:column>
+                      <af:column sortProperty="relatedAccount" filterable="true"
+                                 sortable="true" headerText="Related TO"
+                                 id="c25" width="250"
+                                 filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.relatedAccount}" id="ot28"/>
+                      </af:column>
+                      <af:column sortProperty="noteDescription"
+                                 filterable="true" sortable="true"
+                                 headerText="Description" id="c35" width="250"
+                                 filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.noteDescription}"
+                                       id="ot24"/>
+                      </af:column>
+                      <af:column sortProperty="noteAttachmentName"
+                                 sortable="true" headerText="Attachment"
+                                 id="c42" width="200" filterable="true"
+                                 filterFeatures="caseInsensitive">
+                        <af:commandLink id="ot41" shortDesc="#{row.noteCode}"
+                                        text="#{row.noteAttachmentName}"
+                                        actionListener="#{ActivityBacking.actionAttachmentSelected}"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:showDetailItem>
+                <af:showDetailItem text="Tasks" id="sdi2">
+                  <h:panelGrid columns="6" id="pg35">
+                    <af:commandButton text="New" id="cb24"
+                                      icon="/images/create.gif"
+                                      action="#{ActivityBacking.actionNewTask}"/>
+                    <af:spacer width="10" height="10" id="s6"/>
+                    <af:commandButton text="Edit" id="cb25"
+                                      icon="/images/update.gif"
+                                      action="#{ActivityBacking.actionEditTask}"/>
+                    <af:spacer width="10" height="10" id="s7"/>
+                    <af:commandButton text="Delete" id="cb26"
+                                      icon="/images/delete.gif"
+                                      action="#{ActivityBacking.actionDeleteTask}"/>
+                  </h:panelGrid>
+                  <af:panelCollection id="pc8" inlineStyle="width:99%;">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{bindings.ActivityTask.collectionModel}"
+                              var="row"
+                              rows="#{bindings.ActivityTask.rangeSize}"
+                              emptyText="#{bindings.ActivityTask.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.ActivityTask.rangeSize}"
+                              rowBandingInterval="1"
+                              filterModel="#{bindings.ActivityTaskQuery.queryDescriptor}"
+                              queryListener="#{bindings.ActivityTaskQuery.processQuery}"
+                              filterVisible="false" varStatus="vs"
+                              selectionListener="#{bindings.ActivityTask.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t8"
+                              binding="#{ActivityBacking.tblActTasks}"
+                              inlineStyle="width:99%;">
+                      <af:column sortProperty="taskSubject" filterable="true"
+                                 sortable="true" headerText="Subject" id="c36"
+                                 width="200" filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.taskSubject}" id="ot39"/>
+                      </af:column>
+                      <af:column sortProperty="taskFrom" filterable="true"
+                                 sortable="true" headerText="From" id="c27"
+                                 filterFeatures="caseInsensitive">
+                      
+                        <af:outputText value="#{row.taskFrom}" id="ot37">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="taskTo" filterable="true"
+                                 sortable="true" headerText="To" id="c32"
+                                 filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.taskTo}" id="ot30">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="status" filterable="true"
+                                 sortable="true" headerText="Status" id="c38"
+                                 filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.status}" id="ot35"/>
+                      </af:column>
+                      <af:column sortProperty="priority" sortable="true"
+                                 headerText="Priority" id="c33"
+                                 filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.priority}" id="ot36"/>
+                      </af:column>
+                      <af:column sortProperty="relatedAccount" filterable="true"
+                                 sortable="true" headerText="Related To"
+                                 id="c34" inlineStyle="width:99%;"
+                                 filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.relatedAccount}" id="ot32"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:showDetailItem>
+                <af:showDetailItem text="Participants" id="sdi3">
+                  <h:panelGrid columns="10" id="pg36">
+                    <af:commandButton text="Select All" id="cb33"
+                                      binding="#{ActivityBacking.btnSelectParticipants}"
+                                      action="#{ActivityBacking.actionSelectAllParticipants}"/>
+                    <af:spacer width="10" height="10" id="s11"/>
+                    <af:commandButton text="Add" id="cb27"
+                                      icon="/images/create.gif"
+                                      action="#{ActivityBacking.actionNewParticipant}"/>
+                    <af:spacer width="10" height="10" id="s10"/>
+                    <af:commandButton text="Remove" id="cb29"
+                                      icon="/images/delete.gif"
+                                      action="#{ActivityBacking.actionDeleteParticipant}"/>
+                    <af:spacer width="10" height="10" id="s12"/>
+                    <af:commandButton text="Send Invites" id="cb28"
+                                      action="#{ActivityBacking.actionSendInvites}"/>
+                  </h:panelGrid>
+                  <af:separator id="s14" visible="false"/>
+                  <af:panelCollection id="pc10" inlineStyle="width:99%;">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{bindings.ActivityParticipant.collectionModel}"
+                              var="row"
+                              rows="#{bindings.ActivityParticipant.rangeSize}"
+                              emptyText="#{bindings.ActivityParticipant.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.ActivityParticipant.rangeSize}"
+                              rowBandingInterval="1"
+                              filterModel="#{bindings.ActivityParticipantQuery.queryDescriptor}"
+                              queryListener="#{bindings.ActivityParticipantQuery.processQuery}"
+                              filterVisible="false" varStatus="vs"
+                              selectionListener="#{bindings.ActivityParticipant.collectionModel.makeCurrent}"
+                              rowSelection="multiple" id="t9"
+                              inlineStyle="width:99%;"
+                              binding="#{ActivityBacking.tblActParticipants}">
+                      <af:column sortProperty="selected" sortable="false"
+                                 headerText="Select" id="c31">
+                        <af:selectBooleanCheckbox value="#{row.selected}"
+                                                  label="Label 1" id="sbc1"
+                                                  simple="true"
+                                                  binding="#{ActivityBacking.chBoxSelectedPart}"/>
+                      </af:column>
+                      <af:column sortProperty="accountName" filterable="true"
+                                 sortable="true" headerText="Name" id="c23"
+                                 width="200" filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.accountName}" id="ot29"/>
+                      </af:column>
+                      <af:column sortProperty="accountEmail" filterable="true"
+                                 sortable="true" headerText="Email" id="c40"
+                                 width="200" filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.accountEmail}" id="ot40"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:showDetailItem>
+              </af:panelTabbed>
+            </af:panelBox>
+            <af:popup id="AccountsListPop">
+              <af:dialog id="d3" type="none" title="Accounts List">
+                <af:panelCollection id="pc2">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Account.collectionModel}"
+                            var="row" rows="#{bindings.Account.rangeSize}"
+                            emptyText="#{bindings.Account.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Account.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.AccountQuery.queryDescriptor}"
+                            queryListener="#{bindings.AccountQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.Account.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.Account.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t2" width="371"
+                            binding="#{ActivityBacking.tblAccountsList}">
+                    <af:column sortProperty="accountType" sortable="true"
+                               headerText="Account Type" id="c1"
+                               filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.accountType}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="accountName" sortable="true"
+                               headerText="Account Name" id="c6" width="200"
+                               filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.accountName}" id="ot3"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <af:commandButton text="Ok" id="cb10" partialSubmit="true"
+                                  action="#{ActivityBacking.actionAcceptAccount}"
+                                  binding="#{ActivityBacking.btnAccoutsListOK}"/>
+                <af:commandButton text="Cancel" id="cb11" partialSubmit="true"
+                                  action="#{ActivityBacking.actionCancelAccounts}"/>
+                <h:panelGrid columns="4" id="pg4"/>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="newEditActivityPop">
+              <af:dialog id="d2" type="none"
+                         binding="#{ActivityBacking.dlgNewEditActivity}">
+                <af:panelGroupLayout id="pgl2">
+                  <af:panelBox text="PanelBox1" id="pb2" showHeader="never"
+                               showDisclosure="false"
+                               binding="#{ActivityBacking.pnBoxActivityDetails}">
+                    <h:panelGrid columns="2" id="pg2">
+                      <af:outputLabel value="Subject" id="ol1"
+                                      showRequired="true"/>
+                      <h:panelGrid columns="2" id="pg7">
+                        <af:inputText id="it8"
+                                      binding="#{ActivityBacking.txtActSubject}"
+                                      simple="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg8">
+                        <af:outputLabel value="From:" id="ol2"
+                                        showRequired="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg9">
+                        <af:inputDate id="id1"
+                                      binding="#{ActivityBacking.dtActWEF}">
+                          <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss aaa"/>
+                        </af:inputDate>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg10">
+                        <af:outputLabel value="To:" id="ol3"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg11">
+                        <af:inputDate id="id2"
+                                      binding="#{ActivityBacking.dtActWET}">
+                          <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss aaa"/>
+                        </af:inputDate>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg12">
+                        <af:outputLabel value="Duration(hrs)" id="ol9"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg13">
+                        <af:inputNumberSpinbox id="ins1"
+                                               binding="#{ActivityBacking.noActDuration}"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg14">
+                        <af:outputLabel value="Location" id="ol4"
+                                        showRequired="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg15">
+                        <af:inputText id="it13"
+                                      binding="#{ActivityBacking.txtActLocation}"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg16">
+                        <af:outputLabel id="ol5" value="Related Account"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg17">
+                        <af:panelLabelAndMessage id="plam2">
+                          <af:inputText id="it10" disabled="true" simple="true"
+                                        binding="#{ActivityBacking.txtRelatedAccount}"/>
+                          <af:commandButton id="cb5"
+                                            action="#{ActivityBacking.actionShowAccounts}"
+                                            icon="/images/dropdown.gif"
+                                            partialSubmit="true"/>
+                        </af:panelLabelAndMessage>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg18">
+                        <af:outputLabel value="Activity Type" id="ol10"
+                                        showRequired="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg19">
+                        <af:panelLabelAndMessage id="plam1">
+                          <af:inputText id="it9" disabled="true" simple="true"
+                                        binding="#{ActivityBacking.txtActTtype}"/>
+                          <af:commandButton id="cb4" partialSubmit="true"
+                                            action="#{ActivityBacking.actionShowActivityTypes}"
+                                            icon="/images/dropdown.gif"/>
+                        </af:panelLabelAndMessage>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg20">
+                        <af:outputLabel value="Assigned To" id="ol11"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg21">
+                        <af:panelLabelAndMessage id="plam3">
+                          <af:inputText id="it11" simple="true" disabled="true"
+                                        binding="#{ActivityBacking.txtActAssignedTo}"/>
+                          <af:commandButton id="cb6" icon="/images/dropdown.gif"
+                                            action="#{ActivityBacking.actionShowUsers}"
+                                            partialSubmit="true"/>
+                        </af:panelLabelAndMessage>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg22">
+                        <af:outputLabel value="Team" id="ol12"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg23">
+                        <af:panelLabelAndMessage id="plam4">
+                          <af:inputText id="it12" simple="true"
+                                        binding="#{ActivityBacking.txtActTeam}"
+                                        disabled="true"/>
+                          <af:commandButton id="cb7" icon="/images/dropdown.gif"
+                                            action="#{ActivityBacking.actionShowuserGroups}"
+                                            partialSubmit="true"/>
+                        </af:panelLabelAndMessage>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg32">
+                        <af:outputLabel value="Status" id="ol6"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg27">
+                        <af:panelLabelAndMessage id="plam5">
+                          <af:inputText id="it2"
+                                        binding="#{ActivityBacking.txtStatus}"
+                                        visible="true" disabled="true"
+                                        simple="true"/>
+                          <af:commandButton id="cb20"
+                                            icon="/images/dropdown.gif"
+                                            action="#{ActivityBacking.actionShowStatuses}"
+                                            partialSubmit="true"/>
+                        </af:panelLabelAndMessage>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg28">
+                        <af:outputLabel value="Description" id="ol7"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg29">
+                        <af:inputText id="it14" rows="3" columns="30"
+                                      binding="#{ActivityBacking.txtActDescription}"
+                                      simple="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid9">
+                        <af:outputLabel value="Email Template"
+                                        id="outputLabel4"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid13">
+                        <af:panelLabelAndMessage id="panelLabelAndMessage3">
+                          <af:inputText id="inputText5" disabled="true"
+                                        simple="true"
+                                        binding="#{ActivityBacking.txtEmailTemplate}"
+                                        label="Email Template"/>
+                          <af:commandButton id="commandButton5"
+                                            action="#{ActivityBacking.actionShowEmailTemplates}"
+                                            icon="/images/dropdown.gif"
+                                            partialSubmit="true"/>
+                        </af:panelLabelAndMessage>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg30">
+                        <af:outputLabel value="Send Reminder?" id="ol8"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg31">
+                        <af:selectOneChoice id="soc2"
+                                            binding="#{ActivityBacking.chActReminder}"
+                                            autoSubmit="true"
+                                            valueChangeListener="#{ActivityBacking.actionReminderChanged}"
+                                            unselectedLabel="Select">
+                          <af:selectItem label="Yes" value="Y" id="si9"/>
+                          <af:selectItem label="No" value="N" id="si8"/>
+                        </af:selectOneChoice>
+                      </h:panelGrid>
+                      <af:panelGroupLayout id="pgl3" partialTriggers="soc2">
+                        <h:panelGrid columns="1" id="pg26">
+                          <af:outputLabel value="Reminder Time" id="ol16"
+                                          binding="#{ActivityBacking.lblActivityTimer}"
+                                          visible="false"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                      <af:panelGroupLayout id="pgl1" partialTriggers="soc2">
+                        <h:panelGrid columns="1" id="pg47">
+                          <af:inputDate label="Timer " id="id7" simple="true"
+                                        binding="#{ActivityBacking.dtActivityTimer}"
+                                        visible="false">
+                            <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss aaa"/>
+                          </af:inputDate>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                      <af:inputText label="RelatedAccountCode" id="it16"
+                                    binding="#{ActivityBacking.txtRelatedAccountCode}"
+                                    visible="false"/>
+                      <af:inputText label="ActTypeCode" id="it17"
+                                    binding="#{ActivityBacking.txtActTypeCode}"
+                                    visible="false"/>
+                      <af:inputText id="it18" label="AssignedUserCode"
+                                    binding="#{ActivityBacking.txtActUserCode}"
+                                    visible="false"/>
+                      <af:inputText label="TeamCode" id="it15"
+                                    binding="#{ActivityBacking.txtActTeamCode}"
+                                    visible="false"/>
+                      <af:inputText label="Activity Code" id="it7"
+                                    binding="#{ActivityBacking.txtActCode}"
+                                    visible="false"/>
+                      <af:inputText label="Status Id" id="it3"
+                                    binding="#{ActivityBacking.txtStatusId}"
+                                    visible="false"/>
+                      <af:inputText label="Msg Template Code" id="it22"
+                                    disabled="true" simple="true"
+                                    visible="false"
+                                    binding="#{ActivityBacking.txtMsgTempCode}"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="4" id="pg3">
+                      <af:commandButton text="Save" id="cb8"
+                                        action="#{ActivityBacking.actionSaveActivity}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="cb9"
+                                        action="#{ActivityBacking.actionCancelActivity}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="userTeamsPop">
+              <af:dialog id="d6" title="User Groups" type="none">
+                <af:panelCollection id="pc5">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.User1.collectionModel}" var="row"
+                            rows="#{bindings.User1.rangeSize}"
+                            emptyText="#{bindings.User1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.User1.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.User1Query.queryDescriptor}"
+                            queryListener="#{bindings.User1Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.User1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.User1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t5"
+                            binding="#{ActivityBacking.tblTeamList}">
+                    <af:column sortProperty="userCode" filterable="true"
+                               sortable="true" headerText="User Code" id="c15"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.userCode}" id="ot22"/>
+                    </af:column>
+                    <af:column sortProperty="username" filterable="true"
+                               sortable="true" headerText="User Name" id="c22"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.username}" id="ot21"/>
+                    </af:column>
+                    <af:column sortProperty="userFullname" filterable="true"
+                               sortable="true" headerText="Full Name" id="c21"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.userFullname}" id="ot20"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="2" id="pg46">
+                  <af:commandButton text="Ok" id="cb16"
+                                    action="#{ActivityBacking.actionAcceptTeam}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="cb17"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="ActivityTypesPop">
+              <af:dialog id="d4" title="Activity Types" type="none">
+                <af:panelCollection id="pc3">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ActivityType.collectionModel}"
+                            var="row" rows="#{bindings.ActivityType.rangeSize}"
+                            emptyText="#{bindings.ActivityType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ActivityType.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.ActivityTypeQuery.queryDescriptor}"
+                            queryListener="#{bindings.ActivityTypeQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.ActivityType.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.ActivityType.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t3"
+                            binding="#{ActivityBacking.tblActivityTypesList}">
+                    <af:column sortProperty="actyCode" sortable="true"
+                               headerText="Code" id="c9"
+                               filterFeatures="caseInsensitive"
+                               filterable="true">
+                      <af:outputText value="#{row.actyCode}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="actyDesc" sortable="true"
+                               headerText="Description" id="c14"
+                               filterFeatures="caseInsensitive"
+                               filterable="true">
+                      <af:outputText value="#{row.actyDesc}" id="ot1"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="4" id="pg5">
+                  <af:commandButton text="Ok" id="cb12"
+                                    action="#{ActivityBacking.actionAcceptActivityType}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="cb13"
+                                    action="#{ActivityBacking.actionCancelActivityType}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="ActivityUsersPop">
+              <af:dialog id="d5" title="List of Users" type="none">
+                <af:panelCollection id="pc4">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.User.collectionModel}" var="row"
+                            rows="#{bindings.User.rangeSize}"
+                            emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.User.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.UserQuery.queryDescriptor}"
+                            queryListener="#{bindings.UserQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.User.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.User.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t4"
+                            binding="#{ActivityBacking.tblUserList}">
+                    <af:column sortProperty="userCode" sortable="true"
+                               headerText="User Code" id="c20"
+                               filterFeatures="caseInsensitive"
+                               filterable="true">
+                      <af:outputText value="#{row.userCode}" id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="username" sortable="true"
+                               headerText="User Name" id="c17"
+                               filterFeatures="caseInsensitive"
+                               filterable="true">
+                      <af:outputText value="#{row.username}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="userFullname" sortable="true"
+                               headerText="Full Name" id="c4"
+                               filterFeatures="caseInsensitive"
+                               filterable="true">
+                      <af:outputText value="#{row.userFullname}" id="ot6"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="3" id="pg24">
+                  <af:commandButton text="Ok" id="cb14"
+                                    action="#{ActivityBacking.actionAcceptUser}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="cb15"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="ActivityStatusPop">
+              <af:dialog id="d7" title="Activity Statuses" type="none">
+                <af:panelCollection id="pc7">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Status.collectionModel}" var="row"
+                            rows="#{bindings.Status.rangeSize}"
+                            emptyText="#{bindings.Status.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Status.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.StatusQuery.queryDescriptor}"
+                            queryListener="#{bindings.StatusQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.Status.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.Status.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t7"
+                            binding="#{ActivityBacking.tblStatuses}">
+                    <af:column sortProperty="statusCode" filterable="true"
+                               sortable="true" headerText="Status Code" id="c26"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.statusCode}" id="ot26"/>
+                    </af:column>
+                    <af:column sortProperty="statusDecription" filterable="true"
+                               sortable="true" headerText="Description" id="c24"
+                               width="200" filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.statusDecription}" id="ot23"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="2" id="pg6">
+                  <af:commandButton text="Ok" id="cb18"
+                                    action="#{ActivityBacking.actionAcceptStatus}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="cb19"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="EmailTemplatesPOP">
+              <af:dialog id="d10" type="none" title="Email Templates">
+                <af:panelCollection id="pc11" inlineStyle="width:250.0px;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.MessageBean.collectionModel}"
+                            var="row" rows="#{bindings.MessageBean.rangeSize}"
+                            emptyText="#{bindings.MessageBean.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.MessageBean.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.MessageBeanQuery.queryDescriptor}"
+                            queryListener="#{bindings.MessageBeanQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.MessageBean.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.MessageBean.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t12"
+                            binding="#{ActivityBacking.tblEmailTemplates}"
+                            contentDelivery="immediate"
+                            inlineStyle="width:99%;">
+                    <af:column sortProperty="msgtShtDesc" sortable="true"
+                               headerText="Short Description" id="c44"
+                               filterFeatures="caseInsensitive"
+                               filterable="true" inlineStyle="width:99.0%;">
+                      <af:outputText value="#{row.msgtShtDesc}" id="ot44"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="4" id="panelGrid14">
+                  <af:commandButton text="Save" id="commandButton8"
+                                    action="#{ActivityBacking.actionAcceptEmailTemplate}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="commandButton9"
+                                    action="#{ActivityBacking.actionCancelEmailTempalet}"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="newEditTaskPop">
+              <af:dialog id="dialog2" type="none"
+                         binding="#{ActivityBacking.dlgNewEditTask}">
+                <af:panelGroupLayout id="panelGroupLayout2">
+                  <af:panelBox text="PanelBox1" id="panelBox2"
+                               showHeader="never" showDisclosure="false"
+                               binding="#{ActivityBacking.pnBoxTaskDetails}">
+                    <h:panelGrid columns="2" id="panelGrid3">
+                      <h:panelGrid columns="1" id="panelGrid4">
+                        <af:outputLabel value="Subject" id="outputLabel2"
+                                        showRequired="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid5">
+                        <af:inputText id="inputText2" simple="true"
+                                      binding="#{ActivityBacking.txtTaskSubject}"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg39">
+                        <af:outputLabel value="From" id="ol13"
+                                        showRequired="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg40">
+                        <af:inputDate id="id5"
+                                      binding="#{ActivityBacking.dtTaskFrom}">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:inputDate>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg38">
+                        <af:outputLabel value="To" id="ol14"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg41">
+                        <af:inputDate id="id6"
+                                      binding="#{ActivityBacking.dtTaskTo}">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:inputDate>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid6">
+                        <af:outputLabel id="outputLabel3" value="Related To"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid7">
+                        <af:panelLabelAndMessage id="panelLabelAndMessage2">
+                          <af:inputText id="inputText4" disabled="true"
+                                        simple="true"
+                                        binding="#{ActivityBacking.txtTaskAccountName}"
+                                        label="Related To"/>
+                          <af:commandButton id="commandButton2"
+                                            action="#{ActivityBacking.actionShowAccountsTask}"
+                                            icon="/images/dropdown.gif"
+                                            partialSubmit="true"/>
+                        </af:panelLabelAndMessage>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg42">
+                        <af:outputLabel value="Priority " id="ol15"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg43">
+                        <af:panelLabelAndMessage id="plam6">
+                          <af:inputText label="Priority" id="it21"
+                                        binding="#{ActivityBacking.txtTaskPriority}"
+                                        simple="true" disabled="true"/>
+                          <af:commandButton id="cb30"
+                                            actionListener="#{ActivityBacking.actionShowPriorityLevels}"
+                                            icon="/images/dropdown.gif"
+                                            partialSubmit="true"/>
+                        </af:panelLabelAndMessage>
+                      </h:panelGrid>
+                      <h:panelGrid columns="5" id="panelGrid8">
+                        <af:inputText label="Task Code" id="it6" visible="false"
+                                      binding="#{ActivityBacking.txtTaskCode}"/>
+                        <af:inputText label="Status Code" id="it19"
+                                      visible="false"
+                                      binding="#{ActivityBacking.txtTaskStatusCode}"/>
+                        <af:inputText label="Priority Code" id="it20"
+                                      visible="false"
+                                      binding="#{ActivityBacking.txtTaskPriorityCode}"/>
+                        <af:inputText label="Task Account Code" id="it5"
+                                      visible="false"
+                                      binding="#{ActivityBacking.txtTaskAccountCode}"/>
+                      </h:panelGrid>
+                    </h:panelGrid>
+                    <h:panelGrid columns="4" id="panelGrid10">
+                      <af:commandButton text="Save" id="commandButton3"
+                                        action="#{ActivityBacking.actionSaveTask}"
+                                        partialSubmit="true"/>
+                      <af:spacer width="10" height="10" id="s9"/>
+                      <af:commandButton text="Cancel" id="commandButton4"
+                                        action="#{ActivityBacking.actionCancelTask}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="priorityLevelsPop">
+              <af:dialog id="d8" title="Priority Levels" type="none"
+                         inlineStyle="width:50.0px;">
+                <af:table value="#{bindings.PriorityLevel.collectionModel}"
+                          var="row" rows="#{bindings.PriorityLevel.rangeSize}"
+                          emptyText="#{bindings.PriorityLevel.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.PriorityLevel.rangeSize}"
+                          rowBandingInterval="1" id="t10"
+                          binding="#{ActivityBacking.tblPriorityLevels}"
+                          columnSelection="none" rowSelection="single"
+                          inlineStyle="width:300px; height:250px;">
+                  <af:column sortProperty="plDescription" sortable="false"
+                             headerText="Priority Level" id="c28" width="200"
+                             inlineStyle="width:200.0px;"
+                             filterFeatures="caseInsensitive">
+                    <af:outputText value="#{row.plDescription}" id="ot31"/>
+                  </af:column>
+                </af:table>
+                <h:panelGrid columns="4" id="pg44">
+                  <af:commandButton text="Ok" id="cb31"
+                                    action="#{ActivityBacking.actionAcceptPriorityLevel}"
+                                    partialSubmit="true"/>
+                  <af:spacer width="10" height="10" id="s8"/>
+                  <af:commandButton text="Cancel" id="cb32"
+                                    action="#{ActivityBacking.actionCancelPriorityLevel}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="newEditNotePop">
+              <af:dialog id="dialog1" type="none"
+                         binding="#{ActivityBacking.dlgNewEditNote}">
+                <af:panelGroupLayout id="panelGroupLayout1">
+                  <af:panelBox text="PanelBox1" id="panelBox1"
+                               showHeader="never" showDisclosure="false"
+                               binding="#{ActivityBacking.pnBoxNoteDetails}">
+                    <h:panelGrid columns="2" id="panelGrid1">
+                      <h:panelGrid columns="1" id="pg37">
+                        <af:outputLabel value="Subject" id="outputLabel1"
+                                        showRequired="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid2">
+                        <af:inputText id="inputText1"
+                                      binding="#{ActivityBacking.txtNoteSubject}"
+                                      simple="true" showRequired="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid11">
+                        <af:outputLabel id="outputLabel6" value="Related To"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid12">
+                        <af:panelLabelAndMessage id="panelLabelAndMessage1">
+                          <af:inputText id="inputText3" disabled="true"
+                                        simple="true"
+                                        binding="#{ActivityBacking.txtNoteRelatedAccountName}"
+                                        label="Related To"/>
+                          <af:commandButton id="commandButton1"
+                                            action="#{ActivityBacking.showAccountsNotes}"
+                                            icon="/images/dropdown.gif"
+                                            partialSubmit="true"/>
+                        </af:panelLabelAndMessage>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid21">
+                        <af:outputLabel value="Description" id="outputLabel11"
+                                        showRequired="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="panelGrid22">
+                        <af:inputText id="inputText8" rows="3" columns="30"
+                                      binding="#{ActivityBacking.txtNoteDescription}"
+                                      simple="true"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg48">
+                        <af:outputLabel value="Attachment" id="ol17"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg49">
+                        <af:inputFile label="Attachment" id="if1" simple="true"
+                                      binding="#{ActivityBacking.infileAttachment}"
+                                      valueChangeListener="#{ActivityBacking.fileUpload}"
+                                      autoSubmit="true" immediate="true"/>
+                      </h:panelGrid>
+                      <af:inputText label="Note Code" id="it4"
+                                    binding="#{ActivityBacking.txtNoteCode}"
+                                    visible="false"/>
+                      <af:inputText label="RelatedAccountCode" id="inputText9"
+                                    binding="#{ActivityBacking.txtNoteRelatedAccountCode}"
+                                    visible="false"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="4" id="panelGrid25">
+                      <af:commandButton text="Save" id="commandButton6"
+                                        action="#{ActivityBacking.actionSaveNote}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="commandButton7"
+                                        action="#{ActivityBacking.actionCancelNote}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="addParcipantPop">
+              <af:dialog id="d9" title="Add Participant" type="none">
+                <af:panelCollection id="pc9">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Account1.collectionModel}"
+                            var="row" rows="#{bindings.Account1.rangeSize}"
+                            emptyText="#{bindings.Account1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Account1.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.Account1Query.queryDescriptor}"
+                            queryListener="#{bindings.Account1Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.Account1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.Account1.collectionModel.makeCurrent}"
+                            rowSelection="multiple" id="t11"
+                            binding="#{ActivityBacking.tblUnInvitedParticipants}"
+                            inlineStyle="width:99%;">
+                    <af:column sortProperty="accountType" sortable="true"
+                               headerText="Account Type" id="c37"
+                               filterable="true"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.accountType}" id="ot33"/>
+                    </af:column>
+                    <af:column sortProperty="accountName" filterable="true"
+                               sortable="true" headerText="Name" id="c39"
+                               width="200" filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.accountName}" id="ot38"/>
+                    </af:column>
+                    <af:column sortProperty="accountEmail" filterable="true"
+                               sortable="true" headerText="Email" id="c29"
+                               width="200" filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.accountEmail}" id="ot42"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="4" id="pg45">
+                  <af:commandButton text="Ok" id="cb34" partialSubmit="false"
+                                    action="#{ActivityBacking.actionSaveParcipant}"/>
+                  <af:spacer width="10" height="10" id="s13"/>
+                  <af:commandButton text="Cancel" id="cb35"
+                                    partialSubmit="false"
+                                    action="#{ActivityBacking.actionCancelParticipant}"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

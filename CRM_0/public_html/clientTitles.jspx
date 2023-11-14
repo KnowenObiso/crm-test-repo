@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="left">
+                    <af:inputText id="it1" helpTopicId="CRMclientTitles"
+                                  columns="13" readOnly="true"
+                                  shortDesc="Help"/>
+                  </td>
+                  <td width="100%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg2">
+                <af:outputLabel value="Client Titles" id="o23"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <af:panelGroupLayout id="pgl1">
+                  <h:panelGrid columns="3" id="pg10">
+                    <af:commandButton text="New" id="btnNewCientTitle"
+                                      icon="/images/create.gif"
+                                      action="#{clientTitleBacking.actionNewCientTitle}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Edit" id="btnEditClientTitle"
+                                      icon="/images/update.gif"
+                                      action="#{clientTitleBacking.actionEditClientTitle}"
+                                      binding="#{clientTitleBacking.btnEditTitle}"
+                                      disabled="true" partialSubmit="true"/>
+                    <af:commandButton text="Delete" id="btnDeleteClientTitle"
+                                      icon="/images/delete.gif"
+                                      action="#{clientTitleBacking.confirmDeleteAction}"
+                                      binding="#{clientTitleBacking.btnDeleteTitle}"
+                                      disabled="true" partialSubmit="true"/>
+                  </h:panelGrid>
+                  <af:separator id="s10"/>
+                  <af:table value="#{bindings.ClientTitle1.collectionModel}"
+                            var="row" rows="#{bindings.ClientTitle1.rangeSize}"
+                            emptyText="#{bindings.ClientTitle1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ClientTitle1.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.ClientTitle1Query.queryDescriptor}"
+                            queryListener="#{bindings.ClientTitle1Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            styleClass="AFAuxiliaryStretchWidth"
+                            selectionListener="#{clientTitleBacking.tblClientTitle}"
+                            rowSelection="single" id="t1"
+                             binding="#{clientTitleBacking.tblClientTitles}">
+                    <af:column sortProperty="code" filterable="true"
+                               sortable="true" headerText="Code" id="c3">
+                      <af:outputText value="#{row.code}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="shortDesc" filterable="true" visible="false"
+                               sortable="true" headerText="Sht Desc" id="c1">
+                      <af:outputText value="#{row.shortDesc}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="description" filterable="true" width="200"
+                               sortable="true"
+                               headerText="Descriptions"
+                               id="c2">
+                      <af:outputText value="#{row.description}" id="ot3"/>
+                    </af:column>
+                  </af:table>
+                  <af:commandButton text="Generate Report" id="cl1"
+                                    icon="/images/report.png"
+                                    partialSubmit="true"/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+            </af:panelBox>
+          
+            <af:popup id="clientTitlePop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Client Title" type="none" 
+                            inlineStyle="width:380.0px;">
+                <af:panelFormLayout id="pfl1">
+                
+                  <af:inputText label="Code : " id="txtTitleCode"
+                                binding="#{clientTitleBacking.txtTitleCode}" 
+                                visible="false"/>
+                                
+                  <af:inputText label="Short Description : " id="txtTitleShortDesc"
+                                binding="#{clientTitleBacking.txtTitleShortDesc}" 
+                                showRequired="true"/>
+                                
+                  <af:inputText label="Description : " id="txtTitleDesc"
+                                binding="#{clientTitleBacking.txtTitleDesc}" 
+                                showRequired="true"/>
+                  
+                </af:panelFormLayout>
+                <af:commandButton text="Save" id="btnSaveTitle"
+                                  binding="#{clientTitleBacking.btnSaveTitle}" 
+                                  partialSubmit="true"
+                                  action="#{clientTitleBacking.actionSaveTitle}"/>
+                <af:commandButton text="Cancel" id="btnCancel"/>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="confirmationDialog"
+                      binding="#{clientTitleBacking.confirmationDialog}"
+                      contentDelivery="lazyUncached">
+                <af:dialog title="Confirm Action" id="confirmChangeDialog"
+                            type="yesNo"
+                           dialogListener="#{clientTitleBacking.confirmationDialogListener}">
+                                
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="olConfirmMsgValue"
+                                binding="#{clientTitleBacking.olConfirmMsgValue}"/>
+                </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

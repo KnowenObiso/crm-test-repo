@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+          <f:facet name="center">
+          <af:group id="g1">
+            <af:panelGroupLayout id="pgl1">
+              <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                <f:facet name="toolbar"/>
+                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td width="50%" align="right">
+                      <h:panelGrid columns="2" id="pg4">
+                        <af:inputText id="inputText1"
+                                      helpTopicId="CRMagencyActivities"
+                                      columns="13" readOnly="true"
+                                      shortDesc="Help"/>
+                        <af:statusIndicator id="statusIndicator1"/>
+                      </h:panelGrid>
+                    </td>
+                  </tr>
+                </table>
+                <h:panelGrid columns="2" id="pg1">
+                  <af:outputLabel value="Sequences Screen" id="ol1"
+                                    inlineStyle="font-weight:bold;"/>
+                </h:panelGrid>
+                <af:separator id="s1"/>
+                <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                  <h:panelGrid columns="3" id="pg12">
+                    <af:commandButton text="New" id="btnNewSeq"
+                                      icon="/images/create.gif" disabled="false"
+                                      action="#{SequenceBean.actionShowSequence}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Edit" id="btnEdiSequence"
+                                      icon="/images/update.gif"
+                                      action="#{SequenceBean.actionEditSequence}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Delete" id="btnDeleteseq"
+                                      visible="true" icon="/images/delete.gif"
+                                      action="#{SequenceBean.actionDeleteSequence}"
+                                      partialSubmit="true"/>
+                    <af:separator id="s12"/>
+                  </h:panelGrid>
+                  <af:panelCollection id="pc1"
+                                      styleClass="AFAuxiliaryStretchWidth">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{bindings.Sequence.collectionModel}"
+                              var="row" rows="#{bindings.Sequence.rangeSize}"
+                              emptyText="#{bindings.Sequence.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.Sequence.rangeSize}"
+                              rowBandingInterval="1"
+                              filterModel="#{bindings.SequenceQuery.queryDescriptor}"
+                              queryListener="#{bindings.SequenceQuery.processQuery}"
+                              filterVisible="false" varStatus="vs"
+                              selectionListener="#{bindings.Sequence.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t1"
+                              binding="#{SequenceBean.tblSequence}">
+                      <af:column filterFeatures="caseInsensitive"
+                                 sortProperty="tseq_type" filterable="true"
+                                 width="200" sortable="true" headerText="TYPE"
+                                 id="c3">
+                        <af:outputText value="#{row.tseq_type}" id="ot1"/>
+                      </af:column>
+                      <af:column filterFeatures="caseInsensitive"
+                                 sortProperty="tseq_no_type" filterable="true"
+                                 sortable="true" headerText="SEQ_NO_TYPE"
+                                 id="c4">
+                        <af:outputText value="#{row.tseq_no_type}" id="ot3"/>
+                      </af:column>
+                      <af:column filterFeatures="caseInsensitive"
+                                 sortProperty="branch_name" filterable="true"
+                                 sortable="true" headerText="BRANCH_NAME"
+                                 id="c6">
+                        <af:outputText value="#{row.branch_name}" id="ot2"/>
+                      </af:column>
+                      <af:column filterFeatures="caseInsensitive"
+                                 sortProperty="tseq_brn" filterable="true"
+                                 sortable="true" headerText="BRANCH_CODE"
+                                 id="c8">
+                        <af:outputText value="#{row.tseq_brn}" id="ot8"/>
+                      </af:column>
+                      <af:column filterFeatures="caseInsensitive"
+                                 sortProperty="tseq_uwyr" filterable="true"
+                                 sortable="true"
+                                 headerText="UNDER WRITING YEAR " id="c1">
+                        <af:outputText value="#{row.tseq_uwyr}" id="ot6"/>
+                      </af:column>
+                      <af:column filterFeatures="caseInsensitive"
+                                 sortProperty="tseq_next_no" filterable="true"
+                                 sortable="true" headerText="NEXT_NO" id="c5">
+                        <af:outputText value="#{row.tseq_next_no}" id="ot4"/>
+                      </af:column>
+                      <af:column sortProperty="clientType" sortable="true"
+                                 headerText="Client Type"
+                                 id="c9" filterable="true"
+                                 filterFeatures="caseInsensitive">
+                        <af:outputText value="#{row.clientType}" id="ot9"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:panelBox>
+              </af:panelBox>
+              <af:popup id="sequencePop" contentDelivery="lazyUncached">
+                <af:dialog id="d2" type="none" title="Sequence">
+                  <af:panelFormLayout id="pfl1">
+                    <f:facet name="footer"/>
+                    <af:inputText label="code" id="it2" visible="false"
+                                  binding="#{SequenceBean.txtCode}"/>
+                    <af:inputText label="Type" id="it3"
+                                  binding="#{SequenceBean.txtType}"/>
+                    <af:inputText label="No Type" id="it4"
+                                  binding="#{SequenceBean.txtNoType}"/>
+                     <af:inputText label="orgcode" id="it7" visible="false"
+                                  binding="#{SequenceBean.txtOrgCode}"/>
+                    <af:panelLabelAndMessage label="Organization" id="plam1"
+                                           >
+                      <af:selectOneChoice unselectedLabel="select"
+                                          label="#{bindings.Organization1.label}"
+                                          required="#{bindings.Organization1.hints.mandatory}"
+                                          shortDesc="#{bindings.Organization1.hints.tooltip}"
+                                          valueChangeListener="#{SequenceBean.actionOrglistener}"
+                                          id="soc2" simple="true"
+                                          autoSubmit="true"
+                                          binding="#{SequenceBean.orgCode}">
+                        <f:selectItems value="#{bindings.Organization1.items}"
+                                       id="si3"/>
+                      </af:selectOneChoice>
+                  
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="Branch" id="it5" visible="false"
+                                  binding="#{SequenceBean.txtBrnCode}"/>
+                                  
+                    <af:panelLabelAndMessage label="Branch" id="plam2">
+                      <af:inputText label="Label 1" id="it8" simple="true"  
+                                    binding="#{SequenceBean.txtBranchName}"
+                                    disabled="true"/>
+                      <af:commandButton id="cb6" icon="/images/dropdown.gif" 
+                                        binding="#{SequenceBean.btnShowPop}"
+                                        partialSubmit="true"
+                                      action="#{SequenceBean.actionShowBranch}">
+                      
+                      </af:commandButton>
+                    </af:panelLabelAndMessage>
+                    <af:inputNumberSpinbox label="Underwriting Year" id="ins1"
+                                           binding="#{SequenceBean.txtUwyr}"/>
+                    <af:inputNumberSpinbox label="NEXT_NO" id="ins2"
+                                           binding="#{SequenceBean.txtNextNo}"/>
+                    <af:selectOneChoice label="Client Type" id="soc1"
+                                        binding="#{SequenceBean.choiceClientType}">
+                      <af:selectItem label="Individual" value="I" id="si4"/>
+                      <af:selectItem label="Corporate" value="C" id="si2"/>
+                    </af:selectOneChoice>
+                  </af:panelFormLayout>
+                  <h:panelGrid columns="2" id="pg2">
+                    <af:commandButton text="save" id="cb1"
+                                      action="#{SequenceBean.actionCreateUpdateSequence}"
+                                      binding="#{SequenceBean.btnCreateUpdateSeq}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="cancel" id="cb2"/>
+                  </h:panelGrid>
+                </af:dialog>
+              </af:popup>
+              <af:popup id="confirmDeleteSeq" contentDelivery="lazyUncached">
+                <af:dialog id="d18"
+                           dialogListener="#{SequenceBean.actionConfirmedDeleteSeq}"
+                           title="Confirm Delete" type="yesNo">
+                  <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="ol2"/>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+            <af:popup id="branchesPop" contentDelivery="lazyUncached">
+              <af:dialog id="d3" type="none" title="Branches">
+                <af:table value="#{bindings.Branch.collectionModel}" var="row"
+                          rows="#{bindings.Branch.rangeSize}"
+                          emptyText="#{bindings.Branch.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Branch.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.BranchQuery.queryDescriptor}"
+                          queryListener="#{bindings.BranchQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.Branch.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.Branch.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t2"
+                          binding="#{SequenceBean.tblBranches}">
+                  <af:column sortProperty="code" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="code" id="c2">
+                    <af:outputText value="#{row.code}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="name" filterable="true" filterFeatures="caseInsensitive"
+                             sortable="true" headerText="name" id="c7">
+                    <af:outputText value="#{row.name}" id="ot7"/>
+                  </af:column>
+                </af:table>
+                <h:panelGrid columns="2" id="pg3">
+                  <af:commandButton text="ok" id="cb4" 
+                                    binding="#{SequenceBean.btnAcceptBranch}"
+                                    action="#{SequenceBean.actionAcceptBranch}"
+                                    partialSubmit="true" />
+                  <af:commandButton text="cancel" id="cb5"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            
+            
+            
+          </af:group>
+        </f:facet>
+          
+       
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:afh="http://myfaces.apache.org/trinidad/html"
+          version="1.2" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:tr="http://myfaces.apache.org/trinidad"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+     <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                   id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="fms">
+      <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+      <f:attribute name="mode" value="index"/>
+      <f:facet name="center">
+         <af:panelGroupLayout layout="scroll" halign="left" valign="top">
+          <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            <f:facet name="toolbar"/>
+            <af:outputLabel value="JPDL Deployment" id="ol4"
+                              inlineStyle="font-weight:bold;"/>
+            <h:panelGrid columns="3" id="pg1">
+              <af:outputLabel value="File" id="ol1"/>
+              <af:outputLabel id="ol2"/>
+              <af:inputFile label="Label 1" id="if1" simple="true"
+                            autoSubmit="true"
+                            valueChangeListener="#{Deployment.jpdlFileChange}"/>
+            </h:panelGrid>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </f:facet>
+    </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>
+

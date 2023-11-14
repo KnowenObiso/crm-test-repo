@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+            </table>
+          
+          <h:panelGrid columns="1" id="pg2">
+            <af:outputLabel value="Payment Modes"
+                            id="o23"
+                              inlineStyle="font-weight:bold;"/>
+          </h:panelGrid>
+          <af:separator id="s1"/>
+              <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="pg10">
+                  <af:commandButton text="New" id="btnNewPaymentMode"
+                                    icon="/images/create.gif"
+                                    action="#{paymentModeBacking.actionNewPaymentMode}"/>
+                  <af:commandButton text="Edit" id="btnEditPaymentMode"
+                                    icon="/images/update.gif"
+                                    action="#{paymentModeBacking.actionEditPaymentMode}"/>
+                  <af:commandButton text="Delete" id="btnDeletePaymentMode"
+                                    icon="/images/delete.gif"
+                                    action="#{paymentModeBacking.actionDeletePaymentMode}"/>
+                </h:panelGrid>
+                <af:separator id="s10"/>
+                <af:table value="#{bindings.PaymentMode.collectionModel}"
+                          var="row" rows="#{bindings.PaymentMode.rangeSize}"
+                          emptyText="#{bindings.PaymentMode.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.PaymentMode.rangeSize}"
+                          rowBandingInterval="0"
+                          selectionListener="#{bindings.PaymentMode.collectionModel.makeCurrent}"
+                          rowSelection="single"
+                          styleClass="AFAuxiliaryStretchWidth"
+                          id="tblPaymentMode"
+                          binding="#{paymentModeBacking.tblPaymentMode}">
+                  <af:column sortProperty="shortDesc" sortable="true"
+                             headerText="Short Desc" id="c2" width="200">
+                    <af:outputText value="#{row.shortDesc}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="description" sortable="true"
+                             headerText="Description" id="c1" width="200">
+                    <af:outputText value="#{row.description}" id="ot2"/>
+                  </af:column>
+                  <af:column sortProperty="naration" sortable="true"
+                             headerText="Naration" id="c3" width="200">
+                    <af:outputText value="#{row.naration}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="defaultMode" sortable="true"
+                             headerText="Default Mode ?" id="c4" width="200">
+                    <af:outputText value="#{row.defaultMode}" id="ot3"/>
+                  </af:column>
+                </af:table>
+                <af:separator id="s2"/>
+                <af:commandButton text="Generate Report" id="cl1"
+                                  icon="/images/report.png"/>
+              </af:panelBox>
+              
+            </af:panelBox>
+            
+            <af:popup id="paymentModePop">
+              <af:dialog id="d2" title="Payment Mode" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelFormLayout id="pfl1">
+                
+                  <af:inputText label="Payment Mode Code : " 
+                                id="txtModeCode"
+                                binding="#{paymentModeBacking.txtModeCode}" 
+                                showRequired="true" 
+                                visible="false"/>
+                                
+                  <af:inputText label="Short Description : " 
+                                id="txtModeShtDesc"
+                                binding="#{paymentModeBacking.txtModeShtDesc}" 
+                                showRequired="true"/>
+                                
+                  <af:inputText label="Description : " 
+                                id="txtModeDesc"
+                                binding="#{paymentModeBacking.txtModeDesc}" 
+                                showRequired="true"/>
+                                
+                  <af:inputText label="Naration : " 
+                                id="txtModeNaration"
+                                binding="#{paymentModeBacking.txtModeNaration}" 
+                                showRequired="true"/>
+                                
+                  <af:selectOneChoice label="Default Mode : " 
+                                      value="N"
+                                      id="txtModeDefault"
+                                      binding="#{paymentModeBacking.txtModeDefault}" 
+                                      showRequired="true">
+                    <af:selectItem label="Yes" value="Y" id="si3"/>
+                    <af:selectItem label="No" value="N" id="si2"/>
+                  </af:selectOneChoice>
+                  
+                </af:panelFormLayout>
+                
+                <af:commandButton text="Save" id="btnSaveMode"
+                                  binding="#{paymentModeBacking.btnSaveMode}"
+                                  action="#{paymentModeBacking.actionSaveMode}"/>
+                <af:commandButton text="Cancel" id="btnCancelMode"/>
+                
+              </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

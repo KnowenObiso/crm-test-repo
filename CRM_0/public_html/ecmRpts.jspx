@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb2" showHeader="never" 
+                         inlineStyle="height:500.0px;"
+                         binding="#{OrganizationManip.mainOrgPanelBox}">
+            
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="inputText5" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg1">
+
+                <af:outputLabel value="ECM/Email Reports Definition" id="ol1" inlineStyle="font-weight:bold;"/>              
+            </h:panelGrid>
+
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox7" id="pb1" showHeader="never">
+                <f:facet name="toolbar"/>
+                <af:panelSplitter id="ps2" styleClass="AFAuxiliaryStretchWidth"
+                                  inlineStyle="height:550px;"
+                                  splitterPosition="250">
+                  <f:facet name="first">
+                    <af:panelGroupLayout id="pgl3">
+                      <h:panelGrid columns="2" id="pg2">
+                        <af:commandButton text="New" id="cb2"
+                                          icon="/images/create.gif"
+                                          partialSubmit="true"/>
+                        <af:commandButton text="Delete" id="btnDeleteOrg"
+                                          icon="/images/delete.gif"
+                                          partialSubmit="true"/>
+                      </h:panelGrid>
+                      <af:tree value="#{bindings.EcmBean.treeModel}" var="node"
+                               rowSelection="single" id="t2"
+                               selectionListener="#{ecmBack.selectSystem}"
+                               binding="#{ecmBack.systemTree}"
+                               inlineStyle="height:140.0px;">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node}" id="ot2"/>
+                        </f:facet>
+                      </af:tree>
+                      <af:outputLabel value="Processes" id="ol2"
+                                      inlineStyle="font-weight:bold;"/>
+                      <af:table value="#{bindings.EcmBean1.collectionModel}"
+                                var="row" rows="#{bindings.EcmBean1.rangeSize}"
+                                emptyText="#{bindings.EcmBean1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.EcmBean1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.EcmBean1Query.queryDescriptor}"
+                                queryListener="#{bindings.EcmBean1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" id="t1"
+                                binding="#{ecmBack.processTable}"
+                                visible="false"
+                                selectionListener="#{ecmBack.processSelected}"
+                                partialTriggers="::orgDetails">
+                        <af:column sortProperty="processCode" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.EcmBean1.hints.processCode.label}"
+                                   id="c2" rendered="false">
+                          <af:outputText value="#{row.processCode}" id="ot3"/>
+                        </af:column>
+                        <af:column sortProperty="processName" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.EcmBean1.hints.processName.label}"
+                                   id="c1" width="270">
+                          <af:outputText value="#{row.processName}" id="ot1"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelTabbed id="pt1"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    binding="#{ecmBack.mainTabPanel}"
+                                    visible="false">
+                      <af:showDetailItem text="Document Types" id="sdi1">
+                        <af:outputText value="ECM Content Types" id="ot16"
+                                       inlineStyle="font-weight:bold;"/>
+                        <af:separator id="s2"/>
+                        <h:panelGrid columns="3" id="pg10">
+                          <af:commandButton icon="/images/create.gif"
+                                            id="commandButton1"
+                                            action="#{ecmBack.addContentTypes}"/>
+                          <af:commandButton icon="/images/update.gif"
+                                            id="commandButton2"
+                                            action="#{ecmBack.editContentTypes}"/>
+                          <af:commandButton icon="/images/delete.gif"
+                                            id="commandButton3"
+                                            action="#{ecmBack.deleteContentTypes}"/>
+                          <af:popup id="contentPop">
+                            <af:dialog id="d4" title="Add Content Types"
+                                       type="none">
+                              <af:inputText label="Label 7" id="it7"
+                                            visible="false" simple="true"
+                                            binding="#{ecmBack.txtContentCode}"/>
+                              <h:panelGrid columns="2" id="pg11">
+                                <af:outputLabel value="Content Name" id="ol7"/>
+                                <af:inputText label="Label 5" id="it5"
+                                              simple="true"
+                                              binding="#{ecmBack.txtContentType}"/>
+                                <af:outputLabel value="Description" id="ol8"/>
+                                <af:inputText label="Label 6" id="it6"
+                                              simple="true"
+                                              binding="#{ecmBack.txtDescription}"/>
+                                <af:outputLabel value="Content Type" id="ol9"/>
+                                <af:inputText label="Label 8" id="it8"
+                                              binding="#{ecmBack.txtContType}"
+                                              simple="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="2" id="pg12">
+                                <af:commandButton text="Save" id="cb8"
+                                                  action="#{ecmBack.saveContentTypes}"/>
+                                <af:commandButton text="Cancel" id="cb9"/>
+                              </h:panelGrid>
+                            </af:dialog>
+                          </af:popup>
+                        </h:panelGrid>
+                        <af:table value="#{bindings.EcmBean4.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.EcmBean4.rangeSize}"
+                                  emptyText="#{bindings.EcmBean4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.EcmBean4.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.EcmBean4Query.queryDescriptor}"
+                                  queryListener="#{bindings.EcmBean4Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  rowSelection="single" id="t5"
+                                  inlineStyle="width:100.0%; height:100px;"
+                                  binding="#{ecmBack.docTypesTable}"
+                                  selectionListener="#{ecmBack.selectContentTypes}">
+                          <af:column sortProperty="content_name"
+                                     filterable="true" sortable="true"
+                                     headerText="Content Name" id="c13"
+                                     width="200">
+                            <af:outputText value="#{row.content_name}"
+                                           id="ot14"/>
+                          </af:column>
+                          <af:column sortProperty="content_desc"
+                                     filterable="true" sortable="true"
+                                     headerText="Description" id="c12"
+                                     width="350">
+                            <af:outputText value="#{row.content_desc}"
+                                           id="ot13"/>
+                          </af:column>
+                          <af:column id="c18" headerText="Content Type"
+                                     sortProperty="contentType"
+                                     filterable="true" width="200">
+                            <af:outputText value="#{row.contentType}" id="ot20"/>
+                          </af:column>
+                          <af:column sortProperty="sdt_code" filterable="true"
+                                     sortable="true"
+                                     headerText="#{bindings.EcmBean4.hints.sdt_code.label}"
+                                     id="c14" visible="false">
+                            <af:outputText value="#{row.sdt_code}" id="ot15"/>
+                          </af:column>
+                        </af:table>
+                        <af:separator id="separator1"/>
+                        <af:outputText value="ECM Content Types Metadata"
+                                       id="outputText1"
+                                       inlineStyle="font-weight:bold;"/>
+                        <h:panelGrid columns="3" id="panelGrid1">
+                          <af:commandButton icon="/images/create.gif"
+                                            id="commandButton4"
+                                            action="#{ecmBack.addMetadata}"/>
+                          <af:commandButton icon="/images/update.gif"
+                                            id="commandButton5"
+                                            action="#{ecmBack.editMetadata}"/>
+                          <af:commandButton icon="/images/delete.gif"
+                                            id="commandButton6"
+                                            action="#{ecmBack.deleteMetadata}"/>
+                          <af:popup id="metaPop">
+                            <af:dialog id="dialog1" title="Add Content Metadata"
+                                       type="none">
+                              <af:inputText label="Label 7" id="inputText1"
+                                            visible="false" simple="true"
+                                            binding="#{ecmBack.txtMetaCode}"/>
+                              <h:panelGrid columns="2" id="panelGrid2">
+                                <af:outputLabel value="Metadata Name"
+                                                id="outputLabel1"/>
+                                <af:inputText label="Label 5" id="inputText2"
+                                              simple="true"
+                                              binding="#{ecmBack.txtMetadataName}"/>
+                                <af:outputLabel value="Description"
+                                                id="outputLabel2"/>
+                                <af:inputText label="Label 6" id="inputText3"
+                                              simple="true"
+                                              binding="#{ecmBack.txtMetaDescription}"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="2" id="panelGrid3">
+                                <af:commandButton text="Save"
+                                                  id="commandButton7"
+                                                  action="#{ecmBack.saveMetadata}"/>
+                                <af:commandButton text="Cancel"
+                                                  id="commandButton8"/>
+                              </h:panelGrid>
+                            </af:dialog>
+                          </af:popup>
+                        </h:panelGrid>
+                        <af:table value="#{bindings.EcmBean5.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.EcmBean5.rangeSize}"
+                                  emptyText="#{bindings.EcmBean5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.EcmBean5.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.EcmBean5Query.queryDescriptor}"
+                                  queryListener="#{bindings.EcmBean5Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectedRowKeys="#{bindings.EcmBean5.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.EcmBean5.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t6"
+                                  inlineStyle="width:100%; height:150.0px;"
+                                  binding="#{ecmBack.metadataTable}">
+                          <af:column sortProperty="content_name"
+                                     filterable="true" sortable="true"
+                                     headerText="Metadata" id="c15">
+                            <af:outputText value="#{row.content_name}"
+                                           id="ot17"/>
+                          </af:column>
+                          <af:column sortProperty="content_desc"
+                                     filterable="true" sortable="true"
+                                     headerText="Description" id="c17">
+                            <af:outputText value="#{row.content_desc}"
+                                           id="ot19"/>
+                          </af:column>
+                          <af:column sortProperty="sdt_code" filterable="true"
+                                     sortable="true"
+                                     headerText="#{bindings.EcmBean5.hints.sdt_code.label}"
+                                     id="c16" visible="true">
+                            <af:outputText value="#{row.sdt_code}" id="ot18"/>
+                          </af:column>
+                        </af:table>
+                      </af:showDetailItem>
+                      <af:showDetailItem id="sdi6"
+                                         binding="#{OrganizationManip.orgTab}"
+                                         text="ECM Reports">
+                        <af:panelGroupLayout id="orgDetails"
+                                             binding="#{OrganizationManip.orgDetails}">
+                          <af:panelBox text="Attach Email/DMS Reports" id="panelOrgDetails"
+                                       showHeader="always"
+                                       styleClass="AFAuxiliaryStretchWidth"
+                                       showDisclosure="false">
+                            <h:panelGrid columns="3" id="pg3">
+                              <af:commandButton  icon="/images/create.gif"
+                                                id="cb1"
+                                                action="#{ecmBack.addEcmReport}">
+                          
+                              </af:commandButton>
+                              <af:commandButton icon="/images/update.gif"
+                                                id="cb3"
+                                                action="#{ecmBack.editEcmReport}"/>
+                              <af:commandButton icon="/images/delete.gif"
+                                                id="cb4"
+                                                action="#{ecmBack.deleteEcmReports}"/>
+                              <af:popup id="ecmpop" contentDelivery="immediate">
+                                <af:dialog id="d2" title="Attach Reports"
+                                           type="none">
+                                  <af:panelGroupLayout id="pgl1">
+                                    <h:panelGrid columns="2" id="pg4">
+                                      <af:outputLabel value="Report Name:"
+                                                      id="ol3"/>
+                                      <h:panelGrid columns="2" id="pg5">
+                                        <af:inputText label="Label 1" id="it1"
+                                                      simple="true"
+                                                      disabled="true"
+                                                      binding="#{ecmBack.txtRptName}"/>
+                                        <af:commandButton  icon="/images/dropdown.gif"
+                                                          id="cb5">
+                                          <af:showPopupBehavior popupId="p2"/>
+                                        </af:commandButton>
+                                        <af:popup id="p2">
+                                          <af:dialog id="d3"
+                                                     title="Select Report"
+                                                     dialogListener="#{ecmBack.reportsSelected}">
+                                            <af:panelGroupLayout id="pgl2">
+                                              <af:table value="#{bindings.EcmBean3.collectionModel}"
+                                                        var="row"
+                                                        rows="#{bindings.EcmBean3.rangeSize}"
+                                                        emptyText="#{bindings.EcmBean3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                        fetchSize="#{bindings.EcmBean3.rangeSize}"
+                                                        rowBandingInterval="0"
+                                                        filterModel="#{bindings.EcmBean3Query.queryDescriptor}"
+                                                        queryListener="#{bindings.EcmBean3Query.processQuery}"
+                                                        filterVisible="true"
+                                                        varStatus="vs"
+                                                        selectedRowKeys="#{bindings.EcmBean3.collectionModel.selectedRow}"
+                                                        selectionListener="#{bindings.EcmBean3.collectionModel.makeCurrent}"
+                                                        rowSelection="single"
+                                                        id="t4"
+                                                        binding="#{ecmBack.systemReports}"
+                                                        width="330">
+                                                <af:column sortProperty="rptcode"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="#{bindings.EcmBean3.hints.rptcode.label}"
+                                                           id="c8"
+                                                           rendered="false">
+                                                  <af:outputText value="#{row.rptcode}"
+                                                                 id="ot10"/>
+                                                </af:column>
+                                                <af:column sortProperty="rptname"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Report Name"
+                                                           id="c9">
+                                                  <af:outputText value="#{row.rptname}"
+                                                                 id="ot11"/>
+                                                </af:column>
+                                                <af:column sortProperty="rptdesc"
+                                                           filterable="true"
+                                                           sortable="true"
+                                                           headerText="Desc"
+                                                           id="c10" width="200">
+                                                  <af:outputText value="#{row.rptdesc}"
+                                                                 id="ot9"/>
+                                                </af:column>
+                                              </af:table>
+                                            </af:panelGroupLayout>
+                                          </af:dialog>
+                                        </af:popup>
+                                      </h:panelGrid>
+                                      <af:outputLabel value="Report Desc"
+                                                      id="ol4"/>
+                                      <h:panelGrid columns="1" id="pg6">
+                                        <af:inputText label="Label 2" id="it2"
+                                                      simple="true"
+                                                      disabled="true"
+                                                      binding="#{ecmBack.txtRptDesc}"/>
+                                      </h:panelGrid>
+                                      <af:outputLabel value="Description"
+                                                      id="ol5"/>
+                                      <h:panelGrid columns="1" id="pg7">
+                                        <af:inputText label="Label 3" id="it3"
+                                                      simple="true"
+                                                      binding="#{ecmBack.txtDesc}"/>
+                                      </h:panelGrid>
+                                      <af:outputLabel value="Type"
+                                                      id="ol6"/>
+                                      <h:panelGrid columns="1" id="pg8">
+                                        <af:selectOneChoice label="Label 1"
+                                                            id="soc1"
+                                                            simple="true"
+                                                            binding="#{ecmBack.txtType}">
+                                          <af:selectItem label="Email" value="E"
+                                                         id="si2"/>
+                                          <af:selectItem label="Archive"
+                                                         value="A" id="si1"/>
+                                          <af:selectItem label="Both" value="B"
+                                                         id="si3"/>
+                                        </af:selectOneChoice>
+                                      </h:panelGrid>
+                                      <af:outputLabel value="Document Type"
+                                                      id="ol10"/>
+                                      <h:panelGrid columns="3" id="pg13">
+                                        <af:inputText label="Label 9" id="it9"
+                                                      simple="true"
+                                                      binding="#{ecmBack.txtEcmType}"
+                                                      disabled="true"/>
+                                        <af:commandButton id="cb10"
+                                                          icon="/images/dropdown.gif">
+                                          <af:showPopupBehavior popupId="p1"/>
+                                        </af:commandButton>
+                                        <af:popup id="p1">
+                                          <af:dialog id="d5"
+                                                     title="Select Document Type"
+                                                     dialogListener="#{ecmBack.docTypeSelected}">
+                                            <af:table value="#{bindings.EcmBean6.collectionModel}"
+                                                      var="row"
+                                                      rows="#{bindings.EcmBean6.rangeSize}"
+                                                      emptyText="#{bindings.EcmBean6.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      fetchSize="#{bindings.EcmBean6.rangeSize}"
+                                                      rowBandingInterval="0"
+                                                      filterModel="#{bindings.EcmBean4Query.queryDescriptor}"
+                                                      queryListener="#{bindings.EcmBean4Query.processQuery}"
+                                                      filterVisible="true"
+                                                      varStatus="vs"
+                                                      selectedRowKeys="#{bindings.EcmBean6.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.EcmBean6.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      id="t7"
+                                                      binding="#{ecmBack.ecmTable}">
+                                              <af:column sortProperty="content_name"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Content Name"
+                                                         id="c21">
+                                                <af:outputText value="#{row.content_name}"
+                                                               id="ot23"/>
+                                              </af:column>
+                                              <af:column sortProperty="content_desc"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Desc"
+                                                         id="c20">
+                                                <af:outputText value="#{row.content_desc}"
+                                                               id="ot22"/>
+                                              </af:column>
+                                              <af:column sortProperty="contentType"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Content Type"
+                                                         id="c19">
+                                                <af:outputText value="#{row.contentType}"
+                                                               id="ot21"/>
+                                              </af:column>
+                                            </af:table>
+                                          </af:dialog>
+                                        </af:popup>
+                                      </h:panelGrid>
+                                    </h:panelGrid>
+                                    <h:panelGrid columns="3" id="pg9">
+                                      <af:commandButton text="Save" id="cb6"
+                                                        action="#{ecmBack.saveEcmReports}"
+                                                        partialSubmit="true"/>
+                                      <af:commandButton text="Cancel" id="cb7"/>
+                                      <af:inputText label="Label 4" id="it4"
+                                                    binding="#{ecmBack.txtEcmCode}"
+                                                    visible="false"
+                                                    simple="true"/>
+                                    </h:panelGrid>
+                                  </af:panelGroupLayout>
+                                </af:dialog>
+                              </af:popup>
+                            </h:panelGrid>
+                            <af:table value="#{bindings.EcmBean2.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.EcmBean2.rangeSize}"
+                                      emptyText="#{bindings.EcmBean2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.EcmBean2.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.EcmBean2Query.queryDescriptor}"
+                                      queryListener="#{bindings.EcmBean2Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single" id="t3"
+                                      inlineStyle="width:100%; height:100.0px;"
+                                      binding="#{ecmBack.processEcmTable}"
+                                      selectionListener="#{ecmBack.selectProcessReports}">
+                              <af:column sortProperty="rptcode"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.EcmBean2.hints.rptcode.label}"
+                                         id="c6" rendered="false">
+                                <af:outputText value="#{row.rptcode}" id="ot8"/>
+                              </af:column>
+                              <af:column sortProperty="rptname"
+                                         filterable="true" sortable="true"
+                                         headerText="Report Name" id="c3">
+                                <af:outputText value="#{row.rptname}" id="ot6"/>
+                              </af:column>
+                              <af:column sortProperty="rptdesc"
+                                         filterable="true" sortable="true"
+                                         headerText="Report Desc" id="c5"
+                                         width="200">
+                                <af:outputText value="#{row.rptdesc}" id="ot7"/>
+                              </af:column>
+                              <af:column sortProperty="sprrDesc"
+                                         filterable="true" sortable="true"
+                                         headerText="Desc" id="c7" width="300">
+                                <af:outputText value="#{row.sprrDesc}"
+                                               id="ot5"/>
+                              </af:column>
+                              <af:column sortProperty="sprrCode"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.EcmBean2.hints.sprrCode.label}"
+                                         id="c4" rendered="false">
+                                <af:outputText value="#{row.sprrCode}"
+                                               id="ot4"/>
+                              </af:column>
+                              <af:column id="column1" sortProperty="type"
+                                         sortable="true" filterable="true"
+                                         headerText="Type">
+                                <af:outputText value="#{row.type}"
+                                               id="outputText2"/>
+                              </af:column>
+                              <af:column id="c11" sortProperty="contDesc"
+                                         sortable="true" filterable="true"
+                                         headerText="Content Type">
+                                <af:outputText value="#{row.contDesc}" id="ot12"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelBox>
+                        </af:panelGroupLayout>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Mapping" id="sdi2">
+                        <af:outputLabel value="Select Document Type" id="ol11"/>
+                        <h:panelGrid columns="2" id="pg14">
+                          <af:inputText label="Label 10" id="it10"
+                                        simple="true"
+                                        binding="#{ecmBack.txtContTypeSearch}"
+                                        disabled="true"/>
+                          <af:commandButton id="cb11"
+                                            icon="/images/dropdown.gif">
+                            <af:showPopupBehavior popupId="p3"/>
+                          </af:commandButton>
+                          <af:popup id="p3">
+                            <af:dialog id="d6" title="Select Content Type"
+                                       dialogListener="#{ecmBack.contTypeSelected}">
+                              <af:table value="#{bindings.EcmBean7.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.EcmBean7.rangeSize}"
+                                        emptyText="#{bindings.EcmBean7.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.EcmBean7.rangeSize}"
+                                        rowBandingInterval="0"
+                                        filterModel="#{bindings.EcmBean4Query.queryDescriptor}"
+                                        queryListener="#{bindings.EcmBean4Query.processQuery}"
+                                        filterVisible="true" varStatus="vs"
+                                        selectedRowKeys="#{bindings.EcmBean7.collectionModel.selectedRow}"
+                                        selectionListener="#{bindings.EcmBean7.collectionModel.makeCurrent}"
+                                        rowSelection="single" id="t8"
+                                        binding="#{ecmBack.contTypeTbl}">
+                                <af:column sortProperty="content_name"
+                                           filterable="true" sortable="true"
+                                           headerText="Content Name" id="c23">
+                                  <af:outputText value="#{row.content_name}"
+                                                 id="ot25"/>
+                                </af:column>
+                                <af:column sortProperty="content_desc"
+                                           filterable="true" sortable="true"
+                                           headerText="Desc" id="c25">
+                                  <af:outputText value="#{row.content_desc}"
+                                                 id="ot26"/>
+                                </af:column>
+                                <af:column sortProperty="contentType"
+                                           filterable="true" sortable="true"
+                                           headerText="Content Type" id="c22">
+                                  <af:outputText value="#{row.contentType}"
+                                                 id="ot27"/>
+                                </af:column>
+                                <af:column sortProperty="sdt_code"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.EcmBean7.hints.sdt_code.label}"
+                                           id="c24">
+                                  <af:outputText value="#{row.sdt_code}"
+                                                 id="ot24"/>
+                                </af:column>
+                              </af:table>
+                            </af:dialog>
+                          </af:popup>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg15">
+                          <af:commandButton text="Update" id="cb12"/>
+                        </h:panelGrid>
+                        <af:table value="#{bindings.EcmBean8.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.EcmBean8.rangeSize}"
+                                  emptyText="#{bindings.EcmBean8.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.EcmBean8.rangeSize}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.EcmBean8.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.EcmBean8.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t9"
+                                  inlineStyle="width:100%;"
+                                  binding="#{ecmBack.metadataTbl}">
+                          <af:column sortProperty="content_name" sortable="true"
+                                     headerText="Metadata" id="c27">
+                            <af:outputText value="#{row.content_name}"
+                                           id="ot28"/>
+                          </af:column>
+                          <af:column sortProperty="content_desc" sortable="true"
+                                     headerText="Description" id="c26">
+                            <af:outputText value="#{row.content_desc}"
+                                           id="ot29"/>
+                          </af:column>
+                          <af:column id="c28" headerText="Alfresco Metadata">
+                            <af:selectOneChoice label="Label 2" id="soc2"
+                                                simple="true">
+                              <f:selectItems value="" id="si4"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                        </af:table>
+                      </af:showDetailItem>
+                    </af:panelTabbed>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelBox>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

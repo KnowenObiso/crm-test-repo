@@ -1,0 +1,227 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="crmDc1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+        <f:attribute name="mode" value="index"/>
+        <f:facet name="center">
+        <af:group id="g1">
+        
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+        
+        <table cellspacing="2" cellpadding="3" border="0" width="100%">
+                <tr>
+                  <td width="50%">
+                    <af:inputText id="it1" 
+                                    readOnly="true" 
+                                    simple="false"
+                                    helpTopicId="CRMdivisions"/>
+                  </td>
+                  
+                  <td width="50%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="panelGrid5">
+                <af:outputLabel value="Escalations Definitions" id="outputLabel7"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="separator1"/>
+              <af:panelGroupLayout layout="scroll" halign="left" valign="top"
+                               id="pgl1">
+                <af:panelSplitter id="ps1" inlineStyle="height:550.0px;"
+                                  styleClass="AFAuxiliaryStretchWidth"
+                                  splitterPosition="250">
+                  <f:facet name="first">
+                    <af:panelBox text="System Processes" id="pb13" showHeader="never"
+                                 inlineStyle="width:300.0px;">
+                     
+                      <af:tree value="#{bindings.System.treeModel}"
+                               var="node"
+                               selectionListener="#{ServiceRequestsManip.systemSelected}"
+                               rowSelection="single" id="t1"
+                               binding="#{ServiceRequestsManip.systems}"
+                               inlineStyle="height:500.0px;">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node.name}" id="ot2"/>
+                        </f:facet>
+                      </af:tree>
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelBox id="pb2" styleClass="AFAuxiliaryStretchWidth">
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="1" id="pg1">
+                        <af:outputLabel value="System Key Words" id="ol1"/>
+                        <af:separator id="s2"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="3" id="pg2">
+                        <af:commandButton text="Add" id="cb1"
+                                          icon="/images/create.gif"
+                                          action="#{ServiceRequestsManip.newWord}"/>
+                        <af:commandButton text="Edit" id="cb2"
+                                          icon="/images/update.gif"
+                                          action="#{ServiceRequestsManip.editWord}"/>
+                        <af:commandButton text="Delete" id="cb3"
+                                          icon="/images/delete.gif"
+                                          action="#{ServiceRequestsManip.deleteWord}"/>
+                        <af:popup id="word" contentDelivery="lazyUncached">
+                          <af:dialog id="d2" type="none" title="Key Words">
+                            <af:panelBox text="PanelBox2" id="pb3"
+                                         showHeader="never">
+                              <f:facet name="toolbar"/>
+                              <h:panelGrid columns="1" id="pg3">
+                                <h:panelGrid columns="2" id="pg4">
+                                  <af:outputLabel value="Code"
+                                                  id="ol2" visible="false"/>
+                                  <af:inputText label="Label 1" id="it2"
+                                                visible="false"
+                                                binding="#{ServiceRequestsManip.code}"/>
+                                  <af:outputLabel value="Type"
+                                                  id="ol3"/>
+                                  <af:selectOneChoice label="Label 1" id="soc1"
+                                                      simple="true"
+                                                      binding="#{ServiceRequestsManip.type}"
+                                                      unselectedLabel="Select">
+                                    <af:selectItem label="EMAIL" value="EMAIL"
+                                                   id="si5"/>
+                                    <af:selectItem label="SMS" value="SMS"
+                                                   id="si2"/>
+                                    <af:selectItem label="ALL" value="ALL"
+                                                   id="si3"/>
+                                  </af:selectOneChoice>
+                                  <af:outputLabel value="Word"
+                                                  id="ol5"/>
+                                  <af:inputText label="Label 3" id="it4"
+                                                simple="true"
+                                                binding="#{ServiceRequestsManip.word}"/>
+                                  <af:outputLabel value="Description"
+                                                  id="ol6"/>
+                                  <af:inputText label="Label 4" id="it5"
+                                                simple="true"
+                                                binding="#{ServiceRequestsManip.desc}"
+                                                rows="2"/>
+                                  <af:outputLabel value="Category"
+                                                  id="ol4"/>
+                                  <h:panelGrid columns="2" id="pg6">
+                                    <af:inputText label="Label 2" id="it3"
+                                                  simple="true"
+                                                  disabled="true"
+                                                  binding="#{ServiceRequestsManip.category}"/>
+                                    <af:commandButton
+                                                      id="cb4"
+                                                      icon="/images/dropdown.gif"
+                                                      partialSubmit="true"
+                                                      action="#{ServiceRequestsManip.launchCategory}"/>
+                                  </h:panelGrid>
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" id="pg5">
+                                  <af:commandButton text="Save"
+                                                    id="cb5"
+                                                    action="#{ServiceRequestsManip.saveWord}"/>
+                                  <af:commandButton text="Cancel"
+                                                    id="cb6"/>
+                                </h:panelGrid>
+                              </h:panelGrid>
+                            </af:panelBox>
+                          </af:dialog>
+                        </af:popup>
+                        <af:popup id="category">
+                          <af:dialog id="d3" type="none"
+                                     title="Request Categories">
+                            <af:panelBox text="PanelBox3" id="pb4"
+                                         showHeader="never">
+                              <f:facet name="toolbar"/>
+                              <h:panelGrid columns="1" id="pg7">
+                                <af:table value="#{bindings.ServiceReq1.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.ServiceReq1.rangeSize}"
+                                          emptyText="#{bindings.ServiceReq1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.ServiceReq1.rangeSize}"
+                                          rowBandingInterval="0"
+                                          filterModel="#{bindings.ServiceReq1Query.queryDescriptor}"
+                                          queryListener="#{bindings.ServiceReq1Query.processQuery}"
+                                          filterVisible="true" varStatus="vs"
+                                          selectionListener="#{bindings.ServiceReq1.collectionModel.makeCurrent}"
+                                          rowSelection="single" id="t4"
+                                          binding="#{ServiceRequestsManip.categories}">
+                                  <af:column sortProperty="tsrcName"
+                                             filterable="true" sortable="true"
+                                             headerText="Category" id="c1"
+                                             width="200">
+                                    <af:outputText value="#{row.tsrcName}"
+                                                   id="ot3"/>
+                                  </af:column>
+                                </af:table>
+                                <h:panelGrid columns="2" id="pg8">
+                                  <af:commandButton text="OK"
+                                                    id="cb7"
+                                                    partialSubmit="true"
+                                                    action="#{ServiceRequestsManip.selectCategory}"/>
+                                  <af:commandButton text="Cancel"
+                                                    id="cb8"/>
+                                </h:panelGrid>
+                              </h:panelGrid>
+                            </af:panelBox>
+                          </af:dialog>
+                        </af:popup>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc2"
+                                          inlineStyle="width:99%; height:200.0px;">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.ServiceReq.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.ServiceReq.rangeSize}"
+                                  emptyText="#{bindings.ServiceReq.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.ServiceReq.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.ServiceReqQuery.queryDescriptor}"
+                                  queryListener="#{bindings.ServiceReqQuery.processQuery}" varStatus="vs"
+                                  selectionListener="#{bindings.ServiceReq.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t2"
+                                  inlineStyle="width:inherit;"
+                                  binding="#{ServiceRequestsManip.reservWrds}">
+                          <af:column sortProperty="name" filterable="true"
+                                     sortable="true" headerText="Name" id="c4"
+                                     width="150">
+                            <af:outputText value="#{row.name}" id="ot9"/>
+                          </af:column>
+                          <af:column sortProperty="desc" filterable="true"
+                                     sortable="true" headerText="Description"
+                                     id="c7" width="200">
+                            <af:outputText value="#{row.desc}" id="ot8"/>
+                          </af:column>
+                          <af:column sortProperty="type" filterable="true"
+                                     sortable="true" headerText="Type" id="c8">
+                            <af:outputText value="#{row.type}" id="ot5"/>
+                          </af:column>
+                          <af:column sortProperty="tsrcName" filterable="true"
+                                     sortable="true" headerText="Category"
+                                     id="c6">
+                            <af:outputText value="#{row.tsrcName}" id="ot1"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelBox>
+                  </f:facet>
+                </af:panelSplitter>
+          </af:panelGroupLayout>
+            </af:panelBox></af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>
+

@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <managed-bean>
+    <managed-bean-name>roleManipulation</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.roles.RoleManipulation</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>TestBean</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.Base.TestBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>userManipulation</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.Usr.UserManipulation</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>userBean</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.Usr.UserBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean> 
+  <managed-bean>
+    <managed-bean-name>UserBranchesBean</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.Branches.UserBranches</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>Deployment</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.Base.deployment</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__4">
+    <managed-bean-name id="__1">GlobalCC</managed-bean-name>
+    <managed-bean-class id="__2">TurnQuest.view.Base.GlobalCC</managed-bean-class>
+    <managed-bean-scope id="__3">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__7">
+    <managed-bean-name id="__5">OrganizationManip</managed-bean-name>
+    <managed-bean-class id="__8">TurnQuest.view.orgs.OrganizationManip</managed-bean-class>
+    <managed-bean-scope id="__6">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__11">
+    <managed-bean-name id="__10">baseSetupBacking</managed-bean-name>
+    <managed-bean-class id="__12">TurnQuest.view.setups.BaseSetupBacking</managed-bean-class>
+    <managed-bean-scope id="__9">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__16">
+    <managed-bean-name id="__14">AccountSetUpBack</managed-bean-name>
+    <managed-bean-class id="__15">TurnQuest.view.Accounts.AccountSetUpBack</managed-bean-class>
+    <managed-bean-scope id="__13">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__20">
+    <managed-bean-name id="__17">DivisionBean</managed-bean-name>
+    <managed-bean-class id="__19">TurnQuest.view.Divisions.DivisionsManipulation</managed-bean-class>
+    <managed-bean-scope id="__18">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__21">
+    <managed-bean-name id="__23">ReqDocsBean</managed-bean-name>
+    <managed-bean-class id="__22">TurnQuest.view.Documents.RequiredDocsManipulation</managed-bean-class>
+    <managed-bean-scope id="__24">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__28">
+    <managed-bean-name id="__25">serviceProviderBacking</managed-bean-name>
+    <managed-bean-class id="__27">TurnQuest.view.provider.ServiceProviderBacking</managed-bean-class>
+    <managed-bean-scope id="__26">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__30">
+    <managed-bean-name id="__31">mainAccountsBacking</managed-bean-name>
+    <managed-bean-class id="__29">TurnQuest.view.Accounts.MainAccountsBacking</managed-bean-class>
+    <managed-bean-scope id="__32">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__36">
+    <managed-bean-name id="__35">baseClientBacking</managed-bean-name>
+    <managed-bean-class id="__34">TurnQuest.view.client.BaseClientBacking</managed-bean-class>
+    <managed-bean-scope id="__33">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__40">
+    <managed-bean-name id="__38">paymentModeBacking</managed-bean-name>
+    <managed-bean-class id="__37">TurnQuest.view.setups.PaymentModeBacking</managed-bean-class>
+    <managed-bean-scope id="__39">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__42">
+    <managed-bean-name id="__41">clientTitleBacking</managed-bean-name>
+    <managed-bean-class id="__44">TurnQuest.view.client.ClientTitleBacking</managed-bean-class>
+    <managed-bean-scope id="__43">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__45">
+    <managed-bean-name id="__48">updateDirectDebitsBacking</managed-bean-name>
+    <managed-bean-class id="__46">TurnQuest.view.backing.UpdateDirectDebitsBacking</managed-bean-class>
+    <managed-bean-scope id="__47">request</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="__49">
+    <managed-bean-name id="__50">prospectBacking</managed-bean-name>
+    <managed-bean-class id="__51">TurnQuest.view.prospects.ProspectBacking</managed-bean-class>
+    <managed-bean-scope id="__52">request</managed-bean-scope>
+  </managed-bean>
+
+ <managed-bean id="__53">
+    <managed-bean-name id="__54">memosBean</managed-bean-name>
+    <managed-bean-class id="__55">TurnQuest.view.Memos.memoManipulation</managed-bean-class>
+    <managed-bean-scope id="__56">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__59">
+    <managed-bean-name id="__58">messagingBack</managed-bean-name>
+    <managed-bean-class id="__57">TurnQuest.view.messaging.MessageBacking</managed-bean-class>
+    <managed-bean-scope id="__60">request</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean id="__65">
+    <managed-bean-name id="__66">currencyDefBacking</managed-bean-name>
+    <managed-bean-class id="__68">TurnQuest.view.backing.CurrencyDefBacking</managed-bean-class>
+    <managed-bean-scope id="__67">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__62">
+    <managed-bean-name id="__61">currencyRateDefBacking</managed-bean-name>
+    <managed-bean-class id="__64">TurnQuest.view.backing.CurrencyRateDefBacking</managed-bean-class>
+    <managed-bean-scope id="__63">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__69">
+    <managed-bean-name id="__70">Rendering</managed-bean-name>
+    <managed-bean-class id="__71">TurnQuest.view.Base.Rendering</managed-bean-class>
+    <managed-bean-scope id="__72">request</managed-bean-scope>
+  </managed-bean>
+   <managed-bean id="__69l">
+    <managed-bean-name id="__70l">Labeling</managed-bean-name>
+    <managed-bean-class id="__71l">TurnQuest.view.Base.Label</managed-bean-class>
+    <managed-bean-scope id="__72l">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__74">
+    <managed-bean-name id="__73">bankDefinitionsBacking</managed-bean-name>
+    <managed-bean-class id="__75">TurnQuest.view.backing.BankDefinitionsBacking</managed-bean-class>
+    <managed-bean-scope id="__76">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__77">
+    <managed-bean-name id="__79">hierarchiesBacking</managed-bean-name>
+    <managed-bean-class id="__80">TurnQuest.view.backing.HierarchiesBacking</managed-bean-class>
+    <managed-bean-scope id="__78">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__82">
+    <managed-bean-name id="__84">orgSubDivisionBacking</managed-bean-name>
+    <managed-bean-class id="__83">TurnQuest.view.backing.OrgSubDivisionBacking</managed-bean-class>
+    <managed-bean-scope id="__81">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__86">
+    <managed-bean-name id="__85">agencyActivitiesBacking</managed-bean-name>
+    <managed-bean-class id="__88">TurnQuest.view.backing.AgencyActivitiesBacking</managed-bean-class>
+    <managed-bean-scope id="__87">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__91">
+    <managed-bean-name id="__90">countryHolidaysBacking</managed-bean-name>
+    <managed-bean-class id="__92">TurnQuest.view.backing.CountryHolidaysBacking</managed-bean-class>
+    <managed-bean-scope id="__89">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__94">
+    <managed-bean-name id="__93">activityTypesBacking</managed-bean-name>
+    <managed-bean-class id="__96">TurnQuest.view.backing.ActivityTypeBacking</managed-bean-class>
+    <managed-bean-scope id="__95">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__98">
+    <managed-bean-name id="__100">messageTemplateBacking</managed-bean-name>
+    <managed-bean-class id="__99">TurnQuest.view.backing.MessageTemplateBacking</managed-bean-class>
+    <managed-bean-scope id="__97">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__101">
+    <managed-bean-name id="__103">postLevelsBacking</managed-bean-name>
+    <managed-bean-class id="__102">TurnQuest.view.backing.PostLevelsBacking</managed-bean-class>
+    <managed-bean-scope id="__104">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__107">
+    <managed-bean-name id="__108">singleMessageBacking</managed-bean-name>
+    <managed-bean-class id="__105">TurnQuest.view.backing.SingleMessageBacking</managed-bean-class>
+    <managed-bean-scope id="__106">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__112">
+    <managed-bean-name id="__110">ImageUploadListener</managed-bean-name>
+    <managed-bean-class id="__109">TurnQuest.view.Base.ImageUploadBean</managed-bean-class>
+    <managed-bean-scope id="__111">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__116">
+    <managed-bean-name id="__115">claimsPaymentBackingBean</managed-bean-name>
+    <managed-bean-class id="__113">TurnQuest.view.backing.ClaimsPaymentBackingBean</managed-bean-class>
+    <managed-bean-scope id="__114">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__120">
+    <managed-bean-name id="__119">mobileServiceProvidersBackingBean</managed-bean-name>
+    <managed-bean-class id="__118">TurnQuest.view.backing.mobileServiceProvidersBackingBean</managed-bean-class>
+    <managed-bean-scope id="__117">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__124">
+    <managed-bean-name id="__122">baseClientBackingBean1</managed-bean-name>
+    <managed-bean-class id="__123">TurnQuest.view.Clients.BaseClientBackingBean1</managed-bean-class>
+    <managed-bean-scope id="__121">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__125">
+    <managed-bean-name id="__126">BaseSetupsBacking1</managed-bean-name>
+    <managed-bean-class id="__127">TurnQuest.view.setups.BaseSetupsBacking1</managed-bean-class>
+    <managed-bean-scope id="__128">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__130">
+    <managed-bean-name id="__131">SequenceBean</managed-bean-name>
+    <managed-bean-class id="__129">TurnQuest.view.backing.SequenceBean</managed-bean-class>
+    <managed-bean-scope id="__132">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__133">
+    <managed-bean-name id="__136">alertBean</managed-bean-name>
+    <managed-bean-class id="__135">TurnQuest.view.backing.AlertBean</managed-bean-class>
+    <managed-bean-scope id="__134">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__139">
+    <managed-bean-name id="__138">productBean</managed-bean-name>
+    <managed-bean-class id="__140">TurnQuest.view.backing.ProductBean</managed-bean-class>
+    <managed-bean-scope id="__137">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__144">
+    <managed-bean-name id="__142">clientAttributeBean</managed-bean-name>
+    <managed-bean-class id="__143">TurnQuest.view.backing.ClientAttributeBean</managed-bean-class>
+    <managed-bean-scope id="__141">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__147">
+    <managed-bean-name id="__146">ActivityBacking</managed-bean-name>
+    <managed-bean-class id="__145">TurnQuest.view.Activities.ActivityBacking</managed-bean-class>
+    <managed-bean-scope id="__148">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__151">
+    <managed-bean-name id="__149">campaignBackingBean</managed-bean-name>
+    <managed-bean-class id="__152">TurnQuest.view.Campaigns.campaignBacking</managed-bean-class>
+    <managed-bean-scope id="__150">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__154">
+    <managed-bean-name id="__153">leadsManip</managed-bean-name>
+    <managed-bean-class id="__156">TurnQuest.view.Leads.LeadsManipulation</managed-bean-class>
+    <managed-bean-scope id="__155">request</managed-bean-scope>
+  </managed-bean>
+   <managed-bean id="__157">
+    <managed-bean-name id="__159">incidenceManip</managed-bean-name>
+    <managed-bean-class id="__160">TurnQuest.view.Incidences.IncidenceManipulation</managed-bean-class>
+    <managed-bean-scope id="__158">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__241">
+    <managed-bean-name id="__242">CSVtoADFTable</managed-bean-name>
+    <managed-bean-class id="__243">TurnQuest.view.utilities.CSVtoADFTableProcessor</managed-bean-class>
+    <managed-bean-scope id="__244">session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__163">
+    <managed-bean-name id="__164">ProductClientBean</managed-bean-name>
+    <managed-bean-class id="__161">TurnQuest.view.Campaigns.ProductClientBean</managed-bean-class>
+    <managed-bean-scope id="__162">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__168">
+    <managed-bean-name id="__165">ReportGroupsManinp</managed-bean-name>
+    <managed-bean-class id="__166">TurnQuest.view.reports.ReportGroupsManinp</managed-bean-class>
+    <managed-bean-scope id="__167">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__172">
+    <managed-bean-name id="__169">ReportQuery</managed-bean-name>
+    <managed-bean-class id="__170">TurnQuest.view.reports.ReportQuery</managed-bean-class>
+    <managed-bean-scope id="__171">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__176">
+    <managed-bean-name id="__173">ReportEngine</managed-bean-name>
+    <managed-bean-class id="__175">TurnQuest.view.reports.ReportEngine</managed-bean-class>
+    <managed-bean-scope id="__174">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__180">
+    <managed-bean-name id="__177">SysAppAreaBean</managed-bean-name>
+    <managed-bean-class id="__179">TurnQuest.view.setups.SysAppAreaBean</managed-bean-class>
+    <managed-bean-scope id="__178">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__181">
+    <managed-bean-name id="__184">ServiceRequestsManip</managed-bean-name>
+    <managed-bean-class id="__182">TurnQuest.view.serviceRequests.ServiceRequestsManip</managed-bean-class>
+    <managed-bean-scope id="__183">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__188">
+    <managed-bean-name id="__186">ServiceRequest</managed-bean-name>
+    <managed-bean-class id="__187">TurnQuest.view.Activities.ServiceRequest</managed-bean-class>
+    <managed-bean-scope id="__185">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__190">
+    <managed-bean-name id="__189">Scheduler</managed-bean-name>
+    <managed-bean-class id="__192">TurnQuest.view.scheduler.SchedulerBack</managed-bean-class>
+    <managed-bean-scope id="__191">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__193">
+    <managed-bean-name id="__195">KnowledgeBase</managed-bean-name>
+    <managed-bean-class id="__196">TurnQuest.view.knowledgeBase.KBManip</managed-bean-class>
+    <managed-bean-scope id="__194">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__197">
+    <managed-bean-name id="__198">HouseHolds</managed-bean-name>
+    <managed-bean-class id="__200">TurnQuest.view.Clients.HouseHolds</managed-bean-class>
+    <managed-bean-scope id="__199">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__201">
+    <managed-bean-name id="__203">ImageBean</managed-bean-name>
+    <managed-bean-class id="__204">TurnQuest.view.ImageBean</managed-bean-class>
+    <managed-bean-scope id="__202">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__209">
+    <managed-bean-name id="__210">FileProcessor</managed-bean-name>
+    <managed-bean-class id="__211">TurnQuest.view.utilities.FileProcessor</managed-bean-class>
+    <managed-bean-scope id="__212">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__205">
+    <managed-bean-name id="__208">TestingAlerts</managed-bean-name>
+    <managed-bean-class id="__207">TurnQuest.view.Alerts.TestAllerts</managed-bean-class>
+    <managed-bean-scope id="__206">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__214">
+    <managed-bean-name id="__216">EscalationsManip</managed-bean-name>
+    <managed-bean-class id="__215">TurnQuest.view.bpm.EscalationsManip</managed-bean-class>
+    <managed-bean-scope id="__213">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__220">
+    <managed-bean-name id="__218">ecmBack</managed-bean-name>
+    <managed-bean-class id="__217">TurnQuest.view.setups.EcmBacking</managed-bean-class>
+    <managed-bean-scope id="__219">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__222">
+    <managed-bean-name id="__221">uploadClients</managed-bean-name>
+    <managed-bean-class id="__224">LoadingPkg.ClientsLoad</managed-bean-class>
+    <managed-bean-scope id="__223">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__232">
+    <managed-bean-name id="__230">dynaProposal</managed-bean-name>
+    <managed-bean-class id="__231">TurnQuest.view.Proposals.DynaProposal</managed-bean-class>
+    <managed-bean-scope id="__229">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__225">
+    <managed-bean-name id="__227">QuotationManip</managed-bean-name>
+    <managed-bean-class id="__228">TurnQuest.view.quotations.QuotationManip</managed-bean-class>
+    <managed-bean-scope id="__226">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__235">
+    <managed-bean-name id="__234">SubClassDef</managed-bean-name>
+    <managed-bean-class id="__236">TurnQuest.view.portalsetups.SubClassDef</managed-bean-class>
+    <managed-bean-scope id="__233">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__239">
+    <managed-bean-name id="__240">WebManipulation</managed-bean-name>
+    <managed-bean-class id="__238">TurnQuest.view.web.Manipulation</managed-bean-class>
+    <managed-bean-scope id="__237">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__245">
+    <managed-bean-name id="__248">reportManip</managed-bean-name>
+    <managed-bean-class id="__246">TurnQuest.view.setups.ReportManip</managed-bean-class>
+    <managed-bean-scope id="__247">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__250">
+    <managed-bean-name id="__249">ReportManipulation</managed-bean-name>
+    <managed-bean-class id="__251">TurnQuest.view.setups.ReportManipulation</managed-bean-class>
+    <managed-bean-scope id="__252">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__253">
+    <managed-bean-name id="__256">DepartmentManip</managed-bean-name>
+    <managed-bean-class id="__254">TurnQuest.view.setups.DepartmentManip</managed-bean-class>
+    <managed-bean-scope id="__255">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__258">
+    <managed-bean-name id="__260">validationManip</managed-bean-name>
+    <managed-bean-class id="__257">TurnQuest.view.Accounts.validationManip</managed-bean-class>
+    <managed-bean-scope id="__259">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__263">
+    <managed-bean-name id="__262">ScreenBack</managed-bean-name>
+    <managed-bean-class id="__264">TurnQuest.view.schedule.ScreenBack</managed-bean-class>
+    <managed-bean-scope id="__261">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__267">
+    <managed-bean-name id="__265">uploadBankAccounts</managed-bean-name>
+    <managed-bean-class id="__266">TurnQuest.view.Loading.BankAccountsLoad</managed-bean-class>
+    <managed-bean-scope id="__268">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__269">
+    <managed-bean-name id="__270">saccosBacking</managed-bean-name>
+    <managed-bean-class id="__271">TurnQuest.view.Accounts.SaccosBacking</managed-bean-class>
+    <managed-bean-scope id="__272">request</managed-bean-scope>
+  </managed-bean>
+    <managed-bean id="__273">
+    <managed-bean-name id="__274">clientTypeBacking</managed-bean-name>
+    <managed-bean-class id="__275">TurnQuest.view.backing.ClientTypeBacking</managed-bean-class>
+    <managed-bean-scope id="__276">request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__280">
+    <managed-bean-name id="__277">makerCheckerManipulation</managed-bean-name>
+    <managed-bean-class id="__279">TurnQuest.view.roles.MakerCheckerManipulation</managed-bean-class>
+    <managed-bean-scope id="__278">request</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

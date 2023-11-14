@@ -1,0 +1,1246 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <af:panelGroupLayout id="pgl1">
+                <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                  <tr>
+                    <td width="50%" align="right">
+                      <h:panelGrid columns="2" id="panelGrid1">
+                        <af:inputText id="inputText1"
+                                      helpTopicId="CRMagencyActivities"
+                                      columns="13" readOnly="true"
+                                      shortDesc="Help"/>
+                        <af:statusIndicator id="statusIndicator1"/>
+                      </h:panelGrid>
+                    </td>
+                  </tr>
+                </table>
+                <h:panelGrid columns="2" id="pg1">
+                  <af:outputLabel value="Bank Definitions" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+                </h:panelGrid>
+                <af:separator id="s1"/>
+                <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                  <h:panelGrid columns="2" id="pg2">
+                    <af:outputLabel value="Banks" id="ol3"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s2"/>
+                  <h:panelGrid columns="3" id="pg3">
+                    <af:commandButton text="New" id="btnNewBank"
+                                      icon="/images/create.gif"
+                                      action="#{bankDefinitionsBacking.actionNewBank}"
+                                      binding="#{bankDefinitionsBacking.btnNewBank}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Edit" disabled="true"
+                                      id="btnEditBank" icon="/images/update.gif"
+                                      action="#{bankDefinitionsBacking.actionEditBank}"
+                                      binding="#{bankDefinitionsBacking.btnEditBank}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Delete" disabled="true"
+                                      id="btnDeleteBank"
+                                      icon="/images/delete.gif"
+                                      action="#{bankDefinitionsBacking.actionShowDeleteBanks}"
+                                      binding="#{bankDefinitionsBacking.btnDeleteBank}"
+                                      partialSubmit="true"/>
+                  </h:panelGrid>
+                  <af:separator id="s3"/>
+                  <af:panelCollection id="pc1"
+                                      styleClass="AFAuxiliaryStretchWidth"
+                                      inlineStyle="height:200.0px;">
+                    <af:table value="#{bindings.Bank.collectionModel}" var="row"
+                              rows="#{bindings.Bank.rangeSize}"
+                              emptyText="#{bindings.Bank.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.Bank.rangeSize}"
+                              rowBandingInterval="1"
+                              filterModel="#{bindings.BankQuery.queryDescriptor}"
+                              queryListener="#{bindings.BankQuery.processQuery}"
+                              filterVisible="false" varStatus="vs"
+                              selectionListener="#{bankDefinitionsBacking.tblBanksListener}"
+                              rowSelection="single" id="t1"
+                              binding="#{bankDefinitionsBacking.tblBanks}">
+                      <af:column sortProperty="shortDesc" sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 headerText="Id" id="c7" filterable="true">
+                        <af:outputText value="#{row.shortDesc}" id="ot11"/>
+                      </af:column>
+                      <af:column sortProperty="bankName" sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 headerText="Name" id="c8" filterable="true"
+                                 width="200">
+                        <af:outputText value="#{row.bankName}" id="ot1"/>
+                      </af:column>
+                      <af:column sortProperty="remarks" sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 headerText="Remarks" id="c4" filterable="true"
+                                 width="200">
+                        <af:outputText value="#{row.remarks}" id="ot6"/>
+                      </af:column>
+                      <af:column sortProperty="fwdBankName" sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 headerText="DD Forwading Bank" id="c1"
+                                 filterable="true" width="200">
+                        <af:outputText value="#{row.fwdBankName}" id="ot7"/>
+                      </af:column>
+                      <af:column sortProperty="ddReportFormat" sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 headerText="DD Report Desc" id="c3"
+                                 filterable="true" width="200">
+                        <af:outputText value="#{row.ddReportFormat}" id="ot9"/>
+                      </af:column>
+                      <af:column sortProperty="eftSupported" sortable="false"
+                                 headerText="Eft Supported" id="c2">
+                        <af:outputText value="#{row.eftSupported}" id="ot4"/>
+                      </af:column>
+                      <af:column sortProperty="classType" sortable="false"
+                                 headerText="Class Type" id="c19">
+                        <af:outputText value="#{row.classType}" id="ot20"/>
+                      </af:column>
+                      <af:column sortProperty="characterNo" sortable="false"
+                                 headerText="A/C No. Characters" id="c20">
+                        <af:outputText value="#{row.characterNo}" id="ot21"/>
+                      </af:column>
+                      <af:column sortProperty="characterMaxNo" sortable="false"
+                                 headerText="Maximum A/C No. Characters"
+                                 id="c50">
+                        <af:outputText value="#{row.characterMaxNo}" id="ot47"/>
+                      </af:column>
+                      <af:column sortProperty="characterMinNo" sortable="false"
+                                 headerText="Minimum A/C No. Characters"
+                                 id="c49">
+                        <af:outputText value="#{row.characterMinNo}" id="ot46"/>
+                      </af:column>
+                      <af:column sortProperty="negotiatedBank" sortable="false"
+                                 headerText="Negotiated Bank" id="c21">
+                        <af:outputText value="#{row.negotiatedBank}" id="ot22"/>
+                      </af:column>
+                      <af:column sortProperty="administativeAmnt"
+                                 sortable="false" headerText="Admin Charge"
+                                 id="c22">
+                        <af:outputText value="#{row.administativeAmnt}"
+                                       id="ot23"/>
+                      </af:column>
+                      <af:column sortProperty="logo" sortable="false"
+                                 visible="true" headerText="Logo" id="c23">
+                        <af:image shortDesc="Logo" id="i1"
+                                  source="/bankimagesservlet?id=#{row.bankCode}"
+                                  inlineStyle="width:16.0px; height:16.0px;"/>
+                      </af:column>
+                      <af:column sortProperty="bnkWef" sortable="false"
+                                 headerText="Wef" id="c24">
+                        <af:outputText value="#{row.bnkWef}" id="ot24">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="bnkWet" sortable="false"
+                                 headerText="Wet" id="c25">
+                        <af:outputText value="#{row.bnkWet}" id="ot25">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="bnkStatus" sortable="false"
+                                 headerText="Status" id="c43">
+                        <af:outputText value="#{row.bnkStatus}" id="ot40"/>
+                      </af:column>
+                      <af:column sortProperty="countryName" sortable="false"
+                                 headerText="Country Name" id="c48">
+                        <af:outputText value="#{row.countryName}" id="ot45"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  <af:spacer width="10" height="20" id="s6"/>
+                  <!-- Bank Territories   -->
+                  <h:panelGrid columns="1" width="100%"
+                               rendered="#{Rendering.BANK_TERRITORY_APPLICABLE}">
+                    <h:panelGrid columns="2">
+                      <af:outputLabel value="Bank Territories"
+                                      inlineStyle="font-weight:bold;"/>
+                    </h:panelGrid>
+                    <af:separator id="s5"/>
+                    <h:panelGrid columns="3" id="pg4">
+                      <af:commandButton text="New" disabled="true"
+                                        id="btnNewBankTerritory"
+                                        icon="/images/create.gif"
+                                        action="#{bankDefinitionsBacking.actionNewBankTerritory}"
+                                        binding="#{bankDefinitionsBacking.btnNewBankTerritory}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Edit" disabled="true"
+                                        id="btnEditBankTerritory"
+                                        icon="/images/update.gif"
+                                        action="#{bankDefinitionsBacking.actionEditBankTerritory}"
+                                        binding="#{bankDefinitionsBacking.btnEditBankTerritory}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Delete"
+                                        id="btnDeleteBankTerritory"
+                                        icon="/images/delete.gif"
+                                        action="#{bankDefinitionsBacking.actionShowDeleteBankTerritory}"
+                                        binding="#{bankDefinitionsBacking.btnDeleteBankTerritory}"
+                                        partialSubmit="true" disabled="true"/>
+                    </h:panelGrid>
+                    <af:separator id="s4"/>
+                    <af:panelCollection id="pc2"
+                                        styleClass="AFAuxiliaryStretchWidth"
+                                        inlineStyle="height:200.0px;">
+                      <af:table value="#{bindings.BankTerritory.collectionModel}"
+                                var="row"
+                                rows="#{bindings.BankTerritory.rangeSize}"
+                                emptyText="#{bindings.BankTerritory.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.BankTerritory.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.BankTerritoryQuery.queryDescriptor}"
+                                queryListener="#{bindings.BankTerritoryQuery.processQuery}"
+                                filterVisible="false" varStatus="vs"
+                                rowSelection="single" id="t2566"
+                                binding="#{bankDefinitionsBacking.tblBankTerritory}"
+                                selectionListener="#{bankDefinitionsBacking.actionTableBankTerritorySelected}">
+                        <af:column sortProperty="#{bindings.BankTerritory.hints.bankTerritoryCode}"
+                                   sortable="false" headerText="Territory Id"
+                                   id="c30">
+                          <af:outputText value="#{row.bankTerritoryCode}"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.BankTerritory.hints.bankTerritoryName}"
+                                   sortable="false" headerText="Territory Name"
+                                   id="c29">
+                          <af:outputText value="#{row.bankTerritoryName}"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.BankTerritory.hints.bankTerritoryShtDesc}"
+                                   sortable="false"
+                                   headerText="Territory Short Desc" id="c32">
+                          <af:outputText value="#{row.bankTerritoryShtDesc}"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.BankTerritory.hints.territoryBankCode}"
+                                   sortable="false"
+                                   headerText="Territory Bank Code">
+                          <af:outputText value="#{row.territoryBankCode}"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <af:separator/>
+                  </h:panelGrid>
+                  <!-- Bank Branches -->
+                  <h:panelGrid columns="2" id="pg6">
+                    <af:outputLabel value="Bank Branches" id="ol2"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s5545"/>
+                  <h:panelGrid columns="3" id="pg453e454">
+                    <af:commandButton text="New"
+                                      disabled="#{Rendering.BANK_TERRITORY_APPLICABLE ? true : false}"
+                                      id="btnNewBankBranch"
+                                      icon="/images/create.gif"
+                                      action="#{bankDefinitionsBacking.actionNewBankBranch}"
+                                      binding="#{bankDefinitionsBacking.btnNewBankBranch}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Edit" disabled="true"
+                                      id="btnEditBankBranch"
+                                      icon="/images/update.gif"
+                                      action="#{bankDefinitionsBacking.actionEditBankBranch}"
+                                      binding="#{bankDefinitionsBacking.btnEditBankBranch}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Delete" disabled="true"
+                                      id="btnDeleteBankBranch"
+                                      icon="/images/delete.gif"
+                                      action="#{bankDefinitionsBacking.actionShowDeleteBankBranch}"
+                                      binding="#{bankDefinitionsBacking.btnDeleteBnkBranch}"
+                                      partialSubmit="true"/>
+                  </h:panelGrid>
+                  <af:separator id="s4342"/>
+                  <af:panelCollection id="pc2322"
+                                      styleClass="AFAuxiliaryStretchWidth"
+                                      inlineStyle="height:200.0px;">
+                    <af:table value="#{bindings.BankBranchX.collectionModel}"
+                              var="row" rows="#{bindings.BankBranchX.rangeSize}"
+                              emptyText="#{bindings.BankBranchX.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.BankBranchX.rangeSize}"
+                              rowBandingInterval="1"
+                              filterModel="#{bindings.BankBranchQuery.queryDescriptor}"
+                              queryListener="#{bindings.BankBranchQuery.processQuery}"
+                              rowSelection="single"
+                              binding="#{bankDefinitionsBacking.tblBankBranch}"
+                              selectionListener="#{bankDefinitionsBacking.actiontblBankBranchSelected}">
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.branchCode.name}"
+                                 headerText="#{bindings.BankBranchX.hints.branchCode.label}"
+                                 visible='false' sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" id="c15">
+                        <af:outputText value="#{row.branchCode}" id="ot3"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.branchBankCode.name}"
+                                 headerText="#{bindings.BankBranchX.hints.branchBankCode.label}"
+                                 visible='false' sortable="true"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" id="c38">
+                        <af:outputText value="#{row.branchBankCode}" id="ot12"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.branchName.name}"
+                                 headerText="#{bindings.BankBranchX.hints.branchName.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c9">
+                        <af:outputText value="#{row.branchName}" id="ot32"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.remarks.name}"
+                                 headerText="#{bindings.BankBranchX.hints.remarks.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c39">
+                        <af:outputText value="#{row.remarks}" id="ot36"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.shortDesc.name}"
+                                 headerText="#{bindings.BankBranchX.hints.shortDesc.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c36">
+                        <af:outputText value="#{row.shortDesc}" id="ot31"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.refCode.name}"
+                                 headerText="#{bindings.BankBranchX.hints.refCode.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c31">
+                        <af:outputText value="#{row.refCode}" id="ot8"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.EFTSupported.name}"
+                                 headerText="#{bindings.BankBranchX.hints.EFTSupported.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c37">
+                        <af:outputText value="#{row.EFTSupported}" id="ot35"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.DDSupported.name}"
+                                 headerText="#{bindings.BankBranchX.hints.DDSupported.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c35">
+                        <af:outputText value="#{row.DDSupported}" id="ot33"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.dateCreated.name}"
+                                 headerText="#{bindings.BankBranchX.hints.dateCreated.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c11">
+                        <af:outputText value="#{row.dateCreated}" id="ot15">
+                          <af:convertDateTime pattern="#{bindings.BankBranchX.hints.dateCreated.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.createdBy.name}"
+                                 headerText="#{bindings.BankBranchX.hints.createdBy.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c12">
+                        <af:outputText value="#{row.createdBy}" id="ot2"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.physicalAddress.name}"
+                                 headerText="#{bindings.BankBranchX.hints.physicalAddress.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c33">
+                        <af:outputText value="#{row.physicalAddress}"
+                                       id="ot14"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.postalAddress.name}"
+                                 headerText="#{bindings.BankBranchX.hints.postalAddress.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c26">
+                        <af:outputText value="#{row.postalAddress}" id="ot26"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.KBACode.name}"
+                                 headerText="#{bindings.BankBranchX.hints.KBACode.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c10">
+                        <af:outputText value="#{row.KBACode}" id="ot34"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.branchEmail.name}"
+                                 headerText="#{bindings.BankBranchX.hints.branchEmail.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c42">
+                        <af:outputText value="#{row.branchEmail}" id="ot39"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.branchPersonName.name}"
+                                 headerText="#{bindings.BankBranchX.hints.branchPersonName.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c40">
+                        <af:outputText value="#{row.branchPersonName}"
+                                       id="ot38"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.branchPersonEmail.name}"
+                                 headerText="#{bindings.BankBranchX.hints.branchPersonEmail.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c41">
+                        <af:outputText value="#{row.branchPersonEmail}"
+                                       id="ot37"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.countryCode.name}"
+                                 headerText="#{bindings.BankBranchX.hints.countryCode.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c44">
+                        <af:outputText value="#{row.countryCode}" id="ot41"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.branchPersonPhone.name}"
+                                 headerText="#{bindings.BankBranchX.hints.branchPersonPhone.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c34">
+                        <af:outputText value="#{row.branchPersonPhone}"
+                                       id="ot30"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranchX.hints.logo.name}"
+                                 headerText="#{bindings.BankBranchX.hints.logo.label}"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true" id="c6">
+                        <af:outputText value="#{row.logo}" id="ot29"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  <af:separator id="s7"/>
+                  <h:panelGrid columns="2" id="pg11">
+                    <af:outputLabel value="Bancassurance Branches" id="ol4"/>
+                  </h:panelGrid>
+                  <af:separator id="s10"/>
+                  <h:panelGrid columns="3" id="pg10">
+                    <af:commandButton text="Add" id="cb10"
+                                      icon="/images/create.gif"
+                                      partialSubmit="true" disabled="true"
+                                      action="#{bankDefinitionsBacking.actionAddBancassuranceBranch}"
+                                      binding="#{bankDefinitionsBacking.btnAddAssuranceBranch}"/>
+                    <af:commandButton text="Edit" icon="/images/update.gif"
+                                      id="cb11" partialSubmit="true"
+                                      disabled="true"
+                                      action="#{bankDefinitionsBacking.actionEditBancassuranceBranch}"
+                                      binding="#{bankDefinitionsBacking.btnEditAssuranceBranch}"/>
+                    <af:commandButton text="Delete" id="cb12"
+                                      icon="/images/delete.gif"
+                                      partialSubmit="true" disabled="true"
+                                      action="#{bankDefinitionsBacking.actionDeleteBancassuranceBranch}"
+                                      binding="#{bankDefinitionsBacking.btnDeleteAssuranceBranch}"/>
+                  </h:panelGrid>
+                  <af:separator id="s9"/>
+                  <af:panelCollection id="pc6"
+                                      styleClass="AFAuxiliaryStretchWidth"
+                                      inlineStyle="height:200.0px;">
+                    <af:table value="#{bindings.BankBranch2.collectionModel}"
+                              var="row" rows="#{bindings.BankBranch2.rangeSize}"
+                              emptyText="#{bindings.BankBranch2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.BankBranch2.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.BankBranch2Query.queryDescriptor}"
+                              queryListener="#{bindings.BankBranch2Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              
+                              selectionListener="#{bankDefinitionsBacking.actionTblBancAssuranceSelected}"
+                              rowSelection="single" id="t7"
+                              binding="#{bankDefinitionsBacking.bancassurancelov}">
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.branchName.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Name" id="c60">
+                        <af:outputText value="#{row.branchName}" id="ot59"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.shortDesc.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Sht Desc" id="c56">
+                        <af:outputText value="#{row.shortDesc}" id="ot58"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.KBACode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="KBA code" id="c61">
+                        <af:outputText value="#{row.KBACode}" id="ot52"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.bankTerritoryName.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Territory" id="c52">
+                        <af:outputText value="#{row.bankTerritoryName}"
+                                       id="ot54"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.branchEmail.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Email" id="c51">
+                        <af:outputText value="#{row.branchEmail}" id="ot51"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.dateCreated.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Date Created" id="c58">
+                        <f:facet name="filter">
+                          <af:inputDate value="#{vs.filterCriteria.dateCreated}"
+                                        id="id1"/>
+                        </f:facet>
+                        <af:outputText value="#{row.dateCreated}" id="ot57">
+                          <af:convertDateTime pattern="#{bindings.BankBranch2.hints.dateCreated.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.createdBy.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Created By" id="c62">
+                        <af:outputText value="#{row.createdBy}" id="ot49"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.physicalAddress.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Physical Address" id="c59">
+                        <af:outputText value="#{row.physicalAddress}"
+                                       id="ot55"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.postalAddress.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Postal Address" id="c53">
+                        <af:outputText value="#{row.postalAddress}" id="ot56"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.BankBranch2.hints.remarks.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Remarks" id="c57">
+                        <af:outputText value="#{row.remarks}" id="ot50"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  <af:separator id="s8"/>
+                  <af:commandButton text="Generate Report" id="cl1"
+                                    icon="/images/report.png"
+                                    partialSubmit="true"/>
+                </af:panelBox>
+              </af:panelGroupLayout>
+            </af:panelBox>
+            <af:popup id="bankPop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Bank Definition" type="none"
+                         inlineStyle="width:480.0px;">
+                <af:panelBox text="PanelBox3" id="pb3" showHeader="never"
+                             binding="#{bankDefinitionsBacking.panelBankDetails}">
+                  <af:panelFormLayout id="pfl1">
+                    <af:inputText label="Code : " id="it2"
+                                  binding="#{bankDefinitionsBacking.txtBnkCode}"
+                                  visible="false" showRequired="true"/>
+                    <af:inputText label="Short Desc : " id="it5"
+                                  binding="#{bankDefinitionsBacking.txtBnkShortDesc}"
+                                  showRequired="true"/>
+                    <af:inputText label="Bank Name : " id="it3"
+                                  binding="#{bankDefinitionsBacking.txtBnkBankName}"
+                                  showRequired="true"/>
+                    <af:panelLabelAndMessage label="#{Rendering.BNK_COU_CODE_LABEL}"
+                                             showRequired="#{Rendering.BNK_COU_CODE_REQUIRED}"
+                                             rendered="#{Rendering.BNK_COU_CODE_VISIBLE}"
+                                             id="plam1">
+                      <af:inputText label="Country Name: " id="it10"
+                                    simple="true" disabled="true"
+                                    rendered="#{Rendering.BNK_COU_CODE_VISIBLE}"
+                                    binding="#{bankDefinitionsBacking.txtCountry}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb5"
+                                        partialSubmit="true"
+                                        disabled="#{Rendering.BNK_COU_CODE_DISABLED}"
+                                        rendered="#{Rendering.BNK_COU_CODE_VISIBLE}">
+                        <af:showPopupBehavior popupId="countryPopup"/>
+                      </af:commandButton>
+                      
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="Remarks : " id="it4"
+                                  binding="#{bankDefinitionsBacking.txtBnkRemark}"/>
+                    <af:inputText label="DDR Code : " id="it6"
+                                  binding="#{bankDefinitionsBacking.txtBnkDdrCode}"
+                                  visible="false"/>
+                    <af:panelLabelAndMessage label="Direct Debit Report Desc : "
+                                             id="plam5">
+                      <af:inputText label="DD Report Desc : " id="it14"
+                                    simple="true" disabled="true"
+                                    binding="#{bankDefinitionsBacking.txtBnkDdrDesc}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb9"
+                                        partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.actionShowDirectDebitReports}"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="Format Desc : " id="it7"
+                                  binding="#{bankDefinitionsBacking.txtBnkFormatDesc}"
+                                  visible="false"/>
+                    <af:inputText label="Forwading Bank Code : " id="it8"
+                                  binding="#{bankDefinitionsBacking.txtBnkForwadingBankCode}"
+                                  visible="false"/>
+                    <af:panelLabelAndMessage label="DD Forwading Bank : "
+                                             id="plam2">
+                      <af:inputText label="DD Forwading Bank : " id="it11"
+                                    simple="true" disabled="true"
+                                    binding="#{bankDefinitionsBacking.txtBnkFwdBankName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb6"
+                                        partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.actionShowForwadingBanks}"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="KBA Code : " id="it9"
+                                  binding="#{bankDefinitionsBacking.txtBnkKbaCode}"
+                                  visible="false"/>
+                    <af:selectOneChoice label="EFT Support : "
+                                        id="selectOneChoice1"
+                                        binding="#{bankDefinitionsBacking.txtBnkEFTSupport}"
+                                        value="Y">
+                      <af:selectItem label="Enabled" value="Y"
+                                     id="selectItem1"/>
+                      <af:selectItem label="Disabled" value="N"
+                                     id="selectItem2"/>
+                    </af:selectOneChoice>
+                    <af:selectOneChoice label="Classify : " id="soc1"
+                                        binding="#{bankDefinitionsBacking.txtClassification}"
+                                        autoSubmit="true" immediate="true">
+                      <af:selectItem label="Traditional(Centralized) Banks"
+                                     value="T" id="si1"/>
+                      <af:selectItem label="Rural Banks" value="R" id="si5"/>
+                      <af:selectItem label="Microfinance Institutions" value="M"
+                                     id="si6"/>
+                    </af:selectOneChoice>
+                    <af:inputNumberSpinbox label="#{Rendering.BNK_ACC_NO_LABEL}"
+                                           id="ins1"
+                                           showRequired="#{Rendering.BNK_ACC_NO_REQUIRED}"
+                                           rendered="#{Rendering.BNK_ACC_NO_VISIBLE}"
+                                           disabled="#{Rendering.BNK_ACC_NO_DISABLED}"
+                                           binding="#{bankDefinitionsBacking.txtCharacterNo}"/>
+                    <af:inputNumberSpinbox label="#{Rendering.BNK_ACC_MAX_NO_LABEL}"
+                                           id="ins3"
+                                           showRequired="#{Rendering.BNK_ACC_MAX_NO_REQUIRED}"
+                                           rendered="#{Rendering.BNK_ACC_MAX_NO_VISIBLE}"
+                                           disabled="#{Rendering.BNK_ACC_MAX_NO_DISABLED}"
+                                           binding="#{bankDefinitionsBacking.txtMaxCharacterNo}"/>
+                    <af:inputNumberSpinbox label="#{Rendering.BNK_ACC_MIN_NO_LABEL}"
+                                           id="ins4"
+                                           showRequired="#{Rendering.BNK_ACC_MIN_NO_REQUIRED}"
+                                           rendered="#{Rendering.BNK_ACC_MIN_NO_VISIBLE}"
+                                           disabled="#{Rendering.BNK_ACC_MIN_NO_DISABLED}"
+                                           binding="#{bankDefinitionsBacking.txtMinCharacterNo}"/>
+                    <af:selectOneChoice label="Negotiated Bank: " id="soc2"
+                                        binding="#{bankDefinitionsBacking.txtNegotiatedBank}"
+                                        autoSubmit="true" immediate="true">
+                      <af:selectItem label="Yes" value="Y" id="si7"/>
+                      <af:selectItem label="No" value="N" id="si8"/>
+                    </af:selectOneChoice>
+                    <af:inputNumberSpinbox label="Administrative Charge"
+                                           id="ins2"
+                                           binding="#{bankDefinitionsBacking.txtAdministrativeCharge}"/>
+                    <af:image shortDesc="Logo" id="i2" source=""
+                              inlineStyle="width:100.0px; height:100.0px;"
+                              binding="#{bankDefinitionsBacking.bankLogo}"/>
+                    <af:inputFile label="Logo" id="upload111" columns="10"
+                                  binding="#{bankDefinitionsBacking.uploadedPicture}"
+                                  value="#{bankDefinitionsBacking.pictureFile}"
+                                  valueChangeListener="#{bankDefinitionsBacking.ImageUploadedListener}"
+                                  autoSubmit="true"/>
+                    <af:inputDate label="WEF :" id="id2"
+                                  binding="#{bankDefinitionsBacking.txtWef}">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:inputDate label="WET :" id="id3"
+                                  binding="#{bankDefinitionsBacking.txtWet}">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:selectOneChoice label="Status :" autoSubmit="true"
+                                        id="soc3" immediate="true"
+                                        binding="#{bankDefinitionsBacking.selectBnkStatus}">
+                      <af:selectItem label="Active" value="A" id="si24"/>
+                      <af:selectItem label="Inactive" value="I" id="si25"/>
+                    </af:selectOneChoice>
+                  </af:panelFormLayout>
+                  <h:panelGrid columns="2" id="pg5">
+                    <af:commandButton text="Save" id="cb1"
+                                      binding="#{bankDefinitionsBacking.btnSaveUpdateBank}"
+                                      action="#{bankDefinitionsBacking.actionSaveUpdateBank}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb2"/>
+                  </h:panelGrid>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="bankBranchPop" contentDelivery="lazyUncached">
+              <af:dialog id="d3" title="Bank Branch Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                  <af:panelFormLayout id="pfl2">
+                    <af:inputText label="Branch Code : " id="txtBranchCodePop"
+                                  disabled="true" visible="false"
+                                  binding="#{bankDefinitionsBacking.txtBbrCode}"
+                                  showRequired="true"/>
+                    <af:inputText label="Bank Code : " id="txtBranchBankCodePop"
+                                  disabled="true" visible="false"
+                                  binding="#{bankDefinitionsBacking.txtBbrBnkCode}"
+                                  showRequired="true"/>
+                    <af:inputText label="Branch Name :" id="txtBranchNamePop"
+                                  showRequired="true"
+                                  shortDesc="The Bank Branch Name"
+                                  binding="#{bankDefinitionsBacking.txtBbrBranchName}"/>
+                    <af:inputText label="#{Rendering.BBR_EMAIL_LABEL}"
+                                  id="txtBbrEmail"
+                                  binding="#{bankDefinitionsBacking.txtBbrEmail}"
+                                  showRequired="#{Rendering.BBR_EMAIL_REQUIRED}"
+                                  visible="#{Rendering.BBR_EMAIL_VISIBLE}"
+                                  disabled="#{Rendering.BBR_EMAIL_DISABLED}">
+                      <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"
+                                         messageDetailNoMatch='"The value {1} is not a valid email address "'/>
+                    </af:inputText>
+                    <af:inputText label="Short Desc : " id="txtBranchShtDescPop"
+                                  shortDesc="Short Description"
+                                  binding="#{bankDefinitionsBacking.txtBbrShortDesc}"
+                                  showRequired="true"/>
+                    <af:inputText label="Remarks : " id="txtBtanchRemarksPop"
+                                  shortDesc="Remarks"
+                                  binding="#{bankDefinitionsBacking.txtBbrRemarks}"/>
+                    <af:panelLabelAndMessage label="Town: " id="plam3">
+                      <af:inputText label="Town : " id="it1" simple="true"
+                                    disabled="true"
+                                    binding="#{bankDefinitionsBacking.txtBankTownName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb7"
+                                        partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.actionShowTowns}"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="Town code : " id="it12" simple="true"
+                                  disabled="true" visible="false"
+                                  binding="#{bankDefinitionsBacking.txtBankTownCode}"/>
+                    <af:inputText label="REF Code : " id="txtBrancRefCodePop"
+                                  shortDesc="REF Code"
+                                  binding="#{bankDefinitionsBacking.txtBbrRefCode}"/>
+                    <af:selectOneChoice label="EFT Support : "
+                                        id="txtBranchEFTSupportPop"
+                                        binding="#{bankDefinitionsBacking.txtBbrEFTSupport}"
+                                        value="Y">
+                      <af:selectItem label="Enabled" value="Y" id="si14"/>
+                      <af:selectItem label="Disabled" value="N" id="si2"/>
+                    </af:selectOneChoice>
+                    <af:selectOneChoice label="Direct Debit Support : "
+                                        id="txtBranchDDSupportPop"
+                                        binding="#{bankDefinitionsBacking.txtBbrDDSupport}"
+                                        value="Y">
+                      <af:selectItem label="Enabled" value="Y" id="si4"/>
+                      <af:selectItem label="Disabled" value="N" id="si3"/>
+                    </af:selectOneChoice>
+                    <af:inputDate label="Date Created : "
+                                  id="txtBranchDateCreatedPop"
+                                  shortDesc="Date Created"
+                                  binding="#{bankDefinitionsBacking.txtBbrDateCreated}"
+                                  visible="false"/>
+                    <af:inputText label="Created By : "
+                                  id="txtBranchCreatedByPop"
+                                  shortDesc="Created By"
+                                  binding="#{bankDefinitionsBacking.txtBbrCreatedBy}"
+                                  disabled="true" visible="false"
+                                  showRequired="true"/>
+                    <af:inputText label="#{Rendering.BBR_PERSON_NAME_LABEL}"
+                                  id="txtBbrPersonName"
+                                  binding="#{bankDefinitionsBacking.txtBbrPersonName}"
+                                  showRequired="#{Rendering.BBR_PERSON_NAME_REQUIRED}"
+                                  visible="#{Rendering.BBR_PERSON_NAME_VISIBLE}"
+                                  disabled="#{Rendering.BBR_PERSON_NAME_DISABLED}"/>
+                    <af:panelLabelAndMessage label="Country Code:" id="plam4"
+                                             showRequired="#{Rendering.BBR_PERSON_PHONE_REQUIRED}"
+                                             visible="#{Rendering.BBR_PERSON_PHONE_VISIBLE}">
+                      <af:inputText label="Country Code" id="it13" simple="true"
+                                    disabled="true"
+                                    binding="#{bankDefinitionsBacking.txtBbrCountryCode}"
+                                    visible="#{Rendering.BBR_PERSON_PHONE_VISIBLE}"
+                                    inlineStyle="width:50px;"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb8"
+                                        partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.countryCodes}"
+                                        visible="#{Rendering.BBR_PERSON_PHONE_VISIBLE}"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="#{Rendering.BBR_PERSON_PHONE_LABEL}"
+                                  id="txtBbrPersonPhone"
+                                  binding="#{bankDefinitionsBacking.txtBbrPersonPhone}"
+                                  showRequired="#{Rendering.BBR_PERSON_PHONE_REQUIRED}"
+                                  visible="#{Rendering.BBR_PERSON_PHONE_VISIBLE}"
+                                  disabled="#{Rendering.BBR_PERSON_PHONE_DISABLED}"/>
+                    <af:inputText label="#{Rendering.BBR_PERSON_EMAIL_LABEL}"
+                                  id="txtBbrPersonEmail"
+                                  binding="#{bankDefinitionsBacking.txtBbrPersonEmail}"
+                                  showRequired="#{Rendering.BBR_PERSON_EMAIL_REQUIRED}"
+                                  visible="#{Rendering.BBR_PERSON_EMAIL_VISIBLE}"
+                                  disabled="#{Rendering.BBR_PERSON_EMAIL_DISABLED}">
+                      <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"
+                                         messageDetailNoMatch='"The value {1} is not a valid email address "'/>
+                    </af:inputText>
+                    <af:inputText label="Physical Address : "
+                                  id="txtBranchPhysicalAddressPop"
+                                  shortDesc="Physical Address"
+                                  binding="#{bankDefinitionsBacking.txtBbrPhysicalAddress}"/>
+                    <af:inputText label="Postal Address : "
+                                  id="txtPostalAddressPop"
+                                  shortDesc="Postal Address"
+                                  binding="#{bankDefinitionsBacking.txtBbrPostalAddress}"/>
+                    <af:inputText label="KAB Code : " id="txtBranchKBACode"
+                                  binding="#{bankDefinitionsBacking.txtBbrKBACode}"
+                                  visible="false"/>
+                  </af:panelFormLayout>
+                  <h:panelGrid columns="2" id="pg7">
+                    <af:commandButton text="Save" id="cb4"
+                                      binding="#{bankDefinitionsBacking.btnSaveUpdateBankBranch}"
+                                      action="#{bankDefinitionsBacking.actionSaveUpdateBankBranch}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb3"/>
+                  </h:panelGrid>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="bankTerritoryPop" contentDelivery="lazyUncached">
+              <af:dialog title="Bank Territory Definition" type="none"
+                         id="dlgBankTerritoryPop" inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox4" showHeader="never">
+                  <af:panelFormLayout>
+                    <af:inputText label="Bank Territory Code : "
+                                  id="txtTerritoryCodePop" disabled="true"
+                                  visible="false"
+                                  shortDesc="Bank Territory Code"
+                                  binding="#{bankDefinitionsBacking.txtBnktCode}"
+                                  showRequired="true"/>
+                    <af:inputText label="Territory Name :"
+                                  id="txtTerritoryNamePop" showRequired="true"
+                                  shortDesc="The Territory  Name"
+                                  binding="#{bankDefinitionsBacking.txtBnktTerritoryName}"/>
+                    <af:inputText label="Short Desc : "
+                                  id="txtTerritoryShtDescPop"
+                                  shortDesc="Short Description"
+                                  binding="#{bankDefinitionsBacking.txtBnktShtDesc}"
+                                  showRequired="true"/>
+                  </af:panelFormLayout>
+                  <h:panelGrid columns="2">
+                    <af:commandButton text="Save"
+                                      binding="#{bankDefinitionsBacking.btnSaveBankTerritory}"
+                                      action="#{bankDefinitionsBacking.actionSaveBankTerritory}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel"/>
+                  </h:panelGrid>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="forwadingBanksPop" contentDelivery="lazyUncached">
+              <af:dialog id="d4" title="Forwading Banks List" type="none"
+                         inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl2">
+                  <af:panelBox text="PanelBox5" id="pb5" showHeader="never">
+                    <af:panelCollection id="pc3"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Bank1.collectionModel}"
+                                var="row" rows="#{bindings.Bank1.rangeSize}"
+                                emptyText="#{bindings.Bank1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Bank1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.Bank1Query.queryDescriptor}"
+                                queryListener="#{bindings.Bank1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" id="t4"
+                                binding="#{bankDefinitionsBacking.tblForwadingBanks}">
+                        <af:column sortProperty="bankCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c16">
+                          <af:outputText value="#{row.bankCode}" id="ot18"/>
+                        </af:column>
+                        <af:column sortProperty="bankName" filterable="true"
+                                   sortable="true" headerText="Bank Name"
+                                   id="c18" width="150">
+                          <af:outputText value="#{row.bankName}" id="ot16"/>
+                        </af:column>
+                        <af:column sortProperty="ddrReportDesc"
+                                   filterable="true" sortable="true"
+                                   headerText="DD Report Desc" id="c17"
+                                   width="150">
+                          <af:outputText value="#{row.ddrReportDesc}"
+                                         id="ot17"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:panelGrid columns="2" id="pg30">
+                      <af:commandButton text="Ok" id="btnAcceptForwadingBank"
+                                        action="#{bankDefinitionsBacking.actionAcceptForwadingBank}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel"
+                                        id="btnCancelForwadingBank"
+                                        partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.actionCancelFwdingBnk}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="directDebitReportsPop" contentDelivery="lazyUncached">
+              <af:dialog id="d5" title="Direct Debit Reports List" type="none"
+                         inlineStyle="width:300.0px;">
+                <af:panelGroupLayout id="pgl3">
+                  <af:panelBox text="PanelBox6" id="pb6" showHeader="never">
+                    <af:panelCollection id="pc4"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.DirectDebitReport.collectionModel}"
+                                var="row"
+                                rows="#{bindings.DirectDebitReport.rangeSize}"
+                                emptyText="#{bindings.DirectDebitReport.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.DirectDebitReport.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.DirectDebitReportQuery.queryDescriptor}"
+                                queryListener="#{bindings.DirectDebitReportQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" id="t3"
+                                binding="#{bankDefinitionsBacking.tblDDReports}">
+                        <af:column sortProperty="ddrCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c5">
+                          <af:outputText value="#{row.ddrCode}" id="ot13"/>
+                        </af:column>
+                        <af:column sortProperty="ddrReportDesc"
+                                   filterable="true" sortable="true"
+                                   headerText="Description" id="c13"
+                                   width="200">
+                          <af:outputText value="#{row.ddrReportDesc}"
+                                         id="ot10"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:panelGrid columns="2" id="pg8">
+                      <af:commandButton text="Ok" id="btnAcceptDdReport"
+                                        action="#{bankDefinitionsBacking.actionAcceptDdReport}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelDdReport"
+                                        partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.actionCancelDD}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="confirmDeleteBank" contentDelivery="lazyUncached">
+              <af:dialog id="d6" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{bankDefinitionsBacking.actionConfirmDeleteBank}">
+                <af:panelFormLayout id="pfl4" inlineStyle="width:300.0px;">
+                  <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                 id="outputText1"/>
+                </af:panelFormLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="confirmDeleteBancassurance"
+                      contentDelivery="lazyUncached">
+              <af:dialog id="dda6" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{bankDefinitionsBacking.confirmDeleteBancassurance}">
+                <af:panelFormLayout id="pflda4" inlineStyle="width:300.0px;">
+                  <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                 id="outputText1das"/>
+                </af:panelFormLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="confirmDeleteBankBranch"
+                      contentDelivery="lazyUncached">
+              <af:dialog id="d7" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{bankDefinitionsBacking.actionConfirmDeleteBankBranch}">
+                <af:panelFormLayout id="pfl3" inlineStyle="width:300.0px;">
+                  <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                 id="ot19"/>
+                </af:panelFormLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="confirmDeleteBankTerritory"
+                      contentDelivery="lazyUncached">
+              <af:dialog title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{bankDefinitionsBacking.actionConfirmDeleteBankTerritory}">
+                <af:panelFormLayout inlineStyle="width:300.0px;">
+                  <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"/>
+                </af:panelFormLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="TownsPop" contentDelivery="lazyUncached">
+              <af:dialog id="dialog4" title="List of Towns" type="none">
+                <af:panelCollection id="panelCollection3">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Town2.collectionModel}" var="row"
+                            rows="#{bindings.Town2.rangeSize}"
+                            emptyText="#{bindings.Town2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Town2.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.Town2Query.queryDescriptor}"
+                            queryListener="#{bindings.Town2Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.Town2.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.Town2.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t5"
+                            binding="#{bankDefinitionsBacking.tblTowns}">
+                    <af:column sortProperty="#{bindings.Town2.hints.code.name}"
+                               filterable="true" sortable="true"
+                               headerText="Code" id="c27">
+                      <af:outputText value="#{row.code}" id="ot28"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Town2.hints.name.name}"
+                               filterable="true" sortable="true"
+                               headerText="Name" id="c28">
+                      <af:outputText value="#{row.name}" id="ot27"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="6" id="panelGrid8">
+                  <af:commandButton text="Ok" id="commandButton21"
+                                    action="#{bankDefinitionsBacking.acceptTownSelect}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="commandButton22"
+                                    partialSubmit="true"
+                                    action="#{bankDefinitionsBacking.hideTowns}"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="countryCodesPopUp" contentDelivery="lazyUncached">
+              <af:dialog id="d8" title="Country Codes" type="none"
+                         inlineStyle="width:300.0px;">
+                <af:panelGroupLayout id="pgl4">
+                  <af:panelBox text="PanelBox6" id="pb7" showHeader="never">
+                    <af:panelCollection id="pc5"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.BankBranch1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.BankBranch1.rangeSize}"
+                                emptyText="#{bindings.BankBranch1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.BankBranch1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.BankBranch1Query.queryDescriptor}"
+                                queryListener="#{bindings.BankBranch1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.BankBranch1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.BankBranch1.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t2"
+                                binding="#{bankDefinitionsBacking.tblCountryCode}">
+                        <af:column sortProperty="#{bindings.BankBranch1.hints.countryCode.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.BankBranch1.hints.countryCode.label}"
+                                   id="c14">
+                          <af:outputText value="#{row.countryCode}" id="ot5"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:panelGrid columns="2" id="pg9">
+                      <af:commandButton text="Ok" id="btnAcceptCountryCode"
+                                        action="#{bankDefinitionsBacking.actionAcceptCountryCode}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelCountryCode"
+                                        partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.hideCountryPopUp}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="countryPopup" contentDelivery="lazyUncached">
+              <af:dialog id="d42" title="Select Country" type="none">
+                <af:panelGroupLayout id="pgl45">
+                  <af:panelCollection id="pc33" inlineStyle="width:300.0px;">
+                    <af:table value="#{bindings.Country1.collectionModel}"
+                              var="row" rows="#{bindings.Country1.rangeSize}"
+                              emptyText="#{bindings.Country1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.Country1.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.Country1Query.queryDescriptor}"
+                              queryListener="#{bindings.Country1Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectedRowKeys="#{bindings.Country1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.Country1.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t6"
+                              binding="#{bankDefinitionsBacking.countryTbl}">
+                      <af:column sortProperty="#{bindings.Country1.hints.couCode.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Country Code" id="c46">
+                        <af:outputText value="#{row.couCode}" id="ot44"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Country1.hints.couShortDesc.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Short Desc" id="c45">
+                        <af:outputText value="#{row.couShortDesc}" id="ot43"/>
+                      </af:column>
+                      <af:column sortProperty="#{bindings.Country1.hints.couName.name}"
+                                 filterable="true" sortable="true"
+                                 headerText="Country Name" id="c47">
+                        <af:outputText value="#{row.couName}" id="ot42"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                  <af:commandButton text="Ok" id="cb70"
+                                    action="#{bankDefinitionsBacking.selectCountry}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="cb71"/>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="BancassuranceBranch" contentDelivery="lazyUncached">
+              <af:dialog id="dialog1" title="Bancassurance Branch Definition"
+                         type="none" inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox4" id="panelBox1" showHeader="never">
+                  <af:panelFormLayout id="panelFormLayout1">
+                    <af:inputText label="Branch Code : " id="inputText2"
+                                  disabled="true" visible="false"
+                                  binding="#{bankDefinitionsBacking.txtBbbCode}"
+                                  showRequired="true"/>
+                    <af:inputText label="Branch Code : " id="inputText3"
+                                  disabled="true" visible="false"
+                                  binding="#{bankDefinitionsBacking.txtBbbBrnCode}"
+                                  showRequired="true"/>
+                    <af:inputText label="Branch Name :" id="inputText4"
+                                  showRequired="true"
+                                  shortDesc="The Bancassurance  Branch Name"
+                                  binding="#{bankDefinitionsBacking.txtBbbBranchName}"/>
+                    <af:inputText label="#{Rendering.BBR_EMAIL_LABEL}"
+                                  id="inputText5"
+                                  binding="#{bankDefinitionsBacking.txtBbbEmail}"
+                                  showRequired="#{Rendering.BBR_EMAIL_REQUIRED}"
+                                  visible="#{Rendering.BBR_EMAIL_VISIBLE}"
+                                  disabled="#{Rendering.BBR_EMAIL_DISABLED}">
+                      <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"
+                                         messageDetailNoMatch='"The value {1} is not a valid email address "'/>
+                    </af:inputText>
+                    <af:inputText label="Short Desc : " id="inputText6"
+                                  shortDesc="Short Description"
+                                  binding="#{bankDefinitionsBacking.txtBbbShortDesc}"
+                                  showRequired="true"/>
+                    <af:inputText label="Remarks : " id="inputText7"
+                                  shortDesc="Remarks"
+                                  binding="#{bankDefinitionsBacking.txtBbbRemarks}"/>
+                    <af:panelLabelAndMessage label="Town: "
+                                             id="panelLabelAndMessage1">
+                      <af:inputText label="Town : " id="inputText8"
+                                    simple="true" disabled="true"
+                                    binding="#{bankDefinitionsBacking.txtBbbTownName}"/>
+                      <af:commandButton icon="/images/dropdown.gif"
+                                        id="commandButton1" partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.actionShowBankAssuranceTowns}"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="Town code : " id="inputText9"
+                                  simple="true" disabled="true" visible="false"
+                                  binding="#{bankDefinitionsBacking.txtBbbTownCode}"/>
+                    <af:inputDate label="Date Created : " id="inputDate1"
+                                  shortDesc="Date Created"
+                                  binding="#{bankDefinitionsBacking.txtBbbDateCreated}"
+                                  visible="false"/>
+                    <af:inputText label="Created By : " id="inputText11"
+                                  shortDesc="Created By"
+                                  binding="#{bankDefinitionsBacking.txtBbbCreatedBy}"
+                                  disabled="true" visible="false"
+                                  showRequired="true"/>
+                    <af:inputText label="#{Rendering.BBR_PERSON_NAME_LABEL}"
+                                  id="inputText12"
+                                  binding="#{bankDefinitionsBacking.txtBbbPersonName}"
+                                  showRequired="#{Rendering.BBR_PERSON_NAME_REQUIRED}"
+                                  visible="#{Rendering.BBR_PERSON_NAME_VISIBLE}"
+                                  disabled="#{Rendering.BBR_PERSON_NAME_DISABLED}"/>
+                    <af:panelLabelAndMessage label="Country Code:"
+                                             id="panelLabelAndMessage2"
+                                             showRequired="#{Rendering.BBR_PERSON_PHONE_REQUIRED}"
+                                             visible="#{Rendering.BBR_PERSON_PHONE_VISIBLE}">
+                      <af:inputText label="Country Code" id="inputText13"
+                                    simple="true" disabled="true"
+                                    binding="#{bankDefinitionsBacking.txtBbbCountryCode}"
+                                    visible="#{Rendering.BBR_PERSON_PHONE_VISIBLE}"
+                                    inlineStyle="width:50px;"/>
+                      <af:commandButton icon="/images/dropdown.gif"
+                                        id="commandButton2" partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.bankAssuranceCountryCodes}"
+                                        visible="#{Rendering.BBR_PERSON_PHONE_VISIBLE}"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="#{Rendering.BBR_PERSON_PHONE_LABEL}"
+                                  id="inputText14"
+                                  binding="#{bankDefinitionsBacking.txtBbbPersonPhone}"
+                                  showRequired="#{Rendering.BBR_PERSON_PHONE_REQUIRED}"
+                                  visible="#{Rendering.BBR_PERSON_PHONE_VISIBLE}"
+                                  disabled="#{Rendering.BBR_PERSON_PHONE_DISABLED}"/>
+                    <af:inputText label="#{Rendering.BBR_PERSON_EMAIL_LABEL}"
+                                  id="inputText15"
+                                  binding="#{bankDefinitionsBacking.txtBbbPersonEmail}"
+                                  showRequired="#{Rendering.BBR_PERSON_EMAIL_REQUIRED}"
+                                  visible="#{Rendering.BBR_PERSON_EMAIL_VISIBLE}"
+                                  disabled="#{Rendering.BBR_PERSON_EMAIL_DISABLED}">
+                      <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"
+                                         messageDetailNoMatch='"The value {1} is not a valid email address "'/>
+                    </af:inputText>
+                    <af:inputText label="Physical Address : " id="inputText16"
+                                  shortDesc="Physical Address"
+                                  binding="#{bankDefinitionsBacking.txtBbbPhysicalAddress}"/>
+                    <af:inputText label="Postal Address : " id="inputText17"
+                                  shortDesc="Postal Address"
+                                  binding="#{bankDefinitionsBacking.txtBbbPostalAddress}"/>
+                    <af:inputText label="KAB Code : " id="inputText18"
+                                  binding="#{bankDefinitionsBacking.txtBbbKBACode}"
+                                  visible="false"/>
+                  </af:panelFormLayout>
+                  <h:panelGrid columns="2" id="panelGrid2">
+                    <af:commandButton text="Save" id="commandButton3"
+                                      binding="#{bankDefinitionsBacking.btnSaveUpdateBancassuranceBranch}"
+                                      action="#{bankDefinitionsBacking.actionSaveUpdateBancassuranceBranch}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="commandButton4"/>
+                  </h:panelGrid>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="bankAssuranceTowns" contentDelivery="lazyUncached">
+              <af:dialog id="dialog2" title="List of Towns" type="none">
+                <af:panelCollection id="panelCollection1">
+                  <af:table value="#{bindings.Town2.collectionModel}" var="row"
+                            rows="#{bindings.Town2.rangeSize}"
+                            emptyText="#{bindings.Town2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Town2.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.Town2Query.queryDescriptor}"
+                            queryListener="#{bindings.Town2Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.Town2.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.Town2.collectionModel.makeCurrent}"
+                            rowSelection="single" id="table1"
+                            binding="#{bankDefinitionsBacking.tblbackAssuranceTowns}">
+                    <af:column sortProperty="#{bindings.Town2.hints.code.name}"
+                               filterable="true" sortable="true"
+                               headerText="Code" id="column1">
+                      <af:outputText value="#{row.code}" id="outputText2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.Town2.hints.name.name}"
+                               filterable="true" sortable="true"
+                               headerText="Name" id="column2">
+                      <af:outputText value="#{row.name}" id="outputText3"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="6" id="panelGrid3">
+                  <af:commandButton text="Ok" id="commandButton5"
+                                    action="#{bankDefinitionsBacking.acceptBankAssuranceTownSelect}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="commandButton6"
+                                    partialSubmit="true"
+                                    action="#{bankDefinitionsBacking.hideTowns2}"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="bancassurancecountries"
+                      contentDelivery="lazyUncached">
+              <af:dialog id="dialog3" title="Country Codes" type="none"
+                         inlineStyle="width:300.0px;">
+                <af:panelGroupLayout id="panelGroupLayout1">
+                  <af:panelBox text="PanelBox6" id="panelBox2"
+                               showHeader="never">
+                    <af:panelCollection id="panelCollection2"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.BankBranch1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.BankBranch1.rangeSize}"
+                                emptyText="#{bindings.BankBranch1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.BankBranch1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.BankBranch1Query.queryDescriptor}"
+                                queryListener="#{bindings.BankBranch1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.BankBranch1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.BankBranch1.collectionModel.makeCurrent}"
+                                rowSelection="single" id="table2"
+                                binding="#{bankDefinitionsBacking.tbbankAssurancelCountryCode}">
+                        <af:column sortProperty="#{bindings.BankBranch1.hints.countryCode.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.BankBranch1.hints.countryCode.label}"
+                                   id="column3">
+                          <af:outputText value="#{row.countryCode}"
+                                         id="outputText4"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:panelGrid columns="2" id="panelGrid421">
+                      <af:commandButton text="Ok" id="commandButton721"
+                                        action="#{bankDefinitionsBacking.actionAcceptBankAssuranceCountryCode}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="commandButton821"
+                                        partialSubmit="true"
+                                        action="#{bankDefinitionsBacking.hideCountryPopUp2}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

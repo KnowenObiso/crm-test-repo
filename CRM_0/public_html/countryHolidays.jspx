@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right"><h:panelGrid columns="2"
+                                                                                               id="pg6">
+                      <af:inputText id="it1" helpTopicId="CRMcountryHolidays"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="Country Holidays" id="ol1"
+                                inlineStyle="font-weight:bolder; font-size:medium;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+            </af:panelBox>
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <h:panelGrid columns="5" id="pg2">
+                <af:separator id="s2"/>
+                <af:outputLabel value="Countries" id="ol3"
+                                inlineStyle="font-weight:bold;"/>
+                <af:separator id="s5"/>
+              </h:panelGrid>
+              <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth" 
+                                  inlineStyle="height:200.0px;">
+                <af:table value="#{bindings.Nation.collectionModel}" var="row"
+                          rows="#{bindings.Nation.rangeSize}"
+                          emptyText="#{bindings.Nation.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Nation.rangeSize}"
+                          rowBandingInterval="1"
+                          filterModel="#{bindings.NationQuery.queryDescriptor}"
+                          queryListener="#{bindings.NationQuery.processQuery}"
+                          filterVisible="false" varStatus="vs"
+                          selectionListener="#{countryHolidaysBacking.tblCountriesListener}"
+                          rowSelection="single" 
+                          id="t1"
+                          binding="#{countryHolidaysBacking.tblCountries}">
+                  <af:column sortProperty="shortDesc" filterable="true"
+                             sortable="true" headerText="Short Desc" id="c3">
+                    <af:outputText value="#{row.shortDesc}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="name" filterable="true"
+                             sortable="true" headerText="Name" id="c5" width="200">
+                    <af:outputText value="#{row.name}" id="ot1"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+              
+              <af:spacer width="10" height="20" id="s6"/>
+              
+              <h:panelGrid columns="2" id="pg4">
+                <af:outputLabel value="Holidays" id="ol2"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s4"/>
+              
+              <h:panelGrid columns="3" id="pg3">
+                    
+                <af:commandButton text="New"
+                                  id="btnNewHoliday" 
+                                  icon="/images/create.gif"
+                                  action="#{countryHolidaysBacking.actionNewHoliday}"
+                                 />
+                                  
+                <af:commandButton text="Edit" 
+                                  id="btnEditHoliday" 
+                                  icon="/images/update.gif"
+                                  action="#{countryHolidaysBacking.actionEditHoliday}"
+                                  />
+                                  
+                <af:commandButton text="Delete" 
+                                  id="btnDeleteHoliday" 
+                                  icon="/images/delete.gif"
+                                  action="#{countryHolidaysBacking.actionDeleteHoliday}"
+                                 />
+              </h:panelGrid>
+              <af:separator id="s3"/>
+              
+              <af:panelCollection id="pc2" styleClass="AFAuxiliaryStretchWidth" 
+                                  inlineStyle="height:200.0px;">
+                <af:table value="#{bindings.HolidayDefinition.collectionModel}"
+                          var="row"
+                          rows="#{bindings.HolidayDefinition.rangeSize}"
+                          emptyText="#{bindings.HolidayDefinition.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.HolidayDefinition.rangeSize}"
+                          rowBandingInterval="1"
+                          filterModel="#{bindings.HolidayDefinitionQuery.queryDescriptor}"
+                          queryListener="#{bindings.HolidayDefinitionQuery.processQuery}"
+                          filterVisible="false" varStatus="vs"
+                          selectionListener="#{bindings.HolidayDefinition.collectionModel.makeCurrent}"
+                          rowSelection="single" 
+                          id="t2"
+                          binding="#{countryHolidaysBacking.tblHolidays}">
+                  <af:column sortProperty="thdDesc" filterable="true"
+                             sortable="true" headerText="Description" id="c1" 
+                             width="200">
+                    <af:outputText value="#{row.thdDesc}" id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="monthName" filterable="true"
+                             sortable="true" headerText="Month" id="c9" 
+                             width="150">
+                    <af:outputText value="#{row.monthName}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="thdDay" filterable="true"
+                             sortable="true" headerText="Day" id="c10">
+                    <af:outputText value="#{row.thdDay}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="thdStatus" filterable="true"
+                             sortable="true" headerText="Status" id="c8">
+                    <af:outputText value="#{row.thdStatus == 'A' ? 'Active' : 'InActive'}" id="ot8"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+              
+            </af:panelBox>
+            
+            <af:popup id="holidayPop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Holiday Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl1">
+                  <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                    <af:panelFormLayout id="pfl1">
+                    
+                      <af:inputText label="Description" id="it2"
+                                    binding="#{countryHolidaysBacking.txtThdDesc}"/>
+                      
+                      <af:selectOneChoice label="Month : " id="soc1" 
+                                          unselectedLabel="- Select Month -"
+                                          binding="#{countryHolidaysBacking.txtThdMonth}">
+                        <af:selectItem label="January" value="1" id="si7"/>
+                        <af:selectItem label="February" value="2" id="si5"/>
+                        <af:selectItem label="March" value="3" id="si2"/>
+                        <af:selectItem label="April" value="4" id="si4"/>
+                        <af:selectItem label="May" value="5" id="si8"/>
+                        <af:selectItem label="June" value="6" id="si13"/>
+                        <af:selectItem label="July" value="7" id="si9"/>
+                        <af:selectItem label="August" value="8" id="si6"/>
+                        <af:selectItem label="September" value="9" id="si3"/>
+                        <af:selectItem label="October" value="10" id="si10"/>
+                        <af:selectItem label="November" value="11" id="si11"/>
+                        <af:selectItem label="December" value="12" id="si12"/>
+                      </af:selectOneChoice>
+                      
+                      <af:inputNumberSpinbox label="Day Date : " id="ins1"
+                                              binding="#{countryHolidaysBacking.txtThdDay}" 
+                                              minimum="0" 
+                                              maximum="31" 
+                                              requiredMessageDetail="Day should be between 1 and 31"/>
+                      
+                      <af:selectOneChoice label="Status : " value="A" 
+                                          id="soc2"
+                                          binding="#{countryHolidaysBacking.txtThdStatus}">
+                        <af:selectItem label="Active" value="A" id="si14"/>
+                        <af:selectItem label="InActive" value="I" id="si15"/>
+                      </af:selectOneChoice>
+                      
+                      <af:inputText label="Country Code : " id="it3" 
+                                    visible="false" 
+                                    showRequired="true"
+                                    binding="#{countryHolidaysBacking.txtThdCouCode}"/>
+                      
+                    </af:panelFormLayout>
+                    
+                    <h:panelGrid columns="2" id="pg5">
+                      <af:commandButton text="Save" id="cb6"
+                                        binding="#{countryHolidaysBacking.btnSaveUpdateHoliday}"
+                                        action="#{countryHolidaysBacking.actionSaveUpdateHoliday}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="cb7"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

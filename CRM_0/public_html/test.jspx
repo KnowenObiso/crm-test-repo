@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1">
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:panelBox text="PanelBox1" id="pb4" showHeader="never"
+                       inlineStyle="width:99%;">
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <af:inputText id="it1" helpTopicId="FMShome" columns="13"
+                                readOnly="true" shortDesc="Help"/>
+                </td>
+                <td width="100%" align="right">
+                  <af:statusIndicator id="si1"/>
+                </td>
+              </tr>
+            </table>
+            <h:panelGrid columns="1" id="pg1">
+              <af:outputLabel value="Home" id="ol1"
+                              inlineStyle="font-weight:bold;"/>
+              <af:separator id="s1"/>
+              <af:selectOneRadio label="Label 1" id="sor1"
+                                 binding="#{ReportEngine.repFormat}"
+                                 simple="true" visible="false">
+                <af:selectItem label="Html" value="html" id="si5"/>
+                <af:selectItem label="Pdf" value="pdf" id="si2"/>
+                <af:selectItem label="Excel" value="xls" id="si4"/>
+                <af:selectItem label="Word Document (rtf)" value="rtf"
+                               id="si3"/>
+              </af:selectOneRadio>
+              <af:commandLink text="Report" id="rpt1013"
+                              inlineStyle="color:Black; text-decoration:underline;"
+                              binding="#{ReportEngine.rpt1}"
+                              actionListener="#{ReportEngine.CRMReport}"
+                              visible="true"/>
+              <af:commandButton text="Test Alert" id="cb1"
+                                action="#{TestingAlerts.execute}"/>
+            </h:panelGrid>
+          </af:panelBox>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

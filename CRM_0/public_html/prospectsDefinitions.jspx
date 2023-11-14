@@ -1,0 +1,354 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="pg3">
+                      <af:inputText id="it1"
+                                    helpTopicId="CRMprospectsDefinitions"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg2">
+                <af:outputLabel value="Prospect Definition" id="o23"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox7" id="pb5" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="4" id="pg10">
+                  <af:commandButton text="New" id="btnNewProspect"
+                                    icon="/images/create.gif"
+                                    action="#{prospectBacking.actionNewProspect}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Edit" id="btnEditProspect"
+                                    icon="/images/update.gif"
+                                    action="#{prospectBacking.actionEditProspect}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteProspect"
+                                    icon="/images/delete.gif"
+                                    action="#{prospectBacking.actionDeleteProspect}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Back" icon="/images/back.png"
+                                    action="#{prospectBacking.actionBackProspect}"
+                                    binding="#{prospectBacking.btnBackProspect}"
+                                    disabled="false"/>
+                </h:panelGrid>
+                <af:separator id="s10"/>
+                <af:panelCollection id="pc1"
+                                    styleClass="AFAuxiliaryStretchWidth">
+                  <af:table value="#{bindings.Prospect.collectionModel}"
+                            var="row" rows="#{bindings.Prospect.rangeSize}"
+                            emptyText="#{bindings.Prospect.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Prospect.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.ProspectQuery.queryDescriptor}"
+                            queryListener="#{bindings.ProspectQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            selectionListener="#{bindings.Prospect.collectionModel.makeCurrent}"
+                            rowSelection="single" id="tblProspects"
+                            binding="#{prospectBacking.tblProspects}">
+                    <af:column sortProperty="prsSurname" filterable="true"
+                               sortable="true" headerText="Surname" id="c11">
+                      <af:outputText value="#{row.prsSurname}" id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="prsOtherNames" filterable="true"
+                               sortable="true" headerText="Other Names" id="c15"
+                               width="200">
+                      <af:outputText value="#{row.prsOtherNames}" id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="prsDob" filterable="true"
+                               sortable="true" headerText="D.O.B." id="c16">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.prsDob}"
+                                      id="id2"/>
+                      </f:facet>
+                      <af:outputText value="#{row.prsDob}" id="ot10">
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="prsMobileNo" filterable="true"
+                               sortable="true" headerText="Mobile No." id="c13">
+                      <af:outputText value="#{row.prsMobileNo}" id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="prsEmailAddress" filterable="true"
+                               sortable="true" headerText="Email" id="c3">
+                      <af:outputText value="#{row.prsEmailAddress}" id="ot14"/>
+                    </af:column>
+                    <af:column sortProperty="countryName" filterable="true"
+                               sortable="true" headerText="Country" id="c5"
+                               width="150">
+                      <af:outputText value="#{row.countryName}" id="ot16"/>
+                    </af:column>
+                    <af:column sortProperty="townName" filterable="true"
+                               sortable="true" headerText="Town" id="c6"
+                               width="150">
+                      <af:outputText value="#{row.townName}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="proDesc" sortable="false"
+                               headerText="Product Desc" id="c18">
+                      <af:outputText value="#{row.proDesc}" id="ot18"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+            </af:panelBox>
+            <af:popup id="prospectPop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Prospect Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox2" id="pb2" showHeader="never"
+                             binding="#{prospectBacking.panelProspectsDetails}">
+                  <af:panelGroupLayout id="pgl1"
+                                       binding="#{prospectBacking.pnlDtls}">
+                    <af:panelFormLayout id="pfl1">
+                      <af:inputText label="Prospect Code : " id="txtPrsCode"
+                                    binding="#{prospectBacking.txtPrsCode}"
+                                    showRequired="true" visible="false"/>
+                      <!--<af:inputText label="Full Names : " 
+                                id="txtPrsFullNames"
+                                binding="#{prospectBacking.txtPrsFullNames}" 
+                                showRequired="true"/>-->
+                      <af:selectOneChoice label="Type :" id="soc1"
+                                          binding="#{prospectBacking.txtType}"
+                                          autoSubmit="true"
+                                          valueChangeListener="#{prospectBacking.typeChange}">
+                        <af:selectItem label="Individual" value="I" id="si2"/>
+                        <af:selectItem label="Corporate" value="C" id="si3"/>
+                      </af:selectOneChoice>
+                      <af:inputText label="Surname : " id="it2"
+                                    binding="#{prospectBacking.txtPrsSurname}"
+                                    showRequired="true"/>
+                      <af:inputText label="Other Names : " id="it3"
+                                    binding="#{prospectBacking.txtPrsOtherNames}"/>
+                      <af:inputText label="Contact Person :" id="it14"
+                                    binding="#{prospectBacking.txtContact}"/>
+                      <af:inputText label="Contact Person Tel :" id="it15"
+                                    binding="#{prospectBacking.txtContactTel}"/>
+                      <af:inputText label="Physical Address : "
+                                    id="txtPrsPhysicalAddress"
+                                    binding="#{prospectBacking.txtPrsPhysicalAddress}"/>
+                      <af:inputText label="Postal Address : "
+                                    id="txtPrsPostalAddress"
+                                    binding="#{prospectBacking.txtPrsPostalAddress}"/>
+                      <af:panelLabelAndMessage label="Postal Code : "
+                                               id="plam3">
+                        <af:inputText label="Label 1" id="it11" simple="true"
+                                      disabled="true"
+                                      binding="#{prospectBacking.txtPostalCode}"/>
+                        <af:commandButton id="cb3" icon="/images/dropdown.gif"
+                                          partialSubmit="true"
+                                          action="#{prospectBacking.showPostal}"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="Country : " id="plam1">
+                        <af:inputText label="Label 1" id="it12" simple="true"
+                                      disabled="true"
+                                      binding="#{prospectBacking.txtPrsCouName}"/>
+                        <af:commandButton id="cb1" icon="/images/dropdown.gif"
+                                          partialSubmit="true"
+                                          action="#{prospectBacking.actionShowCountriesPop}"/>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="Town : " id="plam2">
+                        <af:inputText label="Label 1" id="it13" simple="true"
+                                      disabled="true"
+                                      binding="#{prospectBacking.txtPrsTwnName}"/>
+                        <af:commandButton id="cb2" icon="/images/dropdown.gif"
+                                          partialSubmit="true"
+                                          action="#{prospectBacking.actionShowTownsPop}"/>
+                      </af:panelLabelAndMessage>
+                      <af:inputText label="Country Code : " id="it10"
+                                    binding="#{prospectBacking.txtPrsCouCode}"
+                                    visible="false"/>
+                      <af:inputText label="Town Code : " id="it9"
+                                    binding="#{prospectBacking.txtPrsTwnCode}"
+                                    visible="false"/>
+                      <af:inputText label="Telephone No. : " id="it4"
+                                    binding="#{prospectBacking.txtPrsTelNo}"/>
+                      <af:inputText label="Mobile No. : " id="it5"
+                                    binding="#{prospectBacking.txtPrsMobileNo}"/>
+                      <af:inputText label="Email : " id="it6"
+                                    binding="#{prospectBacking.txtPrsEmail}">
+                        <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"
+                                           messageDetailNoMatch='"The value {1} is not a valid email address "'/>
+                      </af:inputText>
+                      <af:inputText label="ID Reg. No. : " id="it7"
+                                    binding="#{prospectBacking.txtPrsIdRegNo}"/>
+                      <af:inputDate label="D.O.B. : " id="id1"
+                                    binding="#{prospectBacking.txtPrsDob}"/>
+                      <af:inputText label="PIN : " id="it8"
+                                    binding="#{prospectBacking.txtPrsPin}"/>
+                    </af:panelFormLayout>
+                    <af:commandButton text="Save" id="btnSaveUpdateProspect"
+                                      binding="#{prospectBacking.btnSaveUpdateProspect}"
+                                      action="#{prospectBacking.actionSaveUpdateProspect}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="btnCancelMode"/>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="countriesPop" contentDelivery="lazyUncached">
+              <af:dialog id="d5" title="Countries List" type="none"
+                         inlineStyle="width:480.0px;">
+                <af:panelGroupLayout id="pgl3">
+                  <af:panelBox text="PanelBox6" id="pb4" showHeader="never">
+                    <af:panelCollection id="pc5"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Nation.collectionModel}"
+                                var="row" rows="#{bindings.Nation.rangeSize}"
+                                emptyText="#{bindings.Nation.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Nation.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.NationQuery.queryDescriptor}"
+                                queryListener="#{bindings.NationQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.Nation.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t1"
+                                binding="#{prospectBacking.tblCountriesPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c2">
+                          <af:outputText value="#{row.code}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c4">
+                          <af:outputText value="#{row.shortDesc}" id="ot3"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c1"
+                                   width="200">
+                          <af:outputText value="#{row.name}" id="ot2"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:panelGrid columns="2" id="pg6">
+                      <af:commandButton text="Ok" id="btnAcceptCountry"
+                                        action="#{prospectBacking.actionAcceptCountry}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelCountry"
+                                        partialSubmit="true"
+                                        action="#{prospectBacking.actionCancelCountry}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="townsPop" contentDelivery="lazyUncached">
+              <af:dialog id="d3" title="Towns List" type="none"
+                         inlineStyle="width:480.0px;">
+                <af:panelGroupLayout id="pgl2">
+                  <af:panelBox text="PanelBox6" id="pb3" showHeader="never">
+                    <af:panelCollection id="pc2"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Town.collectionModel}"
+                                var="row" rows="#{bindings.Town.rangeSize}"
+                                emptyText="#{bindings.Town.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Town.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.TownQuery.queryDescriptor}"
+                                queryListener="#{bindings.TownQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.Town.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t2"
+                                binding="#{prospectBacking.tblTownsPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c10">
+                          <af:outputText value="#{row.code}" id="ot4"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c12">
+                          <af:outputText value="#{row.shortDesc}" id="ot11"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c8"
+                                   width="200">
+                          <af:outputText value="#{row.name}" id="ot12"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:panelGrid columns="2" id="pg1">
+                      <af:commandButton text="Ok" id="btnAcceptTown"
+                                        action="#{prospectBacking.actionAcceptTown}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelTown"
+                                        action="#{prospectBacking.actionCancelTown}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="postalPop" contentDelivery="lazyUncached">
+              <af:dialog id="d4" title="Postal List" type="none"
+                         inlineStyle="width:480.0px;">
+                <af:panelGroupLayout id="pgl4">
+                  <af:panelBox text="PanelBox6" id="pb6" showHeader="never">
+                    <af:panelCollection id="pc3"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.PostalCode.collectionModel}"
+                                var="row"
+                                rows="#{bindings.PostalCode.rangeSize}"
+                                emptyText="#{bindings.PostalCode.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.PostalCode.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.PostalCodeQuery.queryDescriptor}"
+                                queryListener="#{bindings.PostalCodeQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.PostalCode.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.PostalCode.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t3"
+                                binding="#{prospectBacking.tblPostalBacking}">
+                        <af:column sortProperty="pstCode" filterable="true"
+                                   sortable="true" headerText="Postal Code"
+                                   id="c14">
+                          <af:outputText value="#{row.pstCode}" id="ot6"/>
+                        </af:column>
+                        <af:column sortProperty="pstTownCode" filterable="true"
+                                   sortable="true" headerText="Town Code"
+                                   id="c9">
+                          <af:outputText value="#{row.pstTownCode}" id="ot15"/>
+                        </af:column>
+                        <af:column sortProperty="pstDesc" filterable="true"
+                                   sortable="true" headerText="Description"
+                                   id="c7">
+                          <af:outputText value="#{row.pstDesc}" id="ot17"/>
+                        </af:column>
+                        <af:column sortProperty="pstZipCode" filterable="true"
+                                   sortable="true" headerText="Zip Code"
+                                   id="c17">
+                          <af:outputText value="#{row.pstZipCode}" id="ot13"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:panelGrid columns="1" id="pg4">
+                      <af:commandButton text="Ok" id="cb4"
+                                        action="#{prospectBacking.actionAcceptCode}"
+                                        partialSubmit="true"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

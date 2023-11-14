@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+ <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelGroupLayout id="pgl1">
+              <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                <table width="100%">
+                  <tr>
+                    <td align="right">
+                      <h:panelGrid columns="2" id="pg33">
+                        <af:inputText id="it1" helpTopicId="CRMclients"
+                                      columns="13" readOnly="true"
+                                      shortDesc="Help"/>
+                        <af:statusIndicator id="statusIndicator1"/>
+                      </h:panelGrid>
+                    </td>
+                  </tr>
+                </table>
+                <h:panelGrid columns="2" id="pg1">
+                  <af:outputLabel value="Departments" id="ol1"
+                                    inlineStyle="font-weight:bold;"/>
+                </h:panelGrid>
+                <af:separator id="s1"/>
+                <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                  <h:panelGrid columns="6" id="pg12">
+                    <af:commandButton text="New" id="btnNewAttribute"
+                                      visible="true" icon="/images/create.gif"
+                                     action="#{DepartmentManip.createNewDepartment}"/>
+                    <af:spacer width="10" height="10" id="s2"/>
+                    <af:commandButton text="Edit" id="btnEdiSequence"
+                                      icon="/images/update.gif"
+                                      action="#{DepartmentManip.editDepartment}"/>
+                    <af:spacer width="10" height="10" id="s3"/>
+                    <af:commandButton text="Delete" id="btnDeleteseq"
+                                      visible="true" icon="/images/delete.gif"
+                                      action="#{DepartmentManip.deleteDepartment}"/>
+                  </h:panelGrid>
+                  <af:panelCollection id="pc1"
+                                      styleClass="AFAuxiliaryStretchWidth">
+                    <af:table value="#{bindings.Departments3.collectionModel}"
+                              var="row"
+                              rows="#{bindings.Departments3.rangeSize}"
+                              emptyText="#{bindings.Departments3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.Departments3.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.Departments1Query.queryDescriptor}"
+                              queryListener="#{bindings.Departments1Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectionListener="#{bindings.Departments3.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t1"
+                               binding="#{DepartmentManip.departMentTbl}">
+                     <af:column sortProperty="depCode" filterable="true" visible="false"
+                                 sortable="true" headerText="Code" id="c4">
+                        <af:outputText value="#{row.depCode}" id="ot7"/>
+                      </af:column>
+                      <af:column sortProperty="depShtDesc" filterable="true" visible="false"
+                                 sortable="true" headerText="Dept Sht Desc"
+                                 id="c9">
+                        <af:outputText value="#{row.depShtDesc}" id="ot6"/>
+                      </af:column>
+                      <af:column sortProperty="depName" filterable="true" width="200"
+                                 sortable="true" headerText="Name" id="c3">
+                        <af:outputText value="#{row.depName}" id="ot4"/>
+                      </af:column>
+                      <af:column sortProperty="depWef" filterable="true"
+                                 sortable="true" headerText="Wef" id="c1">
+                        <f:facet name="filter">
+                          <af:inputDate value="#{vs.filterCriteria.depWef}"
+                                        id="id2"/>
+                        </f:facet>
+                        <af:outputText value="#{row.depWef}" id="ot1">
+                          <af:convertDateTime pattern="#{bindings.Departments1.hints.depWef.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="depWet" filterable="true"
+                                 sortable="true" headerText="Wet" id="c5">
+                        <f:facet name="filter">
+                          <af:inputDate value="#{vs.filterCriteria.depWet}"
+                                        id="id1"/>
+                        </f:facet>
+                        <af:outputText value="#{row.depWet}" id="ot8">
+                          <af:convertDateTime pattern="#{bindings.Departments1.hints.depWet.format}"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="depUsrCode" filterable="true" visible="false"
+                                 sortable="true" headerText="User Code" id="c2">
+                        <af:outputText value="#{row.depUsrCode}" id="ot3"/>
+                      </af:column>
+                      <af:column sortProperty="userName" filterable="true" width="250"
+                                 sortable="true" headerText="User Name"
+                                 id="c10">
+                        <af:outputText value="#{row.userName}" id="ot5"/>
+                      </af:column>
+                      <af:column sortProperty="usersName" filterable="true" width="250"
+                                 sortable="true" headerText="Name Of User"
+                                 id="c6">
+                        <af:outputText value="#{row.usersName}" id="ot2"/>
+                      </af:column>
+                    </af:table>
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                  </af:panelCollection>
+                  <af:popup id="departmentPop">
+                    <af:dialog id="d5" type="none" title="Department Details"
+                               inlineStyle="font-weight:bolder; color:Black;">
+                      <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                        <h:panelGrid columns="2" id="pg3">
+                          <h:panelGrid columns="2" id="pg2">
+                            <af:outputLabel value="Name" id="ol3"
+                                            showRequired="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid5">
+                            <af:inputText label="Name" id="it3" visible="true"
+                                          binding="#{DepartmentManip.txtName}"
+                                          simple="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid1">
+                            <af:outputLabel value="Wef" id="ol4"
+                                            />
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid6">
+                            <af:inputDate simple="true" label="Label 1" id="id3"
+                                          binding="#{DepartmentManip.txtWef}"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid2">
+                            <af:outputLabel value="Wet" id="ol5"
+                                            />
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid7">
+                            <af:inputDate simple="true" label="Label 2" id="id4"
+                                          binding="#{DepartmentManip.txtWet}"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid10">
+                            <af:outputLabel value="User"
+                                            id="outputLabel1"
+                                            />
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid12">
+                            <af:panelLabelAndMessage id="plam1">
+                              <af:inputText label="User" id="it6"
+                                            binding="#{DepartmentManip.txtUser}"
+                                            simple="true" disabled="true"/>
+                              <af:commandButton id="cb1" partialSubmit="true"
+                                                icon="/images/dropdown.gif">
+                                <af:showPopupBehavior popupId="UserPop"
+                                                      triggerType="click"/>
+                              </af:commandButton>
+                            </af:panelLabelAndMessage>
+                          </h:panelGrid>
+                         </h:panelGrid>
+                        <h:panelGrid columns="2" id="pg6">
+                          <af:commandButton text="save" id="cb12"
+                                            action="#{DepartmentManip.saveDepartmentDtls}"
+                                            binding="#{DepartmentManip.saveDepartments}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="cancel" id="cb13"
+                                            action="#{DepartmentManip.cancelDetails}"/>
+                        </h:panelGrid>
+                      </af:panelBox>
+                    </af:dialog>
+                  </af:popup>
+                 
+                  <af:popup id="UserPop">
+                    <af:dialog id="d2" type="none" title="Users">
+                      <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                        <f:facet name="toolbar"/>
+                        <af:table value="#{bindings.Departments2.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Departments2.rangeSize}"
+                                  emptyText="#{bindings.Departments2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Departments2.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.Departments2Query.queryDescriptor}"
+                                  queryListener="#{bindings.Departments2Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{bindings.Departments2.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t2"
+                                  binding="#{DepartmentManip.userTbl}">
+                          <af:column sortProperty="depUsrCode" filterable="true" visible="false"
+                                     sortable="true" headerText="User Code"
+                                     id="c11">
+                            <af:outputText value="#{row.depUsrCode}" id="ot11"/>
+                          </af:column>
+                          <af:column sortProperty="userName" filterable="true"
+                                     sortable="true" headerText="User Name" width="150"
+                                     id="c7">
+                            <af:outputText value="#{row.userName}" id="ot10"/>
+                          </af:column>
+                          <af:column sortProperty="usersName" filterable="true" width="150"
+                                     sortable="true" headerText="Name Of User"
+                                     id="c8">
+                            <af:outputText value="#{row.usersName}" id="ot9"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelBox>
+                      <h:panelGrid columns="2" id="panelGrid13">
+                        <af:commandButton text="Ok" id="cb2"
+                                          action="#{DepartmentManip.selectUser}"
+                                          partialSubmit="true"/>
+                        <af:commandButton text="cancel" id="commandButton2"
+                                          action="#{DepartmentManip.cancelUser}"
+                                          partialSubmit="true"/>
+                      </h:panelGrid>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelBox>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

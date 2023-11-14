@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee">
+  
+ 
+  <application>
+    <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+    
+  </application>
+   <managed-bean>
+    <managed-bean-name>login</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.Login.Index</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>Client</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.Clients.ClientAddDetails</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>Navigation</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.navigation.Links</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>ClientsAddDetails</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.Clients.ClientAddDetails</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>CurrentUser</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.Base.CurrentUser</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>   
+    <managed-bean >
+    <managed-bean-name>taskManip</managed-bean-name>
+    <managed-bean-class>TurnQuest.view.bpm.TaskManipulation</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+</faces-config>

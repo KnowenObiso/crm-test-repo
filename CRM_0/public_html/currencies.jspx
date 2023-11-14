@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              
+              <table width="100%">
+            <tr><td  align="right">
+            <h:panelGrid columns="2" id="pg33">
+                <af:inputText id="it1" helpTopicId="CRMcurrencies" columns="13"
+                              readOnly="true" shortDesc="Help"/>
+                <af:statusIndicator id="si1"/>
+              </h:panelGrid>
+            </td></tr>
+            </table>
+              
+                           
+              <af:panelSplitter id="ps1" inlineStyle="height:590.0px;" styleClass="AFAuxiliaryStretchWidth">
+              
+                <f:facet name="first">                  
+                    <af:panelGroupLayout id="pgl3">
+                    <!--<af:panelAccordion id="pa1" inlineStyle="height:500.0px;" styleClass="AFAuxiliaryStretchWidth">
+                      <af:showDetailItem text="Currencies" id="sdi1">-->
+                      
+                      <h:panelGrid columns="2" id="pg11">
+                      <af:commandButton text="New" id="btnNewCurrency"
+                                              icon="/images/create.gif"
+                                              binding="#{baseSetupBacking.btnNewCurrency}"
+                                              action="#{baseSetupBacking.actionNewCurrency}"/>
+                          <af:commandButton text="Delete" id="cb1" icon="/images/delete.gif"
+                                            action="#{baseSetupBacking.actionDeleteCurrency}"/>
+                        </h:panelGrid>
+                    
+                    <af:tree value="#{bindings.Currency.treeModel}" var="node"
+                             selectionListener="#{baseSetupBacking.treeCurrencySelectionListener}"
+                             rowSelection="single" 
+                             id="treeCurrency"
+                             binding="#{baseSetupBacking.treeCurrency}"
+                             inlineStyle="width:200.0px; height:450px;">
+                      <f:facet name="nodeStamp">
+                        <af:outputText value="#{node}" id="ot1"/>
+                      </f:facet>
+                    </af:tree>
+                    <!--</af:showDetailItem>
+                    </af:panelAccordion>-->
+                  </af:panelGroupLayout>
+                </f:facet>
+                
+                <f:facet name="second">
+                  <af:panelSplitter id="ps2" orientation="vertical">
+                  
+                    <f:facet name="first">
+                    
+                    
+                      
+                        <af:panelTabbed id="pt2">
+                          <af:showDetailItem text="Currency Details" id="sdi2">
+                        
+                        <af:panelGroupLayout id="pgl1">                          
+                        <af:panelBox text="Currency Details" id="panelCurrencyDetails"
+                                     binding="#{baseSetupBacking.panelCurrencyDetails}" 
+                                     showHeader="never">
+                                     
+                        <h:panelGrid columns="1" id="pg5">
+                              <af:outputLabel value="Currency Details" id="ol3"
+                                              inlineStyle="font-weight:bold;"/>
+                            </h:panelGrid>
+                            <af:separator id="s3"/>
+                          
+                          
+                          <h:panelGrid columns="3" id="pg2">
+                          
+                          <af:commandButton text="Save" id="btnCreateUpdateCurrency"
+                                              icon="/images/save.gif"
+                                              binding="#{baseSetupBacking.btnCreateUpdateCurrency}"
+                                              action="#{baseSetupBacking.actionCreateUpdateCurrency}"/>
+                                              
+                            <af:commandButton text="Cancel" id="btnCancelCurrency"
+                                              
+                                              action="#{baseSetupBacking.actionNewCurrency}"/>
+                          </h:panelGrid>
+                          
+                          <af:panelFormLayout id="pfl1">
+                          
+                            <af:inputText label="Code : " id="txtCurrencyCode"
+                                          binding="#{baseSetupBacking.txtCurrencyCode}"
+                                          disabled="true" 
+                                          visible="false" 
+                                          showRequired="true"/>
+                                          
+                            <af:inputText label="Symbol : " id="txtCurrencySymbol"
+                                          binding="#{baseSetupBacking.txtCurrencySymbol}" 
+                                          showRequired="true"/>
+                                          
+                            <af:inputText label="Description : " id="txtCurrencyDesc"
+                                          binding="#{baseSetupBacking.txtCurrencyDesc}" 
+                                          showRequired="true"/>
+                                          
+                            <af:inputText label="Round : " id="txtCurrencyRound"
+                                          binding="#{baseSetupBacking.txtCurrencyRound}"/>             
+                            
+                          </af:panelFormLayout>
+                              <af:separator id="s1"/>
+                              <af:commandLink text="Open Report" id="cl1"/>
+                              
+                            </af:panelBox>
+                      </af:panelGroupLayout>
+                      
+                      </af:showDetailItem>
+                      
+                      <af:showDetailItem text="Currency Denominations" id="sdi3">
+                      
+                      <af:panelGroupLayout id="pgl2">
+                        <af:panelBox text="Currency Denominations" id="pb2" showHeader="never">
+                          
+                          <h:panelGrid columns="1" id="pg15">
+                              <af:outputLabel value="Currency Denominations" id="ol13"
+                                              inlineStyle="font-weight:bold;"/>
+                            </h:panelGrid>
+                              <af:separator id="s5"/>
+                          
+                          <h:panelGrid columns="3" id="pg3">
+                          
+                            <af:commandButton text="New" id="btnNewCurrencyDenom"
+                                              icon="/images/create.gif"
+                                              binding="#{baseSetupBacking.btnNewCurrencyDenom}"
+                                              action="#{baseSetupBacking.actionNewCurrencyDenom}"/>
+                                              
+                            <af:commandButton text="Edit" id="btnEditCurrencyDenom"
+                                              icon="/images/update.gif"
+                                              binding="#{baseSetupBacking.btnEditCurrencyDenom}"
+                                              action="#{baseSetupBacking.actionEditCurrencyDenom}"/>
+                                              
+                            <af:commandButton text="Delete" id="btnDeleteCurrencyDenom"
+                                              icon="/images/delete.gif"
+                                              binding="#{baseSetupBacking.btnDeleteCurrencyDenom}"
+                                              action="#{baseSetupBacking.actionDeleteCurrencyDenom}"/>
+                          
+                          </h:panelGrid>
+                          
+                          
+                            
+                            <af:table value="#{bindings.CurrencyDenomination.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.CurrencyDenomination.rangeSize}"
+                                      emptyText="#{bindings.CurrencyDenomination.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.CurrencyDenomination.rangeSize}"
+                                      rowBandingInterval="0"
+                                      selectionListener="#{baseSetupBacking.tblCurrencyDenominationSelectionListener}"
+                                      rowSelection="single" 
+                                      styleClass="AFAuxiliaryStretchWidth"
+                                      id="tblCurrencyDenominations"
+                                      binding="#{baseSetupBacking.tblCurrencyDenominations}">
+                              <af:column sortProperty="value" sortable="true"
+                                         headerText="VALUE" id="c2">
+                                <af:outputText value="#{row.value}" id="ot3"/>
+                              </af:column>
+                              <af:column sortProperty="name" sortable="true"
+                                         headerText="NAME" id="c3">
+                                <af:outputText value="#{row.name}" id="ot2"/>
+                              </af:column>
+                              <af:column sortProperty="wef" sortable="true"
+                                         headerText="WEF DATE" id="c1">
+                                <af:outputText value="#{row.wef}" id="ot4">
+                                  <af:convertDateTime pattern="#{bindings.CurrencyDenomination.hints.wef.format}"/>
+                                </af:outputText>
+                              </af:column>
+                            </af:table>
+                            
+                              <af:separator id="s2"/>
+                              <af:commandLink text="Open Report" id="cl2"/>
+                              
+                            </af:panelBox>
+                      </af:panelGroupLayout>
+                      
+                      </af:showDetailItem>
+                      
+                        </af:panelTabbed>
+                   
+                      
+                    </f:facet>
+                    
+                  </af:panelSplitter>
+                </f:facet>
+                
+              </af:panelSplitter>
+              
+            </af:panelBox>
+            
+            <af:popup id="currencyDenomPopup">
+              <af:dialog id="d2" title="Add New Currency Denomination" type="none">
+              
+              <af:outputLabel  id="lbl10" value="Fields indicated with * must be filled to submit the form"
+                                    inlineStyle="color:Red;"/>
+              
+                <af:panelFormLayout id="pfl2" inlineStyle="width:320.0px;">
+                
+                  <af:inputText label="Denomination Code : " id="txtDenomCode"
+                                binding="#{baseSetupBacking.txtDenomCode}"
+                                visible="false" disabled="true" 
+                                showRequired="true"/>
+                                
+                  <af:inputText label="Currency Code : " id="txtCurrDenomCode"
+                                binding="#{baseSetupBacking.txtCurrDenomCode}" 
+                                shortDesc="Currency Code"
+                                visible="false" 
+                                disabled="true" showRequired="true"/>
+                                
+                  <af:inputText label="Value : " id="txtDenomValue"
+                                binding="#{baseSetupBacking.txtDenomValue}" 
+                                shortDesc="Currency Denomination Value" 
+                                showRequired="true"/>
+                                
+                  <af:inputText label="Name : " id="txtDenomName"
+                                binding="#{baseSetupBacking.txtDenomName}" 
+                                shortDesc="Currency Denomination Name" 
+                                showRequired="true"/>
+                                
+                  <af:inputDate label="WEF Date : " id="txtDenomWEF"
+                                binding="#{baseSetupBacking.txtDenomWEF}" 
+                                showRequired="true"
+                                shortDesc="WEF Date"/>
+                                
+                  
+                </af:panelFormLayout>
+                
+                <af:commandButton text="Save" id="btnCreateUpdateCurrDenom"
+                                    binding="#{baseSetupBacking.btnCreateUpdateCurrDenom}"
+                                    action="#{baseSetupBacking.actionCreateUpdateCurrDenom}"/>
+                  <af:commandButton text="Cancel" id="cb4"/>
+                
+              </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

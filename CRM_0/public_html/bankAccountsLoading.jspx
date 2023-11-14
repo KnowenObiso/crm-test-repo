@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+ <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <af:inputText id="it1" 
+                                helpTopicId="CRMsectors" 
+                                columns="13"
+                                readOnly="true" 
+                                shortDesc="Help"/>
+                </td>
+                <td width="100%" align="right">
+                
+                <af:statusIndicator id="si1"/>
+                </td>
+              </tr>
+            </table>
+              
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Bank Accounts Loading" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>                
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="pg2">
+                <af:commandButton text="Export"  
+                                    icon="/images/update.gif"
+                                    action="#{uploadBankAccounts.exportBankAccounts}"
+                                    partialSubmit="true"/>
+                <af:commandLink text="Sample Template"   
+                                    action="#{uploadBankAccounts.exportBankAccounts}"
+                                    partialSubmit="true"/>
+               <af:inputFile label="Select A File to Upload" id="if111"
+                                binding="#{uploadBankAccounts.upFile}"
+                                valueChangeListener="#{uploadBankAccounts.fileChangeListenerBankAccounts}"
+                  autoSubmit="true" immediate="true"/>
+                </h:panelGrid>
+                
+                <!-- Bank Account Table-->
+                <af:table value="#{bindings.BankAccount.collectionModel}"
+                          binding="#{uploadBankAccounts.bankAccountsTbl}"
+                          var="row" rows="#{bindings.BankAccount.rangeSize}"
+                          emptyText="#{bindings.BankAccount.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.BankAccount.rangeSize}"
+                          rowBandingInterval="0"
+                          selectedRowKeys="#{bindings.BankAccount.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.BankAccount.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1">
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_CODE.name}"
+                             sortable="true"
+                             headerText="ACCOUNT CODE"
+                             id="c6">
+                    <af:outputText value="#{row.BACT_CODE}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_NAME.name}"
+                             sortable="true"
+                             headerText="ACCOUNT NAME"
+                             id="c4">
+                    <af:outputText value="#{row.BACT_NAME}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_ACCOUNT_NO.name}"
+                             sortable="true"
+                             headerText="ACCOUNT NO"
+                             id="c2">
+                    <af:outputText value="#{row.BACT_ACCOUNT_NO}" id="ot10"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_BBR_CODE.name}"
+                             sortable="true"
+                             headerText="BRANCH CODE"
+                             id="c1">
+                    <af:outputText value="#{row.BACT_BBR_CODE}" id="ot12"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_CELL_NOS.name}"
+                             sortable="true"
+                             headerText="CELL NOs"
+                             id="c12">
+                    <af:outputText value="#{row.BACT_CELL_NOS}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_TEL_NOS.name}"
+                             sortable="true"
+                             headerText="TEL. NOs"
+                             id="c16">
+                    <af:outputText value="#{row.BACT_TEL_NOS}" id="ot11"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_ACCOUNT_TYPE.name}"
+                             sortable="true"
+                             headerText="ACCOUNT TYPE"
+                             id="c13">
+                    <af:outputText value="#{row.BACT_ACCOUNT_TYPE}" id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_DEFAULT.name}"
+                             sortable="true"
+                             headerText="DEFAULT"
+                             id="c3">
+                    <af:outputText value="#{row.BACT_DEFAULT}" id="ot9"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_CUR_CODE.name}"
+                             sortable="true"
+                             headerText="CURRENCY"
+                             id="c14">
+                    <af:outputText value="#{row.BACT_CUR_CODE}" id="ot15"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_ACC_CODE.name}"
+                             sortable="true"
+                             headerText="ACCOUNT FK"
+                             id="c8">
+                    <af:outputText value="#{row.BACT_ACC_CODE}" id="ot13"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_ACCOUNT_OFFICER.name}"
+                             sortable="true"
+                             headerText="ACCOUNT OFFICER"
+                             id="c7">
+                    <af:outputText value="#{row.BACT_ACCOUNT_OFFICER}"
+                                   id="ot2"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_BANK_BRANCH.name}"
+                             sortable="true"
+                             headerText="BANK BRANCH"
+                             id="c5">
+                    <af:outputText value="#{row.BACT_BANK_BRANCH}" id="ot14"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_CURRENCY.name}"
+                             sortable="true"
+                             headerText="CURRENCY"
+                             id="c9">
+                    <af:outputText value="#{row.BACT_CURRENCY}" id="ot16"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_USER_CODE.name}"
+                             sortable="true"
+                             headerText="USER CODE"
+                             id="c10">
+                    <af:outputText value="#{row.BACT_USER_CODE}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_BANK_NAME.name}"
+                             sortable="true"
+                             headerText="BANK NAME"
+                             id="c11">
+                    <af:outputText value="#{row.BACT_BANK_NAME}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.BankAccount.hints.BACT_IBAN.name}"
+                             sortable="true"
+                             headerText="IBAN"
+                             id="c15">
+                    <af:outputText value="#{row.BACT_IBAN}" id="ot8"/>
+                  </af:column>
+                </af:table>
+                <af:separator />
+              </af:panelBox>
+              <!-- <af:spacer width="10" height="20" />
+                  <af:commandButton text="Load Book Accounts" 
+                                    action="#{uploadBankAccounts.loadClientAction}"
+                   /> -->
+            </af:panelBox>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+
+</jsp:root>

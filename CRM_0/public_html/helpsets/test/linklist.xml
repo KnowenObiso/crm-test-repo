@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<link version="1.0">
+	<linkitem topic="link_list1">
+		<linkentry target="topic_1" text="File 1"/>
+		<linkentry target="topic_2" text="File 2 Anchor a1"/>
+		<linkentry target="topic_3" text="File 1 via topic_3"/>
+	</linkitem>
+	<linkitem topic="link_list2">
+		<linkentry target="topic_3" text="File 1 via topic_3"/>
+		<linkentry target="topic_2" text="File 2 Anchor a1"/>
+		<linkentry target="topic_1" text="File 1"/>
+	</linkitem>
+	<linkitem topic="broken_link_list">
+<!-- missing or empty attributes "target" and/or "text" cause exceptions while loading application in OC4J:
+-->
+		<linkentry text="Target missing"/>
+		<linkentry target="topic_2"/>
+		<linkentry target="" text="Target empty"/>
+		<linkentry target="topic_1" text=""/>
+		<linkentry target="invalid_id" text="Invalid ID"/>
+	</linkitem>
+</link>

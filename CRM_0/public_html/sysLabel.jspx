@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="System Labels" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <h:panelGrid columns="3" id="pg2">
+                 <af:commandButton text="Edit" id="btnEditParameter"
+                                    icon="/images/update.gif"
+                                    action="#{baseSetupBacking.actionEditParameter}"
+                                    partialSubmit="true"/>
+                  </h:panelGrid>
+                <af:separator id="s2"/>
+                <af:table value="#{bindings.Parameter.collectionModel}"
+                          var="row" rows="#{bindings.Parameter.rangeSize}"
+                          emptyText="#{bindings.Parameter.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Parameter.rangeSize}"
+                          rowBandingInterval="0"
+                          selectionListener="#{bindings.Parameter.collectionModel.makeCurrent}"
+                          rowSelection="single" id="tblParameters"
+                          styleClass="AFAuxiliaryStretchWidth"
+                          binding="#{baseSetupBacking.tblParameters}">
+                  <af:column sortProperty="name" sortable="true"
+                             headerText="NAME" id="c2" width="200">
+                    <af:outputText value="#{row.name}" id="ot2"/>
+                  </af:column>
+                  <af:column sortProperty="value" sortable="true"
+                             headerText="VALUE" id="c1" width="300">
+                    <af:outputText value="#{row.value}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="description" sortable="true"
+                             headerText="DESCRIPTION" id="c3" width="450">
+                    <af:outputText value="#{row.description}" id="ot1"/>
+                  </af:column>
+                </af:table>
+                <af:separator id="s7"/>
+                <af:commandButton text="Generate Report" id="cl1"
+                                  icon="/images/report.png"/>
+              </af:panelBox>
+            </af:panelBox>
+            
+            <af:popup id="userParameterPopup" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="New User Parameter" type="none">
+                <af:panelGroupLayout id="pgl1">
+                  <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                    
+                    
+                    <af:panelFormLayout id="pfl1" inlineStyle="width:300.0px;">
+                    
+                      <af:inputText label="Code : " id="txtParameterCode"
+                                    binding="#{baseSetupBacking.txtParameterCode}"
+                                    visible="false" showRequired="true"
+                                    disabled="true"/>
+                                    
+                      <af:inputText label="Name : " id="txtParameterName"
+                                    binding="#{baseSetupBacking.txtParameterName}" 
+                                    showRequired="true" disabled="true"/>
+                                    
+                      <af:inputText label="Value : " id="txtParameterValue"
+                                    binding="#{baseSetupBacking.txtParameterValue}" 
+                                    showRequired="true"/>
+                      
+                      <af:selectOneChoice label="Status : " id="txtParameterStatus"
+                                          binding="#{baseSetupBacking.txtParameterStatus}" 
+                                          showRequired="true" 
+                                          value="ACTIVE">
+                        <af:selectItem label="ACTIVE" value="ACTIVE" id="si4"/>
+                        <af:selectItem label="INACTIVE" value="INACTIVE"
+                                       id="si2"/>
+                      </af:selectOneChoice>
+                      
+                      <af:inputText label="Description : " id="txtParameterDesc"
+                                    binding="#{baseSetupBacking.txtParameterDesc}" 
+                                    showRequired="true" disabled="true"/>                      
+                      
+                    </af:panelFormLayout>
+                    
+                    <af:commandButton text="Save" id="btnCreateUpdateParameter"
+                                      binding="#{baseSetupBacking.btnCreateUpdateParameter}"
+                                      action="#{baseSetupBacking.saveLabel}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="btnCancelParameter"/>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

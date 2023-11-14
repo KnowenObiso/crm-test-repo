@@ -1,0 +1,851 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>CRMTemplate</display-name>
+        <facet>
+          <facet-name>center</facet-name>
+        </facet>
+      </component>
+    </af:xmlContent>
+    <af:panelGroupLayout id="tmpt_pgl3" inlineStyle="height:auto;">
+      <af:panelGroupLayout id="tmpt_pgl2">
+        <div style="position:fixed; top:0px; left:0px; height:40.0px; width:100%; background-color:#547CBF; z-index:2;"
+             align="center">
+          <h:panelGrid columns="13" id="tmpt_pg2">
+            <af:outputLabel value="Logged In As:" id="tmpt_ol1"
+                            inlineStyle="font-weight:bold; color:White;"/>
+            <af:outputText value="#{CurrentUser.username}" id="tmpt_ot1"
+                           inlineStyle="color:White;"/>
+            <af:spacer width="40" height="10" id="tmpt_s3"/>
+            <af:outputLabel value="Last Login:" id="tmpt_ol2"
+                            inlineStyle="color:White; font-weight:bold;"/>
+            <af:outputText value="#{CurrentUser.loginDate}" id="tmpt_ot2"
+                           inlineStyle="color:White;">
+              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+            </af:outputText>
+            <af:spacer width="40" height="10" id="tmpt_s2"/>
+            <!-- <af:commandLink text="[Log Out]" id="tmpt_cl1"
+                            inlineStyle="color:White; text-align:right; text-decoration:underline;"
+                            shortDesc="Log out From theSystem"
+                            action="#{login.actionSystemLogout}"
+                            visible="false" />
+                            -->
+          </h:panelGrid>
+        </div>
+        <af:spacer width="10" height="40" id="tmpt_s1"/>
+        <h:panelGrid columns="2" id="tmpt_pg1">
+          <af:panelBox text="PanelBox1" id="tmpt_pb1" showHeader="never"
+                       inlineStyle="height:130.0px;">
+            <af:image source="/imageservlet" id="tmpt_i2"
+                      shortDesc="Organization Logo"/>
+            <!-- <af:activeImage source="/imageservlet" id="pt_ai1"
+                      shortDesc="Organization Logo"
+                      /> -->
+          </af:panelBox>
+          <af:panelBox text="PanelBox2" id="tmpt_pb2" showHeader="never">
+            <af:image source="/images/CRM.jpg" id="tmpt_i1"
+                      shortDesc="Turnquest CRM"/>
+            <!-- <af:popup id="tmerror" contentDelivery="lazyUncached"
+                      binding="#{GlobalCC.errorPop}">
+              <af:dialog id="tmcorDia" type="ok" closeIconVisible="false"
+                         title="Error">
+                <af:panelBox text="PanelBox1" id="tmdtls" showHeader="never"
+                             inlineStyle="width:300.0px;">
+                  <h:panelGrid columns="3" id="tmpnl1">
+                    <af:message id="tmmsg1" inlineStyle="font-weight:bold;"
+                                messageType="error"/>
+                    <af:spacer width="10" height="10" id="tmspc1"/>
+                    <af:message id="tmmsg2" binding="#{GlobalCC.errText}"/>
+                  </h:panelGrid>
+                  <af:separator id="tmsep1"/>
+                  <af:panelBox text="More Details" id="tmmoreDtls"
+                               disclosed="false">
+                    <af:message id="tmmsg3" binding="#{GlobalCC.errCode}"/>
+                    <af:message id="tmmsg4" binding="#{GlobalCC.errName}"/>
+                    <af:message id="tmmsg5" binding="#{GlobalCC.syserrCode}"/>
+                    <af:message id="tmmsg6" binding="#{GlobalCC.sysErrMsg}"/>
+                    <af:message id="tmmsg7" binding="#{GlobalCC.rcmdendation}"/>
+                    <af:message id="tmmsg8" binding="#{GlobalCC.errStack}"/>
+                    <af:message id="tmmsg9" binding="#{GlobalCC.callStack}"/>
+                    <af:message id="tmmsg10" binding="#{GlobalCC.envirment}"/>
+                  </af:panelBox>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>  
+            <af:popup id="tmglobalConfirmDialogPop">
+              <af:dialog id="tmconfirmActionDialog" title="Confirm Action"
+                         type="yesNo">
+                <af:outputLabel value="Would you like to proceed with the current operation?"
+                                id="tmglobalConfirmMsgValue"
+                                binding="#{GlobalCC.globalConfirmMsgValue}"/>
+              </af:dialog>
+            </af:popup>
+            -->
+          </af:panelBox>
+        </h:panelGrid>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="tmpt_pgl1" valign="top" layout="vertical"
+                           styleClass="AFStretchWidth" halign="left">
+        <h:panelGrid columns="2" id="tmpt_pg31">
+          <af:inputDate label="Label 1" id="tmpt_id1" simple="true"
+                        binding="#{ReportQuery.myTest}" visible="false">
+            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+          </af:inputDate>
+          <af:outputFormatted value="#{sessionScope['ErrorMessage']}"
+                              id="pt_of1" inlineStyle="color:Red;"/>
+        </h:panelGrid>
+        <!-- <af:popup id="paramReport">
+          <af:dialog id="tmpt_d2" type="none" title="System Reports">
+            <af:panelBox id="tmpt_pb18" showHeader="never">
+              <f:facet name="toolbar"/>
+              <af:panelGroupLayout id="tmpt_pgl5" binding="#{ReportQuery.dtls}">
+                <h:panelGrid columns="2" id="tmpt_pg29"
+                             binding="#{ReportQuery.mainParent}"/>
+              </af:panelGroupLayout>
+              <h:panelGrid columns="2" id="tmpt_pg30">
+                <af:commandButton text="Generate" id="tmpt_cb3"
+                                  action="#{ReportQuery.genRpt}"/>
+                <af:commandButton text="Cancel" id="tmpt_cb4"/>
+              </h:panelGrid>
+            </af:panelBox>
+          </af:dialog>
+        </af:popup>
+        
+        -->
+        <af:form id="tmpt_f1" usesUpload="true">
+          <table cellspacing="0" cellpadding="0" border="0" width="100%"
+                 style="height:100%;">
+            <tr>
+              <td width="15%" valign="top" id="doyeenLeftPanel">
+                <af:panelBox text="PanelBox6" id="tmpt_pb4" showHeader="never" rendered="#{sessionScope['back_url']==null}"
+                             inlineStyle="width:220.0px;" >
+                  <af:panelGroupLayout id="navCont"
+                                       binding="#{Navigation.navCont}">
+                    <h:panelGrid columns="1" id="tmpt_pg3" >
+                      <af:commandImageLink id="tmpt_cil5"
+                                           action="#{Navigation.goHome}"
+                                           shortDesc="Go to Homepage"
+                                           icon="/images/homeIcon.png"
+                                           partialSubmit="true"/>
+                      <af:spacer width="5" height="1" id="pt_s3"/>
+                      <af:commandImageLink id="tmcommandImageLink9"
+                                           icon="/images/orgSetUpict.png"
+                                           action="#{Navigation.showOrgSetupsGl}"
+                                           partialSubmit="true"/>
+                      <af:spacer width="5" height="1" id="pt_s4"/>
+                      <af:panelBox text="PanelBox3" id="tmpt_pb3"
+                                   showHeader="never"
+                                   rendered="#{Rendering.organizationalSetupsGl}">
+                        <af:commandImageLink id="pt_cil4"
+                                             icon="/images/orgGram.png"
+                                             action="#{Navigation.showOrgSetups}"
+                                             rendered="#{Rendering.organizationalSetupsGl}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpt_pg4">
+                          <af:panelBox text="PanelBox3" id="pt_pb2"
+                                       showHeader="never"
+                                       rendered="#{Rendering.organizationalSetups}"
+                                       inlineStyle="width:180.0px;">
+                            <h:panelGrid columns="2" id="tmpt_pg5">
+                              <af:commandLink text="Organizations"
+                                              id="tmpt_cl15"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showOrganizations}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s18"/>
+                              <af:commandLink text="Countries" id="tmpt_cl13"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showCountries}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s31"/>
+                              <af:commandLink text="Country Holidays"
+                                              id="tmpt_cl26"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showCountryHolidays}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s20"/>
+                              <af:commandLink text="Hierarchy" id="tmpt_cl23"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showHierarchies}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s32"/>
+                              <af:commandLink text="Post Levels" id="tmpt_cl29"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showSysPostLevels}"/>
+                              <af:spacer width="10" height="10" id="tmppt_s18"
+                                         rendered="#{Rendering.divisionApplicableVal}"/>
+                              <af:commandLink text="Divisions" id="tmppt_cl16"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showDivisions}"
+                                              rendered="#{Rendering.divisionApplicableVal}"/>
+                              <af:spacer width="10" height="10" id="pt_s34"/>
+                              <af:commandLink text="Departments" id="pt_cl15"
+                                              visible="false"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.selectDepartments}"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                        <af:separator id="pt_s24"/>
+                        <af:commandImageLink id="tmcommandImageLink2"
+                                             icon="/images/orgPara.png"
+                                             action="#{Navigation.showOrgParameters}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpanelGrid1">
+                          <af:panelBox text="PanelBox3" id="pt_pb46767"
+                                       showHeader="never"
+                                       rendered="#{Rendering.organizationalParameters}">
+                            <h:panelGrid columns="2" id="tmpanelGrid2">
+                              <af:commandLink text="User Parameters"
+                                              id="tmcommandLink1"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showUserParameters}"/>
+                              <af:spacer width="10" height="10" id="pt_s19"/>
+                              <af:commandLink text="System Labels"
+                                              id="tmcommandLink1l"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              rendered="#{Rendering.showSystemLabels}"
+                                              action="#{Navigation.showUserLabels}"/>
+                              <af:spacer width="10" height="10" id="pt_s19l"
+                                         rendered="#{Rendering.showSystemLabels}"/>
+                              <af:commandLink text="Currencies"
+                                              id="tmcommandLink10"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showCurrencies}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s4"/>
+                              <af:commandLink text="Currency Rates"
+                                              id="tmcommandLink11"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showCurrencyRates}"/>
+                              <af:spacer width="10" height="10" id="pt_s20"/>
+                              <af:commandLink text="Required Documents"
+                                              id="tmcommandLink13"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showRequiredDocuments}"/>
+                              <af:spacer width="10" height="10" id="pt_s21"/>
+                              <af:commandLink text="Payment Modes"
+                                              id="tmcommandLink19"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showPaymentModes}"/>
+                              <af:spacer width="10" height="10" id="pt_s23"/>
+                              <af:commandLink text="Claims Payment  Modes"
+                                              id="tmcommandLink31"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showPayModes}"/>
+                              <af:spacer width="10" height="10" id="pt_s18"/>
+                              <af:commandLink text="Printer Setups"
+                                              id="tmcommandLink33"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showPrinterSetups}"/>
+                              <af:spacer width="10" height="10" id="pt_s11"/>
+                              <af:commandLink text="Sequences"
+                                              id="tmcommandLink34"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showSequences}"/>
+                              <af:spacer width="10" height="10" id="pt_s25"/>
+                              <af:commandLink text="System Applicable Areas"
+                                              id="tmpt_cl2"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showSystemApplicableArea}"
+                                              rendered="true"/>
+                              <af:spacer width="10" height="10" id="pt_s1143"/>
+                              <af:commandLink text="ECM Parameters "
+                                              id="tmpt_cl5442"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showEcmSetups}"
+                                              rendered="#{Rendering.ecmRequired}"/>
+                              <af:spacer width="10" height="10" id="pt_s26"/>
+                              <af:commandLink text="Email/ECM Reports"
+                                              id="tmpt_cl5443"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showEcmReports}"
+                                              rendered="#{Rendering.ecmRequired}"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                        <af:separator id="pt_s13"/>
+                        <af:commandImageLink id="tmcommandImageLink1"
+                                             icon="/images/accountMgmt.png"
+                                             action="#{Navigation.showAccountManagement}"
+                                             rendered="#{Rendering.organizationalSetupsGl}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpanelGrid3">
+                          <af:panelBox text="PanelBox3" id="tmpanelBox2"
+                                       showHeader="never"
+                                       rendered="#{Rendering.accountsManagement}">
+                            <h:panelGrid columns="2" id="tmpanelGrid4">
+                              <!-- <af:spacer width="10" height="10" id="pt_s2q2"/>
+                              <af:commandLink text="Entities" id="tmpt_clq6"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showEntities}"/> -->
+                              <af:spacer width="10" height="10" id="pt_s1"/>
+                              <af:commandLink text="Account Types" id="pt_cl20"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showAccountTypes}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s5"/>
+                              <af:commandLink text="Accounts" id="tmpt_cl3"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showAccountDefinitions}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s6"/>
+                              <af:commandLink text="Consolidate Accounts"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showConsolidateAccounts}"
+                                              id="pt_cl4"/>
+                              <af:spacer width="10" height="10" id="pt_s9"/>
+                              <af:commandLink text="Client Types"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showClientTypes}"
+                                              id="pt_cl7"/>
+                              <af:spacer width="10" height="10" id="pt_s7"/>
+                              <af:commandLink text="Clients" id="tmpt_cl4"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showClients}"/>
+                              <af:spacer width="10" height="10" id="pt_s8"/>
+                              <af:commandLink text="Client Loading" id="pt_cl8"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.loadClients}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s21"/>
+                              <af:commandLink text="Client Titles"
+                                              id="tmpt_cl19"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showClientTitles}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s7"
+                                         visible="false"/>
+                              <af:commandLink text="Agent Types"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showAgentTypes}"/>
+                              <af:spacer width="10" height="10"
+                                         visible="false"/>
+                              <af:commandLink text="Holding Companies"
+                                              id="tmpt_cl5" visible="false"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showHoldingCompanies}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s8"/>
+                              <af:commandLink text="Agency Classification"
+                                              id="tmpt_cl7"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showAgencyClassification}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s811"/>
+                              <af:commandLink text="Agency Loading"
+                                              id="tmpt_cl711"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showAgencyLoading}"/>
+                              <af:spacer width="10" height="10"/>
+                              <af:commandLink text="SACCOs"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showSaccos}"
+                                              rendered="false"/>
+                              <!--
+                              <af:spacer width="10" height="10" rendered="false" />
+                              <af:commandLink text="Bank Accounts Loading" rendered="false"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showBankAccountsLoading}"/>
+                                              -->
+                              <af:spacer width="10" height="10" id="tmpt_s10"
+                                         rendered="false"/>
+                              <af:commandLink text="Sectors" id="tmpt_cl11"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showSectors}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s14"/>
+                              <af:commandLink text="Service Provider Types"
+                                              id="tmpt_cl12"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showServiceProviderTypes}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s19"/>
+                              <af:commandLink text="Service Providers"
+                                              id="tmpt_cl17"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showServiceProviders}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s15"/>
+                              <af:commandLink text="Rating setups" id="pt_cl17"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.selectRatings}"/>
+                              <af:spacer width="10" height="10" id="pt_s36"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                        <af:separator id="pt_s14"/>
+                        <af:commandImageLink id="tmcommandImageLink3"
+                                             icon="/images/bankSps.png"
+                                             action="#{Navigation.showBankSetups}"
+                                             rendered="#{Rendering.organizationalSetupsGl}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpanelGrid5">
+                          <af:panelBox text="PanelBox3" id="tmpanelBox3"
+                                       showHeader="never"
+                                       rendered="#{Rendering.bankSetups}">
+                            <h:panelGrid columns="2" id="tmpanelGrid6">
+                              <af:commandLink text="Banks" id="tmcommandLink2"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showBanks}"/>
+                              <af:spacer width="10" height="10" id="tmspacer3"/>
+                              <af:commandLink text="Update Direct Debits"
+                                              id="tmcommandLink3"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showDirectDebits}"/>
+                              <af:spacer width="10" height="10" id="pt_s5"/>
+                              <af:commandLink text="Setup Bank Branches"
+                                              id="pt_cl5"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showBankBranches}"/>
+                              <af:spacer width="10" height="10" id="pt_s35"/>
+                              <af:commandLink text="DD Failed Remarks"
+                                              id="pt_cl16"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showDDFailedRmks}"/>
+                              <af:spacer width="10" height="10" id="pt_s37"/>
+                              <af:commandLink text="Template Setups"
+                                              id="pt_cl18"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.selectTemplateSetUps}"/>
+                              <af:spacer width="10" height="10" id="tmspacer4"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                        <af:separator id="pt_s15"/>
+                        <af:commandImageLink id="tmpt_cil3"
+                                             icon="/images/administ.png"
+                                             action="#{Navigation.showAdministration}"
+                                             rendered="#{Rendering.organizationalSetupsGl}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpt_pg8">
+                          <af:panelBox text="PanelBox5" id="tmpt_pb5"
+                                       showHeader="never"
+                                       rendered="#{Rendering.administration}">
+                            <h:panelGrid columns="2" id="tmpt_pg9">
+                              <af:spacer width="10" height="10" id="tmpt_s22"/>
+                              <af:commandLink text="System Roles" id="tmpt_c24"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showSystemRoles}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s23"/>
+                              <af:commandLink text="User Administration"
+                                              id="tmpt_cl25"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showUsers}"/>
+                              <af:spacer width="10" height="10" id="pt_s38"/>
+                              <af:commandLink text="Security Questions"
+                                              id="pt_cl19"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.securityQuestions}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s29"/>
+                              <af:commandLink text="Maker-Checker Configuration"
+                                              id="pt_cl453419"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showSysRolesMakerChecker}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s2649"/>
+                              
+                              <af:commandLink text="User Groups"
+                                              id="pt_cl21"
+                                              rendered="#{Rendering.userCategoriesEnable}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showUserGroups}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s312"/>
+                              <af:commandLink text="User Group Categories"
+                                              id="pt_cl25"
+                                              rendered="#{Rendering.userCategoriesEnable}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showUserGroupCategories}"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                        <af:separator id="pt_s16"/>
+                        <af:commandImageLink id="tmcommandImageLink5"
+                                             icon="/images/mess.png"
+                                             action="#{Navigation.showMessaging}"
+                                             rendered="#{Rendering.organizationalSetupsGl}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpanelGrid9">
+                          <af:panelBox text="PanelBox3" id="tmpanelBox5"
+                                       showHeader="never"
+                                       rendered="#{Rendering.messaging}">
+                            <h:panelGrid columns="1" id="tmpanelGrid10">
+                              <af:commandLink text="Alerts" id="tmcommandLink35"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showAlerts}"/>
+                              <af:commandLink text="Scheduler" id="pt_cl1"
+                                              action="#{Navigation.showSheduler}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              rendered="true"/>
+                              <af:commandLink text="Running Jobs" id="pt_cl12"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showRunningJobs}"/>
+                              <af:commandLink text="Message Template"
+                                              id="tmpt_cl2850"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showMessageTemplate}"/>
+                              <af:commandLink text="Single Message"
+                                              id="tmpt_cl24"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showSingleMessage}"/>
+                              <af:commandLink text="Incoming Messages"
+                                              id="tmpt_cl30"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showIncomingMessages}"
+                                              rendered="true"/>
+                              <af:commandLink text="Mobile Service Providers"
+                                              id="tmpt_cl31"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showMobileServiceProviders}"/>
+                              <af:commandLink text="Memorandum Setups"
+                                              id="tmpt_cl22"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showClaimMemorandums}"/>
+                              <af:commandLink text="Incidence Setups"
+                                              id="tmcommandLink7"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showIncidenceSetups}"
+                                              rendered="true"/>
+                              <af:commandLink text="Mail Settings" id="pt_cl2"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.mailSettings}"/>
+                              <af:commandLink text="SMS Settings" id="tmppt_cl2"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.smsSettings}"/>
+                              <af:commandLink text="Authorise messages"
+                                              id="pt_cl6"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.authorizeMessages}"/>
+                              <af:commandLink text="Sms History" id="pt_cl13"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.smsHistory}"/>
+                              <af:commandLink text="Email messages" id="pt_cl14"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.emailHistory}"/>
+                            </h:panelGrid>
+                            <!-- <h:panelGrid columns="1" id="tmpanelGrid10">
+                              <af:commandLink text="Alerts" id="tmcommandLink35"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showAlerts}"/>
+                              <af:spacer width="10" height="10"
+                                         id="tmpspacer1"/>
+                              <af:commandLink text="Scheduler" id="pt_cl1"
+                                              action="#{Navigation.showSheduler}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              rendered="true"/>
+                              <af:spacer width="10" height="10" id="pt_s31"/>
+                              <af:commandLink text="Running Jobs" id="pt_cl12"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showRunningJobs}"/>
+                              <af:spacer width="10" height="10" id="tmspacer35"
+                                         rendered="true"/>
+                              <af:commandLink text="Message Template"
+                                              id="tmpt_cl2850"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showMessageTemplate}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s30"/>
+                              <af:commandLink text="Single Message"
+                                              id="tmpt_cl24"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showSingleMessage}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s35"/>
+                              <af:commandLink text="Incoming Messages"
+                                              id="tmpt_cl30"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showIncomingMessages}"
+                                              rendered="true"/>
+                              <af:spacer width="10" height="10" id="tmpt_s28"
+                                         rendered="false"/>
+                              <af:commandLink text="Mobile Service Providers"
+                                              id="tmpt_cl31"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showMobileServiceProviders}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s38"/>
+                              <af:commandLink text="Memorandum Setups"
+                                              id="tmpt_cl22"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showClaimMemorandums}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s16"/>
+                              <af:commandLink text="Incidence Setups"
+                                              id="tmcommandLink7"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showIncidenceSetups}"
+                                              rendered="true" />
+                              <af:spacer width="10" height="10" id="tmspacer7"
+                                         rendered="false"/>
+                              <af:commandLink text="Mail Settings" id="pt_cl2"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.mailSettings}"/>
+                              <af:spacer width="10" height="10"
+                                         id="tmpspacer7"/>
+                              <af:commandLink text="SMS Settings" id="tmppt_cl2"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.smsSettings}"/>
+                              <af:spacer width="10" height="10" id="pt_s1"/>
+                              <af:commandLink text="Authorise messages"
+                                              id="pt_cl6"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.authorizeMessages}"/>
+                              <af:spacer width="10" height="10" id="pt_s32"/>
+                              <af:commandLink text="Sms History" id="pt_cl13"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.smsHistory}"/>
+                              <af:spacer width="10" height="10" id="pt_s33"/>
+                              <af:commandLink text="Email messages" id="pt_cl14"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.emailHistory}"/>
+                              <af:spacer width="10" height="10" id="pt_s6"
+                                         rendered="false"/>
+                            </h:panelGrid>-->
+                          </af:panelBox>
+                        </h:panelGrid>
+                        <af:separator id="pt_s17"/>
+                        <af:commandImageLink id="tmcommandImageLink8"
+                                             action="#{Navigation.showSystemReports}"
+                                             icon="/images/systemReports.png"
+                                             rendered="#{Rendering.organizationalSetupsGl}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpanelGrid15">
+                          <af:panelBox text="PanelBox3" id="tmpanelBox8"
+                                       showHeader="never"
+                                       rendered="#{Rendering.systemReports}">
+                            <h:panelGrid columns="2" id="tmpanelGrid16">
+                              <af:spacer width="10" height="10"
+                                         id="tmspacer61"/>
+                              <af:commandLink text="Report Groups"
+                                              id="tmcommandLink55"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showReportGroups}"/>
+                              <af:spacer width="10" height="10"
+                                         id="tmspacer62"/>
+                              <af:commandLink text="Reports" id="tmpt_cl9"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showReports}"/>
+                              <af:spacer width="10" height="10" id="pt_s30"/>
+                              <af:commandLink text="Define Reports" id="pt_cl11"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.defineReports}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s9"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                      </af:panelBox>
+                      <af:commandImageLink id="pt_cil2"
+                                           icon="/images/ServDesk.png"
+                                           action="#{Navigation.showServiceDesk}"
+                                           partialSubmit="true"/>
+                      <af:spacer width="5" height="1" id="pt_s11454"/>
+                      <af:panelBox text="PanelBox7" id="tempt_pb1"
+                                   showHeader="never"
+                                   rendered="#{Rendering.serviceRequests}">
+                        <af:commandImageLink id="tmpt_cil1"
+                                             icon="/images/serviceRe.png"
+                                             action="#{Navigation.showServiceRequests}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tempt_pg1" rendered="true">
+                          <af:panelBox text="PanelBox7" id="pt_pb9"
+                                       showHeader="never"
+                                       rendered="#{Rendering.serviceReq}">
+                            <f:facet name="toolbar"/>
+                            <h:panelGrid columns="2" id="temlpt_pg1">
+                              <af:spacer width="10" height="10" id="tmppt_s1"/>
+                              <af:commandLink text="Service Desk" id="tempt_cl1"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.serviceDesk}"/>
+                              <af:spacer width="10" height="10"
+                                         id="temppt_s12"/>
+                              <af:commandLink text="Requests Tracking"
+                                              id="tempt_cl2"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.requestTrack}"/>
+                              <af:spacer width="10" height="10"
+                                         id="temppt_s13"/>
+                              <af:commandLink text="Requests History"
+                                              id="tempt_cl3"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.reqHist}"/>
+                              <af:spacer width="10" height="10" id="pt_s2"/>
+                              <af:commandLink text="Knowledge Base" id="pt_cl3"
+                                              action="#{Navigation.knowledgeBase}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"/>
+                              <af:spacer width="10" height="10" id="tempt_s4"/>
+                              <af:commandLink text="Key Words" id="ptesc_cl3"
+                                              action="#{Navigation.keyWords}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"/>
+                              <af:spacer width="10" height="10" id="temkw_s4"/>
+                              <af:commandLink text="Escalations" id="ptkw_cl3"
+                                              action="#{Navigation.eacalations}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"/>
+                              <!--  <af:spacer width="10" height="10"  rendered="false"
+                                         id="temptesc_s4"/>
+                              <af:commandLink text="New Escalations" 
+                                              action="#{Navigation.newEscalations}"
+                                              rendered="false"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"/>
+                                              -->
+                              <af:spacer width="10" height="10"/>
+                              <af:commandLink text="Request Categories"
+                                              id="tempt_cl4"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showServCats}"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                      </af:panelBox>
+                      <af:commandImageLink id="pt_cil3"
+                                           icon="/images/campaign.png"
+                                           action="#{Navigation.showCampaigns}"
+                                           partialSubmit="true"/>
+                      <af:spacer width="5" height="1" id="pt_s12"/>
+                      <af:panelBox text="PanelBox3" id="tmpanelBox7"
+                                   showHeader="never"
+                                   rendered="#{Rendering.campaigns}">
+                        <af:commandImageLink id="tmcommandImageLink7"
+                                             icon="/images/campaign.png"
+                                             action="#{Navigation.showCampaignManagement}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpanelGrid13">
+                          <af:panelBox text="PanelBox3" id="pt_pb10"
+                                       showHeader="never"
+                                       rendered="#{Rendering.campaignManagement}">
+                            <h:panelGrid columns="2" id="tmpanelGrid14">
+                              <af:commandLink text="Campaigns" id="tmpt_cl39"
+                                              action="#{Navigation.showCampaignManager}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"/>
+                              <af:spacer width="10" height="10" id="tmpt_s45"/>
+                              <af:commandLink text="Client Attributes"
+                                              id="tmpt_cl37"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showClientAttributes}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s43"/>
+                              <af:commandLink text="Product Attributes"
+                                              id="tmpt_cl36"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showProductAttributes}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s46"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                        <af:separator id="pt_s27"/>
+                        <af:commandImageLink id="tmcommandImageLink4"
+                                             icon="/images/Leadsandpotentials.png"
+                                             action="#{Navigation.showLeadsManagement}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpanelGrid7">
+                          <af:panelBox text="PanelBox3" id="pt_pb11"
+                                       showHeader="never"
+                                       rendered="#{Rendering.leadManagement}">
+                            <h:panelGrid columns="2" id="tmpanelGrid8">
+                              <af:spacer width="10" height="10"
+                                         id="tmspacer17"/>
+                              <af:commandLink text="Leads" id="tmcommandLink4"
+                                              action="#{Navigation.showLeads}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"/>
+                              <af:spacer width="10" height="10" id="tmspacer8"/>
+                              <af:commandLink text="Lead Sources"
+                                              id="tmcommandLink8"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.goToLeadSources}"/>
+                              <af:spacer width="10" height="10" id="tmspacer9"/>
+                              <af:commandLink text="Lead Statuses"
+                                              id="tmcommandLink9"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.goToLeadStatuses}"/>
+                              <af:spacer width="10" height="10"
+                                         id="tmspacer13"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                        <af:separator id="pt_s29"/>
+                        <af:commandImageLink id="tmcommandImageLink6"
+                                             icon="/images/activity.png"
+                                             action="#{Navigation.showActivityManagement}"
+                                             partialSubmit="true"/>
+                        <h:panelGrid columns="1" id="tmpanelGrid11">
+                          <af:panelBox text="PanelBox3" id="pt_pb12"
+                                       showHeader="never"
+                                       rendered="#{Rendering.activityManagement}">
+                            <h:panelGrid columns="2" id="tmpanelGrid12">
+                              <af:commandLink text="Activities" id="tmpt_cl38"
+                                              action="#{Navigation.showActivities}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"/>
+                              <af:spacer width="10" height="10" id="tmpt_s44"/>
+                              <af:commandLink text="Activity Types"
+                                              id="tmpt_cl27"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showActivityTypes}"/>
+                              <af:spacer width="10" height="10" id="tmpt_s33"/>
+                              <af:commandLink text="Activitity Priority Levels"
+                                              id="tmcommandLink5"
+                                              action="#{Navigation.showPriorityLevels}"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"/>
+                              <af:spacer width="10" height="10" id="tmspacer5"/>
+                              <af:commandLink text="Activity Statuses"
+                                              id="tmcommandLink6"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showStatuses}"/>
+                              <af:spacer width="10" height="10" id="tmspacer6"/>
+                              <af:commandLink text="Prospects" id="tmpt_cl21"
+                                              inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                              action="#{Navigation.showProspects}"/>
+                              <af:spacer width="10" height="10" id="pt_s28"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </h:panelGrid>
+                      </af:panelBox>
+                      <!-- ================ ADMINISTRATION MENU =================== -->
+                      <!-- ================ PORTAL SETUP MENU =================== -->
+                      <af:commandImageLink id="pt_cil1"
+                                           action="#{Navigation.showPortalSetUps}"
+                                           icon="/images/portalSe.png"
+                                           partialSubmit="true"/>
+                      <h:panelGrid columns="1" id="pt_pg1">
+                        <af:panelBox text="PanelBox5" id="pt_pb1"
+                                     showHeader="never"
+                                     rendered="#{Rendering.portalSetUps}">
+                          <h:panelGrid columns="2" id="pt_pg2">
+                            <af:spacer width="10" height="10" id="pt_s10"/>
+                            <af:commandLink text="Proposal Forms" id="pt_cl9"
+                                            inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                            action="#{Navigation.showProposalForms}"/>
+                            <af:spacer width="10" height="10" id="pt_s10656"/>
+                            <af:commandLink text="Client Content" id="pt_cl9544"
+                                            inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                            action="#{Navigation.showClientContent}"/>
+                            <af:spacer width="10" height="10"
+                                       id="pt_s10676656"/>
+                            <af:commandLink text="Web scl Description"
+                                            visible="false" id="pt_cl10"
+                                            inlineStyle="color:Black; text-decoration:underline; font-weight:bold;"
+                                            action="#{Navigation.showWebScldesc}"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </h:panelGrid>
+                      <!-- ================ LOGOUT MENU =================== -->
+                      <af:commandLink text="[Log Out]"
+                                      inlineStyle="color:White; text-align:right; text-decoration:underline;position: fixed; z-index: 99; top: 10px; right: 5%;"
+                                      shortDesc="Log out From theSystem"
+                                      action="#{login.actionSystemLogout}"/>
+                      <!-- <af:commandImageLink id="tmpt_cil4" icon="/images/incidences.gif"
+                                     action="#{Navigation.incidencesSele}"/> -->
+                      <af:spacer width="10" height="10" id="tmpt_s11"/>
+                      <h:panelGrid columns="1" id="tmpt_pg15">
+                        <af:panelBox text="PanelBox5" id="tmpt_pb6"
+                                     showHeader="never" rendered="false"
+                                     inlineStyle="width:163.0px;">
+                          <h:panelGrid columns="2" id="tmpt_pg7">
+                            <af:spacer width="10" height="10" id="tmpt_s40"/>
+                            <af:commandLink text="Mail Set Up" id="tmpt_cl89"
+                                            inlineStyle="color:Black; text-decoration:underline;"/>
+                            <af:spacer width="10" height="10" id="tmpt_s98"/>
+                            <af:commandLink text="Mail" id="tmpt_cl8"
+                                            inlineStyle="color:Black; text-decoration:underline;"/>
+                            <af:spacer width="10" height="10" id="tmpt_s982"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </h:panelGrid>
+                    </h:panelGrid>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </td>
+              <td valign="top">
+                <af:facetRef facetName="center"/>
+              </td>
+            </tr>
+          </table>
+        </af:form>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+  </af:pageTemplateDef>
+</jsp:root>

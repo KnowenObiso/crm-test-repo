@@ -1,0 +1,250 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <af:inputText id="it1" 
+                                helpTopicId="CRMsectors" 
+                                columns="13"
+                                readOnly="true" 
+                                shortDesc="Help"/>
+                </td>
+                <td width="100%" align="right">
+                
+                <af:statusIndicator id="si1"/>
+                </td>
+              </tr>
+            </table>
+              
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Sector Definition" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>                
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="pg2">
+                  <af:commandButton text="New" id="btnNewSector"
+                                    icon="/images/create.gif"
+                                    action="#{baseSetupBacking.actionNewSector}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Edit" id="btnEditSector"
+                                    icon="/images/update.gif"
+                                    action="#{baseSetupBacking.actionEditSector}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteSector"
+                                    icon="/images/delete.gif"
+                                    action="#{baseSetupBacking.actionDeleteSector}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+                <af:table value="#{bindings.Sector1.collectionModel}" var="row"
+                          rows="#{bindings.Sector1.rangeSize}"
+                          emptyText="#{bindings.Sector1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Sector1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.Sector1Query.queryDescriptor}"
+                          queryListener="#{bindings.Sector1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectionListener="#{baseSetupBacking.selectSector}"
+                          rowSelection="single" id="t1"
+                          styleClass="AFAuxiliaryStretchWidth"
+                          binding="#{baseSetupBacking.tblSectors}">
+                  <af:column sortProperty="shortDesc" sortable="true" filterable="true"
+                             headerText="ID" id="c2" visible="false">
+                    <af:outputText value="#{row.shortDesc}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="name" sortable="true" filterable="true"
+                             headerText="NAME" id="c1" width="300">
+                    <af:outputText value="#{row.name}" id="ot2"/>
+                  </af:column>
+                </af:table>
+                <af:separator id="s2"/>
+                <af:panelBox text="Occupations" id="pb5">
+                  <f:facet name="toolbar"/>
+                  <h:panelGrid columns="3" id="pg4">
+                    <af:panelBox text="All Occupations" >
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="3"  >
+                        <af:commandButton text="Add" icon="/images/create.gif"
+                                          id="cb1"
+                                          action="#{baseSetupBacking.addOccup}"/>
+                        <af:commandButton text="Edit" icon="/images/update.gif"
+                                          id="cb3"
+                                          action="#{baseSetupBacking.editOccup}"/>
+                        <af:commandButton text="Delete"
+                                          icon="/images/delete.gif" id="cb4"
+                                          action="#{baseSetupBacking.deleteOccup}"/>
+                      </h:panelGrid>
+                     
+                      <af:table value="#{bindings.Occupation1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.Occupation1.rangeSize}"
+                                emptyText="#{bindings.Occupation1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Occupation1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.Occupation1Query.queryDescriptor}"
+                                queryListener="#{bindings.Occupation1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.Occupation1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.Occupation1.collectionModel.makeCurrent}"
+                                rowSelection="single"  
+                                binding="#{baseSetupBacking.allOccupTbl}">
+                        <af:column sortProperty="occSelected"
+                                                 sortable="false" width="20" visible="true">
+                                <af:selectBooleanCheckbox value="#{row.selected}"
+                                                label="Label 1" id="sbc1"
+                                                binding="#{baseSetupBacking.chkOccSelect}"
+                                                autoSubmit="true"
+                                                immediate="true" />
+                         </af:column>
+                        <af:column sortProperty="#{bindings.Occupation1.hints.shortDesc.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="Occupation Sht Desc" id="c5">
+                          <af:outputText value="#{row.shortDesc}" id="ot7"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Occupation1.hints.name.name}"
+                                   filterable="true" sortable="true" width="200" 
+                                   headerText="Occupation" id="c7">
+                          <af:outputText value="#{row.name}" id="ot5"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelBox>
+                    <af:panelBox id="pb8">
+                      <f:facet name="toolbar"/>
+                      <af:panelFormLayout id="pfl3">
+                        <af:commandButton text="Add >" id="btnAddUserSystem"
+                                          inlineStyle="width:80.0px;"
+                                          action="#{baseSetupBacking.saveSectorOccupation}"/>
+                        <af:commandButton text="&lt; Remove"
+                                          id="btnRemoveUserSystem"
+                                          inlineStyle="width:80.0px;"
+                                          action="#{baseSetupBacking.deleteSectorOccupation}"/>
+                      </af:panelFormLayout>
+                    </af:panelBox>
+                    <af:panelBox text="Selected Occupations" id="pb6">
+                      <f:facet name="toolbar"/>
+                      <af:table value="#{bindings.Occupation.collectionModel}"
+                                var="row"
+                                rows="#{bindings.Occupation.rangeSize}"
+                                emptyText="#{bindings.Occupation.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Occupation.rangeSize}"
+                                rowBandingInterval="0"
+                                binding="#{baseSetupBacking.occupTbl}"
+                                selectedRowKeys="#{bindings.Occupation.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.Occupation.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t2">
+                        <af:column sortProperty="#{bindings.Occupation.hints.code.name}"
+                                   sortable="false"
+                                   headerText="Code"
+                                   visible="false" >
+                          <af:outputText value="#{row.code}" />
+                        </af:column>
+                         <af:column sortProperty="ormSelected"
+                                                 sortable="false" width="20" visible="true">
+                                <af:selectBooleanCheckbox value="#{row.selected}"
+                                                label="Label 1" 
+                                                binding="#{baseSetupBacking.chkOrmSelect}"
+                                                autoSubmit="true"
+                                                immediate="true" />
+                         </af:column>
+                        <af:column sortProperty="#{bindings.Occupation.hints.shortDesc.name}"
+                                   sortable="false"
+                                   headerText="Short Desc"
+                                   id="c3">
+                          <af:outputText value="#{row.shortDesc}" id="ot4"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.Occupation.hints.name.name}"
+                                   sortable="false"  width="200" 
+                                   headerText="Occupation"
+                                   id="c6">
+                          <af:outputText value="#{row.name}" id="ot6"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelBox>
+                  </h:panelGrid>
+                </af:panelBox>
+                
+                <af:separator id="s3"/>
+                <af:commandButton text="Generate Report" id="cl1"
+                                  icon="/images/report.png"
+                                  partialSubmit="true"/>
+              </af:panelBox>
+            </af:panelBox>
+            
+            <af:popup id="sectorPopup" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="New Sector" type="none">
+                <af:panelGroupLayout id="pgl1">
+                <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                 
+                  
+                    <af:panelFormLayout id="pfl1" inlineStyle="width:300.0px;">
+                    
+                      <af:inputText label="CODE : " id="txtSectorCode" disabled="true"
+                                    visible="false" 
+                                    showRequired="true"
+                                    binding="#{baseSetupBacking.txtSectorCode}"/>
+                      
+                      <af:inputText label="SHORT DESC : " id="txtSectorShtDesc"
+                                    binding="#{baseSetupBacking.txtSectorShtDesc}" 
+                                    showRequired="true"
+                                    shortDesc="Sector Short Description"/>
+                                    
+                      <af:inputText label="NAME : " id="txtSectorName"
+                                    binding="#{baseSetupBacking.txtSectorName}" 
+                                    showRequired="true"
+                                    shortDesc="Sector Name"/>                                   
+                      
+                    </af:panelFormLayout>
+                    
+                    <af:commandButton text="Save" id="btnCreateUpdateSector"
+                                        binding="#{baseSetupBacking.btnCreateUpdateSector}"
+                                        action="#{baseSetupBacking.actionCreateUpdateSector}"/>
+                      <af:commandButton text="Cancel" id="cb2"/>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="p1">
+              <af:dialog id="d3" title="New Occupation" type="none">
+                <af:panelGroupLayout id="pgl2">
+                  <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                   
+                    <af:panelFormLayout id="pfl2">
+                      <af:inputText label="SHORT DESC" id="it2"
+                                    showRequired="true"
+                                    shortDesc="Occup. Short Description"
+                                    binding="#{baseSetupBacking.txtOccupShtDesc}"/>
+                      <af:inputText label="NAME" id="it3" showRequired="true"
+                      shortDesc="Occupation Name"
+                                    binding="#{baseSetupBacking.txtOccup}"/>
+                      
+                    </af:panelFormLayout>
+                    <af:commandButton text="Save" id="cb5"
+                                      action="#{baseSetupBacking.saveOccupation}"/>
+                    <af:commandButton text="Cancel" id="cb6"/>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

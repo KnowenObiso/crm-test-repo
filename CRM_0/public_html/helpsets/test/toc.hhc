@@ -1,0 +1,51 @@
+<HTML>
+<!Sitemap 1.0>
+<OBJECT type="text/site properties">
+    <param name="FrameName" value="right">
+</OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+    <param name="Name" value="Chapter Node">
+    </OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+    <param name="Name" value="File 1">
+    <param name="Local" value="file_1.html">
+    </OBJECT>
+    <A HREF="file:file_1.html">File 1</A>
+<LI><OBJECT type="text/sitemap">
+    <param name="Name" value="File 2">
+    <param name="Local" value="file_2.html">
+    </OBJECT>
+    <A HREF="file:file_2.html">File 2</A>
+</UL>
+<LI><OBJECT type="text/sitemap">
+    <param name="Name" value="Concise & Expanded Help">
+    <param name="Local" value="concise_expanded.html">
+    </OBJECT>
+    <A HREF="file:concise_expanded.html">Concise & Expanded Help</A>
+<LI><OBJECT type="text/sitemap">
+    <param name="Name" value="Invalid Links">
+    </OBJECT>
+<UL>
+<LI><OBJECT type="text/sitemap">
+    <param name="Name" value="Missing HREF">
+    <param name="Local" value="file_1.html">
+    </OBJECT>
+<LI><OBJECT type="text/sitemap">
+    <param name="Name" value="Invalid Local">
+    <param name="Local" value="invalid_local.html">
+    </OBJECT>
+    <A HREF="file:invalid_link.html">Invalid Link</A>
+<LI><OBJECT type="text/sitemap">
+    <param name="Local" value="file_1.html">
+    </OBJECT>
+    <A HREF="file:file_1.html">No Name but Link to File 1</A>
+<LI><OBJECT type="text/sitemap">
+    <param name="Name" value="Missing Local to File 1">
+    </OBJECT>
+    <A HREF="file:file_1.html">No Local but Link to File 1</A>
+</UL>
+</UL>
+</UL>
+</HTML>

@@ -1,0 +1,399 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+          <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="inputText1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg71">
+                <af:outputLabel value="System Post Levels" id="ol71"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s71"
+                            inlineStyle="font-size:large; font-weight:bold;"/>
+              <af:panelBox text="PanelBox6" id="pb5" showHeader="never">
+                <f:facet name="toolbar"/>
+                <af:panelSplitter id="ps1" styleClass="AFAuxiliaryStretchWidth"
+                                  splitterPosition="320"
+                                  inlineStyle="height:700.0px;">
+                  <f:facet name="first">
+                    <af:panelGroupLayout id="pgl1">
+                      <h:panelGrid columns="1" id="pg1">
+                        <af:outputLabel value="Systems" id="ol1"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s1"/>
+                      <af:panelCollection id="pc1"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:500.0px;">
+                        <af:table value="#{bindings.System.collectionModel}"
+                                  var="row" rows="#{bindings.System.rangeSize}"
+                                  emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.System.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                                  queryListener="#{bindings.SystemQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{postLevelsBacking.tblSystemsListener}"
+                                  rowSelection="single" id="t1"
+                                  binding="#{postLevelsBacking.tblSystems}">
+                          <af:column sortProperty="name" filterable="true"
+                                     sortable="true" headerText="System Name"
+                                     id="c4" width="314">
+                            <af:outputText value="#{row.name}" id="ot13"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout id="pgl2">
+                      <af:spacer width="10" height="20" id="s7"/>
+                      <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                        <af:panelGroupLayout id="pgl3">
+                          <h:panelGrid columns="1" id="pg2">
+                            <af:outputLabel value="Post Levels" id="ol2"
+                                            inlineStyle="font-weight:bold;"/>
+                          </h:panelGrid>
+                          <af:separator id="s4"/>
+                          <h:panelGrid columns="3" id="pg3">
+                            <af:commandButton text="New" id="btnNewPostLevel"
+                                              icon="/images/create.gif"
+                                              action="#{postLevelsBacking.actionNewPostLevel}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Edit" id="btnEditPostLevel"
+                                              icon="/images/update.gif"
+                                              action="#{postLevelsBacking.actionEditPostLevel}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Delete"
+                                              id="btnDeletePostLevel"
+                                              icon="/images/delete.gif"
+                                              action="#{postLevelsBacking.actionDeletePostLevel}"
+                                              partialSubmit="true"/>
+                          </h:panelGrid>
+                          <af:separator id="s3"/>
+                          <af:panelCollection id="pc2"
+                                              styleClass="AFAuxiliaryStretchWidth"
+                                              inlineStyle="height:200.0px;">
+                            <af:table value="#{bindings.SystemPostLevel.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.SystemPostLevel.rangeSize}"
+                                      emptyText="#{bindings.SystemPostLevel.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.SystemPostLevel.rangeSize}"
+                                      rowBandingInterval="1"
+                                      filterModel="#{bindings.SystemPostLevelQuery.queryDescriptor}"
+                                      queryListener="#{bindings.SystemPostLevelQuery.processQuery}"
+                                      filterVisible="false" varStatus="vs"
+                                      selectionListener="#{postLevelsBacking.tblSysPostLevelsListener}"
+                                      rowSelection="single" id="t2"
+                                      binding="#{postLevelsBacking.tblSysPostLevels}">
+                              <af:column sortProperty="sysplShtDesc"
+                                         filterable="true" sortable="true"
+                                         headerText="Short Desc" id="c6"
+                                         width="150">
+                                <af:outputText value="#{row.sysplShtDesc}"
+                                               id="ot1"/>
+                              </af:column>
+                              <af:column sortProperty="sysplDesc"
+                                         filterable="true" sortable="true"
+                                         headerText="Description" id="c3"
+                                         width="200">
+                                <af:outputText value="#{row.sysplDesc}"
+                                               id="ot6"/>
+                              </af:column>
+                              <af:column sortProperty="sysplWef"
+                                         filterable="true" sortable="true"
+                                         headerText="WEF" id="c5">
+                                <f:facet name="filter">
+                                  <af:inputDate value="#{vs.filterCriteria.sysplWef}"
+                                                id="id1"/>
+                                </f:facet>
+                                <af:outputText value="#{row.sysplWef}" id="ot5">
+                                  <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="sysplRanking"
+                                         filterable="true" sortable="true"
+                                         headerText="Ranking" id="c2">
+                                <af:outputText value="#{row.sysplRanking}"
+                                               id="ot2"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:spacer width="10" height="20" id="s2"/>
+                          <h:panelGrid columns="1" id="pg4">
+                            <af:outputLabel value="Posts" id="ol3"
+                                            inlineStyle="font-weight:bold;"/>
+                          </h:panelGrid>
+                          <af:separator id="s5"/>
+                          <af:panelBox text="PanelBox4" id="pb4"
+                                       showHeader="never"
+                                       binding="#{postLevelsBacking.panelSysPosts}">
+                            <af:panelGroupLayout id="pgl4">
+                              <af:panelSplitter id="ps2"
+                                                styleClass="AFAuxiliaryStretchWidth">
+                                <f:facet name="first">
+                                  <af:panelCollection id="pc3"
+                                                      styleClass="AFAuxiliaryStretchWidth"
+                                                      inlineStyle="height:300.0px;">
+                                    <f:facet name="toolbar">
+                                      <af:toolbar>
+                                        <af:commandButton text="New"
+                                                          id="btnNewPost"
+                                                          icon="/images/create.gif"
+                                                          action="#{postLevelsBacking.actionNewPost}"/>
+                                        <af:commandButton text="Delete"
+                                                          id="btnDeletePost"
+                                                          icon="/images/delete.gif"
+                                                          action="#{postLevelsBacking.actionDeletePost}"/>
+                                      </af:toolbar>
+                                    </f:facet>
+                                    <af:tree value="#{bindings.SystemPost.treeModel}"
+                                             var="node"
+                                             selectionListener="#{postLevelsBacking.treeSysPostsListener}"
+                                             rowSelection="single" id="t3"
+                                             binding="#{postLevelsBacking.treeSysPosts}">
+                                      <f:facet name="nodeStamp">
+                                        <af:outputText value="#{node}"
+                                                       id="ot3"/>
+                                      </f:facet>
+                                    </af:tree>
+                                  </af:panelCollection>
+                                </f:facet>
+                                <f:facet name="second">
+                                  <af:panelGroupLayout id="pgl5">
+                                    <h:panelGrid columns="3" id="pg5">
+                                      <af:commandButton text="Save"
+                                                        id="btnSaveUpdatePost"
+                                                        binding="#{postLevelsBacking.btnSaveUpdatePost}"
+                                                        icon="/images/update.gif"
+                                                        action="#{postLevelsBacking.actionSaveUpdatePost}"
+                                                        partialSubmit="true"/>
+                                    </h:panelGrid>
+                                    <af:separator id="s6"/>
+                                    <af:panelFormLayout id="pfl2">
+                                      <af:inputText label="System Code : "
+                                                    id="it6"
+                                                    binding="#{postLevelsBacking.txtSpostSysCode}"
+                                                    visible="false"
+                                                    showRequired="true"/>
+                                      <af:inputText label="Post Level Code : "
+                                                    id="it7"
+                                                    binding="#{postLevelsBacking.txtSpostSysplCode}"
+                                                    visible="false"
+                                                    showRequired="true"/>
+                                      <af:inputText label="Parent Post Code : "
+                                                    id="it8"
+                                                    binding="#{postLevelsBacking.txtSpostParentSpostCode}"
+                                                    visible="false"/>
+                                      <af:inputText label="Code : " id="it9"
+                                                    binding="#{postLevelsBacking.txtSpostCode}"
+                                                    visible="false"
+                                                    showRequired="true"/>
+                                      <af:inputText label="Short Description : "
+                                                    id="it10"
+                                                    binding="#{postLevelsBacking.txtSpostShtDesc}"
+                                                    showRequired="true"/>
+                                      <af:inputText label="Description : "
+                                                    id="it11"
+                                                    binding="#{postLevelsBacking.txtSpostDesc}"
+                                                    showRequired="true"/>
+                                      <af:inputText label="Remarks : " id="it12"
+                                                    binding="#{postLevelsBacking.txtSpostRemarks}"
+                                                    showRequired="true"/>
+                                      <af:inputDate label="WEF Date : " id="id3"
+                                                    binding="#{postLevelsBacking.txtSpostWef}"
+                                                    showRequired="true"/>
+                                      <af:panelLabelAndMessage label="Branch Code : "
+                                                               id="plam2">
+                                        <af:inputText id="it13"
+                                                      binding="#{postLevelsBacking.txtSpostBrnCode}"
+                                                      disabled="true"
+                                                      simple="true"/>
+                                        <af:commandButton id="cb2"
+                                                          icon="/images/dropdown.gif"
+                                                          shortDesc="Click To select Agency Branch"
+                                                          partialSubmit="true">
+                                          <af:showPopupBehavior popupId="agencyBranchPop"/>
+                                        </af:commandButton>
+                                      </af:panelLabelAndMessage>
+                                      <af:panelLabelAndMessage label="Sub Division : "
+                                                               id="plam1">
+                                        <af:inputText label="Label 1" id="it16"
+                                                      simple="true"
+                                                      disabled="true"
+                                                      binding="#{postLevelsBacking.txtSpostSubdivOsdName}"/>
+                                        <af:commandButton icon="/images/dropdown.gif"
+                                                          id="cb1"
+                                                          action="#{postLevelsBacking.actionShowSubDivisionsLov}"
+                                                          partialSubmit="true"/>
+                                      </af:panelLabelAndMessage>
+                                      <af:inputText label="SubDiv Code : "
+                                                    id="it14"
+                                                    binding="#{postLevelsBacking.txtSpostSubdivOsdCode}"
+                                                    disabled="true"
+                                                    visible="false"/>
+                                      <af:inputText label="User Code : "
+                                                    id="it15"
+                                                    binding="#{postLevelsBacking.txtSpostUsrCode}"
+                                                    visible="false"/>
+                                    </af:panelFormLayout>
+                                  </af:panelGroupLayout>
+                                </f:facet>
+                              </af:panelSplitter>
+                            </af:panelGroupLayout>
+                          </af:panelBox>
+                        </af:panelGroupLayout>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelBox>
+            </af:panelBox>
+            <af:popup id="postLevelPop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Post Level Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                  <af:panelFormLayout id="pfl1">
+                    
+                  <af:inputText label="System Code : " id="it2"
+                                binding="#{postLevelsBacking.txtSysplSysCode}" 
+                                visible="false"
+                                showRequired="true"/>
+                  
+                  <af:inputText label="Code : " id="it3"
+                                binding="#{postLevelsBacking.txtSysplCode}" 
+                                visible="false"
+                                showRequired="true"/>
+                  
+                  <af:inputText label="Short Description : " id="it4"
+                                binding="#{postLevelsBacking.txtSysplShtDesc}"
+                                showRequired="true"/>
+                  
+                  <af:inputText label="Description : " id="it5"
+                                binding="#{postLevelsBacking.txtSysplDesc}"
+                                showRequired="true"/>
+                  
+                  <af:inputNumberSpinbox label="Ranking : " id="ins1"
+                                          binding="#{postLevelsBacking.txtSysplRanking}"
+                                          showRequired="true"/>
+                  
+                  <af:inputDate label="WEF : " id="id2"
+                                binding="#{postLevelsBacking.txtSysplWef}" 
+                                showRequired="true"/>
+                                
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg7">
+                    <af:commandButton text="Save" id="cb8"
+                                      binding="#{postLevelsBacking.btnSaveUpdateSysPostLevel}"
+                                      action="#{postLevelsBacking.actionSaveUpdateSysPostLevel}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb9"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="orgSubdivisionsPop" contentDelivery="lazyUncached">
+              <af:dialog id="d10" title="Sub Divisions List" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl14">
+                  <af:panelBox text="PanelBox5" id="pb13" showHeader="never">
+                    <af:panelCollection id="pc9" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.OrgSubDivision.collectionModel}"
+                                var="row"
+                                rows="#{bindings.OrgSubDivision.rangeSize}"
+                                emptyText="#{bindings.OrgSubDivision.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.OrgSubDivision.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.OrgSubDivisionQuery.queryDescriptor}"
+                                queryListener="#{bindings.OrgSubDivisionQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.OrgSubDivision.collectionModel.makeCurrent}"
+                                rowSelection="single" 
+                                id="t4"
+                                binding="#{postLevelsBacking.tblSubdivisionsPop}">
+                        <af:column sortProperty="osdCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c7">
+                          <af:outputText value="#{row.osdCode}" id="ot4"/>
+                        </af:column>
+                        <af:column sortProperty="osdName" filterable="true"
+                                   sortable="true" headerText="Name" id="c1" 
+                                   width="200">
+                          <af:outputText value="#{row.osdName}" id="ot7"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg13">
+                      <af:commandButton text="Ok" id="btnAcceptSubDivision"
+                                        action="#{postLevelsBacking.actionAcceptSubDivision}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelSystemPost"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="agencyBranchPop" contentDelivery="lazyUncached">
+                  <af:dialog id="d12" type="none" title="Select a Branch">
+                    <af:panelGroupLayout id="pgl8">
+                      <af:panelCollection id="pc4" inlineStyle="width:260.0px;">
+                    <af:table value="#{bindings.AccountType.collectionModel}"
+                              var="row" rows="#{bindings.AccountType.rangeSize}"
+                              emptyText="#{bindings.AccountType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.AccountType.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.AccountTypeQuery.queryDescriptor}"
+                              queryListener="#{bindings.AccountTypeQuery.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              rowSelection="single" id="t5"
+                              binding="#{postLevelsBacking.tblAgencyBranch}">
+                      <af:column sortProperty="id" filterable="true"
+                                 sortable="true" headerText="ID" id="c9">
+                        <af:outputText value="#{row.id}" id="ot8"/>
+                      </af:column>
+                      <af:column sortProperty="name" filterable="true"
+                                 sortable="true" headerText="NAME" id="c8">
+                        <af:outputText value="#{row.name}" id="ot9"/>
+                      </af:column>
+                    </af:table>
+                      </af:panelCollection>
+                      <af:commandButton text="OK" id="cb23"
+                                        action="#{postLevelsBacking.actionAcceptAgencyBranch}"
+                                        partialSubmit="true"/>
+                    </af:panelGroupLayout>
+                  </af:dialog>
+                </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

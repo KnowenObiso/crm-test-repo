@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:tr="http://myfaces.apache.org/trinidad">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest">
+     
+     <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                   id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="client">
+        <f:facet name="center">
+        <af:panelGroupLayout id="pgl2">
+            <af:spacer height="10px" id="s1"/>
+           <af:messages id="m1" inline="true" rendered="true"
+                             inlineStyle="color:Red;"/>
+                              <table cellspacing="0" cellpadding="0" width="100%">
+              <tr valign="top">
+                <td style="width:20%;">
+                  <af:panelBox text="PanelBox2" id="pb2" showHeader="never"
+                               styleClass="AFStretchWidth">
+                    <h:panelGrid columns="1" id="pg3">
+                      <af:image source="/images/categories.gif" id="i1"/>
+                      <af:separator id="s8"/>
+      
+                    </h:panelGrid>
+                     <tr:tree value="#{bindings.Products3.treeModel}" var="node"
+                             id="t8" binding="#{QuotationManip.catListing}"
+                             selectionListener="#{QuotationManip.categorySelected}">
+                      <f:facet name="nodeStamp">
+                        <af:group id="g3">
+                          <af:commandLink text="#{node.twpcName}" id="cl3"
+                                          inlineStyle="font-weight:bold; text-decoration:underline; color:Black; font-size:small;"
+                                          actionListener="#{QuotationManip.categorySelectedEvnt}"
+                                          shortDesc="#{node.twpcCode}"/>
+                        </af:group>
+                      </f:facet>
+                    </tr:tree>
+                  </af:panelBox>
+                </td>
+                <td align="left" valign="top" style="width:80%;">
+                  <af:panelGroupLayout id="pgl3"
+                                       binding="#{QuotationManip.dtls}">
+                 
+                   <table cellspacing="2" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="25%">
+                    <af:commandImageLink id="cil1pd"
+                                         icon="/images/homeProducts.png"
+                                         action="#{Navigation.goProducts}"/>
+                  </td>
+                  <td width="25%">
+                    <af:commandImageLink id="cil2pt"
+                                         icon="/images/homeportfolio.png"
+                                         action="#{Navigation.goHome}"/>
+                  </td>
+                  <td width="25%">
+                    <af:commandImageLink id="cil3st"
+                                         icon="/images/homeStatement.png"
+                                         action="#{Navigation.goStatement}"/>
+                  </td>
+                  <td width="25%">
+                    <af:commandImageLink id="cil4cl"
+                                         icon="/images/homeClaims.png"
+                                         action="#{Navigation.goClaims}"/>
+                  </td>
+                </tr>
+              </table>
+                    <af:panelBox text="Life Categories" id="pb3" showHeader="never"
+                                 styleClass="AFStretchWidth"
+                                 binding="#{QuotationManip.lifeCategories}">
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="1" id="pg4">
+                        <af:outputLabel value="Product Categories" id="ol1"
+                                        inlineStyle="font-weight:bold; font-size:medium;"/>
+                        <af:separator id="s7"/>
+                        <af:spacer width="10" height="10" id="s6"/>
+                      </h:panelGrid>
+                      <tr:tree value="#{bindings.Products4.treeModel}"
+                               var="node" id="t9"
+                               inlineStyle="height:inherit; width:inherit;"
+                               binding="#{QuotationManip.catDetails}">
+                        <f:facet name="nodeStamp">
+                          <af:group id="g4">
+                            <h:panelGrid columns="1" id="pg6">
+                              <af:richTextEditor label="Label 2" readOnly="true"
+                                                 simple="true"
+                                                 contentStyle="width: 100%;"
+                                                 value="#{node.twpcDesc}"
+                                                 inlineStyle="width:inherit; text-align:justify;"
+                                                 id="rte1"/>
+                              <af:commandImageLink
+                                                   id="cil1"
+                                                   icon="/images/quote.gif"
+                                                   actionListener="#{QuotationManip.categoryDtlsSelectedEvnt}"
+                                                   shortDesc="#{node.twpcCode}"/>
+                              <af:commandLink text="more >>" id="cl5"
+                                              inlineStyle="text-decoration:underline; color:Black;"
+                                              actionListener="#{QuotationManip.categoryDtlsSelectedEvnt}"
+                                              shortDesc="#{node.twpcCode}"
+                                              rendered="false"/>
+                              <af:spacer width="10" height="30" id="s12"/>
+                            </h:panelGrid>
+                          </af:group>
+                        </f:facet>
+                      </tr:tree>
+                    </af:panelBox>
+                    <af:panelBox text="Category Products" id="pb4" rendered="false"
+                                 showHeader="never"
+                                 binding="#{QuotationManip.categoryProducts}">
+                      <f:facet name="toolbar"/>
+                      <af:richTextEditor label="Label 3" id="rte2"
+                                         contentStyle="width: 100%;"
+                                         inlineStyle="width:inherit; text-align:justify;"
+                                         readOnly="true"
+                                         binding="#{QuotationManip.categoryDtls}"
+                                         simple="true"/>
+                      <h:panelGrid columns="1" id="pg5">
+                        <af:spacer width="10" height="10" id="s9"/>
+                        <af:outputLabel value="Products" id="ol4"
+                                        inlineStyle="font-weight:bold;"/>
+                        <af:separator id="s11"/>
+                        <af:spacer width="10" height="10" id="s10"/>
+                      </h:panelGrid>
+                      <tr:tree value="#{bindings.Products6.treeModel}"
+                               var="node" id="t10"
+                               binding="#{QuotationManip.products}">
+                        <f:facet name="nodeStamp">
+                           <af:commandLink text="#{node.prodName}" 
+                                          inlineStyle="text-decoration:underline; color:Black; font-size:small;"
+                                          actionListener="#{QuotationManip.productSelectedEvnt}"
+                                          shortDesc="#{node.prodCode}"
+                                           id="cl4"/>
+                        </f:facet>
+                      </tr:tree>
+                    </af:panelBox>
+                    <af:panelBox text="Products" id="pb5" showHeader="never"
+                                 binding="#{QuotationManip.productTab}"
+                                 rendered="false">
+                      <f:facet name="toolbar"/>
+                      <af:richTextEditor label="Label 3" id="rte3"
+                                         contentStyle="width: 100%;"
+                                         inlineStyle="width:inherit; text-align:justify;"
+                                         readOnly="true"
+                                         binding="#{QuotationManip.prodOptDtls}"
+                                         simple="true"/>
+                      <tr:table value="#{bindings.Products5.collectionModel}"
+                                var="row" rows="#{bindings.Products5.rangeSize}"
+                                emptyText="#{bindings.Products5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                rowSelection="single" id="t11"
+                                horizontalGridVisible="false"
+                                inlineStyle="width:inherit; height:inherit; text-align:justify;"
+                                verticalGridVisible="false" width="100%"
+                                summary="Product Plans" first="0"
+                                binding="#{QuotationManip.productOption}">
+                        <tr:column sortProperty="twpoDesc" sortable="false"
+                                   id="c15"
+                                   inlineStyle="width:inherit; text-align:justify;"
+                                   headerText="Plan" width="100%">
+                                   <af:richTextEditor label="Label 3" 
+                                         contentStyle="width: 100%;"
+                                         inlineStyle="width:inherit; text-align:justify;"
+                                         readOnly="true"
+                                         binding="#{QuotationManip.productDtls}"
+                                         simple="true"
+                                                      value="#{row.bindings.twpoDesc.inputValue}"/>
+                        </tr:column>
+                      </tr:table>
+                      <h:panelGrid columns="1" id="pg8">
+                        <af:spacer width="10" height="10" id="s13"/>
+                        <af:outputLabel value="Other Details" id="ol10"
+                                        inlineStyle="font-weight:bold;"/>
+                        <af:separator id="s15"/>
+                        <af:spacer width="10" height="10" id="s14"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="2" id="pg7">
+                        <af:outputLabel value="Age" id="ol5"/>
+                        <af:inputNumberSpinbox label="Label 1" id="ins1"
+                                               simple="true"
+                                               binding="#{QuotationManip.txtAge}"/>
+                        <af:outputLabel value="Term" id="ol6"/>
+                        <af:inputNumberSpinbox label="Label 2" id="ins2"
+                                               simple="true"
+                                               binding="#{QuotationManip.txtTerm}"/>
+                        <af:outputLabel value="Frequency Of Payment" id="ol9"/>
+                        <af:selectOneChoice label="Label 1" id="soc1"
+                                            simple="true"
+                                            unselectedLabel="Select"
+                                            binding="#{QuotationManip.txtPayFreq}">
+                          <af:selectItem label="Daily" value="D" id="si6"/>
+                          <af:selectItem label="Weekly" value="W" id="si5"/>
+                          <af:selectItem label="Fortnight" value="F" id="si3"/>
+                          <af:selectItem label="Monthly" value="M" id="si4"/>
+                          <af:selectItem label="Quarterly" value="Q" id="si1"/>
+                          <af:selectItem label="Semi-Annually" value="S"
+                                         id="si2"/>
+                          <af:selectItem label="Annually" value="A" id="si7"/>
+                        </af:selectOneChoice>
+                        <af:outputLabel value="Premium" id="ol8"/>
+                        <af:inputNumberSpinbox label="Label 4" id="ins4"
+                                               simple="true"
+                                               binding="#{QuotationManip.txtPremium}"
+                                               converter="javax.faces.Number"/>
+                        <af:outputLabel value="Sum Assured" id="ol7"/>
+                        <af:inputNumberSpinbox label="Label 3" id="ins3"
+                                               simple="true"
+                                               binding="#{QuotationManip.txtSumAssured}"
+                                               converter="javax.faces.Number"/>
+                        <af:commandImageLink
+                                             id="cil3"
+                                             icon="/images/compute.png"
+                                             action="#{QuotationManip.computeQuote}"/>
+                        <af:commandImageLink
+                                             id="cil2" icon="/images/buy.gif"
+                                             action="#{QuotationManip.createComponents}"/>
+                      </h:panelGrid>
+                    </af:panelBox>
+                    <af:panelBox text="Proposal" id="pb6"
+                                 binding="#{QuotationManip.proposalTab}"
+                                 showHeader="never" rendered="false">
+                     <af:inputDate label="Label 1" id="id1"
+                          binding="#{QuotationManip.myDate}" visible="false">
+              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+            </af:inputDate>
+              <h:panelGrid columns="1" id="pg1"
+                           binding="#{QuotationManip.mainParent}"
+                           style="text-align:left; "/>
+                           <h:panelGrid columns="1" id="pg20">
+                <af:commandButton text="Save Details" id="cb3"
+                                  action="#{QuotationManip.saveProposalDetails}"/>
+              </h:panelGrid>
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </td>
+              </tr>
+            </table>
+          </af:panelGroupLayout>
+      </f:facet>
+    </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

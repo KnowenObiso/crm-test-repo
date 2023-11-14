@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="left">
+                    <af:inputText id="it1" helpTopicId="CRMsectors" columns="13"
+                                  readOnly="true" shortDesc="Help"/>
+                  </td>
+                  <td width="100%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Client Loading" id="ol1"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <h:panelGrid columns="4" id="pg26">
+                <af:outputLabel value="Select Option" id="ol23"/>
+                <af:selectOneChoice label="Label 2" id="soc2" simple="true"
+                                    autoSubmit="true" value="N"
+                                    valueChangeListener="#{uploadClients.setValuesClient}"
+                                    binding="#{uploadClients.optionSelected}">
+                  <af:selectItem label="Show Not Loaded" value="N" id="si5"/>
+                  <af:selectItem label="Show Loaded" value="L" id="si3"/>
+                  <af:selectItem label="Show All" value="A" id="si4"/>
+                </af:selectOneChoice>
+                <af:commandButton text="Select All" id="cb11"
+                                  action="#{uploadClients.selectAllActions}"/>
+                <af:commandButton text="Un Select All" id="cb13"
+                                  action="#{uploadClients.unselectAllAction}"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="8" id="pg2">
+                  <af:commandButton text="Edit" id="btnEditSector"
+                                    icon="/images/update.gif"
+                                    action="#{uploadClients.editClient}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteSector"
+                                    icon="/images/delete.gif"
+                                    partialSubmit="true"
+                                    action="#{uploadClients.deleteClient}"/>
+                  <af:inputFile label="Select A File to Upload" id="if111"
+                                binding="#{uploadClients.upFile}"
+                                valueChangeListener="#{uploadClients.fileChangeListenerClntAgn}"
+                                autoSubmit="true" immediate="true"/>
+                  <af:commandButton text="Download Template" id="cb2opp">
+                    <af:fileDownloadActionListener method="#{uploadClients.downloadClientTemplate}"
+                                                   filename="client_upload_template.csv"
+                                                   contentType="text/csv"/>
+                  </af:commandButton>
+                  <af:commandButton text="Assign All to GIS" id="cb6"
+                                    action="#{uploadClients.selectAllAction}"
+                                    binding="#{uploadClients.selectAllClients}"/>
+                  <af:commandButton text="Assign All To Lms" id="cb3"
+                                    action="#{uploadClients.selectAllActionLms}"/>
+                  <af:commandButton text="UnAsn All Frm GIS" id="cb7"
+                                    action="#{uploadClients.unselectAllGisAction}"/>
+                  <af:commandButton text="UnAsn All Frm LMS" id="cb5"
+                                    action="#{uploadClients.unselectAllLmsAction}"/>
+                </h:panelGrid>
+                <af:table value="#{bindings.Client21.collectionModel}" var="row"
+                          rows="#{bindings.Client21.rangeSize}"
+                          emptyText="#{bindings.Client21.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Client21.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.Client21Query.queryDescriptor}"
+                          queryListener="#{bindings.Client21Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.Client21.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.Client21.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1"
+                          binding="#{uploadClients.clientsDataTbl}"
+                          inlineStyle="width:850.0px;">
+                  <af:column filterFeatures="caseInsensitive"
+                             sortProperty="checked" id="c48"
+                             headerText="Select Client To Load">
+                    <af:selectBooleanCheckbox value="#{row.checked}"
+                                              label="Label 1" id="sbc1"
+                                              binding="#{uploadClients.rowChecked}"/>
+                  </af:column>
+                  <af:column sortProperty="code" sortable="false"
+                             headerText="Assign Client To Gis" id="c11">
+                    <af:selectBooleanCheckbox value="#{row.selected}"
+                                              label="Label 1" id="sbc522421"
+                                              binding="#{uploadClients.selected}"/>
+                  </af:column>
+                  <af:column sortProperty="code" sortable="false"
+                             headerText="Assign Client To Lms" id="c20">
+                    <af:selectBooleanCheckbox value="#{row.select}"
+                                              label="Label 1" id="sbc2"
+                                              binding="#{uploadClients.select}"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CODE" filterable="true"
+                             visible="false" sortable="true"
+                             headerText="Client Code" id="c2">
+                    <af:outputText value="#{row.CLN_CODE}" id="ot10"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_SHT_DESC" filterable="true"
+                             sortable="true" headerText="Client Sht Desc"
+                             id="c14">
+                    <af:outputText value="#{row.CLN_CLNT_SHT_DESC}" id="ot12"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_NAME" filterable="true"
+                             sortable="true" headerText="Client Name" id="c10">
+                    <af:outputText value="#{row.CLN_CLNT_NAME}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_OTHER_NAMES"
+                             filterable="true" sortable="true"
+                             headerText="Client Other Names" id="c1">
+                    <af:outputText value="#{row.CLN_CLNT_OTHER_NAMES}"
+                                   id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_ID_REG_NO" filterable="true"
+                             sortable="true" headerText="Id Reg Number" id="c7">
+                    <af:outputText value="#{row.CLN_CLNT_ID_REG_NO}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_DOB" filterable="true"
+                             sortable="true" headerText="Date Of Birth"
+                             id="c12">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.CLN_CLNT_DOB}"
+                                    id="id1"/>
+                    </f:facet>
+                    <af:outputText value="#{row.CLN_CLNT_DOB}" id="ot9">
+                      <af:convertDateTime pattern="#{bindings.Client21.hints.CLN_CLNT_DOB.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_PHYSICAL_ADDRS"
+                             filterable="true" sortable="true"
+                             headerText="Physical Address" id="c9">
+                    <af:outputText value="#{row.CLN_CLNT_PHYSICAL_ADDRS}"
+                                   id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_POSTAL_ADDRS"
+                             filterable="true" sortable="true"
+                             headerText="Postal Address" id="c5">
+                    <af:outputText value="#{row.CLN_CLNT_POSTAL_ADDRS}"
+                                   id="ot13"/>
+                  </af:column>
+                  <af:column sortProperty="townCode" sortable="true"
+                             headerText="Town Name" id="c3">
+                    <af:outputText value="#{row.townCode}" id="ot8"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_TEL" filterable="true"
+                             sortable="true" headerText="Tel Number 1" id="c13">
+                    <af:outputText value="#{row.CLN_CLNT_TEL}" id="ot11"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_TEL2" filterable="true"
+                             sortable="true" headerText="Tel Number 2" id="c8">
+                    <af:outputText value="#{row.CLN_CLNT_TEL2}" id="ot2"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_FAX" filterable="true"
+                             sortable="true" headerText="Fax Number" id="c4">
+                    <af:outputText value="#{row.CLN_CLNT_FAX}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="CLN_CLNT_CNTCT_EMAIL_1"
+                             filterable="true" sortable="true"
+                             headerText="Email Address" id="c6">
+                    <af:outputText value="#{row.CLN_CLNT_CNTCT_EMAIL_1}"
+                                   id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="clnRemarks" sortable="false"
+                             headerText="Remarks" id="c15">
+                    <af:outputText value="#{row.clnRemarks}" id="ot14"/>
+                  </af:column>
+                </af:table>
+                <af:separator id="s2"/>
+              </af:panelBox>
+              <af:spacer width="10" height="20" id="s3"/>
+              <af:commandButton text="Load Selected Clients" id="cb4"
+                                action="#{uploadClients.loadClientAction}"/>
+            </af:panelBox>
+            <af:popup id="editClientPopup" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Edit Client" type="none">
+                <af:panelBox text="PanelBox3" id="pb4" showHeader="never">
+                  <f:facet name="toolbar"/>
+                  <af:panelFormLayout id="pfl1" inlineStyle="width:330.0px;">
+                    <af:inputText label="Client sht Desc :" id="txtHoldCompCode"
+                                  visible="false" disabled="true"
+                                  binding="#{uploadClients.txtClientShtDesc}"/>
+                    <af:inputText label="Client Name :" id="txtHoldCompName"
+                                  showRequired="true"
+                                  binding="#{uploadClients.txtClientNames}"/>
+                    <af:inputText label="Client Other Name :" id="it2"
+                                  binding="#{uploadClients.txtClientOthernames}"/>
+                    <af:inputText label="Reg number :" id="it3"
+                                  binding="#{uploadClients.txtRegNumber}"/>
+                    <af:inputDate label="Client Date of Birth" id="id7"
+                                  binding="#{uploadClients.txtClientDateOfBirth}">
+                      <af:convertDateTime pattern="dd/MM/yyyy"
+                                          secondaryPattern="ddMMyyyy"/>
+                    </af:inputDate>
+                    <af:inputText label="Physical Address :" id="it5"
+                                  binding="#{uploadClients.txtClientsPhyAddress}"/>
+                    <af:inputText label="Postal Address :" id="it6"
+                                  binding="#{uploadClients.txtPostalAddressClient}"/>
+                    <af:inputText label="Town Name" id="it4"
+                                  binding="#{uploadClients.txtTownName}"/>
+                    <af:inputText label="Telephone Number 1" id="it7"
+                                  binding="#{uploadClients.txtTelNumber}"/>
+                    <af:inputText label="Telephone Number 1" id="it10"
+                                  binding="#{uploadClients.txtTelNumber2}"/>
+                    <af:inputText label="Email Address" id="it8"
+                                  binding="#{uploadClients.txtEmailAddresscln}"/>
+                    <af:inputText label="Fax Number" id="it9"
+                                  binding="#{uploadClients.txtFaxNumber}"/>
+                  </af:panelFormLayout>
+                </af:panelBox>
+                <h:panelGrid columns="2" id="pg3">
+                  <af:commandButton text="Save" id="btnCreateUpdateHoldComp"
+                                    action="#{uploadClients.saveClientDetails}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="cb1"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="ClientTypePop" contentDelivery="lazyUncached">
+              <af:dialog id="d3" title="Add/Edit Client Types" type="none">
+                <af:panelGroupLayout id="pgl1">
+                  <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                    <af:panelFormLayout id="pfl2" inlineStyle="width:300.0px;">
+                      <af:selectOneChoice label="Client Category" id="soc1"
+                                          showRequired="true" autoSubmit="true"
+                                          unselectedLabel="select"
+                                          immediate="true"
+                                          binding="#{baseSetupBacking.txtClientCategory}"
+                                          valuePassThru="true">
+                        <af:selectItem label="Individual" value="Individual"
+                                       id="si2"/>
+                        <af:selectItem label="Corporate" value="Corporate"
+                                       id="si10"/>
+                      </af:selectOneChoice>
+                    </af:panelFormLayout>
+                    <af:commandButton text="Save" id="btnCreateUpdateSector"
+                                      action="#{baseSetupBacking.actionCreateUpdateClientType}"/>
+                    <af:commandButton text="Cancel" id="cb2"/>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

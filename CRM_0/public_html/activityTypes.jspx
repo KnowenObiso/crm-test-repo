@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="panelGrid1">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+            </table>
+            
+            <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="Systems" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              
+              <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth" 
+                                  inlineStyle="height:200.0px;">
+                <af:table value="#{bindings.System.collectionModel}" var="row"
+                          rows="#{bindings.System.rangeSize}"
+                          emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.System.rangeSize}"
+                          rowBandingInterval="1"
+                          filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                          queryListener="#{bindings.SystemQuery.processQuery}"
+                          filterVisible="false" varStatus="vs"
+                          selectionListener="#{activityTypesBacking.tblSystemsListener}"
+                          rowSelection="single" 
+                          id="t1"
+                          binding="#{activityTypesBacking.tblSystems}">
+                  <af:column sortProperty="shortDesc" filterable="true"
+                             sortable="true" headerText="Short Desc" id="c1" 
+                             width="200">
+                    <af:outputText value="#{row.shortDesc}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="name" filterable="true"
+                             sortable="true" headerText="Name" id="c3" 
+                             width="300">
+                    <af:outputText value="#{row.name}" id="ot2"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+              
+              <af:spacer width="10" height="20" id="s6"/>
+				  
+              <h:panelGrid columns="2" id="pg4">
+                <af:outputLabel value="Activity Type" id="ol2"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s4"/>
+              
+              <h:panelGrid columns="3" id="pg3">
+                    
+                <af:commandButton text="New"
+                                  id="btnNewActivityType" 
+                                  icon="/images/create.gif"
+                                  action="#{activityTypesBacking.actionNewActivityType}"/>
+                                  
+                <af:commandButton text="Edit" 
+                                  id="btnEditActivityType" 
+                                  icon="/images/update.gif"
+                                  action="#{activityTypesBacking.actionEditActivityType}"/>
+                                  
+                <af:commandButton text="Delete" 
+                                  id="btnDeleteActivityType" 
+                                  icon="/images/delete.gif"
+                                  action="#{activityTypesBacking.actionDeleteActivityType}"/>
+              </h:panelGrid>
+              <af:separator id="s3"/>
+              
+              <af:panelCollection id="pc2" styleClass="AFAuxiliaryStretchWidth" 
+                                  inlineStyle="height:200.0px;">
+                <af:table value="#{bindings.ActivityType.collectionModel}"
+                          var="row" rows="#{bindings.ActivityType.rangeSize}"
+                          emptyText="#{bindings.ActivityType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.ActivityType.rangeSize}"
+                          rowBandingInterval="1"
+                          filterModel="#{bindings.ActivityTypeQuery.queryDescriptor}"
+                          queryListener="#{bindings.ActivityTypeQuery.processQuery}"
+                          filterVisible="false" varStatus="vs"
+                          selectionListener="#{bindings.ActivityType.collectionModel.makeCurrent}"
+                          rowSelection="single" 
+                          id="t2"
+                          binding="#{activityTypesBacking.tblActivityType}">
+                  <af:column sortProperty="actyDesc" filterable="true"
+                             sortable="true" headerText="Description" id="c5" 
+                             width="300">
+                    <af:outputText value="#{row.actyDesc}" id="ot5"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+              
+            </af:panelBox>
+            
+            <af:popup id="activityTypePop">
+              <af:dialog id="d2" title="Activity Type Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl1">
+                  <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                    <af:panelFormLayout id="pfl1">
+                    
+                      <af:inputText label="Code : " id="txtActyCode"
+                                    binding="#{activityTypesBacking.txtActyCode}" 
+                                    visible="false"
+                                    showRequired="true"/>
+                      
+                      <af:inputText label="System Code : " id="txtActySysCode"
+                                    binding="#{activityTypesBacking.txtActySysCode}" 
+                                    visible="false"
+                                    showRequired="true"/>
+                      
+                      <af:inputText label="Description : " id="txtActyDesc"
+                                    binding="#{activityTypesBacking.txtActyDesc}" 
+                                    showRequired="true"/>
+                      
+                    </af:panelFormLayout>
+                    
+                    <h:panelGrid columns="2" id="pg5">
+                      <af:commandButton text="Save" id="cb6"
+                                        binding="#{activityTypesBacking.btnSaveUpdateActivityType}"
+                                        action="#{activityTypesBacking.actionSaveUpdateActivityType}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="cb7"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="p1">
+              <af:panelBox text="PanelBox3" id="pb3">
+                <f:facet name="toolbar"/>
+                <h:outputLabel value="Duplicate Activities Not allowed ,"
+                               id="ol3"/>
+              </af:panelBox>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

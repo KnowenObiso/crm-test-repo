@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              
+              <table width="100%">
+            <tr><td  align="right">
+            <h:panelGrid columns="2" id="pg33">
+                <af:inputText id="it1" helpTopicId="CRMcurrencies" columns="13"
+                              readOnly="true" shortDesc="Help"/>
+                <af:statusIndicator id="si1"/>
+              </h:panelGrid>
+            </td></tr>
+              </table>
+              <af:panelBox text="PanelBox20" id="pb3"
+                           showHeader="never" rendered="true">
+                <f:facet name="toolbar"/>
+                <af:outputLabel value="Mail Settings" id="ol20"
+                                inlineStyle="font-weight:bold;"/>
+                <af:separator id="s2"/>
+                <af:panelTabbed id="pt1">
+                  <af:showDetailItem text="Outgoing Mail" id="sdi1">
+                    <h:panelGrid columns="2" id="pg1">
+                     <af:outputLabel value="Type" id="ol6"
+                                      showRequired="true"/>
+                      <af:selectOneChoice label="Label 1" id="soc1"
+                                          simple="true" unselectedLabel="Type"
+                                          binding="#{ServiceRequest.outType}"
+                                          value="#{bindings.mailType1.inputValue}">
+                        <af:selectItem label="NORMAL" value="NORMAL" id="si3"/>
+                        <af:selectItem label="GOOGLE" value="GOOGLE" id="si2"/>
+                      </af:selectOneChoice>
+                      <af:outputLabel value="Secure" id="ol13"/>
+                      <af:selectBooleanCheckbox
+                                                label="Label 2" id="sbc2"
+                                                value="#{bindings.secure.inputValue}"
+                                                simple="true"
+                                                binding="#{ServiceRequest.outSecure}"/>
+                      <af:outputLabel value="Server Name" id="ol1"
+                                      showRequired="true"/>
+                      <af:inputText label="#{bindings.mailServerName.hints.label}" id="it2" simple="true"
+                                    binding="#{ServiceRequest.outServ}"
+                                    value="#{bindings.mailServerName.inputValue}"
+                                    required="#{bindings.mailServerName.hints.mandatory}"
+                                    columns="#{bindings.mailServerName.hints.displayWidth}"
+                                    maximumLength="#{bindings.mailServerName.hints.precision}">
+                        <f:validator binding="#{bindings.mailServerName.validator}"/>
+                      </af:inputText>
+                      <af:outputLabel value="Host" id="ol2"
+                                      showRequired="true"/>
+                      <af:inputText label="#{bindings.mailHost.hints.label}" id="it3" simple="true"
+                                    binding="#{ServiceRequest.outHost}"
+                                    value="#{bindings.mailHost.inputValue}"
+                                    required="#{bindings.mailHost.hints.mandatory}"
+                                    columns="#{bindings.mailHost.hints.displayWidth}"
+                                    maximumLength="#{bindings.mailHost.hints.precision}">
+                        <f:validator binding="#{bindings.mailHost.validator}"/>
+                      </af:inputText>
+                      <af:outputLabel value="Port" id="ol3"/>
+                      <af:inputNumberSpinbox label="Label 3" id="it4" simple="true"
+                                    binding="#{ServiceRequest.outPort}"
+                                             value="#{bindings.mailPort.inputValue}"/>
+                      <af:outputLabel value="Username" id="ol4"/>
+                      <af:inputText label="#{bindings.mailUsername.hints.label}" id="it5" simple="true"
+                                    binding="#{ServiceRequest.outUser}"
+                                    value="#{bindings.mailUsername.inputValue}"
+                                    required="#{bindings.mailUsername.hints.mandatory}"
+                                    columns="#{bindings.mailUsername.hints.displayWidth}"
+                                    maximumLength="#{bindings.mailUsername.hints.precision}">
+                        <f:validator binding="#{bindings.mailUsername.validator}"/>
+                      </af:inputText>
+                      <af:outputLabel value="Password" id="ol5"/>
+                      <af:inputText label="#{bindings.mailPass.hints.label}" id="it6" simple="true"
+                                    secret="true"
+                                    binding="#{ServiceRequest.outPasword}"
+                                    value="#{bindings.mailPass.inputValue}"
+                                    required="#{bindings.mailPass.hints.mandatory}"
+                                    columns="#{bindings.mailPass.hints.displayWidth}"
+                                    maximumLength="#{bindings.mailPass.hints.precision}">
+                        <f:validator binding="#{bindings.mailPass.validator}"/>
+                      </af:inputText>
+                      <af:outputLabel value="From Email" id="ol12"
+                                      showRequired="true"/>
+                      <af:inputText label="#{bindings.mailEmail.hints.label}" id="it12" simple="true"
+                                    binding="#{ServiceRequest.outEmail}"
+                                    value="#{bindings.mailEmail.inputValue}"
+                                    required="#{bindings.mailEmail.hints.mandatory}"
+                                    columns="#{bindings.mailEmail.hints.displayWidth}"
+                                    maximumLength="#{bindings.mailEmail.hints.precision}">
+                        <f:validator binding="#{bindings.mailEmail.validator}"/>
+                      </af:inputText>
+                      <af:commandButton text="Save" id="cb1"
+                                        action="#{ServiceRequest.saveOut}"/>
+                      <af:commandButton text="Test" id="cb2"
+                                        action="#{ServiceRequest.testOut}"/>
+                    </h:panelGrid>
+                  </af:showDetailItem>
+                  <af:showDetailItem text="Incoming Mail" id="sdi2">
+                    <h:panelGrid columns="2" id="pg2">
+                      <af:outputLabel value="Type" id="ol14"
+                                      showRequired="true"/>
+                      <af:selectOneChoice label="Label 1" id="soc2"
+                                          simple="true" unselectedLabel="Type"
+                                          binding="#{ServiceRequest.inType}"
+                                          value="#{bindings.mailType.inputValue}">
+                        <af:selectItem label="POP3" value="pop3" id="si4"/>
+                        <af:selectItem label="IMAP" value="imap" id="si5"/>
+                      </af:selectOneChoice>
+                      <af:outputLabel value="Secure" id="ol15"/>
+                      <af:selectBooleanCheckbox
+                                                label="Label 1" id="sbc1"
+                                                simple="true"
+                                                value="#{bindings.secure1.inputValue}"
+                                                binding="#{ServiceRequest.inSecure}"/>
+                      <af:outputLabel value="Server Name" id="ol7"
+                                      showRequired="true"/>
+                      <af:inputText label="#{bindings.mailServerName1.hints.label}" id="it7" simple="true"
+                                    binding="#{ServiceRequest.inServ}"
+                                    value="#{bindings.mailServerName1.inputValue}"
+                                    required="#{bindings.mailServerName1.hints.mandatory}"
+                                    columns="#{bindings.mailServerName1.hints.displayWidth}"
+                                    maximumLength="#{bindings.mailServerName1.hints.precision}">
+                        <f:validator binding="#{bindings.mailServerName1.validator}"/>
+                      </af:inputText>
+                      <af:outputLabel value="Host" id="ol8"
+                                      showRequired="true"/>
+                      <af:inputText label="#{bindings.mailHost1.hints.label}" id="it8" simple="true"
+                                    binding="#{ServiceRequest.inHost}"
+                                    value="#{bindings.mailHost1.inputValue}"
+                                    required="#{bindings.mailHost1.hints.mandatory}"
+                                    columns="#{bindings.mailHost1.hints.displayWidth}"
+                                    maximumLength="#{bindings.mailHost1.hints.precision}">
+                        <f:validator binding="#{bindings.mailHost1.validator}"/>
+                      </af:inputText>
+                      <af:outputLabel value="Port" id="ol9"
+                                      showRequired="true"/>
+                      <af:inputNumberSpinbox label="Label 8" id="it9" simple="true"
+                                    binding="#{ServiceRequest.inPort}"
+                                             value="#{bindings.mailPort1.inputValue}"/>
+                      <af:outputLabel value="Username" id="ol10"
+                                      showRequired="true"/>
+                      <af:inputText label="Label 9" id="it10" simple="true"
+                                    binding="#{ServiceRequest.inUse}"
+                                    value="#{bindings.mailUsername1.inputValue}"/>
+                      <af:outputLabel value="Password" id="ol11"
+                                      showRequired="true"/>
+                      <af:inputText label="#{bindings.mailPass1.hints.label}" id="it11" simple="true"
+                                    secret="true"
+                                    binding="#{ServiceRequest.inPass}"
+                                    value="#{bindings.mailPass1.inputValue}"
+                                    required="#{bindings.mailPass1.hints.mandatory}"
+                                    columns="#{bindings.mailPass1.hints.displayWidth}"
+                                    maximumLength="#{bindings.mailPass1.hints.precision}">
+                        <f:validator binding="#{bindings.mailPass1.validator}"/>
+                      </af:inputText>
+                      <af:commandButton text="Save" id="cb3"
+                                        action="#{ServiceRequest.saveIn}"/>
+                      <af:commandButton text="Test" id="cb4"
+                                        action="#{ServiceRequest.testIn}"/>
+                    </h:panelGrid>
+                  </af:showDetailItem>
+                </af:panelTabbed>
+              </af:panelBox>
+            </af:panelBox>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:panelGroupLayout id="pgl1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+        <table cellspacing="0" cellpadding="0" border="0" width="100%">
+          <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+        </table>
+        
+        <h:panelGrid columns="2" id="pg1">
+          <af:outputLabel value="Mobile SMS Inbox" id="ol1"
+                            inlineStyle="font-weight:bold;"/>
+        </h:panelGrid>
+        <af:separator id="s1"/>
+        
+              <af:panelTabbed id="pt1" styleClass="AFAuxiliaryStretchWidth" 
+                              inlineStyle="height:400.0px;">
+              
+                <af:showDetailItem text="New Messages" id="sdi1">                  
+                  <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                    <af:panelGroupLayout id="pgl2">
+                    
+                    </af:panelGroupLayout>
+                  </af:panelBox>                  
+                </af:showDetailItem>
+                
+                <af:showDetailItem text="Assigned Messages" id="sdi2">
+                  <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                    <af:panelGroupLayout id="pgl3">
+                    
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                </af:showDetailItem>
+                
+                <af:showDetailItem text="Replied Messages" id="sdi3">
+                  <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                    <af:panelGroupLayout id="pgl4">
+                    
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                </af:showDetailItem>
+                
+              </af:panelTabbed>
+              
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

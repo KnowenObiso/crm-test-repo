@@ -1,0 +1,344 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                   id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox10" id="pb11" showHeader="never"
+                         inlineStyle="width:1200.0px;">
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="inputText1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <f:facet name="toolbar"/>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Reports Definition" id="ol1"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s13"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <af:panelSplitter id="ps1" inlineStyle="height:590.0px;"
+                                  styleClass="AFAuxiliaryStretchWidth"
+                                  splitterPosition="250">
+                  <f:facet name="first">
+                    <af:panelGroupLayout layout="scroll"
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl1">
+                     <af:panelBox text="PanelBox11" id="pb12"
+                                   showHeader="never"
+                                   inlineStyle="width:250px;">
+                        <f:facet name="toolbar"/>
+                        <af:table value="#{bindings.Report.collectionModel}"
+                                  var="row" rows="#{bindings.Report.rangeSize}"
+                                  emptyText="#{bindings.Report.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Report.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.ReportQuery.queryDescriptor}"
+                                  queryListener="#{bindings.ReportQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                 selectionListener="#{ReportManipulation.selectReportModule}"
+                                  rowSelection="single" id="t1"
+                                  binding="#{ReportManipulation.reportsModuleTbl}"
+                                  inlineStyle="width:100%;height:530px; ">
+                          <af:column sortProperty="srmName" filterable="true" width="250"
+                                     sortable="true" headerText="Name" id="c2">
+                            <af:outputText value="#{row.srmName}" id="ot7"/>
+                          </af:column>
+                          <af:column sortProperty="srmDesc" filterable="true" visible="false"
+                                     sortable="true" headerText="Desc" id="c4">
+                            <af:outputText value="#{row.srmDesc}" id="ot4"/>
+                          </af:column>
+                          <af:column sortProperty="srmSysName" filterable="true"
+                                     sortable="true" headerText="System" visible="false"
+                                     id="c5">
+                            <af:outputText value="#{row.srmSysName}" id="ot6"/>
+                          </af:column>
+                          <af:column sortProperty="srmCode" filterable="true" visible="false"
+                                     sortable="true" headerText="Code" id="c1">
+                            <af:outputText value="#{row.srmCode}" id="ot8"/>
+                          </af:column>
+                          <af:column sortProperty="srmSysCode" filterable="true" visible="false"
+                                     sortable="true" headerText="System Code"
+                                     id="c3">
+                            <af:outputText value="#{row.srmSysCode}" id="ot5"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout id="pgl2">
+                      <h:panelGrid columns="4" id="pg0">
+                        <af:outputText value="Module Name" id="ot1"/>
+                        <af:inputText simple="true" label="Module Name : "
+                                      id="txtCountryCode" disabled="true"
+                                      showRequired="true" inlineStyle="font-weight:bold;"
+                                      binding="#{ReportManipulation.moduleName}"/>
+                        <af:outputText value="Module Description" id="ot2"/>
+                        <af:inputText simple="true"
+                                      label="Module Description : " inlineStyle="font-weight:bold;"
+                                      id="txtCountryShtDesc" showRequired="true"
+                                      disabled="true"
+                                      binding="#{ReportManipulation.moduleDescription}"/>
+                        <af:outputText value="System" id="ot3"/>
+                        <af:inputText simple="true" label="System : " inlineStyle="font-weight:bold;"
+                                      id="txtCountryName" showRequired="true"
+                                      disabled="true"
+                                      binding="#{ReportManipulation.systems}"/>
+                      </h:panelGrid>
+                          <af:panelBox text="PanelBox2" id="panelCountryDetails"
+                                       showHeader="never" 
+                                       binding="#{baseSetupBacking.panelCountryDetails}">
+                                       <af:outputLabel value="Sub Module" id="ol4"/>
+                            <h:panelGrid columns="6" id="pg2">
+                              
+                        <af:commandButton text="New" id="cb1"
+                                          icon="/images/create.gif"
+                                          action="#{ReportManipulation.newReportSubMod}"/>
+                        <af:spacer width="10" height="10" id="s2"/>
+                        <af:commandButton text="Edit" id="cb2"
+                                          icon="/images/update.gif"
+                                          action="#{ReportManipulation.editReportSubMod}"/>
+                        <af:spacer width="10" height="10" id="s3"/>
+                        <af:commandButton text="Delete" id="cb3" visible="false"
+                                          icon="/images/delete.gif"
+                                          action="#{campaignBackingBean.actionDeleteCampaign}"/>
+                     </h:panelGrid>
+                        
+                        <af:table value="#{bindings.Report1.collectionModel}"
+                                  var="row" rows="#{bindings.Report1.rangeSize}"
+                                  emptyText="#{bindings.Report1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Report1.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.Report1Query.queryDescriptor}"
+                                  queryListener="#{bindings.Report1Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                 selectionListener="#{ReportManipulation.selectReportSubModule}"
+                                  rowSelection="single" id="t2"
+                                  binding="#{ReportManipulation.subModuleTbl}"
+                                  inlineStyle="width:100%; height:120.0px;">
+                    
+                          <af:column sortProperty="rsmCode" filterable="true" visible="false"
+                                     sortable="true" headerText="Code" id="c6">
+                            <af:outputText value="#{row.rsmCode}" id="ot11"/>
+                          </af:column>
+                          <af:column sortProperty="rsmName" filterable="true" width="300"
+                                     sortable="true" headerText="Name" id="c8">
+                            <af:outputText value="#{row.rsmName}" id="ot9"/>
+                          </af:column>
+                          <af:column sortProperty="rsmDesc" filterable="true" width="300"
+                                     sortable="true" headerText="Desc" id="c7">
+                            <af:outputText value="#{row.rsmDesc}" id="ot10"/>
+                          </af:column>
+                        </af:table>
+                           <af:popup id="subModulePop"
+                                    contentDelivery="lazyUncached">
+                            <af:dialog id="d2" title="Add/Edit Sub Module" type="none">
+                              <af:panelGroupLayout id="pgl3">
+                                <af:panelBox text="PanelBox3" id="pb4"
+                                             showHeader="never">
+                                  <f:facet name="toolbar"/>
+                                <af:panelFormLayout id="pfl2"
+                                                    inlineStyle="width:300.0px;">
+                                  <h:panelGrid columns="2" id="pg3">
+                                    <af:outputLabel value="Name" id="ol2"/>
+                                    <af:inputText label="Label 1" simple="true"
+                                                  id="it1"
+                                                  binding="#{ReportManipulation.txtName}"/>
+                                    <af:outputLabel value="Description"
+                                                    id="ol3"/>
+                                    <af:inputText label="Label 2" simple="true"
+                                                  id="it2"
+                                                  binding="#{ReportManipulation.txtReportSubDesc}"/>
+                                  </h:panelGrid>
+                                  <f:facet name="footer"/>
+                                </af:panelFormLayout>
+                              </af:panelBox>
+                              </af:panelGroupLayout>
+                              <af:commandButton text="Save"
+                                                id="btnCreateUpdateTown"
+                                                action="#{ReportManipulation.saveSubModuleDtls}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Cancel"
+                                                id="btnCancelTown"/>
+                            </af:dialog>
+                          </af:popup>
+                        <af:panelBox  id="pb2" inlineStyle="width:900.0px;">
+                          <f:facet name="toolbar"/>
+                      
+                        <h:panelGrid columns="3" id="pg34">
+                          <af:outputLabel value="All Reports" id="ol15"
+                                          inlineStyle="font-weight:bold;"/>
+                       
+                          <af:outputLabel id="ol16"/>
+                          <af:outputLabel value="Assigned Reports" id="ol18"
+                                          inlineStyle="font-weight:bold;"/>
+                        <af:panelBox id="pb3">
+                              <f:facet name="toolbar"/>
+                              <af:commandButton text="Save"
+                                                id="cb4"
+                                                action="#{ReportManipulation.UpdateReport}"/>
+                          <af:panelCollection id="pc13"
+                                              inlineStyle="width:400.0px;">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.Report4.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Report4.rangeSize}"
+                                      emptyText="#{bindings.Report4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Report4.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.Report3Query.queryDescriptor}"
+                                      queryListener="#{bindings.Report3Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectionListener="#{bindings.Report4.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t4"
+                                      binding="#{ReportManipulation.allReportsTbl}">
+                              <af:column sortProperty="selected"
+                                         filterable="true" sortable="true"
+                                         id="c7411" width="20">
+                                <af:selectBooleanCheckbox value="#{row.selected}"
+                                                          id="ot6511"
+                                                          binding="#{ReportManipulation.chRptDtls}"/>
+                              </af:column>
+                              <af:column sortProperty="rptCode" width="40"
+                                         filterable="true" sortable="true"
+                                         headerText="Rpt Code" id="c14">
+                                <af:outputText value="#{row.rptCode}"
+                                               id="ot18"/>
+                              </af:column>
+                              <af:column sortProperty="rptName"
+                                         filterable="true" sortable="true" width="90"
+                                         headerText="Rpt Name" id="c15">
+                                <af:outputText value="#{row.rptName}"
+                                               id="ot14"/>
+                              </af:column>
+                              <af:column sortProperty="rptDesc" sortable="true" width="200"  
+                                         headerText="Rpt Desc" id="c16">
+                                <af:inputText value="#{row.bindings.rptDesc.inputValue}"
+                                              label="#{bindings.Report4.hints.rptDesc.label}"
+                                              required="#{bindings.Report4.hints.rptDesc.mandatory}"
+                                              columns="#{bindings.Report4.hints.rptDesc.displayWidth}"
+                                              maximumLength="#{bindings.Report4.hints.rptDesc.precision}"
+                                              shortDesc="#{bindings.Report4.hints.rptDesc.tooltip}"
+                                              id="it4"
+                                              binding="#{ReportManipulation.txtReportDesc}">
+                                  <f:validator binding="#{row.bindings.rptDesc.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                              <af:column sortProperty="rptActive"
+                                         visible="false" filterable="true"
+                                         sortable="true" headerText="Active?"
+                                         id="c13">
+                                <af:outputText value="#{row.rptActive}"
+                                               id="ot17"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          </af:panelBox>
+                          <h:panelGrid columns="1" id="pg35">
+                            <af:commandButton text="Add>>" id="cb19"
+                                              action="#{ReportManipulation.assignReport}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="&lt;&lt;Remove" id="cb20"
+                                              action="#{ReportManipulation.UnAssignedReport}"
+                                              partialSubmit="true"/>
+                          </h:panelGrid>
+                            <af:panelBox id="pb5">
+                              <f:facet name="toolbar"/>
+                              <af:commandButton text="Save"
+                                                id="cb5"
+                                                action="#{ReportManipulation.UpdateUnAssignReport}"/>
+                              <af:panelCollection id="pc14"
+                                              inlineStyle="width:400.0px;">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            
+                            <af:table value="#{bindings.Report2.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Report2.rangeSize}"
+                                      emptyText="#{bindings.Report2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Report2.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.Report2Query.queryDescriptor}"
+                                      queryListener="#{bindings.Report2Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectionListener="#{bindings.Report2.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t3"
+                                      binding="#{ReportManipulation.assignedReports}">
+                              <af:column sortProperty="selected"
+                                         filterable="true" sortable="true"
+                                         id="c17" width="20">
+                                <af:selectBooleanCheckbox value="#{row.selected}"
+                                                          id="sbc1"
+                                                          binding="#{ReportManipulation.chqAssignedRpt}"/>
+                              </af:column>
+                              <af:column sortProperty="rptCode" width="40"
+                                         filterable="true" sortable="true"
+                                         headerText="Rpt Code" id="c12">
+                                <af:outputText value="#{row.rptCode}"
+                                               id="ot15"/>
+                              </af:column>
+                              <af:column sortProperty="rptName" sortable="true" width="90"
+                                         headerText="Name" id="c11">
+                                <af:outputText value="#{row.rptName}"
+                                               id="ot16"/>
+                              </af:column>
+                              <af:column sortProperty="rptDesc" sortable="true" width="200"  filterable="true"
+                                         headerText="Desc" id="c9">
+                                <af:inputText value="#{row.bindings.rptDesc.inputValue}" 
+                                              label="#{bindings.Report2.hints.rptDesc.label}"
+                                              required="#{bindings.Report2.hints.rptDesc.mandatory}"
+                                              columns="#{bindings.Report2.hints.rptDesc.displayWidth}"
+                                              maximumLength="#{bindings.Report2.hints.rptDesc.precision}"
+                                              shortDesc="#{bindings.Report2.hints.rptDesc.tooltip}"
+                                              id="it3"
+                                              binding="#{ReportManipulation.txtReportDescAss}">
+                                  <f:validator binding="#{row.bindings.rptDesc.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                              <af:column sortProperty="rptActive"
+                                         visible="false" filterable="true"
+                                         sortable="true" headerText="Active"
+                                         id="c10">
+                                <af:outputText value="#{row.rptActive}"
+                                               id="ot13"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          
+                            </af:panelBox>
+                        </h:panelGrid>
+                          </af:panelBox>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelBox>
+            </af:panelBox>
+          
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

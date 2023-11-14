@@ -1,0 +1,567 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="Product Attributes">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox6" id="pb6" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="Products" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <h:panelGrid columns="3" id="pg12">
+                  <af:commandButton text="New" id="btnNewAlertType"
+                                    visible="true" icon="/images/create.gif"
+                                    binding="#{productBean.btnNewProduct}"
+                                    action="#{productBean.actionNewProducts}"/>
+                  <af:commandButton text="Edit" id="btnEdiSequence"
+                                    icon="/images/update.gif"
+                                    action="#{productBean.actionEditProduct}"
+                                    binding="#{productBean.actionEditProduct}"/>
+                  <af:commandButton text="Delete" id="btnDeleteseq"
+                                    visible="true" icon="/images/delete.gif"
+                                    action="#{productBean.actionShowDeleteProducts}"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc1"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    inlineStyle="height:200.0px;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <af:table value="#{bindings.Product1.collectionModel}"
+                            var="row" rows="#{bindings.Product1.rangeSize}"
+                            emptyText="#{bindings.Product1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Product1.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.Product1Query.queryDescriptor}"
+                            queryListener="#{bindings.Product1Query.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            selectionListener="#{productBean.actiontblProductsSelected}"
+                            rowSelection="single" id="t3"
+                            binding="#{productBean.tblProducts}"
+                            inlineStyle="width:99%;">
+                    <af:column sortProperty="TPA_PROD_SHTDESC" filterable="true"
+                               filterFeatures="caseInsensitive" sortable="true"
+                               headerText="Product Code" id="c11">
+                      <af:outputText value="#{row.TPA_PROD_SHTDESC}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="SYSNAME" filterable="true"
+                               filterFeatures="caseInsensitive" sortable="true"
+                               headerText="Product System" id="c6" width="200">
+                      <af:outputText value="#{row.SYSNAME}" id="ot13"/>
+                    </af:column>
+                    <af:column sortProperty="TPA_PROD_DESC" filterable="true"
+                               width="250" filterFeatures="caseInsensitive"
+                               sortable="true" headerText="Product Description"
+                               id="c13">
+                      <af:outputText value="#{row.TPA_PROD_DESC}" id="ot11"/>
+                    </af:column>
+                    <af:column sortProperty="TPA_PROD_NARRATION" width="300"
+                               filterFeatures="caseInsensitive"
+                               filterable="true" sortable="true"
+                               headerText="Product Narration" id="c12">
+                      <af:outputText value="#{row.TPA_PROD_NARRATION}"
+                                     id="ot4"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+              <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="2" id="panelGrid9">
+                  <af:outputLabel value="Product Attributes" id="outputLabel9"
+                                    inlineStyle="font-weight:bold;"/>
+                </h:panelGrid>
+                <af:separator id="s6"/>
+                <h:panelGrid columns="6" id="pg3">
+                  <af:commandButton text="New" id="cb4"
+                                    action="#{productBean.actionNewProdClientAttr}"
+                                    icon="/images/create.gif"/>
+                  <af:spacer width="10" height="10" id="s2"/>
+                  <af:commandButton text="Edit" id="cb7"
+                                    action="#{productBean.actionEditProdClientattr}"
+                                    icon="/images/update.gif"/>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:commandButton text="Delete" id="cb5"
+                                    action="#{productBean.actionDeleteProdClientAttr}"
+                                    icon="/images/delete.gif"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc4"
+                                    inlineStyle="width:99%; height:200.0px;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ProductClientAttribute.collectionModel}"
+                            var="row"
+                            rows="#{bindings.ProductClientAttribute.rangeSize}"
+                            emptyText="#{bindings.ProductClientAttribute.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ProductClientAttribute.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.ProductClientAttributeQuery.queryDescriptor}"
+                            queryListener="#{bindings.ProductClientAttributeQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            selectionListener="#{bindings.ProductClientAttribute.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t4"
+                            binding="#{productBean.tblProductClientAttributes}"
+                            inlineStyle="width:99%;">
+                    <af:column sortProperty="clientAttributeName"
+                               filterable="true" sortable="true"
+                               headerText="Client Attribute Name" id="c8"
+                               width="200">
+                      <af:outputText value="#{row.clientAttributeName}"
+                                     id="ot15"/>
+                    </af:column>
+                    <af:column sortProperty="prodMinValue" filterable="true"
+                               sortable="true" headerText="Attribute Min Value"
+                               id="c15" width="200">
+                      <af:outputText value="#{row.prodMinValue}" id="ot16"/>
+                    </af:column>
+                    <af:column sortProperty="prodMaxValue" filterable="true"
+                               sortable="true" headerText="Attribute Max Value"
+                               id="c14" width="200">
+                      <af:outputText value="#{row.prodMaxValue}" id="ot17"/>
+                    </af:column>
+                    <af:column sortProperty="prodFixedValue" filterable="true"
+                               sortable="true"
+                               headerText="Attribute Fixed Value" id="c16"
+                               width="200">
+                      <af:outputText value="#{row.prodFixedValue}" id="ot10"/>
+                    </af:column>
+                    <af:column sortProperty="attributeRange" sortable="false"
+                               headerText="Range?"
+                               id="c21" visible="true">
+                      <af:outputText value="#{row.attributeRange}" id="ot9"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <af:popup id="newEditProdClientAttrPOP">
+                  <af:dialog id="d3" title="Product Attributes Details"
+                             type="none">
+                    <af:panelBox text="PanelBox5" id="pb5" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <af:panelGroupLayout id="pgl1"
+                                           binding="#{productBean.pgGroupClientAttributes}">
+                        <h:panelGrid columns="2" id="pg5">
+                          <h:panelGrid columns="1" id="pg7">
+                            <af:outputLabel value="Attribute Name" id="ol3"
+                                            showRequired="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="pg8">
+                            <af:panelLabelAndMessage id="plam2">
+                              <af:inputText label="Attribute Name" id="it5"
+                                            simple="true"
+                                            binding="#{productBean.txtClientAttrName}"
+                                            disabled="true"/>
+                              <af:commandButton id="cb8"
+                                                icon="/images/dropdown.gif"
+                                                partialSubmit="true"
+                                                action="#{productBean.actionShowClientAttributes}"/>
+                            </af:panelLabelAndMessage>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid18"
+                                       rendered="false"
+                                       binding="#{productBean.gridPrompt}">
+                            <af:outputLabel value="Prompt" id="outputLabel8"
+                                            binding="#{productBean.lblPrompt}"
+                                            showRequired="true" visible="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="pg11" rendered="false"
+                                       binding="#{productBean.gridSex}">
+                            <af:selectOneChoice label="Sex" id="soc1"
+                                                simple="true" visible="true"
+                                                required="false" value='"M"'
+                                                binding="#{productBean.choiceSex}">
+                              <af:selectItem label="Male" value="M" id="si1"/>
+                              <af:selectItem label="Female" value="F" id="si2"/>
+                            </af:selectOneChoice>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="pg13" rendered="false"
+                                       binding="#{productBean.gridValue}">
+                            <af:inputText label="Value" id="it7" simple="true"
+                                          binding="#{productBean.txtAttrValue}"
+                                          visible="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid11"
+                                       rendered="false"
+                                       binding="#{productBean.gridMinValLabel}">
+                            <af:outputLabel value="Min Value" id="outputLabel6"
+                                            binding="#{productBean.lblMinValue}"
+                                            visible="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid14"
+                                       rendered="false"
+                                       binding="#{productBean.gridMinValIn}">
+                            <af:inputNumberSpinbox label="Min Value" id="ins1"
+                                                   binding="#{productBean.noMinValue}"
+                                                   simple="true"
+                                                   visible="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid23"
+                                       rendered="false"
+                                       binding="#{productBean.gridMinDate}">
+                            <af:inputDate label="From " id="id1"
+                                          binding="#{productBean.dtMinValue}"
+                                          simple="true">
+                              <af:convertDateTime pattern="dd/MM/yyyy"/>
+                            </af:inputDate>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid15"
+                                       rendered="false"
+                                       binding="#{productBean.gridMaxLabel}">
+                            <af:outputLabel value="Max Value" id="outputLabel7"
+                                            binding="#{productBean.lblMaxValue}"
+                                            visible="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid17"
+                                       rendered="false"
+                                       binding="#{productBean.gridMaxValIn}">
+                            <af:inputNumberSpinbox label="Max Value" id="ins2"
+                                                   binding="#{productBean.noMaxValue}"
+                                                   simple="true"
+                                                   visible="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid24"
+                                       rendered="false"
+                                       binding="#{productBean.gridMaxDate}">
+                            <af:inputDate label="To" id="inputDate1"
+                                          binding="#{productBean.dtMaxValue}"
+                                          simple="true">
+                              <af:convertDateTime pattern="dd/MM/yyyy"/>
+                            </af:inputDate>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid19"
+                                       rendered="false"
+                                       binding="#{productBean.gridSector}">
+                            <af:panelLabelAndMessage id="plam4">
+                              <af:inputText label="Value" id="it6" simple="true"
+                                            disabled="true"
+                                            binding="#{productBean.txtSector}"/>
+                              <af:commandButton id="cb17"
+                                                icon="/images/dropdown.gif"
+                                                partialSubmit="true">
+                                <af:showPopupBehavior popupId="SectorsPop"
+                                                      triggerType="click"/>
+                              </af:commandButton>
+                            </af:panelLabelAndMessage>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid20"
+                                       binding="#{productBean.gridClientType}"
+                                       rendered="false">
+                            <af:selectOneChoice label="Client Type" id="soc2"
+                                                binding="#{productBean.choiceCtype}"
+                                                simple="true">
+                              <af:selectItem label="Individual" value="I"
+                                             id="si5"/>
+                              <af:selectItem label="Corporate" value="C"
+                                             id="si6"/>
+                            </af:selectOneChoice>
+                          </h:panelGrid>
+                          <h:panelGrid columns="10" id="pg9" rendered="true">
+                            <af:inputText label="Prod Client Code"
+                                          id="inputText1" visible="false"
+                                          binding="#{productBean.txtProdClientCode}"
+                                          disabled="true"/>
+                            <af:inputText label="Client Attribute Code"
+                                          id="inputText2" visible="false"
+                                          binding="#{productBean.txtClientAttributeCode}"
+                                          disabled="true"/>
+                            <af:inputText label="Product Code" id="inputText3"
+                                          visible="false"/>
+                            <af:inputText label="ValueCode" id="it9"
+                                          disabled="true" simple="true"
+                                          visible="false"
+                                          binding="#{productBean.txtValue}"/>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:panelBox>
+                    <h:panelGrid columns="4" id="panelGrid22">
+                      <af:commandButton text="Save" id="cb14"
+                                        action="#{productBean.actionSaveProductClientAttr}"
+                                        partialSubmit="true"/>
+                      <af:spacer width="10" height="10" id="s4"/>
+                      <af:commandButton text="Cancel" id="cb10"
+                                        action="#{productBean.actionHideClientAttrPop}"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="ClientsAttributesPOP">
+                  <af:dialog id="dialog1" title="Client Attributes" type="none">
+                    <af:panelBox text="PanelBox5" id="panelBox1"
+                                 showHeader="never">
+                      <af:table value="#{bindings.ClientAttribute.collectionModel}"
+                                var="row"
+                                rows="#{bindings.ClientAttribute.rangeSize}"
+                                emptyText="#{bindings.ClientAttribute.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.ClientAttribute.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.ClientAttributeQuery.queryDescriptor}"
+                                queryListener="#{bindings.ClientAttributeQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.ClientAttribute.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.ClientAttribute.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t5"
+                                binding="#{productBean.tblClientAttributes}"
+                                visible="true">
+                        <af:column sortProperty="TCA_ATTRIBUTE_NAME"
+                                   sortable="true" headerText="Attribute Name"
+                                   id="c20" width="200">
+                          <af:outputText value="#{row.TCA_ATTRIBUTE_NAME}"
+                                         id="ot19"/>
+                        </af:column>
+                      </af:table>
+                      <h:panelGrid columns="4" id="pg10">
+                        <af:commandButton text="Ok" id="cb15"
+                                          action="#{productBean.actionAcceptProductAttribute}"
+                                          partialSubmit="true"/>
+                        <af:spacer width="10" height="10" id="s5"/>
+                        <af:commandButton text="Cancel" id="cb16"/>
+                      </h:panelGrid>
+                    </af:panelBox>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="SectorsPop">
+                  <af:dialog id="dialog2" title="Sectors" type="none">
+                    <af:panelBox text="PanelBox5" id="panelBox2"
+                                 showHeader="never">
+                      <af:table value="#{bindings.Sector.collectionModel}"
+                                var="row" rows="#{bindings.Sector.rangeSize}"
+                                emptyText="#{bindings.Sector.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Sector.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.SectorQuery.queryDescriptor}"
+                                queryListener="#{bindings.SectorQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.Sector.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.Sector.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t6"
+                                binding="#{productBean.tblSectors}">
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Code" id="c10">
+                          <af:outputText value="#{row.shortDesc}" id="ot12"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c17"
+                                   width="200">
+                          <af:outputText value="#{row.name}" id="ot14"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelBox>
+                    <h:panelGrid columns="4" id="panelGrid21">
+                      <af:commandButton text="Ok" id="commandButton1"
+                                        partialSubmit="true"
+                                        action="#{productBean.actionAcceptSector}"/>
+                      <af:spacer width="10" height="10" id="spacer1"/>
+                      <af:commandButton text="Cancel" id="commandButton2"
+                                        partialSubmit="false"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+              </af:panelBox>
+            </af:panelBox>
+    <af:popup id="confirmDeleteProduct">
+                <af:dialog id="d18"
+                           dialogListener="#{productBean.actionConfirmedDeleteProduct}"
+                           title="Confirm Delete" type="yesNo">
+                  <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="ol2"/>
+                </af:dialog>
+              </af:popup>
+            <af:popup id="productPop">
+              <af:dialog id="d5" type="none" title="Products "
+                         inlineStyle="font-weight:bolder; color:Black;">
+                <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                  <h:panelGrid columns="2" id="panelGrid1">
+                    <h:panelGrid columns="2" id="panelGrid2">
+                      <af:outputLabel value="System Name"
+                                      id="outputLabel1" showRequired="true"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid3">
+                      <af:panelLabelAndMessage id="plam3">
+                        <af:inputText label="System Name" id="it15" simple="true"
+                                      binding="#{productBean.txtTpaSysName}"
+                                      disabled="true"/>
+                        <af:commandButton id="cb11" icon="/images/dropdown.gif"
+                                          partialSubmit="true"
+                                          action="#{productBean.actionShowSystems}"/>
+                      </af:panelLabelAndMessage>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid4">
+                      <af:outputLabel value="Product Name"
+                                      id="outputLabel2" showRequired="true"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid5">
+                      <af:panelLabelAndMessage id="plam1">
+                        <af:inputText label="Product Name" id="it4" simple="true"
+                                      binding="#{productBean.txtTpaProductName}"
+                                      disabled="true"/>
+                        <af:commandButton id="cb1" icon="/images/dropdown.gif"
+                                          partialSubmit="true"
+                                          action="#{productBean.actionShowProducts}"/>
+                      </af:panelLabelAndMessage>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid6">
+                      <af:outputLabel value="Short Description"
+                                      id="outputLabel3" showRequired="true"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid7">
+                      <af:inputText label="Short desc" id="it2" visible="true"
+                                    binding="#{productBean.txtTpaShtDesc}"
+                                    simple="true"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid10">
+                      <af:outputLabel value="Description"
+                                      id="outputLabel4" showRequired="true"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid13">
+                      <af:inputText label="Description" id="it14" visible="true"
+                                    rows="2"
+                                    binding="#{productBean.txtTpaDescription}"
+                                    simple="true"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid16">
+                      <af:outputLabel value="Narration"
+                                      id="outputLabel5" showRequired="true"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid8">
+                      <af:inputText label="Narration" id="it13" visible="true"
+                                    rows="4"
+                                    binding="#{productBean.txtTpaNarration}"
+                                    simple="true"/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="2" id="panelGrid12">
+                      <af:inputText label="tpa_code" id="it8" visible="false"
+                                    binding="#{productBean.txtTpaCode}"
+                                    disabled="true"/>
+                      <af:inputText label="SystemCode" id="it12" visible="false"
+                                    binding="#{productBean.txtTpaSysCode}"
+                                    simple="true"/>
+                      <af:inputText label="ProductCode" id="it3" visible="false"
+                                    binding="#{productBean.txtTpaProductCode}"
+                                    simple="true"/>
+                    </h:panelGrid>
+                  </h:panelGrid>
+                </af:panelBox>
+                    
+                  <h:panelGrid columns="2" id="pg6">
+                    <af:commandButton text="save" id="cb12"
+                                      action="#{productBean.actionCreateUpdateProduct}"
+                                      binding="#{productBean.btnCreateUpdateProduct}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="cancel" id="cb13"/>
+                  </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="systemsPop">
+              <af:dialog id="d4" type="none" title="Product Systems"
+                         inlineStyle="width:350.0px;">
+                <af:panelCollection id="pc2"
+                                    styleClass="AFAuxiliaryStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.System.collectionModel}" var="row"
+                            rows="#{bindings.System.rangeSize}"
+                            emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.System.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                            queryListener="#{bindings.SystemQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.System.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.System.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1"
+                            binding="#{productBean.tblSytems}">
+                    <af:column sortProperty="code" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.System.hints.code.label}"
+                               id="c7" visible="false">
+                      <af:outputText value="#{row.code}" id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="shortDesc" filterable="true"
+                               sortable="true" headerText="Code" id="c4">
+                      <af:outputText value="#{row.shortDesc}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="name" filterable="true"
+                               sortable="true" headerText="Name" id="c5"
+                               width="200">
+                      <af:outputText value="#{row.name}" id="ot8"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="2" id="pg4">
+                  <af:commandButton text="select" id="cb6"
+                                    action="#{productBean.actionAcceptSystems}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="cancel" id="cb9"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+             <af:popup id="showProductsPop">
+              <af:dialog id="d2" type="none" title="System Products"
+                         inlineStyle="width:350.0px;">
+                <af:panelCollection id="pc3"
+                                    styleClass="AFAuxiliaryStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Product.collectionModel}"
+                            var="row" rows="#{bindings.Product.rangeSize}"
+                            emptyText="#{bindings.Product.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Product.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.ProductQuery.queryDescriptor}"
+                            queryListener="#{bindings.ProductQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectionListener="#{bindings.Product.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t2"
+                            binding="#{productBean.tblSystemProduct}"
+                            >
+                    <af:column sortProperty="TPA_PROD_SHTDESC" filterable="true" filterFeatures="caseInsensitive" 
+                               sortable="true" headerText="SHORT DESC" id="c3">
+                      <af:outputText value="#{row.TPA_PROD_SHTDESC}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="TPA_PROD_DESC" filterable="true" filterFeatures="caseInsensitive" width="200"
+                               sortable="true" headerText="DESCRIPTIOCN"
+                               id="c2">
+                      <af:outputText value="#{row.TPA_PROD_DESC}" id="ot1"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="2" id="pg2">
+                  <af:commandButton text="select" id="cb2"
+                                    action="#{productBean.actionAcceptProduct}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="cancel" id="cb3"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

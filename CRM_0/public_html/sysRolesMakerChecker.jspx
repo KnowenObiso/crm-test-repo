@@ -1,0 +1,758 @@
+<?xml version='1.0' encoding='utf-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:afh="http://myfaces.apache.org/trinidad/html"
+          version="1.2" 
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:tr="http://myfaces.apache.org/trinidad"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+   <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+     <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                   id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="fms">
+       <af:resource type="css">
+         input[type=text] {
+             text-transform: uppercase;
+         }
+          textarea {
+         text-transform: uppercase;
+         }
+       </af:resource>
+      <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+      <f:attribute name="mode" value="index"/>
+      <f:facet name="center">
+          <af:group id="g1">
+            <af:panelGroupLayout layout="scroll" halign="left" valign="top"
+                                 id="pgl3"
+                                 inlineStyle="height:700px; width:1150.0px;">
+              <af:panelBox text="PanelBox1" id="panelMain" showHeader="never" inlineStyle="height:600.0px;"
+                           binding="#{makerCheckerManipulation.panelMain}">
+              
+                <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMorganization"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si72"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              
+              <h:panelGrid columns="1" id="pg71">
+                <af:outputLabel value="System Processes Maker Checker Configuration" id="ol71"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s71"
+                            inlineStyle="font-size:large; font-weight:bold;"/>
+              
+                <af:panelSplitter id="ps1" splitterPosition="500" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:700px;">
+                
+                  <f:facet name="first">
+                    <af:panelGroupLayout id="pgl4">
+                    <af:panelBox text="Select System" id="pb13"
+                             inlineStyle="width:500px;">
+                      <h:panelGrid columns="1" id="pg4" style="width:600px;">
+                        <af:selectOneChoice contentStyle="width:220px;" 
+                                            binding="#{makerCheckerManipulation.populatedSystems}"
+                                            id="soc311"
+                                            autoSubmit="true"
+                                            valueChangeListener="#{makerCheckerManipulation.populateSysRights}">
+                                    <f:selectItems  value="#{makerCheckerManipulation.roleSystem}" id="si2"/>
+                         </af:selectOneChoice>
+                      </h:panelGrid>
+                    </af:panelBox>
+                      
+                    <af:panelBox text="Check Where Maker Checker Is Applicable" id="pb14"
+                             inlineStyle="width:500px;height:900px;"
+                             >
+                          <h:panelGrid columns="1">
+                          <af:tree value="#{bindings.Role6.treeModel}"
+                                   var="node"
+                                   binding="#{makerCheckerManipulation.rolesTree}"
+                                   selectionListener="#{bindings.Role5.treeModel.makeCurrent}"
+                                   inlineStyle="height:100%;min-height:100px;max-height:900px;width:100%;min-width:600px;"
+                                   rowSelection="single" id="t3">
+                            <f:facet name="nodeStamp">
+                     <af:group id="g653">
+                              <af:selectBooleanCheckbox rendered="#{node.mkcStatus!=null}"
+                                                                      id="sbc2252"
+                                                                      immediate="true"
+                                                                      value="#{node.mkcStatus}"
+                                                                      binding="#{makerCheckerManipulation.processCheck}"
+                                                                      simple="true"
+                                                valueChangeListener="#{makerCheckerManipulation.processSelectedNew}"
+                                                autoSubmit="true"/>
+                               <af:selectOneChoice label="Status : " id="txtStatus12" 
+                                          showRequired="true" immediate="true"
+                                           value="#{node.mkcApplicableArea}"
+                                                   binding="#{makerCheckerManipulation.applicableArea}"
+                                                   autoSubmit="true">
+                        <af:selectItem label="SELECT" value="S" id="si4434"
+                                       disabled="true"/>
+                        <af:selectItem label="DEBIT" value="D" id="si3"/>
+                        <af:selectItem label="CREDIT" value="C" id="s45i2"/>
+                        <af:selectItem label="BOTH" value="B" id="s45i244"/>
+                        <af:selectItem label="N/A" value="N" id="s45i642"/>
+                      </af:selectOneChoice>
+                                                <af:outputText value="#{node.sprsaSubArea}" inlineStyle="font-weight:bold;" id="ot6"/>
+                              
+                              </af:group>  
+                            </f:facet>
+                          </af:tree>
+                        </h:panelGrid>
+                    </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  
+                  <f:facet name="second">
+                  
+                    <af:panelGroupLayout id="pgl5"
+                                         binding="#{makerCheckerManipulation.mainLay}">
+                      <af:panelTabbed id="pt1" 
+                                      inlineStyle="height:1000px; width:1000.0px;"
+                                      rendered="true"
+                                      binding="#{makerCheckerManipulation.mainPanel}">
+                     
+                      </af:panelTabbed>
+                      </af:panelGroupLayout>
+                  </f:facet>
+                  
+                </af:panelSplitter>
+                
+                
+                <af:panelBox text="PanelBox4" id="pb2" rendered="false">
+                  
+                  
+                
+                <af:spacer width="10" height="10" id="s23"/>
+                <h:panelGrid columns="3" id="pg3">
+                  <af:outputLabel value="System" id="ol7"/>
+                  <af:inputText label="Label 1" id="it3" simple="true"
+                                disabled="true"
+                                binding="#{makerCheckerManipulation.sysVal}"/>
+                  <af:commandButton id="cb2" icon="/images/dropdown.gif" shortDesc="Roles">
+                    <af:showPopupBehavior popupId="p1"/>
+                  </af:commandButton>
+                </h:panelGrid>
+                </af:panelBox>
+                
+                <af:spacer width="10" height="30" id="s24"/>
+                <af:outputLabel value="Process Role Definition" id="ol4"
+                                inlineStyle="font-weight:bold;" rendered="false"/>
+                <af:panelCollection id="pc1"
+                                    inlineStyle="width:90%; height:150.0px;" rendered="false">
+                  <f:facet name="menus">
+                    <af:menu text="Role Manipulation" id="m1s">
+                      <af:commandMenuItem text="Create Role" id="cmi1">
+                        <af:showPopupBehavior popupId="p2"/>
+                      </af:commandMenuItem>
+                      <af:commandMenuItem text="Edit Role" id="cmi2"
+                                          action="#{makerCheckerManipulation.editRole}"/>
+                      <af:commandMenuItem text="Drop Role" id="cmi3"
+                                          action="#{makerCheckerManipulation.DropRole}"/>
+                      <af:commandMenuItem text="Restore Role" id="cmi4"
+                                          action="#{makerCheckerManipulation.RestoreRole}"/>
+                    </af:menu>
+                  </f:facet>
+                  
+                  <af:popup id="p2">
+                    <af:dialog id="d2" type="none" title="Role Details">
+                      <af:panelGroupLayout id="pgl1">
+                        <h:panelGrid columns="2" id="pg1">
+                          <af:outputLabel value="Role Name" id="ol10"/>
+                          <af:inputText label="Label 2" id="it4" simple="true"
+                                        binding="#{makerCheckerManipulation.sysRoleName}"/>
+                          <af:outputLabel value="Role Sht Desc" id="ol11"/>
+                          <af:inputText label="Label 3" id="it5" simple="true"
+                                        binding="#{makerCheckerManipulation.sysRoleShtDesc}"/>
+                          <af:outputLabel value="Process" id="ol12"
+                                          rendered="false"/>
+                          <af:selectOneChoice value="#{bindings.processCode.inputValue}"
+                                              label="#{bindings.processCode.label}"
+                                              required="#{bindings.processCode.hints.mandatory}"
+                                              shortDesc="#{bindings.processCode.hints.tooltip}"
+                                              id="soc1" simple="true"
+                                              binding="#{makerCheckerManipulation.sysProcessVal}"
+                                              rendered="false">
+                            <f:selectItems value="#{bindings.processCode.items}"
+                                           id="si1"/>
+                          </af:selectOneChoice>
+                          <h:panelGrid columns="2" id="pg6">
+                            <af:commandButton text="Create Role" id="cb5"
+                                              action="#{makerCheckerManipulation.createRole}"
+                                              binding="#{makerCheckerManipulation.saveBtn}"/>
+                            <af:commandButton text="Edit Role" id="cb7"
+                                              action="#{makerCheckerManipulation.saveEditRole}"
+                                              binding="#{makerCheckerManipulation.editBtn}"
+                                              rendered="false"/>
+                            <af:commandButton text="Cancel" id="cb6"/>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  <af:table value="#{bindings.Role.collectionModel}" var="row"
+                            rows="#{bindings.Role.rangeSize}"
+                            emptyText="#{bindings.Role.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Role.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.RoleQuery.queryDescriptor}"
+                            queryListener="#{bindings.RoleQuery.processQuery}"
+                            varStatus="vs" rowSelection="single" id="t1"
+                            binding="#{makerCheckerManipulation.sysRoles}"
+                            selectionListener="#{makerCheckerManipulation.rolesSelected}">
+                    <af:column sortProperty="roleCode" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.Role.hints.roleCode.label}"
+                               id="c3" visible="false">
+                      <af:outputText value="#{row.roleCode}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="roleShtDesc" filterable="true"
+                               sortable="true" headerText="Sht Desc" id="c2"
+                               visible="false">
+                      <af:outputText value="#{row.roleShtDesc}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="roleName" filterable="true"
+                               sortable="true" headerText="Name" id="c5"
+                               width="300">
+                      <af:outputText value="#{row.roleName}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="roleCrtDate" filterable="true"
+                               sortable="true" headerText="Created Date" id="c1"
+                               width="200">
+                      <af:outputText value="#{row.roleCrtDate}" id="ot1">
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="roleStatus" filterable="true"
+                               sortable="true" headerText="Status" id="c4">
+                      <af:outputText value="#{row.roleStatus}" id="ot5"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                
+              </af:panelBox>
+            </af:panelGroupLayout>
+            
+            <af:popup id="p1">
+                  <af:dialog id="d1s" type="none">
+                    <af:panelGroupLayout id="pgl2">
+                      <h:panelGrid columns="1" id="pg24">
+                        <af:table var="row" rowBandingInterval="0" id="t2"
+                                  value="#{bindings.User.collectionModel}"
+                                  rows="#{bindings.User.rangeSize}"
+                                  emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.User.rangeSize}"
+                                  filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                  queryListener="#{bindings.UserQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  rowSelection="single"
+                                  binding="#{makerCheckerManipulation.systems}">
+                          <af:column sortProperty="sysCode" filterable="true"
+                                     sortable="true"
+                                     headerText="#{bindings.User.hints.sysCode.label}"
+                                     id="c9" visible="false">
+                            <af:outputText value="#{row.sysCode}" id="ot8"/>
+                          </af:column>
+                          <af:column sortProperty="sysShtDesc" filterable="true"
+                                     sortable="true" headerText="Sys Sht Desc"
+                                     id="c7">
+                            <af:outputText value="#{row.sysShtDesc}" id="ot9"/>
+                          </af:column>
+                          <af:column sortProperty="sysName" filterable="true"
+                                     sortable="true" headerText="Sys Name"
+                                     id="c8" width="200">
+                            <af:outputText value="#{row.sysName}" id="ot7"/>
+                          </af:column>
+                        </af:table>
+                        <h:panelGrid columns="2" id="pg25">
+                          <af:commandButton text="OK" id="cb3"
+                                            action="#{makerCheckerManipulation.systemSelected}"/>
+                          <af:commandButton text="Cancel" id="cb4"/>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                    </af:panelGroupLayout>
+                  </af:dialog>
+                </af:popup>
+                
+                
+                                <af:popup id="authLvl">
+                                  <af:dialog id="d3" type="none"
+                                             title="System Areas Levels">
+                                    <af:panelBox text="PanelBox6" id="pb1"
+                                                 showHeader="never">
+                                      <f:facet name="toolbar"/>
+                                      <h:panelGrid columns="2" id="pg12">
+                                        <af:outputLabel value="Id"
+                                                        id="ol1"
+                                                        visible="false"/>
+                                        <af:inputNumberSpinbox label="Label 1"
+                                                               id="ins1"
+                                                               binding="#{makerCheckerManipulation.lvlId}"
+                                                               visible="false"/>
+                                        <af:outputLabel value="Level"
+                                                        id="ol2"/>
+                                        <af:inputNumberSpinbox label="Label 2"
+                                                               id="ins2"
+                                                               binding="#{makerCheckerManipulation.lvlNo}"
+                                                               disabled="true"
+                                                               simple="true"/>
+                                        <af:outputLabel value="Role"
+                                                        id="ol5"/>
+                                        <h:panelGrid columns="2" id="pg14">
+                                          <af:inputText label="Label 4"
+                                                        id="it2"
+                                                        binding="#{makerCheckerManipulation.lvlDesc}"
+                                                        simple="true"
+                                                        disabled="true"/>
+                                          <af:commandButton
+                                                            id="cb11"
+                                                            partialSubmit="true"
+                                                            icon="/images/dropdown.gif"
+                                                            action="#{makerCheckerManipulation.launchRoles}"/>
+                                        </h:panelGrid>
+                                      </h:panelGrid>
+                                      <h:panelGrid columns="2" id="pg13">
+                                        <af:commandButton text="Save"
+                                                          id="cb12"
+                                                          partialSubmit="true"
+                                                          action="#{makerCheckerManipulation.saveAuthLvl}"/>
+                                        <af:commandButton text="Cancel"
+                                                          id="cb13"/>
+                                      </h:panelGrid>
+                                    </af:panelBox>
+                                  </af:dialog>
+                                </af:popup>
+                                
+                                <af:popup id="sysRoles">
+                                  <af:dialog id="d4" type="none"
+                                             title="System Roles">
+                                    <af:panelBox text="PanelBox7" id="pb4"
+                                                 showHeader="never">
+                                      <f:facet name="toolbar"/>
+                                      <af:table value="#{bindings.Role1.collectionModel}"
+                                                var="row"
+                                                rows="#{bindings.Role1.rangeSize}"
+                                                emptyText="#{bindings.Role1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                fetchSize="#{bindings.Role1.rangeSize}"
+                                                rowBandingInterval="0"
+                                                filterModel="#{bindings.RoleQuery.queryDescriptor}"
+                                                queryListener="#{bindings.RoleQuery.processQuery}"
+                                                filterVisible="true"
+                                                varStatus="vs"
+                                                selectionListener="#{bindings.Role1.collectionModel.makeCurrent}"
+                                                rowSelection="single" id="t6"
+                                                binding="#{makerCheckerManipulation.sysAuthRoles}">
+                                        <af:column sortProperty="roleCode"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="#{bindings.Role1.hints.roleCode.label}"
+                                                   id="c23" visible="false">
+                                          <af:outputText value="#{row.roleCode}"
+                                                         id="ot23"/>
+                                        </af:column>
+                                        <af:column sortProperty="roleName"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Role" id="c22"
+                                                   width="200">
+                                          <af:outputText value="#{row.roleName}"
+                                                         id="ot24"/>
+                                        </af:column>
+                                      </af:table>
+                                      <h:panelGrid columns="2" id="pg15">
+                                        <af:commandButton text="Save"
+                                                          id="cb14"
+                                                          action="#{makerCheckerManipulation.sysRoleSelected}"
+                                                          partialSubmit="true"/>
+                                        <af:commandButton text="Cancel"
+                                                          id="cb15"/>
+                                      </h:panelGrid>
+                                    </af:panelBox>
+                                  </af:dialog>
+                                </af:popup>
+                                
+            <af:popup id="subAreaLimit">
+              <af:dialog id="d5" title="SubArea Limit Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox11" id="pb7" showHeader="never">
+                  <af:panelFormLayout id="pfl1">
+                  
+                  <af:inputText label="Code : " id="it8"
+                                binding="#{makerCheckerManipulation.txtSpsatCode}" 
+                                visible="false"/>
+                    
+                    <af:inputText label="SubArea Code : " id="it9"
+                                  binding="#{makerCheckerManipulation.txtSpsatSprsaCode}" 
+                                  visible="false"/>
+                    
+                    <af:inputNumberSpinbox label="No. of Level : " id="it10"
+                                           binding="#{makerCheckerManipulation.txtSpsatNoOfLevel}" 
+                                           showRequired="true"/>
+                    
+                    <af:inputNumberSpinbox label="Min Limit : " id="ins3"
+                                           binding="#{makerCheckerManipulation.txtSpsatMinLimit}"
+                                           showRequired="true"/>
+                    
+                    <af:inputNumberSpinbox label="Max Limit : " id="ins4"
+                                           binding="#{makerCheckerManipulation.txtSpsatMaxLimit}"
+                                           showRequired="true"/>
+                    
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg19">
+                    <af:commandButton text="Save" id="cb21"
+                                      binding="#{makerCheckerManipulation.btnSaveUpdateSubAreaLimit}"
+                                      action="#{makerCheckerManipulation.actionSaveUpdateSubAreaLimit}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb22"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="subAreaLevel">
+              <af:dialog id="d6" title="SubArea Level Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox12" id="pb8" showHeader="never"
+                             binding="#{makerCheckerManipulation.panelSubAreaLevel}">
+                  <af:panelFormLayout id="pfl2">
+                  
+                    <af:inputText label="Code : " id="it11"
+                                  binding="#{makerCheckerManipulation.txtSpsalCode}" 
+                                  visible="false"/>
+                    
+                    <af:inputText label="SubArea Code : " id="it12"
+                                  binding="#{makerCheckerManipulation.txtSpsalSprsaCode}" 
+                                  visible="false"/>
+                    
+                    <af:inputText label="SubArea Limit Code : " id="it13"
+                                  binding="#{makerCheckerManipulation.txtSpsalSpsatCode}" 
+                                  visible="false"
+                                  showRequired="true"/>
+                    
+                    <af:inputNumberSpinbox label="Level : " id="ins5"
+                                           binding="#{makerCheckerManipulation.txtSpsalLevel}"
+                                           showRequired="true"
+                                           autoSubmit="true"/>
+                                  
+                    <af:selectOneChoice label="Approver Type : " value="POST"
+                                        id="soc2"
+                                        binding="#{makerCheckerManipulation.txtSpsalApproverType}" 
+                                        unselectedLabel="- Select Type -" 
+                                        showRequired="true" autoSubmit="true"
+                                        valueChangeListener="#{makerCheckerManipulation.approverTypeChangeListener}">
+                      <af:selectItem label="POST" value="POST" id="si7"/>
+                      <af:selectItem label="RANK" value="RANK" id="si6"/>
+                      <af:selectItem label="USER" value="USER" id="si5"/>
+                      <af:selectItem label="USER GROUP" value="UGRP" id="si4"/>
+                    </af:selectOneChoice>
+                    
+                    <af:inputText label="Approver Id : " id="it15"
+                                  binding="#{makerCheckerManipulation.txtSpsalApproverId}"
+                                  showRequired="true" visible="false"/>
+                                  
+                    <af:panelLabelAndMessage label="Approver Name : " id="plamUser"
+                                             binding="#{makerCheckerManipulation.plamUser}" 
+                                             visible="false">
+                      <af:inputText label="Approver Name : " id="it14" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{makerCheckerManipulation.txtUsrApproverName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" 
+                                        id="cb25" 
+                                        partialSubmit="true"
+                                        action="#{makerCheckerManipulation.actionShowUsersByUser}" />
+                    </af:panelLabelAndMessage>
+                                  
+                    <af:panelLabelAndMessage label="User Group : " id="plamUserGroup"
+                                             binding="#{makerCheckerManipulation.plamUserGroup}"
+                                             visible="false">
+                      <af:inputText label="Approver Name : " id="it16" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{makerCheckerManipulation.txtUsrGrpApproverName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" 
+                                        id="cb26" 
+                                        partialSubmit="true"
+                                        action="#{makerCheckerManipulation.actionShowUsersByGroup}" />
+                    </af:panelLabelAndMessage>
+                    
+                    <af:panelLabelAndMessage label="System Post : "
+                                             id="plamSysPost"
+                                             binding="#{makerCheckerManipulation.plamSysPost}"
+                                             visible="false">
+                      <af:inputText label="Approver Name : " id="it17" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{makerCheckerManipulation.txtSysPostApproverName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" 
+                                        id="cb27" 
+                                        partialSubmit="true"
+                                        action="#{makerCheckerManipulation.actionShowSysPosts}" />
+                    </af:panelLabelAndMessage>
+                    
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg20">
+                    <af:commandButton text="Save" id="cb23"
+                                      binding="#{makerCheckerManipulation.btnSaveUpdateSubAreaLevel}"
+                                      action="#{makerCheckerManipulation.actionSaveUpdateSubAreaLevel}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb24"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="usersByGroupPop">
+              <af:dialog id="d7" title="User Group List" type="none" 
+                         inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl11">
+                  <af:panelBox text="PanelBox4" id="pb9" showHeader="never">
+                    <af:panelCollection id="pc6" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.UserObj.collectionModel}"
+                                var="row" rows="#{bindings.UserObj.rangeSize}"
+                                emptyText="#{bindings.UserObj.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.UserObj.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.UserObjQuery.queryDescriptor}"
+                                queryListener="#{bindings.UserObjQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" 
+                                id="t9"
+                                binding="#{makerCheckerManipulation.tblUserGroups}">
+                        <af:column sortProperty="usrCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c30">
+                          <af:outputText value="#{row.usrCode}" id="ot31"/>
+                        </af:column>
+                        <af:column sortProperty="usrUsername" filterable="true"
+                                   sortable="true" headerText="Username"
+                                   id="c24">
+                          <af:outputText value="#{row.usrUsername}" id="ot28"/>
+                        </af:column>
+                        <af:column sortProperty="usrName" filterable="true"
+                                   sortable="true" headerText="Name" id="c31" 
+                                   width="200">
+                          <af:outputText value="#{row.usrName}" id="ot33"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg30">
+                      <af:commandButton text="Ok" id="btnAcceptUserGroup"
+                                        action="#{makerCheckerManipulation.actionAcceptUserGroup}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelUserGroup"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="usersByUserTypePop">
+              <af:dialog id="d8" title="Users List" type="none" inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl12">
+                  <af:panelBox text="PanelBox4" id="pb10" showHeader="never">
+                    <af:panelCollection id="pc7" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.UserObj1.collectionModel}"
+                                var="row" rows="#{bindings.UserObj1.rangeSize}"
+                                emptyText="#{bindings.UserObj1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.UserObj1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.UserObj1Query.queryDescriptor}"
+                                queryListener="#{bindings.UserObj1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" 
+                                id="t10"
+                                binding="#{makerCheckerManipulation.tblUsersPop}">
+                        <af:column sortProperty="usrCode" filterable="false"
+                                   sortable="true" headerText="Code" id="c34">
+                          <af:outputText value="#{row.usrCode}" id="ot35"/>
+                        </af:column>
+                        <af:column sortProperty="usrUsername" filterable="true"
+                                   sortable="true" headerText="Username"
+                                   id="c35">
+                          <af:outputText value="#{row.usrUsername}" id="ot36"/>
+                        </af:column>
+                        <af:column sortProperty="usrName" filterable="true"
+                                   sortable="true" headerText="Name" id="c33" 
+                                   width="200">
+                          <af:outputText value="#{row.usrName}" id="ot34"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg21">
+                      <af:commandButton text="Ok" id="btnAcceptUser"
+                                        action="#{makerCheckerManipulation.actionAcceptUser}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelUser"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="systemPostsPop">
+              <af:dialog id="d9" title="System Posts List" type="none" inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl13">
+                  <af:panelBox text="PanelBox4" id="pb11" showHeader="never">
+                    <af:panelCollection id="pc8" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.SystemPost.collectionModel}"
+                                var="row"
+                                rows="#{bindings.SystemPost.rangeSize}"
+                                emptyText="#{bindings.SystemPost.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.SystemPost.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.SystemPostQuery.queryDescriptor}"
+                                queryListener="#{bindings.SystemPostQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" 
+                                id="t11"
+                                binding="#{makerCheckerManipulation.tblSystemPostsPop}">
+                        <af:column sortProperty="spostCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c36">
+                          <af:outputText value="#{row.spostCode}" id="ot37"/>
+                        </af:column>
+                        <af:column sortProperty="spostShtDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c37">
+                          <af:outputText value="#{row.spostShtDesc}" id="ot38"/>
+                        </af:column>
+                        <af:column sortProperty="spostDesc" filterable="true"
+                                   sortable="true" headerText="Description"
+                                   id="c38" width="200">
+                          <af:outputText value="#{row.spostDesc}" id="ot39"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg22">
+                      <af:commandButton text="Ok" id="btnAcceptSystemPost"
+                                        action="#{makerCheckerManipulation.actionAcceptSystemPost}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelSystemPost"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+              <af:popup id="confirmDeleteRole">
+              <af:dialog id="d13" title="Confirm Drop Action" type="yesNo"
+                         dialogListener="#{makerCheckerManipulation.actionConfirmDropRole}">
+                <af:panelFormLayout id="pfl6" inlineStyle="width:300.0px;">
+                  <af:outputText value=" Are you sure you want to DROP this record?"
+                                 id="ot52"
+                                />
+                </af:panelFormLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="rolesDetailsPop"
+             binding="#{makerCheckerManipulation.rolesDetailsPopUp}">
+                   <af:dialog id="d10" type="none"
+                                     title="Role Details">
+                      <h:panelGrid columns="2" id="pg27">
+                            <af:outputLabel value="Role Code"
+                                                            id="ol9"
+                                                            visible="false"
+                                                            rendered="false"/>
+                            <af:inputText                   id="it6" 
+                                                            visible="false" 
+                                                            rendered="false"
+                                                            binding="#{makerCheckerManipulation.txtSysRoleCode}"/>
+                            <af:outputLabel value="System Role Code"
+                                                            id="ol14"
+                                                            visible="false"
+                                                            rendered="false"/>
+                            <af:inputText                  id="txtSysCode" 
+                                                            visible="false"  
+                                                            rendered="false"
+                                                            binding="#{makerCheckerManipulation.txtSysCode}"/>
+                            <af:outputLabel value="Role Name:"
+                                                            id="ol15"/>
+                                                            
+                            <af:inputText                   id="txtSysRoleName"  
+                                                            columns="20"
+                                                            binding="#{makerCheckerManipulation.txtSysRoleName}"/>  
+                            <af:outputLabel value="Short Desc: "
+                                                            id="ol16"/>
+                            <af:inputText                   id="txtSysRoleShortDesc" 
+                                                            columns="20"  
+                                                            binding="#{makerCheckerManipulation.txtSysRoleShortDesc}"/>
+                            <af:outputLabel value="Created Date: "
+                                                            id="ol17"/>
+                            <af:inputDate                   id="txtSysRoleDateCreated" 
+                                                            disabled="true"
+                                                            binding="#{makerCheckerManipulation.txtSysRoleDateCreated}"/>
+                            <af:outputLabel value="Status: "
+                                                            id="ol18"/>        
+                            <af:selectOneChoice                       value="A"
+                                                                      id="txtSysRoleStatus"
+                                                                      binding="#{makerCheckerManipulation.txtSysRoleStatus}">
+                                    <af:selectItem label="Active" value="A"
+                                                   id="si8"/>
+                                    <af:selectItem label="Inactive" value="I"
+                                                   id="si9"/>
+                              </af:selectOneChoice>
+                            <af:outputLabel value="Authorized: "
+                                                            id="ol19"/>    
+                                  <af:inputText             id="it20" 
+                                                            columns="20"
+                                                            disabled="true"
+                                                            rendered="#{Rendering.ROLE_MAKER_CHECKER_APP}"
+                                                            binding="#{makerCheckerManipulation.txtSysRoleAuthorized}"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="3" id="pg2">
+                            <af:commandButton text="Save"
+                                              id="btnCreateUpdateSystemRole"                                                  
+                                              icon="/images/save.gif"
+                                              action="#{makerCheckerManipulation.actionCreateUpdateSystemRole}"
+                                              binding="#{makerCheckerManipulation.btnCreateUpdateSystemRole}"/>
+                                             
+                            <af:commandButton text="Authorize" id="btnAuthorizeSystemRole"                             
+                                              icon="/images/authorize.gif"
+                                              action="#{makerCheckerManipulation.actionAuthorizeSystemRole}"
+                                              rendered="#{Rendering.ROLE_MAKER_CHECKER_APP}"
+                                            />
+                            <af:commandButton text="Cancel" id="btnCancelSystemRole"
+                              action="#{makerCheckerManipulation.actionCancelSystemRole}"/>
+                      </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="popRevokeProcess" contentDelivery="lazyUncached">
+              <af:dialog id="dlgRevokeProcess" title="Confirm Revoke" type="yesNo"
+                         dialogListener="#{makerCheckerManipulation.confirmRevokeProc}" >
+                <af:outputLabel value="Are sure you want to revoke this role?" />
+              </af:dialog>
+            </af:popup>
+            <af:popup id="popRevokeArea" contentDelivery="lazyUncached">
+              <af:dialog id="dlgRevokeArea" title="Confirm Revoke" type="yesNo"
+                         dialogListener="#{makerCheckerManipulation.confirmRevokeAreas}" >
+                <af:outputLabel value="Are sure you want to revoke this role?" />
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+     
+    </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>
+

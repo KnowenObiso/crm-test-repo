@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+              <table width="100%">
+              <tr><td  align="right">
+              <h:panelGrid columns="2" id="pg33">
+                  <af:inputText id="it1" helpTopicId="CRMagencyClasses" columns="13"
+                                readOnly="true" shortDesc="Help"/>
+                  <af:statusIndicator id="si1"/>
+                </h:panelGrid>
+              </td></tr>
+              </table>
+              
+              
+              
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Agency Classification" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>                
+              </h:panelGrid>
+              <af:separator id="s1" styleClass="AFStretchWidth"/>
+              
+              <h:panelGrid columns="3" id="pg2">
+              
+                <af:commandButton text="New" id="btnNewAgencyClass"
+                                  icon="/images/create.gif"
+                                  binding="#{baseSetupBacking.btnNewAgencyClass}"
+                                  action="#{baseSetupBacking.actionNewAgencyClass}"
+                                  partialSubmit="true"/>
+                                  
+                <af:commandButton text="Edit" id="btnEditAgencyClass"
+                                  icon="/images/update.gif"
+                                  binding="#{baseSetupBacking.btnEditAgencyClass}"
+                                  action="#{baseSetupBacking.actionEditAgencyClass}"
+                                  disabled="true" partialSubmit="true"/>
+                                  
+                <af:commandButton text="Delete" id="btnDeleteAgencyClass"
+                                  icon="/images/delete.gif"
+                                  binding="#{baseSetupBacking.btnDeleteAgencyClass}"
+                                  action="#{baseSetupBacking.actionsSHOWAgencyClassDelete}"
+                                  disabled="true" partialSubmit="true"/>
+              </h:panelGrid>
+              
+              
+                <af:table value="#{bindings.AgencyClass.collectionModel}"
+                          var="row" rows="#{bindings.AgencyClass.rangeSize}"
+                          emptyText="#{bindings.AgencyClass.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.AgencyClass.rangeSize}"
+                          rowBandingInterval="0"
+                          selectionListener="#{baseSetupBacking.tblAgencyClassSelectionListener}"
+                          rowSelection="single" 
+                          styleClass="AFStretchWidth"
+                          id="tblAgencyClass"
+                          binding="#{baseSetupBacking.tblAgencyClass}">
+                  <af:column sortProperty="code" sortable="true"
+                             headerText="CODE" visible="false"
+                             id="c1">
+                    <af:outputText value="#{row.code}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="description" sortable="true"
+                             headerText="DESCRIPTION"
+                             id="c2" width="300" displayIndex="-1">
+                    <af:outputText value="#{row.description}" id="ot2"/>
+                  </af:column>
+                </af:table>
+                
+              <af:separator id="s7"/>
+              <af:commandButton text="Generate Report" id="cl1" icon="/images/report.png"
+                                partialSubmit="true"/>
+            </af:panelBox>
+            
+            <af:popup id="agencyClassPopup" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Add New Agency Class" type="none">
+                <af:panelFormLayout id="pfl1" inlineStyle="width:300.0px;">
+                
+                  <af:inputText label="Code : " id="txtAgencyClassCode"
+                                binding="#{baseSetupBacking.txtAgencyClassCode}"
+                                disabled="true" visible="false"/>
+                  <af:inputText label="Description : " id="txtAgencyClassDesc"
+                                binding="#{baseSetupBacking.txtAgencyClassDesc}"
+                                shortDesc="Agency Class description" 
+                                showRequired="true"/>
+                  
+                  
+                </af:panelFormLayout>
+                
+                <af:commandButton text="Save" id="btnCreateUpdateAgencyClass" partialSubmit="true"
+                                    binding="#{baseSetupBacking.btnCreateUpdateAgencyClass}"
+                                    action="#{baseSetupBacking.actionCreateUpdateAgencyClass}"/>
+                  <af:commandButton text="Cancel" id="cb2"/>
+                
+              </af:dialog>
+            </af:popup>
+               <af:popup id="confirmationDialog" contentDelivery="lazyUncached">
+                <af:dialog title="Confirm DELETE" id="confirmChangeDialog"
+                            type="yesNo"
+                           dialogListener="#{baseSetupBacking.agentClassConfirmationDialogListener}">
+                                
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="olConfirmMsgValue"/>
+                </af:dialog>
+            </af:popup>
+          </af:group>
+        
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

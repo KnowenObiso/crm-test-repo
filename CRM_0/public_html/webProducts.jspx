@@ -1,0 +1,844 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+<f:view>
+    <af:document id="d1" title="TurnQuest">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                   id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="demoTemplate">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelGroupLayout id="pgl1" binding="#{WebManipulation.gpDtls}">
+              <af:popup id="preview" contentDelivery="lazyUncached">
+                <af:dialog id="d3" type="ok" styleClass="AFStretchWidth">
+                  <af:panelBox text="PanelBox2" id="pb5" showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <af:richTextEditor label="Label 3" id="rte3"
+                                       binding="#{WebManipulation.txtPreview}" simple="true"
+                             styleClass="AFStretchWidth" readOnly="true"
+                                       inlineStyle="width:600.0px;"/>
+                  </af:panelBox>
+                </af:dialog>
+              </af:popup>
+              <af:panelBox text="Transactions" id="pb2" showDisclosure="false"
+                           showHeader="never"
+                           binding="#{WebManipulation.pbTrans}">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="1" id="pg1">
+                  <af:outputLabel value="Transaction Type" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+                  <af:separator id="s2"/>
+                </h:panelGrid>
+                <h:panelGrid columns="2" id="pg2">
+                  <af:selectBooleanRadio id="sbr1" simple="true"
+                                         binding="#{WebManipulation.rdCategory}"
+                                         group="trans"/>
+                  <af:outputLabel value="Categories" id="ol2"/>
+                  <af:selectBooleanRadio label="Label 2" id="sbr2" simple="true"
+                                         binding="#{WebManipulation.rdProducts}"
+                                         group="trans"/>
+                  <af:outputLabel value="Products" id="ol3"/>
+                  <af:spacer width="10" height="10" id="s1"/>
+                  <af:commandButton text="Next" id="cb1"
+                                    action="#{WebManipulation.transSelected}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+              </af:panelBox>
+              <af:panelBox text="Categories" id="pb1" rendered="false"
+                           binding="#{WebManipulation.pbCategories}"
+                           showHeader="never">
+                        <af:table value="#{bindings.WebDefs1.collectionModel}"
+                                            var="row"
+                                            rows="#{bindings.WebDefs1.rangeSize}"
+                                            emptyText="#{bindings.WebDefs1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                            fetchSize="#{bindings.WebDefs1.rangeSize}"
+                                            rowBandingInterval="0"
+                                            filterModel="#{bindings.WebDefs1Query.queryDescriptor}"
+                                            queryListener="#{bindings.WebDefs1Query.processQuery}"
+                                            filterVisible="true" varStatus="vs"
+                                            selectionListener="#{WebManipulation.systemSelected}"
+                                            rowSelection="single" id="t7"
+                                            binding="#{WebManipulation.systemTbl}"
+                                          inlineStyle="width:550px; height:120.0px;">
+                                    <af:column sortProperty="systemName" 
+                                               width="545" filterable="true"
+                                               sortable="true" headerText="Name"
+                                               id="c4">
+                                      <af:outputText value="#{row.systemName}"
+                                                     id="ot4"/>
+                                    </af:column>
+                                    <af:column sortProperty="systemCode" visible="false"
+                                               filterable="true" sortable="true"
+                                               headerText="Code" id="c10">
+                                      <af:outputText value="#{row.systemCode}"
+                                                     id="ot9"/>
+                                    </af:column>
+                                  </af:table>    
+                  <f:facet name="toolbar"/>
+                 <h:panelGrid columns="4" id="pg3">
+                
+                  <af:commandButton text="Add" id="cb2"
+                                    partialSubmit="true"
+                                    icon="/images/create.gif"
+                                    action="#{WebManipulation.addCategory}"/>
+                  <af:commandButton text="Edit" id="cb3"
+                                    partialSubmit="true"
+                                    icon="/images/update.gif"
+                                    action="#{WebManipulation.editCategory}"/>
+                  <af:commandButton text="Delete" id="cb4"
+                                    partialSubmit="true"
+                                    icon="/images/delete.gif"
+                                    action="#{WebManipulation.deleteCategory}"/>
+                  <af:commandButton text="Preview" id="cb5"
+                                    partialSubmit="true"
+                                    action="#{WebManipulation.previewCategory}"/>
+                  <af:popup id="cat" contentDelivery="lazyUncached">
+                    <af:dialog id="d2" type="none" title="Categories">
+                      <af:panelBox text="PanelBox1" id="pb4" showHeader="never">
+                        <f:facet name="toolbar"/>
+                        <h:panelGrid columns="2" id="pg4">
+                          <af:outputLabel value="Code" id="ol4"
+                                          visible="false"/>
+                          <af:inputNumberSpinbox label="Label 1" id="ins1"
+                                                 simple="true" visible="false"
+                                                 binding="#{WebManipulation.txtCatCode}"/>
+                          <af:outputLabel value="Name" id="ol5"/>
+                          <af:inputText label="Label 1" id="it1" simple="true"
+                                        binding="#{WebManipulation.txtCatName}"/>
+                          <af:outputLabel value="Description" id="ol6"/>
+                          <af:richTextEditor label="Label 2" id="rte2"
+                                             simple="true"
+                                             binding="#{WebManipulation.txtCatDesc}"
+                                             styleClass="AFStretchWidth"
+                                             inlineStyle="width:600.0px;"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" id="pg5">
+                          <af:commandButton text="Save" id="cb6"
+                                            partialSubmit="true"
+                                            action="#{WebManipulation.saveCategory}"/>
+                          <af:commandButton text="Cancel" id="cb7"
+                                            partialSubmit="true"
+                                            action="#{WebManipulation.cancelCategory}"/>
+                        </h:panelGrid>
+                      </af:panelBox>
+                    </af:dialog>
+                  </af:popup>
+                </h:panelGrid>
+                <af:panelCollection id="pc1" inlineStyle="width:99%;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.WebDefs7.collectionModel}"
+                            var="row" rows="#{bindings.WebDefs7.rangeSize}"
+                            emptyText="#{bindings.WebDefs7.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.WebDefs7.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.WebDefs7Query.queryDescriptor}"
+                            queryListener="#{bindings.WebDefs7Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            binding="#{WebManipulation.categoryTab}"
+                            selectedRowKeys="#{bindings.WebDefs7.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.WebDefs7.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1">
+                    <af:column sortProperty="twpCode" filterable="true" visible="false"
+                               sortable="true" headerText="Code" id="c11">
+                      <af:outputText value="#{row.twpCode}" id="ot11"/>
+                    </af:column>
+                    <af:column sortProperty="twpcName" filterable="true"
+                               sortable="true" headerText="Name" id="c3">
+                      <af:outputText value="#{row.twpcName}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="twpcDesc" filterable="true"
+                        width="600" sortable="true" headerText="Desc" id="c2">
+                       <af:richTextEditor label="Label 1" id="rte1"
+                                         value="#{row.twpcDesc}" simple="true"
+                                         styleClass="AFStretchWidth"
+                                         inlineStyle="width:100%;"
+                                         readOnly="true"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+              <af:panelBox text="Products" id="pb3" rendered="false"
+                           binding="#{WebManipulation.pbProducts}"
+                           showHeader="never">
+                <f:facet name="toolbar"/>
+                <af:panelSplitter id="ps1"
+                                  inlineStyle="height:600px; width:99%;">
+                  <f:facet name="first">
+                    <af:panelGroupLayout layout="scroll"
+                                         xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl3">
+                      <h:panelGrid columns="1" id="pg10">
+                        <af:outputLabel value="Categories" id="ol9"
+                                        inlineStyle="font-weight:bold;"/>
+                        <af:separator id="s6"/>
+                      </h:panelGrid>
+                      <af:tree value="#{bindings.WebDefs6.treeModel}" var="node"
+                               rowSelection="single" id="t2"
+                               binding="#{WebManipulation.trCategories}"
+                                selectionListener="#{WebManipulation.trCategorySelected}">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node}" id="ot1"/>
+                        </f:facet>
+                      </af:tree>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout id="pgl2">
+                      <h:panelGrid columns="1" id="pg6">
+                        <af:outputLabel value="Products" id="ol7"
+                                        inlineStyle="font-weight:bold;"/>
+                        <af:separator id="s3"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="4" id="pg8">
+                        <af:commandButton text="Add" id="cb8"
+                                          partialSubmit="true"
+                                          icon="/images/create.gif"
+                                          action="#{WebManipulation.newProduct}"/>
+                        <af:commandButton text="Edit" id="cb9"
+                                          partialSubmit="true"
+                                          icon="/images/update.gif"
+                                          action="#{WebManipulation.editProduct}"/>
+                        <af:commandButton text="Delete" id="cb10"
+                                          partialSubmit="true"
+                                          icon="/images/delete.gif"
+                                          action="#{WebManipulation.deleteProduct}"/>
+                        <af:commandButton text="Preview" id="cb11"
+                                          partialSubmit="true"
+                                          action="#{WebManipulation.previewProduct}"/>
+                        <af:popup id="prodPop" contentDelivery="lazyUncached">
+                          <af:dialog id="d4" type="none">
+                            <af:panelBox text="PanelBox3" id="pb6"
+                                         showHeader="never">
+                              <f:facet name="toolbar"/>
+                              <h:panelGrid columns="2" id="pg11">
+                                <af:outputLabel value="Code" id="ol10"
+                                                visible="false"/>
+                                <af:inputNumberSpinbox label="Label 2"
+                                                       id="ins2"
+                                                       visible="false"
+                                                       simple="true"
+                                                       binding="#{WebManipulation.txtProdCode}"/>
+                                <af:outputLabel value="Product" id="ol11"/>
+                                <h:panelGrid columns="2" id="pg13">
+                                  <af:inputText label="Label 2" id="it2"  
+                                                simple="true" disabled="true"
+                                                binding="#{WebManipulation.txtProdName}"/>
+                                  <af:commandButton  
+                                                    id="cb16"
+                                                    partialSubmit="true"
+                                                    icon="/images/dropdown.gif"
+                                                    action="#{WebManipulation.launchProduct}"/>
+                                  <af:popup id="products"
+                                            contentDelivery="lazyUncached">
+                                    <af:dialog id="d5" type="none"
+                                               title="Products">
+                                      <af:panelBox text="PanelBox4" id="pb7"
+                                                   showHeader="never">
+                                        <f:facet name="toolbar"/>
+                                        <h:panelGrid columns="1" id="pg14">
+                                          <af:table value="#{bindings.WebDefs4.collectionModel}"
+                                                    var="row"
+                                                    rows="#{bindings.WebDefs4.rangeSize}"
+                                                    emptyText="#{bindings.WebDefs4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                    fetchSize="#{bindings.WebDefs4.rangeSize}"
+                                                    rowBandingInterval="0"
+                                                    filterModel="#{bindings.WebDefs4Query.queryDescriptor}"
+                                                    queryListener="#{bindings.WebDefs4Query.processQuery}"
+                                                    filterVisible="true"
+                                                    varStatus="vs"
+                                                    rowSelection="single"
+                                                    id="t5"
+                                                    binding="#{WebManipulation.products}">
+                                            <af:column sortProperty="prodShtDesc"
+                                                       filterable="true"
+                                                       sortable="true"
+                                                       headerText="Sht Desc"
+                                                       id="c13" width="50">
+                                              <af:outputText value="#{row.prodShtDesc}"
+                                                             id="ot6"/>
+                                            </af:column>
+                                            <af:column sortProperty="prodDesc"
+                                                       filterable="true"
+                                                       sortable="true"
+                                                       headerText="Product"
+                                                       id="c12" width="200">
+                                              <af:outputText value="#{row.prodDesc}"
+                                                             id="ot12"/>
+                                            </af:column>
+                                          </af:table>
+                                          <h:panelGrid columns="2" id="pg15">
+                                            <af:commandButton text="Ok"
+                                                              id="cb17"
+                                                              partialSubmit="true"
+                                                              action="#{WebManipulation.productSelected}"/>
+                                            <af:commandButton text="Cancel"
+                                                              id="cb18"
+                                                              partialSubmit="true"
+                                                              action="#{WebManipulation.cancelProducts}"/>
+                                          </h:panelGrid>
+                                        </h:panelGrid>
+                                      </af:panelBox>
+                                    </af:dialog>
+                                  </af:popup>
+                                </h:panelGrid>
+                                      <af:outputLabel value="Type"   id="outputLabel32"
+                                                      rendered="false"/>
+                      <h:panelGrid columns="2" 
+                                   id="panelGrid8" rendered="false">
+                        <af:selectBooleanRadio text="Contract" label="Label 1"
+                                               simple="true" group="type"
+                                               autoSubmit="true"
+                                               binding="#{WebManipulation.contractPolicy}"
+                                               valueChangeListener="#{WebManipulation.ContractBinderListener}"
+                                               id="sbr3" rendered="false"/>
+                        <af:selectBooleanRadio text="Open Market"
+                                               label="Label 2" simple="true"
+                                               group="type" autoSubmit="true"
+                                               binding="#{WebManipulation.openMarket}"
+                                               valueChangeListener="#{WebManipulation.OpenMarketListener}"
+                                               id="sbr4" selected="true"
+                                               rendered="false"/>
+                        <af:selectOneRadio label="Label 1" id="sor1" value="M"
+                                           binding="#{WebManipulation.contractOpenRadio}"
+                                           autoSubmit="true"
+                                            simple="true" layout="horizontal"
+                                           valueChangeListener="#{WebManipulation.selectContractBinder}">
+                          <af:selectItem label="Contract" value="B" id="si23"/>
+                          <af:selectItem label="Open Market" value="M"
+                                         id="si22"/>
+                        </af:selectOneRadio>
+                                
+                      </h:panelGrid>
+                       <af:outputLabel value="Products" id="ol14"
+                                       rendered="false"/>
+                                <h:panelGrid columns="2" id="pg18"
+                                             rendered="false">
+                                  <af:inputText label="Label 3" id="it3"
+                                                simple="true" disabled="true"
+                                                binding="#{WebManipulation.txtProductName}"/>
+                                  <af:commandButton
+                                                    id="cb21"
+                                                    partialSubmit="true"
+                                                    icon="/images/dropdown.gif"
+                                                    action="#{WebManipulation.launchBrokerOptions}"/>
+                                  <af:popup id="BrokerProduct"
+                                            contentDelivery="lazyUncached">
+                                    <af:dialog id="d7" type="none"
+                                               title="Select Products"
+                                               inlineStyle="width:600.0px;">
+                                      <af:panelBox text="PanelBox6" id="pb9"
+                                                   showHeader="never">
+                                        <f:facet name="toolbar"/>
+                                        <h:panelGrid columns="1" id="pg19">
+                                          <af:table value="#{bindings.WebDefs9.collectionModel}"
+                                                    var="row"
+                                                    rows="#{bindings.WebDefs9.rangeSize}"
+                                                    emptyText="#{bindings.WebDefs9.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                    fetchSize="#{bindings.WebDefs9.rangeSize}"
+                                                    rowBandingInterval="0"
+                                                    filterModel="#{bindings.WebDefs8Query.queryDescriptor}"
+                                                    queryListener="#{bindings.WebDefs8Query.processQuery}"
+                                                    filterVisible="true"
+                                                    varStatus="vs" 
+                                                    selectedRowKeys="#{bindings.WebDefs9.collectionModel.selectedRow}"
+                                                    selectionListener="#{bindings.WebDefs9.collectionModel.makeCurrent}"
+                                                    rowSelection="single"
+                                                    id="t8"
+                                                    binding="#{WebManipulation.productsTable}"
+                                                    inlineStyle="width:600.0px;">
+                                                  
+                                           <af:column sortProperty="productShtCode" 
+                                                       filterable="true" filterFeatures="caseInsensitive"
+                                                       sortable="true"
+                                                       headerText="Short Description"
+                                                       id="c16">
+                                              <af:outputText value="#{row.productShtCode}"
+                                                             id="ot20"/>
+                                            </af:column>
+                                            <af:column sortProperty="binderCode" visible="false"
+                                                       filterable="true"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Bind Code"
+                                                       id="c14">
+                                              <af:outputText value="#{row.binderCode}"
+                                                             id="ot13"/>
+                                            </af:column>
+                                            <af:column sortProperty="binderShtDesc" visible="false"
+                                                       filterable="true"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Bind Sht Desc"
+                                                       id="c17">
+                                              <af:outputText value="#{row.binderShtDesc}"
+                                                             id="ot17"/>
+                                            </af:column>
+                                              <af:column sortProperty="productDesc"
+                                                       filterable="true"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Product Desc"
+                                                       id="c24">
+                                              <af:outputText value="#{row.productDesc}"
+                                                             id="ot10"/>
+                                            </af:column>
+                                            <af:column sortProperty="binderName"
+                                                       filterable="true" width="300"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Contract Name"
+                                                       id="c15">
+                                              <af:outputText value="#{row.binderName}"
+                                                             id="ot15"/>
+                                            </af:column>
+                                             <af:column sortProperty="agntShtDesc" 
+                                                       filterable="true"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Agent"
+                                                       id="c22">
+                                              <af:outputText value="#{row.agntShtDesc}"
+                                                             id="ot25"/>
+                                            </af:column>
+                                            <af:column sortProperty="productAccomodation"
+                                                       filterable="true" visible="false"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Product Accomodation"
+                                                       id="c19">
+                                              <af:outputText value="#{row.productAccomodation}"
+                                                             id="ot16"/>
+                                            </af:column>
+                                            <af:column sortProperty="proPreReqShtDesc" visible="false"
+                                                       filterable="true"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Preliquisite Sht Desc"
+                                                       id="c27">
+                                              <af:outputText value="#{row.proPreReqShtDesc}"
+                                                             id="ot22"/>
+                                            </af:column>
+                                            <af:column sortProperty="productMinimumPremium"
+                                                       filterable="true" visible="false"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Minimum Premium"
+                                                       id="c20">
+                                              <af:outputText value="#{row.productMinimumPremium}"
+                                                             id="ot21"/>
+                                            </af:column>
+                                            <af:column sortProperty="proEditPolNo"
+                                                       filterable="true" filterFeatures="caseInsensitive"
+                                                       sortable="true" visible="false"
+                                                       headerText="Edit Pol Number"
+                                                       id="c25">
+                                              <af:outputText value="#{row.proEditPolNo}"
+                                                             id="ot18"/>
+                                            </af:column>
+                                            <af:column sortProperty="agntCode" 
+                                                       filterable="true" 
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Agent Code"
+                                                       id="c26">
+                                              <af:outputText value="#{row.agntCode}"
+                                                             id="ot14"/>
+                                            </af:column>
+                                            <af:column sortProperty="agntName"
+                                                       filterable="true" visible="false"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Agent Name"
+                                                       id="c21">
+                                              <af:outputText value="#{row.agntName}"
+                                                             id="ot24"/>
+                                            </af:column>
+                                            <af:column sortProperty="AGN_COMM_ALLOWED"
+                                                       filterable="true" visible="false"
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Agent Commission Allowed?"
+                                                       id="c28">
+                                              <af:outputText value="#{row.AGN_COMM_ALLOWED}"
+                                                             id="ot19"/>
+                                            </af:column>
+                                            <af:column sortProperty="prgType" visible="false"
+                                                       filterable="true"  
+                                                       sortable="true" filterFeatures="caseInsensitive"
+                                                       headerText="Type"
+                                                       id="c23">
+                                              <af:outputText value="#{row.prgType}"
+                                                             id="ot26"/>
+                                            </af:column>
+                                            <af:column sortProperty="productCode" visible="false"
+                                                       sortable="false" filterFeatures="caseInsensitive"
+                                                       headerText="Product Code"
+                                                       id="c18">
+                                              <af:outputText value="#{row.productCode}"
+                                                             id="ot23"/>
+                                            </af:column>
+                                            <af:column sortProperty="agntCode" visible="false"
+                                                       sortable="false" filterFeatures="caseInsensitive"
+                                                       headerText="Agent Code"
+                                                       id="c34">
+                                              <af:outputText value="#{row.agntCode}"
+                                                             id="ot32"/>
+                                            </af:column>
+                                          </af:table>
+                                          <h:panelGrid columns="2" id="pg20">
+                                            <af:commandButton text="Ok"
+                                                              id="cb22"
+                                                              partialSubmit="true"
+                                                              action="#{WebManipulation.selectProduct}"/>
+                                            <af:commandButton text="Cancel"
+                                                              id="cb23"
+                                                              partialSubmit="true"
+                                                              action="#{WebManipulation.cancelOptions}"/>
+                                          </h:panelGrid>
+                                        </h:panelGrid>
+                                      </af:panelBox>
+                                    </af:dialog>
+                                  </af:popup>
+                                </h:panelGrid>
+                                  <!--#{Rendering.divisionApplicable ? true : false}-->
+                                 <af:outputLabel value="Agency Account"
+                                                   id="ol17" rendered="false"/>
+                                <h:panelGrid columns="2" id="pg24"
+                                             rendered="false">
+                                  <af:inputText label="Label 3" id="it5"
+                                                simple="true" disabled="true"
+                                                binding="#{WebManipulation.txtAgencyAccount}"/>
+                                  <af:commandButton
+                                                    id="cb29"
+                                                    partialSubmit="true"
+                                                    icon="/images/dropdown.gif"
+                                                    action="#{WebManipulation.launchAgencyLox}"/>
+                                  <af:popup id="agencyAccount"
+                                            contentDelivery="lazyUncached">
+                                    <af:dialog id="d9" type="none"
+                                               title="Select Agency Account">
+                                      <af:panelBox text="PanelBox6" id="pb11"
+                                                   showHeader="never">
+                                        <f:facet name="toolbar"/>
+                                        <h:panelGrid columns="1" id="pg25">
+                                          <af:table value="#{bindings.WebDefs10.collectionModel}"
+                                                    var="row"
+                                                    rows="#{bindings.WebDefs10.rangeSize}"
+                                                    emptyText="#{bindings.WebDefs10.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                    fetchSize="#{bindings.WebDefs10.rangeSize}"
+                                                    rowBandingInterval="0"
+                                                    filterModel="#{bindings.WebDefs10Query.queryDescriptor}"
+                                                    queryListener="#{bindings.WebDefs10Query.processQuery}"
+                                                    filterVisible="true"
+                                                    varStatus="vs"
+                                                   selectionListener="#{bindings.WebDefs10.collectionModel.makeCurrent}"
+                                                    rowSelection="single"
+                                                    id="t9"
+                                                    binding="#{WebManipulation.selectAgencyAccount}"
+                                                    inlineStyle="width:400.0px;">
+                                            <af:column sortProperty="agaCode" visible="false"
+                                                       filterable="true"
+                                                       sortable="true"
+                                                       headerText="#{bindings.WebDefs10.hints.agaCode.label}"
+                                                       id="c38">
+                                              <af:outputText value="#{row.agaCode}"
+                                                             id="ot35"/>
+                                            </af:column>
+                                            <af:column sortProperty="agaShtDesc" 
+                                                       filterable="true" width="200"
+                                                       sortable="true"
+                                                       headerText="Account Sht Desc"
+                                                       id="c40">
+                                              <af:outputText value="#{row.agaShtDesc}"
+                                                             id="ot37"/>
+                                            </af:column>
+                                            <af:column sortProperty="agaName"
+                                                       filterable="true" width="200"
+                                                       sortable="true"
+                                                       headerText="Account Name"
+                                                       id="c37">
+                                              <af:outputText value="#{row.agaName}"
+                                                             id="ot38"/>
+                                            </af:column>
+                                            <af:column sortProperty="agaCreatedBy"
+                                                       filterable="true"
+                                                       sortable="true" visible="false"
+                                                       headerText="#{bindings.WebDefs10.hints.agaCreatedBy.label}"
+                                                       id="c39">
+                                              <af:outputText value="#{row.agaCreatedBy}"
+                                                             id="ot36"/>
+                                            </af:column>
+                                          </af:table>
+                                          <h:panelGrid columns="2" id="pg26">
+                                            <af:commandButton text="Ok"
+                                                              id="cb30"
+                                                              partialSubmit="true"
+                                                              action="#{WebManipulation.selectAgencyAccount}"/>
+                                            <af:commandButton text="Cancel"
+                                                              id="cb31"
+                                                              partialSubmit="true"
+                                                              action="#{WebManipulation.cancelAgencyOptions}"/>
+                                          </h:panelGrid>
+                                        </h:panelGrid>
+                                      </af:panelBox>
+                                    </af:dialog>
+                                  </af:popup>
+                                </h:panelGrid>
+                                <af:outputLabel value="Desc" id="ol12"/>
+                                <af:richTextEditor label="Label 5" id="rte5"
+                                                   simple="true"
+                                                   styleClass="AFStretchWidth"
+                                                   inlineStyle="width:600.0px;"
+                                                   binding="#{WebManipulation.txtProdDesc}"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="2" id="pg12">
+                                <af:commandButton text="Save"
+                                                  id="cb19"
+                                                  partialSubmit="true"
+                                                  action="#{WebManipulation.saveProduct}"/>
+                                <af:commandButton text="Cancel"
+                                                  id="cb20"
+                                                  partialSubmit="true"
+                                                  action="#{WebManipulation.cancelProdDtls}"/>
+                              </h:panelGrid>
+                            </af:panelBox>
+                          </af:dialog>
+                        </af:popup>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc2" styleClass="AFStretchWidth"
+                                          inlineStyle="height:200.0px;">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.WebDefs2.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.WebDefs2.rangeSize}"
+                                  emptyText="#{bindings.WebDefs2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.WebDefs2.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.WebDefs2Query.queryDescriptor}"
+                                  queryListener="#{bindings.WebDefs2Query.processQuery}" varStatus="vs"
+                                  rowSelection="single" id="t3"
+                                  inlineStyle="width:inherit;"
+                                  binding="#{WebManipulation.tbProduct}"
+                                  selectionListener="#{WebManipulation.tbProductSelected}">
+                          <af:column sortProperty="prodDesc" filterable="true"
+                                     sortable="true" headerText="Product"
+                                     id="c6">
+                            <af:outputText value="#{row.prodDesc}" id="ot5"/>
+                          </af:column>
+                          <af:column sortProperty="twpProdDesc"
+                                     filterable="true" sortable="true"
+                                     headerText="Description" id="c5"
+                                     width="600">
+                            <af:richTextEditor label="Label 4" id="rte4"
+                                               value="#{row.twpProdDesc}"
+                                               simple="true" readOnly="true"
+                                               styleClass="AFStretchWidth"/>
+                          </af:column>
+                          <af:column sortProperty="binder" sortable="false"
+                                     headerText="Binder?"
+                                     id="c29" rendered="false">
+                            <af:outputText value="#{row.binder}" id="ot27"/>
+                          </af:column>
+                          <af:column sortProperty="bindName" sortable="false"
+                                     headerText="BindName"
+                                     id="c30" rendered="false">
+                            <af:outputText value="#{row.bindName}" id="ot28"/>
+                          </af:column>
+                          <af:column sortProperty="bindCode" sortable="false" visible="false"
+                                     headerText="Bind Code"
+                                     id="c31" rendered="false">
+                            <af:outputText value="#{row.bindCode}" id="ot29"/>
+                          </af:column>
+                          <af:column sortProperty="twpCode" sortable="false" visible="false"
+                                     headerText="Code"
+                                     id="c33" rendered="false">
+                            <af:outputText value="#{row.twpCode}" id="ot31"/>
+                          </af:column>
+                          <af:column sortProperty="agencyCode" sortable="false"
+                                     headerText="Agency Code" visible="false"
+                                     id="c35" rendered="false">
+                            <af:outputText value="#{row.agencyCode}" id="ot33"/>
+                          </af:column>
+                          <af:column sortProperty="agencyAccounts" sortable="false"
+                                     headerText="Agency Accounts"
+                                     id="c36" rendered="false">
+                            <af:outputText value="#{row.agencyAccounts}"
+                                           id="ot34"/>
+                          </af:column>
+                          <af:column sortProperty="agaCode" sortable="false" visible="false"
+                                     headerText="#{bindings.WebDefs2.hints.agaCode.label}"
+                                     id="c41" rendered="false">
+                            <af:outputText value="#{row.agaCode}" id="ot40"/>
+                          </af:column>
+                          <af:column sortProperty="agaShtDesc" sortable="false" 
+                                     headerText="Account Sht Desc"
+                                     id="c42" rendered="false">
+                            <af:outputText value="#{row.agaShtDesc}" id="ot39"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <h:panelGrid columns="1" id="pg7">
+                        <af:spacer width="10" height="20" id="s5"/>
+                        <af:outputLabel value="Product Options" id="ol8"
+                                        inlineStyle="font-weight:bold;"/>
+                        <af:separator id="s4"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="4" id="pg9">
+                        <af:commandButton text="Add" id="cb12"
+                                          partialSubmit="true"
+                                          icon="/images/create.gif"
+                                          action="#{WebManipulation.newOption}"/>
+                        <af:commandButton text="Edit" id="cb13"
+                                          partialSubmit="true"
+                                          icon="/images/update.gif"
+                                          action="#{WebManipulation.editOption}"/>
+                        <af:commandButton text="Delete" id="cb14"
+                                          partialSubmit="true"
+                                          icon="/images/delete.gif"
+                                          action="#{WebManipulation.deleteOption}"/>
+                        <af:commandButton text="Preview" id="cb15"
+                                          partialSubmit="true"
+                                          action="#{WebManipulation.previewOption}"/>
+                        <af:popup id="optPop" contentDelivery="lazyUncached">
+                          <af:dialog id="d6" type="none"
+                                     title="Product Options">
+                            <af:panelBox text="PanelBox5" id="pb8"
+                                         showHeader="never">
+                              <f:facet name="toolbar"/>
+                              <h:panelGrid columns="2" id="pg16">
+                                <af:outputLabel value="Code" id="ol13"
+                                                visible="false"/>
+                                <af:inputNumberSpinbox label="Label 3"
+                                                       id="ins3" simple="true"
+                                                       visible="false"
+                                                       binding="#{WebManipulation.txtPopCode}"/>
+                                <af:outputLabel value="Option" id="ol16"/>
+                                <h:panelGrid columns="2" id="pg21">
+                                  <af:inputText label="Label 3" id="it4"
+                                                simple="true" disabled="true"
+                                                binding="#{WebManipulation.txtPopName}"/>
+                                  <af:commandButton
+                                                    id="cb27"
+                                                    partialSubmit="true"
+                                                    icon="/images/dropdown.gif"
+                                                    action="#{WebManipulation.launchOptions}"/>
+                                  <af:popup id="pop"
+                                            contentDelivery="lazyUncached">
+                                    <af:dialog id="d8" type="none"
+                                               title="Product Options">
+                                      <af:panelBox text="PanelBox6" id="pb10"
+                                                   showHeader="never">
+                                        <f:facet name="toolbar"/>
+                                        <h:panelGrid columns="1" id="pg22">
+                                          <af:table value="#{bindings.WebDefs5.collectionModel}"
+                                                    var="row"
+                                                    rows="#{bindings.WebDefs5.rangeSize}"
+                                                    emptyText="#{bindings.WebDefs5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                    fetchSize="#{bindings.WebDefs5.rangeSize}"
+                                                    rowBandingInterval="0"
+                                                    filterModel="#{bindings.WebDefs5Query.queryDescriptor}"
+                                                    queryListener="#{bindings.WebDefs5Query.processQuery}"
+                                                    filterVisible="true"
+                                                    varStatus="vs"
+                                                    rowSelection="single"
+                                                    id="t6"
+                                                    binding="#{WebManipulation.options}">
+                                            <af:column sortProperty="popShtDesc"
+                                                       filterable="true"
+                                                       sortable="true"
+                                                       headerText="Sht Desc"
+                                                       id="c9">
+                                              <af:outputText value="#{row.popShtDesc}"
+                                                             id="ot8"/>
+                                            </af:column>
+                                            <af:column sortProperty="popDesc"
+                                                       filterable="true"
+                                                       sortable="true"
+                                                       headerText="Option"
+                                                       id="c1">
+                                              <af:outputText value="#{row.popDesc}"
+                                                             id="ot2"/>
+                                            </af:column>
+                                          </af:table>
+                                          <h:panelGrid columns="2" id="pg23">
+                                            <af:commandButton text="Ok"
+                                                              id="cb26"
+                                                              partialSubmit="true"
+                                                              action="#{WebManipulation.optionSelected}"/>
+                                            <af:commandButton text="Cancel"
+                                                              id="cb28"
+                                                              partialSubmit="true"
+                                                              action="#{WebManipulation.cancelOptions}"/>
+                                          </h:panelGrid>
+                                        </h:panelGrid>
+                                      </af:panelBox>
+                                    </af:dialog>
+                                  </af:popup>
+                                </h:panelGrid>
+                                <af:outputLabel value="Description" id="ol15"/>
+                                <af:richTextEditor label="Label 6" id="rte7"
+                                                   simple="true"
+                                                   styleClass="AFStretchWidth"
+                                                   inlineStyle="width:600.0px;"
+                                                   binding="#{WebManipulation.txtPopDesc}"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="2" id="pg17">
+                                <af:commandButton text="Save"
+                                                  id="cb24"
+                                                  partialSubmit="true"
+                                                  action="#{WebManipulation.saveOptions}"/>
+                                <af:commandButton text="Cancel"
+                                                  id="cb25"
+                                                  partialSubmit="true"
+                                                  action="#{WebManipulation.cancelOptionDtls}"/>
+                              </h:panelGrid>
+                            </af:panelBox>
+                          </af:dialog>
+                        </af:popup>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc3"
+                                          inlineStyle="width:99%; height:200.0px;">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.WebDefs3.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.WebDefs3.rangeSize}"
+                                  emptyText="#{bindings.WebDefs3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.WebDefs3.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.WebDefs3Query.queryDescriptor}"
+                                  queryListener="#{bindings.WebDefs3Query.processQuery}"
+                                  filterVisible="false" varStatus="vs"
+                                  rowSelection="single" id="t4"
+                                  inlineStyle="width:inherit;"
+                                  binding="#{WebManipulation.tbOptions}">
+                          <af:column sortProperty="popDesc" filterable="true"
+                                     sortable="true" headerText="Name" id="c8">
+                            <af:outputText value="#{row.popDesc}" id="ot7"/>
+                          </af:column>
+                          <af:column sortProperty="twpoDesc" filterable="true"
+                                     sortable="true"
+                                     headerText="Description"
+                                     id="c7" width="600">
+                             <af:richTextEditor label="Label 4" id="rte6"
+                                               value="#{row.twpoDesc}"
+                                               simple="true" readOnly="true"
+                                               styleClass="AFStretchWidth"/>
+                          </af:column>
+                          <af:column sortProperty="bindName" sortable="false"
+                                     headerText="Bind Name"
+                                     id="c32">
+                            <af:outputText value="#{row.bindName}" id="ot30"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:group>
+        </f:facet>
+    </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

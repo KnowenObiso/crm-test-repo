@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+          
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="left">
+                    <af:inputText id="it1" helpTopicId="CRMholdingCompanies"
+                                  columns="13" readOnly="true"
+                                  shortDesc="Help"/>
+                  </td>
+                  <td width="100%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Holding Companies" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <h:panelGrid columns="3" id="pg2">
+                  <af:commandButton text="New" id="btnNewHoldingCompany"
+                                    icon="/images/create.gif"
+                                    binding="#{baseSetupBacking.btnNewHoldingCompany}"
+                                    action="#{baseSetupBacking.actionNewHoldingCompany}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Edit" id="btnEditHoldingCompany"
+                                    disabled="true" icon="/images/update.gif"
+                                    binding="#{baseSetupBacking.btnEditHoldingCompany}"
+                                    action="#{baseSetupBacking.actionEditHoldingCompany}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteHoldingCompany"
+                                    icon="/images/delete.gif" disabled="true"
+                                    binding="#{baseSetupBacking.btnDeleteHoldingCompany}"
+                                    action="#{baseSetupBacking.confirmDeleteAction}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+                <af:table value="#{bindings.AgencyHoldingCompany1.collectionModel}"
+                          var="row"
+                          rows="#{bindings.AgencyHoldingCompany1.rangeSize}"
+                          emptyText="#{bindings.AgencyHoldingCompany1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.AgencyHoldingCompany1.rangeSize}"
+                          rowBandingInterval="0"
+                          rowSelection="single"
+                          styleClass="AFAuxiliaryStretchWidth"
+                          id="tblHoldingCompanies"
+                          binding="#{baseSetupBacking.tblHoldingCompanies}"
+                          summary="A list of holding compamnies"
+                          filterModel="#{bindings.AgencyHoldingCompany1Query.queryDescriptor}"
+                          queryListener="#{bindings.AgencyHoldingCompany1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectionListener="#{baseSetupBacking.actionTblHoldingCompanies}">
+                  <af:column sortProperty="code" filterable="true"
+                             sortable="true" headerText="Code" id="c4">
+                    <af:outputText value="#{row.code}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="name" filterable="true"
+                             sortable="true" headerText="Name" id="c5">
+                    <af:outputText value="#{row.name}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="postAdd" filterable="true"
+                             sortable="true" headerText="Postal Address"
+                             id="c3">
+                    <af:outputText value="#{row.postAdd}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="phyAdd" filterable="true"
+                             sortable="true" headerText="Physical Address"
+                             id="c6">
+                    <af:outputText value="#{row.phyAdd}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="telNumber" filterable="true"
+                             sortable="true" headerText="Tel Number" id="c1">
+                    <af:outputText value="#{row.telNumber}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="mobNumber" filterable="true"
+                             sortable="true" headerText="Mobile Number" id="c2">
+                    <af:outputText value="#{row.mobNumber}" id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="contactPerson" filterable="true"
+                             sortable="true" headerText="Contact Person"
+                             id="c7">
+                    <af:outputText value="#{row.contactPerson}" id="ot2"/>
+                  </af:column>
+                </af:table>
+                <af:separator id="s2"/>
+                <af:commandButton text="Generate Report" id="cl1"
+                                  icon="/images/report.png"
+                                  partialSubmit="true"/>
+              </af:panelBox>
+            </af:panelBox>
+            
+            <af:popup id="holdingCompanyPopup" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Add New Holding Company" type="none">
+                <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                  <f:facet name="toolbar"/>
+                  <af:panelFormLayout id="pfl1" inlineStyle="width:280.0px;">
+                    <af:inputText label="Code :" id="txtHoldCompCode"
+                                  visible="false" disabled="true"
+                                  binding="#{baseSetupBacking.txtHoldCompCode}"/>
+                    <af:inputText label="Name :" id="txtHoldCompName"
+                                  showRequired="true"
+                                  binding="#{baseSetupBacking.txtHoldCompName}"/>
+                    <af:inputText label="Postal Address :" id="it2"
+                                  binding="#{baseSetupBacking.txtPostAdd}"/>
+                    <af:inputText label="Physical Address :" id="it3"
+                                  binding="#{baseSetupBacking.txtPhyAdd}"/>
+                    <af:inputText label="Telephone Number :" id="it4"
+                                  binding="#{baseSetupBacking.txtTelNumber}"/>
+                    <af:inputText label="Mobile Number :" id="it5"
+                                  binding="#{baseSetupBacking.txtMobNumber}"/>
+                    <af:inputText label="Contact Person :" id="it6"
+                                  binding="#{baseSetupBacking.txtContactPerson}"/>
+                  </af:panelFormLayout>
+                </af:panelBox>
+                <h:panelGrid columns="2" id="pg3">
+                  <af:commandButton text="Save" id="btnCreateUpdateHoldComp"
+                                    binding="#{baseSetupBacking.btnCreateUpdateHoldComp}"
+                                    action="#{baseSetupBacking.actionCreateUpdateHoldingCompany}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="cb1"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="confirmationDialog" contentDelivery="lazyUncached">
+                <af:dialog title="Confirm Action" id="confirmChangeDialog"
+                            type="yesNo"
+                           dialogListener="#{baseSetupBacking.holdingCompanyConfirmationDialogListener}">
+                                
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="olConfirmMsgValue"/>
+                </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

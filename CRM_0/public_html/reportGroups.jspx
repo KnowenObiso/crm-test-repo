@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never"
+                         inlineStyle="height:600px;">
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="inputText1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="Report Groups" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="panelGrid4">
+                  <af:commandButton text="New" id="commandButton5"
+                                    icon="/images/create.gif"
+                                    action="#{ReportGroupsManinp.actionNewReportGroup}"/>
+                  <af:commandButton text="Edit" id="commandButton6"
+                                    icon="/images/update.gif"
+                                    action="#{ReportGroupsManinp.actionEditReportGroup}"/>
+                  <af:commandButton text="Delete" id="commandButton7"
+                                    icon="/images/delete.gif"
+                                    action="#{ReportGroupsManinp.actionDeleteReportGroup}"/>
+                </h:panelGrid>
+                <af:popup id="ReportGroupsPop">
+                  <af:dialog id="d2" type="none" title="Report Groups">
+                    <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="2" id="pg5">
+                        <h:panelGrid columns="2" id="pg2">
+                          <af:outputLabel value="Name" id="ol2"
+                                          showRequired="true"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg4">
+                          <af:inputText label="Name" id="it2" simple="true"
+                                        binding="#{ReportGroupsManinp.txtReportName}"/>
+                          <af:inputText label="RptGroupCode" id="it3"
+                                        binding="#{ReportGroupsManinp.txtRptGroupCode}"
+                                        visible="false" disabled="true"/>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                    </af:panelBox>
+                    <h:panelGrid columns="2" id="pg3">
+                      <af:commandButton text="Save" id="cb1"
+                                        action="#{ReportGroupsManinp.actionSaveReport}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="commandButton1"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+                <af:panelCollection id="pc1"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    inlineStyle="height:200.0px;">
+                  <af:table value="#{bindings.ReportGroup.collectionModel}"
+                            var="row" rows="#{bindings.ReportGroup.rangeSize}"
+                            emptyText="#{bindings.ReportGroup.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ReportGroup.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.ReportGroupQuery.queryDescriptor}"
+                            queryListener="#{bindings.ReportGroupQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            rowSelection="single" id="t1"
+                            binding="#{ReportGroupsManinp.tblReportGroups}"
+                            selectionListener="#{ReportGroupsManinp.actionTblRptGroupsSelected}">
+                    <af:column sortProperty="rptGroupName" filterable="true"
+                               sortable="true" headerText="Name" id="c1"
+                               filterFeatures="caseInsensitive" width="200">
+                      <af:outputText value="#{row.rptGroupName}" id="ot1"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+              <af:spacer width="10" height="10" id="s3"/>
+              <h:panelGrid columns="4" id="pg6">
+                <af:outputLabel value="Report Group Division" id="ol3"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s2"/>
+              <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="panelGrid1">
+                  <af:commandButton text="New" id="commandButton2"
+                                    icon="/images/create.gif"
+                                    action="#{ReportGroupsManinp.actionNewRptGrpDivision}"/>
+                  <af:commandButton text="Edit" id="commandButton3"
+                                    icon="/images/update.gif"
+                                    action="#{ReportGroupsManinp.actionEditRptGrpDivision}"/>
+                  <af:commandButton text="Delete" id="commandButton4"
+                                    icon="/images/delete.gif"
+                                    action="#{ReportGroupsManinp.actionDeleteRptGrpDivision}"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc2" inlineStyle="width:99%;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ReportGroupDivision.collectionModel}"
+                            var="row"
+                            rows="#{bindings.ReportGroupDivision.rangeSize}"
+                            emptyText="#{bindings.ReportGroupDivision.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ReportGroupDivision.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.ReportGroupDivisionQuery.queryDescriptor}"
+                            queryListener="#{bindings.ReportGroupDivisionQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            selectionListener="#{bindings.ReportGroupDivision.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t2"
+                            binding="#{ReportGroupsManinp.tblRptGrpDivisions}">
+                    <af:column sortProperty="divName" filterable="true"
+                               sortable="true" headerText="Division Name"
+                               id="c3" width="200"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.divName}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="divOrder" filterable="true"
+                               sortable="true" headerText="Division Order"
+                               id="c7">
+                      <af:outputText value="#{row.divOrder}" id="ot7"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <af:popup id="rptGroupDivisionsPOP">
+                  <af:dialog id="dialog1" type="none" title="Divisions">
+                    <af:panelBox text="PanelBox2" id="panelBox1"
+                                 showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <af:table value="#{bindings.Division.collectionModel}"
+                                var="row" rows="#{bindings.Division.rangeSize}"
+                                emptyText="#{bindings.Division.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Division.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.DivisionQuery.queryDescriptor}"
+                                queryListener="#{bindings.DivisionQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.Division.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.Division.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t3"
+                                binding="#{ReportGroupsManinp.tblDivisions}"
+                                inlineStyle="width:99%;">
+                        <af:column sortProperty="DIV_NAME" filterable="true"
+                                   sortable="true" headerText="Division Name"
+                                   id="c4" width="200"
+                                   filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.DIV_NAME}" id="ot4"/>
+                        </af:column>
+                        <af:column sortProperty="divOrder" filterable="true"
+                                   sortable="true" headerText="Division Order"
+                                   id="c5">
+                          <af:outputText value="#{row.divOrder}" id="ot3"/>
+                        </af:column>
+                      </af:table>
+                      <h:panelGrid columns="6" id="pg7">
+                        <af:inputText label="Division Code" id="it4" visible="false"
+                                      disabled="true"
+                                      binding="#{ReportGroupsManinp.txtDivisionCode}"/>
+                        <af:inputText label="RptGrpDiv Code" id="it5" visible="false"
+                                      disabled="true"
+                                      binding="#{ReportGroupsManinp.txtRptGrpDivisionCode}"/>
+                      </h:panelGrid>
+                    </af:panelBox>
+                    <h:panelGrid columns="2" id="panelGrid6">
+                      <af:commandButton text="Ok" id="commandButton8"
+                                        action="#{ReportGroupsManinp.actionSaveRptGrpDivision}"
+                                        partialSubmit="false"/>
+                      <af:commandButton text="Cancel" id="commandButton9"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+              </af:panelBox>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

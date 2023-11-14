@@ -1,0 +1,633 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                   id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        <af:group id="g1">
+        
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <af:inputText id="it1" 
+                                helpTopicId="CRMcountries" 
+                                columns="13"
+                                readOnly="true" 
+                                shortDesc="Help"/>
+                </td>
+                <td width="100%" align="right">
+                
+                <af:statusIndicator id="si1"/>
+                </td>
+              </tr>
+            </table>
+             
+              
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="COUNTRIES DEFINITIONS" id="ol1"
+                                inlineStyle="font-weight:bold;"/>                
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              
+              <af:panelSplitter id="ps1" inlineStyle="height:590.0px;" styleClass="AFAuxiliaryStretchWidth">
+              
+                <f:facet name="first">
+                  <af:panelGroupLayout layout="scroll"
+                                       xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                       id="pgl1">
+                                       
+                    
+                      
+                        <h:panelGrid columns="2" id="pg8">
+                        <af:commandButton text="New" id="btnNewCountry"
+                                              icon="/images/create.gif"
+                                              action="#{baseSetupBacking.actionNewCountry}"/>
+                                              
+                      <af:commandButton text="Delete" id="btnDeleteCountry"
+                                              icon="/images/delete.gif"
+                                              action="#{baseSetupBacking.confirmCountryDeleteAction}"/>
+                        </h:panelGrid>
+                    <af:tree value="#{bindings.Country2.treeModel}" var="node"
+                             selectionListener="#{baseSetupBacking.treeCountriesSelectionListener}"
+                             rowSelection="single" id="treeCountries"
+                             binding="#{baseSetupBacking.treeCountries}"
+                              inlineStyle="width:200.0px; height:450px;">
+                      <f:facet name="nodeStamp">
+                        <af:outputText value="#{node}" id="ot2"/>
+                      </f:facet>
+                    </af:tree>
+                   
+                       
+                     
+                    
+                  </af:panelGroupLayout>
+                </f:facet>
+                
+                <f:facet name="second">
+                
+                  <af:panelTabbed id="pt2"
+                                  binding="#{baseSetupBacking.tabbedDetailsCountries}">
+                  
+                    <af:showDetailItem text="Country Information" id="sdi1">
+                      <af:panelGroupLayout id="pgl7">
+                      <af:panelBox text="PanelBox2" id="panelCountryDetails" showHeader="never"
+                                   binding="#{baseSetupBacking.panelCountryDetails}">
+                        
+                        
+                        <h:panelGrid columns="3" id="pg2">
+                            
+                            <af:commandButton text="Edit" id="btnEditCountry"
+                                              icon="/images/update.gif" 
+                                              rendered="false"
+                                              action="#{baseSetupBacking.actionEditCountry}"/>
+                                              
+                            <af:commandButton text="Save" id="btnCreateUpdateCountry" 
+                                        icon="/images/save.gif"
+                                        binding="#{baseSetupBacking.btnCreateUpdateCountry}"                                        
+                                        action="#{baseSetupBacking.actionCreateUpdateCountry}"/>
+                                        
+                            <af:commandButton text="Cancel" id="btnCancelCountry"
+                                          binding="#{baseSetupBacking.btnCancelCountry}"                                          
+                                          action="#{baseSetupBacking.btnCancelCountry}"/>
+                            
+                          </h:panelGrid>
+                        <af:separator id="s2"/>
+                        
+                        <af:panelFormLayout id="pfl1" inlineStyle="width:420.0px;">
+                        
+                          <af:inputText label="Code : " id="txtCountryCode"
+                                        binding="#{baseSetupBacking.txtCountryCode}"
+                                        disabled="true"  
+                                        showRequired="true"
+                                        visible="false"/>
+                                        
+                          <af:inputText label="Short Description : " 
+                                        id="txtCountryShtDesc" 
+                                        showRequired="true"
+                                        binding="#{baseSetupBacking.txtCountryShtDesc}"/>
+                                        
+                          <af:inputText label="Name : " id="txtCountryName" showRequired="true"
+                                        binding="#{baseSetupBacking.txtCountryName}"/>
+                                        
+                          <af:inputText label="Base Currency Code : " id="txtCountryBaseCurrency"
+                                        binding="#{baseSetupBacking.txtCountryBaseCurrency}" 
+                                        visible="false"/>
+                                        
+                          <af:panelLabelAndMessage label="Base Currency : " id="plam1" showRequired="true">
+                          <af:inputText label="Base Currency : " id="txtCountryBaseCurrencySymbol" 
+                                        binding="#{baseSetupBacking.txtCountryBaseCurrencySymbol}" 
+                                        simple="true" 
+                                        disabled="true"/>
+                          
+                          <af:commandButton id="cb8"
+                                        icon="/images/dropdown.gif"
+                                        shortDesc="Click to select the base currency">
+                                        <af:showPopupBehavior popupId="currencyListPopup"/>
+                            </af:commandButton>
+                          </af:panelLabelAndMessage>
+                          
+                          <af:inputText label="Nationality : " id="txtCountryNationality"
+                                        binding="#{baseSetupBacking.txtCountryNationality}" 
+                                        showRequired="true"/>
+                          
+                          <af:inputText label="ZIP Code : " id="txtCountryZIPCode"
+                                        binding="#{baseSetupBacking.txtCountryZIPCode}" 
+                                        showRequired="true"/>
+                            <af:inputText label="Administrative Regions Type" id="it6"
+                                          binding="#{baseSetupBacking.txtAdminUnit}"
+                                          value="States"/>
+                            <af:selectOneChoice label="Administrative Region Mandatory?"
+                                                id="soc1"
+                                                binding="#{baseSetupBacking.chAdminUnitMandatory}">
+                              <af:selectItem label="Yes" value="Y" id="si3"/>
+                              <af:selectItem label="No" value="N" id="si2"/>
+                            </af:selectOneChoice>
+                          </af:panelFormLayout>
+                        
+                        <af:separator id="s7"/>
+                        <af:commandButton text="Generate Report" id="cl1" icon="/images/report.png"/>
+                        
+                      </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:showDetailItem>
+                    
+                    <af:showDetailItem text="States" id="sdi4"
+                                       binding="#{baseSetupBacking.detailAdminType}"
+                                       visible="false">
+                      <af:panelBox text="PanelBox6" id="pb7" showHeader="never">
+                      
+                        <h:panelGrid columns="1" id="pg9">
+                          <af:outputLabel value="States" id="ol2"
+                                          inlineStyle="font-weight:bold;"
+                                          binding="#{baseSetupBacking.lblAdminType}"/>
+                        </h:panelGrid>
+                        <af:separator id="s10"/>
+                        
+                        <h:panelGrid columns="3" id="pg3">
+                          <af:commandButton text="New" id="btnNewState"
+                                            icon="/images/create.gif"
+                                            action="#{baseSetupBacking.actionNewState}"/>
+                                            
+                          <af:commandButton text="Edit" id="btnEditState"
+                                            icon="/images/update.gif"
+                                            action="#{baseSetupBacking.actionEditState}"/>
+                                            
+                          <af:commandButton text="Delete" id="btnDeleteState"
+                                            icon="/images/delete.gif"
+                                            action="#{baseSetupBacking.actionDeleteState}"/>
+                        </h:panelGrid>
+                        <af:separator id="s9"/>
+                        <af:table value="#{bindings.AdministrativeRegion.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.AdministrativeRegion.rangeSize}"
+                                  emptyText="#{bindings.AdministrativeRegion.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.AdministrativeRegion.rangeSize}"
+                                  rowBandingInterval="1"
+                                  filterModel="#{bindings.AdministrativeRegionQuery.queryDescriptor}"
+                                  queryListener="#{bindings.AdministrativeRegionQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{baseSetupBacking.actiontblAdminRegionsSelected}"
+                                  rowSelection="single" id="t3"
+                                  binding="#{baseSetupBacking.tblAdminRegions}">
+                          <af:column sortProperty="regShortDesc" sortable="true"
+                                     headerText="Short Description"
+                                     id="c1" width="100">
+                            <af:outputText value="#{row.regShortDesc}"
+                                           id="ot10"/>
+                          </af:column>
+                          <af:column sortProperty="regName"
+                                     sortable="true"
+                                     headerText="Name"
+                                     id="c8" width="200">
+                            <af:outputText value="#{row.regName}" id="ot8"/>
+                          </af:column>
+                        </af:table>
+                        <af:separator id="s11"/>
+                        <af:commandButton text="Generate Report" id="cb1" 
+                                          icon="/images/report.png"/>
+                        
+                      </af:panelBox>
+                      
+                                            
+                    </af:showDetailItem>
+                    
+                    <af:showDetailItem text="#{Rendering.localSite ? 'Towns' : 'Local Govt. Areas'}" id="sdi2">
+                      
+                            <af:panelBox text="#{Rendering.localSite ? 'TOWNS' : 'Local Govt. Areas'}" id="pb2" showHeader="never">
+                                                            
+                              <h:panelGrid columns="1" id="pg5">
+                                <af:outputLabel value="#{Rendering.localSite ? 'TOWNS' : 'Local Govt. Areas'}" id="ol3"
+                                                inlineStyle="font-weight:bold;"/>                
+                              </h:panelGrid>
+                              <af:separator id="s3"/>
+                              
+                              <h:panelGrid columns="5" id="pg4">
+                                <af:commandButton text="New" id="btnNewTown"
+                                                  icon="/images/create.gif"
+                                                  action="#{baseSetupBacking.actionNewTown}"/>
+                                                  
+                                <af:commandButton text="Edit" id="btnEditTown"
+                                                  icon="/images/update.gif"
+                                                  action="#{baseSetupBacking.actionEditTown}"/>
+                                                  
+                                <af:commandButton text="Delete" id="btnDeleteTown"
+                                                  icon="/images/delete.gif"
+                                                  action="#{baseSetupBacking.actionDeleteTown}"/>
+                                                  
+                          <af:spacer width="300" height="10" id="s5"/>
+                          
+                          <af:commandButton text="Generate Report" id="cb3" 
+                                          icon="/images/report.png"/>
+                        </h:panelGrid>
+                            <af:separator id="s4"/>
+                            
+                        <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:200.0px">
+                          <af:table value="#{bindings.Town.collectionModel}"
+                                    var="row" rows="#{bindings.Town.rangeSize}"
+                                    emptyText="#{bindings.Town.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Town.rangeSize}"
+                                    rowBandingInterval="1"
+                                    filterModel="#{bindings.TownQuery.queryDescriptor}"
+                                    queryListener="#{bindings.TownQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                                                      rowSelection="single" id="t2"
+                                    binding="#{baseSetupBacking.tblCountryTowns}"
+                                    selectionListener="#{baseSetupBacking.tblCountryTownsSelectionListener}">
+                            <af:column sortProperty="shortDesc" sortable="true"
+                                       headerText="Short Descripion"
+                                       id="c10" width="100">
+                              <af:outputText value="#{row.shortDesc}"
+                                             id="ot13"/>
+                            </af:column>
+                            <af:column sortProperty="name"
+                                       sortable="true"
+                                       headerText="Name"
+                                       id="c7" width="200">
+                              <af:outputText value="#{row.name}" id="ot9"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        
+                                
+                        <af:separator id="s12"/>
+                        
+                                          
+                        <af:panelTabbed id="pt3" styleClass="AFAuxiliaryStretchWidth">
+                        
+                          <af:showDetailItem text="Localities" id="sdi3">
+                           <af:panelGroupLayout id="pgl3">
+                            <af:panelBox text="LOCATIONS" id="pb3" showHeader="never">
+                              <f:facet name="toolbar"/>
+                              
+                              
+                              
+                              <h:panelGrid columns="3" id="pg7">
+                                <af:commandButton text="New" id="btnNewLocation"
+                                                  icon="/images/create.gif"
+                                                  action="#{baseSetupBacking.actionNewLocation}"/>
+                                                  
+                                <af:commandButton text="Edit" id="btnEditLocation"
+                                                  icon="/images/update.gif"
+                                                  action="#{baseSetupBacking.actionEditLocation}"/>
+                                                  
+                                <af:commandButton text="Delete" id="btnDeleteLocation"
+                                                  icon="/images/delete.gif"
+                                                  action="#{baseSetupBacking.actionDeleteLocation}"/>
+                              </h:panelGrid>
+                            <af:separator id="s6"/>
+                            
+                                <af:panelCollection id="pc2" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:180.0px;">                          
+                                <af:table value="#{bindings.Location.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.Location.rangeSize}"
+                                          emptyText="#{bindings.Location.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.Location.rangeSize}"
+                                          rowBandingInterval="0"
+                                          rowSelection="single" 
+                                          id="tblTownLocations"                                          
+                                          binding="#{baseSetupBacking.tblTownLocations}">
+                                  <af:column sortProperty="shortDesc"
+                                             sortable="true" headerText="Id"
+                                             id="c4">
+                                    <af:outputText value="#{row.shortDesc}"
+                                                   id="ot5"/>
+                                  </af:column>
+                                  <af:column sortProperty="name" sortable="true"
+                                             headerText="Name" id="c3" width="200">
+                                    <af:outputText value="#{row.name}"
+                                                   id="ot4"/>
+                                  </af:column>
+                                </af:table>
+                                </af:panelCollection>
+                              
+                              
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                          </af:showDetailItem>
+                          
+                          <af:showDetailItem text="Postal Codes" id="sdi5">
+                            <af:panelGroupLayout id="pgl8">
+                              <af:panelBox text="PanelBox8" id="pb9" showHeader="never">
+                              
+                              <h:panelGrid columns="3" id="pg6">
+                    
+                                <af:commandButton text="New"
+                                                  id="btnNewPostalCode" 
+                                                  icon="/images/create.gif"
+                                                  action="#{baseSetupBacking.actionNewPostalCode}"/>
+                                                  
+                                <af:commandButton text="Edit" 
+                                                  id="btnEdiPostalCode" 
+                                                  icon="/images/update.gif"
+                                                  action="#{baseSetupBacking.actionEditPostalCode}"/>
+                                                  
+                                <af:commandButton text="Delete" 
+                                                  id="btnDeletePostalCode" 
+                                                  icon="/images/delete.gif"
+                                                  action="#{baseSetupBacking.actionDeletePostalCode}"/>
+                              </h:panelGrid>
+                              <af:separator id="s8"/>
+                              
+                                <af:panelCollection id="pc3" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:180.0px;">
+                                  <af:table value="#{bindings.PostalCode.collectionModel}"
+                                            var="row"
+                                            rows="#{bindings.PostalCode.rangeSize}"
+                                            emptyText="#{bindings.PostalCode.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                            fetchSize="#{bindings.PostalCode.rangeSize}"
+                                            rowBandingInterval="0"
+                                            filterModel="#{bindings.PostalCodeQuery.queryDescriptor}"
+                                            queryListener="#{bindings.PostalCodeQuery.processQuery}"
+                                            filterVisible="true" varStatus="vs"
+                                            rowSelection="single" 
+                                            id="t1"
+                                            binding="#{baseSetupBacking.tblPostalCodes}">
+                                    <af:column sortProperty="pstDesc"
+                                               filterable="true" sortable="true"
+                                               headerText="Description" id="c9" width="200">
+                                      <af:outputText value="#{row.pstDesc}"
+                                                     id="ot11"/>
+                                    </af:column>
+                                    <af:column sortProperty="pstZipCode"
+                                               filterable="true" sortable="true"
+                                               headerText="Zip Code" id="c11" width="150">
+                                      <af:outputText value="#{row.pstZipCode}"
+                                                     id="ot12"/>
+                                    </af:column>
+                                  </af:table>
+                                </af:panelCollection>
+                                
+                              </af:panelBox>
+                            </af:panelGroupLayout>
+                          </af:showDetailItem>
+                          
+                        </af:panelTabbed>
+                        
+                      </af:panelBox>
+                          
+                         
+                          
+                      <af:popup id="countryTownPopup">
+                        <af:dialog id="d2" title="New Town" type="none">
+                          <af:panelGroupLayout id="pgl2">
+                            <af:panelBox text="PanelBox3" id="pb4" showHeader="never">
+                              <f:facet name="toolbar"/>
+                              
+                              <af:panelFormLayout id="pfl2" inlineStyle="width:300.0px;">
+                              
+                                <af:inputText label="CODE : " id="txtTownCodePopup" visible="false"
+                                              binding="#{baseSetupBacking.txtTownCodePopup}"/>
+                                              
+                                <af:inputText label="Country Code : " id="txtTownCountryPopup" 
+                                              visible="false"
+                                              binding="#{baseSetupBacking.txtTownCountryPopup}" 
+                                              showRequired="true"/> 
+                                              
+                                <af:inputText label="Short Desc : " id="txtTownShtDescPopup"
+                                              binding="#{baseSetupBacking.txtTownShtDescPopup}" 
+                                              showRequired="true"/>
+                                              
+                                <af:inputText label="Name : " id="txtTownNamePopup"
+                                              binding="#{baseSetupBacking.txtTownNamePopup}" 
+                                              showRequired="true"/>
+                                              
+                                <af:inputText label="STS Code : " id="txtTownSTSCodePopup"
+                                              binding="#{baseSetupBacking.txtTownSTSCodePopup}" 
+                                              showRequired="true" 
+                                              visible="false"/>
+                                
+                                <f:facet name="footer"/>
+                              </af:panelFormLayout>
+                              
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                          
+                          <af:commandButton text="Save" id="btnCreateUpdateTown"
+                                            binding="#{baseSetupBacking.btnCreateUpdateTown}"
+                                            action="#{baseSetupBacking.actionCreateUpdateTown}"/>
+                          <af:commandButton text="Cancel" id="btnCancelTown"/>
+                          
+                        </af:dialog>
+                      </af:popup>                      
+                      
+                      <af:popup id="townLocationPopup">
+                        <af:dialog id="d3" title="New Location" type="none">
+                          <af:panelGroupLayout id="pgl4">
+                            <af:panelBox text="PanelBox4" id="pb5" showHeader="never">
+                                                            
+                              <af:panelFormLayout id="pfl3" inlineStyle="width:300.0px;">
+                                <af:inputText label="CODE : " id="txtLocationCodePopup"
+                                              binding="#{baseSetupBacking.txtLocationCodePopup}"
+                                              visible="false" 
+                                              showRequired="true"/>
+                                              
+                                <af:inputText label="Town Code : " id="txtLocationTownCodePopup"
+                                              binding="#{baseSetupBacking.txtLocationTownCodePopup}"
+                                              visible="false" 
+                                              showRequired="true"/>
+                                              
+                                <af:inputText label="Short Desc : " id="txtLocationShtDescPopup"
+                                              binding="#{baseSetupBacking.txtLocationShtDescPopup}" 
+                                              showRequired="true"/>
+                                              
+                                <af:inputText label="Name : " id="txtLocationNamePopup"
+                                              binding="#{baseSetupBacking.txtLocationNamePopup}" 
+                                              showRequired="true"/>
+                                              
+                                
+                              </af:panelFormLayout>
+                              
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                          
+                          <af:commandButton text="Save" id="btnCreateUpdateLocation"
+                                            action="#{baseSetupBacking.actionCreateUpdateLocation}"
+                                            binding="#{baseSetupBacking.btnCreateUpdateLocation}"/>
+                          <af:commandButton text="Cancel" id="btnCancelLocation"/>
+                          
+                        </af:dialog>
+                      </af:popup>                      
+                      
+                      
+                    </af:showDetailItem>
+                    
+                  </af:panelTabbed>
+                  
+                </f:facet>
+                
+              </af:panelSplitter>
+            </af:panelBox>
+            
+            <af:popup id="countryStatePopup">
+                        <af:dialog id="d5" title="State Definition" type="none"
+                                   binding="#{baseSetupBacking.dlgNewEditAdminRegion}">
+                          <af:panelGroupLayout id="pgl6">
+                            <af:panelBox text="PanelBox7" id="pb8" showHeader="never">
+                            
+                              <af:panelFormLayout id="pfl4" inlineStyle="width:300.0px;">
+                              
+                                <af:inputText label="State Code : " id="txtStateCodePopup"
+                                              binding="#{baseSetupBacking.txtStateCodePopup}" 
+                                              visible="false"/>
+                                
+                                <af:inputText label="Country Code : " id="txtCountryCodePopup"
+                                              binding="#{baseSetupBacking.txtCountryCodePopup}" 
+                                              visible="false"/>
+                                
+                                <af:inputText label="Short Description : " id="txtStateShtDescPopup"
+                                              binding="#{baseSetupBacking.txtStateShtDescPopup}" 
+                                              showRequired="true"/>
+                                
+                                <af:inputText label="Name : " id="txtStateNamePopup"
+                                              binding="#{baseSetupBacking.txtStateNamePopup}" 
+                                              showRequired="true"/>                        
+                                
+                              </af:panelFormLayout>                    
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                          
+                          <af:commandButton text="Save"
+                                          id="btnCreateUpdateState"
+                                          binding="#{baseSetupBacking.btnCreateUpdateState}"
+                                          action="#{baseSetupBacking.actionCreateUpdateState}" 
+                                          partialSubmit="true"/>  
+                          
+                          <af:commandButton text="Cancel"
+                                          id="btnCancelState"
+                                          binding="#{baseSetupBacking.btnCancelState}"/>               
+                        </af:dialog>
+                      </af:popup>
+            
+            
+            
+            <af:popup id="currencyListPopup">
+                        <af:dialog id="d4" title="Base Currency" type="none">
+                          <af:panelGroupLayout id="pgl5">
+                            <af:panelBox text="PanelBox5" id="pb6" showHeader="never">
+                                                            
+                                <af:table value="#{bindings.Currency.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.Currency.rangeSize}"
+                                          emptyText="#{bindings.Currency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.Currency.rangeSize}"
+                                          rowBandingInterval="0"
+                                          selectionListener="#{baseSetupBacking.tblCountryBaseCurrenciesSelectionListener}"
+                                          rowSelection="single" 
+                                          id="tblCountryBaseCurrencies"
+                                          binding="#{baseSetupBacking.tblCountryBaseCurrencies}">
+                                  <af:column sortProperty="symbol"
+                                             sortable="true" headerText="ID"
+                                             id="c6">
+                                    <af:outputText value="#{row.symbol}"
+                                                   id="ot6"/>
+                                  </af:column>
+                                  <af:column sortProperty="description"
+                                             sortable="true"
+                                             headerText="DESCRIPTION" id="c5">
+                                    <af:outputText value="#{row.description}"
+                                                   id="ot7"/>
+                                  </af:column>
+                                </af:table>
+                              
+                              <af:commandButton text="Ok"
+                                                id="btnAcceptBaseCurrency"
+                                                action="#{baseSetupBacking.actionAcceptBaseCurrency}"/>
+                              <af:commandButton text="Cancel"
+                                                id="btnCancelBaseCurrency"/>
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                        </af:dialog>
+                      </af:popup>
+                      
+            <af:popup id="postalCodesPop">
+              <af:dialog id="d6" title="Postal Code Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl9">
+                  <af:panelBox text="PanelBox9" id="pb10" showHeader="never">
+                    <af:panelFormLayout id="pfl5">
+                    
+                      <af:inputText label="Code : " id="it2" 
+                                    visible="false"
+                                    binding="#{baseSetupBacking.txtPstCode}"
+                                    showRequired="true"/>
+                      
+                      <af:inputText label="Town Code : " id="it3"
+                                    visible="false"
+                                    binding="#{baseSetupBacking.txtPstTwnCode}"
+                                    showRequired="true"/>
+                      
+                      <af:inputText label="Description : " id="it4"
+                                    binding="#{baseSetupBacking.txtPstDesc}" 
+                                    showRequired="true"/>
+                      
+                      <af:inputText label="ZIP Code : " id="it5"
+                                    binding="#{baseSetupBacking.txtPstZipCode}"/>
+                      
+                    </af:panelFormLayout>
+                    
+                    <h:panelGrid columns="2" id="pg10">
+                      <af:commandButton text="Save" id="cb6"
+                                        binding="#{baseSetupBacking.btnSaveUpdatePostalCode}"
+                                        action="#{baseSetupBacking.actionSaveUpdatePostalCode}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="cb7"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="countryConfirmationDialog">
+                <af:dialog title="Confirm Action" id="countryConfirmChangeDialog"
+                            type="yesNo"
+                           dialogListener="#{baseSetupBacking.countryConfirmationDialogListener}">
+                                
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="olConfirmMsgValue"/>
+                </af:dialog>
+            </af:popup>
+            
+            <af:popup id="ServerMessage">
+                      <af:dialog id="d24" title="Server Response" type="ok"
+                                 inlineStyle="width:300.0px;">
+                        <af:outputText id="textToShow"
+                                       binding="#{baseSetupBacking.textToShow}"/>
+                      </af:dialog>
+                    </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

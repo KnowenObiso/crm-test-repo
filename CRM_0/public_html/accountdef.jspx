@@ -1,0 +1,1389 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="auxiliaryGlobal">
+          <af:panelGroupLayout id="pgl1">
+            <af:outputText value="Global Layer" id="ot1"/>
+          </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelAccordion id="pa1"
+                               inlineStyle="height:570.0px;" styleClass="AFAuxiliaryStretchWidth">
+              <af:showDetailItem text="Account Definitions" id="sdi7">
+                <af:panelGroupLayout id="pgl4">
+                  <af:panelSplitter id="ps2"
+                                    inlineStyle="height:550px;" styleClass="AFAuxiliaryStretchWidth">
+                    <f:facet name="first">
+                      <af:panelGroupLayout id="pgl7" layout="scroll">
+                        <af:panelBox text="Account Types" id="pb1"
+                                     styleClass="AFAuxiliaryStretchWidth">
+                          <f:facet name="toolbar"/>
+                          <af:tree value="#{bindings.AccountType11.treeModel}"
+                                   var="node"
+                                   selectionListener="#{AccountSetUpBack.showAccountTypes}"
+                                   rowSelection="single" id="t11"
+                                   binding="#{AccountSetUpBack.accountTypes}"
+                                   inlineStyle="height:500.0px;" styleClass="AFAuxiliaryStretchWidth">
+                            <f:facet name="nodeStamp">
+                              <af:outputText value="#{node}" id="ot48"/>
+                            </f:facet>
+                          </af:tree>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </f:facet>
+                    <f:facet name="second">
+                      <af:panelGroupLayout id="pgl3">
+                        <h:panelGrid columns="1" rendered="false">
+                          <h:panelGrid columns="3">
+                            <af:commandButton text="Add" id="cb1"
+                                              icon="/images/create.gif"
+                                              action="#{AccountSetUpBack.addAccountTypes}"/>
+                            <af:commandButton text="Update" id="cb2"
+                                              icon="/images/update.gif"
+                                              action="#{AccountSetUpBack.updateAcountTypes}"/>
+                            <af:commandButton text="Delete" id="cb3"
+                                              icon="/images/delete.gif"/>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                        <af:table value="#{bindings.AccountType2.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.AccountType2.rangeSize}"
+                                  emptyText="#{bindings.AccountType2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.AccountType2.rangeSize}"
+                                  rowBandingInterval="0" id="t3"
+                                  binding="#{AccountSetUpBack.accountTable}"
+                                  inlineStyle="height:90px; border-style:none;"
+                                  styleClass="AFAuxiliaryStretchWidth"
+                                  rowSelection="single" rendered="false">
+                          <af:column sortProperty="id" sortable="false"
+                                     headerText="#{bindings.AccountType2.hints.id.label}"
+                                     id="c5" visible="false">
+                            <af:outputText value="#{row.id}" id="ot11"/>
+                          </af:column>
+                          <af:column sortProperty="smapping" sortable="false"
+                                     headerText="ID" id="c8">
+                            <af:outputText value="#{row.smapping}" id="ot8"/>
+                          </af:column>
+                          <af:column sortProperty="cmapping" sortable="false"
+                                     headerText="Client Mapping" id="c7"
+                                     width="130">
+                            <af:outputText value="#{row.cmapping}" id="ot10"/>
+                          </af:column>
+                          <af:column sortProperty="wrate" sortable="false"
+                                     headerText="W/H Rate" id="c6">
+                            <af:outputText value="#{row.wrate}" id="ot12"/>
+                          </af:column>
+                          <af:column sortProperty="orate" sortable="false"
+                                     headerText="Override Rate" id="c9">
+                            <af:outputText value="#{row.orate}" id="ot7"/>
+                          </af:column>
+                          <af:column sortProperty="crate" sortable="false"
+                                     headerText="Comm Reserve Rate" id="c4">
+                            <af:outputText value="#{row.crate}" id="ot9"/>
+                          </af:column>
+                          <af:column sortProperty="acformat" sortable="false"
+                                     headerText="AC No format" id="c10">
+                            <af:outputText value="#{row.acformat}" id="ot6"/>
+                          </af:column>
+                          <af:column sortProperty="vatrate" sortable="false"
+                                     headerText="VAT Rate" id="c3">
+                            <af:outputText value="#{row.vatrate}" id="ot5"/>
+                          </af:column>
+                        </af:table>
+                        <af:panelTabbed id="pt2"
+                                        binding="#{AccountSetUpBack.infoTab}"
+                                        inlineStyle="height:400px;" styleClass="AFAuxiliaryStretchWidth">
+                          <af:showDetailItem text="Account" id="detAccount"
+                                             binding="#{AccountSetUpBack.detAccount}">
+                            <af:panelGroupLayout id="pgl31">
+                              <h:panelGrid columns="3">
+                                <af:commandButton text="Save" id="cb19"
+                                                  icon="/images/create.gif"
+                                                  binding="#{AccountSetUpBack.saveAccount}"
+                                                  action="#{AccountSetUpBack.saveAccountaction}"/>
+                                <af:commandButton text="Update" id="cb20"
+                                                  icon="/images/update.gif"
+                                                  binding="#{AccountSetUpBack.updateAccount}"
+                                                  action="#{AccountSetUpBack.updateAccountAction}"/>
+                                <af:commandButton text="Delete" id="cb21"
+                                                  icon="/images/delete.gif"
+                                                  binding="#{AccountSetUpBack.deleteAccount}"
+                                                  action="#{AccountSetUpBack.deleteAccountAction}"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="6" id="pg1" cellspacing="0">
+                                <af:outputLabel value="Id:" id="ool1"/>
+                                <h:panelGrid columns="1" id="pg2">
+                                  <af:inputText label="Label 1" id="it10"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.agentID}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Full Name:" id="ol2"/>
+                                <h:panelGrid columns="1" id="pg3">
+                                  <af:inputText label="Label 2" id="it2"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.agentFullName}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Physical Address:"
+                                                id="ol3"/>
+                                <h:panelGrid columns="1" id="pg4">
+                                  <af:inputText label="Label 3" id="it3"
+                                                columns="22" rows="2"
+                                                simple="true"
+                                                binding="#{AccountSetUpBack.agentPhysAddress}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Address:" id="ol4"/>
+                                <h:panelGrid columns="1" id="pg5">
+                                  <af:inputText label="Label 4" id="it47"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.address}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Country:" id="ol5"/>
+                                <h:panelGrid columns="3" id="pg6">
+                                  <af:inputText label="Label 5" id="it5"
+                                                simple="true" disabled="true"
+                                                columns="22"
+                                                binding="#{AccountSetUpBack.country}"/>
+                                  <af:commandButton id="cb71"
+                                                    icon="/images/dropdown.gif">
+                                    <af:showPopupBehavior popupId="CountryPop"/>
+                                  </af:commandButton>
+                                  <af:inputText label="Label 30" id="it29"
+                                                simple="true" visible="false"
+                                                binding="#{AccountSetUpBack.countryId}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Town:" id="ol6"/>
+                                <h:panelGrid columns="3" id="pg7">
+                                  <af:inputText label="Label 6" id="it56"
+                                                simple="true" disabled="true"
+                                                columns="22"
+                                                binding="#{AccountSetUpBack.towb}"/>
+                                  <af:commandButton id="cb22"
+                                                    icon="/images/dropdown.gif">
+                                    <af:showPopupBehavior popupId="townPop"/>
+                                  </af:commandButton>
+                                  <af:inputText label="Label 31" id="it30"
+                                                simple="true" visible="false"
+                                                binding="#{AccountSetUpBack.townId}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Postal Code:" id="ol7"/>
+                                <h:panelGrid columns="1" id="pg8">
+                                  <af:inputText label="Label 7" id="it7"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.postalAddress}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Agency Branch:"
+                                                id="ol8"/>
+                                <h:panelGrid columns="3" id="pg9">
+                                  <af:inputText label="Label 8" id="it8"
+                                                simple="true" disabled="true"
+                                                columns="22"
+                                                binding="#{AccountSetUpBack.agBranch}"/>
+                                  <af:commandButton id="cb33"
+                                                    icon="/images/dropdown.gif">
+                                    <af:showPopupBehavior popupId="BranchPop"/>
+                                  </af:commandButton>
+                                  <af:inputText label="Label 29" id="it28"
+                                                visible="false"
+                                                binding="#{AccountSetUpBack.branchId}"
+                                                simple="true"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Contract Code:"
+                                                id="ol99"/>
+                                <h:panelGrid columns="2" id="pg10">
+                                  <af:inputText label="Label 9" id="it9"
+                                                simple="true" disabled="true"
+                                                columns="22"
+                                                binding="#{AccountSetUpBack.contCode}"/>
+                                  <af:commandButton id="cb4"
+                                                    icon="/images/dropdown.gif">
+                                        <af:showPopupBehavior popupId="contractPop"/>
+                                  </af:commandButton>
+                                </h:panelGrid>
+                                <af:outputLabel value="Personnel" id="ol100"/>
+                                <h:panelGrid columns="1" id="pg11">
+                                  <af:inputText label="Label 10" id="it110"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.personnel}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Status Code:"
+                                                id="ol115"/>
+                                <h:panelGrid columns="1">
+                                  <af:inputText label="Label 12" id="it12"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.stCode}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="SMS No:" id="ol123"/>
+                                <h:panelGrid columns="1">
+                                  <af:inputText label="Label 13" id="it13"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.smsNo}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Licensed?" id="ol133"/>
+                                <h:panelGrid columns="1">
+                                  <af:selectOneChoice label="Label 1" id="soc1"
+                                                      simple="true"
+                                                      binding="#{AccountSetUpBack.licensed}">
+                                    <af:selectItem label="Yes" value="Y"
+                                                   id="si2"/>
+                                    <af:selectItem label="No" value="N"
+                                                   id="si1"/>
+                                  </af:selectOneChoice>
+                                </h:panelGrid>
+                                <af:outputLabel value="Agency Class" id="ol17"/>
+                                <h:panelGrid columns="2" id="pg21">
+                                
+                                  <af:inputText label="Label 50" id="agClassFullDesc"
+                                                simple="true"
+                                                disabled="true" 
+                                                columns="22"
+                                                binding="#{AccountSetUpBack.agClassFullDesc}"/>
+                                                
+                                    <af:commandButton id="cb5"
+                                                    icon="/images/dropdown.gif">
+                                            <af:showPopupBehavior popupId="AgencyClassPop"/>
+                                    </af:commandButton>
+                                  
+                                  <af:inputText label="Label 14" id="it11"
+                                                simple="true" disabled="true" 
+                                                visible="false"
+                                                columns="22"
+                                                binding="#{AccountSetUpBack.agClass}"/>                                  
+                                </h:panelGrid>
+                                <af:outputLabel value="Phone No(1)" id="ol18"/>
+                                <h:panelGrid columns="1" id="pg22">
+                                  <af:inputText label="Label 15" id="it14"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.phone1}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Phone No(2)" id="ol19"/>
+                                <h:panelGrid columns="1" id="pg23">
+                                  <af:inputText label="Label 16" id="it15"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.phone2}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Fax No:" id="ol20"/>
+                                <h:panelGrid columns="1" id="pg24">
+                                  <af:inputText label="Label 17" id="it16"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.fax}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Email Address"
+                                                id="ol21"/>
+                                <h:panelGrid columns="1" id="pg25">
+                                  <af:inputText label="Label 18" id="it17"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.emailAddress}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Web Address:" id="ol22"/>
+                                <h:panelGrid columns="1" id="pg26">
+                                  <af:inputText label="Label 19" id="it18"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.webAddress}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Contact Person"
+                                                id="ol23"/>
+                                <h:panelGrid columns="1" id="pg27">
+                                  <af:inputText label="Label 20" id="it19"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.contactPerson}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Contact Title"
+                                                id="ol24"/>
+                                <h:panelGrid columns="1" id="pg28">
+                                  <af:inputText label="Label 21" id="it20"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.contactTitle}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="GL Account No"
+                                                id="ol25"/>
+                                <h:panelGrid columns="1" id="pg29">
+                                  <af:inputText label="Label 22" id="it21"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.gaccountNo}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="I.D. Number" id="ol26"/>
+                                <h:panelGrid columns="1" id="pg30">
+                                  <af:inputText label="Label 23" id="it22"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.idNumber}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Pin Number" id="ol27"/>
+                                <h:panelGrid columns="1" id="pg31">
+                                  <af:inputText label="Label 24" id="it23"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.pinNumber}"/>
+                                </h:panelGrid>
+                                <af:outputLabel value="Status" id="ol28"/>
+                                <h:panelGrid columns="1" id="pg32">
+                                  <af:selectOneChoice label="Label 2" id="soc3"
+                                                      simple="true"
+                                                      binding="#{AccountSetUpBack.agStatus}">
+                                    <af:selectItem label="Active" value="ACTIVE"
+                                                   id="si8"/>
+                                    <af:selectItem label="Inactive"
+                                                   value="INACTIVE" id="si9"/>
+                                    <af:selectItem label="Suspended"
+                                                   value="SUSPENDED" id="si10"/>
+                                  </af:selectOneChoice>
+                                </h:panelGrid>
+                                <af:outputLabel value="Run Off?" id="ol29"/>
+                                <h:panelGrid columns="1" id="pg33">
+                                  <af:selectOneChoice label="Label 3" id="soc4"
+                                                      simple="true"
+                                                      binding="#{AccountSetUpBack.runOff}">
+                                    <af:selectItem label="Yes" value="Y"
+                                                   id="si11"/>
+                                    <af:selectItem label="No" value="N"
+                                                   id="si12"/>
+                                  </af:selectOneChoice>
+                                </h:panelGrid>
+                                <af:outputLabel value="Remarks on Change Status"
+                                                id="ol30"/>
+                                <h:panelGrid columns="1" id="pg34">
+                                  <af:inputText label="Label 25" id="it24"
+                                                rows="2" simple="true"
+                                                columns="22"
+                                                binding="#{AccountSetUpBack.remarks}"/>
+                                </h:panelGrid>
+                                
+                                <af:outputLabel value="Sector" id="ol31"/>
+                                <h:panelGrid columns="2" id="pg35">
+                                  <af:inputText label="Label 52" id="txtSectorFullDesc"
+                                                binding="#{AccountSetUpBack.txtSectorFullDesc}"
+                                                disabled="true"
+                                                simple="true" columns="22"/>
+                                  
+                                  <af:commandButton id="cb6"
+                                                    icon="/images/dropdown.gif"
+                                                     shortDesc="Click to select a Sector">
+                                        <af:showPopupBehavior popupId="sectorPop"/>
+                                  </af:commandButton>
+                                  <af:inputText label="Label 26" id="it25"
+                                                columns="22" simple="true"
+                                                visible="false"
+                                                binding="#{AccountSetUpBack.sector}"/>
+                                </h:panelGrid>
+                                
+                                <af:outputLabel value="Affiliated To:"
+                                                id="ol32"/>
+                                <h:panelGrid columns="2" id="pg36">
+                                  <af:inputText label="Label 27" id="it26"
+                                                columns="22" simple="true"
+                                                binding="#{AccountSetUpBack.affiliateTo}"/>
+                                  <af:commandButton id="cb8"
+                                                    icon="/images/dropdown.gif">
+                                        <af:showPopupBehavior popupId="affiliatedToPop"/>
+                                    </af:commandButton>
+                                </h:panelGrid>
+                                <af:outputLabel value="Holding Company"
+                                                id="ol33"/>
+                                <h:panelGrid columns="2" id="pg37">
+                                  <af:inputText label="Label 51" id="holdCompanyFullDesc"
+                                                binding="#{AccountSetUpBack.holdCompanyFullDesc}"
+                                                columns="22" disabled="true"
+                                                simple="true"/>
+                                 
+                                  <af:commandButton id="cb9"
+                                                    icon="/images/dropdown.gif">
+                                        <af:showPopupBehavior popupId="holdingCompanyPop"/>
+                                  </af:commandButton>
+                                   <af:inputText label="Label 28" id="it27" 
+                                                disabled="true"
+                                                visible="false"
+                                                simple="true" columns="22"
+                                                binding="#{AccountSetUpBack.holdCompany}"/>
+                                </h:panelGrid>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg38">
+                                <af:spacer width="10" height="10" id="s1"/>
+                                <af:commandImageLink text="Letters and Memo"
+                                                     id="cil2"/>
+                              </h:panelGrid>
+                            </af:panelGroupLayout>
+                          </af:showDetailItem>
+                          
+                          <af:showDetailItem text="Agency Registration/Licensing"
+                                             id="sdi2">
+                            <h:panelGrid columns="3" id="pg39">
+                              <af:commandButton text="Add" id="cb10"
+                                                icon="/images/create.gif"
+                                                action="#{AccountSetUpBack.addRegDetails}"/>
+                              <af:commandButton text="Update" id="cb11"
+                                                icon="/images/update.gif"
+                                                action="#{AccountSetUpBack.updateRegDetails}"/>
+                              <af:commandButton text="Delete" id="cb12"
+                                                icon="/images/delete.gif"
+                                                action="#{AccountSetUpBack.deleteRegDetails}"/>
+                            </h:panelGrid>
+                            <af:table value="#{bindings.AccountType4.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountType4.rangeSize}"
+                                      emptyText="#{bindings.AccountType4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountType4.rangeSize}"
+                                      rowBandingInterval="0" id="t4"
+                                      styleClass="AFAuxiliaryStretchWidth"
+                                      rowSelection="single"
+                                      binding="#{AccountSetUpBack.registrationTable}">
+                              <af:column sortProperty="id" sortable="false"
+                                         headerText="#{bindings.AccountType4.hints.id.label}"
+                                         id="c13" visible="false">
+                                <af:outputText value="#{row.id}" id="ot19"/>
+                              </af:column>
+                              <af:column sortProperty="year" sortable="false"
+                                         headerText="Year" id="c16">
+                                <af:outputText value="#{row.year}" id="ot13"/>
+                              </af:column>
+                              <af:column sortProperty="regno" sortable="false"
+                                         headerText="Reg No" id="c14">
+                                <af:outputText value="#{row.regno}" id="ot14"/>
+                              </af:column>
+                              <af:column sortProperty="wef" sortable="false"
+                                         headerText="Wef" id="c17">
+                                <af:outputText value="#{row.wef}" id="ot18">
+                                  <af:convertDateTime pattern="#{bindings.AccountType4.hints.wef.format}"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="wet" sortable="false"
+                                         headerText="Wet" id="c12">
+                                <af:outputText value="#{row.wet}" id="ot15">
+                                  <af:convertDateTime pattern="#{bindings.AccountType4.hints.wet.format}"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="accepted"
+                                         sortable="false" headerText="Accepted"
+                                         id="c11">
+                                <af:outputText value="#{row.accepted}"
+                                               id="ot16"/>
+                              </af:column>
+                            </af:table>
+                          </af:showDetailItem>
+                          
+                          <af:showDetailItem text="Agency Directors" id="sdi3">
+                            <h:panelGrid columns="3" id="pg40">
+                              <af:commandButton text="Add" id="cb13"
+                                                icon="/images/create.gif"
+                                                action="#{AccountSetUpBack.addAgencyDirectors}"/>
+                              <af:commandButton text="Update" id="cb14"
+                                                icon="/images/update.gif"
+                                                action="#{AccountSetUpBack.editAgencyDirectors}"/>
+                              <af:commandButton text="Delete" id="cb15"
+                                                icon="/images/delete.gif"
+                                                action="#{AccountSetUpBack.deleteAgencyDirectors}"/>
+                            </h:panelGrid>
+                            <af:table value="#{bindings.AccountType5.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountType5.rangeSize}"
+                                      emptyText="#{bindings.AccountType5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountType5.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AccountType5Query.queryDescriptor}"
+                                      queryListener="#{bindings.AccountType5Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectedRowKeys="#{bindings.AccountType5.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.AccountType5.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t5"
+                                      styleClass="AFAuxiliaryStretchWidth"
+                                      binding="#{AccountSetUpBack.agentDirectorsTable}">
+                              <af:column sortProperty="id" filterable="true"
+                                         sortable="true"
+                                         headerText="#{bindings.AccountType5.hints.id.label}"
+                                         id="c22" visible="false">
+                                <af:outputText value="#{row.id}" id="ot21"/>
+                              </af:column>
+                              <af:column sortProperty="year" filterable="true"
+                                         sortable="true" headerText="Year"
+                                         id="c21" width="180">
+                                <af:outputText value="#{row.year}" id="ot20"/>
+                              </af:column>
+                              <af:column sortProperty="name" filterable="true"
+                                         sortable="true" headerText="Name"
+                                         id="c23" width="180">
+                                <af:outputText value="#{row.name}" id="ot25"/>
+                              </af:column>
+                              <af:column sortProperty="qualification"
+                                         filterable="true" sortable="true"
+                                         headerText="Personal Qualifications"
+                                         id="c19" width="180">
+                                <af:outputText value="#{row.qualification}"
+                                               id="ot24"/>
+                              </af:column>
+                              <af:column sortProperty="shareholding"
+                                         filterable="true" sortable="true"
+                                         headerText="% Shareholding" id="c18"
+                                         width="180">
+                                <af:outputText value="#{row.shareholding}"
+                                               id="ot22"/>
+                              </af:column>
+                              <af:column sortProperty="designation"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.AccountType5.hints.designation.label}"
+                                         id="c20" visible="false">
+                                <af:outputText value="#{row.designation}"
+                                               id="ot23"/>
+                              </af:column>
+                            </af:table>
+                          </af:showDetailItem>
+                          
+                          <af:showDetailItem text="Agency Referees" id="sdi4">
+                            <h:panelGrid columns="3" id="pg41">
+                              <af:commandButton text="Add" id="cb16"
+                                                icon="/images/create.gif"
+                                                action="#{AccountSetUpBack.saveAgencyReferees}"/>
+                              <af:commandButton text="Update" id="cb17"
+                                                icon="/images/update.gif"
+                                                action="#{AccountSetUpBack.updateAgencyReferees}"/>
+                              <af:commandButton text="Delete" id="cb18"
+                                                icon="/images/delete.gif"
+                                                action="#{AccountSetUpBack.deleteAgencyReferee}"/>
+                            </h:panelGrid>
+                            <af:table value="#{bindings.AccountType6.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountType6.rangeSize}"
+                                      emptyText="#{bindings.AccountType6.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountType6.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AccountType6Query.queryDescriptor}"
+                                      queryListener="#{bindings.AccountType6Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectedRowKeys="#{bindings.AccountType6.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.AccountType6.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t6"
+                                      styleClass="AFAuxiliaryStretchWidth"
+                                      binding="#{AccountSetUpBack.agencyRefereeTable}">
+                              <af:column sortProperty="id" filterable="true"
+                                         sortable="true"
+                                         headerText="#{bindings.AccountType6.hints.id.label}"
+                                         id="c26" visible="false">
+                                <af:outputText value="#{row.id}" id="ot32"/>
+                              </af:column>
+                              <af:column sortProperty="name" filterable="true"
+                                         sortable="true" headerText="Name"
+                                         id="c30">
+                                <af:outputText value="#{row.name}" id="ot30"/>
+                              </af:column>
+                              <af:column sortProperty="phyaddress"
+                                         filterable="true" sortable="true"
+                                         headerText="Phys Address" id="c28"
+                                         width="170">
+                                <af:outputText value="#{row.phyaddress}"
+                                               id="ot26"/>
+                              </af:column>
+                              <af:column sortProperty="postaddress"
+                                         filterable="true" sortable="true"
+                                         headerText="Postal Address" id="c29"
+                                         width="170">
+                                <af:outputText value="#{row.postaddress}"
+                                               id="ot27"/>
+                              </af:column>
+                              <af:column sortProperty="idno" filterable="true"
+                                         sortable="true" headerText="ID No"
+                                         id="c24">
+                                <af:outputText value="#{row.idno}" id="ot31"/>
+                              </af:column>
+                              <af:column sortProperty="email" filterable="true"
+                                         sortable="true"
+                                         headerText="Email Address" id="c25">
+                                <af:outputText value="#{row.email}" id="ot28"/>
+                              </af:column>
+                              <af:column sortProperty="telno" filterable="true"
+                                         sortable="true" headerText="Tel No"
+                                         id="c27" width="50">
+                                <af:outputText value="#{row.telno}" id="ot29"/>
+                              </af:column>
+                            </af:table>
+                          </af:showDetailItem>
+                          
+                          <af:showDetailItem text="Account Systems" id="sdi5">
+                            <h:panelGrid columns="1" id="pg42">
+                              <af:selectManyShuttle label="Label 1" id="sms1"
+                                                    value="#{AccountSetUpBack.displayValue}"
+                                                    trailingHeader="Available Systems"
+                                                    leadingHeader="Assigned Systems"
+                                                    binding="#{AccountSetUpBack.systemShuttle}"
+                                                    simple="true"
+                                                    autoSubmit="true"
+                                                    valueChangeListener="#{AccountSetUpBack.updateAgentSystems}">
+                                <f:selectItems id="si13"
+                                               value="#{AccountSetUpBack.selectValues}"
+                                               binding="#{AccountSetUpBack.systemSelectItem}"/>
+                              </af:selectManyShuttle>
+                            </h:panelGrid>
+                          </af:showDetailItem>
+                          
+                          <af:showDetailItem text="Users Web Accounts"
+                                             id="sdi6">
+                            <h:panelGrid columns="3" id="pg67">
+                              <af:commandButton text="Add" id="cb29"
+                                                icon="/images/create.gif"
+                                                action="#{AccountSetUpBack.addWebUserAction}"/>
+                              <af:commandButton text="Update" id="cb30"
+                                                icon="/images/update.gif"
+                                                action="#{AccountSetUpBack.updateWebUserAction}"/>
+                              <af:commandButton text="Delete" id="cb31"
+                                                icon="/images/delete.gif"
+                                                action="#{AccountSetUpBack.deleteWebUserAction}"/>
+                            </h:panelGrid>
+                            <af:table value="#{bindings.AccountType10.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountType10.rangeSize}"
+                                      emptyText="#{bindings.AccountType10.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountType10.rangeSize}"
+                                      rowBandingInterval="0"
+                                      selectedRowKeys="#{bindings.AccountType10.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.AccountType10.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t10"
+                                      styleClass="AFAuxiliaryStretchWidth"
+                                      binding="#{AccountSetUpBack.webUsersTable}">
+                              <af:column sortProperty="id" sortable="false"
+                                         headerText="#{bindings.AccountType10.hints.id.label}"
+                                         id="c42" visible="false">
+                                <af:outputText value="#{row.id}" id="ot43"/>
+                              </af:column>
+                              <af:column sortProperty="username"
+                                         sortable="false" headerText="Username"
+                                         id="c15">
+                                <af:outputText value="#{row.username}"
+                                               id="ot46"/>
+                              </af:column>
+                              <af:column sortProperty="name" sortable="false"
+                                         headerText="Full Names" id="c40">
+                                <af:outputText value="#{row.name}" id="ot44"/>
+                              </af:column>
+                              <af:column sortProperty="email" sortable="false"
+                                         headerText="User Email" id="c37">
+                                <af:outputText value="#{row.email}" id="ot41"/>
+                              </af:column>
+                              <af:column sortProperty="personalrank"
+                                         sortable="false"
+                                         headerText="Personal Rank" id="c38">
+                                <af:outputText value="#{row.personalrank}"
+                                               id="ot45"/>
+                              </af:column>
+                              <af:column sortProperty="createdby"
+                                         sortable="false"
+                                         headerText="Created By" id="c43">
+                                <af:outputText value="#{row.createdby}"
+                                               id="ot17"/>
+                              </af:column>
+                              <af:column sortProperty="datecreated"
+                                         sortable="false"
+                                         headerText="Date Created" id="c41">
+                                <af:outputText value="#{row.datecreated}"
+                                               id="ot39">
+                                  <af:convertDateTime pattern="#{bindings.AccountType10.hints.datecreated.format}"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="allowlogin"
+                                         sortable="false"
+                                         headerText="Allow Login" id="c45"
+                                         width="50">
+                                <af:outputText value="#{row.allowlogin}"
+                                               id="ot47"/>
+                              </af:column>
+                              <af:column sortProperty="status" sortable="false"
+                                         headerText="Status" id="c44">
+                                <af:outputText value="#{row.status}" id="ot40"/>
+                              </af:column>
+                              <af:column sortProperty="reset" sortable="false"
+                                         headerText="Reset" id="c39">
+                                <af:outputText value="#{row.reset}" id="ot42"/>
+                              </af:column>
+                            </af:table>
+                          </af:showDetailItem>
+                        </af:panelTabbed>
+                                  
+                                              
+                        
+                      </af:panelGroupLayout>
+                    </f:facet>
+                  </af:panelSplitter>
+                </af:panelGroupLayout>
+                
+                <af:panelGroupLayout id="pgl2" rendered="false">
+                  <af:panelSplitter id="ps1"
+                                    inlineStyle="height:470.0px;" styleClass="AFAuxiliaryStretchWidth">
+                    <f:facet name="first">
+                      <af:table value="#{bindings.AccountType3.collectionModel}"
+                                var="row"
+                                rows="#{bindings.AccountType3.rangeSize}"
+                                emptyText="#{bindings.AccountType3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.AccountType3.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.AccountType3Query.queryDescriptor}"
+                                queryListener="#{bindings.AccountType3Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.AccountType3.collectionModel.selectedRow}"
+                                rowSelection="single" id="t1"
+                                binding="#{AccountSetUpBack.agentTable}"
+                                selectionListener="#{AccountSetUpBack.SelectAgent}">
+                        <af:column sortProperty="id" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.AccountType3.hints.id.label}"
+                                   id="c1" visible="false">
+                          <af:outputText value="#{row.id}" id="ot2"/>
+                        </af:column>
+                        <af:column sortProperty="smapping" filterable="true"
+                                   sortable="true" headerText="Agent Name"
+                                   id="c2" width="180">
+                          <af:outputText value="#{row.smapping}" id="ot3"/>
+                        </af:column>
+                      </af:table>
+                    </f:facet>
+                    <f:facet name="second"/>
+                  </af:panelSplitter>
+                                          
+                  
+                </af:panelGroupLayout>
+              </af:showDetailItem>
+            </af:panelAccordion>
+            
+            
+            
+            
+            <af:popup id="accountpop">
+                          <af:dialog id="d2" type="none" title="Account Types">
+                            <af:panelGroupLayout id="pgl5">
+                              <af:panelBox text="PanelBox3" id="pb3"
+                                           showHeader="never">
+                                <f:facet name="toolbar">
+                                  <af:panelGroupLayout id="pgl6"/>
+                                </f:facet>
+                                <h:panelGrid columns="2">
+                                  <af:outputLabel value="System Mapping:"
+                                                  id="ol9"/>
+                                  <h:panelGrid columns="1" id="pg12">
+                                    <af:selectOneChoice label="Label 1"
+                                                        id="soc2" simple="true"
+                                                        binding="#{AccountSetUpBack.smapping}"
+                                                        valueChangeListener="#{AccountSetUpBack.changeMapping}"
+                                                        immediate="true"
+                                                        autoSubmit="true">
+                                      <af:selectItem label="DIRECT"
+                                                     value="DIRECT" id="si27"/>
+                                      <af:selectItem label="FACULTATIVE IN"
+                                                     value="FACULTATIVE IN"
+                                                     id="si18"/>
+                                      <af:selectItem label="FACULTATIVE OUT"
+                                                     value="FACULTATIVE OUT"
+                                                     id="si30"/>
+                                      <af:selectItem label="INSURANCE COMPANY"
+                                                     value="INSURANCE COMPANY"
+                                                     id="si32"/>
+                                      <af:selectItem label="REINSURANCE COMPANY"
+                                                     value="REINSURANCE COMPANY"
+                                                     id="si4"/>
+                                      <af:selectItem label="REINSURANCE CONSULTANCY"
+                                                     value="REINSURANCE CONSULTANCY"
+                                                     id="si21"/>
+                                      <af:selectItem label="CHECK-OFF INSTITUTIONS"
+                                                     value="CHECK-OFF INSTITUTIONS"
+                                                     id="si31"/>
+                                      <af:selectItem label="DEBTORS"
+                                                     value="DEBTORS" id="si7"/>
+                                      <af:selectItem label="STAFF" value="STAFF"
+                                                     id="si20"/>
+                                      <af:selectItem label="INHOUSE AGENTS"
+                                                     value="INHOUSE AGENTS"
+                                                     id="si28"/>
+                                      <af:selectItem label="SALVAGES"
+                                                     value="SALVAGES"
+                                                     id="si19"/>
+                                      <af:selectItem label="EXCESS"
+                                                     value="EXCESS" id="si29"/>
+                                      <af:selectItem label="BDE" value="BDE"
+                                                     id="si15"/>
+                                      <af:selectItem label="BSP" value="BSP"
+                                                     id="si22"/>
+                                      <af:selectItem label="MSP" value="MSP"
+                                                     id="si23"/>
+                                      <af:selectItem label="MSE" value="MSE"
+                                                     id="si3"/>
+                                      <af:selectItem label="UNIT MANAGER"
+                                                     value="UNIT MANAGER"
+                                                     id="si14"/>
+                                      <af:selectItem label="BRANCH MANAGERS"
+                                                     value="BRANCH MANAGERS"
+                                                     id="si16"/>
+                                      <af:selectItem label="BRANCH"
+                                                     value="BRANCH" id="si5"/>
+                                      <af:selectItem label="AGENCY MANAGER"
+                                                     value="AGENCY MANAGER"
+                                                     id="si24"/>
+                                      <af:selectItem label="THIRD PARTY RECOVERY"
+                                                     value="THIRD PARTY RECOVERY"
+                                                     id="si17"/>
+                                      <af:selectItem label="REGIONAL MANAGER"
+                                                     value="REGIONAL MANAGER"
+                                                     id="si25"/>
+                                      <af:selectItem label="NATIONAL MANAGER"
+                                                     value="NATIONAL MANAGER"
+                                                     id="si6"/>
+                                      <af:selectItem label="PETTY CASH"
+                                                     value="PETTY CASH"
+                                                     id="si26"/>
+                                    </af:selectOneChoice>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="ID:" id="ol10"/>
+                                  <h:panelGrid columns="1" id="pg13">
+                                    <af:inputText simple="true" id="it4"
+                                                  binding="#{AccountSetUpBack.id}"
+                                                  disabled="true"
+                                                  partialTriggers="soc2"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Client Mapping:"
+                                                  id="ol11"/>
+                                  <h:panelGrid columns="1" id="pg14">
+                                    <af:inputText simple="true" id="it6"
+                                                  binding="#{AccountSetUpBack.cmapping}"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="W/H Rate:" id="ol12"/>
+                                  <h:panelGrid columns="1" id="pg15">
+                                    <af:inputNumberSpinbox label="Label 1"
+                                                           id="ins1"
+                                                           simple="true"
+                                                           binding="#{AccountSetUpBack.whRate}"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Override Rate:"
+                                                  id="ol13"/>
+                                  <h:panelGrid columns="1" id="pg16">
+                                    <af:inputNumberSpinbox simple="true"
+                                                           id="ins4"
+                                                           binding="#{AccountSetUpBack.ovrate}"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Comm Reserve Rate:"
+                                                  id="ol14"/>
+                                  <h:panelGrid columns="1" id="pg17">
+                                    <af:inputNumberSpinbox label="Label 2"
+                                                           id="ins2"
+                                                           simple="true"
+                                                           binding="#{AccountSetUpBack.commrate}"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="AC No. Format"
+                                                  id="ol16"/>
+                                  <h:panelGrid columns="1" id="pg19">
+                                    <af:inputText label="Label 1" id="it1"
+                                                  simple="true"
+                                                  binding="#{AccountSetUpBack.acnoformat}"/>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="VAT Rate" id="ol15"/>
+                                  <h:panelGrid columns="1" id="pg18">
+                                    <af:inputNumberSpinbox simple="true"
+                                                           id="ins5"
+                                                           binding="#{AccountSetUpBack.vatrate}"/>
+                                  </h:panelGrid>
+                                  <af:commandButton text="Save" id="cb7"
+                                                    action="#{AccountSetUpBack.saveAccTypes}"
+                                                    binding="#{AccountSetUpBack.saveAccountTypes}"/>
+                                </h:panelGrid>
+                              </af:panelBox>
+                            </af:panelGroupLayout>
+                          </af:dialog>
+                        </af:popup>
+            
+            <af:popup id="BranchPop">
+                    <af:dialog id="d3" type="none" title="Select Branch">
+                      <af:panelGroupLayout id="pgl8">
+                        <h:panelGrid columns="1" id="pg43">
+                          <af:table value="#{bindings.AccountType7.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.AccountType7.rangeSize}"
+                                    emptyText="#{bindings.AccountType7.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.AccountType7.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.AccountType7Query.queryDescriptor}"
+                                    queryListener="#{bindings.AccountType7Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.AccountType7.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.AccountType7.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t7"
+                                    binding="#{AccountSetUpBack.branchTable}">
+                            <af:column sortProperty="id" filterable="true"
+                                       sortable="true" headerText="Branch Code"
+                                       id="c32">
+                              <af:outputText value="#{row.id}" id="ot33"/>
+                            </af:column>
+                            <af:column sortProperty="name" filterable="true"
+                                       sortable="true" headerText="Branch Name"
+                                       id="c31">
+                              <af:outputText value="#{row.name}" id="ot34"/>
+                            </af:column>
+                          </af:table>
+                          <af:commandButton text="   OK   " id="cb23"
+                                            action="#{AccountSetUpBack.selectBranch}"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  
+                  <af:popup id="CountryPop">
+                    <af:dialog id="d4" type="none" title="Select Country">
+                      <af:panelGroupLayout id="pgl9">
+                        <h:panelGrid columns="1" id="pg44">
+                          <af:table value="#{bindings.AccountType8.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.AccountType8.rangeSize}"
+                                    emptyText="#{bindings.AccountType8.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.AccountType8.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.AccountType8Query.queryDescriptor}"
+                                    queryListener="#{bindings.AccountType8Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.AccountType8.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.AccountType8.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t8"
+                                    binding="#{AccountSetUpBack.countryTable}"
+                                    width="217">
+                            <af:column sortProperty="id" filterable="true"
+                                       sortable="true"
+                                       headerText="#{bindings.AccountType8.hints.id.label}"
+                                       id="c34" visible="false">
+                              <af:outputText value="#{row.id}" id="ot36"/>
+                            </af:column>
+                            <af:column sortProperty="name" filterable="true"
+                                       sortable="true" headerText="Country Name"
+                                       id="c33" width="150">
+                              <af:outputText value="#{row.name}" id="ot35"/>
+                            </af:column>
+                          </af:table>
+                          <af:commandButton text="      OK     " id="cb24"
+                                            action="#{AccountSetUpBack.selectCountry}"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  
+                  <af:popup id="townPop">
+                    <af:dialog id="d5" type="none" title="Select Town">
+                      <af:panelGroupLayout id="pgl10">
+                        <h:panelGrid columns="1" id="pg45">
+                          <af:table value="#{bindings.AccountType9.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.AccountType9.rangeSize}"
+                                    emptyText="#{bindings.AccountType9.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.AccountType9.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.AccountType9Query.queryDescriptor}"
+                                    queryListener="#{bindings.AccountType9Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.AccountType9.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.AccountType9.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t9"
+                                    binding="#{AccountSetUpBack.townTable}"
+                                    width="164">
+                            <af:column sortProperty="id" filterable="true"
+                                       sortable="true"
+                                       headerText="#{bindings.AccountType9.hints.id.label}"
+                                       id="c36" visible="false">
+                              <af:outputText value="#{row.id}" id="ot37"/>
+                            </af:column>
+                            <af:column sortProperty="name" filterable="true"
+                                       sortable="true" headerText="Town Name"
+                                       id="c35" width="150">
+                              <af:outputText value="#{row.name}" id="ot38"/>
+                            </af:column>
+                          </af:table>
+                          <af:commandButton text="    OK    " id="cb25"
+                                            action="#{AccountSetUpBack.selectTown}"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  
+                  <af:popup id="regPop">
+                    <af:dialog id="d6" title="Registration Details" type="none">
+                      <af:panelGroupLayout id="pgl11">
+                        <h:panelGrid columns="1" id="pg47">
+                          <af:inputText label="Label 33" id="it32"
+                                        binding="#{AccountSetUpBack.regkey}"
+                                        visible="false" simple="true"/>
+                          <h:panelGrid columns="2" id="pg46">
+                            <af:outputLabel value="Year:" id="ol34"/>
+                            <h:panelGrid columns="1" id="pg48">
+                              <af:inputDate label="Label 1" id="id1"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.regyear}">
+                                <af:convertDateTime pattern="yyyy"/>
+                              </af:inputDate>
+                            </h:panelGrid>
+                            <af:outputLabel value="Reg No:" id="ol35"/>
+                            <h:panelGrid columns="1" id="pg49">
+                              <af:inputText label="Label 32" id="it31"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.regno}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Wef" id="ol36"/>
+                            <h:panelGrid columns="1" id="pg50">
+                              <af:inputDate label="Label 2" id="id2"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.regWef}">
+                                <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                              </af:inputDate>
+                            </h:panelGrid>
+                            <af:outputLabel value="Wet" id="ol37"/>
+                            <h:panelGrid columns="1" id="pg51">
+                              <af:inputDate label="Label 3" id="id3"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.regWet}">
+                                <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                              </af:inputDate>
+                            </h:panelGrid>
+                            <af:outputLabel value="Accepted" id="ol38"/>
+                            <h:panelGrid columns="1" id="pg52">
+                              <af:selectOneChoice label="Label 4" id="soc5"
+                                                  simple="true"
+                                                  binding="#{AccountSetUpBack.regAccepted}">
+                                <af:selectItem label="Yes" value="Y" id="si34"/>
+                                <af:selectItem label="No" value="N" id="si33"/>
+                              </af:selectOneChoice>
+                            </h:panelGrid>
+                          </h:panelGrid>
+                          <af:commandButton text="Save" id="cb26"
+                                            binding="#{AccountSetUpBack.saveRegDetails}"
+                                            action="#{AccountSetUpBack.saveRegistrationDetails}"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  
+                  <af:popup id="agentDirectorsPop">
+                    <af:dialog id="d7" title="Agency Directors" type="none">
+                      <af:panelGroupLayout id="pgl12">
+                        <h:panelGrid columns="1" id="pg53">
+                          <af:inputText label="Label 36" id="it35" simple="true"
+                                        binding="#{AccountSetUpBack.agencyDirectorId}"
+                                        visible="false"/>
+                          <h:panelGrid columns="2" id="pg54">
+                            <af:outputLabel value="Year:" id="ol39"/>
+                            <h:panelGrid columns="1" id="pg55">
+                              <af:inputDate label="Label 4" id="id4"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.directYr}">
+                                <af:convertDateTime pattern="yyyy"/>
+                              </af:inputDate>
+                            </h:panelGrid>
+                            <af:outputLabel value="Name:" id="ol40"/>
+                            <h:panelGrid columns="1" id="pg56">
+                              <af:inputText label="Label 34" id="it33"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.directname}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Professional Qualifications:"
+                                            id="ol41"/>
+                            <h:panelGrid columns="1" id="pg57">
+                              <af:inputText label="Label 35" id="it34" rows="3"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.directQualifications}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="%age Shareholding"
+                                            id="ol42"/>
+                            <h:panelGrid columns="1" id="pg58">
+                              <af:inputNumberSpinbox label="Label 3" id="ins3"
+                                                     simple="true"
+                                                     binding="#{AccountSetUpBack.directshare}"
+                                                     maximum="100" minimum="0"/>
+                            </h:panelGrid>
+                          </h:panelGrid>
+                          <af:commandButton text="Save" id="cb27"
+                                            binding="#{AccountSetUpBack.saveAgDirectorButton}"
+                                            action="#{AccountSetUpBack.saveAgDirectorsAction}"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  
+                  <af:popup id="agencyRefereePop">
+                    <af:dialog id="d8" type="none" title="Agency Referees">
+                      <af:panelGroupLayout id="pgl13">
+                        <h:panelGrid columns="1" id="pg59">
+                          <af:inputText label="Label 43" id="it42" simple="true"
+                                        visible="false"
+                                        binding="#{AccountSetUpBack.refereeId}"/>
+                          <h:panelGrid columns="2" id="pg60">
+                            <af:outputLabel value="Name:" id="ol43"/>
+                            <h:panelGrid columns="1" id="pg61">
+                              <af:inputText label="Label 37" id="it36"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.refereeName}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Physical Address:"
+                                            id="ol44"/>
+                            <h:panelGrid columns="1" id="pg62">
+                              <af:inputText label="Label 38" id="it37"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.refereephAddress}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Postal Address:" id="ol45"/>
+                            <h:panelGrid columns="1" id="pg63">
+                              <af:inputText label="Label 39" id="it38"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.refereePostAddress}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="ID No:" id="ol46"/>
+                            <h:panelGrid columns="1" id="pg64">
+                              <af:inputText label="Label 40" id="it39"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.refereeIDNo}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Email:" id="ol47"/>
+                            <h:panelGrid columns="1" id="pg65">
+                              <af:inputText label="Label 41" id="it40"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.refereeEmail}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Tel No:" id="ol48"/>
+                            <h:panelGrid columns="1" id="pg66">
+                              <af:inputText label="Label 42" id="it41"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.refereeTelNo}"/>
+                            </h:panelGrid>
+                          </h:panelGrid>
+                          <af:commandButton text="    Save   " id="cb28"
+                                            binding="#{AccountSetUpBack.saveRefereeAgButton}"
+                                            action="#{AccountSetUpBack.saveRefereeAgencies}"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  
+                  <af:popup id="webUserPop">
+                    <af:dialog id="d9" type="none" title="Add New User">
+                      <af:panelGroupLayout id="pgl14">
+                        <h:panelGrid columns="1" id="pg68">
+                          <af:inputText label="Label 49" id="it49"
+                                        binding="#{AccountSetUpBack.webUserId}"
+                                        simple="true" visible="false"/>
+                          <h:panelGrid columns="2" id="pg69">
+                            <af:outputLabel value="Username:" id="ol49"/>
+                            <h:panelGrid columns="1" id="pg70">
+                              <af:inputText label="Label 44" id="it43"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.webusername}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Full Names:" id="ol50"/>
+                            <h:panelGrid columns="1" id="pg71">
+                              <af:inputText label="Label 45" id="it44"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.webfullNames}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Password:" id="ol56"/>
+                            <h:panelGrid columns="1" id="pg77">
+                              <af:inputText label="Label 48" id="it48"
+                                            binding="#{AccountSetUpBack.webPassword}"
+                                            secret="true" simple="true"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="User Email:" id="ol51"/>
+                            <h:panelGrid columns="1" id="pg72">
+                              <af:inputText label="Label 46" id="it45"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.webEmail}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Personel Rank" id="ol52"/>
+                            <h:panelGrid columns="1" id="pg73">
+                              <af:inputText label="Label 47" id="it46"
+                                            simple="true"
+                                            binding="#{AccountSetUpBack.webPersonalRank}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Allow Login" id="ol53"/>
+                            <h:panelGrid columns="2" id="pg74">
+                              <af:selectOneRadio label="Label 1" id="sor1"
+                                                 simple="true"
+                                                 binding="#{AccountSetUpBack.webAllowLogin}">
+                                <af:selectItem label="Yes" value="Y" id="si35"/>
+                                <af:selectItem label="No" value="N" id="si36"/>
+                              </af:selectOneRadio>
+                            </h:panelGrid>
+                            <af:outputLabel value="User Status:" id="ol54"/>
+                            <h:panelGrid columns="1" id="pg75">
+                              <af:selectOneChoice label="Label 5" id="soc6"
+                                                  simple="true"
+                                                  binding="#{AccountSetUpBack.webUserStatus}">
+                                <af:selectItem label="Active" value="A"
+                                               id="si38"/>
+                                <af:selectItem label="Inactive" value="I"
+                                               id="si37"/>
+                              </af:selectOneChoice>
+                            </h:panelGrid>
+                            <af:outputLabel value="Reset?" id="ol55"/>
+                            <h:panelGrid columns="1" id="pg76">
+                              <af:selectOneRadio label="Label 2" id="sor2"
+                                                 simple="true"
+                                                 binding="#{AccountSetUpBack.webReset}">
+                                <af:selectItem label="Yes" value="Y" id="si40"/>
+                                <af:selectItem label="No" value="N" id="si39"/>
+                              </af:selectOneRadio>
+                            </h:panelGrid>
+                          </h:panelGrid>
+                          <af:commandButton text="   Save   " id="cb32"
+                                            action="#{AccountSetUpBack.saveWebUsersOperation}"
+                                            binding="#{AccountSetUpBack.saveWebUsersButton}"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+            <af:popup id="contractPop">
+              <af:dialog id="d14" title="Select Contract" type="none">
+                <af:panelGroupLayout id="pgl19">
+                  <af:panelBox text="PanelBox8" id="pb7" showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc5">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                    </af:panelCollection>
+                    
+                    <af:commandButton text="OK" id="btnAcceptContract"/>
+                    <af:commandButton text="CANCEL" id="btnCancelContract"/>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="AgencyClassPop">
+              <af:dialog id="d10" title="Select Agency Class" type="none">
+                <af:panelGroupLayout id="pgl15">
+                  <af:panelBox text="PanelBox4" id="pb2" showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc1">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.AccountType1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.AccountType1.rangeSize}"
+                                emptyText="#{bindings.AccountType1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.AccountType1.rangeSize}"
+                                rowBandingInterval="0"
+                                selectedRowKeys="#{bindings.AccountType1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.AccountType1.collectionModel.makeCurrent}"
+                                rowSelection="single" id="tblAgencyClasses"
+                                binding="#{AccountSetUpBack.tblAgencyClasses}">
+                        <af:column sortProperty="name" sortable="true"
+                                   headerText="Agency Class" id="c46"
+                                   width="200">
+                          <af:outputText value="#{row.name}" id="ot4"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <af:commandButton text="OK" id="btnAcceptAgencyClass"
+                                      action="#{AccountSetUpBack.actionAcceptAgencyClass}"/>
+                    <af:commandButton text="CANCEL" id="btnCancelAgencyClass"/>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="sectorPop">
+              <af:dialog id="d11" title="Select Sector" type="none">
+                <af:panelGroupLayout id="pgl16">
+                  <af:panelBox text="PanelBox5" id="pb4" showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc2">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.Sector.collectionModel}"
+                                var="row" rows="#{bindings.Sector.rangeSize}"
+                                emptyText="#{bindings.Sector.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Sector.rangeSize}"
+                                rowBandingInterval="0"
+                                selectedRowKeys="#{bindings.Sector.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.Sector.collectionModel.makeCurrent}"
+                                rowSelection="single" id="tblSectors"
+                                binding="#{AccountSetUpBack.tblSectors}">
+                        <af:column sortProperty="name" sortable="true"
+                                   headerText="SECTOR NAME" id="c48">
+                          <af:outputText value="#{row.name}" id="ot50"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <af:commandButton text="OK" id="btnAcceptSector"
+                                      action="#{AccountSetUpBack.actionAcceptSector}"/>
+                    <af:commandButton text="CANCEL" id="btnCancelSector"/>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="affiliatedToPop">
+              <af:dialog id="d12" title="Select an Affiliation" type="none">
+                <af:panelGroupLayout id="pgl17">
+                  <af:panelBox text="PanelBox6" id="pb5" showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc3">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                    </af:panelCollection>
+                    
+                    <af:commandButton text="OK" id="btnAcceptAffiliatedTo"/>
+                    <af:commandButton text="CANCEL" id="cancelAffiliatedTo"/>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="holdingCompanyPop">
+              <af:dialog id="d13" title="Select Holding Company" type="none">
+                <af:panelGroupLayout id="pgl18">
+                  <af:panelBox text="PanelBox7" id="pb6" showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <af:panelCollection id="pc4">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.AgencyHoldingCompany.collectionModel}"
+                                var="row"
+                                rows="#{bindings.AgencyHoldingCompany.rangeSize}"
+                                emptyText="#{bindings.AgencyHoldingCompany.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.AgencyHoldingCompany.rangeSize}"
+                                rowBandingInterval="0"
+                                selectedRowKeys="#{bindings.AgencyHoldingCompany.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.AgencyHoldingCompany.collectionModel.makeCurrent}"
+                                rowSelection="single" id="tblAgencyHoldingCompany"
+                                binding="#{AccountSetUpBack.tblAgencyHoldingCompany}">
+                        <af:column sortProperty="name" sortable="true"
+                                   headerText="NAME" id="c47">
+                          <af:outputText value="#{row.name}" id="ot49"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <af:commandButton text="OK" id="acceptHoldingCompany"
+                                      action="#{AccountSetUpBack.actionAcceptHoldingCompany}"/>
+                    <af:commandButton text="CANCEL" id="cancelHoldingCompany"/>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM |Security Question Definition">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="Priority Levels" id="pb1" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="4" id="pg25">
+                <af:outputText value="Security Question Definition" id="ot27"
+                                 inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox1" id="pb2" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="6" id="pg1">
+                  <af:commandButton text="New" id="cb1"
+                                    icon="/images/create.gif"
+                                    action="#{ActivityBacking.actionNewSecurity}"/>
+                  <af:spacer width="10" height="10" id="s2"/>
+                  <af:commandButton text="Edit" id="cb2"
+                                    icon="/images/update.gif"
+                                    action="#{ActivityBacking.actionEditSecurityQuestions}"/>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:commandButton text="Delete" id="cb3"
+                                    icon="/images/delete.gif"
+                                    action="#{ActivityBacking.actionDeleteSecurityQuestion}"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc1" inlineStyle="width:99%;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Status1.collectionModel}"
+                            var="row" rows="#{bindings.Status1.rangeSize}"
+                            emptyText="#{bindings.Status1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Status1.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.Status1Query.queryDescriptor}"
+                            queryListener="#{bindings.Status1Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectionListener="#{bindings.Status1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1"
+                            binding="#{ActivityBacking.securityQuestionsTbl}">
+                    <af:column sortProperty="statusId" filterable="true" visible="false"
+                               sortable="true" headerText="Id" id="c3">
+                      <af:outputText value="#{row.statusId}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="statusCode" filterable="true" visible="false"
+                               sortable="true" headerText="Code" id="c1">
+                      <af:outputText value="#{row.statusCode}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="statusDecription" filterable="true" width="300"
+                               sortable="true" headerText="Description" id="c2">
+                      <af:outputText value="#{row.statusDecription}" id="ot3"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <af:popup id="p1">
+                  <af:dialog id="d2" type="none"
+                             binding="#{ActivityBacking.dlNewEditStatus}">
+                    <af:panelBox text="PanelBox2" id="pb3" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="2" id="pg3">
+                        <h:panelGrid columns="2" id="pg2">
+                          <af:outputLabel value="Short Description" id="ol1"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg4">
+                          <af:inputText id="ot4"
+                                        binding="#{ActivityBacking.txtStatusShortDesc}"
+                                        label="Short Desc" simple="true"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg5">
+                          <af:outputLabel value="Description" id="ol2"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg6">
+                          <af:inputText label="Desc" id="it2"
+                                        binding="#{ActivityBacking.txtStatusDesc}"
+                                        simple="true"/>
+                          <af:inputText label="StatusId" id="it3"
+                                        binding="#{ActivityBacking.txtStatusCode}"
+                                        visible="false"/>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                    </af:panelBox>
+                    <h:panelGrid columns="6" id="pg7">
+                      <af:commandButton text="Ok" id="cb4"
+                                        action="#{ActivityBacking.actionSaveQuestion}"/>
+                      <af:spacer width="10" height="10" id="s4"/>
+                      <af:commandButton text="Cancel" id="cb5"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+              </af:panelBox>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

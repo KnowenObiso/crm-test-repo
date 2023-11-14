@@ -1,0 +1,11 @@
+<?xml version='1.0' ?>
+<map version="1.0">   
+    <mapID target="topic_1" url="file_1.html" />
+    <mapID target="topic_2" url="file_2.html#a1" />
+    <mapID target="topic_3" url="file_1.html" />
+    <mapID target="concise_expanded" url="concise_expanded.html" />
+    <mapID target="concise" url="concise.html" />
+    <mapID target="expanded" url="expanded.html" />
+    <mapID target="nonexisting_file" url="nonexisting_file.html" />
+    <mapID target="invalid/topicid" url="file_1.html" />
+</map>

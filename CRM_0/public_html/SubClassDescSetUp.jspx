@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+   <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+         
+              
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="SubClass Definition" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>                
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="pg2">
+                  <af:commandButton text="New" id="btnNewSector"
+                                    icon="/images/create.gif" visible="false"
+                                    action="#{SubClassDef.newDescription}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Edit" id="btnEditSector"
+                                    icon="/images/update.gif"
+                                    action="#{SubClassDef.editDescription}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteSector" visible="false"
+                                    icon="/images/delete.gif" 
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+                <af:separator id="s2"/>
+                <af:table value="#{bindings.SubClass.collectionModel}" var="row"
+                          rows="#{bindings.SubClass.rangeSize}"
+                          emptyText="#{bindings.SubClass.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.SubClass.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.SubClassQuery.queryDescriptor}"
+                          queryListener="#{bindings.SubClassQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.SubClass.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.SubClass.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1"
+                          binding="#{SubClassDef.sclTable}"
+                          inlineStyle="width:750px; height:350.0px;">
+                  <af:column sortProperty="sclCode" filterable="true" 
+                             sortable="true" headerText="Code" id="c3">
+                    <af:outputText value="#{row.sclCode}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="sclDesc" filterable="true" width="150"
+                             sortable="true" headerText="Description" id="c2">
+                    <af:outputText value="#{row.sclDesc}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="sclShtDesc" filterable="true" width="150" visible="false"
+                             sortable="true" headerText="Scl Sht Desc" id="c4">
+                    <af:outputText value="#{row.sclShtDesc}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="sclWebSclDescription" width="600"
+                             filterable="true" sortable="true"
+                             headerText="Web description" id="c1">
+                    <af:outputText value="#{row.sclWebSclDescription}"
+                                   id="ot2"/>
+                  </af:column>
+                </af:table>
+              </af:panelBox>
+            </af:panelBox>
+            
+            <af:popup id="description" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Add/Edit Description" type="none">
+                <af:panelGroupLayout id="pgl1">
+                <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                   <af:panelFormLayout id="pfl1" inlineStyle="width:300.0px;">
+                    <af:outputLabel value="Remarks" id="ol6"/>
+                            <h:panelGrid columns="1" id="pg8">
+                              <af:inputText label="Label 6" id="it6"
+                                            simple="true" rows="8" columns="50"
+                                            binding="#{SubClassDef.sclDescription}"/>
+                            </h:panelGrid>
+                       </af:panelFormLayout>
+                     <af:commandButton text="Save" id="btnCreateUpdateSector"
+                                      action="#{SubClassDef.updateDescription}"/>
+                      <af:commandButton text="Cancel" id="cb2"/>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+             </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

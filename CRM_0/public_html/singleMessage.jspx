@@ -1,0 +1,665 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:panelGroupLayout id="pgl1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="panelGrid1">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="Mobile Single Message Screen" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                <af:panelGroupLayout id="pgl2">
+                  <af:panelFormLayout id="pfl1">
+                    <af:inputText label="SMS Code : " id="it13"
+                                  binding="#{singleMessageBacking.txtSmsCode}"
+                                  visible="false" disabled="true"/>
+                    <af:inputText label="System Code : " id="it2"
+                                  visible="false"
+                                  binding="#{singleMessageBacking.txtSmsSysCode}"
+                                  disabled="true"/>
+                    <af:panelLabelAndMessage label="System : " id="plam1">
+                      <af:inputText label="System : " id="it5" simple="true"
+                                    disabled="true"
+                                    binding="#{singleMessageBacking.txtSmsSysName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb1"
+                                        action="#{singleMessageBacking.actionShowSystems}"
+                                        partialSubmit="true"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="System Module : " id="it14"
+                                  binding="#{singleMessageBacking.txtSmsSysModule}"
+                                  visible="false"/>
+                    <af:inputText label="Client Code : " id="it3"
+                                  visible="false"
+                                  binding="#{singleMessageBacking.txtSmsClientCode}"
+                                  autoSubmit="true"/>
+                    <h:panelGrid columns="2" id="pg6">
+                      <af:selectBooleanRadio text="Clients" id="sbr1"
+                                             group="account" autoSubmit="true"
+                                             valueChangeListener="#{singleMessageBacking.clientSelectValChange}"
+                                             binding="#{singleMessageBacking.rdClient}"/>
+                      <af:selectBooleanRadio text="Other Accounts" id="sbr2"
+                                             group="account" autoSubmit="true"
+                                             valueChangeListener="#{singleMessageBacking.otherSelectValChange}"
+                                             binding="#{singleMessageBacking.rdOther}"/>
+                    </h:panelGrid>
+                    <af:panelLabelAndMessage label="Account Type : " id="plam2">
+                      <af:inputText label="Account : " id="it6" simple="true"
+                                    disabled="true" binding="#{singleMessageBacking.txtMainAccountType}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb2"
+                                       action="#{singleMessageBacking.showAccountTypesPop}"
+                                        partialSubmit="true"
+                                        binding="#{singleMessageBacking.accTypeBtn}"
+                                        disabled="true"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Account : " id="plam4">
+                      <af:inputText label="Account : " id="it1" simple="true"
+                                    disabled="true"
+                                    binding="#{singleMessageBacking.txtSmsClientName}"
+                                    rows="6" columns="100"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb11"
+                                        action="#{singleMessageBacking.actionShowSearch}"
+                                        partialSubmit="true"/>
+                    </af:panelLabelAndMessage>
+                    <af:inputText label="Message Tepmplate code : " id="it7"
+                                  visible="false"
+                                  binding="#{singleMessageBacking.txtSmsMsgTemplateCode}"
+                                  disabled="true"/>
+                    <af:panelLabelAndMessage label="Message Templates : "
+                                             id="plam3">
+                      <af:inputText label="Message Templates : " id="it4"
+                                    simple="true" disabled="true"
+                                    binding="#{singleMessageBacking.txtSmsMessageTemplate}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb3"
+                                        action="#{singleMessageBacking.actionShowMeassageTemplate}"
+                                        partialSubmit="true"/>
+                    </af:panelLabelAndMessage>
+                    <!--  
+                    <af:inputText label="Agent Code : " id="it4" visible="false"
+                                  binding="#{singleMessageBacking.txtSmsAgnCode}"/>
+                    
+                    <af:panelLabelAndMessage label="Agent : " id="plam3">
+                      <af:inputText label="Agent : " id="it7" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{singleMessageBacking.txtSmsAgnName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb3"/>
+                    </af:panelLabelAndMessage>                    
+                    -->
+                  </af:panelFormLayout>
+                  <af:spacer width="10" height="10" id="s2"/>
+                  <af:separator id="s3"/>
+                  <af:spacer width="10" height="10" id="s4"/>
+                  <h:panelGrid columns="2" id="pg2">
+                    <af:outputLabel value="Message Details" id="ol2"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s5"/>
+                  <af:panelFormLayout id="pfl2">
+                    <!-- 
+                    <af:inputText label="Quotation Code : " id="it17"
+                                  binding="#{singleMessageBacking.txtSmsQuotCode}" 
+                                  visible="false"/>
+                    
+                    <af:panelLabelAndMessage label="Quotation No. : "
+                                             id="plam4">
+                      <af:inputText label="Quotation No. : " id="it8" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{singleMessageBacking.txtSmsQuotNo}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb4"/>
+                    </af:panelLabelAndMessage>
+                    
+                    <af:inputText label="Policy Code : " id="it15"
+                                  binding="#{singleMessageBacking.txtSmsPolCode}" 
+                                  visible="false"/>
+                    
+                    <af:panelLabelAndMessage label="Policy No. : " id="plam5">
+                      <af:inputText label="Policy No. : " id="it9" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{singleMessageBacking.txtSmsPolNo}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb5"/>
+                    </af:panelLabelAndMessage>     
+                    
+                    <af:panelLabelAndMessage label="Claim No. : " id="plam6">
+                      <af:inputText label="Claim No. : " id="it10" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{singleMessageBacking.txtSmsClaimNo}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb6"/>
+                    </af:panelLabelAndMessage>
+                    
+                
+                    
+                    <af:selectOneChoice label="Status : " value="D" id="soc1"
+                                        binding="#{singleMessageBacking.txtSmsStatus}">
+                      <af:selectItem label="Draft" value="D" id="si3"/>
+                      <af:selectItem label="Sent" value="S" id="si2"/>
+                    </af:selectOneChoice>
+                     -->
+                     <af:inputDate label="Save for Future Sending Date : " id="id1"
+                                  binding="#{singleMessageBacking.txtFutureDate}">
+                                   <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                                </af:inputDate>
+                    <af:inputText label="Prepared By : " id="it16"
+                                  binding="#{singleMessageBacking.txtSmsPreparedBy}"
+                                  visible="false"/>
+                    <af:inputDate label="Prepared Date : " id="id3"
+                                  binding="#{singleMessageBacking.txtSmsPreparedDate}"
+                                  visible="false">
+                                   <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                                </af:inputDate>
+                  <af:inputText label="SMS Tel. No. : " id="it11" disabled="true"
+                                  binding="#{singleMessageBacking.txtSmsTelNo}"
+                                rows="6" columns="100"/>
+                    <af:inputText label="Message : " id="it12" columns="100"
+                                  rows="10" autoSubmit="true"
+                                  valueChangeListener="#{singleMessageBacking.txtSmsMsgListener}"
+                                  binding="#{singleMessageBacking.txtSmsMsg}"/>
+                    <af:inputDate label="Send Date : " id="id2"
+                                  binding="#{singleMessageBacking.txtSmsSendDate}"
+                                  visible="false">
+                                   <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                                </af:inputDate>
+                    <af:inputText label="User Code : " id="it18"
+                                  binding="#{singleMessageBacking.txtSmsUserCode}"
+                                  visible="false" disabled="true"/>
+                    
+                    <h:panelGrid columns="2" id="pg3">
+                      <af:commandButton text="Send" id="cb7"
+                                        partialSubmit="true"
+                                        action="#{singleMessageBacking.sendMessage}"/>
+                      <af:commandButton text="Save for Future Sending" id="cb8"
+                                        partialSubmit="true"
+                                        action="#{singleMessageBacking.saveMessage}"/>
+                    </h:panelGrid>
+                  </af:panelFormLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+            </af:panelBox>
+            <af:popup id="searchClientPop" contentDelivery="immediate">
+              <af:dialog id="d25" type="none" title="SELECT SEARCH CRITERIA"
+                         inlineStyle="width:600.0px;">
+                <h:panelGrid columns="2" id="pg32">
+                  <af:panelGroupLayout id="pgl31">
+                    <af:panelFormLayout id="pfl9">
+                      <f:facet name="footer"/>
+                      <af:inputText label="Short Desc" id="it19" disabled="true"
+                                    binding="#{singleMessageBacking.txtSearchShortDesc}"/>
+                      <af:inputText label="Name" id="it20"
+                                    binding="#{singleMessageBacking.txtSearchName}"
+                                    disabled="true"/>
+                      <af:inputText label="Other Name" id="it21" disabled="true"
+                                    binding="#{singleMessageBacking.txtSearchOtherName}"/>
+                      <af:inputText label="Physical Addr" id="it25"
+                                    disabled="true"
+                                    binding="#{singleMessageBacking.txtSearchPhysical}"/>
+                      <af:inputText label="Postal Addr" id="it26"
+                                    disabled="true"
+                                    binding="#{singleMessageBacking.txtSearchPostal}"/>
+                      <!--
+                      <af:inputText label="Sector" id="it22" disabled="true"
+                                    binding="#{baseClientBackingBean1.txtSearchSector}"
+                                    visible="false"/>
+                      <af:panelLabelAndMessage label="Sector" id="plam15" visible="false"
+                                               binding="#{baseClientBackingBean1.resetSearchContainer}">
+                        <af:inputText label="Label 37" id="inputText1"
+                                      visible="true" columns="23"
+                                     disabled="true"
+                                      binding="#{baseClientBacking.txtSrchSectorName}"
+                                      simple="true"/>
+                        <af:commandButton id="cb25" partialTriggers="it18"
+                                          icon="/images/dropdown.gif"
+                                          binding="#{baseClientBackingBean1.btnSectorLov}">
+                        
+                        </af:commandButton>
+                      </af:panelLabelAndMessage>
+                      
+                      <af:panelLabelAndMessage label="Status" id="plam13"
+                                               binding="#{baseClientBacking.statusHolder}">
+                        <af:selectOneChoice id="soc2"
+                                            binding="#{baseClientBackingBean1.txtSearchStatus}"
+                                            unselectedLabel="select"
+                                            disabled="true"
+                                            valueChangeListener="#{baseClientBackingBean1.cboSearchStatusListener}"
+                                            autoSubmit="true">
+                          <af:selectItem label="Active" value="A" id="si41"/>
+                          <af:selectItem label="Inactive" value="I" id="si44"/>
+                          <af:selectItem label="Draft" value="D" id="si43"/>
+                          <af:selectItem label="Rejected" value="R" id="si42"/>
+                        </af:selectOneChoice>
+                      </af:panelLabelAndMessage>
+                      <af:panelLabelAndMessage label="Client Type" id="plam14"
+                                               binding="#{baseClientBacking.searchClientType}">
+                        <af:selectOneChoice id="soc1" unselectedLabel="select"
+                                            disabled="true"
+                                            binding="#{baseClientBackingBean1.txtSearchClntType}"
+                                            valueChangeListener="#{baseClientBackingBean1.cboSearchClntTypelistener}"
+                                            autoSubmit="true">
+                          <af:selectItem label="Individual" value="I"
+                                         id="si40"/>
+                          <af:selectItem label="Corporate" value="C" id="si39"/>
+                        </af:selectOneChoice>
+                      </af:panelLabelAndMessage>
+                      <af:inputDate label="Date  Created   From" id="id4"
+                                    disabled="true"
+                                    binding="#{baseClientBackingBean1.clntDateCreatedFrom}"/>
+                      <af:inputDate label=" To" id="id5"
+                                    binding="#{baseClientBackingBean1.clntDateCreatedTo}"
+                                    disabled="true"/>
+                                    -->
+                    </af:panelFormLayout>
+                  </af:panelGroupLayout>
+                  <h:panelGrid columns="1" id="pg36">
+                    <h:panelGrid columns="1" id="pg35">
+                      <af:selectBooleanRadio text="Any part of any name(Specify Only One Name )"
+                                             label="Label 1" id="sbr3"
+                                             binding="#{singleMessageBacking.rbtnPartOfAnyName}"
+                                             simple="true" group="criteria"
+                                             autoSubmit="true"
+                                             valueChangeListener="#{singleMessageBacking.criteriaValueChangeListener}"/>
+                      <af:selectBooleanRadio text="Exact Name:(Specify Only One Name)"
+                                             group="criteria" label="Label 2"
+                                             id="sbr4" simple="true"
+                                             binding="#{singleMessageBacking.rbtnExactName}"
+                                             autoSubmit="true"
+                                             valueChangeListener="#{singleMessageBacking.criteriaValueChangeListener}"/>
+                      <af:selectBooleanRadio text="Part of  Short Desc(Short Desc Required)"
+                                             label="Label 7" id="sbr7794"
+                                             simple="true" group="criteria"
+                                             binding="#{singleMessageBacking.rbtnShortDesc}"
+                                             visible="true" autoSubmit="true"
+                                             valueChangeListener="#{singleMessageBacking.criteriaValueChangeListener}"/>
+                      <af:selectBooleanRadio text="Part of  Physical Addr(Physical Addr Required)"
+                                             label="Label 7" id="sbr18q91"
+                                             simple="true" group="criteria"
+                                             binding="#{singleMessageBacking.rbtnPhySicalAddr}"
+                                             visible="true" autoSubmit="true"
+                                             valueChangeListener="#{singleMessageBacking.criteriaValueChangeListener}"/>
+                      <af:selectBooleanRadio text="Part of Postal Addr(Postal Addr Required)"
+                                             label="Label 7" id="sbr1211"
+                                             simple="true" group="criteria"
+                                             binding="#{singleMessageBacking.rbtnPostalAddr}"
+                                             visible="true" autoSubmit="true"
+                                             valueChangeListener="#{singleMessageBacking.criteriaValueChangeListener}"/>
+                    </h:panelGrid>
+                  </h:panelGrid>
+                </h:panelGrid>
+                <h:panelGrid columns="4" id="pg37">
+                  <af:commandButton text="Search" id="cb22"
+                                    action="#{singleMessageBacking.actionAcceptSearchCriteria}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Reset" id="cb29"
+                                    action="#{singleMessageBacking.actionResetSearch}"
+                                    partialSubmit="true"/>
+                   <af:commandButton text="Select All" id="cb14"
+                                    action="#{singleMessageBacking.ActionselectAll}"
+                                   partialSubmit="true"/>
+                   <af:commandButton text="UnSelect All" id="cb15"
+                                    action="#{singleMessageBacking.actionUnselectAll}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc22"
+                                    styleClass="AFAuxiliaryStretchWidth">
+                  <f:facet name="menus">
+                  <af:menu text="Export" id="m3">
+                                    <af:commandMenuItem text="Excel"
+                                                        id="cmi2">
+                                      <af:exportCollectionActionListener exportedId="t1"
+                                                                         type="excelHTML"
+                                                                         filename="Clients"/>
+                                    </af:commandMenuItem>
+                                   
+                                  </af:menu>
+                   </f:facet>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.Client2.collectionModel}"
+                            var="row" rows="#{bindings.Client2.rangeSize}"
+                            emptyText="#{bindings.Client2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Client2.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.Client2Query.queryDescriptor}"
+                            queryListener="#{bindings.Client2Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            id="t1"
+                             partialTriggers=":::cb14 :::cb15"
+                            binding="#{singleMessageBacking.tblClientPop}"
+                            rowSelection="multiple">
+                    <!--  <af:column                filterFeatures="caseInsensitive"                        sortProperty="code"
+                                     width="30"
+                               rendered="#{Rendering.whichSearch ? true : false}"
+                               sortable="true" headerText="Select" id="c947"
+                               binding="#{baseClientBackingBean1.checkboxCol}">
+                      <af:selectBooleanCheckbox value="#{row.selected}"
+                                                autoSubmit="false" id="sbc1"
+                                                binding="#{baseClientBackingBean1.columnSelect}"/>
+                                              
+                    </af:column>
+                    -->
+                    <af:column                filterFeatures="caseInsensitive"                        sortProperty="code"
+                                     width="30"
+                               sortable="true" headerText="Select" id="c947"
+                               binding="#{singleMessageBacking.checkboxCol}">
+                      <af:selectBooleanCheckbox value="#{row.select}" label="#{row.code}"
+                                                autoSubmit="true" id="sbc1"
+                                                binding="#{singleMessageBacking.columnSelect}"
+                                                valueChangeListener="#{singleMessageBacking.selectValueChange}"/>
+                                              
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="name" filterable="true"
+                               sortable="true" headerText="Name" id="c77"
+                               width="200">
+                      <af:outputText value="#{row.name}" id="ot72"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="otherNames" filterable="true"
+                               sortable="true" headerText="Other Names"
+                               id="c83">
+                      <af:outputText value="#{row.otherNames}" id="ot79"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="physicalAddress" filterable="true"
+                               sortable="true" headerText="Physical Address"
+                               id="c84">
+                      <af:outputText value="#{row.physicalAddress}" id="ot81"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="postalAddress" filterable="true"
+                               sortable="true" headerText="Postal address"
+                               id="c87">
+                      <af:outputText value="#{row.postalAddress}" id="ot82"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="sms" filterable="true"
+                               sortable="true" headerText="Sms Tel" id="c90">
+                      <af:outputText value="#{row.sms}" id="ot84"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="shortDesc" filterable="true"
+                               sortable="true" headerText="Short Desc" id="c91">
+                      <af:outputText value="#{row.shortDesc}" id="ot85"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="idRegNo" filterable="true"
+                               sortable="true" headerText="Id Reg No." id="c92">
+                      <af:outputText value="#{row.idRegNo}" id="ot86"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="pin" filterable="true"
+                               sortable="true" headerText="Pin" id="c97">
+                      <af:outputText value="#{row.pin}" id="ot96"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="status" filterable="true"
+                               sortable="true" headerText="Status" id="c105"
+                               width="50">
+                      <af:outputText value="#{row.status}" id="ot76"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="email" filterable="true"
+                               sortable="true" headerText="EMAIL" id="c89">
+                      <af:outputText value="#{row.email}" id="ot78"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="3">
+                  <af:commandButton text="select" id="cb4" visible="true"
+                                    rendered="true" partialSubmit="true"
+                                    action="#{singleMessageBacking.actionAcceptClient}"/>
+                  <af:commandButton text="close" id="cb24"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="systemsPop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" type="none" title="Systems"
+                         inlineStyle="width:350.0px;">
+                <af:panelCollection id="pc2" styleClass="AFAuxiliaryStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.User.collectionModel}" var="row"
+                            rows="#{bindings.User.rangeSize}"
+                            emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.User.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.UserQuery.queryDescriptor}"
+                            queryListener="#{bindings.UserQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectionListener="#{bindings.User.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t2"
+                            binding="#{singleMessageBacking.tblSytems}">
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="sysShtDesc" filterable="true" 
+                               sortable="true" headerText="Short desc" id="c2">
+                      <af:outputText value="#{row.sysShtDesc}" id="ot4"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive" width="250"
+                               sortProperty="sysName" filterable="true"
+                               sortable="true" headerText="Name" id="c5">
+                      <af:outputText value="#{row.sysName}" id="ot2"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="sysActive" filterable="true"
+                               sortable="true" headerText="Status" id="c1">
+                      <af:outputText value="#{row.sysActive}" id="ot5"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="2" id="pg4">
+                  <af:commandButton text="select" id="cb6"
+                                    action="#{singleMessageBacking.actionAcceptSystems}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="cancel" id="cb9"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="msgTemplatePop" contentDelivery="lazyUncached">
+              <af:dialog id="d3" type="none" title="Message Templates"
+                         inlineStyle="width:350.0px;">
+                <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth" >
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.MessageTemplate.collectionModel}"
+                            var="row"
+                            rows="#{bindings.MessageTemplate.rangeSize}"
+                            emptyText="#{bindings.MessageTemplate.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.MessageTemplate.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.MessageTemplateQuery.queryDescriptor}"
+                            queryListener="#{bindings.MessageTemplateQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectionListener="#{bindings.MessageTemplate.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t3"
+                            binding="#{singleMessageBacking.tblmMsgTemplate}">
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="msgtCode" filterable="true"
+                               sortable="true" headerText="Code" id="c3"
+                               rendered="false">
+                      <af:outputText value="#{row.msgtCode}" id="ot8"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="msgtShtDesc" filterable="true"
+                               sortable="true"
+                               headerText="Short Desc"
+                               id="c7">
+                      <af:outputText value="#{row.msgtShtDesc}" id="ot9"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="msgtMsg" filterable="true"
+                               width="300" sortable="true" headerText="Message"
+                               id="c9">
+                      <af:outputText value="#{row.msgtMsg}" id="ot3"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="msgtSysModule" filterable="true"
+                               sortable="true" headerText="Module" id="c4">
+                      <af:outputText value="#{row.msgtSysModule}" id="ot7"/>
+                    </af:column>
+                    <af:column filterFeatures="caseInsensitive"
+                               sortProperty="msgtType" filterable="true"
+                               sortable="true" headerText="Msg Type" id="c6">
+                      <af:outputText value="#{row.msgtType}" id="ot10"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <h:panelGrid columns="2" id="pg5">
+                  <af:commandButton text="select" id="cb5"
+                                    action="#{singleMessageBacking.actionAcceptMessageTemplate}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="cancel" id="cb10"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+              <af:popup id="accountTypesPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d16" title="Account Types List" type="none"
+                               inlineStyle="width:500.0px;">
+                      <af:panelGroupLayout id="pgl19">
+                        <af:panelBox text="PanelBox15" id="pb13"
+                                     showHeader="never">
+                          <af:panelCollection id="pc9"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <af:table value="#{bindings.AccountsType.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountsType.rangeSize}"
+                                      emptyText="#{bindings.AccountsType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountsType.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AccountsTypeQuery.queryDescriptor}"
+                                      queryListener="#{bindings.AccountsTypeQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single" id="t5"
+                                      binding="#{singleMessageBacking.tblAccountTypesPop}"
+                                      summary="Account Types"
+                                      inlineStyle="width:99%;">
+                              <af:column sortProperty="accountTypeShortDesc"
+                                         filterFeatures="caseInsensitive"
+                                         filterable="true" sortable="true"
+                                         headerText="Short Desc" id="c61">
+                                <af:outputText value="#{row.accountTypeShortDesc}"
+                                               id="ot63"/>
+                              </af:column>
+                              <af:column sortProperty="accountType"
+                                         filterFeatures="caseInsensitive"
+                                         filterable="true" sortable="true"
+                                         headerText="Account Type" id="c55"
+                                         width="200">
+                                <af:outputText value="#{row.accountType}"
+                                               id="ot67"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="pg30">
+                            <af:commandButton text="Ok"
+                                              id="btnAcceptAccountTypes"
+                                              action="#{singleMessageBacking.actionAcceptAccountTypes}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Cancel"
+                                              id="btnCancelAccountTypes"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+            <af:popup id="accounts" contentDelivery="lazyUncached">
+              <af:dialog id="d4" type="none" title="Accounts">
+                <af:panelBox text="PanelBox16" id="pb3" showHeader="never">
+                  <f:facet name="toolbar"/>
+                  <h:panelGrid columns="1" id="pg7">
+                    <h:panelGrid columns="2" id="pg9">
+                      <af:commandButton text="Select All" id="cb16"
+                                        partialSubmit="true"
+                                        action="#{singleMessageBacking.selectAll}"/>
+                      <af:commandButton text="Unselect All" id="cb17"
+                                        partialSubmit="true"
+                                        action="#{singleMessageBacking.unselectAll}"/>
+                    </h:panelGrid>
+                    <af:panelCollection id="pc8"
+                                            styleClass="AFAuxiliaryStretchWidth"
+                                       inlineStyle="width:430.0px; ">
+                          <af:table value="#{bindings.Agency.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Agency.rangeSize}"
+                                    emptyText="#{bindings.Agency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Agency.rangeSize}"
+                                    rowBandingInterval="0"
+                                    summary="Agent Accounts"
+                                    filterModel="#{bindings.AgencyQuery33.queryDescriptor}"
+                                    queryListener="#{bindings.AgencyQuery33.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    rowSelection="multiple" id="tblAgencyInfo"
+                                    binding="#{singleMessageBacking.tblAgencyInfo}"
+                                    inlineStyle="width:99%;">
+                              <af:column                filterFeatures="caseInsensitive"                        sortProperty="code"
+                                     width="30"
+                               sortable="true" headerText="Select" id="c10"
+                                         binding="#{singleMessageBacking.agentSelect}">
+                      <af:selectBooleanCheckbox value="#{row.select}" label="#{row.code}"
+                                                autoSubmit="true" id="sbc2"
+                                                valueChangeListener="#{singleMessageBacking.accSelectValueChange}"/>
+                                              
+                    </af:column>       
+                             <af:column sortProperty="shortDesc" sortable="true" filterable="true"
+                                       headerText="Sht Desc"
+                                       id="c126">
+                              <af:outputText value="#{row.shortDesc}"
+                                             id="ot132"/>
+                            </af:column>
+                            <af:column sortProperty="name" filterable="true"
+                                       sortable="true" headerText="Name"
+                                       id="c8" width="200"
+                                       filterFeatures="caseInsensitive">
+                              <af:outputText value="#{row.name}" id="ot114"/>
+                            </af:column>                          
+                            <af:column sortProperty="sms" sortable="true" filterable="true"
+                                       headerText="Sms Number" 
+                                       id="c114">
+                              <af:outputText value="#{row.sms}"
+                                             id="ot120"/>
+                            </af:column>
+                           
+                          </af:table>
+                        </af:panelCollection>
+                    <h:panelGrid columns="2" id="pg8">
+                      <af:commandButton text="Select" id="cb13"
+                                        partialSubmit="true"
+                                        action="#{singleMessageBacking.selectAccounts}"/>
+                      <af:commandButton text="Cancel" id="cb12"/>
+                    </h:panelGrid>
+                  </h:panelGrid>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,848 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="left">
+                    <af:inputText id="it1" helpTopicId="CRMupdateDirectDebits"
+                                  columns="13" readOnly="true"
+                                  shortDesc="Help"/>
+                  </td>
+                  <td width="100%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="panelGrid1">
+                <af:outputLabel value="Update Direct Debits" id="o23"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="separator1"/>
+              <af:panelTabbed id="pt1" styleClass="AFAuxiliaryStretchWidth"
+                              inlineStyle="height:650px; width:99%;">
+                <af:showDetailItem text="Generate" id="sdi1">
+                  <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                    <h:panelGrid columns="2" id="pg1">
+                      <af:panelFormLayout id="pfl1">
+                        <af:inputText label="Bank Code : " id="txtBankCode"
+                                      binding="#{updateDirectDebitsBacking.txtBankCode}"
+                                      visible="false"/>
+                        <af:inputText label="Bank Branch Code : "
+                                      id="txtBbrCode"
+                                      binding="#{updateDirectDebitsBacking.txtBbrCode}"
+                                      visible="false"/>
+                        <af:inputText label="Direct Debit A/C Bank Name : "
+                                      id="txtBankName" columns="20"
+                                      disabled="true"
+                                      binding="#{updateDirectDebitsBacking.txtBankName}"/>
+                        <af:panelLabelAndMessage label="Direct Debit A/C Bank Branch : "
+                                                 id="plam1">
+                          <af:inputText label="Direct Debit A/C Bank Branch : "
+                                        id="txtBankBranch" simple="true"
+                                        columns="20" disabled="true"
+                                        binding="#{updateDirectDebitsBacking.txtBankBranch}"/>
+                          <af:commandButton id="btnShowBankBranch"
+                                            icon="/images/dropdown.gif"
+                                            action="#{updateDirectDebitsBacking.actionShowBankBranch}"/>
+                        </af:panelLabelAndMessage>
+                        <af:commandButton text="Search" id="btnSearchRecords"
+                                          action="#{updateDirectDebitsBacking.actionSearchRecords}"/>
+                      </af:panelFormLayout>
+                      <af:panelFormLayout id="pfl2">
+                        <af:inputText label="Company Direct Debit A/C : "
+                                      id="txtBankBct" columns="20"
+                                      disabled="true"
+                                      binding="#{updateDirectDebitsBacking.txtBankBct}"/>
+                        <af:inputDate label="Booking Date : "
+                                      id="txtBookingDate"
+                                      binding="#{updateDirectDebitsBacking.txtBookingDate}"/>
+                        <af:commandButton text="Generate Debits"
+                                          id="btnGenerateDebits"
+                                          action="#{updateDirectDebitsBacking.actionGenerateDebits}"/>
+                      </af:panelFormLayout>
+                    </h:panelGrid>
+                    <af:separator id="s1"/>
+                    <af:panelCollection id="pc1"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.GeneralBean.collectionModel}"
+                                var="row"
+                                rows="#{bindings.GeneralBean.rangeSize}"
+                                emptyText="#{bindings.GeneralBean.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.GeneralBean.rangeSize}"
+                                rowBandingInterval="0" rowSelection="single"
+                                id="tblClientRecords"
+                                binding="#{updateDirectDebitsBacking.tblClientRecords}">
+                        <af:column sortProperty="clientName" sortable="true"
+                                   headerText="Client" id="c12" width="180">
+                          <af:outputText value="#{row.clientName}" id="ot10"/>
+                        </af:column>
+                        <!--<af:column sortProperty="clientCode" sortable="true"
+                                   headerText="SCI. No" id="c10">
+                          <af:outputText value="#{row.clientCode}" id="ot7"/>
+                        </af:column>-->
+                        <af:column sortProperty="clientBankAccNum"
+                                   sortable="true" headerText="A/C No." id="c9">
+                          <af:outputText value="#{row.clientBankAccNum}"
+                                         id="ot12"/>
+                        </af:column>
+                        <af:column sortProperty="accountHolder" sortable="true"
+                                   headerText="Account Holder" id="c38">
+                          <af:outputText value="#{row.accountHolder}"
+                                         id="ot22"/>
+                        </af:column>
+                        <af:column sortProperty="proposalNum" sortable="true"
+                                   headerText="Proposal Number" id="c8">
+                          <af:outputText value="#{row.proposalNum}" id="ot8"/>
+                        </af:column>
+                        <af:column sortProperty="policyNum" sortable="true"
+                                   headerText="Policy Number" id="c11">
+                          <af:outputText value="#{row.policyNum}" id="ot11"/>
+                        </af:column>
+                        <af:column sortProperty="loanNo" sortable="true"
+                                   headerText="Loan No." id="c24">
+                          <af:outputText value="#{row.loanNo}" id="ot18"/>
+                        </af:column>
+                        <af:column sortProperty="premAmount" sortable="true"
+                                   headerText="Prem. Amont" id="c7">
+                          <af:outputText value="#{row.premAmount}" id="ot13"/>
+                        </af:column>
+                        <af:column sortProperty="payType" sortable="true"
+                                   headerText="Type" id="c13" width="100">
+                          <af:outputText value="#{row.payType}" id="ot9"/>
+                        </af:column>
+                        <af:column sortProperty="remarks" sortable="true"
+                                   headerText="Remarks" id="c34" width="100">
+                          <af:outputText value="#{row.remarks}" id="ot19"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </af:panelBox>
+                </af:showDetailItem>
+                <af:showDetailItem text="View / Authorize"
+                                   id="panelAuthoriseDebits"
+                                   binding="#{updateDirectDebitsBacking.panelAuthoriseDebits}">
+                  <af:panelGroupLayout id="pgl4">
+                    <af:panelBox text="PanelBox6" id="pb6" showHeader="never">
+                      <h:panelGrid columns="1" id="pg6">
+                        <af:outputLabel value="Batch" id="ol3"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s5"/>
+                      <h:panelGrid columns="3" id="pg10">
+                        <af:commandButton text="Delete"
+                                          id="btnDeleteDirectDebit"
+                                          icon="/images/delete.gif"
+                                          action="#{updateDirectDebitsBacking.actionDeleteDirectDebit}"/>
+                        <af:commandButton text="Authorize"
+                                          id="btnAuthorizeDirectDebit"
+                                          action="#{updateDirectDebitsBacking.actionAuthorizeDirectDebit}"/>
+                        <af:commandButton text="Print" id="btnPrintDirectDebit"
+                                          action="#{updateDirectDebitsBacking.actionPrintDirectDebit}"/>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc5"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:150px;">
+                        <af:table value="#{bindings.DirectDebit.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.DirectDebit.rangeSize}"
+                                  emptyText="#{bindings.DirectDebit.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.DirectDebit.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.DirectDebitQuery.queryDescriptor}"
+                                  queryListener="#{bindings.DirectDebitQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{updateDirectDebitsBacking.tblDirectDebitListener}"
+                                  rowSelection="single" id="tblDirectDebit"
+                                  binding="#{updateDirectDebitsBacking.tblDirectDebit}">
+                          <af:column sortProperty="ddBookDate" filterable="true"
+                                     sortable="true" headerText="Book Date"
+                                     id="c23">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.ddBookDate}"
+                                            id="id2"/>
+                            </f:facet>
+                            <af:outputText value="#{row.ddBookDate}" id="ot25">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="ddRefNo" filterable="true"
+                                     sortable="true" headerText="Ref. No."
+                                     id="c32">
+                            <af:outputText value="#{row.ddRefNo}" id="ot17"/>
+                          </af:column>
+                          <af:column sortProperty="bankBranch" filterable="true"
+                                     sortable="true" headerText="Bank / Branch"
+                                     id="c27" width="200">
+                            <af:outputText value="#{row.bankBranch}" id="ot20"/>
+                          </af:column>
+                          <af:column sortProperty="ddStatus" filterable="true"
+                                     sortable="true" headerText="Status"
+                                     id="c31">
+                            <af:outputText value="#{row.ddStatus}" id="ot31"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:spacer width="10" height="10" id="s8"/>
+                      <h:panelGrid columns="1" id="pg7">
+                        <af:outputLabel value="Clients" id="ol4"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s6"/>
+                      <af:panelCollection id="pc6"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:150px;">
+                        <af:table value="#{bindings.DirectDebitHeader.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.DirectDebitHeader.rangeSize}"
+                                  emptyText="#{bindings.DirectDebitHeader.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.DirectDebitHeader.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.DirectDebitHeaderQuery.queryDescriptor}"
+                                  queryListener="#{bindings.DirectDebitHeaderQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{updateDirectDebitsBacking.tblDirectDebitHeaderListener}"
+                                  rowSelection="single"
+                                  id="tblDirectDebitHeader"
+                                  binding="#{updateDirectDebitsBacking.tblDirectDebitHeader}">
+                          <af:column sortProperty="ddhClientName"
+                                     filterable="true" sortable="true"
+                                     headerText="Name" id="c22">
+                            <af:outputText value="#{row.ddhClientName}"
+                                           id="ot37"/>
+                          </af:column>
+                          <af:column sortProperty="ddhClientCode"
+                                     filterable="true" sortable="true"
+                                     headerText="SCI. No." id="c41">
+                            <af:outputText value="#{row.ddhClientCode}"
+                                           id="ot33"/>
+                          </af:column>
+                          <af:column sortProperty="ddhAccHolder"
+                                     filterable="true" sortable="true"
+                                     headerText="Account Holder" id="c37"
+                                     width="200">
+                            <af:outputText value="#{row.ddhAccHolder}"
+                                           id="ot43"/>
+                          </af:column>
+                          <af:column sortProperty="bankBranch" filterable="true"
+                                     sortable="true"
+                                     headerText="Bank Branch Name" id="c19"
+                                     width="200">
+                            <af:outputText value="#{row.bankBranch}" id="ot30"/>
+                          </af:column>
+                          <af:column sortProperty="ddhClientBankAccNum"
+                                     filterable="true" sortable="true"
+                                     headerText="Bank Acc No." id="c35">
+                            <af:outputText value="#{row.ddhClientBankAccNum}"
+                                           id="ot41"/>
+                          </af:column>
+                          <af:column sortProperty="ddhTotAmount"
+                                     filterable="true" sortable="true"
+                                     headerText="Total Amount" id="c20">
+                            <af:outputText value="#{row.ddhTotAmount}"
+                                           id="ot45"/>
+                          </af:column>
+                          <af:column sortProperty="ddhInitialBookDate"
+                                     filterable="true" sortable="true"
+                                     headerText="First Book Date" id="c33">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.ddhInitialBookDate}"
+                                            id="id1"/>
+                            </f:facet>
+                            <af:outputText value="#{row.ddhInitialBookDate}"
+                                           id="ot38">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:outputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:spacer width="10" height="10" id="s9"/>
+                      <h:panelGrid columns="1" id="pg9">
+                        <af:outputLabel value="Generated Records" id="ol5"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s7"/>
+                      <h:panelGrid columns="2" id="pg11">
+                        <af:commandButton text="Remove Record"
+                                          id="btnRemoveDirectDebitDetail"
+                                          action="#{updateDirectDebitsBacking.actionRemoveDirectDebitDetail}"/>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc7"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:150px;">
+                        <af:table value="#{bindings.DirectDebitDetail.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.DirectDebitDetail.rangeSize}"
+                                  emptyText="#{bindings.DirectDebitDetail.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.DirectDebitDetail.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.DirectDebitDetailQuery.queryDescriptor}"
+                                  queryListener="#{bindings.DirectDebitDetailQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  rowSelection="single"
+                                  id="tblDirectDebitDetail"
+                                  binding="#{updateDirectDebitsBacking.tblDirectDebitDetail}">
+                          <af:column sortProperty="dddPolProposalNo"
+                                     filterable="true" sortable="true"
+                                     headerText="Proposal No." id="c21">
+                            <af:outputText value="#{row.dddPolProposalNo}"
+                                           id="ot49"/>
+                          </af:column>
+                          <af:column sortProperty="dddPolPolicyNo"
+                                     filterable="true" sortable="true"
+                                     headerText="Policy No." id="c28">
+                            <af:outputText value="#{row.dddPolPolicyNo}"
+                                           id="ot23"/>
+                          </af:column>
+                          <af:column sortProperty="dddAmount" filterable="true"
+                                     sortable="true" headerText="Amount"
+                                     id="c18">
+                            <af:outputText value="#{row.dddAmount}" id="ot39"/>
+                          </af:column>
+                          <af:column sortProperty="dddRemarks" filterable="true"
+                                     sortable="true" headerText="Remarks"
+                                     id="c36">
+                            <af:outputText value="#{row.dddRemarks}" id="ot24"/>
+                          </af:column>
+                          <af:column sortProperty="dddStatus" filterable="true"
+                                     sortable="true" headerText="Status"
+                                     id="c43">
+                            <af:outputText value="#{row.dddStatus}" id="ot46"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </af:showDetailItem>
+                <af:showDetailItem text="Generate Receipt" id="sdi3">
+                  <af:panelGroupLayout id="pgl5">
+                    <af:panelBox text="PanelBox7" id="pb7" showHeader="never">
+                      <h:panelGrid columns="1" id="pg12">
+                        <af:outputLabel value="Batches" id="ol6"
+                                        inlineStyle="font-weight:bold;"></af:outputLabel>
+                      </h:panelGrid>
+                      <af:separator id="s10"/>
+                      <h:panelGrid columns="1" id="pg15">
+                        <af:commandButton text="Generate Receipt"
+                                          id="btnGenerateReceipt"
+                                          action="#{updateDirectDebitsBacking.actionGenerateReceipt}"/>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc8"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:150px; width:99%;">
+                        <af:table value="#{bindings.DirectDebit1.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.DirectDebit1.rangeSize}"
+                                  emptyText="#{bindings.DirectDebit1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.DirectDebit1.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.DirectDebit1Query.queryDescriptor}"
+                                  queryListener="#{bindings.DirectDebit1Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{updateDirectDebitsBacking.tblDirectDebit2Listener}"
+                                  rowSelection="single" id="tblDirectDebit2"
+                                  binding="#{updateDirectDebitsBacking.tblDirectDebit2}">
+                          <af:column sortProperty="ddRefNo" filterable="true"
+                                     sortable="true" headerText="Ref. No."
+                                     id="c30">
+                            <af:outputText value="#{row.ddRefNo}" id="ot27"/>
+                          </af:column>
+                          <af:column sortProperty="ddBookDate" filterable="true"
+                                     sortable="true" headerText="Book Date"
+                                     id="c26">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.ddBookDate}"
+                                            id="id5"/>
+                            </f:facet>
+                            <af:outputText value="#{row.ddBookDate}" id="ot47">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="bankBranch" filterable="true"
+                                     sortable="true" headerText="Bank / Branch"
+                                     id="c46" width="200">
+                            <af:outputText value="#{row.bankBranch}" id="ot26"/>
+                          </af:column>
+                          <af:column sortProperty="ddAccountNum"
+                                     filterable="true" sortable="true"
+                                     headerText="Account No." id="c44">
+                            <af:outputText value="#{row.ddAccountNum}"
+                                           id="ot44"/>
+                          </af:column>
+                          <af:column sortProperty="ddReceipted"
+                                     filterable="true" sortable="true"
+                                     headerText="Receipted" id="c47">
+                            <af:outputText value="#{row.ddReceipted}"
+                                           id="ot32"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:spacer width="10" height="10" id="s11"/>
+                      <h:panelGrid columns="1" id="pg13">
+                        <af:outputLabel value="Clients" id="ol7"
+                                        inlineStyle="font-weight:bold;"></af:outputLabel>
+                      </h:panelGrid>
+                      <af:separator id="s12"/>
+                      <h:panelGrid columns="3" id="pg16">
+                        <af:commandButton text="Fail Update"
+                                          id="btnFailUpdateDDHeader"
+                                          action="#{updateDirectDebitsBacking.actionFailUpdateDDHeader}"/>
+                        <af:commandButton text="Relaunch"
+                                          id="btnRelaunchDDHeader"
+                                          action="#{updateDirectDebitsBacking.actionRelaunchDDHeader}"/>
+                        <af:commandButton text="Stop Launch"
+                                          id="btnStopLaunchDDHeader"
+                                          action="#{updateDirectDebitsBacking.actionStopLaunchDDHeader}"/>
+                      </h:panelGrid>
+                      <af:popup id="importDD">
+                        <af:dialog id="d7" type="none" title="Import">
+                          <af:panelBox text="Import Direct Debit" id="panelBox1"
+                                       showHeader="never"
+                                       inlineStyle="width:750.0px;">
+                            <f:facet name="toolbar"/>
+                            <h:panelGrid columns="1" id="pg20">
+                              <af:outputLabel value="Premium Rates Importation"
+                                              id="ol38"
+                                              inlineStyle="font-weight:bold;"/>
+                            </h:panelGrid>
+                            <af:separator id="s16"/>
+                            <af:spacer width="10" height="10" id="s15"/>
+                            <h:panelGrid columns="2" id="pg18">
+                              <af:outputLabel value="Select File"
+                                              id="outputLabel1"/>
+                              <af:inputFile label="Select File" id="inputFile1"
+                                            autoSubmit="true" simple="true"
+                                            value="#{CSVADFTableProcessor.uploadedFile}"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid2">
+                              <af:selectBooleanCheckbox label="Use first row values as Headers"
+                                                        id="selectBooleanCheckbox1"
+                                                        autoSubmit="true"
+                                                        value="#{CSVADFTableProcessor.useFirstRowAsHeaders}"
+                                                        selected="true"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="3" id="panelGrid3">
+                              <af:commandButton text="Clear Table"
+                                                id="commandButton1"
+                                                action="#{CSVADFTableProcessor.clearTable}"
+                                                partialSubmit="true"/>
+                              <af:commandButton text="Save Rates"
+                                                id="commandButton2"
+                                                action="#{CSVADFTableProcessor.importDirectDebit}"/>
+                              <af:commandButton text="Exit" id="cb12"
+                                                action="#{CSVADFTableProcessor.exitImportRates}"/>
+                            </h:panelGrid>
+                            <af:table value="#{CSVADFTableProcessor.rows}"
+                                      var="row" rowBandingInterval="1"
+                                      id="table1"
+                                      binding="#{CSVADFTableProcessor.table}"
+                                      inlineStyle="width:99%; height:300.0px;"
+                                      rowSelection="multiple" fetchSize="250"/>
+                          </af:panelBox>
+                        </af:dialog>
+                      </af:popup>
+                      <af:panelCollection id="pc12"
+                                          inlineStyle="width:99%; height:150.0px;">
+                        <f:facet name="menus">
+                          <af:menu text="Action" id="m2">
+                            <af:commandMenuItem text="Import" id="cmi2"
+                                                action="#{CSVADFTableProcessor.newImportData}"/>
+                            <af:commandMenuItem text="Export To Exel" id="cmi1"
+                                                action="#{CSVADFTableProcessor.newImportData}">
+                              <af:exportCollectionActionListener exportedId="ddTable"
+                                                                 type="excelHTML"
+                                                                 filename="DirectDabit"/>
+                            </af:commandMenuItem>
+                          </af:menu>
+                        </f:facet>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.DirectDebitHeader2.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.DirectDebitHeader2.rangeSize}"
+                                  emptyText="#{bindings.DirectDebitHeader2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.DirectDebitHeader2.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.DirectDebitHeader2Query.queryDescriptor}"
+                                  queryListener="#{bindings.DirectDebitHeader2Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{updateDirectDebitsBacking.tblDirectDebitHeader2Listener}"
+                                  rowSelection="single" id="ddTable"
+                                  binding="#{updateDirectDebitsBacking.tblDirectDebitHeader2}"
+                                  inlineStyle="width:99%;">
+                          <af:column id="c10" headerText="Export Id"
+                                     visible="false">
+                            <af:outputText value="#{row.ddhCode}"
+                                           id="outputText1"/>
+                          </af:column>
+                          <af:column sortProperty="ddhClientName"
+                                     filterable="true" sortable="true"
+                                     headerText="Client Name" id="c62">
+                            <af:outputText value="#{row.ddhClientName}"
+                                           id="ot21"/>
+                          </af:column>
+                          <af:column sortProperty="ddhClientCode"
+                                     filterable="true" sortable="true"
+                                     headerText="SCI. No." id="c45">
+                            <af:outputText value="#{row.ddhClientCode}"
+                                           id="ot28"/>
+                          </af:column>
+                          <af:column sortProperty="ddhAccHolder"
+                                     filterable="true" sortable="true"
+                                     headerText="Account Holder" id="c54">
+                            <af:outputText value="#{row.ddhAccHolder}"
+                                           id="ot60"/>
+                          </af:column>
+                          <af:column sortProperty="bankBranch" filterable="true"
+                                     sortable="true" headerText="Bank Branch"
+                                     id="c25" width="200">
+                            <af:outputText value="#{row.bankBranch}" id="ot63"/>
+                          </af:column>
+                          <af:column sortProperty="ddhClientBankAccNum"
+                                     filterable="true" sortable="true"
+                                     headerText="Bank Acc. No." id="c29">
+                            <af:outputText value="#{row.ddhClientBankAccNum}"
+                                           id="ot61"/>
+                          </af:column>
+                          <af:column sortProperty="ddhTotAmount"
+                                     filterable="true" sortable="true"
+                                     headerText="Total Amount" id="c48">
+                            <af:outputText value="#{row.ddhTotAmount}"
+                                           id="ot52"/>
+                          </af:column>
+                          <af:column sortProperty="ddhStatus" filterable="true"
+                                     sortable="true" headerText="Status"
+                                     id="c50">
+                            <af:outputText value="#{row.ddhStatus}" id="ot62"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:spacer width="10" height="10" id="s13"/>
+                      <h:panelGrid columns="1" id="pg14">
+                        <af:outputLabel value="Receipting Policies" id="ol8"
+                                        inlineStyle="font-weight:bold;"></af:outputLabel>
+                      </h:panelGrid>
+                      <af:separator id="s14"/>
+                      <af:panelCollection id="pc10"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          inlineStyle="height:150px; width:99%;">
+                        <af:table value="#{bindings.DirectDebitDetail3.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.DirectDebitDetail3.rangeSize}"
+                                  emptyText="#{bindings.DirectDebitDetail3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.DirectDebitDetail3.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.DirectDebitDetail3Query.queryDescriptor}"
+                                  queryListener="#{bindings.DirectDebitDetail3Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  rowSelection="single"
+                                  id="tblDirectDebitDetail2"
+                                  binding="#{updateDirectDebitsBacking.tblDirectDebitDetail2}">
+                          <af:column sortProperty="dddPolProposalNo"
+                                     filterable="true" sortable="true"
+                                     headerText="Proposal No." id="c58">
+                            <af:outputText value="#{row.dddPolProposalNo}"
+                                           id="ot29"/>
+                          </af:column>
+                          <af:column sortProperty="dddPolPolicyNo"
+                                     filterable="true" sortable="true"
+                                     headerText="Policy No." id="c68">
+                            <af:outputText value="#{row.dddPolPolicyNo}"
+                                           id="ot58"/>
+                          </af:column>
+                          <af:column sortProperty="dddReceiptNo"
+                                     filterable="true" sortable="true"
+                                     headerText="Receipt No." id="c60">
+                            <af:outputText value="#{row.dddReceiptNo}"
+                                           id="ot34"/>
+                          </af:column>
+                          <af:column sortProperty="dddReceiptDate"
+                                     filterable="true" sortable="true"
+                                     headerText="Receipt Date" id="c17">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.dddReceiptDate}"
+                                            id="id7"/>
+                            </f:facet>
+                            <af:outputText value="#{row.dddReceiptDate}"
+                                           id="ot35">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="dddAmount" filterable="true"
+                                     sortable="true" headerText="Amount"
+                                     id="c67">
+                            <af:outputText value="#{row.dddAmount}" id="ot48"/>
+                          </af:column>
+                          <af:column sortProperty="dddStatus" filterable="true"
+                                     sortable="true" headerText="Status"
+                                     id="c49">
+                            <af:outputText value="#{row.dddStatus}" id="ot59"/>
+                          </af:column>
+                          <af:column sortProperty="dddRelaunchDate"
+                                     filterable="true" sortable="true"
+                                     headerText="Relaunch Date" id="c53">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.dddRelaunchDate}"
+                                            id="id6"/>
+                            </f:facet>
+                            <af:outputText value="#{row.dddRelaunchDate}"
+                                           id="ot73">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="dddReceipted"
+                                     filterable="true" sortable="true"
+                                     headerText="Receipted" id="c42">
+                            <af:outputText value="#{row.dddReceipted}"
+                                           id="ot40"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </af:showDetailItem>
+                <af:showDetailItem text="Holidays" id="sdi4">
+                  <af:panelGroupLayout id="pgl2">
+                    <af:panelBox text="PanelBox4" id="panelHolidays"
+                                 showHeader="never"
+                                 binding="#{updateDirectDebitsBacking.panelHolidays}">
+                      <h:panelGrid columns="1" id="pg2">
+                        <af:outputLabel value="Generate Holidays for Year"
+                                        id="ol1"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s2"/>
+                      <h:panelGrid columns="3" id="pg3">
+                        <af:panelLabelAndMessage label="Year : " id="plam2">
+                          <af:inputText label="Year : " id="txtGenYear"
+                                        disabled="false" simple="true"
+                                        binding="#{updateDirectDebitsBacking.txtGenYear}"/>
+                          <af:commandButton id="cb1" icon="/images/dropdown.gif"
+                                            shortDesc="Click to select Year"
+                                            action="#{updateDirectDebitsBacking.actionShowYears}"/>
+                        </af:panelLabelAndMessage>
+                        <af:spacer width="10" height="10" id="s3"/>
+                        <af:commandButton text="Generate Holidays"
+                                          id="btnGenerateHolidays"
+                                          action="#{updateDirectDebitsBacking.actionGenerateHolidays}"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="3" id="pg5">
+                        <af:outputLabel value="Holidays" id="ol2"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s4"/>
+                      <!--<h:panelGrid columns="3" id="pg18">
+                      
+                        <af:commandButton text="New" id="btnNewHoliday"
+                                          action="#{updateDirectDebitsBacking.actionNewHoliday}" 
+                                          icon="/images/create.gif"/>
+                        
+                        <af:commandButton text="Edit" id="btnEditHoliday"
+                                          action="#{updateDirectDebitsBacking.actionEditHoliday}" 
+                                          icon="/images/update.gif"/>
+                        
+                        <af:commandButton text="Delete" 
+                                          id="btnDeleteHoliday" 
+                                          icon="/images/delete.gif"
+                                          action="#{updateDirectDebitsBacking.actionDeleteHoliday}"/>
+                      </h:panelGrid>-->
+                      <af:panelCollection id="pc4"
+                                          styleClass="AFAuxiliaryStretchWidth">
+                        <af:table value="#{bindings.Holiday1.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Holiday1.rangeSize}"
+                                  emptyText="#{bindings.Holiday1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Holiday1.rangeSize}"
+                                  rowBandingInterval="0" rowSelection="single"
+                                  id="tblHolidays"
+                                  binding="#{updateDirectDebitsBacking.tblHolidays}">
+                          <af:column sortProperty="hldDate" sortable="true"
+                                     headerText="Date" id="c15">
+                            <af:outputText value="#{row.hldDate}" id="ot16">
+                              <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="hldDesc" sortable="true"
+                                     headerText="Description" id="c16"
+                                     width="200">
+                            <af:outputText value="#{row.hldDesc}" id="ot15"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </af:showDetailItem>
+              </af:panelTabbed>
+            </af:panelBox>
+            <af:popup id="bankBranchPop">
+              <af:dialog id="d2" title="Bank Branches List" type="none"
+                         inlineStyle="width:450.0px;">
+                <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                  <af:panelGroupLayout id="pgl1">
+                    <af:panelCollection id="pc2"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Bank.collectionModel}"
+                                var="row" rows="#{bindings.Bank.rangeSize}"
+                                emptyText="#{bindings.Bank.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Bank.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.BankQuery.queryDescriptor}"
+                                queryListener="#{bindings.BankQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" id="tblBankBranches"
+                                binding="#{updateDirectDebitsBacking.tblBankBranches}">
+                        <af:column sortProperty="bankCode" filterable="true"
+                                   sortable="true" headerText="Bank Code"
+                                   id="c4">
+                          <af:outputText value="#{row.bankCode}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Bank Short Desc"
+                                   id="c5">
+                          <af:outputText value="#{row.shortDesc}" id="ot5"/>
+                        </af:column>
+                        <af:column sortProperty="bankName" filterable="true"
+                                   sortable="true" headerText="Bank Name"
+                                   id="c6">
+                          <af:outputText value="#{row.bankName}" id="ot2"/>
+                        </af:column>
+                        <af:column sortProperty="bbrBranchName"
+                                   filterable="true" sortable="true"
+                                   headerText="Bank Branch" id="c2">
+                          <af:outputText value="#{row.bbrBranchName}" id="ot4"/>
+                        </af:column>
+                        <af:column sortProperty="bbrCode" filterable="true"
+                                   sortable="true" headerText="Bank Branch Code"
+                                   id="c3">
+                          <af:outputText value="#{row.bbrCode}" id="ot6"/>
+                        </af:column>
+                        <af:column sortProperty="bctNum" filterable="true"
+                                   sortable="true" headerText="BCT No." id="c1">
+                          <af:outputText value="#{row.bctNum}" id="ot3"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:panelGrid columns="2" id="pg8">
+                      <af:commandButton text="Ok" id="btnAcceptBankBranch"
+                                        action="#{updateDirectDebitsBacking.actionAcceptBankBranch}"/>
+                      <af:commandButton text="Cancel" id="btnCancelBankBranch"
+                                        action="#{updateDirectDebitsBacking.actionCancelBankBranch}"/>
+                    </h:panelGrid>
+                  </af:panelGroupLayout>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="holidayPop">
+              <af:dialog id="d6" title="Holiday Definition" type="none"
+                         inlineStyle="width:300.0px;">
+                <af:panelGroupLayout id="pgl8">
+                  <af:panelBox text="PanelBox10" id="pb4" showHeader="never">
+                    <af:panelFormLayout id="pfl4">
+                      <af:inputDate label="Date : " id="txtHldDate"
+                                    binding="#{updateDirectDebitsBacking.txtHldDate}"/>
+                      <af:inputText label="Description : " id="txtHldDesc"
+                                    binding="#{updateDirectDebitsBacking.txtHldDesc}"/>
+                    </af:panelFormLayout>
+                    <h:panelGrid columns="2" id="pg19">
+                      <af:commandButton text="Save" id="btnSaveHoliday"
+                                        partialSubmit="true"
+                                        binding="#{updateDirectDebitsBacking.btnSaveHoliday}"
+                                        action="#{updateDirectDebitsBacking.actionSaveUpdateHoliday}"/>
+                      <af:commandButton text="Cancel" id="btnCancelHoliday"
+                                        action="#{updateDirectDebitsBacking.actionCancelHoliday}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="yearsPop">
+              <af:dialog id="d3" title="Years List" type="none"
+                         inlineStyle="width:250.0px;">
+                <af:panelGroupLayout id="pgl3">
+                  <af:panelBox text="PanelBox5" id="pb5" showHeader="never">
+                    <af:panelCollection id="pc3"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Holiday.collectionModel}"
+                                var="row" rows="#{bindings.Holiday.rangeSize}"
+                                emptyText="#{bindings.Holiday.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Holiday.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.HolidayQuery.queryDescriptor}"
+                                queryListener="#{bindings.HolidayQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" id="tblGenYears"
+                                binding="#{updateDirectDebitsBacking.tblGenYears}">
+                        <af:column sortProperty="HYear" filterable="true"
+                                   sortable="true" headerText="Year" id="c14"
+                                   width="200">
+                          <af:outputText value="#{row.HYear}" id="ot14"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:commandButton text="Ok" id="btnAcceptYear"
+                                        action="#{updateDirectDebitsBacking.actionAcceptYear}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="updateFailedPop">
+              <af:dialog id="d4" title="Update Failed Direct Debits" type="none"
+                         inlineStyle="width:250.0px;">
+                <af:panelGroupLayout id="pgl6">
+                  <af:panelBox text="PanelBox8" id="pb8" showHeader="never">
+                    <af:panelCollection id="pc11"
+                                        styleClass="AFAuxiliaryStretchWidth"></af:panelCollection>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="ddFailureDatePop">
+              <af:dialog id="d5" title="Direct Debit Failure Date" type="none"
+                         inlineStyle="width:300.0px;">
+                <af:panelGroupLayout id="pgl7">
+                  <af:panelBox text="PanelBox9" id="pb9" showHeader="never">
+                    <af:panelFormLayout id="pfl3">
+                      <af:inputText label="Direct Debit Header Code : "
+                                    id="txtDdhCode" visible="false"
+                                    binding="#{updateDirectDebitsBacking.txtDdhCode}"/>
+                      <af:inputText label="Direct Debit Code : "
+                                    id="txtDdhDdCode" visible="false"
+                                    binding="#{updateDirectDebitsBacking.txtDdhDdCode}"/>
+                      <af:inputDate label="Fail Date : " id="txtFailDate"
+                                    disabled="true"
+                                    binding="#{updateDirectDebitsBacking.txtFailDate}"/>
+                      <af:inputText label="Remarks : " id="txtUpdateRemarks"
+                                    rows="5"
+                                    binding="#{updateDirectDebitsBacking.txtUpdateRemarks}"/>
+                    </af:panelFormLayout>
+                    <h:panelGrid columns="2" id="pg17">
+                      <af:commandButton text="Fail Update" id="btnFailUpdatePop"
+                                        action="#{updateDirectDebitsBacking.actionFailUpdateDDH}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelUpdatePop"
+                                        action="#{updateDirectDebitsBacking.actionCancelFailUpdateDDH}"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

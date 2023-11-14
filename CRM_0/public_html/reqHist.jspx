@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              
+              <table width="100%">
+            <tr><td  align="right">
+            <h:panelGrid columns="2" id="pg33">
+                <af:inputText id="it1" helpTopicId="CRMcurrencies" columns="13"
+                              readOnly="true" shortDesc="Help"/>
+                <af:statusIndicator id="si1"/>
+              </h:panelGrid>
+            </td></tr>
+              </table>
+              <h:panelGrid columns="2" id="panelGrid11">
+                <af:outputLabel value="Service Request History" id="outputLabel5"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s2"/>
+                 <h:panelGrid columns="2" id="pg5">
+              <af:outputLabel value="Output Format" id="ol5"
+                              inlineStyle="font-weight:bold;"/>
+              <af:selectOneChoice label="Label 1" id="soc1" autoSubmit="true"
+                                  valueChangeListener="#{ReportEngine.outputFormat}"
+                                  unselectedLabel="Report Format" simple="true">
+                <af:selectItem label="PDF" value="pdf" id="si4"/>
+                <af:selectItem label="HTML" value="html" id="si5"/>
+                <af:selectItem label="WORD" value="rtf" id="si3"/>
+                <af:selectItem label="EXCEL" value="xls" id="si2"/>
+              </af:selectOneChoice>
+            </h:panelGrid>
+              <h:panelGrid columns="1"  >
+                <af:commandLink text="Overdue Request" id="rpt1012"
+                                inlineStyle="text-decoration:underline; color:Black;"
+                                actionListener="#{ReportQuery.paramReport}"/>
+                <af:commandLink text="Requests Per Assignee" id="rpt1016"
+                                inlineStyle="text-decoration:underline; color:Black;"
+                                actionListener="#{ReportQuery.paramReport}"/>
+                <af:commandLink text="Requests Per Owner Type" id="rpt1014"
+                                inlineStyle="text-decoration:underline; color:Black;"
+                                actionListener="#{ReportQuery.paramReport}"/>
+                <af:commandLink text="Service Requests By Type" id="rpt1015"
+                                inlineStyle="text-decoration:underline; color:Black;"
+                                actionListener="#{ReportQuery.paramReport}" />
+                <af:commandLink text="All Service Requests" id="rpt1013"
+                                inlineStyle="text-decoration:underline; color:Black;"
+                                actionListener="#{ReportQuery.paramReport}" />
+              </h:panelGrid>
+                <af:popup id="paramReportPop" contentDelivery="immediate">
+                <af:dialog id="d3" title="Report Parameters" type="none">
+                  <af:panelGroupLayout id="pgl4" layout="scroll"
+                                       binding="#{ReportQuery.details}">
+                    <h:panelGrid id="pg2541" binding="#{ReportQuery.mainHolder}"/>
+                                 
+                    <af:selectOneRadio label="Label 1" id="selectOneRadio1"
+                                       simple="true" layout="horizontal"
+                                       valueChangeListener="#{ReportQuery.changeReportType}"
+                                       autoSubmit="true">
+                      <af:selectItem label="Html" value="html" id="si51"/>
+                      <af:selectItem label="Pdf" value="pdf" id="si21"/>
+                      <af:selectItem label="Excel" value="xls" id="si41"/>
+                      <af:selectItem label="Word Document (rtf)" value="rtf"
+                                     id="si31"/>
+                    </af:selectOneRadio>
+                    <h:panelGrid columns="2" id="pg3">
+                      <af:commandButton text="Print" id="cb1"
+                                        action="#{ReportQuery.generateReports}">
+                        <!-- <af:fileDownloadActionListener contentType="application/x-download"
+                               method="#{reportParameterBean.generateReports}"/>-->
+                      </af:commandButton>
+                      <af:commandButton text="Cancel" id="cb40"/>
+                      <af:inputDate label="Label 1" id="id1" visible="false">
+                        <af:convertDateTime pattern="dd/MM/yyyy"
+                                            secondaryPattern="ddMMyyyy"/>
+                      </af:inputDate>
+                    </h:panelGrid>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>
+              <af:popup id="queryLovPop" binding="#{ReportQuery.repLov}">
+                <af:dialog id="d2" type="none" title="Select Record"
+                           binding="#{ReportQuery.queryLov}">
+                  <af:subform id="s19" defaultCommand="cb4">
+                    <af:panelGroupLayout id="pgl1">
+                      <af:inputText value="#{bindings.search.inputValue}"
+                                    simple="true" label="Search Item"
+                                    required="#{bindings.search.hints.mandatory}"
+                                    columns="#{bindings.search.hints.displayWidth}"
+                                    maximumLength="#{bindings.search.hints.precision}"
+                                    shortDesc="#{bindings.search.hints.tooltip}"
+                                    id="it2">
+                        <f:validator binding="#{bindings.search.validator}"/>
+                      </af:inputText>
+                      <h:panelGrid columns="2" id="pg6666">
+                        <af:commandButton actionListener="#{bindings.findQueryParameters.execute}"
+                                          text="Search"
+                                          disabled="#{!bindings.findQueryParameters.enabled}"
+                                          partialSubmit="true"
+                                          partialTriggers="cb4 t1" id="cb4"/>
+                        <af:outputText value="#{sessionScope['RecordExist']}"
+                                       id="ot73"
+                                       inlineStyle="color:Red; font-weight:bold;"
+                                       partialTriggers="cb4"/>
+                      </h:panelGrid>
+                      <af:table value="#{bindings.LOV.collectionModel}"
+                                var="row" rows="#{bindings.LOV.rangeSize}"
+                                emptyText="#{bindings.LOV.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.LOV.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.LOVQuery.queryDescriptor}"
+                                queryListener="#{bindings.LOVQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.LOV.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.LOV.collectionModel.makeCurrent}"
+                                binding="#{ReportQuery.reportQueryTbl}"
+                                width="400" partialTriggers="::cb4"
+                                rowSelection="single" id="t1">
+                        <af:column sortProperty="#{bindings.LOV.hints.code.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="Code"
+                                   id="c2">
+                          <af:outputText value="#{row.code}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="#{bindings.LOV.hints.value.name}"
+                                   filterable="true" sortable="true"
+                                   headerText="Value"
+                                   id="c1">
+                          <af:outputText value="#{row.value}" id="ot2"/>
+                        </af:column>
+                      </af:table> 
+                      <h:panelGrid columns="2" id="pg19">
+                        <af:commandButton text="Ok" id="cb1332"
+                                          partialSubmit="true"
+                                          action="#{ReportQuery.selectReportQueryValue}"/>
+                        <af:commandButton text="Cancel" id="cb2121"
+                                          action="#{ReportQuery.cancelSelectRptQuery}"
+                                          partialSubmit="true"/>
+                      </h:panelGrid>
+                    </af:panelGroupLayout>
+                  </af:subform>
+                </af:dialog>
+              </af:popup>
+            </af:panelBox>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

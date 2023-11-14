@@ -1,0 +1,1669 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM | Campaign Management">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="Campaign Management" id="pb1" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="4" id="pg25">
+                <af:outputText value="Campaign Management" id="ot27"
+                                 inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelTabbed id="pt2" inlineStyle="width:99%; height:700.0px;">
+                <af:showDetailItem text="Campaigns" id="sdi4">
+                  <af:panelBox text="PanelBox1" id="pb2" showHeader="never"
+                               inlineStyle="height:350.0px;">
+                    <f:facet name="toolbar"/>
+                    <h:panelGrid columns="6" id="pg1">
+                      <af:commandButton text="New" id="cb1"
+                                        icon="/images/create.gif"
+                                        action="#{campaignBackingBean.actionNewCampaign}"/>
+                      <af:spacer width="10" height="10" id="s2"/>
+                      <af:commandButton text="Edit" id="cb2"
+                                        icon="/images/update.gif"
+                                        action="#{campaignBackingBean.actionEditCampaign}"/>
+                      <af:spacer width="10" height="10" id="s3"/>
+                      <af:commandButton text="Delete" id="cb3"
+                                        icon="/images/delete.gif"
+                                        action="#{campaignBackingBean.actionDeleteCampaign}"/>
+                    </h:panelGrid>
+                    <af:panelCollection id="pc1"
+                                        styleClass="AFAuxiliaryStretchWidth"
+                                        inlineStyle="width:99%; height:300.0px;">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.Campaign.collectionModel}"
+                                var="row" rows="#{bindings.Campaign.rangeSize}"
+                                emptyText="#{bindings.Campaign.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Campaign.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.CampaignQuery.queryDescriptor}"
+                                queryListener="#{bindings.CampaignQuery.processQuery}"
+                                filterVisible="false" varStatus="vs"
+                                selectionListener="#{campaignBackingBean.actionTblCampaignsSelected}"
+                                rowSelection="single" id="t1"
+                                binding="#{campaignBackingBean.tblCampaigns}"
+                                inlineStyle="width:99%;">
+                        <af:column sortProperty="campName"
+                                   headerText="Campaign Name" id="c31"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campName}" id="ot8"/>
+                        </af:column>
+                        <af:column sortProperty="campObjective"
+                                   headerText="Objective" id="c2"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campObjective}"
+                                         id="ot36"/>
+                        </af:column>
+                        <af:column sortProperty="campProdName" visible="false"
+                                   headerText="Product Name" id="c15" width="200"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campProdName}" id="ot29"/>
+                        </af:column>
+                        <af:column sortProperty="campDescription" headerText="Description"
+                                   id="c24"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campDescription}"
+                                         id="ot22"/>
+                        </af:column>
+                        <af:column sortProperty="campSysName"
+                                   headerText="System" id="c28" width="150"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campSysName}" id="ot6"/>
+                        </af:column>
+                        <af:column sortProperty="campUserName"
+                                   headerText="User" id="c9"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campUserName}" id="ot19"/>
+                        </af:column>
+                        <af:column sortProperty="campTeamName"
+                                   headerText="Group" id="c29"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campTeamName}" id="ot35"/>
+                        </af:column>
+                        <af:column sortProperty="campOrgName"
+                                   headerText="Organisation" id="c26" width="150"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campOrgName}" id="ot32"/>
+                        </af:column>
+                        <af:column sortProperty="campDate"
+                                   headerText="Date" id="c5"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campDate}" id="ot18">
+                            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                          </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="campExpCloseDate" headerText="Closing Date"
+                                   id="c6"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campExpCloseDate}"
+                                         id="ot5">
+                            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                          </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="campExpCost"
+                                   headerText="Expected Cost" id="c23"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campExpCost}" id="ot20"/>
+                        </af:column>
+                        <af:column sortProperty="campBudgetedCost" headerText="Budgetted Cost"
+                                   id="c30"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campBudgetedCost}"
+                                         id="ot26"/>
+                        </af:column>
+                        <af:column sortProperty="campActualCost"
+                                   headerText="Actual Cost" id="c18"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campActualCost}"
+                                         id="ot17"/>
+                        </af:column>
+                        <af:column sortProperty="campExpRevenue"
+                                   headerText="Expected Revenue" id="c16"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campExpRevenue}"
+                                         id="ot12"/>
+                        </af:column>
+                        <af:column sortProperty="currencyName"
+                                   headerText="Currency" id="c21"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.currencyName}" id="ot34"/>
+                        </af:column>
+                        <af:column sortProperty="campSponsor"
+                                   headerText="Sponsor" id="c4"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campSponsor}" id="ot16"/>
+                        </af:column>
+                        <af:column sortProperty="campType"
+                                   headerText="Campaign Type" id="c35"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campType}" id="ot13"/>
+                        </af:column>
+                        <af:column sortProperty="campStatus"
+                                   headerText="Campaign Status" id="c14"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campStatus}" id="ot30"/>
+                        </af:column>
+                        <af:column sortProperty="campImpressionCount" headerText="Impessions"
+                                   id="c10"
+                                   filterFeatures="caseInsensitive"
+                                   filterable="true" sortable="true">
+                          <af:outputText value="#{row.campImpressionCount}"
+                                         id="ot25"/>
+                        </af:column>
+                        <af:column sortProperty="event"
+                                   headerText="Event"
+                                   id="c36" filterable="true" sortable="true">
+                          <af:outputText value="#{row.event}" id="ot31"/>
+                        </af:column>
+                        <af:column sortProperty="venue"
+                                   headerText="Venue"
+                                   id="c46" filterable="true" sortable="true">
+                          <af:outputText value="#{row.venue}" id="ot46"/>
+                        </af:column>
+                        <af:column sortProperty="eventTime"
+                                   headerText="Event Time"
+                                   id="c66" filterable="true" sortable="true">
+                          <af:outputText value="#{row.eventTime}" id="ot88">
+                             <af:convertDateTime type="both"
+                                                  pattern="dd-MMM-yyyy hh:mm a"/>
+                          </af:outputText>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <af:popup id="newEditCampaignPop">
+                      <af:dialog id="d2" type="none"
+                                 binding="#{campaignBackingBean.newEditCampaign}">
+                        <af:panelGroupLayout id="pgl2">
+                          <af:panelBox text="PanelBox1" id="panelBox1"
+                                       showHeader="never" showDisclosure="false"
+                                       binding="#{campaignBackingBean.pnBoxCampaignDetails}">
+                            <h:panelGrid columns="4" id="pg2">
+                              <h:panelGrid columns="1" id="pg43">
+                                <af:outputLabel value="Name" id="ol1"
+                                                showRequired="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="2" id="pg7">
+                                <af:inputText id="it8"
+                                              binding="#{campaignBackingBean.txtCampName}"
+                                              simple="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg14">
+                                <af:outputLabel value="Objective" id="ol4"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg15">
+                                <af:inputText id="it13"
+                                              binding="#{campaignBackingBean.txtCampObjective}"
+                                              simple="true" rows="2"
+                                              columns="15"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg16">
+                                <af:outputLabel id="ol5" value="Description"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg12">
+                                <af:inputText label="Description" id="it16"
+                                              binding="#{campaignBackingBean.txtCampDescription}"
+                                              visible="true" simple="true"
+                                              rows="2" columns="20"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg18">
+                                <af:outputLabel value="System" id="ol10"
+                                                showRequired="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg17">
+                                <af:panelLabelAndMessage id="plam2">
+                                  <af:inputText id="it10" disabled="true"
+                                                simple="true"
+                                                binding="#{campaignBackingBean.txtCampSystenName}"/>
+                                  <af:commandButton id="cb5"
+                                                    action="#{campaignBackingBean.actionShowSystems}"
+                                                    icon="/images/dropdown.gif"
+                                                    partialSubmit="true"/>
+                                </af:panelLabelAndMessage>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg8">
+                                <af:outputLabel value="From:" id="ol2"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg11">
+                                <af:inputDate id="id2"
+                                              binding="#{campaignBackingBean.dtCampFrom}"
+                                              simple="true">
+                                  <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                </af:inputDate>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg10">
+                                <af:outputLabel value="Product Name" id="ol3" visible="false"
+                                                showRequired="true"/>
+                              </h:panelGrid>
+                              <af:panelLabelAndMessage id="plam1">
+                                <af:inputText id="it9" disabled="true"
+                                              simple="true" visible="false"
+                                              binding="#{campaignBackingBean.txtCampProductName}"/>
+                                <af:commandButton id="cb4" partialSubmit="true" visible="false"
+                                                  action="#{campaignBackingBean.actionShowProducts}"
+                                                  icon="/images/dropdown.gif"
+                                                  immediate="false"/>
+                              </af:panelLabelAndMessage>
+                              <h:panelGrid columns="1" id="pg30">
+                                <af:outputLabel value="To" id="ol8"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg9">
+                                <af:inputDate id="id1"
+                                              binding="#{campaignBackingBean.dtCampTo}"
+                                              simple="true">
+                                  <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                </af:inputDate>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg20">
+                                <af:outputLabel value="Assigned To" id="ol11"
+                                                showRequired="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg21">
+                                <af:panelLabelAndMessage id="plam3">
+                                  <af:inputText id="it11" simple="true"
+                                                disabled="true"
+                                                binding="#{campaignBackingBean.txtCampUser}"/>
+                                  <af:commandButton id="cb6"
+                                                    icon="/images/dropdown.gif"
+                                                    action="#{campaignBackingBean.actionShowUsers}"
+                                                    partialSubmit="true"/>
+                                </af:panelLabelAndMessage>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg22">
+                                <af:outputLabel value="Team" id="ol12"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg23">
+                                <af:panelLabelAndMessage id="plam4">
+                                  <af:inputText id="it12" simple="true"
+                                                binding="#{campaignBackingBean.txtCampTeam}"
+                                                disabled="true"/>
+                                  <af:commandButton id="cb7"
+                                                    icon="/images/dropdown.gif"
+                                                    action="#{campaignBackingBean.actionShowuserGroups}"
+                                                    partialSubmit="true"/>
+                                </af:panelLabelAndMessage>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg32">
+                                <af:outputLabel value="Organisation" id="ol6"
+                                                showRequired="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg27">
+                                <af:panelLabelAndMessage id="plam5">
+                                  <af:inputText id="it2"
+                                                binding="#{campaignBackingBean.txtCampOrgName}"
+                                                visible="true" disabled="true"
+                                                simple="true"/>
+                                  <af:commandButton id="cb20"
+                                                    icon="/images/dropdown.gif"
+                                                    action="#{campaignBackingBean.actionShowOrganisations}"
+                                                    partialSubmit="true"/>
+                                </af:panelLabelAndMessage>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg28">
+                                <af:outputLabel value="Budgetted Cost"
+                                                id="ol7"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg4">
+                                <af:inputNumberSpinbox id="ins1"
+                                                       binding="#{campaignBackingBean.noCampBudget}"
+                                                       simple="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg41">
+                                <af:outputLabel value="Expected Cost"
+                                                id="ol19"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg42">
+                                <af:inputNumberSpinbox id="ins5" simple="true"
+                                                       binding="#{campaignBackingBean.noCampExpCost}"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg6">
+                                <af:outputLabel value="Actual Cost" id="ol9"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg13">
+                                <af:inputNumberSpinbox id="ins2"
+                                                       binding="#{campaignBackingBean.noCampActualCost}"
+                                                       simple="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg19">
+                                <af:outputLabel value="Expected Revenue"
+                                                id="ol13"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg24">
+                                <af:inputNumberSpinbox id="ins3"
+                                                       binding="#{campaignBackingBean.noCampExpRevenue}"
+                                                       simple="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg26">
+                                <af:outputLabel value="Currency" id="ol14"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="panelGrid1">
+                                <af:panelLabelAndMessage id="panelLabelAndMessage1">
+                                  <af:inputText id="inputText1"
+                                                binding="#{campaignBackingBean.txtCampCurrencyName}"
+                                                visible="true" disabled="true"
+                                                simple="true"/>
+                                  <af:commandButton id="commandButton1"
+                                                    icon="/images/dropdown.gif"
+                                                    action="#{campaignBackingBean.actionShowCurrencies}"
+                                                    partialSubmit="true"/>
+                                </af:panelLabelAndMessage>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg34">
+                                <af:outputLabel value="Sponsor/Partner" id="ol15"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg35">
+                                <af:inputText id="it17"
+                                              binding="#{campaignBackingBean.txtCampSponsor}"
+                                              visible="true" simple="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg36">
+                                <af:outputLabel value="Campaign Type"
+                                                id="ol16"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg37">
+                                <af:inputText id="it4"
+                                              binding="#{campaignBackingBean.txtCampType}"
+                                              simple="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg38">
+                                <af:outputLabel value="Status" id="ol17"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg39">
+                                <af:panelLabelAndMessage id="panelLabelAndMessage2">
+                                  <af:inputText id="inputText2"
+                                                binding="#{campaignBackingBean.txtCampStatus}"
+                                                visible="true" disabled="true"
+                                                simple="true"/>
+                                  <af:commandButton id="commandButton2"
+                                                    icon="/images/dropdown.gif"
+                                                    action="#{campaignBackingBean.actionShowStatuses}"
+                                                    partialSubmit="true"/>
+                                </af:panelLabelAndMessage>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg29">
+                                <af:outputLabel value="Page Impressions"
+                                                id="ol18"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg40">
+                                <af:inputNumberSpinbox id="ins4"
+                                                       binding="#{campaignBackingBean.noCampImpressions}"
+                                                       simple="true"/>
+                              </h:panelGrid>
+                            
+                            <h:panelGrid columns="1" id="pg0">
+                               <af:outputLabel id="ol23" value="Event"/>
+                            </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg53">
+                                <af:inputText label="Event" id="it24"
+                                              binding="#{campaignBackingBean.txtEvent}"
+                                              visible="true" simple="true"
+                                              rows="2" columns="20"/>
+                              </h:panelGrid>
+                               <h:panelGrid columns="1" id="pg54">
+                               <af:outputLabel id="ol24" value="Execution Time"/>
+                            </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg55">
+                               <af:inputDate label="Label 1" id="id5"
+                                                  simple="true" columns="25"
+                                             binding="#{campaignBackingBean.txtExecutionTime}"
+                                                  autoSubmit="true">
+                                      <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss aaa"/>
+                                    </af:inputDate>
+                              </h:panelGrid>
+                               <h:panelGrid columns="1" id="pg56">
+                               <af:outputLabel id="ol25" value="Venue"/>
+                            </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg57">
+                                <af:inputText label="Venue" id="it25"
+                                              binding="#{campaignBackingBean.txtVenue}"
+                                              visible="true" simple="true"
+                                              rows="2" columns="20"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="pg31">
+                                <af:inputText label="System Code" id="it5"
+                                              visible="false"
+                                              binding="#{campaignBackingBean.txtCampSysCode}"/>
+                                <af:inputText label="Org Code" id="it6"
+                                              visible="false"
+                                              binding="#{campaignBackingBean.txtCampOrgCode}"/>
+                                <af:inputText label="User Code" id="it7"
+                                              visible="false"
+                                              binding="#{campaignBackingBean.txtCampUserCode}"/>
+                                <af:inputText label="Team Code" id="it14"
+                                              visible="false"
+                                              binding="#{campaignBackingBean.txtCampTeamCode}"/>
+                                <af:inputText label="Product Code" id="it15"
+                                              visible="false"
+                                              binding="#{campaignBackingBean.txtCampProdCode}"/>
+                                <af:inputText label="Currency Code" id="it18"
+                                              visible="false"
+                                              binding="#{campaignBackingBean.txtCampCurrencyCode}"/>
+                                <af:inputText label="Status Code" id="it19"
+                                              visible="false"
+                                              binding="#{campaignBackingBean.txtCampStatusCode}"/>
+                                <af:inputText label="Camp Code" id="it3"
+                                              binding="#{campaignBackingBean.txtCampCode}"
+                                              visible="false"/>
+                              </h:panelGrid>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </af:panelGroupLayout>
+                        <h:panelGrid columns="4" id="pg3">
+                          <af:commandButton text="Save" id="cb8"
+                                            action="#{campaignBackingBean.actionSaveCampaign}"
+                                            partialSubmit="true"/>
+                          <af:spacer width="10" height="10" id="s7"/>
+                          <af:spacer width="10" height="10" id="s6"/>
+                          <af:commandButton text="Cancel" id="cb9"
+                                            action="#{campaignBackingBean.actionCancelCampaign}"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="campSystemsPop">
+                      <af:dialog id="d3" title="Systems" type="none">
+                        <af:panelCollection id="pc2" inlineStyle="width:395px;">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.System.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.System.rangeSize}"
+                                    emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.System.rangeSize}"
+                                    rowBandingInterval="1" id="t2"
+                                    binding="#{campaignBackingBean.tblSystems}"
+                                    rowSelection="single">
+                            <af:column sortProperty="shortDesc" sortable="true"
+                                       headerText="Code" id="c7" width="150"
+                                       filterable="true">
+                              <af:outputText value="#{row.shortDesc}" id="ot1"/>
+                            </af:column>
+                            <af:column sortProperty="name" sortable="true"
+                                       headerText="Name" id="c3" width="200"
+                                       filterable="true">
+                              <af:outputText value="#{row.name}" id="ot3"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <h:panelGrid columns="4" id="panelGrid7">
+                          <af:commandButton text="Ok" id="commandButton13"
+                                            action="#{campaignBackingBean.actionAcceptSystem}"
+                                            partialSubmit="true"
+                                            immediate="false"/>
+                          <af:spacer width="10" height="10" id="spacer11"/>
+                          <af:spacer width="10" height="10" id="spacer12"/>
+                          <af:commandButton text="Cancel" id="commandButton14"
+                                            action="#{campaignBackingBean.actionCancelSytem}"
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="campUsersPop">
+                      <af:dialog id="dialog1" title="List of Users" type="none">
+                        <af:panelCollection id="panelCollection1">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.User.collectionModel}"
+                                    var="row" rows="#{bindings.User.rangeSize}"
+                                    emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.User.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                    queryListener="#{bindings.UserQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.User.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.User.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t3"
+                                    binding="#{campaignBackingBean.tblUsers}">
+                            <af:column sortProperty="username" sortable="true"
+                                       headerText="User Name" id="c8"
+                                       filterable="true">
+                              <af:outputText value="#{row.username}" id="ot2"/>
+                            </af:column>
+                            <af:column sortProperty="userFullname"
+                                       sortable="true" headerText="Full Name"
+                                       id="c11" width="200" filterable="true">
+                              <af:outputText value="#{row.userFullname}"
+                                             id="ot28"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <h:panelGrid columns="4" id="pg5">
+                          <af:commandButton text="Ok" id="cb10"
+                                            action="#{campaignBackingBean.actioAcceptUser}"
+                                            partialSubmit="true"/>
+                          <af:spacer width="10" height="10" id="s4"/>
+                          <af:spacer width="10" height="10" id="s5"/>
+                          <af:commandButton text="Cancel" id="cb11"
+                                            action="#{campaignBackingBean.actionCancelUser}"
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="userTeamsPop">
+                      <af:dialog id="dialog2" title="Teams" type="none">
+                        <af:panelCollection id="panelCollection2">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.User1.collectionModel}"
+                                    var="row" rows="#{bindings.User1.rangeSize}"
+                                    emptyText="#{bindings.User1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.User1.rangeSize}"
+                                    rowBandingInterval="1"
+                                    filterModel="#{bindings.User1Query.queryDescriptor}"
+                                    queryListener="#{bindings.User1Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.User1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.User1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t4"
+                                    binding="#{campaignBackingBean.tblTeams}">
+                            <af:column sortProperty="username" filterable="true"
+                                       sortable="true" headerText="User Name"
+                                       id="c13" width="200">
+                              <af:outputText value="#{row.username}" id="ot9"/>
+                            </af:column>
+                            <af:column sortProperty="userFullname"
+                                       filterable="true" sortable="true"
+                                       headerText="Group Name" id="c12"
+                                       width="200">
+                              <af:outputText value="#{row.userFullname}"
+                                             id="ot7"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <h:panelGrid columns="4" id="panelGrid2">
+                          <af:commandButton text="Ok" id="commandButton3"
+                                            action="#{campaignBackingBean.actionAcceptUserTeam}"
+                                            partialSubmit="true"/>
+                          <af:spacer width="10" height="10" id="spacer1"/>
+                          <af:spacer width="10" height="10" id="spacer2"/>
+                          <af:commandButton text="Cancel" id="commandButton4"
+                                            action="#{campaignBackingBean.actionCancelUserTeam}"
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="statusesPop">
+                      <af:dialog id="dialog3" title="Statuses" type="none">
+                        <af:panelCollection id="panelCollection3">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.Status.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Status.rangeSize}"
+                                    emptyText="#{bindings.Status.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Status.rangeSize}"
+                                    rowBandingInterval="1" id="t5"
+                                    binding="#{campaignBackingBean.tblStatuses}"
+                                    width="310" rowSelection="single">
+                            <af:column sortProperty="statusCode"
+                                       sortable="true" headerText="Code"
+                                       id="c20" filterable="true">
+                              <af:outputText value="#{row.statusCode}"
+                                             id="ot11"/>
+                            </af:column>
+                            <af:column sortProperty="statusDecription"
+                                       sortable="true" headerText="Status"
+                                       id="c17" width="200" filterable="true">
+                              <af:outputText value="#{row.statusDecription}"
+                                             id="ot10"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <h:panelGrid columns="4" id="panelGrid3">
+                          <af:commandButton text="Ok" id="commandButton5"
+                                            action="#{campaignBackingBean.actionAccceptStatus}"
+                                            partialSubmit="true"/>
+                          <af:spacer width="10" height="10" id="spacer3"/>
+                          <af:spacer width="10" height="10" id="spacer4"/>
+                          <af:commandButton text="Cancel" id="commandButton6"
+                                            action="#{campaignBackingBean.actionCancelStatus}"
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="CampOrganisationsPOP">
+                      <af:dialog id="dialog4" title="List of Organisations"
+                                 type="none">
+                        <af:panelCollection id="panelCollection4">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.Organization.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Organization.rangeSize}"
+                                    emptyText="#{bindings.Organization.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Organization.rangeSize}"
+                                    rowBandingInterval="1"
+                                    filterModel="#{bindings.OrganizationQuery.queryDescriptor}"
+                                    queryListener="#{bindings.OrganizationQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.Organization.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.Organization.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t6"
+                                    binding="#{campaignBackingBean.tblOrganisations}"
+                                    width="440">
+                            <af:column sortProperty="orgShortDesc"
+                                       filterable="true" sortable="true"
+                                       headerText="Code" id="c19">
+                              <af:outputText value="#{row.orgShortDesc}"
+                                             id="ot15"/>
+                            </af:column>
+                            <af:column sortProperty="orgName" filterable="true"
+                                       sortable="true" headerText="Name"
+                                       id="c22" width="250">
+                              <af:outputText value="#{row.orgName}" id="ot14"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <h:panelGrid columns="4" id="panelGrid4">
+                          <af:commandButton text="Ok" id="commandButton7"
+                                            action="#{campaignBackingBean.actionAccceptOrg}"
+                                            partialSubmit="true"/>
+                          <af:spacer width="10" height="10" id="spacer5"/>
+                          <af:spacer width="10" height="10" id="spacer6"/>
+                          <af:commandButton text="Cancel" id="commandButton8"
+                                            action="#{campaignBackingBean.actionCancelOrg}"
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="CamCurrenciesPop">
+                      <af:dialog id="dialog5" title="List of Currencies"
+                                 type="none">
+                        <af:panelCollection id="panelCollection5">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.Currency.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Currency.rangeSize}"
+                                    emptyText="#{bindings.Currency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Currency.rangeSize}"
+                                    rowBandingInterval="1"
+                                    filterModel="#{bindings.CurrencyQuery.queryDescriptor}"
+                                    queryListener="#{bindings.CurrencyQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.Currency.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.Currency.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t7"
+                                    binding="#{campaignBackingBean.tblCurrencies}"
+                                    width="347">
+                            <af:column sortProperty="symbol" filterable="true"
+                                       sortable="true" headerText="Symbol"
+                                       id="c25">
+                              <af:outputText value="#{row.symbol}" id="ot4"/>
+                            </af:column>
+                            <af:column sortProperty="description"
+                                       filterable="true" sortable="true"
+                                       headerText="Name" id="c27" width="200">
+                              <af:outputText value="#{row.description}"
+                                             id="ot21"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <h:panelGrid columns="4" id="panelGrid5">
+                          <af:commandButton text="Ok" id="commandButton9"
+                                            action="#{campaignBackingBean.actionAcceptCurrency}"
+                                            partialSubmit="true"/>
+                          <af:spacer width="10" height="10" id="spacer7"/>
+                          <af:spacer width="10" height="10" id="spacer8"/>
+                          <af:commandButton text="Cancel" id="commandButton10"
+                                            action="#{campaignBackingBean.actionCancelCurrency}"
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                    <af:popup id="CampProductsPop"
+                              contentDelivery="lazyUncached">
+                      <af:dialog id="dialog6" title="List of Products"
+                                 type="none">
+                        <af:panelCollection id="panelCollection6">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.CampaignProduct.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.CampaignProduct.rangeSize}"
+                                    emptyText="#{bindings.CampaignProduct.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.CampaignProduct.rangeSize}"
+                                    rowBandingInterval="1"
+                                    filterModel="#{bindings.CampaignProductQuery.queryDescriptor}"
+                                    queryListener="#{bindings.CampaignProductQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.CampaignProduct.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.CampaignProduct.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t8"
+                                    binding="#{campaignBackingBean.tblProducts}">
+                                     <af:column filterFeatures="caseInsensitive" sortProperty="checked" id="c48" headerText="Select Products">
+                  <af:selectBooleanCheckbox value="#{row.checked}"
+                                                label="Label 1" id="sbc1"
+                                                binding="#{campaignBackingBean.rowChecked}"/>
+                    </af:column>
+                            <af:column sortProperty="productShortDesc"
+                                       filterable="true" sortable="true"
+                                       headerText="Code" id="c34">
+                              <af:outputText value="#{row.productShortDesc}"
+                                             id="ot23"/>
+                            </af:column>
+                            <af:column sortProperty="prodDesc"
+                                       sortable="true" headerText="Name"
+                                       id="c33" width="200">
+                              <af:outputText value="#{row.prodDesc}" id="ot24"/>
+                            </af:column>
+                            <af:column sortProperty="productCode" visible="false"
+                                       sortable="false"
+                                       headerText="#{bindings.CampaignProduct.hints.productCode.label}"
+                                       id="c32">
+                              <af:outputText value="#{row.productCode}"
+                                             id="ot96"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <h:panelGrid columns="4" id="panelGrid6">
+                          <af:commandButton text="Ok" id="commandButton11"
+                                            action="#{campaignBackingBean.saveSelectedProducts}"
+                                            partialSubmit="true"/>
+                          <af:spacer width="10" height="10" id="spacer9"/>
+                          <af:spacer width="10" height="10" id="spacer10"/>
+                          <af:commandButton text="Cancel" id="commandButton12"
+                                            action="#{campaignBackingBean.actionCancelProduct}"
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                  </af:panelBox>
+                  <af:panelTabbed id="pt1"
+                                  inlineStyle="height:300px; width:99%;">
+                    <af:showDetailItem text="Campaign Messages" id="sdi1">
+                      <af:panelGroupLayout id="pgl3">
+                        <h:panelGrid columns="8" id="panelGrid11">
+                          <af:commandButton text="New" id="commandButton16"
+                                            icon="/images/create.gif"
+                                            action="#{campaignBackingBean.AddCampaignMessage}"/>
+                          <af:spacer width="10" height="10" id="spacer13"/>
+                          <af:commandButton text="Edit" id="commandButton23"
+                                            icon="/images/update.gif"
+                                            action="#{campaignBackingBean.EditCampaignMessage}"/>
+                          <af:spacer width="10" height="10" id="spacer17"/>
+                          <af:commandButton text="Delete" id="commandButton24"
+                                            icon="/images/delete.gif"
+                                            action="#{campaignBackingBean.DeleteCampaignMessage}"/>
+                          <af:spacer width="10" height="10" id="spacer19"/>
+                          <af:commandButton text="Send Message"
+                                            id="commandButton27"
+                                            action="#{campaignBackingBean.SendEmailMessages}"/>
+                        </h:panelGrid>
+                        <af:popup id="p2">
+                          <af:dialog id="d6" type="none"
+                                     title="Campaign Messages">
+                            <af:panelGroupLayout id="pgl5">
+                              <af:panelBox text="PanelBox6" id="pb7"
+                                           showHeader="never">
+                                <f:facet name="toolbar"/>
+                                <h:panelGrid columns="2" id="pg45">
+                                  <af:outputLabel value="Message Type" id="ol20"
+                                                  showRequired="true"/>
+                                  <h:panelGrid columns="2" id="pg49">
+                                    <af:selectOneChoice label="Label 1"
+                                                        id="soc1" value="E"
+                                                        simple="true"
+                                                        binding="#{campaignBackingBean.messageType}"
+                                                        valueChangeListener="#{campaignBackingBean.MessageTypeListener}"
+                                                        autoSubmit="true">
+                                      <af:selectItem label="SMS" value="SMS"
+                                                     id="si2"/>
+                                      <af:selectItem label="Email" value="EMAIL"
+                                                     id="si1"/>
+                                      <af:selectItem label="Fax" value="FAX"
+                                                     id="si3"/>
+                                    </af:selectOneChoice>
+                                  </h:panelGrid>
+                                  <af:outputLabel value="Send To All Targets"
+                                                  id="ol21"
+                                                  showRequired="true"/>
+                                  <af:panelGroupLayout id="pgl6"
+                                                       partialTriggers="soc1">
+                                    <h:panelGrid columns="2" id="pg48">
+                                      <af:selectOneChoice label="Label 2"
+                                                          id="soc2"
+                                                          simple="true"
+                                                          value="Y"
+                                                          binding="#{campaignBackingBean.sendToAll}">
+                                        <af:selectItem label="Yes" value="Y"
+                                                       id="si5"/>
+                                        <af:selectItem label="No" value="N"
+                                                       id="si4"/>
+                                      </af:selectOneChoice>
+                                    </h:panelGrid>
+                                  </af:panelGroupLayout>
+                                  <af:outputLabel value="Subject"
+                                                  id="outputLabel1"/>
+                                  <af:panelGroupLayout id="pgl7"
+                                                       partialTriggers="soc1">
+                                    <h:panelGrid columns="2" id="pg46">
+                                      <af:inputText label="Subject" id="it21"
+                                                    simple="true" columns="30"
+                                                    binding="#{campaignBackingBean.subject}"/>
+                                      <af:commandButton id="cb13"
+                                                        icon="/images/dropdown.gif"
+                                                        partialSubmit="true">
+                                        <af:showPopupBehavior popupId="p3"/>
+                                      </af:commandButton>
+                                      <af:popup id="p3">
+                                        <af:dialog id="d7" type="none"
+                                                   title="Templates">
+                                          <af:panelBox text="PanelBox7" id="pb8"
+                                                       showHeader="never">
+                                            <f:facet name="toolbar"/>
+                                            <af:table value="#{bindings.MessageTemplate.collectionModel}"
+                                                      var="row"
+                                                      rows="#{bindings.MessageTemplate.rangeSize}"
+                                                      emptyText="#{bindings.MessageTemplate.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      fetchSize="#{bindings.MessageTemplate.rangeSize}"
+                                                      rowBandingInterval="0"
+                                                      filterModel="#{bindings.MessageTemplateQuery.queryDescriptor}"
+                                                      queryListener="#{bindings.MessageTemplateQuery.processQuery}"
+                                                      filterVisible="true"
+                                                      varStatus="vs"
+                                                      selectedRowKeys="#{bindings.MessageTemplate.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.MessageTemplate.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      id="t14"
+                                                      binding="#{campaignBackingBean.templatesTable}">
+                                              <af:column sortProperty="msgtCode"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="code"
+                                                         id="c59"
+                                                         visible="false">
+                                                <af:outputText value="#{row.msgtCode}"
+                                                               id="ot59"/>
+                                              </af:column>
+                                              <af:column sortProperty="msgtShtDesc"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Short Description"
+                                                         id="c58">
+                                                <af:outputText value="#{row.msgtShtDesc}"
+                                                               id="ot60"/>
+                                              </af:column>
+                                              <af:column sortProperty="msgtMsg"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Message"
+                                                         id="c60" width="200">
+                                                <af:outputText value="#{row.msgtMsg}"
+                                                               id="ot58"/>
+                                              </af:column>
+                                            </af:table>
+                                          </af:panelBox>
+                                          <h:panelGrid columns="2" id="pg50">
+                                            <af:commandButton text="OK"
+                                                              id="cb14"
+                                                              action="#{campaignBackingBean.findMessageTemplate}"
+                                                              partialSubmit="true"/>
+                                            <af:commandButton text="Cancel"
+                                                              id="commandButton25"/>
+                                          </h:panelGrid>
+                                        </af:dialog>
+                                      </af:popup>
+                                    </h:panelGrid>
+                                  </af:panelGroupLayout>
+                                  <af:outputLabel value="Body" id="outputLabel2"
+                                                  showRequired="true"/>
+                                  <af:panelGroupLayout id="pgl8"
+                                                       partialTriggers="soc1">
+                                    <h:panelGrid columns="2" id="pg47">
+                                      <af:inputText label="Label 2" id="it22"
+                                                    columns="30" rows="10"
+                                                    binding="#{campaignBackingBean.body}"
+                                                    simple="true"/>
+                                    </h:panelGrid>
+                                  </af:panelGroupLayout>
+                                </h:panelGrid>
+                                <h:panelGrid columns="2" id="pg51">
+                                  <af:commandButton text="Save" id="cb15"
+                                                    partialSubmit="true"
+                                                    action="#{campaignBackingBean.SaveCampaignMessage}"/>
+                                  <af:commandButton text="Cancel"
+                                                    id="commandButton26"/>
+                                </h:panelGrid>
+                              </af:panelBox>
+                            </af:panelGroupLayout>
+                          </af:dialog>
+                        </af:popup>
+                        <af:panelBox text="PanelBox3" id="pb4"
+                                     showHeader="never">
+                          <f:facet name="toolbar"/>
+                          <af:panelCollection id="pc7"
+                                              inlineStyle="width:99%; height:200.0px;">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.System2.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.System2.rangeSize}"
+                                      emptyText="#{bindings.System2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.System2.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.System2Query.queryDescriptor}"
+                                      queryListener="#{bindings.System2Query.processQuery}"
+                                      filterVisible="false" varStatus="vs"
+                                      selectedRowKeys="#{bindings.System2.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.System2.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t13"
+                                      binding="#{campaignBackingBean.campaignMessageTable}"
+                                      inlineStyle="width:inherit;">
+                              <af:column sortProperty="CMSG_CODE"
+                                         filterable="true" sortable="true"
+                                         headerText="code" id="c51"
+                                         visible="false"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_CODE}"
+                                               id="ot48"/>
+                              </af:column>
+                              <af:column sortProperty="CMSG_TYPE_DESC"
+                                         filterable="true" sortable="true"
+                                         headerText="Message Type" id="c53"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_TYPE_DESC}"
+                                               id="ot49"/>
+                              </af:column>
+                              <af:column sortProperty="CMSG_SUBJ"
+                                         filterable="true" sortable="true"
+                                         headerText="Subject" id="c50"
+                                         width="200"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_SUBJ}"
+                                               id="ot52"/>
+                              </af:column>
+                              <af:column sortProperty="CMSG_BODY"
+                                         filterable="true" sortable="true"
+                                         headerText="Body" id="c52" width="200"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_BODY}"
+                                               id="ot53"/>
+                              </af:column>
+                              <af:column sortProperty="CMSG_DATE"
+                                         sortable="false" headerText="Date"
+                                         id="c55" filterable="true"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_DATE}"
+                                               id="ot55">
+                                  <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="CMSG_SEND_ALL_DESC"
+                                         sortable="false"
+                                         headerText="Send To All?" id="c57"
+                                         filterable="true"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_SEND_ALL_DESC}"
+                                               id="ot57"/>
+                              </af:column>
+                              <af:column sortProperty="CMSG_STATUS_DESC"
+                                         filterable="true" sortable="true"
+                                         headerText="Message Status" id="c54"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_STATUS_DESC}"
+                                               id="ot54"/>
+                              </af:column>
+                              <af:column sortProperty="CMSG_STATUS"
+                                         filterable="true" sortable="true"
+                                         headerText="Status" id="c49"
+                                         visible="false"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_STATUS}"
+                                               id="ot51"/>
+                              </af:column>
+                              <af:column sortProperty="CMSG_TYPE"
+                                         sortable="true" headerText="Type"
+                                         id="c97" visible="false"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_TYPE}"
+                                               id="ot50"/>
+                              </af:column>
+                              <af:column sortProperty="CMSG_SEND_ALL"
+                                         sortable="false" headerText="Send All"
+                                         id="c56" visible="false"
+                                         filterFeatures="caseInsensitive">
+                                <af:outputText value="#{row.CMSG_SEND_ALL}"
+                                               id="ot56"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:showDetailItem>
+                    <af:showDetailItem text="Campaign Targets" id="sdi3">
+                      <af:panelGroupLayout id="pgl4">
+                        <af:panelBox text="PanelBox4" id="pb5"
+                                     showHeader="never">
+                          <f:facet name="toolbar"/>
+                          <h:panelGrid columns="6" id="panelGrid10">
+                            <af:commandButton text="New" id="commandButton20"
+                                              icon="/images/create.gif"
+                                              action="#{campaignBackingBean.actionNewCampTarget}"/>
+                            <af:spacer width="10" height="10" id="spacer18"/>
+                            <af:commandButton text="Delete" id="commandButton22"
+                                              icon="/images/delete.gif"
+                                              action="#{campaignBackingBean.DeleteCampaignTarget}"/>
+                          </h:panelGrid>
+                          <af:popup id="p1">
+                            <af:dialog id="d5" type="none" title="Targets">
+                              <af:panelBox text="PanelBox5" id="pb6"
+                                           showHeader="never"
+                                           inlineStyle="width:600px;">
+                                <f:facet name="toolbar"/>
+                                <af:table value="#{bindings.Account1.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.Account1.rangeSize}"
+                                          emptyText="#{bindings.Account1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.Account1.rangeSize}"
+                                          rowBandingInterval="1"
+                                          filterModel="#{bindings.Account1Query.queryDescriptor}"
+                                          queryListener="#{bindings.Account1Query.processQuery}"
+                                          filterVisible="true" varStatus="vs"
+                                          selectedRowKeys="#{bindings.Account1.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.Account1.collectionModel.makeCurrent}"
+                                          rowSelection="single" id="t15"
+                                          binding="#{campaignBackingBean.targetsTable}"
+                                          inlineStyle="width:99%;">
+                                  <af:column sortProperty="accountType"
+                                             headerText="Account Type" id="c62"
+                                             filterFeatures="caseInsensitive"
+                                             filterable="true" sortable="true">
+                                    <af:outputText value="#{row.accountType}"
+                                                   id="ot61"/>
+                                  </af:column>
+                                  <af:column sortProperty="accountName"
+                                             headerText="Name" id="c61"
+                                             width="250"
+                                             filterFeatures="caseInsensitive"
+                                             filterable="true" sortable="true">
+                                    <af:outputText value="#{row.accountName}"
+                                                   id="ot62"/>
+                                  </af:column>
+                                  <af:column sortProperty="accountEmail"
+                                             headerText="Email" id="c63"
+                                             width="200"
+                                             filterFeatures="caseInsensitive"
+                                             filterable="true" sortable="true">
+                                    <af:outputText value="#{row.accountEmail}"
+                                                   id="ot63"/>
+                                  </af:column>
+                                  <af:column sortProperty="accountCode"
+                                             headerText="#{bindings.Account1.hints.accountCode.label}"
+                                             id="c1" visible="false"
+                                             filterFeatures="caseInsensitive"
+                                             filterable="true" sortable="true">
+                                    <af:inputText value="#{row.bindings.accountCode.inputValue}"
+                                                  label="#{bindings.Account1.hints.accountCode.label}"
+                                                  required="#{bindings.Account1.hints.accountCode.mandatory}"
+                                                  columns="#{bindings.Account1.hints.accountCode.displayWidth}"
+                                                  maximumLength="#{bindings.Account1.hints.accountCode.precision}"
+                                                  shortDesc="#{bindings.Account1.hints.accountCode.tooltip}"
+                                                  id="it23">
+                                      <f:validator binding="#{row.bindings.accountCode.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                </af:table>
+                                <h:panelGrid columns="2" id="pg44">
+                                  <af:commandButton text="OK" id="cb12"
+                                                    action="#{campaignBackingBean.SaveCampaignTarget}"/>
+                                  <af:commandButton text="Cancel"
+                                                    id="commandButton21"/>
+                                </h:panelGrid>
+                              </af:panelBox>
+                            </af:dialog>
+                          </af:popup>
+                          <af:panelCollection id="panelCollection7"
+                                              inlineStyle="width:99%; height:200.0px;">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.System1.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.System1.rangeSize}"
+                                      emptyText="#{bindings.System1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.System1.rangeSize}"
+                                      rowBandingInterval="1"
+                                      filterModel="#{bindings.System1Query.queryDescriptor}"
+                                      queryListener="#{bindings.System1Query.processQuery}"
+                                      filterVisible="false" varStatus="vs"
+                                      selectedRowKeys="#{bindings.System1.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.System1.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t11"
+                                      binding="#{campaignBackingBean.campaignTargetTable}">
+                              <af:column sortProperty="RELATED_ACCOUNT"
+                                         headerText="Target" id="c41"
+                                         width="200"
+                                         filterFeatures="caseInsensitive"
+                                         sortable="true" filterable="true">
+                                <af:outputText value="#{row.RELATED_ACCOUNT}"
+                                               id="ot41"/>
+                              </af:column>
+                              <af:column sortProperty="RELATED_EMAIL"
+                                         headerText="Email" id="c42"
+                                         filterFeatures="caseInsensitive"
+                                         sortable="true" filterable="true">
+                                <af:outputText value="#{row.RELATED_EMAIL}"
+                                               id="ot42"/>
+                              </af:column>
+                              <af:column sortProperty="CMT_DATE"
+                                         headerText="Date" id="c40"
+                                         sortable="true" filterable="true">
+                                
+                                <af:outputText value="#{row.CMT_DATE}"
+                                               id="ot40">
+                                  <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                                </af:outputText>
+                              </af:column>
+                              <af:column sortProperty="CMT_CODE"
+                                         headerText="#{bindings.System1.hints.CMT_CODE.label}"
+                                         id="c47" visible="false"
+                                         sortable="true" filterable="true">
+                                <af:outputText value="#{row.CMT_CODE}"
+                                               id="ot47"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:showDetailItem>
+                    <af:showDetailItem text="Campaign Activities" id="sdi2">
+                      <af:panelGroupLayout id="pgl1">
+                        <h:panelGrid columns="6" id="panelGrid8">
+                          <af:commandButton text="Add" id="commandButton15"
+                                            icon="/images/create.gif"
+                                            action="#{campaignBackingBean.actionNewCampAct}"/>
+                          <af:spacer width="10" height="10" id="spacer14"/>
+                          <af:commandButton text="Remove" id="commandButton17"
+                                            icon="/images/delete.gif"
+                                            action="#{campaignBackingBean.actionDeleteCampAct}"/>
+                        </h:panelGrid>
+                        <af:panelCollection id="pc4"
+                                            inlineStyle="width:99%; height:200.0px;">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.CampaignActivity.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.CampaignActivity.rangeSize}"
+                                    emptyText="#{bindings.CampaignActivity.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.CampaignActivity.rangeSize}"
+                                    rowBandingInterval="1"
+                                    filterModel="#{bindings.CampaignActivityQuery.queryDescriptor}"
+                                    queryListener="#{bindings.CampaignActivityQuery.processQuery}"
+                                    filterVisible="false" varStatus="vs"
+                                    selectedRowKeys="#{bindings.CampaignActivity.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.CampaignActivity.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t10"
+                                    binding="#{campaignBackingBean.tblCampActivities}"
+                                    inlineStyle="width:99%;">
+                            <af:column sortProperty="actSubject"
+                                       sortable="true"
+                                       headerText="Activity Subject" id="c39"
+                                       filterFeatures="caseInsensitive"
+                                       filterable="true">
+                              <af:outputText value="#{row.actSubject}"
+                                             id="ot39"/>
+                            </af:column>
+                            <af:column sortProperty="actName" sortable="true"
+                                       headerText="Activity Description"
+                                       id="c38" width="300"
+                                       filterFeatures="caseInsensitive">
+                              <af:outputText value="#{row.actName}" id="ot38"/>
+                            </af:column>
+                            <af:column sortProperty="actWef" sortable="false"
+                                       headerText="Activity Wef"
+                                       id="c100">
+                              <af:outputText value="#{row.actWef}" id="ot99">
+                                <af:convertDateTime pattern="#{bindings.CampaignActivity.hints.actWef.format}"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortProperty="actWet"
+                                       sortable="false"
+                                       headerText="Activity Wet"
+                                       id="c101">
+                              <af:outputText value="#{row.actWet}" id="ot100">
+                                <af:convertDateTime pattern="#{bindings.CampaignActivity.hints.actWet.format}"/>
+                              </af:outputText>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                      </af:panelGroupLayout>
+                      <af:popup id="campActivitiesPop">
+                        <af:dialog id="d4" type="none" title="Activities">
+                          <af:panelBox text="PanelBox2" id="pb3"
+                                       showHeader="never">
+                            <f:facet name="toolbar"/>
+                            <af:panelCollection id="pc3">
+                              <f:facet name="menus"/>
+                              <f:facet name="toolbar"/>
+                              <f:facet name="statusbar"/>
+                              <af:table value="#{bindings.Activity1.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.Activity1.rangeSize}"
+                                        emptyText="#{bindings.Activity1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.Activity1.rangeSize}"
+                                        rowBandingInterval="1"
+                                        filterModel="#{bindings.Activity1Query.queryDescriptor}"
+                                        queryListener="#{bindings.Activity1Query.processQuery}"
+                                        filterVisible="true" varStatus="vs"
+                                        selectedRowKeys="#{bindings.Activity1.collectionModel.selectedRow}"
+                                        selectionListener="#{bindings.Activity1.collectionModel.makeCurrent}"
+                                        rowSelection="single" id="t12"
+                                        binding="#{campaignBackingBean.tblActivitiesLOV}">
+                                <af:column sortProperty="activitysubject"
+                                           filterable="true" sortable="true"
+                                           headerText="Subject" id="c45"
+                                           width="200"
+                                           filterFeatures="caseInsensitive">
+                                  <af:outputText value="#{row.activitysubject}"
+                                                 id="ot64"/>
+                                </af:column>
+                                <af:column sortProperty="activityLocation"
+                                           filterable="true" sortable="true"
+                                           headerText="Location" id="c44"
+                                           filterFeatures="caseInsensitive">
+                                  <af:outputText value="#{row.activityLocation}"
+                                                 id="ot43"/>
+                                </af:column>
+                                <af:column sortProperty="activityDescription"
+                                           filterable="true" sortable="true"
+                                           headerText="Description" id="c43"
+                                           width="200"
+                                           filterFeatures="caseInsensitive">
+                                  <af:outputText value="#{row.activityDescription}"
+                                                 id="ot45"/>
+                                </af:column>
+                                <af:column sortProperty="activityType"
+                                           filterable="true" sortable="true"
+                                           headerText="Type" id="c64"
+                                           filterFeatures="caseInsensitive">
+                                  <af:outputText value="#{row.activityType}"
+                                                 id="ot44"/>
+                                </af:column>
+                                <af:column sortProperty="activityStatus"
+                                           filterable="true" sortable="true"
+                                           headerText="Status" id="c65"
+                                           filterFeatures="caseInsensitive">
+                                  <af:outputText value="#{row.activityStatus}"
+                                                 id="ot65"/>
+                                </af:column>
+                                <af:column sortProperty="activityWEF"
+                                           sortable="false"
+                                           headerText="Activity Wef"
+                                           id="c98">
+                                  <af:outputText value="#{row.activityWEF}"
+                                                 id="ot97">
+                                    <af:convertDateTime pattern="#{bindings.Activity1.hints.activityWEF.format}"/>
+                                  </af:outputText>
+                                </af:column>
+                                <af:column sortProperty="activityWET"
+                                           sortable="false"
+                                           headerText="Activity Wet"
+                                           id="c99">
+                                  <af:outputText value="#{row.activityWET}"
+                                                 id="ot98">
+                                    <af:convertDateTime pattern="#{bindings.Activity1.hints.activityWET.format}"/>
+                                  </af:outputText>
+                                </af:column>
+                              </af:table>
+                            </af:panelCollection>
+                            <h:panelGrid columns="4" id="panelGrid9">
+                              <af:commandButton text="Ok" id="commandButton18"
+                                                action="#{campaignBackingBean.actionAcceptActivity}"
+                                                partialSubmit="false"/>
+                              <af:spacer width="10" height="10" id="spacer15"/>
+                              <af:spacer width="10" height="10" id="spacer16"/>
+                              <af:commandButton text="Cancel"
+                                                id="commandButton19"
+                                                action="#{campaignBackingBean.actionCancelProduct}"
+                                                partialSubmit="false"/>
+                              <af:inputText label="Camp Act Code" id="it20"
+                                            visible="false"
+                                            binding="#{campaignBackingBean.txtCampActCode}"/>
+                            </h:panelGrid>
+                          </af:panelBox>
+                        </af:dialog>
+                      </af:popup>
+                    </af:showDetailItem>
+                      <af:showDetailItem text="Campaign Products" id="sdi6">
+                      <af:panelGroupLayout id="pgl9">
+                        <h:panelGrid columns="6" id="pg58">
+                          <af:commandButton text="Add" id="cb16"
+                                            icon="/images/create.gif"
+                                            action="#{campaignBackingBean.addNewproduct}"/>
+                          <af:spacer width="10" height="10" id="s9"/>
+                          <af:commandButton text="Remove" id="cb17"
+                                            icon="/images/delete.gif"
+                                            action="#{campaignBackingBean.deleteProduct}"/>
+                        </h:panelGrid>
+                        <af:panelCollection id="pc8"
+                                            inlineStyle="width:99%; height:200.0px;">
+                          <f:facet name="menus"/>
+                          <f:facet name="toolbar"/>
+                          <f:facet name="statusbar"/>
+                          <af:table value="#{bindings.System3.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.System3.rangeSize}"
+                                    emptyText="#{bindings.System3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.System3.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.System3Query.queryDescriptor}"
+                                    queryListener="#{bindings.System3Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectionListener="#{bindings.System3.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t17"
+                                    binding="#{campaignBackingBean.campaignProductTbl}">
+                            <af:column sortProperty="cproCode" filterable="true" visible="false"
+                                       sortable="true" headerText="Code"
+                                       id="c92">
+                              <af:outputText value="#{row.cproCode}" id="ot91"/>
+                            </af:column>
+                            <af:column sortProperty="cproProCode" visible="false"
+                                       filterable="true" sortable="true"
+                                       headerText="Pro Code" id="c96">
+                              <af:outputText value="#{row.cproProCode}"
+                                             id="ot90"/>
+                            </af:column>
+                            <af:column sortProperty="cproShtDesc"
+                                       filterable="true" sortable="true"
+                                       headerText="Sht Desc" id="c94">
+                              <af:outputText value="#{row.cproShtDesc}"
+                                             id="ot95"/>
+                            </af:column>
+                            <af:column sortProperty="cproCmpCode" visible="false"
+                                       filterable="true" sortable="true"
+                                       headerText="Campaign Code" id="c95">
+                              <af:outputText value="#{row.cproCmpCode}"
+                                             id="ot93"/>
+                            </af:column>
+                            <af:column sortProperty="cproProShtDesc" visible="false"
+                                       filterable="true" sortable="true" width="250"
+                                       headerText="Sht Desc" id="c90">
+                              <af:outputText value="#{row.cproProShtDesc}"
+                                             id="ot94"/>
+                            </af:column>
+                            <af:column sortProperty="cproProDesc" width="250"
+                                       filterable="true" sortable="true"
+                                       headerText="Pro Description" id="c93">
+                              <af:outputText value="#{row.cproProDesc}"
+                                             id="ot92"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                      </af:panelGroupLayout>
+                     
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:showDetailItem>
+                <af:showDetailItem text="Search Client/Product" id="sdi5"
+                                   inlineStyle="height:800px; width:99%;">
+                  <af:panelBox text="PanelBox8" id="pb9" showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <h:panelGrid columns="4" id="pg52">
+                      <af:outputLabel value="Products" id="ol22"
+                                      inlineStyle="font-weight:bold;"/>
+                    </h:panelGrid>
+                    <af:separator id="s8"/>
+                    <af:panelCollection id="pc5"
+                                        inlineStyle="width:99%; height:200.0px;">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.Product.collectionModel}"
+                                var="row" rows="#{bindings.Product.rangeSize}"
+                                emptyText="#{bindings.Product.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Product.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.ProductQuery.queryDescriptor}"
+                                queryListener="#{bindings.ProductQuery.processQuery}"
+                                filterVisible="false" varStatus="vs"
+                                selectionListener="#{ProductClientBean.actionTblProductsSelected}"
+                                rowSelection="single" id="t9"
+                                binding="#{ProductClientBean.tblProducts}">
+                        <af:column sortProperty="TPA_PROD_DESC"
+                                   filterable="true" sortable="true"
+                                   headerText="Product" id="c37"
+                                   filterFeatures="caseInsensitive" width="200">
+                          <af:outputText value="#{row.TPA_PROD_DESC}"
+                                         id="ot33"/>
+                        </af:column>
+                        <af:column sortProperty="SYSNAME" filterable="true"
+                                   sortable="true" headerText="System"
+                                   id="c89" filterFeatures="caseInsensitive"
+                                   width="200">
+                          <af:outputText value="#{row.SYSNAME}" id="ot89"/>
+                        </af:column>
+                        <af:column sortProperty="TPA_PROD_NARRATION"
+                                   filterable="true" sortable="true"
+                                   headerText="Narration" id="c91"
+                                   filterFeatures="caseInsensitive" width="300">
+                          <af:outputText value="#{row.TPA_PROD_NARRATION}"
+                                         id="ot37"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </af:panelBox>
+                  <af:panelBox text="PanelBox9" id="pb10" showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <h:panelGrid columns="4" id="panelGrid12">
+                      <af:outputLabel value="Clients" id="outputLabel3"
+                                      inlineStyle="font-weight:bold;"/>
+                    </h:panelGrid>
+                    <af:separator id="separator1"/>
+                    <af:panelCollection id="pc6" inlineStyle="width:99%;">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.client.collectionModel}"
+                                var="row" rows="#{bindings.client.rangeSize}"
+                                emptyText="#{bindings.client.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.client.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.clientQuery.queryDescriptor}"
+                                queryListener="#{bindings.clientQuery.processQuery}"
+                                filterVisible="false" varStatus="vs"
+                                selectionListener="#{bindings.client.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t16"
+                                binding="#{ProductClientBean.tblClients}">
+                        <af:column sortProperty="fullname" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.fullname.label}"
+                                   id="c83" width="200"
+                                   filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.fullname}" id="ot79"/>
+                        </af:column>
+                        <af:column sortProperty="surname" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.surname.label}"
+                                   id="c76" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.surname}" id="ot74"/>
+                        </af:column>
+                        <af:column sortProperty="othernames" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.othernames.label}"
+                                   id="c73" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.othernames}" id="ot77"/>
+                        </af:column>
+                        <af:column sortProperty="town" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.town.label}"
+                                   id="c72" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.town}" id="ot87"/>
+                        </af:column>
+                        <af:column sortProperty="postalCode" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.postalCode.label}"
+                                   id="c86" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.postalCode}" id="ot73"/>
+                        </af:column>
+                        <af:column sortProperty="postalAddress"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.client.hints.postalAddress.label}"
+                                   id="c75" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.postalAddress}"
+                                         id="ot81"/>
+                        </af:column>
+                        <af:column sortProperty="country" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.country.label}"
+                                   id="c88" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.country}" id="ot83"/>
+                        </af:column>
+                        <af:column sortProperty="telphoneOne" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.telphoneOne.label}"
+                                   id="c71" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.telphoneOne}" id="ot66"/>
+                        </af:column>
+                        <af:column sortProperty="telphoneTwo" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.telphoneTwo.label}"
+                                   id="c82" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.telphoneTwo}" id="ot69"/>
+                        </af:column>
+                        <af:column sortProperty="fax" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.fax.label}"
+                                   id="c79" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.fax}" id="ot67"/>
+                        </af:column>
+                        <af:column sortProperty="clientID" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.clientID.label}"
+                                   id="c78" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.clientID}" id="ot70"/>
+                        </af:column>
+                        <af:column sortProperty="agentCode" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.agentCode.label}"
+                                   id="c70" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.agentCode}" id="ot85"/>
+                        </af:column>
+                        <af:column sortProperty="previousLastLoginOn"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.client.hints.previousLastLoginOn.label}"
+                                   id="c67" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.previousLastLoginOn}"
+                                         id="ot71">
+                            <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                          </af:outputText>
+                        </af:column>
+                        <af:column sortProperty="clientCode" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.clientCode.label}"
+                                   id="c77" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.clientCode}" id="ot80"/>
+                        </af:column>
+                        <af:column sortProperty="shortDescription"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.client.hints.shortDescription.label}"
+                                   id="c81" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.shortDescription}"
+                                         id="ot78"/>
+                        </af:column>
+                        <af:column sortProperty="idRegNumber" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.idRegNumber.label}"
+                                   id="c74" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.idRegNumber}" id="ot82"/>
+                        </af:column>
+                        <af:column sortProperty="physicalAddress"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.client.hints.physicalAddress.label}"
+                                   id="c68" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.physicalAddress}"
+                                         id="ot72"/>
+                        </af:column>
+                        <af:column sortProperty="email" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.email.label}"
+                                   id="c85" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.email}" id="ot75"/>
+                        </af:column>
+                        <af:column sortProperty="smsTel" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.smsTel.label}"
+                                   id="c69" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.smsTel}" id="ot86"/>
+                        </af:column>
+                        <af:column sortProperty="policyNumber" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.policyNumber.label}"
+                                   id="c84" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.policyNumber}" id="ot68"/>
+                        </af:column>
+                        <af:column sortProperty="PINNumber" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.PINNumber.label}"
+                                   id="c87" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.PINNumber}" id="ot84"/>
+                        </af:column>
+                        <af:column sortProperty="ZIPCode" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.client.hints.ZIPCode.label}"
+                                   id="c80" filterFeatures="caseInsensitive">
+                          <af:outputText value="#{row.ZIPCode}" id="ot76"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </af:panelBox>
+                </af:showDetailItem>
+              </af:panelTabbed>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:trh="http://myfaces.apache.org/trinidad/html">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document  id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox5" id="pb2" showHeader="never">
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Account Entities" id="ol1"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s3"/>
+              <af:separator id="s2"/>
+              <af:panelBox text="PanelBox4" id="pb1" showHeader="never">
+                <h:panelGrid columns="3" id="pg3">
+                  <h:panelGrid columns="6" id="pg2">
+                    <af:selectOneChoice label="Search By" autoSubmit="true"
+                                        id="soc1" value="P"
+                                        binding="#{AccountSetUpBack.txtSearchBy}">
+                      <af:selectItem value="P" id="si2" label="Pin"/>
+                      <af:selectItem value="N" id="si3" label="Name"/>
+                    </af:selectOneChoice>
+                    <af:inputText autoSubmit="true" id="it1"
+                                  binding="#{AccountSetUpBack.txtEntity}"
+                                  label="Pin/Name"/>
+                    <af:inputText autoSubmit="true" id="it2"
+                                  binding="#{AccountSetUpBack.txtShrtDesc}"
+                                  label="Desc"/>
+                    <af:commandButton text="Search" id="btnCreateUpdateSector" partialSubmit="true"
+                                      action="#{AccountSetUpBack.actionSearchEntity}"/>
+                    <af:spacer width="30"/>
+                    <af:commandButton  text="New Entity" partialSubmit="true" icon="/images/create.gif" id="cb1">
+                      <af:showPopupBehavior popupId="newEntity"/>
+                    </af:commandButton>
+                   
+                    <af:popup id="newEntity" contentDelivery="lazyUncached">
+                      <af:dialog id="d2" type="none" title="Entity Creation">
+                      
+                         <h:panelGrid columns="2" >
+                      <af:selectOneChoice autoSubmit="true" value="C"
+                                          binding="#{AccountSetUpBack.txtEntityType}">
+                        <af:selectItem value="C"  label="Client"/>
+                           <af:selectItem value="I"  label="Intermediary"/>
+                              <af:selectItem value="S"  label="Service Provider"/>
+                      </af:selectOneChoice>
+                      <af:commandButton action="#{AccountSetUpBack.actionCreateNewNonRelatedEntity}" text="Create New Entity" partialSubmit="true" icon="/images/create.gif" />
+                    </h:panelGrid>
+                      
+                      </af:dialog>
+                    </af:popup>
+                  
+                  </h:panelGrid>
+                </h:panelGrid>
+                <af:separator id="s1245"/>
+                <af:outputLabel value="Entities"   inlineStyle="font-weight:bold;" id="ol2"/>
+           
+                <af:table value="#{bindings.AccountType.collectionModel}"
+                          var="row" rows="#{bindings.AccountType.rangeSize}"
+                          emptyText="#{bindings.AccountType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.AccountType.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.AccountTypeQuery.queryDescriptor}"
+                          queryListener="#{bindings.AccountTypeQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          binding="#{AccountSetUpBack.tblEntities}"
+                          selectionListener="#{AccountSetUpBack.actionSelectTblEntitys}"
+                           styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:180.0px;"
+                          rowSelection="single" id="t1">
+                  <af:column sortProperty="#{bindings.AccountType.hints.entShtDesc.name}"
+                             filterable="true" sortable="true"
+                             headerText="Desc" id="c14">
+                    <af:outputText value="#{row.entShtDesc}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType.hints.entName.name}"
+                             filterable="true" sortable="true"
+                             headerText="Name" id="c4">
+                    <af:outputText value="#{row.entName}" id="ot13"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType.hints.entPin.name}"
+                             filterable="true" sortable="true" headerText="Pin"
+                             id="c2">
+                    <af:outputText value="#{row.entPin}" id="ot2"/>
+                  </af:column>
+                 
+                  <af:column sortProperty="#{bindings.AccountType.hints.entPosatalAddress.name}"
+                             filterable="true" sortable="true"
+                             headerText="Postal Address" id="c3">
+                    <af:outputText value="#{row.entPosatalAddress}" id="ot15"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType.hints.entEmailAddress.name}"
+                             filterable="true" sortable="true"
+                             headerText="Email" id="c1">
+                    <af:outputText value="#{row.entEmailAddress}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType.hints.entSmsTel.name}"
+                             filterable="true" sortable="true"
+                             headerText="SMS Tel. " id="c15">
+                    <af:outputText value="#{row.entSmsTel}" id="ot14"/>
+                  </af:column>
+                  
+                   <af:column  width="250"  rendered="false"
+                             headerText="Create Entity" id="cq13">
+                   
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:selectOneChoice autoSubmit="true" value="#{row.newRelation}"  id="soc2">
+                        <af:selectItem value="C" id="si1" label="Client"/>
+                           <af:selectItem value="I" id="si4" label="Intermediary"/>
+                              <af:selectItem value="S" id="si5" label="Service Provider"/>
+                      </af:selectOneChoice>
+                      <af:commandButton action="#{AccountSetUpBack.actionCreateNewEntity}" text="Create Entity" partialSubmit="true" icon="/images/create.gif"/>
+                    </h:panelGrid>
+                    
+                    <af:outputText id="otq12"/>
+                  </af:column>
+                  
+                  
+                  
+                  
+                </af:table>
+                <af:separator id="s112"/>
+                <af:outputLabel value="Relationships"
+                                inlineStyle="font-weight:bold;"/>
+                <af:table value="#{bindings.AccountType1.collectionModel}"
+                          var="row" rows="#{bindings.AccountType1.rangeSize}"
+                          emptyText="#{bindings.AccountType1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.AccountType1.rangeSize}"
+                          rowBandingInterval="0"  styleClass="AFAuxiliaryStretchWidth"
+                          filterModel="#{bindings.AccountType1Query.queryDescriptor}"
+                          queryListener="#{bindings.AccountType1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"  inlineStyle="height:200.0px;"
+                           binding="#{AccountSetUpBack.tblEntityRelations}"
+                          rowSelection="single" id="t2">
+                  <af:column sortProperty="#{bindings.AccountType1.hints.relation.name}"
+                             filterable="true" sortable="true"
+                             headerText="Relation" id="c5">
+                    <af:outputText value="#{row.relation}" id="ot8"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType1.hints.agnShtDesc.name}"
+                             filterable="true" sortable="true"
+                             headerText="Desc" id="c10">
+                    <af:outputText value="#{row.agnShtDesc}" id="ot11"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType1.hints.agnName.name}"
+                             filterable="true" sortable="true"
+                             headerText="Name" id="c12">
+                    <af:outputText value="#{row.agnName}" id="ot6"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType1.hints.agnPin.name}"
+                             filterable="true" sortable="true" headerText="Pin"
+                             id="c7">
+                    <af:outputText value="#{row.agnPin}" id="ot5"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType1.hints.agnEmail.name}"
+                             filterable="true" sortable="true"
+                             headerText="Email" id="c9">
+                    <af:outputText value="#{row.agnEmail}" id="ot10"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType1.hints.agnTel.name}"
+                             filterable="true" sortable="true" headerText="Tel"
+                             id="c6">
+                    <af:outputText value="#{row.agnTel}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType1.hints.agnBnkAccNo.name}"
+                             filterable="true" sortable="true"
+                             headerText="Acc. No" id="c11">
+                    <af:outputText value="#{row.agnBnkAccNo}" id="ot9"/>
+                  </af:column>
+                  <af:column sortProperty="#{bindings.AccountType1.hints.entCode.name}"
+                             filterable="true" sortable="true"
+                             headerText="Code" id="c8">
+                    <af:outputText value="#{row.entCode}" id="ot12"/>
+                  </af:column>
+                  
+                   
+                  
+                </af:table>
+                <af:separator id="s1"/>
+              </af:panelBox>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

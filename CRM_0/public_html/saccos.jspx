@@ -1,0 +1,2687 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" >
+       <af:resource type="css">
+         input[type=text] {
+             text-transform: uppercase;
+         }
+         textarea {
+            text-transform: uppercase;
+         }
+       </af:resource>
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right"><h:panelGrid columns="2" >
+                      <af:inputText id="it1" helpTopicId="CRMaccounts"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Sacco Definition"  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox2" id="pb2" showHeader="never"
+                           binding="#{saccosBacking.pbMainPanelDetail}">
+                <af:spacer width="10" height="30" id="s22"/>
+                <af:panelGroupLayout >
+                  <af:panelSplitter styleClass="AFAuxiliaryStretchWidth"
+                                    inlineStyle="height:590px;"
+                                    splitterPosition="347">
+                    <f:facet name="first">
+                      <af:panelGroupLayout  >
+                        <h:panelGrid columns="3"  >
+                          <af:commandButton text="New" id="btnNewSacco"
+                                            icon="/images/create.gif"
+                                            action="#{saccosBacking.actionNewSacco}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="Edit" id="btnEditSacco"
+                                            icon="/images/create.gif"
+                                            action="#{saccosBacking.actionEditSacco}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="Delete" disabled="true"
+                                            id="btnDeleteSacco"
+                                            icon="/images/delete.gif"
+                                            action="#{saccosBacking.actionDeleteSacco}" 
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                        <af:separator id="s19"/>
+                        <af:panelCollection styleClass="AFAuxiliaryStretchWidth"
+                                            inlineStyle="width:337px; height:500px;">
+                                           
+                         <!-- <af:table value="#{bindings.Sacco.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Sacco.rangeSize}"
+                                    emptyText="#{bindings.Sacco.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Sacco.rangeSize}"
+                                    rowBandingInterval="0"
+                                    summary="Agent Accounts"
+                                    filterModel="#{bindings.SaccoQuery33.queryDescriptor}"
+                                    queryListener="#{bindings.SaccoQuery33.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectionListener="#{saccosBacking.tblAgenciesInfoSelectionListener}"
+                                    rowSelection="single" id="tblSaccoInfo"
+                                    binding="#{saccosBacking.tblSaccoInfo}">
+                            <af:column sortProperty="name" filterable="true"
+                                       sortable="true" headerText="Name"
+                                       id="c83" width="150"
+                                       filterFeatures="caseInsensitive">
+                              <af:outputText value="#{row.name}"  />
+                            </af:column>
+                          </af:table>
+                          -->
+                          <af:table value="#{bindings.Sacco.collectionModel}"
+                                    var="row" rows="#{bindings.Sacco.rangeSize}"
+                                    emptyText="#{bindings.Sacco.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Sacco.rangeSize}"
+                                    rowBandingInterval="0"
+                                   binding="#{saccosBacking.tblSaccoInfo}"
+                                    filterModel="#{bindings.SaccoQuery.queryDescriptor}"
+                                    queryListener="#{bindings.SaccoQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.Sacco.collectionModel.selectedRow}"
+                                    selectionListener="#{saccosBacking.actionSelectSacco}"
+                                    rowSelection="single" id="t1">
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoRegulatorNo.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoRegulatorNo.label}"
+                                       id="c14">
+                              <af:outputText value="#{row.saccoRegulatorNo}"
+                                             id="ot3"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoName.label}"
+                                       id="c22">
+                              <af:outputText value="#{row.saccoName}"
+                                             id="ot20"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoPhysicalAddress.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoPhysicalAddress.label}"
+                                       id="c16">
+                              <af:outputText value="#{row.saccoPhysicalAddress}"
+                                             id="ot15"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoPostalAddress.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoPostalAddress.label}"
+                                       id="c7">
+                              <af:outputText value="#{row.saccoPostalAddress}"
+                                             id="ot16"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoCountryCode.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoCountryCode.label}"
+                                       id="c3">
+                              <af:outputText value="#{row.saccoCountryCode}"
+                                             id="ot19"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoCountryName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoCountryName.label}"
+                                       id="c29">
+                              <af:outputText value="#{row.saccoCountryName}"
+                                             id="ot33"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoStateCode.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoStateCode.label}"
+                                       id="c15">
+                              <af:outputText value="#{row.saccoStateCode}"
+                                             id="ot13"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoAdminRegionName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoAdminRegionName.label}"
+                                       id="c34">
+                              <af:outputText value="#{row.saccoAdminRegionName}"
+                                             id="ot35"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoStateName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoStateName.label}"
+                                       id="c13">
+                              <af:outputText value="#{row.saccoStateName}"
+                                             id="ot22"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoTownName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoTownName.label}"
+                                       id="c24">
+                              <af:outputText value="#{row.saccoTownName}"
+                                             id="ot27"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoEmail.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoEmail.label}"
+                                       id="c11">
+                              <af:outputText value="#{row.saccoEmail}"
+                                             id="ot26"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoTownCode.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoTownCode.label}"
+                                       id="c26">
+                              <af:outputText value="#{row.saccoTownCode}"
+                                             id="ot17"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoWebAddress.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoWebAddress.label}"
+                                       id="c8">
+                              <af:outputText value="#{row.saccoWebAddress}"
+                                             id="ot24"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoPostalCode.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoPostalCode.label}"
+                                       id="c10">
+                              <af:outputText value="#{row.saccoPostalCode}"
+                                             id="ot21"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoContactPerson.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoContactPerson.label}"
+                                       id="c31">
+                              <af:outputText value="#{row.saccoContactPerson}"
+                                             id="ot18"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoContactTitle.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoContactTitle.label}"
+                                       id="c28">
+                              <af:outputText value="#{row.saccoContactTitle}"
+                                             id="ot14"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoTel1.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoTel1.label}"
+                                       id="c6">
+                              <af:outputText value="#{row.saccoTel1}"
+                                             id="ot11"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoTel2.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoTel2.label}"
+                                       id="c20">
+                              <af:outputText value="#{row.saccoTel2}"
+                                             id="ot30"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoFax.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoFax.label}"
+                                       id="c12">
+                              <af:outputText value="#{row.saccoFax}" id="ot6"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoAccountNumber.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoAccountNumber.label}"
+                                       id="c32">
+                              <af:outputText value="#{row.saccoAccountNumber}"
+                                             id="ot10"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoPIN.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoPIN.label}"
+                                       id="c5">
+                              <af:outputText value="#{row.saccoPIN}" id="ot31"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoStatus.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoStatus.label}"
+                                       id="c25">
+                              <af:outputText value="#{row.saccoStatus}"
+                                             id="ot23"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoDateCreated.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoDateCreated.label}"
+                                       id="c27">
+                              <af:outputText value="#{row.saccoDateCreated}"
+                                             id="ot7"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoBranchCode.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoBranchCode.label}"
+                                       id="c9">
+                              <af:outputText value="#{row.saccoBranchCode}"
+                                             id="ot4"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoBranchName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoBranchName.label}"
+                                       id="c4">
+                              <af:outputText value="#{row.saccoBranchName}"
+                                             id="ot1"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoBankAccountNo.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoBankAccountNo.label}"
+                                       id="c33">
+                              <af:outputText value="#{row.saccoBankAccountNo}"
+                                             id="ot28"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoBankBranchCode.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoBankBranchCode.label}"
+                                       id="c35">
+                              <af:outputText value="#{row.saccoBankBranchCode}"
+                                             id="ot9"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoBankBranch.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoBankBranch.label}"
+                                       id="c30">
+                              <af:outputText value="#{row.saccoBankBranch}"
+                                             id="ot29"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoAccountNo.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoAccountNo.label}"
+                                       id="c2">
+                              <af:outputText value="#{row.saccoAccountNo}"
+                                             id="ot5"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoSms.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoSms.label}"
+                                       id="c18">
+                              <af:outputText value="#{row.saccoSms}" id="ot25"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoUniquePrefix.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoUniquePrefix.label}"
+                                       id="c21">
+                              <af:outputText value="#{row.saccoUniquePrefix}"
+                                             id="ot2"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoLicensed.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoLicensed.label}"
+                                       id="c19">
+                              <af:outputText value="#{row.saccoLicensed}"
+                                             id="ot32"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoCode.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoCode.label}"
+                                       id="c17">
+                              <af:outputText value="#{row.saccoCode}"
+                                             id="ot34"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoShortDesc.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoShortDesc.label}"
+                                       id="c1">
+                              <af:outputText value="#{row.saccoShortDesc}"
+                                             id="ot12"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Sacco.hints.saccoCreatedBy.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="#{bindings.Sacco.hints.saccoCreatedBy.label}"
+                                       id="c23">
+                              <af:outputText value="#{row.saccoCreatedBy}"
+                                             id="ot8"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                      </af:panelGroupLayout> 
+                    </f:facet>
+                    <f:facet name="second">
+                      <af:panelTabbed binding="#{saccosBacking.mainPanelTab}"
+                                      visible="true">
+                       <af:showDetailItem text="Account Info" >
+                          <af:panelGroupLayout layout="scroll">
+                            <af:panelBox text="PanelBox3"
+                                         showHeader="never" >
+                              <h:panelGrid columns="1" id="pg5">
+                                <af:outputLabel value="Sacco Details"  
+                                                inlineStyle="font-weight:bold;"/>
+                              </h:panelGrid>
+                              <af:separator id="s3"/>
+                              <h:panelGrid columns="2" id="pg4">
+                                <af:commandButton text="Save"
+                                                  id="btnCreateUpdateCurrentSacco"
+                                                  icon="/images/create.gif"
+                                                  action="#{saccosBacking.saveSacco}" 
+                                                  partialSubmit="false"/> 
+                                <af:spacer width="10" height="10" id="s24"/> 
+                              </h:panelGrid>
+                              <af:separator id="s4"/>
+                              <table> 
+                                <tr>
+                                 <td valign="top">
+                                    <af:panelFormLayout  > 
+                                      <af:inputText label="Short Description: "
+                                                    id="txtSaccoShortDesc"
+                                                    columns="20"
+                                                    shortDesc="Short Description"
+                                                    binding="#{saccosBacking.txtSaccoShortDesc}"
+                                                    disabled="false"/>
+									  <af:inputText label="Regulator No : " 
+                                                                id="txtSaccoRegulatorNo"
+                                                                columns="20"
+                                                                binding="#{saccosBacking.txtSaccoRegulatorNo}"/>
+                                      <af:inputText label="Name: "
+                                                    id="txtSaccoName"
+                                                    columns="20"
+                                                    shortDesc="Name"
+                                                    binding="#{saccosBacking.txtSaccoName}"
+                                                    showRequired="true"/>
+                                       <af:inputText label="Physical Address : "
+                                                    id="txtSaccoPhysicalAddress"
+                                                    columns="15" rows="3"
+                                                    showRequired="false"
+                                                    shortDesc="Physical Address"
+                                                    binding="#{saccosBacking.txtSaccoPhysicalAddress}"/>
+                                    
+                                      <af:inputText label="Postal Address: "
+                                                    id="txtSaccoPostalAddress"
+                                                    showRequired="false"
+                                                    columns="20"
+                                                    binding="#{saccosBacking.txtSaccoPostalAddress}"/>
+                                      <af:inputText label="Country Code : "
+                                                    id="txtSaccoCountryCode"
+                                                    columns="20" visible="false"
+                                                    binding="#{saccosBacking.txtSaccoCountryCode}"/>
+                                      <af:panelLabelAndMessage label="Country : "  showRequired="true" >
+                                        <af:inputText label="Country : " 
+                                                      id="txtSaccoCountryName"
+                                                      columns="13" simple="true"
+                                                      shortDesc="Country"
+                                                      disabled="true"
+                                                      binding="#{saccosBacking.txtSaccoCountryName}"/>
+                                        <af:commandButton icon="/images/dropdown.gif"
+                                                          shortDesc="Click to select a country">
+                                          <af:showPopupBehavior popupId="countryPop"/>
+                                        </af:commandButton>
+                                      </af:panelLabelAndMessage>
+                                      <af:inputText label="State Code :" 
+                                                    visible="false"
+                                                    binding="#{saccosBacking.txtSaccoStateCode}"/>
+                                      <af:panelLabelAndMessage label="#{Rendering.stateNameValue}:"
+                                                              showRequired="true"
+                                                               id="plam10"  
+                                                               visible="true"
+                                                               binding="#{saccosBacking.pmAdminRegionName}">
+                                        <af:inputText disabled="true"
+                                                      columns="13" 
+                                                      simple="true"
+                                                      binding="#{saccosBacking.txtSaccoStateName}"
+                                                      showRequired="false"/>
+                                        <af:commandButton icon="/images/dropdown.gif"
+                                                          action="#{saccosBacking.actionShowStates}"/>
+                                      </af:panelLabelAndMessage>
+                                   
+                                      <af:inputText label="Town Code : " 
+                                                    id="txtSaccoTownCode"
+                                                    columns="20" visible="false"
+                                                    binding="#{saccosBacking.txtSaccoTownCode}"/>
+                                      <af:panelLabelAndMessage label="#{Rendering.localSite ? 'Town : ' : 'Local Govt. Area : '}"
+                                                                showRequired="true"
+                                                               visible="true"  >
+                                        <af:panelGroupLayout  >
+                                          <af:inputText label="Town:  "
+                                                        id="txtSaccoTownName"
+                                                        simple="true"
+                                                        columns="13"
+                                                        disabled="true"
+                                                        shortDesc="Town"
+                                                        binding="#{saccosBacking.txtSaccoTownName}"/>
+                                          <af:commandButton shortDesc="Click to select a Town" 
+										                    icon="/images/dropdown.gif"
+                                                            action="#{saccosBacking.actionShowTownPopup}"/>
+                                        </af:panelGroupLayout>
+                                      </af:panelLabelAndMessage> 
+                                      <af:inputText label="Telephone 1: "
+                                                    id="txtSaccoTel1"
+                                                    columns="20"
+                                                    showRequired="true"
+                                                    shortDesc="Telephone 1"
+                                                    binding="#{saccosBacking.txtSaccoTel1}"/>
+                                      <af:inputText label="Telephone 2: "
+                                                    id="txtSaccoTel2"
+                                                    columns="20"
+                                                    shortDesc="Telephone 2"
+                                                    binding="#{saccosBacking.txtSaccoTel2}"/>
+                                      <af:inputText label="Fax : "
+                                                    id="txtSaccoFax"
+                                                    columns="20"
+                                                    shortDesc="FAX Number"
+                                                    binding="#{saccosBacking.txtSaccoFax}"/>
+                                      
+                                    </af:panelFormLayout>
+                                  </td>
+                                 <td valign="top">
+                                    <af:panelFormLayout >
+									   <af:inputText label="Email Address : "
+                                                    id="txtSaccoEmail"
+                                                    columns="20"
+                                                    contentStyle="text-transform:lowercase;"
+                                                    showRequired="true"
+                                                    binding="#{saccosBacking.txtSaccoEmail}">
+                                        <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"
+                                                           messageDetailNoMatch='"The value {1} is not a valid email address "'/>
+                                      </af:inputText>
+                                      <af:inputText label="Web Address : "
+                                                    id="txtSaccoWebAddress"
+                                                    columns="20"
+                                                    binding="#{saccosBacking.txtSaccoWebAddress}">
+                                            </af:inputText>
+                                      <af:inputText label="Postal Code : "
+                                                    id="txtSaccoPostalCode"
+                                                    columns="20"
+                                                    shortDesc="ZIP Code"
+                                                    binding="#{saccosBacking.txtSaccoPostalCode}"/>
+                                      <af:inputText label="Contact Person : "
+                                                    id="txtContactPerson"
+                                                    columns="20"
+                                                    shortDesc="Person to contact"
+                                                    binding="#{saccosBacking.txtSaccoContactPerson}"/>
+                                      <af:inputText label="Contact Title : "
+                                                    id="txtContactTitle"
+                                                    columns="20"
+                                                    shortDesc="Contact Title"
+                                                    binding="#{saccosBacking.txtSaccoContactTitle}"/>
+                                      <af:panelLabelAndMessage label="Account : "
+                                                               id="plam7">
+                                        <af:inputText label="Account Number : "
+                                                      id="txtSaccoAccountNumber"
+                                                      columns="15"
+                                                      shortDesc="Account Number"
+                                                      simple="true"
+                                                      disabled="true"
+                                                      binding="#{saccosBacking.txtSaccoAccountNumber}"/>
+                                        <af:commandButton icon="/images/dropdown.gif"
+                                                         action="#{saccosBacking.actionShowAccounts}"/>
+                                      </af:panelLabelAndMessage >
+                                       <af:inputText label="PIN"
+                                                    id="txtSaccoPIN"  
+                                                    binding="#{saccosBacking.txtSaccoPIN}"
+                                                    columns="20" 
+                                                    shortDesc="PIN" 
+                                                    autoSubmit="true" 
+                                                    rendered="true"
+                                                    showRequired="true"
+                                                    validator="#{validationManip.validatePinNumber}"
+                                        />   
+                                    </af:panelFormLayout>
+                                  </td> 
+                                 <td valign="top">
+                                    <af:panelFormLayout >
+									 <af:selectOneChoice label="Status : "
+                                                          id="txtSaccoStatus"
+                                                          value="ACTIVE"
+                                                          binding="#{saccosBacking.txtSaccoStatus}">
+                                        <af:selectItem label="Active"
+                                                       value="A" />
+                                        <af:selectItem label="Inactive"
+                                                       value="I" />
+                                        <af:selectItem label="Suspended"
+                                                       value="S" />
+                                      </af:selectOneChoice>
+                                      <af:inputDate label="Date Created : "
+                                                    id="txtSaccoDateCreated" disabled="true" binding="#{saccosBacking.txtSaccoDateCreated}">
+                                                     <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                                      </af:inputDate>
+									  <af:inputText label="Created By : "
+                                                    id="txtSaccoCreatedBy"
+                                                    columns="20" disabled="true"
+                                                    binding="#{saccosBacking.txtSaccoCreatedBy}" />
+                                      
+									  <af:inputText label="Branch Code : "
+                                                    id="txtSaccoBranchCode"
+                                                    columns="20" visible="false"
+                                                    binding="#{saccosBacking.txtSaccoBranchCode}"
+                                                    showRequired="true"
+                                                    disabled="true"
+                                                    autoSubmit="true"/>
+													
+                                      <af:panelLabelAndMessage label="Branch : " 
+                                                               showRequired="true">
+                                        <af:panelGroupLayout >
+                                          <af:inputText label="Branch : "
+                                                        id="txtSaccoBranchName"
+                                                        columns="15"
+                                                        simple="true"
+                                                        showRequired="true" 
+                                                        disabled="true"
+                                                        binding="#{saccosBacking.txtSaccoBranchName}"/>
+                                          <af:commandButton icon="/images/dropdown.gif"
+                                                            shortDesc="Click To select Sacco Branch"
+                                                            action="#{saccosBacking.actionShowBranches}"
+                                                            /> 
+                                        </af:panelGroupLayout>
+                                      </af:panelLabelAndMessage> 
+											 <af:inputText label="Bank Account No : "
+																			id="txtSaccoBankAccountNo"
+																			showRequired="true"
+																			columns="20"
+																			binding="#{saccosBacking.txtSaccoBankAccountNo}"/>  
+												 <af:inputText label="Bank Branch Code"
+															id="txtSaccoBankBranchCode"
+															binding="#{saccosBacking.txtSaccoBankBranchCode}"
+															visible="false"/>
+												<af:panelLabelAndMessage label="Bank Branch" showRequired="true" rendered="true" >
+												<af:panelGroupLayout rendered="true">
+												  <af:inputText label="Bank Branch"  
+												  columns="13" 
+												  simple="true" disabled="true" 
+							             binding="#{saccosBacking.txtSaccoBankBranch}"/>
+												  <af:commandButton  icon="/images/dropdown.gif"
+																	action="#{saccosBacking.actionShowBankBranches}"></af:commandButton>
+												</af:panelGroupLayout>
+											  </af:panelLabelAndMessage>
+											<af:inputText label="Account No."  showRequired="false" 
+								rendered="true" binding="#{saccosBacking.txtSaccoAccountNo}"
+											  /> 
+															 <af:panelLabelAndMessage label="Sms No:" > 
+											 <af:panelGroupLayout  >
+																<af:inputText label="#{Rendering.localSite?'SMS  No.':'GSM No'}	"
+																			id="txtSms" columns="20"
+																			binding="#{saccosBacking.txtSaccoSms}"
+																			showRequired="true"
+																			simple="true"/>
+															</af:panelGroupLayout>
+															 </af:panelLabelAndMessage> 
+															   
+															<af:inputText label="Unique Prefix" 
+																			  id="txtSaccoUniquePrefix"
+																			  columns="8" simple="true"
+																			  disabled="true"
+																			  binding="#{saccosBacking.txtSaccoUniquePrefix}" visible="true"/>
+															  <af:selectOneChoice label="Licensed ? "
+																				  id="selSaccoLicensed"
+																				  binding="#{saccosBacking.socSaccoLicensed}">
+																<af:selectItem label="Yes" value="Y" />
+																<af:selectItem label="No" value="N" />
+															  </af:selectOneChoice> 
+															   <!--   --> 
+															</af:panelFormLayout>
+                                  </td>
+                             
+                                </tr> 
+                              </table>
+                              <af:separator id="s2"/>
+                            </af:panelBox>
+                          </af:panelGroupLayout>
+                        </af:showDetailItem> 
+                     <!-- -->
+                      </af:panelTabbed>
+                    </f:facet>
+                  </af:panelSplitter>
+                  <af:popup id="countryPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d46" title="Select a Country" type="none"
+                               inlineStyle="width:260.0px;">
+                      <af:panelGroupLayout id="pgl3">
+                   <!--  <af:panelCollection id="pc1"
+                                            inlineStyle="width:260.0px;">
+                          <af:table value="#{bindings.Country1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Country1.rangeSize}"
+                                    emptyText="#{bindings.Country1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Country1.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.AgentCountryQuery.queryDescriptor}"
+                                    queryListener="#{bindings.AgentCountryQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    rowSelection="single" id="tblSaccoCountry"
+                                    binding="#{saccosBacking.tblSaccoCountry}">
+                            <af:column sortProperty="name" sortable="true"
+                                       filterFeatures="caseInsensitive"
+                                       headerText="Country Name" 
+                                       filterable="true" width="250">
+                              <af:outputText value="#{row.name}" />
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <af:commandButton text="OK" 
+                                          action="#{saccosBacking.actionSelectCountryPop}"/>
+                        <af:commandButton text="CANCEL" /> -->
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+				  <!--
+                  <af:popup id="confirmSaccoDeletePop"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d32" title="Confirm Delete Action"
+                               type="yesNo"
+                               dialogListener="#{saccosBacking.actionConfirmDeleteAgent}">
+                      <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                     id="ot4"/>
+                    </af:dialog>
+                  </af:popup> 
+                  <af:popup id="confirmDeleteSaccoWebAccPop"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d25" title="Confirm Deactivation Action"
+                               type="yesNo"
+                               dialogListener="#{saccosBacking.actionConfirmDeleteAgentWebAcc}">
+                      <af:outputText value="This process is reversible. Are you sure you want to Deactivate this user?"
+                                     id="ot74"/>
+                    </af:dialog>
+                  </af:popup>
+                  
+                   <af:popup id="p2" contentDelivery="lazyUncached">
+                    <af:dialog id="d28" title="Select an Agent" type="okCancel"
+                               inlineStyle="width:360.0px;"
+                               dialogListener="#{saccosBacking.selectAgentTbl}">
+                      <af:panelGroupLayout id="pgl24">
+                        <af:panelCollection id="pc16"
+                                            inlineStyle="width:360.0px;">
+                          <af:table value="#{bindings.AccountsType1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.AccountsType1.rangeSize}"
+                                    emptyText="#{bindings.AccountsType1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.AccountsType1.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.AccountsType1Query.queryDescriptor}"
+                                    queryListener="#{bindings.AccountsType1Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.AccountsType1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.AccountsType1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t15"
+                                    binding="#{saccosBacking.agentTbl}"
+                                    inlineStyle="width:100.0%;">
+                            <af:column sortProperty="agentname" visible="false"
+                                       filterable="true" sortable="true"
+                                       headerText="Agent Name" id="c89">
+                              <af:outputText value="#{row.agentname}"
+                                             id="ot94"/>
+                            </af:column>
+                            <af:column sortProperty="agentCode" visible="false"
+                                       filterable="true" sortable="true"
+                                       headerText="Agent Code" id="c87">
+                              <af:outputText value="#{row.agentCode}"
+                                             id="ot92"/>
+                            </af:column>
+                            <af:column sortProperty="agentShtDesc" width="300"
+                                       filterable="true" sortable="true"
+                                       headerText="Agent Sht Desc" id="c88"
+                                       >
+                              <af:outputText value="#{row.agentShtDesc}"
+                                             id="ot93"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                       </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                   <af:popup id="agentTypePop"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d13" title="Select Agent Type"
+                               type="none" inlineStyle="width:260.0px;">
+                      <af:panelGroupLayout id="pgl18">
+                        <af:panelBox text="PanelBox7" id="pb6"
+                                     showHeader="never">
+                          <af:panelCollection id="pc4"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.AccountType9.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountType9.rangeSize}"
+                                      emptyText="#{bindings.AccountType9.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountType9.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AccountType9Query.queryDescriptor}"
+                                      queryListener="#{bindings.AccountType9Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectedRowKeys="#{bindings.AccountType9.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.AccountType9.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t29"
+                                      binding="#{saccosBacking.agentTypeTbl}">
+                              <af:column sortProperty="type" filterable="true" width="250"
+                                         sortable="true" headerText="Type"
+                                         id="c188">
+                                <af:outputText value="#{row.type}" id="ot195"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="acceptHoldingCompany"
+                                            action="#{saccosBacking.selectAgentType}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="cancelHoldingCompany"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                    <af:popup id="agentGroupPop"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d40" title="Select Agent Group"
+                               type="none" inlineStyle="width:260.0px;">
+                      <af:panelGroupLayout id="pgl43">
+                        <af:panelBox text="PanelBox7" id="pb30"
+                                     showHeader="never">
+                          <af:panelCollection id="pc24"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.AccountType10.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountType10.rangeSize}"
+                                      emptyText="#{bindings.AccountType10.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountType10.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AccountType10Query.queryDescriptor}"
+                                      queryListener="#{bindings.AccountType10Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectedRowKeys="#{bindings.AccountType10.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.AccountType10.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t30"
+                                      binding="#{saccosBacking.accountGroupsTbl}">
+                              <af:column sortProperty="accountGroups" width="250"
+                                         filterable="true" sortable="true"
+                                         headerText="Account Group" id="c189">
+                                <af:outputText value="#{row.accountGroups}"
+                                               id="ot196"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="cb56"
+                                            action="#{saccosBacking.selectAccountGroup}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="cb57"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  <af:popup id="holdingCompany"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d41" title="Select Holding Company"
+                               type="none" inlineStyle="width:260.0px;">
+                      <af:panelGroupLayout id="pgl44">
+                        <af:panelBox text="PanelBox7" id="pb31"
+                                     showHeader="never">
+                          <af:panelCollection id="pc25"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.SaccoHoldingCompany.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.SaccoHoldingCompany.rangeSize}"
+                                      emptyText="#{bindings.SaccoHoldingCompany.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.SaccoHoldingCompany.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.SaccoHoldingCompanyQuery.queryDescriptor}"
+                                      queryListener="#{bindings.SaccoHoldingCompanyQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single"
+                                      id="tblSaccoHoldingCompany"
+                                      binding="#{saccosBacking.tblSaccoHoldingCompany}">
+                              <af:column sortProperty="code" sortable="true"
+                                         filterFeatures="caseInsensitive"
+                                         headerText="ID" id="c207"
+                                         filterable="true">
+                                <af:outputText value="#{row.code}" id="ot6"/>
+                              </af:column>
+                              <af:column sortProperty="name" sortable="true"
+                                         filterFeatures="caseInsensitive"
+                                         headerText="COMPANY NAME" id="c3"
+                                         filterable="true">
+                                <af:outputText value="#{row.name}" id="ot5"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="cb58"
+                                            action="#{saccosBacking.actionAcceptHoldingCompany}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="cb59"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                         <af:popup id="holdingCompanyPop"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d38" title="Select Holding Company"
+                               type="none" inlineStyle="width:260.0px;">
+                      <af:panelGroupLayout id="pgl40">
+                        <af:panelBox text="PanelBox7" id="pb28"
+                                     showHeader="never">
+                          <af:panelCollection id="pc20"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.Client24.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Client24.rangeSize}"
+                                      emptyText="#{bindings.Client24.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Client24.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.Client23Query.queryDescriptor}"
+                                      queryListener="#{bindings.Client23Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectionListener="#{bindings.Client24.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t26"
+                                      binding="#{saccosBacking.holdingCompaniesTbl}">
+                              <af:column sortProperty="CLNT_CODE"
+                                         filterable="true" sortable="true" visible="false"
+                                         headerText="Code" id="c170">
+                                <af:outputText value="#{row.CLNT_CODE}"
+                                               id="ot180"/>
+                              </af:column>
+                              <af:column sortProperty="CLNT_SHT_DESC"
+                                         filterable="true" sortable="true"
+                                         headerText="Client Id" id="c173">
+                                <af:outputText value="#{row.CLNT_SHT_DESC}"
+                                               id="ot177"/>
+                              </af:column>
+                              <af:column sortProperty="CLNT_NAME"
+                                         filterable="true" sortable="true"
+                                         headerText="Name" id="c171">
+                                <af:outputText value="#{row.CLNT_NAME}"
+                                               id="ot178"/>
+                              </af:column>
+                              <af:column sortProperty="CLNT_CLNT_CODE" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Clnt Code" id="c172">
+                                <af:outputText value="#{row.CLNT_CLNT_CODE}"
+                                               id="ot179"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="cb49"
+                                            action="#{saccosBacking.selectHoldingCompanies}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="cb50"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                     <af:popup id="saccoPop"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d29" title="Select Sacco"
+                               type="none" inlineStyle="width:260.0px;">
+                      <af:panelGroupLayout id="pgl33">
+                        <af:panelBox text="PanelBox7" id="pb21"
+                                     showHeader="never">
+                          <af:panelCollection id="pc17"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.Client23.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Client23.rangeSize}"
+                                      emptyText="#{bindings.Client23.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Client23.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.Client23Query.queryDescriptor}"
+                                      queryListener="#{bindings.Client23Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectedRowKeys="#{bindings.Client23.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.Client23.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t17"
+                                      binding="#{saccosBacking.txtSaccoTbl}">
+                              <af:column sortProperty="CLNT_CODE"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" id="c104">
+                                <af:outputText value="#{row.CLNT_CODE}"
+                                               id="ot111"/>
+                              </af:column>
+                              <af:column sortProperty="CLNT_SHT_DESC"
+                                         filterable="true" sortable="true"
+                                         headerText="Sht Desc" id="c103">
+                                <af:outputText value="#{row.CLNT_SHT_DESC}"
+                                               id="ot108"/>
+                              </af:column>
+                              <af:column sortProperty="CLNT_NAME"
+                                         filterable="true" sortable="true"
+                                         headerText="Name" id="c106">
+                                <af:outputText value="#{row.CLNT_NAME}"
+                                               id="ot110"/>
+                              </af:column>
+                              <af:column sortProperty="CLNT_CLNT_CODE"
+                                         filterable="true" sortable="true"
+                                         headerText="Clnt Code" id="c105">
+                                <af:outputText value="#{row.CLNT_CLNT_CODE}"
+                                               id="ot109"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="cb21"
+                                            action="#{saccosBacking.selectSacco}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="cb22"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="townListing" contentDelivery="lazyUncached">
+                    <af:dialog id="d45"
+                               title="#{Rendering.localSite ? 'Towns List' : 'Local Govt. Areas  List '}" type="none">
+                      <af:panelGroupLayout id="pgl31">
+                        <af:panelBox id="pb17">
+                          <af:table value="#{bindings.Town1.collectionModel}"
+                                    var="row" rows="#{bindings.Town1.rangeSize}"
+                                    emptyText="#{bindings.Town1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Town1.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.Town1Query.queryDescriptor}"
+                                    queryListener="#{bindings.Town1Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.Town1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.Town1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t7"
+                                    binding="#{saccosBacking.tbTownListing}">
+                            <af:column sortProperty="shortDesc" visible="false"
+                                       filterable="true" sortable="true"
+                                       headerText="Short Desc"
+                                       id="c71">
+                              <af:outputText value="#{row.shortDesc}"
+                                             id="ot76"/>
+                            </af:column>
+                            <af:column sortProperty="name" filterable="true"
+                                       sortable="true"
+                                       headerText="Town Name"
+                                       id="c69">
+                              <af:outputText value="#{row.name}" id="ot70"/>
+                            </af:column>
+                            <af:column sortProperty="postalZipCode" sortable="false"
+                                       headerText="Zip Code"
+                                       id="c137">
+                              <af:outputText value="#{row.postalZipCode}"
+                                             id="ot143"/>
+                            </af:column>
+                            <af:column sortProperty="postalDesc"
+                                       sortable="false"
+                                       headerText="Postal Description"
+                                       id="c138">
+                              <af:outputText value="#{row.postalDesc}"
+                                             id="ot144"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelBox>
+                        <af:commandButton text="OK" id="acceptSaccoTown"
+                                          action="#{saccosBacking.actionAcceptSaccoTown}"
+                                          partialSubmit="true"/>
+                        <af:commandButton text="CANCEL" id="cancelSaccoTown1"/>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="SaccoClassPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d10" title="Select Sacco Class" type="none">
+                      <af:panelGroupLayout id="pgl15">
+                        <af:panelBox text="PanelBox4" id="pb5"
+                                     showHeader="never">
+                          <af:panelCollection id="pc5"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.SaccoClass1.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.SaccoClass1.rangeSize}"
+                                      emptyText="#{bindings.SaccoClass1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.SaccoClass1.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AgentClassesQuery.queryDescriptor}"
+                                      queryListener="#{bindings.AgentClassesQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single"
+                                      id="tblSaccoClasses"
+                                      binding="#{saccosBacking.tblSaccoClasses}">
+                              <af:column sortProperty="code" sortable="true"
+                                         filterFeatures="caseInsensitive"
+                                         headerText="CODE" id="c9"
+                                         filterable="true">
+                                <af:outputText value="#{row.code}" id="ot11"/>
+                              </af:column>
+                              <af:column sortProperty="description"
+                                         filterFeatures="caseInsensitive"
+                                         sortable="true"
+                                         headerText="DESCRIPTION" id="c10"
+                                         filterable="true">
+                                <af:outputText value="#{row.description}"
+                                               id="ot12"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="btnAcceptSaccoClass"
+                                            action="#{saccosBacking.actionAcceptSaccoClass}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="btnCancelSaccoClass"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="MarketerPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d30" title="Select Marketer" type="none">
+                      <af:panelGroupLayout id="pgl34">
+                        <af:panelBox text="PanelBox4" id="pb22"
+                                     showHeader="never">
+                          <af:panelCollection id="pc18"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.Sector1.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Sector1.rangeSize}"
+                                      emptyText="#{bindings.Sector1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Sector1.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.Sector1Query.queryDescriptor}"
+                                      queryListener="#{bindings.Sector1Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                       selectionListener="#{bindings.Sector1.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t18"
+                                      binding="#{saccosBacking.marketerTbl}">
+                              <af:column sortProperty="agentCode" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" id="c111">
+                                <af:outputText value="#{row.agentCode}"
+                                               id="ot117"/>
+                              </af:column>
+                              <af:column sortProperty="agentAccountCode" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Account Code" id="c112">
+                                <af:outputText value="#{row.agentAccountCode}"
+                                               id="ot118"/>
+                              </af:column>
+                              <af:column sortProperty="agentShtDesc" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Agent Sht Desc" id="c113">
+                                <af:outputText value="#{row.agentShtDesc}"
+                                               id="ot119"/>
+                              </af:column>
+                              <af:column sortProperty="agentName" width="270"
+                                         filterable="true" sortable="true"
+                                         headerText="Agent Name" id="c110">
+                                <af:outputText value="#{row.agentName}"
+                                               id="ot116"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="btnAcceptMarketer"
+                                            action="#{saccosBacking.selectMarketer}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="cb25"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                   <af:popup id="BranchUnitPop" contentDelivery="lazyUncached"
+                   binding="#{saccosBacking.branchUnitPopUp}">
+                    <af:dialog id="d34" title="Select Branch Units" type="none">
+                      <af:panelGroupLayout id="pgl36">
+                        <af:panelBox text="PanelBox4" id="pb24"
+                                     showHeader="never">
+                          <af:panelCollection id="pc19"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.AccountType8.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountType8.rangeSize}"
+                                      emptyText="#{bindings.AccountType8.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountType8.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AccountType8Query.queryDescriptor}"
+                                      queryListener="#{bindings.AccountType8Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                     selectionListener="#{bindings.AccountType8.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t22"
+                                      binding="#{saccosBacking.branchUnitsTbl}">
+                              <af:column sortProperty="bruCode" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" id="c144">
+                                <af:outputText value="#{row.bruCode}"
+                                               id="ot148"/>
+                              </af:column>
+                              <af:column sortProperty="bruBrnCode" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Brn Code" id="c143">
+                                <af:outputText value="#{row.bruBrnCode}"
+                                               id="ot149"/>
+                              </af:column>
+                              <af:column sortProperty="bruShtDesc" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Sht Desc" id="c145">
+                                <af:outputText value="#{row.bruShtDesc}"
+                                               id="ot150"/>
+                              </af:column>
+                              <af:column sortProperty="bruName" width="250"
+                                         filterable="true" sortable="true"
+                                         headerText="Branch Name" id="c142">
+                                <af:outputText value="#{row.bruName}"
+                                               id="ot151"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="cb35"
+                                            action="#{saccosBacking.selectBranchUnits}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="cb38"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                        <af:popup id="bussinessPersonPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d39" title="Select Bussiness person" type="none">
+                      <af:panelGroupLayout id="pgl42">
+                        <af:panelBox text="PanelBox4" id="pb29"
+                                     showHeader="never">
+                          <af:panelCollection id="pc23"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.SysApplicableArea.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.SysApplicableArea.rangeSize}"
+                                      emptyText="#{bindings.SysApplicableArea.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.SysApplicableArea.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.SysApplicableAreaQuery.queryDescriptor}"
+                                      queryListener="#{bindings.SysApplicableAreaQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectedRowKeys="#{bindings.SysApplicableArea.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.SysApplicableArea.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t28"
+                                      binding="#{saccosBacking.bussinessPersonTbl}">
+                              <af:column sortProperty="bpnCode"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" id="c185">
+                                <af:outputText value="#{row.bpnCode}"
+                                               id="ot215"/>
+                              </af:column>
+                              <af:column sortProperty="bpnIdNumber"
+                                         filterable="true" sortable="true"
+                                         headerText="Id Number" id="c184">
+                                <af:outputText value="#{row.bpnIdNumber}"
+                                               id="ot190"/>
+                              </af:column>
+                              <af:column sortProperty="bpnName"
+                                         filterable="true" sortable="true"
+                                         headerText="Name" id="c209">
+                                <af:outputText value="#{row.bpnName}"
+                                               id="ot192"/>
+                              </af:column>
+                              <af:column sortProperty="bpnPin" filterable="true"
+                                         sortable="true" headerText="Pin"
+                                         id="c183">
+                                <af:outputText value="#{row.bpnPin}"
+                                               id="ot191"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="cb52"
+                                            action="#{saccosBacking.selectBussinessPerson}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="cb53"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="sectorPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d11" title="Select Sector" type="none">
+                      <af:panelGroupLayout id="pgl16">
+                        <af:panelBox text="PanelBox5" id="pb4"
+                                     showHeader="never">
+                          <af:panelCollection id="pc6"
+                                              inlineStyle="width:260.0px;">
+                            <af:table value="#{bindings.Sector.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Sector.rangeSize}"
+                                      emptyText="#{bindings.Sector.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Sector.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AgentSectorsQuery.queryDescriptor}"
+                                      queryListener="#{bindings.AgentSectorsQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single" id="tblSaccoSector"
+                                      binding="#{saccosBacking.tblSaccoSector}">
+                              <af:column sortProperty="code" sortable="true"
+                                         filterFeatures="caseInsensitive"
+                                         headerText="CODE" id="c7"
+                                         filterable="true">
+                                <af:outputText value="#{row.code}" id="ot9"/>
+                              </af:column>
+                              <af:column sortProperty="name" sortable="true"
+                                         filterFeatures="caseInsensitive"
+                                         headerText="SECTOR NAME" id="c8"
+                                         filterable="true">
+                                <af:outputText value="#{row.name}" id="ot213"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="btnAcceptSector"
+                                            action="#{saccosBacking.actionAcceptSector}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL" id="btnCancelSector"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  
+                  
+                  
+                  <af:popup id="agencyBranchPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d12" type="none" title="Select a Branch">
+                      <af:panelGroupLayout id="pgl8">
+                        <af:panelCollection id="pc3" inlineStyle="width:260.0px;">                                         
+                          <af:table value="#{bindings.AccountType.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.AccountType.rangeSize}"
+                                    emptyText="#{bindings.AccountType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.AccountType.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.AgentAccountBranchesQuery.queryDescriptor}"
+                                    queryListener="#{bindings.AgentAccountBranchesQuery.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    rowSelection="single" id="tblSaccoBranch"
+                                    binding="#{saccosBacking.tblSaccoBranch}">
+                            <af:column sortProperty="id" sortable="true"
+                                       filterFeatures="caseInsensitive"
+                                       headerText="ID" id="c5"
+                                       filterable="true">
+                              <af:outputText value="#{row.id}" id="ot8"/>
+                            </af:column>
+                            <af:column sortProperty="name" sortable="true"
+                                       filterFeatures="caseInsensitive"
+                                       headerText="BRANCH NAME" 
+                                       filterable="true">
+                              <af:outputText value="#{row.name}" id="ot214"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <af:commandButton text="OK" id="cb23"
+                                          action="#{saccosBacking.actionAcceptSaccoBranch}"
+                                          partialSubmit="true"/>
+                        <af:commandButton text="Cancel" id="commandButton5"
+                                          action="#{saccosBacking.actionAcceptSaccoBranch}"
+                                          partialSubmit="false"/>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  <af:popup id="agencyRegionPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d110" type="none" title="Select a Region">
+                      <af:panelGroupLayout id="pg98">
+                        <af:panelCollection id="pc50" inlineStyle="width:260.0px;">                                      
+                          <af:table value="#{bindings.AccountType12.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.AccountType12.rangeSize}"
+                                    emptyText="#{bindings.AccountType12.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.AccountType12.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.AccountType12Query.queryDescriptor}"
+                                    queryListener="#{bindings.AccountType12Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.AccountType12.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.AccountType12.collectionModel.makeCurrent}"
+                                    rowSelection="single"
+                                    id="tblRegion"
+                                    binding="#{saccosBacking.tblRegion}"
+                                    >
+                            <af:column sortProperty="#{bindings.AccountType12.hints.regionName.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="REGION NAME"
+                                       id="c220">
+                              <af:outputText value="#{row.regionName}"
+                                             id="ot226"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.AccountType12.hints.regionCode.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="REGION CODE"
+                                       id="c221">
+                              <af:outputText value="#{row.regionCode}"
+                                             id="ot225"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                        <af:commandButton text="OK" id="cb95"
+                                          action="#{saccosBacking.actionAcceptSaccoRegion}"
+                                          partialSubmit="true"/>
+                        <af:commandButton text="Cancel" id="commandButton24"
+                                          action="#{saccosBacking.actionAcceptSaccoRegion}"
+                                          partialSubmit="false"/>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  <af:popup id="agencySBUPop" contentDelivery="lazyUncached">
+                    <af:dialog type="none" title="Select a SBU">
+                      <af:panelGroupLayout >
+                        <af:panelCollection  inlineStyle="width:260.0px;">       
+                         
+                          <af:table value="#{bindings.AccountType11.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.AccountType11.rangeSize}"
+                                    emptyText="#{bindings.AccountType11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.AccountType11.rangeSize}"
+                                    rowBandingInterval="0"
+                                    binding="#{saccosBacking.tblSaccoSBU}" 
+                                    filterModel="#{bindings.AccountType11Query.queryDescriptor}"
+                                    queryListener="#{bindings.AccountType11Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.AccountType11.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.AccountType11.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="tblSaccoSBU">
+                            
+                            <af:column sortProperty="#{bindings.AccountType11.hints.SBU_CODE.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="SBU CODE "
+                                       id="c208">
+                              <af:outputText value="#{row.SBU_CODE}"
+                                             id="ot224"/>
+                            </af:column>
+                            
+                            <af:column sortProperty="#{bindings.AccountType11.hints.SBU.name}"
+                                       filterable="true" sortable="true"
+                                       headerText="SBU"
+                                       id="c219">
+                              <af:outputText value="#{row.SBU}" id="ot223"/>
+                            </af:column>
+                            
+                          </af:table>
+                        </af:panelCollection>
+                        <af:commandButton text="OK" action="#{saccosBacking.actionAcceptSaccoSBU}"
+                                          partialSubmit="true"/>
+                        <af:commandButton text="Cancel" action="#{saccosBacking.actionAcceptSaccoSBU}"
+                                          partialSubmit="false"/>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  
+                  <af:popup id="agencyAccountPopup"
+                            binding="#{saccosBacking.agentAccountPop}"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d15" title="Sacco Account" type="none"
+                               inlineStyle="width:400.0px;">
+                      <af:inputText label="Sacco Account Code : "
+                                    id="txtAccountCode" visible="false"
+                                    binding="#{saccosBacking.txtAccountCode}"
+                                    showRequired="true" simple="true"/>
+                      <af:inputText label="Sacco Code : " id="txtAccSaccoCode"
+                                    visible="false"
+                                    binding="#{saccosBacking.txtAccSaccoCode}"
+                                    showRequired="true" simple="true"/>
+                      <af:inputText label="Created By : " id="txtAccCreatedBy"
+                                    binding="#{saccosBacking.txtAccCreatedBy}"
+                                    visible="false" showRequired="true"
+                                    simple="true"/>
+                      <af:inputDate label="Date Created : "
+                                    id="txtAccDateCreated" visible="false"
+                                    binding="#{saccosBacking.txtAccDateCreated}"
+                                    showRequired="true" simple="true">
+                                    <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                                </af:inputDate>
+                      <af:panelGroupLayout id="pgl26">
+                        <h:panelGrid columns="2" id="pg15">
+                          <af:outputLabel value="#{Rendering.AGENT_DIVISION_NAME_LABEL}" id="ol33"
+                                          showRequired="#{Rendering.AGENT_DIVISION_NAME_REQUIRED}"
+                                          visible="#{Rendering.AGENT_DIVISION_NAME_VISIBLE}"
+                                          />
+                          <h:panelGrid columns="3" id="pg16">
+                            <af:inputText label="Label 50" id="it27"
+                                          simple="true" disabled="true"
+                                          visible="false"
+                                          binding="#{saccosBacking.txtDivCode}"/>
+                            <af:inputText label="Label 50" id="it5"
+                                          simple="true" disabled="true"
+                                          visible="#{Rendering.AGENT_DIVISION_NAME_VISIBLE}"
+                                          binding="#{saccosBacking.txtDivName}"/>
+                            <af:commandButton id="cb11"
+                                          visible="#{Rendering.AGENT_DIVISION_NAME_VISIBLE}"
+                                          disabled="#{Rendering.AGENT_DIVISION_NAME_DISABLED}"
+                                          icon="/images/dropdown.gif">
+                              <af:showPopupBehavior popupId="p1"/>
+                            </af:commandButton>
+                            <af:popup id="p1">
+                              <af:dialog id="d14" title="Select Division"
+                                         dialogListener="#{saccosBacking.divisionSelected}">
+                                <af:panelGroupLayout id="pgl28">
+                                  <af:table value="#{bindings.Division.collectionModel}"
+                                            var="row"
+                                            rows="#{bindings.Division.rangeSize}"
+                                            emptyText="#{bindings.Division.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                            fetchSize="#{bindings.Division.rangeSize}"
+                                            rowBandingInterval="0"
+                                            filterModel="#{bindings.DivisionQuery.queryDescriptor}"
+                                            queryListener="#{bindings.DivisionQuery.processQuery}"
+                                            filterVisible="true" varStatus="vs"
+                                            rowSelection="single" id="t2"
+                                            binding="#{saccosBacking.divisionLov}">
+                                    <af:column sortProperty="DIV_CODE"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.Division.hints.DIV_CODE.label}"
+                                               id="c50" visible="false">
+                                      <af:outputText value="#{row.DIV_CODE}"
+                                                     id="ot52"/>
+                                    </af:column>
+                                    <af:column sortProperty="DIV_SHT_DESC"
+                                               filterable="true" sortable="true"
+                                               headerText="Division ID"
+                                               id="c48">
+                                      <af:outputText value="#{row.DIV_SHT_DESC}"
+                                                     id="ot55"/>
+                                    </af:column>
+                                    <af:column sortProperty="DIV_NAME"
+                                               filterable="true" sortable="true"
+                                               headerText="Division" id="c49">
+                                      <af:outputText value="#{row.DIV_NAME}"
+                                                     id="ot54"/>
+                                    </af:column>
+                                    <af:column sortProperty="DIV_DIVISION_STATUS"
+                                               filterable="true" sortable="true"
+                                               headerText="Status" id="c47">
+                                      <af:outputText value="#{row.DIV_DIVISION_STATUS}"
+                                                     id="ot53"/>
+                                    </af:column>
+                                  </af:table>
+                                </af:panelGroupLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </h:panelGrid>
+                          <af:outputLabel value="Generate Acc ? " id="ol2"
+                                          binding="#{saccosBacking.genAccLabel}"/>
+                          <h:panelGrid columns="2" id="pg25">
+                            <af:selectBooleanRadio label="Y" id="sbr2"
+                                                   group="genAcc"
+                                                   text="             "
+                                                   selected="true"
+                                                   valueChangeListener="#{saccosBacking.genAccNo}"
+                                                   binding="#{saccosBacking.genAcSelectYes}"
+                                                   autoSubmit="true"/>
+                            <af:selectBooleanRadio label="N" id="sbr1"
+                                                   group="genAcc"
+                                                   valueChangeListener="#{saccosBacking.genAccNo}"
+                                                   binding="#{saccosBacking.genAccNoSelect}"
+                                                   autoSubmit="true"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="Short Description :"
+                                          id="ol57"/>
+                          <h:panelGrid columns="1" id="pg17">
+                            <af:inputText label="Short Description : "
+                                          id="txtAccShortDesc"
+                                          binding="#{saccosBacking.txtAccShortDesc}"
+                                          showRequired="true" simple="true"
+                                          disabled="true"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="Name :" id="ol58"/>
+                          <h:panelGrid columns="1" id="pg18">
+                            <af:inputText label="Name : " id="txtAccName"
+                                          binding="#{saccosBacking.txtAccName}"
+                                          showRequired="true" simple="true"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="Status :" id="ol59"/>
+                          <h:panelGrid columns="1" id="pg19">
+                            <af:selectOneChoice label="Status : " value="ACTIVE"
+                                                id="txtSaccoAccStatus"
+                                                binding="#{saccosBacking.txtSaccoAccStatus}"
+                                                showRequired="true"
+                                                simple="true">
+                              <af:selectItem label="ACTIVE" value="ACTIVE"
+                                             id="si43"/>
+                              <af:selectItem label="INACTIVE" value="INACTIVE"
+                                             id="si45"/>
+                              <af:selectItem label="SUSPENDED" value="SUSPENDED"
+                                             id="si32"/>
+                            </af:selectOneChoice>
+                          </h:panelGrid>
+                          <af:outputLabel value="Remarks :" id="ol60"/>
+                          <h:panelGrid columns="1" id="pg20">
+                            <af:inputText label="Remarks : " id="txtAccRemarks"
+                                          binding="#{saccosBacking.txtAccRemarks}"
+                                          simple="true"/>
+                          </h:panelGrid>
+                          <af:outputLabel value="WEF Date :" id="ol61"/>
+                          <h:panelGrid columns="1" id="pg21">
+                            <af:inputDate label="WEF Date : " id="txtAccWef"
+                                          binding="#{saccosBacking.txtAccWef}"
+                                          showRequired="true" simple="true">
+                                          <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                                </af:inputDate>
+                          </h:panelGrid>
+                          <af:outputLabel value="WET Date :" id="ol62"/>
+                          <h:panelGrid columns="1" id="pg22">
+                            <af:inputDate label="WET Date : " id="txtAccWet"
+                                          binding="#{saccosBacking.txtAccWet}"
+                                          simple="true">
+                                          <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                                </af:inputDate>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" id="pg29">
+                          <af:commandButton text="Save"
+                                            id="btnSaveUpdateSaccoAccount"
+                                            binding="#{saccosBacking.btnSaveUpdateSaccoAccount}"
+                                            action="#{saccosBacking.actionSaveUpdateSaccoAccount}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="Cancel"
+                                            id="btnCancelSaccoAccount"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  
+                  
+                  <af:popup id="regPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d6" title="Registration Details" type="none">
+                      <af:panelGroupLayout id="pgl11">
+                        <h:panelGrid columns="1" id="pg47">
+                          <af:inputText label="Label 33" id="regkey"
+                                        visible="false" simple="true"
+                                        binding="#{saccosBacking.regkey}"/>
+                          <h:panelGrid columns="2" id="pg46">
+                            <af:outputLabel value="Year:" id="ol34"
+                                            showRequired="true"/>
+                            <h:panelGrid columns="1" id="pg48">
+                              <af:inputDate label="Label 1" id="regyear"
+                                            simple="true"
+                                            binding="#{saccosBacking.regyear}">
+                               <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                              </af:inputDate>
+                            </h:panelGrid>
+                            <af:outputLabel value="Reg No:" id="ol35"
+                                            showRequired="true"/>
+                            <h:panelGrid columns="1" id="pg49">
+                              <af:inputText label="Label 32" id="regno"
+                                            simple="true"
+                                            binding="#{saccosBacking.regno}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Wef" id="ol36"
+                                            showRequired="true"/>
+                            <h:panelGrid columns="1" id="pg50">
+                              <af:inputDate label="Label 2" id="regWef"
+                                            simple="true"
+                                            binding="#{saccosBacking.regWef}">
+                              <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                              </af:inputDate>
+                            </h:panelGrid>
+                            <af:outputLabel value="Wet" id="ol37"
+                                            showRequired="true"/>
+                            <h:panelGrid columns="1" id="pg51">
+                              <af:inputDate label="Label 3" id="regWet"
+                                            simple="true"
+                                            binding="#{saccosBacking.regWet}">
+                              <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                              </af:inputDate>
+                            </h:panelGrid>
+                            <af:outputLabel value="Accepted" id="ol38"
+                                            showRequired="true"/>
+                            <h:panelGrid columns="1" id="pg52">
+                              <af:selectOneChoice label="Label 4"
+                                                  id="regAccepted" simple="true"
+                                                  binding="#{saccosBacking.regAccepted}">
+                                <af:selectItem label="Yes" value="Y" id="si34"/>
+                                <af:selectItem label="No" value="N" id="si33"/>
+                              </af:selectOneChoice>
+                            </h:panelGrid>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                        <af:commandButton text="Save" id="saveRegDetails"
+                                          action="#{saccosBacking.saveRegistrationDetails}"
+                                          binding="#{saccosBacking.saveRegistrationDetails}"
+                                          partialSubmit="true"/>
+                        <af:commandButton text="Cancel" id="cancelRegDetails"/>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="agentDirectorsPop"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d7" title="Sacco Directors" type="none">
+                      <af:panelGroupLayout id="pgl12">
+                        <h:panelGrid columns="1" id="pg53">
+                          <af:inputText label="Label 36" id="agencyDirectorId"
+                                        simple="true" visible="false"
+                                        binding="#{saccosBacking.agencyDirectorId}"/>
+                          <h:panelGrid columns="2" id="pg54">
+                            <af:outputLabel value="Year:" id="ol39"
+                                            showRequired="true"/>
+                            <h:panelGrid columns="1" id="pg55">
+                              <af:inputDate label="Label 4" id="directYr"
+                                            simple="true"
+                                            binding="#{saccosBacking.directYr}">
+                               <af:convertDateTime pattern="yyyy"/>
+                              </af:inputDate>
+                            </h:panelGrid>
+                            <af:outputLabel value="Name:" id="ol40"
+                                            showRequired="true"/>
+                            <h:panelGrid columns="1" id="pg56">
+                              <af:inputText label="Label 34" id="directname"
+                                            simple="true"
+                                            binding="#{saccosBacking.directname}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Professional Qualifications:"
+                                            showRequired="true" id="ol41"/>
+                            <h:panelGrid columns="1" id="pg57">
+                              <af:inputText label="Label 35"
+                                            id="directQualifications" rows="3"
+                                            simple="true"
+                                            binding="#{saccosBacking.directQualifications}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="%age Shareholding" id="ol42"
+                                            showRequired="true"/>
+                            <h:panelGrid columns="1" id="pg58">
+                              <af:inputNumberSpinbox label="Label 3"
+                                                     id="directshare"
+                                                     simple="true" maximum="100"
+                                                     minimum="0"
+                                                     binding="#{saccosBacking.directshare}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Phone Number" id="ol28"/>
+                          <h:panelGrid columns="1" id="pg41">
+    <af:inputText label="Label 54" id="it19" simple="true"
+                                          binding="#{saccosBacking.txtPhoneNumber}"/>
+                                          </h:panelGrid>    
+                              <af:outputText value="Principle Director?" id="ot158"/>
+                            <h:panelGrid columns="1" id="pg42">
+                              <af:selectOneChoice label="Label 5"
+                                                  id="webUserStatus"
+                                                  simple="true"
+                                                  binding="#{saccosBacking.txtPrincipleDirector}"
+                                                  autoSubmit="true">
+                                <af:selectItem label="YES" value="Y" id="si38"/>
+                                <af:selectItem label="NO" value="N" id="si37"/>
+                              </af:selectOneChoice>
+                            </h:panelGrid>
+                            <af:outputLabel value="Nationality" id="ol29"/>
+                            <h:panelGrid columns="2" id="pg44">
+                              <af:panelGroupLayout id="pgl37">
+                                <af:inputText label="Nationality : "
+                                              id="txtClientTitle" simple="true"
+                                              columns="20" disabled="true"
+                                              binding="#{saccosBacking.txtNationality}"/>
+                                <af:commandButton id="cb42"
+                                                  icon="/images/dropdown.gif"
+                                                  shortDesc="Click to select Country">
+                                  <af:showPopupBehavior popupId="p4"/>
+                                </af:commandButton>
+                              </af:panelGroupLayout>
+                            </h:panelGrid>
+                          </h:panelGrid>
+                          <af:commandButton text="Save"
+                                            id="saveAgDirectorButton"
+                                            partialSubmit="true"
+                                            action="#{saccosBacking.saveAgDirectorsAction}"
+                                            binding="#{saccosBacking.saveAgDirectorButton}"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  <af:popup id="webUserPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d9" type="none" title="Add New User">
+                      <af:panelGroupLayout id="pgl14">
+                        <h:panelGrid columns="1" id="pg68">
+                          <af:inputText label="Label 49" id="webUserId"
+                                        simple="true" visible="false"
+                                        binding="#{saccosBacking.webUserId}"/>
+                          <h:panelGrid columns="2" id="pg69">
+                            <af:outputLabel value="Username:" id="ol49"/>
+                            <h:panelGrid columns="1" id="pg70">
+                              <af:inputText label="Label 44" id="webusername"
+                                            simple="true"
+                                            binding="#{saccosBacking.webusername}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Full Names:" id="ol50"/>
+                            <h:panelGrid columns="1" id="pg71">
+                              <af:inputText label="Label 45" id="webfullNames"
+                                            simple="true"
+                                            binding="#{saccosBacking.webfullNames}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Password:" id="ol56"/>
+                            <h:panelGrid columns="1" id="pg81">
+                              <af:inputText label="Label 48" id="webPassword"
+                                            secret="true" simple="true"
+                                            binding="#{saccosBacking.webPassword}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="User Email:" id="ol51"/>
+                            <h:panelGrid columns="1" id="pg72">
+                              <af:inputText label="Label 46" id="webEmail"
+                                            simple="true"
+                                            binding="#{saccosBacking.webEmail}">
+                                <af:validateRegExp pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}"
+                                                   messageDetailNoMatch='"The value {1} is not a valid email address "'/>
+                              </af:inputText>
+                            </h:panelGrid>
+                            <af:outputLabel value="Tel No:" id="ol5643"/>
+                            <h:panelGrid columns="1" id="pg7776">
+                              <af:inputText label="Label 48" id="telNo"
+                                            simple="true"
+                                            binding="#{saccosBacking.telNo}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Personel Rank" id="ol52"/>
+                            <h:panelGrid columns="1" id="pg73">
+                              <af:inputText label="Label 47"
+                                            id="webPersonalRank" simple="true"
+                                            binding="#{saccosBacking.webPersonalRank}"/>
+                            </h:panelGrid>
+                            <af:outputLabel value="Allow Login" id="ol53"/>
+                            <h:panelGrid columns="2" id="pg74">
+                              <af:selectOneRadio label="Label 1"
+                                                 id="webAllowLogin"
+                                                 simple="true"
+                                                 binding="#{saccosBacking.webAllowLogin}">
+                                <af:selectItem label="Yes" value="Y" id="si64"/>
+                                <af:selectItem label="No" value="N" id="si23"/>
+                              </af:selectOneRadio>
+                            </h:panelGrid>
+                            <af:outputLabel value="User Status:" id="ol54"/>
+                            <h:panelGrid columns="1" id="pg75">
+                              <af:selectOneChoice label="Label 5"
+                                                  id="soc5"
+                                                  simple="true"
+                                                  binding="#{saccosBacking.webUserStatus}">
+                                <af:selectItem label="Active" value="A"
+                                               id="si27"/>
+                                <af:selectItem label="Inactive" value="I"
+                                               id="si28"/>
+                              </af:selectOneChoice>
+                            </h:panelGrid>
+                            <af:outputLabel value="Reset?" id="ol55"/>
+                            <h:panelGrid columns="1" id="pg76">
+                              <af:selectOneRadio label="Label 2" id="webReset"
+                                                 simple="true"
+                                                 binding="#{saccosBacking.webReset}">
+                                <af:selectItem label="Yes" value="Y" id="si40"/>
+                                <af:selectItem label="No" value="N" id="si39"/>
+                              </af:selectOneRadio>
+                            </h:panelGrid>
+                            <af:outputLabel value="System"  id="ol19"/>
+                            <h:panelGrid columns="2" id="pg82">
+                              <af:inputText label="Label 52" id="it16" simple="true" disabled="true"
+                                            binding="#{saccosBacking.txtBranches}"/>
+                              <af:commandButton icon="/images/dropdown.gif"
+                                                id="cb14" partialSubmit="true"
+                                                shortDesc="Click to select System">
+                                                 <af:showPopupBehavior popupId="p3"/>
+                                                 </af:commandButton>
+                              <af:popup id="p3" contentDelivery="immediate">
+                                <af:dialog id="d31" title="Select User System"
+                                           type="none">
+                                  <af:table value="#{bindings.AccountsType3.collectionModel}"
+                                            var="row"
+                                            rows="#{bindings.AccountsType3.rangeSize}"
+                                            emptyText="#{bindings.AccountsType3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                            fetchSize="#{bindings.AccountsType3.rangeSize}"
+                                            rowBandingInterval="0"
+                                            filterModel="#{bindings.AccountsType3Query.queryDescriptor}"
+                                            queryListener="#{bindings.AccountsType3Query.processQuery}"
+                                            filterVisible="true" varStatus="vs"
+                                            selectedRowKeys="#{bindings.AccountsType3.collectionModel.selectedRow}"
+                                            selectionListener="#{bindings.AccountsType3.collectionModel.makeCurrent}"
+                                            rowSelection="single" id="t19"
+                                            binding="#{saccosBacking.txtSystems}">
+                                    <af:column sortProperty="sysCode" visible="false"
+                                               filterable="true" sortable="true"
+                                               headerText="Code" id="c115">
+                                      <af:outputText value="#{row.sysCode}"
+                                                     id="ot123"/>
+                                    </af:column>
+                                    <af:column sortProperty="sysName" width="150"
+                                               filterable="true" sortable="true"
+                                               headerText="Name" id="c116">
+                                      <af:outputText value="#{row.sysName}"
+                                                     id="ot122"/>
+                                    </af:column>
+                                    <af:column sortProperty="sysShtDesc" width="150"
+                                               filterable="true" sortable="true"
+                                               headerText="Sht Desc" id="c117">
+                                      <af:outputText value="#{row.sysShtDesc}"
+                                                     id="ot121"/>
+                                    </af:column>
+                                  </af:table>
+                                  <af:commandButton text="Ok"
+                                                    id="cb27"
+                                                    action="#{saccosBacking.saveSystem}"/>
+                                </af:dialog>
+                              </af:popup>
+                            </h:panelGrid>
+                          </h:panelGrid>
+                          <af:commandButton text="Save" id="saveWebUsersButton"
+                                            action="#{saccosBacking.saveWebUsersOperation}"
+                                            binding="#{saccosBacking.saveWebUsersButton}"
+                                            partialSubmit="true"/>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="glAccountsPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d5" title="GL Accounts List" type="none">
+                      <af:panelGroupLayout id="pgl27">
+                        <af:panelBox text="PanelBox5" id="pb12"
+                                     showHeader="never">
+                          <af:panelCollection id="pc7"
+                                              inlineStyle="width:300.0px;">
+                            <af:table value="#{bindings.AccountsType2.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountsType2.rangeSize}"
+                                      emptyText="#{bindings.AccountsType2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountsType2.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AccountsType2Query.queryDescriptor}"
+                                      queryListener="#{bindings.AccountsType2Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single" id="t1"
+                                      binding="#{saccosBacking.tblGlAccounts}">
+                              <af:column sortProperty="accNumber"
+                                         filterFeatures="caseInsensitive"
+                                         filterable="true" sortable="true"
+                                         headerText="Account Number" id="c45">
+                                <af:outputText value="#{row.accNumber}"
+                                               id="ot51"/>
+                              </af:column>
+                              <af:column sortProperty="accName"
+                                         filterable="true"
+                                         filterFeatures="caseInsensitive"
+                                         sortable="true"
+                                         headerText="Account Name" id="c46">
+                                <af:outputText value="#{row.accName}"
+                                               id="ot50"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <af:commandButton text="OK" id="btnAcceptGlAccount"
+                                            action="#{saccosBacking.actionAcceptGlAccount}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="CANCEL"
+                                            id="btnCancelGlAccount"/>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="accountTypesPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d16" title="Account Types List" type="none"
+                               inlineStyle="width:500.0px;">
+                      <af:panelGroupLayout id="pgl19">
+                        <af:panelBox text="PanelBox15" id="pb13"
+                                     showHeader="never">
+                          <af:panelCollection id="pc9"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <af:table value="#{bindings.AccountsType.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountsType.rangeSize}"
+                                      emptyText="#{bindings.AccountsType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountsType.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AccountsTypeQuery.queryDescriptor}"
+                                      queryListener="#{bindings.AccountsTypeQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single" id="t5"
+                                      binding="#{saccosBacking.tblAccountTypesPop}"
+                                      summary="Account Types"
+                                      inlineStyle="width:99%;">
+                              <af:column sortProperty="accountTypeShortDesc"
+                                         filterFeatures="caseInsensitive"
+                                         filterable="true" sortable="true"
+                                         headerText="Short Desc" id="c61">
+                                <af:outputText value="#{row.accountTypeShortDesc}"
+                                               id="ot63"/>
+                              </af:column>
+                              <af:column sortProperty="accountType"
+                                         filterFeatures="caseInsensitive"
+                                         filterable="true" sortable="true"
+                                         headerText="Account Type" id="c55"
+                                         width="200">
+                                <af:outputText value="#{row.accountType}"
+                                               id="ot67"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="pg30">
+                            <af:commandButton text="Ok"
+                                              id="btnAcceptAccountTypes"
+                                              action="#{saccosBacking.actionAcceptAccountTypes}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Cancel"
+                                              id="btnCancelAccountTypes"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="agencySystemPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d17" title="Sacco System Definition"
+                               type="none" inlineStyle="width:380.0px;">
+                      <af:panelBox text="PanelBox9" id="pb14" showHeader="never"
+                                   binding="#{saccosBacking.panelSaccoSystem}">
+                        <af:panelFormLayout id="pfl6">
+                          <af:inputText label="System Code : " id="it6"
+                                        binding="#{saccosBacking.txtAsysSysCode}"
+                                        visible="false"/>
+                          <af:inputText label="Sacco Code : " id="it7"
+                                        binding="#{saccosBacking.txtAsysAgnCode}"
+                                        visible="false"/>
+                          <af:inputDate label="WEF : " id="id3"
+                                        binding="#{saccosBacking.txtAsysWef}"
+                                        disabled="true">
+                                        <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                                </af:inputDate>
+                          <af:inputDate label="WET : " id="id4"
+                                        binding="#{saccosBacking.txtAsysWet}"
+                                        disabled="true">
+                                        <af:convertDateTime pattern="#{Rendering.systemDateFormat}" secondaryPattern="ddMMyyyy"/>
+                                </af:inputDate>
+                          <af:inputText label="Comment : " id="it9"
+                                        binding="#{saccosBacking.txtAsysComments}"
+                                        visible="false"/>
+                          <af:inputNumberSpinbox label="SubDivision Id:" id="ins1"
+                                                 visible="false"
+                                                 binding="#{saccosBacking.txtAsysOsdId}"/>
+                          <af:inputText label="SubDivision Code : " id="it10"
+                                        binding="#{saccosBacking.txtAsysOsdCode}"
+                                        visible="false"/>
+                          <af:panelLabelAndMessage label="SubDivision : "
+                                                   id="plam9">
+                            <af:inputText label="SubDivision : " id="it11"
+                                          simple="true" disabled="true"
+                                          binding="#{saccosBacking.txtOsdName}"/>
+                            <af:commandButton icon="/images/dropdown.gif"
+                                              id="cb26" partialSubmit="true"
+                                              action="#{saccosBacking.actionShowSubDivisionsLov}"
+                                              shortDesc="Click to select SubDivisions"/>
+                          </af:panelLabelAndMessage>
+                        </af:panelFormLayout>
+                        <h:panelGrid columns="2" id="pg23">
+                          <af:commandButton text="Save" id="cb15"
+                                            binding="#{saccosBacking.btnSaveUpdateSaccoSystem}"
+                                            action="#{saccosBacking.actionSaveUpdateSaccoSystem}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="Cancel" id="cb16"/>
+                        </h:panelGrid>
+                      </af:panelBox>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="orgSubDivisionsPop"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d18" title="Org SubDivisions List"
+                               type="none" inlineStyle="width:380.0px;">
+                      <af:panelGroupLayout id="pgl29">
+                        <af:panelBox text="PanelBox5" id="pb15"
+                                     showHeader="never">
+                          <af:panelCollection id="pc12"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <af:table value="#{bindings.OrgSubDivision.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.OrgSubDivision.rangeSize}"
+                                      emptyText="#{bindings.OrgSubDivision.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.OrgSubDivision.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.OrgSubDivisionQuery.queryDescriptor}"
+                                      queryListener="#{bindings.OrgSubDivisionQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single" 
+                                      id="t4"
+                                      binding="#{saccosBacking.tblOrgSubDivisions}" 
+                                      summary="Org SubDivisions List">
+                              <af:column sortProperty="osdCode"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" id="c59">
+                                <af:outputText value="#{row.osdCode}"
+                                               id="ot62"/>
+                              </af:column>
+                              <af:column sortProperty="osdName"
+                                         filterable="true" sortable="true"
+                                         headerText="Name" id="c52" width="200">
+                                <af:outputText value="#{row.osdName}"
+                                               id="ot58"/>
+                              </af:column>
+                            </af:table>
+                            <af:table value="#{bindings.OrgSubDivision.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.OrgSubDivision.rangeSize}"
+                                      emptyText="#{bindings.OrgSubDivision.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.OrgSubDivision.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.OrgSubDivisionQuery.queryDescriptor}"
+                                      queryListener="#{bindings.OrgSubDivisionQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single" id="t4"
+                                      binding="#{saccosBacking.tblOrgSubDivisions}"
+                                      summary="Org SubDivisions List">
+                              <af:column sortProperty="osdCode"
+                                         filterFeatures="caseInsensitive"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" id="c56">
+                                <af:outputText value="#{row.osdCode}"
+                                               id="ot42"/>
+                              </af:column>
+                              <af:column sortProperty="osdName"
+                                         filterFeatures="caseInsensitive"
+                                         filterable="true" sortable="true"
+                                         headerText="Name" id="c54" width="200">
+                                <af:outputText value="#{row.osdName}"
+                                               id="ot69"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="pg24">
+                            <af:commandButton text="Ok"
+                                              id="btnAcceptOrgSubDivision"
+                                              action="#{saccosBacking.actionAcceptOrgSubDivision}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Cancel"
+                                              id="btnCancelOrgSubDivision"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="ServerMessage" contentDelivery="lazyUncached">
+                    <af:dialog id="d26q" title="Server Response" type="ok"
+                               inlineStyle="width:300.0px;">
+                      <af:outputText id="textToShow"
+                                     binding="#{saccosBacking.textToShow}"/>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="confirmSaveSacco"
+                            contentDelivery="lazyUncached">
+                    <af:dialog id="d19" type="yesNo" title="Confirm Save "
+                               dialogListener="#{saccosBacking.confirmSaveSaccoDialogListener}">
+                      <af:outputLabel value="There Exist Some Records similar to the one your are just about to save :: Continue ?"
+                                      id="ol66"/>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="statesPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d21" type="none"
+                               inlineStyle="width:300.0px;"
+                               binding="#{saccosBacking.dlgAdminRegionList}">
+                      <af:panelGroupLayout id="pgl30">
+                        <af:panelBox text="PanelBox4" id="pb16"
+                                     showHeader="never">
+                          <af:panelCollection id="pc15"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <af:table value="#{bindings.State.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.State.rangeSize}"
+                                      emptyText="#{bindings.State.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.State.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.StateQuery.queryDescriptor}"
+                                      queryListener="#{bindings.StateQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectedRowKeys="#{bindings.State.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.State.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t9"
+                                      binding="#{saccosBacking.tblAdminRegions}">
+                            <af:column sortProperty="stateCode"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" >
+                                <af:outputText value="#{row.stateCode}" />
+                              </af:column>
+                              <af:column sortProperty="stateShortDesc"
+                                         filterable="true" sortable="true"
+                                         headerText="Short Desc" >
+                                <af:outputText value="#{row.stateShortDesc}" />
+                              </af:column>
+                              <af:column sortProperty="stateName"
+                                         filterable="true" sortable="true"
+                                         headerText="Name"  width="200">
+                                <af:outputText value="#{row.stateName}" />
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="pg27">
+                            <af:commandButton text="Ok" id="btnAcceptState"
+                                              action="#{saccosBacking.actionAcceptState}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Cancel"
+                                              id="btnCancelState"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="BanksPop" contentDelivery="lazyUncached">
+                    <af:dialog id="d26" type="none" title="Banks">
+                      <af:panelBox text="PanelBox16" id="pb3"
+                                   showHeader="never">
+                        <f:facet name="toolbar"/>
+                        <af:table value="#{bindings.Bank.collectionModel}"
+                                  var="row" rows="#{bindings.Bank.rangeSize}"
+                                  emptyText="#{bindings.Bank.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Bank.rangeSize}"
+                                  rowBandingInterval="1"
+                                  filterModel="#{bindings.BankQuery.queryDescriptor}"
+                                  queryListener="#{bindings.BankQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectedRowKeys="#{bindings.Bank.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.Bank.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t8"
+                                  binding="#{saccosBacking.tblBanks}">
+                          <af:column sortProperty="shortDesc" filterable="true"
+                                     sortable="true" headerText="Bank Code"
+                                     id="c67" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.shortDesc}" id="ot3"/>
+                          </af:column>
+                          <af:column sortProperty="bankName" filterable="true"
+                                     sortable="true" headerText="Bank Name"
+                                     id="c66" width="200"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.bankName}" id="ot62"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelBox>
+                      <h:panelGrid columns="4" id="pg26">
+                        <af:commandButton text="Ok" id="cb62"
+                                          action="#{saccosBacking.actionAcceptBank}"
+                                          partialSubmit="true"/>
+                        <af:spacer width="10" height="10" id="s23"/>
+                        <af:commandButton text="Cancel" id="cb8"/>
+                      </h:panelGrid>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="BankBranchesPOP" contentDelivery="lazyUncached">
+                    <af:dialog id="dialog1" type="none" title="Bank Branches">
+                      <af:panelBox text="PanelBox16" id="panelBox1"
+                                   showHeader="never">
+                        <f:facet name="toolbar"/>
+                        <af:table value="#{bindings.BankBranch.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.BankBranch.rangeSize}"
+                                  emptyText="#{bindings.BankBranch.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.BankBranch.rangeSize}"
+                                  rowBandingInterval="1"
+                                  filterModel="#{bindings.BankBranchQuery.queryDescriptor}"
+                                  queryListener="#{bindings.BankBranchQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectedRowKeys="#{bindings.BankBranch.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.BankBranch.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t10"
+                                  binding="#{saccosBacking.tblBankBranches}">
+                          <af:column sortProperty="shortDesc" filterable="true"
+                                     sortable="true" headerText="Short Desc"
+                                     id="c72" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.shortDesc}" id="ot78"/>
+                          </af:column>
+                          <af:column sortProperty="branchName" filterable="true"
+                                     sortable="true" headerText="Branch Name"
+                                     id="c2" filterFeatures="caseInsensitive"
+                                     width="200">
+                            <af:outputText value="#{row.branchName}" id="ot64"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelBox>
+                      <h:panelGrid columns="4" id="panelGrid1">
+                        <af:commandButton text="Ok" id="commandButton3"
+                                          action="#{saccosBacking.actionAcceptBankBranch}"
+                                          partialSubmit="true"/>
+                        <af:spacer width="10" height="10" id="spacer1"/>
+                        <af:commandButton text="Cancel" id="commandButton4"/>
+                      </h:panelGrid>
+                    </af:dialog>
+                  </af:popup>
+                    <af:popup id="p4" contentDelivery="lazyUncached">
+                    <af:dialog id="d35" type="none" title="select Country">
+                      <af:panelBox text="PanelBox16" id="pb25"
+                                   showHeader="never">
+                        <f:facet name="toolbar"/>
+                        <af:table value="#{bindings.Country2.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Country2.rangeSize}"
+                                  emptyText="#{bindings.Country2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Country2.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.Country2Query.queryDescriptor}"
+                                  queryListener="#{bindings.Country2Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{bindings.Country2.collectionModel.makeCurrent}"
+                                  selectedRowKeys="#{bindings.Country2.collectionModel.selectedRow}"
+                                  rowSelection="single" id="t23"
+                                  binding="#{saccosBacking.countryTbl}">
+                          <af:column sortProperty="code" filterable="true" visible="false"
+                                     sortable="true" headerText="Code"
+                                     id="c158">
+                            <af:outputText value="#{row.code}" id="ot163"/>
+                          </af:column>
+                          <af:column sortProperty="shortDesc" filterable="true"
+                                     sortable="true" headerText="Sht Desc"
+                                     id="c155">
+                            <af:outputText value="#{row.shortDesc}" id="ot164"/>
+                          </af:column>
+                          <af:column sortProperty="name" filterable="true"
+                                     sortable="true" headerText="Name"
+                                     id="c156">
+                            <af:outputText value="#{row.name}" id="ot165"/>
+                          </af:column>
+                          <af:column sortProperty="baseCurrency" visible="false"
+                                     filterable="true" sortable="true"
+                                     headerText="Base Currency" id="c157">
+                            <af:outputText value="#{row.baseCurrency}"
+                                           id="ot162"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelBox>
+                      <h:panelGrid columns="4" id="pg43">
+                        <af:commandButton text="Ok" id="cb69"
+                                          action="#{saccosBacking.selectCountry}"
+                                          partialSubmit="true"
+                                          actionListener="#{saccosBacking.selectCountry}"/>
+                        <af:spacer width="10" height="10" id="s32"/>
+                        <af:commandButton text="Cancel" id="cb41"/>
+                      </h:panelGrid>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="accountTypeEdit" contentDelivery="lazyUncached">
+                    <af:dialog id="dialog2" title="Account Types List"
+                               type="none" inlineStyle="width:500.0px;">
+                      <af:panelGroupLayout id="panelGroupLayout4">
+                        <af:panelBox text="PanelBox15" id="panelBox3"
+                                     showHeader="never">
+                          <af:panelCollection id="panelCollection1"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <af:table value="#{bindings.AccountsType.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AccountsType.rangeSize}"
+                                      emptyText="#{bindings.AccountsType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AccountsType.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AccountsTypeQuery.queryDescriptor}"
+                                      queryListener="#{bindings.AccountsTypeQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      rowSelection="single" id="table1"
+                                      binding="#{saccosBacking.tblAccountTypesPopEdit}"
+                                      summary="Account Types"
+                                      inlineStyle="width:99%;">
+                              <af:column sortProperty="accountTypeShortDesc"
+                                         filterFeatures="caseInsensitive"
+                                         filterable="true" sortable="true"
+                                         headerText="Short Desc" id="column3">
+                                <af:outputText value="#{row.accountTypeShortDesc}"
+                                               id="outputText3"/>
+                              </af:column>
+                              <af:column sortProperty="accountType"
+                                         filterFeatures="caseInsensitive"
+                                         filterable="true" sortable="true"
+                                         headerText="Account Type" id="column4"
+                                         width="200">
+                                <af:outputText value="#{row.accountType}"
+                                               id="outputText4"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="panelGrid3">
+                            <af:commandButton text="Ok" id="commandButton6"
+                                              action="#{saccosBacking.actionAcceptAccountTypeEdit}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Cancel"
+                                              id="commandButton7"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                    <af:popup id="OrgRating" contentDelivery="lazyUncached">
+                    <af:dialog id="d36" title="Select Rating Org"
+                               type="none" inlineStyle="width:500.0px;">
+                      <af:panelGroupLayout id="pgl39">
+                        <af:panelBox text="PanelBox15" id="pb27"
+                                     showHeader="never">
+                          <af:panelCollection id="pc21"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <af:table value="#{bindings.Division4.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Division4.rangeSize}"
+                                      emptyText="#{bindings.Division4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Division4.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.Division1Query.queryDescriptor}"
+                                      queryListener="#{bindings.Division1Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                       selectionListener="#{bindings.Division4.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t25"
+                                        binding="#{saccosBacking.orgRatingTbl}">
+                              <af:column sortProperty="rorgCode" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" id="c163">
+                                <af:outputText value="#{row.rorgCode}"
+                                               id="ot170"/>
+                              </af:column>
+                              <af:column sortProperty="rorgDesc" width="250"
+                                         filterable="true" sortable="true"
+                                         headerText="Desc" id="c164">
+                                <af:outputText value="#{row.rorgDesc}"
+                                               id="ot169"/>
+                              </af:column>
+                              <af:column sortProperty="rorgShtDesc" width="250"
+                                         filterable="true" sortable="true"
+                                         headerText="Sht Desc" id="c162">
+                                <af:outputText value="#{row.rorgShtDesc}"
+                                               id="ot171"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="pg45">
+                            <af:commandButton text="Ok" id="cb45"
+                                              action="#{saccosBacking.selectRatingOrganizations}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Cancel"
+                                              id="cb46"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                   <af:popup id="prefixPOP" contentDelivery="lazyUncached">
+              <af:dialog id="d43" title="Select a  Prefix" type="none">
+                <af:panelGroupLayout id="pgl46">
+                  <af:panelCollection id="pc34" inlineStyle="width:250.0px;">
+                          <af:table value="#{bindings.ServiceProvider1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.ServiceProvider1.rangeSize}"
+                                    emptyText="#{bindings.ServiceProvider1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.ServiceProvider1.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.ServiceProvider1Query.queryDescriptor}"
+                                    queryListener="#{bindings.ServiceProvider1Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.ServiceProvider1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.ServiceProvider1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t27"
+                                    binding="#{saccosBacking.prefixTbl}">
+                            <af:column sortProperty="prefix" filterable="true"
+                                       sortable="true"
+                                       headerText="#{bindings.ServiceProvider1.hints.prefix.label}"
+                                       id="c176">
+                              <af:outputText value="#{row.prefix}" id="ot184"/>
+                            </af:column>
+                            <af:column sortProperty="mptCode" filterable="true" visible="false"
+                                       sortable="true"
+                                       headerText="#{bindings.ServiceProvider1.hints.mptCode.label}"
+                                       id="c177">
+                              <af:outputText value="#{row.mptCode}" id="ot183"/>
+                            </af:column>
+                            <af:column sortProperty="mptpCode" filterable="true" visible="false"
+                                       sortable="true"
+                                       headerText="#{bindings.ServiceProvider1.hints.mptpCode.label}"
+                                       id="c178">
+                              <af:outputText value="#{row.mptpCode}"
+                                             id="ot185"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                  <af:commandButton text="OK" id="cb72"
+                                    action="#{saccosBacking.selectPrefix}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="CANCEL" id="cb73"/>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="prefixPOP2" contentDelivery="lazyUncached">
+              <af:dialog id="d44" title="Select a  Prefix" type="none">
+                <af:panelGroupLayout id="pgl50">
+                  <af:panelCollection id="pc28" inlineStyle="width:250.0px;">
+                          <af:table value="#{bindings.ServiceProvider1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.ServiceProvider1.rangeSize}"
+                                    emptyText="#{bindings.ServiceProvider1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.ServiceProvider1.rangeSize}"
+                                    rowBandingInterval="0"
+                                    filterModel="#{bindings.ServiceProvider1Query.queryDescriptor}"
+                                    queryListener="#{bindings.ServiceProvider1Query.processQuery}"
+                                    filterVisible="true" varStatus="vs"
+                                    selectedRowKeys="#{bindings.ServiceProvider1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.ServiceProvider1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t36"
+                                    binding="#{saccosBacking.prefixTbl2}">
+                            <af:column sortProperty="prefix" filterable="true"
+                                       sortable="true"
+                                       headerText="#{bindings.ServiceProvider1.hints.prefix.label}"
+                                       id="c215">
+                              <af:outputText value="#{row.prefix}" id="ot220"/>
+                            </af:column>
+                            <af:column sortProperty="mptCode" filterable="true" visible="false"
+                                       sortable="true"
+                                       headerText="#{bindings.ServiceProvider1.hints.mptCode.label}"
+                                       id="c217">
+                              <af:outputText value="#{row.mptCode}" id="ot221"/>
+                            </af:column>
+                            <af:column sortProperty="mptpCode" filterable="true" visible="false"
+                                       sortable="true"
+                                       headerText="#{bindings.ServiceProvider1.hints.mptpCode.label}"
+                                       id="c218">
+                              <af:outputText value="#{row.mptpCode}"
+                                             id="ot222"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelCollection>
+                  <af:commandButton text="OK" id="cb65"
+                                    action="#{saccosBacking.selectPrefix2}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="CANCEL" id="cb66"/>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+                  
+          <af:popup id="currenciesPop" contentDelivery="lazyUncached">
+              <af:dialog id="d33" title="Currency" type="none" inlineStyle="width:300.0px;">
+                <af:panelGroupLayout id="pgl55">
+                  <af:panelBox text="PanelBox4" id="pb34" showHeader="never">
+                    <af:panelCollection id="pc30" styleClass="AFAuxiliaryStretchWidth">
+                       <af:table value="#{bindings.Currency.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Currency.rangeSize}"
+                                    emptyText="#{bindings.Currency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Currency.rangeSize}"
+                                    rowBandingInterval="0"
+                                    selectedRowKeys="#{bindings.Currency.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.Currency.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t21"
+                                    binding="#{saccosBacking.tblCurrencyPop}">
+                            <af:column sortProperty="#{bindings.Currency.hints.description.name}"
+                                       sortable="false"
+                                       headerText="Description"
+                                       id="c149">
+                              <af:outputText value="#{row.description}"
+                                             id="ot155"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.Currency.hints.symbol.name}"
+                                       sortable="false"
+                                       headerText="Symbol"
+                                       id="c150">
+                              <af:outputText value="#{row.symbol}" id="ot154"/>
+                            </af:column>
+                          </af:table>
+                    </af:panelCollection>		
+                    <h:panelGrid columns="2" id="pg90">
+                      <af:commandButton text="Ok" id="btnAcceptCurrency"
+                                        action="#{saccosBacking.actionAcceptCurrency}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelCurrency"/>
+                    </h:panelGrid>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+             <af:popup id="bankBranchPop" contentDelivery="lazyUncached">
+              <af:dialog id="d49" title="Bank Branches" type="none"
+                         inlineStyle="width:450.0px;">
+                <af:panelGroupLayout id="pgl56">
+                  <af:panelBox text="PanelBox7" id="pb35" showHeader="never">
+                    <af:panelCollection id="pc31"
+                                        styleClass="AFAuxiliaryStretchWidth">
+                            <af:table value="#{bindings.AppSettings.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.AppSettings.rangeSize}"
+                                      emptyText="#{bindings.AppSettings.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.AppSettings.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.AppSettingsQuery.queryDescriptor}"
+                                      queryListener="#{bindings.AppSettingsQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectedRowKeys="#{bindings.AppSettings.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.AppSettings.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t38"
+                                      binding="#{saccosBacking.tblBankBranchPop}">
+                              <af:column sortProperty="#{bindings.AppSettings.hints.bankBranchCode.name}"
+                                         filterable="true" sortable="true"
+                                         visible="false"
+                                         headerText="branch code" id="c228">
+                                <af:outputText value="#{row.bankBranchCode}"
+                                               id="ot236"/>
+                              </af:column>
+                              <af:column sortProperty="#{bindings.AppSettings.hints.bankName.name}"
+                                         filterable="true" sortable="true"
+                                         headerText="Bank Name" id="c226">
+                                <af:outputText value="#{row.bankName}"
+                                               id="ot235"/>
+                              </af:column>
+                              <af:column sortProperty="#{bindings.AppSettings.hints.branchName.name}"
+                                         filterable="true" sortable="true"
+                                         headerText="Branch Name" id="c225">
+                                <af:outputText value="#{row.branchName}"
+                                               id="ot233"/>
+                              </af:column>
+                              <af:column sortProperty="#{bindings.AppSettings.hints.bankShortDesc.name}"
+                                         filterable="true" sortable="true"
+                                         headerText="Bank Desc" id="c227">
+                                <af:outputText value="#{row.bankShortDesc}"
+                                               id="ot234"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                  </af:panelBox>
+                </af:panelGroupLayout>
+                <af:commandButton text="Ok" id="cb83"
+                                  action="#{saccosBacking.bankBranchSelected}"
+                                  partialSubmit="true"/>
+                <af:commandButton text="Cancel" id="cb32"/>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="accountOfficersPop" contentDelivery="lazyUncached">
+              <af:dialog id="d50" type="none">
+                <af:panelCollection id="pc32">
+                        <af:table value="#{bindings.User1.collectionModel}"
+                                  var="row" rows="#{bindings.User1.rangeSize}"
+                                  emptyText="#{bindings.User1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.User1.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.User1Query.queryDescriptor}"
+                                  queryListener="#{bindings.User1Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectedRowKeys="#{bindings.User1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.User1.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t39"
+                                  binding="#{saccosBacking.tblAccountOfficer}">
+                          <af:column sortProperty="#{bindings.User1.hints.username.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="Username" id="c230">
+                            <af:outputText value="#{row.username}" id="ot244"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.User1.hints.userFullname.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="Name" id="c238">
+                            <af:outputText value="#{row.userFullname}"
+                                           id="ot237"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.User1.hints.userEmail.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="Email" id="c239">
+                            <af:outputText value="#{row.userEmail}" id="ot242"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.User1.hints.userPersonnelRank.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="Rank" id="c235">
+                            <af:outputText value="#{row.userPersonnelRank}"
+                                           id="ot243"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.User1.hints.userDateCreated.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="Date Created" id="c236">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{vs.filterCriteria.userDateCreated}"
+                                            id="id2"/>
+                            </f:facet>
+                            <af:outputText value="#{row.userDateCreated}"
+                                           id="ot240">
+                              <af:convertDateTime pattern="#{bindings.User1.hints.userDateCreated.format}"/>
+                            </af:outputText>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.User1.hints.userType.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="Type" id="c237">
+                            <af:outputText value="#{row.userType}" id="ot238"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.User1.hints.userStatus.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="Status" id="c229">
+                            <af:outputText value="#{row.userStatus}"
+                                           id="ot241"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.User1.hints.userCreatedBy.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="Created By" id="c231">
+                            <af:outputText value="#{row.userCreatedBy}"
+                                           id="ot239"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                <h:panelGrid columns="3" id="pg96">
+                  <af:commandButton text="ok" id="cb34"
+                                    action="#{saccosBacking.actionAcceptAccountOfficer}"
+                                    rendered="true" partialSubmit="true"/>
+                  <af:commandButton text="cancel" id="cb36"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            
+                    <af:popup id="RatingPop" contentDelivery="lazyUncached">
+					
+                    <af:dialog id="d37" title="Select Rating Starndards"
+                               type="none" inlineStyle="width:500.0px;">
+                      <af:panelGroupLayout id="pgl38">
+                        <af:panelBox text="PanelBox15" id="pb26"
+                                     showHeader="never">
+                          <af:panelCollection id="pc22"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <af:table value="#{bindings.Division3.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.Division3.rangeSize}"
+                                      emptyText="#{bindings.Division3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.Division3.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.Division2Query.queryDescriptor}"
+                                      queryListener="#{bindings.Division2Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                    selectionListener="#{bindings.Division3.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t24"
+                                      binding="#{saccosBacking.ratingTbl}">
+                              <af:column sortProperty="orsDesc" width="250"
+                                         filterable="true" sortable="true"
+                                         headerText="Desc" id="c161">
+                                <af:outputText value="#{row.orsDesc}"
+                                               id="ot168"/>
+                              </af:column>
+                              <af:column sortProperty="orsCode" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="Code" id="c160">
+                                <af:outputText value="#{row.orsCode}"
+                                               id="ot167"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="pg67">
+                            <af:commandButton text="Ok" id="cb48"
+                                              action="#{saccosBacking.selectRatingDtls}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="Cancel"
+                                              id="cb47"/>
+                          </h:panelGrid>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+               -->
+			   </af:panelGroupLayout>
+              </af:panelBox>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view> 
+</jsp:root>

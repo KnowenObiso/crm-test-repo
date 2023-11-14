@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crmTemplate">
+        <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+        <f:attribute name="mode" value="index"/>
+        <f:facet name="center">
+        <af:group id="g1">
+        
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+        
+        <table cellspacing="2" cellpadding="3" border="0" width="100%">
+                <tr>
+                  <td width="50%">
+                    <af:inputText id="it1" 
+                                    readOnly="true" 
+                                    simple="false"
+                                    helpTopicId="CRMEmTemplates"/>
+                  </td>
+                  
+                  <td width="50%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+        
+          <af:panelGroupLayout layout="scroll" halign="left" valign="top"
+                               id="pgl1">
+            <af:panelAccordion id="pa1"
+                               inlineStyle="height:400.0px;" 
+                               styleClass="AFAuxiliaryStretchWidth">               
+                               
+                               
+              <af:showDetailItem text="Message Templates Definition" id="sdi1">
+                <af:panelSplitter id="ps1"
+                                  inlineStyle="height:350.0px;" 
+                                  styleClass="AFAuxiliaryStretchWidth">
+                  <f:facet name="first">
+                        <af:panelBox text="Systems" id="pb2"
+                                     showHeader="always"
+                                      inlineStyle="width:300.0px;"
+                                     showDisclosure="false">
+                          <f:facet name="toolbar"/>
+                          <af:tree value="#{bindings.User.treeModel}" var="node"
+                                   selectionListener="#{messagingBack.systemSelected}"
+                                   rowSelection="single" id="t1"
+                                   binding="#{messagingBack.systemTree}">
+                            <f:facet name="nodeStamp">
+                              <af:outputText value="#{node}" id="ot1"/>
+                            </f:facet>
+                          </af:tree>
+                        </af:panelBox>
+                      </f:facet>
+                   <f:facet name="second">
+                   <af:panelBox id="pb452" styleClass="AFAuxiliaryStretchWidth">
+                      <f:facet name="toolbar"/>
+                          <af:outputLabel value="Message Template" id="ol1"
+                                          inlineStyle="font-weight:bold;"/>
+                          <af:separator id="s1"/>
+                          
+                          <h:panelGrid columns="3" id="pg1">
+                            <af:commandButton text="Add" id="cb1"
+                                              icon="/images/create.gif"
+                                              action="#{messagingBack.addMessageTemplate}"/>
+                                              
+                            <af:commandButton text="Edit" id="cb2"
+                                              icon="/images/update.gif"
+                                              action="#{messagingBack.editMessageTemplate}"/>
+                                              
+                            <af:commandButton text="Delete" id="cb3"
+                                              icon="/images/delete.gif"
+                                              action="#{messagingBack.deleteMessageTemplate}"/>
+                                              
+                            <af:popup id="p1">
+                              <af:dialog id="d2"
+                                         title="Add/Edit Message Templates"
+                                         type="none">
+                                <af:panelGroupLayout id="pgl2">
+                                  <h:panelGrid columns="2" id="pg2">
+                                    <af:outputLabel value="Message Code"
+                                                    id="ol2"/>
+                                    <af:inputText label="Label 1" id="it2"
+                                                  simple="true"
+                                                  binding="#{messagingBack.txtMessageCode}"/>
+                                    <af:outputLabel value="Message"
+                                                    id="ol3"/>
+                                    <af:inputText label="Label 2" id="it3"
+                                                  simple="true"
+                                                  binding="#{messagingBack.txtMessage}"/>
+                                    <af:outputLabel value="System Module"
+                                                    id="ol4"/>
+                                    <af:selectOneChoice label="Label 1"
+                                                        id="soc1" simple="true"
+                                                        binding="#{messagingBack.txtSysModule}">
+                                      <af:selectItem label="Quotations"
+                                                     value="Q" id="si13"/>
+                                      <af:selectItem label="Underwriting"
+                                                     value="U" id="si5"/>
+                                      <af:selectItem label="Renewals"
+                                                     value="R" id="si9"/>
+                                      <af:selectItem label="Claims" value="C"
+                                                     id="si14"/>
+                                      <af:selectItem label="Credit Management"
+                                                     value="CM" id="si3"/>
+                                      <af:selectItem label="Partial Maturity"
+                                                     value="P" id="si6"/>
+                                      <af:selectItem label="Investments"
+                                                     value="I" id="si11"/>
+                                      <af:selectItem label="Full Maturity"
+                                                     value="F" id="si8"/>
+                                      <af:selectItem label="Cancellation"
+                                                     value="CN" id="si12"/>
+                                      <af:selectItem label="L" value="L"
+                                                     id="si7"/>
+                                      <af:selectItem label="Open Message (Agents)"
+                                                     value="OA" id="si2"/>
+                                      <af:selectItem label="Open Message (Clients)"
+                                                     value="OC" id="si10"/>
+                                      <af:selectItem label="Open P" value="OP"
+                                                     id="si15"/>
+                                      <af:selectItem label="Open S" value="OS"
+                                                     id="si4"/>
+                                    </af:selectOneChoice>
+                                    <af:outputLabel value="Message Type"
+                                                    id="ol5"/>
+                                    <af:selectOneChoice label="Label 2"
+                                                        id="soc2" simple="true"
+                                                        binding="#{messagingBack.txtMessageType}">
+                                      <af:selectItem label="Email"
+                                                     value="EMAIL" id="si18"/>
+                                      <af:selectItem label="SMS" value="SMS"
+                                                     id="si17"/>
+                                      <af:selectItem label="FAX" value="FAX"
+                                                     id="si16"/>
+                                    </af:selectOneChoice>
+                                  </h:panelGrid>
+                                  <h:panelGrid columns="2" id="pg3">
+                                    <af:commandButton text="Save" id="cb4"
+                                                      action="#{messagingBack.saveMessageTemplate}"
+                                                      partialSubmit="true"/>
+                                    <af:commandButton text="Cancel" id="cb5"/>
+                                  </h:panelGrid>
+                                </af:panelGroupLayout>
+                              </af:dialog>
+                            </af:popup>
+                          </h:panelGrid>
+                          <af:table value="#{bindings.MessageBean.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.MessageBean.rangeSize}"
+                                    emptyText="#{bindings.MessageBean.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.MessageBean.rangeSize}"
+                                    rowBandingInterval="0"
+                                    selectedRowKeys="#{bindings.MessageBean.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.MessageBean.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t2"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    binding="#{messagingBack.messageTemplateLov}">
+                            <af:column sortProperty="msgtCode" sortable="true"
+                                       headerText="#{bindings.MessageBean.hints.msgtCode.label}"
+                                       id="c4" visible="false">
+                              <af:outputText value="#{row.msgtCode}" id="ot2"/>
+                            </af:column>
+                            <af:column sortProperty="msgtShtDesc"
+                                       sortable="true"
+                                       headerText="Message Code" id="c3">
+                              <af:outputText value="#{row.msgtShtDesc}"
+                                             id="ot4"/>
+                            </af:column>
+                            <af:column sortProperty="msgtMsg" sortable="true"
+                                       headerText="Message" id="c2" width="380">
+                              <af:outputText value="#{row.msgtMsg}" id="ot6"/>
+                            </af:column>
+                            <af:column sortProperty="msgtSysModule"
+                                       sortable="true"
+                                       headerText="System Module" id="c5"
+                                       width="85">
+                              <af:outputText value="#{row.msgtSysModule}"
+                                             id="ot5"/>
+                            </af:column>
+                            <af:column sortProperty="msgtType" sortable="true"
+                                       headerText="Message Type" id="c1">
+                              <af:outputText value="#{row.msgtType}" id="ot3"/>
+                            </af:column>
+                          </af:table>
+                        </af:panelBox>
+                   </f:facet>
+                   </af:panelSplitter>
+                   </af:showDetailItem>
+                   </af:panelAccordion>
+                   </af:panelGroupLayout>
+                   </af:panelBox>
+                   </af:group>
+                   </f:facet>
+                   </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

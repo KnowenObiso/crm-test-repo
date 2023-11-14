@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g2">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="3" id="pg14">
+                <af:commandButton text="New" id="btnNewAgencyAccount"
+                                  icon="/images/create.gif"
+                                  action="#{claimsPaymentBackingBean.actionNewPaymode}"
+                                  partialSubmit="true"/>
+                <af:commandButton text="Edit" id="btnEditAgencyAccount"
+                                  icon="/images/update.gif"
+                                  action="#{claimsPaymentBackingBean.actionEditPaymentMode}"
+                                  partialSubmit="true"/>
+                    <af:commandButton text="Delete" id="btnDeleteAgencyAccount"
+                                  icon="/images/delete.gif"
+                                  action="#{claimsPaymentBackingBean.actionConfirmDeletePayMode}"
+                                      partialSubmit="true"/>
+          
+              </h:panelGrid>
+              <af:separator id="s21"/>
+              
+                <af:panelCollection id="pc1"  styleClass="AFAuxiliaryStretchWidth" >
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ClaimPaymentModes.collectionModel}"
+                            var="row" styleClass="AFAuxiliaryStretchWidth"
+                            rows="#{bindings.ClaimPaymentModes.rangeSize}"
+                            emptyText="#{bindings.ClaimPaymentModes.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ClaimPaymentModes.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.ClaimPaymentModesQuery.queryDescriptor}"
+                            queryListener="#{bindings.ClaimPaymentModesQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            
+                            selectionListener="#{bindings.ClaimPaymentModes.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1"
+                            binding="#{claimsPaymentBackingBean.tblClaimPaymentModes}">
+                   
+                    <af:column sortProperty="shortdesc" filterable="true"
+                               sortable="true" width="200" 
+                               headerText="Short Desc"
+                               id="c5">
+                      <af:outputText value="#{row.shortdesc}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="description" filterable="true" width="200" 
+                               sortable="true"
+                               headerText="Description"
+                               id="c6">
+                      <af:outputText value="#{row.description}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="maxAmt" filterable="true"
+                               sortable="true"
+                               headerText="Maximum Amount"
+                               id="c2">
+                      <af:outputText value="#{row.maxAmt}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="minAmt" filterable="true"
+                               sortable="true"
+                               headerText="Minimum Amount"
+                               id="c4">
+                      <af:outputText value="#{row.minAmt}" id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="default_value" filterable="true"
+                               sortable="true"
+                               headerText="Default Value"
+                               id="c7">
+                      <af:outputText value="#{row.default_value}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="remarks" filterable="true"
+                               sortable="true"
+                               headerText="Remarks"
+                               id="c1">
+                      <af:outputText value="#{row.remarks}" id="ot1"/>
+                    </af:column>
+                  </af:table>
+                 
+                </af:panelCollection>
+
+            </af:panelBox>
+            <af:popup id="claimPaymentFormPop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" type="none" title="Claim Payments Mode">
+                <af:panelBox text="PanelBox4" id="pb2" showHeader="never">
+                  <f:facet name="toolbar"/>
+                  <af:panelFormLayout id="pfl1">
+                    <af:inputText label="Code" id="txtCode"
+                                  binding="#{claimsPaymentBackingBean.txtCode}"
+                                  visible="false"/>
+                    <af:selectOneChoice label="Id"
+                                        valueChangeListener="#{claimsPaymentBackingBean.actionAcceptId}"
+                                        id="soc1"
+                                        binding="#{claimsPaymentBackingBean.txtShortDesc}">
+                      <af:selectItem label="Cheque" value="CHQ" id="si2"/>
+                      <af:selectItem label="Credit Note" value="CR" id="si4"/>
+                      <af:selectItem label="EFT" value="EFT" id="si7"/>
+                      <af:selectItem label="RTGS" value="RTGS" id="si5"/>
+                      <af:selectItem label="Mobile" value="MOB" id="si6"/>
+                      <af:selectItem label="Journal" value="JE" id="si3"/>
+                    </af:selectOneChoice>
+                    <af:inputText label="Description" id="it2"
+                                  binding="#{claimsPaymentBackingBean.txtDescription}"/>
+                    <af:inputText label="Min Amount" id="it3"
+                                  binding="#{claimsPaymentBackingBean.txtMinimum}"/>
+                    <af:inputText label="Max Amount" id="it4"
+                                  binding="#{claimsPaymentBackingBean.txtMaximum}"/>
+                    <af:selectOneChoice label="Default" id="soc2"
+                                        binding="#{claimsPaymentBackingBean.txtDefault}">
+                      <af:selectItem label="YES" value="Y" id="si9"/>
+                      <af:selectItem label="NO" value="N" id="si8"/>
+                    </af:selectOneChoice>
+                    <af:inputText label="Remarks" id="it5"
+                                  binding="#{claimsPaymentBackingBean.txtRemarks}"/>
+                    <f:facet name="footer"/>
+                  </af:panelFormLayout>
+                </af:panelBox>
+                <h:panelGrid columns="2" id="pg29">
+                  <af:commandButton text="Save" id="btnSaveClaimPaymentModes"
+                                    binding="#{claimsPaymentBackingBean.btnSaveClaimPaymentMode}"
+                                    action="#{claimsPaymentBackingBean.actionSavePaymentMode}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Cancel" id="btnCancelAgencyAccount"/>
+                </h:panelGrid>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="confirmDeletePaymode" contentDelivery="lazyUncached">
+              <af:dialog id="d4" title="Confirm Delete Action" type="yesNo"
+                         dialogListener="#{claimsPaymentBackingBean.actionConfirmDeletePayMode}">
+                
+                  <af:panelFormLayout id="pfl4" inlineStyle="width:300.0px;">
+                    <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                   id="outputText1"/>
+                  </af:panelFormLayout>
+              
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

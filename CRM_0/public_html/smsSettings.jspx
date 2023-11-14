@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              
+              <table width="100%">
+            <tr><td  align="right">
+            <h:panelGrid columns="2" id="pg33">
+                <af:inputText id="it1" helpTopicId="CRMcurrencies" columns="13"
+                              readOnly="true" shortDesc="Help"/>
+                <af:statusIndicator id="si1"/>
+              </h:panelGrid>
+            </td></tr>
+              </table>
+              <af:panelBox text="PanelBox20" id="pb3"
+                           showHeader="never" rendered="true">
+                <f:facet name="toolbar"/>
+                <af:outputLabel value="SMS Settings" id="ol20"
+                                inlineStyle="font-weight:bold;"/>
+                <af:separator id="s2"/>
+                <h:panelGrid columns="3" id="pg2">
+                  <af:commandButton text="Add" id="cb3"
+                                    partialSubmit="true"
+                                    icon="/images/create.gif"
+                                    action="#{singleMessageBacking.launchNewProvider}"/>
+                  <af:commandButton text="Edit" id="cb4"
+                                    partialSubmit="true"
+                                    icon="/images/update.gif"
+                                    action="#{singleMessageBacking.editProvider}"/>
+                  <af:commandButton text="Delete" id="cb5"
+                                    partialSubmit="true"
+                                    icon="/images/delete.gif"
+                                    action="#{singleMessageBacking.deleteProvider}"/>
+                  <af:popup id="provider" contentDelivery="lazyUncached">
+                    <af:dialog id="d2" type="none" title="Provider Settings">
+                      <af:panelBox text="PanelBox21" id="pb2"
+                                   showHeader="never">
+                        <f:facet name="toolbar"/>
+                        <h:panelGrid columns="2" id="pg1">
+                          <af:outputLabel value="Code" id="ol7"
+                                          visible="false"/>
+                          <af:inputNumberSpinbox label="Label 7" id="ins1"
+                                                 binding="#{singleMessageBacking.smsCode}"
+                                                 visible="false"/>
+                          <af:outputLabel value="Description" id="ol6"
+                                          showRequired="true"/>
+                          <af:inputText label="Label 1" id="it2" simple="true"
+                                        binding="#{singleMessageBacking.smsDesc}"/>
+                          <af:outputLabel value="URL" id="ol13"
+                                          showRequired="true"/>
+                          <af:inputText label="Label 2" id="it3" simple="true"
+                                        binding="#{singleMessageBacking.smsUrl}"
+                                        rows="3" columns="80"/>
+                          <af:outputLabel value="Username" id="ol1"
+                                          showRequired="true"/>
+                          <af:inputText label="Label 3" id="it4" simple="true"
+                                        binding="#{singleMessageBacking.smsUsername}"/>
+                          <af:outputLabel value="Password" id="ol2"
+                                          showRequired="true"/>
+                          <af:inputText label="Label 4" id="it5" simple="true"
+                                        secret="true"
+                                        binding="#{singleMessageBacking.smsPassword}"/>
+                          <af:outputLabel value="Source" id="ol3"
+                                          showRequired="true"/>
+                          <af:inputText label="Label 5" id="it6" simple="true"
+                                        binding="#{singleMessageBacking.smsSource}"/>
+                          <af:outputLabel value="Default?" id="ol8"/>
+                          <af:selectOneChoice label="Label 1" id="soc1"
+                                              simple="true"
+                                              binding="#{singleMessageBacking.smsDefault}">
+                            <af:selectItem label="Yes" value="Y" id="si2"/>
+                            <af:selectItem label="No" value="N" id="si3"/>
+                          </af:selectOneChoice>
+                          <af:outputLabel value="Destination (Test purposes only)"
+                                          id="ol4"/>
+                          <af:inputNumberSpinbox label="Label 6" id="it7"
+                                                 simple="true"
+                                                 binding="#{singleMessageBacking.smsDest}"/>
+                          <af:outputLabel value="Message  (Test purposes only)"
+                                          id="ol5"/>
+                          <af:inputText label="Label 7" id="it8" simple="true"
+                                        binding="#{singleMessageBacking.smsMessage}"/>
+                          <af:commandButton text="Save" id="cb1"
+                                            action="#{singleMessageBacking.saveOut}"/>
+                          <af:commandButton text="Test" id="cb2"
+                                            action="#{singleMessageBacking.testOut}"/>
+                        </h:panelGrid>
+                      </af:panelBox>
+                    </af:dialog>
+                  </af:popup>
+                </h:panelGrid>
+                <af:panelCollection id="pc1" inlineStyle="width:99%;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ServiceReq.collectionModel}"
+                            var="row" rows="#{bindings.ServiceReq.rangeSize}"
+                            emptyText="#{bindings.ServiceReq.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ServiceReq.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.ServiceReqQuery.queryDescriptor}"
+                            queryListener="#{bindings.ServiceReqQuery.processQuery}" varStatus="vs"
+                            rowSelection="single" id="t1"
+                            inlineStyle="width:inherit;"
+                            binding="#{singleMessageBacking.providers}">
+                    <af:column sortProperty="tssDesc" filterable="true"
+                               sortable="true" headerText="Description" id="c3">
+                      <af:outputText value="#{row.tssDesc}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="tssUrl" filterable="true"
+                               sortable="true" headerText="URL" id="c2">
+                      <af:outputText value="#{row.tssUrl}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="tssUsername" filterable="true"
+                               sortable="true" headerText="Username" id="c1">
+                      <af:outputText value="#{row.tssUsername}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="tssPassword" filterable="true"
+                               sortable="true" headerText="Password" id="c5">
+                      <af:inputText label="Label 8" id="it9" secret="true"
+                                    simple="true"
+                                    value="#{row.tssPassword}" disabled="true"/>
+                    </af:column>
+                    <af:column sortProperty="tssSource" filterable="true"
+                               sortable="true" headerText="Source" id="c4">
+                      <af:outputText value="#{row.tssSource}" id="ot2"/>
+                    </af:column>
+                     <af:column sortProperty="tssSource" filterable="true"
+                               sortable="true" headerText="Default?" id="c6">
+                      <af:selectOneChoice label="Label 2" id="soc2"
+                                          simple="true" readOnly="true"
+                                          value="#{row.tssDefault}">
+                        <af:selectItem label="Yes" value="Y" id="si4"/>
+                        <af:selectItem label="No" value="N" id="si5"/>
+                      </af:selectOneChoice>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+            </af:panelBox>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

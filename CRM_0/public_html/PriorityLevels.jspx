@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="CRM | Activity Priority Levels Definition">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="Priority Levels" id="pb1" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMclients"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="4" id="pg25">
+                <af:outputText value="Activity Priority Levels Definition" id="ot27"
+                                 inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox1" id="pb2" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="6" id="pg1">
+                  <af:commandButton text="New" id="cb1"
+                                    icon="/images/create.gif"
+                                    action="#{ActivityBacking.actionNewPL}"/>
+                  <af:spacer width="10" height="10" id="s2"/>
+                  <af:commandButton text="Edit" id="cb2"
+                                    icon="/images/update.gif"
+                                    action="#{ActivityBacking.ationEditPL}"/>
+                  <af:spacer width="10" height="10" id="s3"/>
+                  <af:commandButton text="Delete" id="cb3"
+                                    icon="/images/delete.gif"
+                                    action="#{ActivityBacking.actionDeletePL}"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc1" inlineStyle="width:99%;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.PriorityLevel.collectionModel}"
+                            var="row" rows="#{bindings.PriorityLevel.rangeSize}"
+                            emptyText="#{bindings.PriorityLevel.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.PriorityLevel.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.PriorityLevelQuery.queryDescriptor}"
+                            queryListener="#{bindings.PriorityLevelQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectionListener="#{ActivityBacking.tblPriorityLevelsDefSelected}"
+                            rowSelection="single" id="t1"
+                            binding="#{ActivityBacking.tblPrioriyLevelsDefinition}">
+                    <af:column sortProperty="prShortDescription"
+                               sortable="true" headerText="Code" id="c1">
+                      <af:outputText value="#{row.prShortDescription}"
+                                     id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="plDescription" sortable="true"
+                               headerText="Description" id="c2">
+                      <af:outputText value="#{row.plDescription}" id="ot2"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <af:popup id="p1">
+                  <af:dialog id="d2" type="none"
+                             binding="#{ActivityBacking.dlNewEditPL}">
+                    <af:panelBox text="PanelBox2" id="pb3" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="2" id="pg3">
+                        <h:panelGrid columns="2" id="pg2">
+                          <af:outputLabel value="Short Description" id="ol1"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg4">
+                          <af:inputText id="ot4"
+                                        binding="#{ActivityBacking.txtPLShortDesc}"
+                                        label="Label 1" simple="true"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg5">
+                          <af:outputLabel value="Description" id="ol2"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg6">
+                          <af:inputText label="Desc" id="it4"
+                                        binding="#{ActivityBacking.txtPLDescription}"
+                                        simple="true"/>
+                          <af:inputText label="StatusId" id="it3"
+                                        binding="#{ActivityBacking.txtPLCode}"
+                                        simple="true" visible="false"/>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                    </af:panelBox>
+                    <h:panelGrid columns="6" id="pg7">
+                      <af:commandButton text="Ok" id="cb4"
+                                        action="#{ActivityBacking.actionSavePriorityLevel}"/>
+                      <af:spacer width="10" height="10" id="s4"/>
+                      <af:commandButton text="Cancel" id="cb5"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+              </af:panelBox>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

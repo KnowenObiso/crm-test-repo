@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="left">
+                    <af:inputText id="it1" helpTopicId="CRMsectors" columns="13"
+                                  readOnly="true" shortDesc="Help"/>
+                  </td>
+                  <td width="100%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <af:panelBox id="panelBox1" inlineStyle="width:98.0%;">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="4" id="panelGrid1">
+                  <h:panelGrid columns="1" id="panelGrid4">
+                    <af:outputLabel value="Table Name" id="outputLabel2"/>
+                  </h:panelGrid>
+                  <h:panelGrid columns="2" id="pg21">
+                    <af:inputText label="Label 4" simple="true"
+                                  binding="#{ScreenBack.scheduleTableName}"
+                                  id="inputText2"/>
+                  </h:panelGrid>
+                  <af:outputLabel value="Bank:" id="ol4"/>
+                  <h:panelGrid columns="3" id="pg3">
+                    <af:inputText label="Label 3" id="it3" simple="true"
+                                  disabled="true" visible="true"
+                                  binding="#{ScreenBack.txtBankname}"/>
+                    <af:commandButton id="cb2" icon="/images/dropdown.gif">
+                      <af:showPopupBehavior popupId="branchPop"/>
+                    </af:commandButton>
+                    <af:popup id="branchPop">
+                      <af:dialog title="Banks" id="d2" type="none">
+                        <af:table value="#{bindings.Bank.collectionModel}"
+                                  var="row" rows="#{bindings.Bank.rangeSize}"
+                                  emptyText="#{bindings.Bank.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Bank.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.BankQuery.queryDescriptor}"
+                                  queryListener="#{bindings.BankQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectionListener="#{bindings.Bank.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t1"
+                                  binding="#{ScreenBack.banktbl}">
+                          <af:column sortProperty="bankCode" filterable="true" visible="false"
+                                     sortable="true" headerText="Code" id="c2">
+                            <af:outputText value="#{row.bankCode}" id="ot2"/>
+                          </af:column>
+                          <af:column sortProperty="bankName" filterable="true" width="300"
+                                     sortable="true" headerText="Name" id="c1">
+                            <af:outputText value="#{row.bankName}" id="ot1"/>
+                          </af:column>
+                        </af:table>
+                        <h:panelGrid columns="2" id="pg0">
+                          <af:commandButton text="Save" id="cb1"
+                                            action="#{ScreenBack.selectBankDetails}"/>
+                          <af:commandButton text="Cancel" id="cb3"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                  </h:panelGrid>
+                </h:panelGrid>
+                <h:panelGrid columns="2" id="pg28"
+                             binding="#{ScreenBack.levelButtons}">
+                  <af:commandButton text="Continue"
+                                    action="#{ScreenBack.NextTransition}"
+                                    id="commandButton1"/>
+                  <af:commandButton text="Cancel" id="commandButton2"/>
+                </h:panelGrid>
+              </af:panelBox>
+              <af:panelBox text="Table Structure" id="pb6"
+                           binding="#{ScreenBack.tableStructureTab}"
+                           inlineStyle="width:98.0%;">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="1" id="panelGrid5">
+                  <h:panelGrid columns="7"
+                               binding="#{ScreenBack.dynamicContainer}"
+                               id="panelGrid6"/>
+                  <h:panelGrid columns="2" id="panelGrid7">
+                    <af:commandButton text="Save"
+                                      action="#{ScreenBack.SaveProductImportTemplateData}"
+                                      id="commandButton3"/>
+                    <af:commandButton text="Cancel" id="commandButton4"/>
+                  </h:panelGrid>
+                </h:panelGrid>
+              </af:panelBox>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

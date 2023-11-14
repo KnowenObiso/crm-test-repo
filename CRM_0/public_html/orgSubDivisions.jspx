@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <af:inputText id="it1" 
+                                helpTopicId="CRMorgSubDivisions" 
+                                columns="13"
+                                readOnly="true" 
+                                shortDesc="Help"/>
+                </td>
+                <td width="100%" align="right">
+                
+                <af:statusIndicator id="si1"/>
+                </td>
+              </tr>
+            </table>
+            
+              <af:panelSplitter id="ps1" styleClass="AFAuxiliaryStretchWidth" 
+                                splitterPosition="320" inlineStyle="height:600.0px;">
+                                
+                <f:facet name="first">
+                <af:panelGroupLayout id="pgl1">
+                  
+                  <h:panelGrid columns="1" id="pg1">
+                    <af:outputLabel value="Org SubDivisions" id="ol1"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s1"/>
+                  
+                    <af:panelCollection id="pc4" styleClass="AFAuxiliaryStretchWidth" 
+                                        inlineStyle="height:500.0px;">
+                      <f:facet name="toolbar">
+                        <af:toolbar>
+                          <af:commandButton text="New" id="cb4" 
+                                            icon="/images/create.gif" 
+                                            action="#{orgSubDivisionBacking.actionNewOrgSubDiv}"/>
+                                            
+                          <af:commandButton text="Delete" id="cb5" 
+                                            icon="/images/delete.gif"
+                                            action="#{orgSubDivisionBacking.actionDeleteOrgSubDiv}"/>
+                        </af:toolbar>
+                      </f:facet>
+                      <af:tree value="#{bindings.System.treeModel}" var="node"
+                               selectionListener="#{orgSubDivisionBacking.treeSysSubDivisionsListener}"
+                               rowSelection="single" 
+                               id="t4"
+                               binding="#{orgSubDivisionBacking.treeSysSubDivisions}">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node}" id="ot8"/>
+                        </f:facet>
+                      </af:tree>
+                    </af:panelCollection>
+                    
+                  </af:panelGroupLayout>
+                </f:facet>
+                
+                <f:facet name="second">
+                  <af:panelGroupLayout id="pgl2">
+                    <af:panelBox text="PanelBox2" id="pb2" showHeader="never"
+                                 binding="#{orgSubDivisionBacking.panelOrgSubDivDetail}" 
+                                 visible="false">
+                      
+                      <h:panelGrid columns="1" id="pg2">
+                        <af:outputLabel value="Details" id="ol2"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s2"/>
+                      
+                      <h:panelGrid columns="1" id="pg5">
+                    
+                      <af:commandButton text="Save"
+                                        id="btnSaveUpdateOrgSubDivision" 
+                                        icon="/images/create.gif"
+                                        action="#{orgSubDivisionBacking.actionSaveUpdateOrgSubDivision}"
+                                        binding="#{orgSubDivisionBacking.btnSaveUpdateOrgSubDivision}"/>
+                    </h:panelGrid>
+                    <af:separator id="s6"/>
+                      
+                      <af:panelFormLayout id="pfl1">
+                      
+                        <af:inputText label="Code : " id="it2" 
+                                      showRequired="true"
+                                      binding="#{orgSubDivisionBacking.txtOsdCode}"/>
+                        
+                        <af:inputText label="Parent Code : " id="it3" 
+                                      visible="false"
+                                      binding="#{orgSubDivisionBacking.txtOsdParentOsdCode}"/>
+                        
+                        <af:inputText label="DLT Code : " id="it4" 
+                                      visible="false"
+                                      showRequired="true"
+                                      binding="#{orgSubDivisionBacking.txtOsdDltCode}"/>
+                        
+                        <af:panelLabelAndMessage label="Division Level Type : " 
+                                                 id="plam1"
+                                                 showRequired="true">
+                          <af:inputText label="Label 2" id="it10"
+                                        simple="true" 
+                                        disabled="true"
+                                        binding="#{orgSubDivisionBacking.txtOsdDltDesc}"/>
+                          <af:commandButton id="cb2" 
+                                            icon="/images/dropdown.gif"
+                                            action="#{orgSubDivisionBacking.actionShowOrgDivLevelTypes}"/>
+                        </af:panelLabelAndMessage>
+                        
+                        <af:inputText label="ODL Code : " id="it5"
+                                      visible="false"
+                                      showRequired="true"
+                                      binding="#{orgSubDivisionBacking.txtOsdOdlCode}"/>
+                        
+                        <af:panelLabelAndMessage label="Division Level : " 
+                                                 id="plam2"
+                                                 showRequired="true">
+                          <af:inputText label="Label 1" id="it9" 
+                                        simple="true" 
+                                        disabled="true"
+                                        binding="#{orgSubDivisionBacking.txtOsdOdlDesc}"/>
+                          <af:commandButton id="cb1"
+                                            icon="/images/dropdown.gif"
+                                            action="#{orgSubDivisionBacking.actionShowOrgDivLevel}"/>
+                        </af:panelLabelAndMessage>
+                        
+                        <af:inputText label="Name : " id="it6"
+                                      showRequired="true"
+                                      binding="#{orgSubDivisionBacking.txtOsdName}"/>
+                        
+                        <af:inputDate label="WEF : " id="id1"
+                                      showRequired="true"
+                                      binding="#{orgSubDivisionBacking.txtOsdWef}">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:inputDate>
+                        
+                        <af:inputText label="Division Head Code : " id="it7" 
+                                      visible="false"
+                                      showRequired="true"
+                                      binding="#{orgSubDivisionBacking.txtOsdDivHeadAgnCode}"/>
+                        
+                        <af:panelLabelAndMessage label="Division Head : " 
+                                                 id="plam3"
+                                                 showRequired="true">
+                          <af:inputText label="Label 3" id="it11"
+                                        simple="true" 
+                                        disabled="true"
+                                        binding="#{orgSubDivisionBacking.txtOsdDivHeadAgnName}"/>
+                          <af:commandButton id="cb3"
+                                            icon="/images/dropdown.gif"
+                                            action="#{orgSubDivisionBacking.actionShowHeadAgents}"/>
+                        </af:panelLabelAndMessage>
+                        
+                        <af:inputText label="System Code : " id="it8" 
+                                      visible="false"
+                                      showRequired="true"
+                                      binding="#{orgSubDivisionBacking.txtOsdSysCode}"/>
+                        
+                      </af:panelFormLayout>
+                      
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </f:facet>
+                
+              </af:panelSplitter>
+              
+            </af:panelBox>
+            
+            <af:popup id="orgSubDivLevelTypePop">
+              <af:dialog id="d2" title="Division Level Type List" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl3">
+                  <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                    <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.OrgDivisionLevelType.collectionModel}"
+                                var="row"
+                                rows="#{bindings.OrgDivisionLevelType.rangeSize}"
+                                emptyText="#{bindings.OrgDivisionLevelType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.OrgDivisionLevelType.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.OrgDivisionLevelTypeQuery.queryDescriptor}"
+                                queryListener="#{bindings.OrgDivisionLevelTypeQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.OrgDivisionLevelType.collectionModel.makeCurrent}"
+                                rowSelection="single" 
+                                id="t1"
+                                binding="#{orgSubDivisionBacking.tblorgSubDivLevelTypePop}">
+                        <af:column sortProperty="dltCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c2">
+                          <af:outputText value="#{row.dltCode}" id="ot3"/>
+                        </af:column>
+                        <af:column sortProperty="dltDesc" filterable="true"
+                                   sortable="true" headerText="Description"
+                                   id="c1" 
+                                   width="200">
+                          <af:outputText value="#{row.dltDesc}" id="ot2"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg30">
+                      <af:commandButton text="Ok" id="btnAcceptOrgSubDivLevelType"
+                                        action="#{orgSubDivisionBacking.actionAcceptOrgSubDivLevelType}"/>
+                      <af:commandButton text="Cancel" id="btnCancelOrgSubDivLevelType"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="orgSubDivLevel">
+              <af:dialog id="d3" title="Division Level List" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl4">
+                  <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                    <af:panelCollection id="pc2" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.OrgDivisionLevel.collectionModel}"
+                                var="row"
+                                rows="#{bindings.OrgDivisionLevel.rangeSize}"
+                                emptyText="#{bindings.OrgDivisionLevel.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.OrgDivisionLevel.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.OrgDivisionLevelQuery.queryDescriptor}"
+                                queryListener="#{bindings.OrgDivisionLevelQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.OrgDivisionLevel.collectionModel.makeCurrent}"
+                                rowSelection="single" 
+                                id="t2"
+                                binding="#{orgSubDivisionBacking.tblorgSubDivLevelPop}">
+                        <af:column sortProperty="odlcode" filterable="true"
+                                   sortable="true" headerText="Code" id="c3">
+                          <af:outputText value="#{row.odlcode}" id="ot4"/>
+                        </af:column>
+                        <af:column sortProperty="odlDesc" filterable="true"
+                                   sortable="true" headerText="Description"
+                                   id="c6" 
+                                   width="200">
+                          <af:outputText value="#{row.odlDesc}" id="ot6"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg3">
+                      <af:commandButton text="Ok" id="btnAcceptOrgSubDivLevel"
+                                        action="#{orgSubDivisionBacking.actionAcceptOrgSubDivLevel}"/>
+                      <af:commandButton text="Cancel" id="btnCancelOrgSubDivLevel"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="agentsListPop">
+              <af:dialog id="d4" title="Head Agents List" type="none"
+                         inlineStyle="width:580.0px;">
+                <af:panelGroupLayout id="pgl5">
+                  <af:panelBox text="PanelBox5" id="pb5" showHeader="never">
+                    <af:panelCollection id="pc3" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Agency.collectionModel}"
+                                var="row" rows="#{bindings.Agency.rangeSize}"
+                                emptyText="#{bindings.Agency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Agency.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.AgencyQuery.queryDescriptor}"
+                                queryListener="#{bindings.AgencyQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.Agency.collectionModel.makeCurrent}"
+                                rowSelection="single" 
+                                id="t3"
+                                binding="#{orgSubDivisionBacking.tblHeadAgentsPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c7">
+                          <af:outputText value="#{row.code}" id="ot5"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c4" width="150">
+                          <af:outputText value="#{row.shortDesc}" id="ot7"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c5" 
+                                   width="250">
+                          <af:outputText value="#{row.name}" id="ot1"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:commandButton text="Ok" id="btnAcceptHeadAgent"
+                                        action="#{orgSubDivisionBacking.actionAcceptHeadAgent}"/>
+                      <af:commandButton text="Cancel" id="btnCancelHeadAgent"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

@@ -1,0 +1,551 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMcurrencies"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <af:panelBox text="PanelBox20" id="pb3" showHeader="never"
+                           rendered="true">
+                <f:facet name="toolbar"/>
+                <af:panelSplitter id="ps1"
+                                  inlineStyle="width:99%; height:700.0px;"
+                                  splitterPosition="250">
+                  <f:facet name="first">
+                    <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl2">
+                      <h:panelGrid columns="6" id="pg2">
+                        <af:outputLabel value="Systems" id="ol3"
+                                        inlineStyle="font-weight:bold;"/>
+                      </h:panelGrid>
+                      <af:separator id="s2"/>
+                      <af:table value="#{bindings.System.collectionModel}"
+                                var="row" rows="#{bindings.System.rangeSize}"
+                                emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.System.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                                queryListener="#{bindings.SystemQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{alertBean.selectSystem}"
+                                rowSelection="single" id="t1"
+                                inlineStyle="width:250px; height:100.0%;"
+                                binding="#{alertBean.systemTbl}">
+                        <af:column sortProperty="code" filterable="true"
+                                   visible="false" sortable="true"
+                                   headerText="Code" id="c2">
+                          <af:outputText value="#{row.code}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   visible="false" sortable="true"
+                                   headerText="Sht Desc" id="c1">
+                          <af:outputText value="#{row.shortDesc}" id="ot3"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   width="250" sortable="true" headerText="Name"
+                                   id="c3">
+                          <af:outputText value="#{row.name}" id="ot2"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                         id="pgl5">
+                      <af:outputLabel value="Alerts Setup" id="ol20"
+                                      inlineStyle="font-weight:bold;"/>
+                      <af:separator id="s4"/>
+                      <h:panelGrid columns="3" id="pg1">
+                        <af:commandButton text="New" id="btnNewAlertType"
+                                          icon="/images/create.gif"
+                                          visible="false"
+                                          binding="#{alertBean.actionNewAlertType}"
+                                          action="#{alertBean.actionNewAlertType}"></af:commandButton>
+                        <af:commandButton text="Edit" id="btnEdiSequence"
+                                          icon="/images/update.gif"
+                                          action="#{alertBean.editAlertType}"
+                                          binding="#{alertBean.actionEditAlertType}"/>
+                        <af:commandButton text="Delete" id="btnDeleteseq"
+                                          icon="/images/delete.gif"
+                                          visible="false"
+                                          action="#{alertBean.actionDeleteAlertType}"/>
+                      </h:panelGrid>
+                      <af:popup id="confirmDeleteAlertType">
+                        <af:dialog id="d184"
+                                   dialogListener="#{alertBean.actionConfirmedDeleteAlertType}"
+                                   title="Confirm Delete" type="yesNo">
+                          <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="ol2222"/>
+                        </af:dialog>
+                      </af:popup>
+                      <af:popup id="alertTypesPop">
+                        <af:dialog id="d2" type="none" title="Alerts Type">
+                          <af:panelFormLayout id="pfl1">
+                            <f:facet name="footer"/>
+                            <h:panelGrid columns="2" id="pg5">
+                            <af:outputLabel value="Sht Desc" id="ol7"/>
+                              <af:inputText label="Label 2" id="it3"
+                                            simple="true"
+                                            binding="#{alertBean.txtShtDesc}"
+                                            disabled="true"/>
+                              <af:outputLabel value="Type" id="ol10"/>
+                              <af:inputText label="Label 2" id="it5"
+                                            simple="true"
+                                            binding="#{alertBean.txtAlertTypes}"/>
+                              <af:outputLabel value="Email" id="ol1"/>
+                              <af:selectOneChoice label="TYPE" id="soc1"
+                                                  simple="true"
+                                                  binding="#{alertBean.txtEmail}"
+                                                  valueChangeListener="#{alertBean.selectEmail}"
+                                                  autoSubmit="true">
+                                <af:selectItem label="Yes" value="Y" id="si3"/>
+                                <af:selectItem label="No" value="N" id="si2"/>
+                              </af:selectOneChoice>
+                              <af:outputLabel value="Email Template" id="ol4"/>
+                              <h:panelGrid columns="2" id="pg0">
+                                <af:inputText label="Label 1" id="it6"
+                                              simple="true"
+                                              binding="#{alertBean.txtEmailTemplate}"
+                                              disabled="true"/>
+                                <af:commandButton id="cb3"
+                                                  icon="/images/dropdown.gif"
+                                                  partialSubmit="true"
+                                                  action="#{alertBean.selectEmailPop}"
+                                                  actionListener="#{alertBean.selectEmailPop}"
+                                                  binding="#{alertBean.emailPopBtn}"></af:commandButton>
+                              </h:panelGrid>
+                              <af:outputLabel value="Sms" id="ol2"/>
+                              <af:selectOneChoice label="TYPE" id="soc2"
+                                                  simple="true"
+                                                  binding="#{alertBean.txtSms}"
+                                                  valueChangeListener="#{alertBean.selectSmsVal}"
+                                                  autoSubmit="true">
+                                <af:selectItem label="Yes" value="Y" id="si4"/>
+                                <af:selectItem label="No" value="N" id="si5"/>
+                              </af:selectOneChoice>
+                              <af:outputLabel value="Sms Template" id="ol5"/>
+                              <h:panelGrid columns="2" id="pg6">
+                                <af:inputText label="Label 1" id="it2"
+                                              simple="true"
+                                              binding="#{alertBean.txtSmsTemplate}"
+                                              disabled="true"/>
+                                <af:commandButton id="cb6"
+                                                  icon="/images/dropdown.gif"
+                                                  partialSubmit="true"
+                                                  action="#{alertBean.selectSmsPop}"
+                                                  binding="#{alertBean.smsPopBtn}"></af:commandButton>
+                              </h:panelGrid>
+                              <af:outputLabel value="Screens" id="ol6"/>
+                              <af:selectOneChoice label="Screens" id="soc3"
+                                                  simple="true"
+                                                  binding="#{alertBean.txtScreen}"
+                                                  autoSubmit="true">
+                                <af:selectItem label="Yes" value="Y" id="si6"/>
+                                <af:selectItem label="No" value="N" id="si7"/>
+                              </af:selectOneChoice>
+                              <af:outputLabel value="Users" id="ol8"/>
+                              <h:panelGrid columns="2" id="pg7">
+                                <af:inputText label="Label 1" id="it4"
+                                              simple="true"
+                                              binding="#{alertBean.txtAlertDestName}"
+                                              disabled="true"/>
+                                <af:commandButton id="cb7"
+                                                  icon="/images/dropdown.gif"
+                                                  partialSubmit="true"
+                                                  action="#{alertBean.selectAlertUser}"></af:commandButton>
+                              </h:panelGrid>
+                                 <af:outputLabel value="Check Alerts" id="ol9"/>
+                              <af:selectOneChoice label="Screens" id="soc4"
+                                                  simple="true"
+                                                  binding="#{alertBean.txtCheckAlerts}"
+                                                  autoSubmit="true">
+                                <af:selectItem label="Yes" value="Y" id="si8"/>
+                                <af:selectItem label="No" value="N" id="si9"/>
+                              </af:selectOneChoice>
+                            </h:panelGrid>
+                          </af:panelFormLayout>
+                          <h:panelGrid columns="2" id="pg3">
+                            <af:commandButton text="save" id="cb1"
+                                              action="#{alertBean.saveAlertTypes}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="cancel" id="cb2"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      <af:popup id="smsPop" contentDelivery="lazyUncached">
+                        <af:dialog id="d7" type="none" title="Sms Templates"
+                                   inlineStyle="width:350.0px;">
+                          <af:panelCollection id="pc5"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.MessageTemplate3.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.MessageTemplate3.rangeSize}"
+                                      emptyText="#{bindings.MessageTemplate3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.MessageTemplate3.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.MessageTemplate1Query.queryDescriptor}"
+                                      queryListener="#{bindings.MessageTemplate1Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectionListener="#{bindings.MessageTemplate3.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t3"
+                                      binding="#{alertBean.smsPopTbl}">
+                              <af:column sortProperty="msgtCode" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.MessageTemplate3.hints.msgtCode.label}"
+                                         id="c19">
+                                <af:outputText value="#{row.msgtCode}"
+                                               id="ot18"/>
+                              </af:column>
+                              <af:column sortProperty="msgtShtDesc"
+                                         visible="false" filterable="true"
+                                         sortable="true"
+                                         headerText="#{bindings.MessageTemplate3.hints.msgtShtDesc.label}"
+                                         id="c16">
+                                <af:outputText value="#{row.msgtShtDesc}"
+                                               id="ot20"/>
+                              </af:column>
+                              <af:column sortProperty="msgtMsg" width="250"
+                                         filterable="true" sortable="true"
+                                         headerText="Message"
+                                         id="c20">
+                                <af:outputText value="#{row.msgtMsg}"
+                                               id="ot19"/>
+                              </af:column>
+                              <af:column sortProperty="msgtSysCode"
+                                         visible="false" filterable="true"
+                                         sortable="true"
+                                         headerText="#{bindings.MessageTemplate3.hints.msgtSysCode.label}"
+                                         id="c17">
+                                <af:outputText value="#{row.msgtSysCode}"
+                                               id="ot17"/>
+                              </af:column>
+                              <af:column sortProperty="msgtSysModule"
+                                         visible="false" filterable="true"
+                                         sortable="true"
+                                         headerText="#{bindings.MessageTemplate3.hints.msgtSysModule.label}"
+                                         id="c15">
+                                <af:outputText value="#{row.msgtSysModule}"
+                                               id="ot15"/>
+                              </af:column>
+                              <af:column sortProperty="msgtType" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.MessageTemplate3.hints.msgtType.label}"
+                                         id="c18">
+                                <af:outputText value="#{row.msgtType}"
+                                               id="ot16"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="pg8">
+                            <af:commandButton text="select" id="cb18"
+                                              partialSubmit="true"
+                                              action="#{alertBean.selectSmsTemplate}"/>
+                            <af:commandButton text="cancel" id="cb19"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      <af:popup id="emailPop" contentDelivery="lazyUncached">
+                        <af:dialog id="d3" type="none" title="Email Templates"
+                                   inlineStyle="width:350.0px;">
+                          <af:panelCollection id="pc2"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.MessageTemplate2.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.MessageTemplate2.rangeSize}"
+                                      emptyText="#{bindings.MessageTemplate2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.MessageTemplate2.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.MessageTemplate2Query.queryDescriptor}"
+                                      queryListener="#{bindings.MessageTemplate2Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectionListener="#{bindings.MessageTemplate2.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t4"
+                                      binding="#{alertBean.emailPopTbl}">
+                              <af:column sortProperty="msgtCode" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.MessageTemplate2.hints.msgtCode.label}"
+                                         id="c22">
+                                <af:outputText value="#{row.msgtCode}"
+                                               id="ot23"/>
+                              </af:column>
+                              <af:column sortProperty="msgtShtDesc"
+                                         visible="false" filterable="true"
+                                         sortable="true"
+                                         headerText="#{bindings.MessageTemplate2.hints.msgtShtDesc.label}"
+                                         id="c21">
+                                <af:outputText value="#{row.msgtShtDesc}"
+                                               id="ot22"/>
+                              </af:column>
+                              <af:column sortProperty="msgtMsg" width="250"
+                                         filterable="true" sortable="true"
+                                         headerText="Message"
+                                         id="c25">
+                                <af:outputText value="#{row.msgtMsg}"
+                                               id="ot26"/>
+                              </af:column>
+                              <af:column sortProperty="msgtSysCode"
+                                         visible="false" filterable="true"
+                                         sortable="true"
+                                         headerText="#{bindings.MessageTemplate2.hints.msgtSysCode.label}"
+                                         id="c24">
+                                <af:outputText value="#{row.msgtSysCode}"
+                                               id="ot21"/>
+                              </af:column>
+                              <af:column sortProperty="msgtSysModule"
+                                         visible="false" filterable="true"
+                                         sortable="true"
+                                         headerText="#{bindings.MessageTemplate2.hints.msgtSysModule.label}"
+                                         id="c26">
+                                <af:outputText value="#{row.msgtSysModule}"
+                                               id="ot25"/>
+                              </af:column>
+                              <af:column sortProperty="msgtType" visible="false"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.MessageTemplate2.hints.msgtType.label}"
+                                         id="c23">
+                                <af:outputText value="#{row.msgtType}"
+                                               id="ot24"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="pg4">
+                            <af:commandButton text="select" id="cb4"
+                                              partialSubmit="true"
+                                              action="#{alertBean.selectEmailTemplate}"/>
+                            <af:commandButton text="cancel" id="cb5"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      <af:popup id="usersPop" contentDelivery="lazyUncached">
+                        <af:dialog id="d4a" type="none" title="Users"
+                                   inlineStyle="width:350.0px;">
+                          <af:panelCollection id="pc2vQQ"
+                                              styleClass="AFAuxiliaryStretchWidth">
+                            <f:facet name="menus"/>
+                            <f:facet name="toolbar"/>
+                            <f:facet name="statusbar"/>
+                            <af:table value="#{bindings.User1.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.User1.rangeSize}"
+                                      emptyText="#{bindings.User1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.User1.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.User1Query.queryDescriptor}"
+                                      queryListener="#{bindings.User1Query.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectionListener="#{bindings.User1.collectionModel.makeCurrent}"
+                                      rowSelection="single" id="t5"
+                                      binding="#{alertBean.tbUsers}">
+                              <af:column sortProperty="username"
+                                         filterable="true"
+                                         filterFeatures="caseInsensitive"
+                                         sortable="true" headerText="username"
+                                         id="c4">
+                                <af:outputText value="#{row.username}"
+                                               id="ot27"/>
+                              </af:column>
+                              <af:column sortProperty="userFullname"
+                                         filterable="true"
+                                         filterFeatures="caseInsensitive"
+                                         sortable="true" headerText="Name"
+                                         id="c27">
+                                <af:outputText value="#{row.userFullname}"
+                                               id="ot28"/>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                          <h:panelGrid columns="2" id="pg41s">
+                            <af:commandButton text="select" id="cb6e"
+                                              action="#{alertBean.actionAcceptUser}"
+                                              partialSubmit="true"/>
+                            <af:commandButton text="cancel" id="cb91r"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                      <af:panelCollection id="pc1"
+                                          styleClass="AFAuxiliaryStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <af:table value="#{bindings.AlertType.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.AlertType.rangeSize}"
+                                  emptyText="#{bindings.AlertType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.AlertType.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.AlertTypeQuery.queryDescriptor}"
+                                  queryListener="#{bindings.AlertTypeQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  rowSelection="single" id="t2"
+                                  binding="#{alertBean.tblAlertType}"
+                                  selectionListener="#{alertBean.alrtSelectionListener}">
+                          <af:column filterFeatures="caseInsensitive"
+                                     sortProperty="ALRT_TYPE" 
+                                     sortable="true" headerText="Type" id="c28">
+                            <af:outputText value="#{row.ALRT_TYPE}" id="ot4"/>
+                          </af:column>
+                          <af:column filterFeatures="caseInsensitive"
+                                      sortProperty="ALRT_EMAIL" 
+                                     sortable="true" headerText="Email"
+                                     id="c5">
+                            <af:outputText value="#{row.ALRT_EMAIL}" id="ot7"/>
+                          </af:column>
+                          <af:column filterFeatures="caseInsensitive"
+                                     sortProperty="alertEmail"
+                                     sortable="true"
+                                     headerText="Template" id="c7">
+                            <af:outputText value="#{row.alertEmail}" id="ot6"/>
+                          </af:column>
+                          <af:column filterFeatures="caseInsensitive"
+                                     sortProperty="ALRT_SMS"
+                                     sortable="true"
+                                     headerText="Sms" id="c6">
+                            <af:outputText value="#{row.ALRT_SMS}" id="ot5"/>
+                          </af:column>
+                          <af:column sortProperty="alertSms"
+                                     sortable="false" 
+                                     headerText="Sms Template" id="c8">
+                            <af:outputText value="#{row.alertSms}" id="ot8"/>
+                          </af:column>
+                          <af:column sortProperty="alertScreen" sortable="false"
+                                     headerText="Alert Screen" id="c9">
+                            <af:outputText value="#{row.alertScreen}" id="ot9"/>
+                          </af:column>
+                          <af:column sortProperty="grpUsers"
+                                     sortable="false" 
+                                     headerText="Email Message" id="c10">
+                            <af:outputText value="#{row.grpUsers}" id="ot10"/>
+                          </af:column>
+                          <af:column sortProperty="alertCheckAlert" sortable="false"
+                                     headerText="Check Alert"
+                                     id="c11">
+                            <af:outputText value="#{row.alertCheckAlert}"
+                                           id="ot11"/>
+                          </af:column>
+                          <af:column headerText="#{bindings.AlertType.hints.ALRT_CODE.label}"
+                                     id="c30" visible="false">
+                            <af:outputText value="#{row.ALRT_CODE}" id="ot30"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:separator id="s1"/>
+                      <af:outputLabel value="Dispatch Documents" id="ol11"
+                                      inlineStyle="font-weight:bold;"/>
+                      <h:panelGrid columns="2" id="pg9">
+                        <af:commandButton text="New"
+                                          id="cb8"
+                                          icon="/images/create.gif"
+                                          partialSubmit="true"
+                                          action="#{alertBean.addDispatchDocPop}">
+                                        </af:commandButton>
+                         <af:commandButton text="Delete" id="cb9"
+				  icon="/images/delete.gif" action="#{alertBean.deleteDispatchDoc}"/>
+                        
+                      </h:panelGrid>
+                      <af:popup id="p1">
+                        <af:dialog id="d4"
+                                   title="Documents" type="none">
+                          <h:panelGrid columns="2" id="pg10">
+                            <af:outputLabel value="*Short description: " id="ol12"/>
+                            <af:inputText id="it7"
+                                         binding="#{alertBean.txtShtDescription}"/>
+                            <af:outputLabel value="*Description: "
+                                            id="ol13"/>         
+                            <af:inputText id="it8"
+                                          binding="#{alertBean.txtDescription}"/>
+                            <af:outputLabel value="*Dispatch Document: "
+                                            id="ol14"/>
+                            <af:selectOneChoice  id="soc5"
+                                                binding="#{alertBean.soDispatchDocument}"
+                                                 value="#{sessionScope['dispatchDoc']}">
+                              <f:selectItems id="si11" value="#{alertBean.docs}"/>
+                            </af:selectOneChoice>
+                          </h:panelGrid>
+                          <af:spacer width="10" height="20" id="s3"/>
+                          <af:commandButton text="Save" id="cb10"
+                                            binding="#{alertBean.btnSaveDispatchDoc}"
+                                            partialSubmit="true"
+                                            action="#{alertBean.saveDispatchDoc}"/>
+                            <af:commandButton text="Cancel" id="cb11"
+                                              binding="#{alertBean.btnDeleteDispatchDoc}"/>
+                        </af:dialog>
+                      </af:popup>
+                      <af:panelCollection id="pc3"
+                        styleClass="AFAuxiliaryStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.AlertType1.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.AlertType1.rangeSize}"
+                                  emptyText="#{bindings.AlertType1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.AlertType1.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.AlertType1Query.queryDescriptor}"
+                                  queryListener="#{bindings.AlertType1Query.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectedRowKeys="#{bindings.AlertType1.collectionModel.selectedRow}"
+                                  rowSelection="single" id="t6"
+                                  binding="#{alertBean.tblDispatchDocs}"
+                                   inlineStyle="width:100.0%; height:700.0px">
+                          <af:column sortProperty="#{bindings.AlertType1.hints.docCode.name}"
+                                     filterable="true" sortable="false"
+                                     headerText="Code" id="c13">
+                            <af:outputText value="#{row.docCode}" id="ot13"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.AlertType1.hints.docShtDesc.name}"
+                                     filterable="true" sortable="false"
+                                     headerText="Sort Desc" id="c29">
+                            <af:outputText value="#{row.docShtDesc}" id="ot12"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.AlertType1.hints.docDescription.name}"
+                                     filterable="true" sortable="false"
+                                     headerText="Description" id="c12">
+                            <af:outputText value="#{row.docDescription}"
+                                           id="ot14"/>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.AlertType1.hints.dispatchDocCode.name}"
+                                     filterable="true" sortable="false"
+                                     headerText="Dispatch Doc Code" id="c14">
+                            <af:outputText value="#{row.dispatchDocCode}"
+                                           id="ot29"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelBox>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

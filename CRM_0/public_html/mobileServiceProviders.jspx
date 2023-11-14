@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox5" id="pb4" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="panelGrid2">
+                      <af:inputText id="inputText5"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="panelGrid1">
+                <af:outputLabel value="Mobile Service Providers" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="separator1"/>
+              <af:panelBox text="PanelBox1" showHeader="never" id="pb1">
+                <af:separator id="s1"/>
+                <h:panelGrid columns="6" id="pg1">
+                  <af:outputLabel value="Country" id="ol3"
+                                  inlineStyle="font-weight:bold;"/>
+                  <af:inputText label="Country" id="it8"
+                                binding="#{mobileServiceProvidersBackingBean.txtShtDesc}"
+                                disabled="true" simple="true"
+                                inlineStyle="font-weight:bold;"/>
+                  <af:inputText label="Label 6" id="it9"
+                                binding="#{mobileServiceProvidersBackingBean.txtCouName}"
+                                disabled="true" simple="true"/>
+                  <af:commandButton icon="/images/dropdown.gif" id="cb1"
+                                    action="#{mobileServiceProvidersBackingBean.actionShowCountryPop}"
+                                    partialSubmit="true"/>
+                  <af:inputText label="Label 6" id="it6" visible="false"
+                                binding="#{mobileServiceProvidersBackingBean.txtCouCode}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="3" id="pg14">
+                  <af:commandButton text="New" id="btnNewAgencyAccount"
+                                    icon="/images/create.gif"
+                                    action="#{mobileServiceProvidersBackingBean.actionNewPaymode}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Edit" id="btnEditAgencyAccount"
+                                    icon="/images/update.gif"
+                                    action="#{mobileServiceProvidersBackingBean.actionEditMobilePaymentType}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteAgencyAccount"
+                                    icon="/images/delete.gif"
+                                    action="#{mobileServiceProvidersBackingBean.actionConfirmDeleteMobTypes}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+                <af:separator id="s21"/>
+                <af:panelCollection id="pc1"
+                                    styleClass="AFAuxiliaryStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ClaimPaymentModes.collectionModel}"
+                            var="row" styleClass="AFAuxiliaryStretchWidth"
+                            rows="#{bindings.ClaimPaymentModes.rangeSize}"
+                            emptyText="#{bindings.ClaimPaymentModes.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ClaimPaymentModes.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.ClaimPaymentModesQuery.queryDescriptor}"
+                            queryListener="#{bindings.ClaimPaymentModesQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            selectionListener="#{mobileServiceProvidersBackingBean.actionListenerTblMobilePymntTypes}"
+                            rowSelection="single" id="t1"
+                            binding="#{mobileServiceProvidersBackingBean.tblMobilePaymentTypes}">
+                    <af:column sortProperty="shortdesc" filterable="true"
+                               sortable="true" width="200"
+                               headerText="Short Desc" id="c5">
+                      <af:outputText value="#{row.shortdesc}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="description" filterable="true"
+                               sortable="true" width="250"
+                               headerText="Description" id="c3">
+                      <af:outputText value="#{row.description}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="maxAmt" filterable="true"
+                               sortable="true"
+                               headerText="Maximum Amount Allowed" id="c2">
+                      <af:outputText value="#{row.maxAmt}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="minAmt" filterable="true"
+                               sortable="true"
+                               headerText="Minimum Amount Allowed" id="c4">
+                      <af:outputText value="#{row.minAmt}" id="ot6"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <af:separator id="s2"/>
+                <h:panelGrid columns="4" id="pg4">
+                  <af:outputLabel value="Prefixes" id="ol2"
+                                  inlineStyle="font-weight:bold;"/>
+                </h:panelGrid>
+                <af:separator id="s3"/>
+                <h:panelGrid columns="3" id="pg3">
+                  <af:commandButton text="New" id="btnNewPrefix"
+                                    icon="/images/create.gif"
+                                    action="#{mobileServiceProvidersBackingBean.actionNewPrefix}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Edit" id="btnEditPrefix"
+                                    icon="/images/update.gif"
+                                    action="#{mobileServiceProvidersBackingBean.actionEditMobileTypePrefix}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeletPrefix"
+                                    icon="/images/delete.gif"
+                                    action="#{mobileServiceProvidersBackingBean.actionConfirmDeleteMobPrefix}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc3"
+                                    styleClass="AFAuxiliaryStretchWidth">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.ClaimPaymentModes1.collectionModel}"
+                            var="row"
+                            rows="#{bindings.ClaimPaymentModes1.rangeSize}"
+                            emptyText="#{bindings.ClaimPaymentModes1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ClaimPaymentModes1.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.ClaimPaymentModes1Query.queryDescriptor}"
+                            queryListener="#{bindings.ClaimPaymentModes1Query.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            selectedRowKeys="#{bindings.ClaimPaymentModes1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.ClaimPaymentModes1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t3"
+                            binding="#{mobileServiceProvidersBackingBean.tblPrefixes}">
+                    <!--   <af:column sortProperty="mptpCode" filterable="true"
+                             sortable="true" headerText="CODE" id="c1">
+                    <af:outputText value="#{row.mptpCode}" id="ot9"/>
+                  </af:column>  -->
+                    <af:column sortProperty="prefix" filterable="true"
+                               width="300" sortable="true" headerText="PREFIX"
+                               id="c6">
+                      <af:outputText value="#{row.prefix}" id="ot2"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <af:popup id="countryPop" contentDelivery="lazyUncached">
+                  <af:dialog id="dialog1" title="Select a Country" type="none"
+                             inlineStyle="width:260.0px;">
+                    <af:panelGroupLayout id="pgl3">
+                      <af:panelCollection id="pc2" inlineStyle="width:260.0px;">
+                        <af:table value="#{bindings.Organization.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Organization.rangeSize}"
+                                  emptyText="#{bindings.Organization.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Organization.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.OrganizationQuery.queryDescriptor}"
+                                  queryListener="#{bindings.OrganizationQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  binding="#{mobileServiceProvidersBackingBean.tblCountryPop}"
+                                  selectedRowKeys="#{bindings.Organization.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.Organization.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t2">
+                          <!--   <af:column sortProperty="couCode" filterable="true"
+                                   sortable="true"
+                                   headerText="code"
+                                   id="c9"> 
+                          <af:outputText value="#{row.couCode}" id="ot8"/>
+                        </af:column>-->
+                          <af:column sortProperty="couShortDesc"
+                                     filterable="true"
+                                     filterFeatures="caseInsensitive"
+                                     sortable="true" width="50"
+                                     headerText="Short Desc" id="c10">
+                            <af:outputText value="#{row.couShortDesc}"
+                                           id="ot10"/>
+                          </af:column>
+                          <af:column sortProperty="couName" filterable="true"
+                                     filterFeatures="caseInsensitive"
+                                     sortable="true" headerText="Name"
+                                     width="200" id="c8">
+                            <af:outputText value="#{row.couName}" id="ot11"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:commandButton text="OK" id="btnSelectCountryPop"
+                                        action="#{mobileServiceProvidersBackingBean.actionSelectCountryPop}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="CANCEL" id="cb4"/>
+                    </af:panelGroupLayout>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="mobilePaymentTypes"
+                          contentDelivery="lazyUncached">
+                  <af:dialog id="dialog2" type="none"
+                             title="Mobile Payments Mode">
+                    <af:panelBox text="PanelBox4" id="pb2" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <af:panelFormLayout id="panelFormLayout1">
+                        <af:inputText label="Code" id="txtCode"
+                                      binding="#{mobileServiceProvidersBackingBean.txtCode}"
+                                      visible="false"/>
+                        <af:inputText label="Short Desc" id="it1"
+                                      binding="#{mobileServiceProvidersBackingBean.txtShortDesc}"/>
+                        <af:inputText label="Description" id="inputText1"
+                                      binding="#{mobileServiceProvidersBackingBean.txtDescription}"/>
+                        <af:inputText label="Min Amount" id="inputText2"
+                                      binding="#{mobileServiceProvidersBackingBean.txtMinimum}"/>
+                        <af:inputText label="Max Amount" id="inputText3"
+                                      binding="#{mobileServiceProvidersBackingBean.txtMaximum}"/>
+                        <f:facet name="footer"/>
+                      </af:panelFormLayout>
+                    </af:panelBox>
+                    <h:panelGrid columns="2" id="pg29">
+                      <af:commandButton text="Save"
+                                        id="btnSaveClaimPaymentModes"
+                                        binding="#{mobileServiceProvidersBackingBean.btnSaveClaimMobileTypes}"
+                                        action="#{mobileServiceProvidersBackingBean.actionSaveMobileTypes}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="b"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="mobileTypesPrefixes"
+                          contentDelivery="lazyUncached">
+                  <af:dialog id="d2" type="none" title="Mobile Type Prefixes">
+                    <af:panelBox text="PanelBox4" id="pb3" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <af:panelFormLayout id="pfl1">
+                        <af:inputText label="Code" id="it2"
+                                      binding="#{mobileServiceProvidersBackingBean.txtMptpCode}"
+                                      visible="false"/>
+                        <af:inputText label="Prefix" id="it3"
+                                      binding="#{mobileServiceProvidersBackingBean.txtPrefix}"/>
+                        <af:inputText label="MPT_CODE" id="it4" visible="false"
+                                      binding="#{mobileServiceProvidersBackingBean.txtMptCode}"/>
+                        <f:facet name="footer"/>
+                      </af:panelFormLayout>
+                    </af:panelBox>
+                    <h:panelGrid columns="2" id="pg2">
+                      <af:commandButton text="Save" id="cb2"
+                                        binding="#{mobileServiceProvidersBackingBean.btnSaveMobilePrefixTypes}"
+                                        action="#{mobileServiceProvidersBackingBean.actionSaveMobileTypesPrefix}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="cb3"
+                                        partialSubmit="false"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="confirmDeleteMobileType"
+                          contentDelivery="lazyUncached">
+                  <af:dialog id="d4" title="Confirm Delete Action" type="yesNo"
+                             dialogListener="#{mobileServiceProvidersBackingBean.actionConfirmDeleteMobTypes}">
+                    <af:panelFormLayout id="pfl4" inlineStyle="width:300.0px;">
+                      <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                     id="outputText1"/>
+                    </af:panelFormLayout>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="confirmDeleteMobileTypePrefix"
+                          contentDelivery="lazyUncached">
+                  <af:dialog id="d3" title="Confirm Delete Action" type="yesNo"
+                             dialogListener="#{mobileServiceProvidersBackingBean.actionConfirmDeleteMobTypesPrefix}">
+                    <af:panelFormLayout id="pfl2" inlineStyle="width:300.0px;">
+                      <af:outputText value="This process is irreversible. Are you sure you want to DELETE this record?"
+                                     id="ot1"/>
+                    </af:panelFormLayout>
+                  </af:dialog>
+                </af:popup>
+              </af:panelBox>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+        
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

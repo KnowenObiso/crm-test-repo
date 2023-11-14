@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crmTemplate">
+        
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="1" id="pg42">
+                <af:outputLabel value="Required Documents" id="o243"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s41"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <af:panelGroupLayout layout="scroll" halign="left" valign="top"
+                                     id="pgl1">
+                  <h:panelGrid columns="3" id="pg41">
+                    <af:commandButton id="cb1" text="New"
+                                      icon="/images/create.gif"
+                                      action="#{ReqDocsBean.AddRequiredDocument}"
+                                      binding="#{ReqDocsBean.addRequiredDocument}"
+                                      partialSubmit="true"/>
+                    <af:commandButton id="commandButton1"
+                                      icon="/images/update.gif" text="Edit"
+                                      action="#{ReqDocsBean.EditRequiredDocuments}"
+                                      partialSubmit="true"/>
+                    <af:commandButton id="commandButton2"
+                                      icon="/images/delete.gif" text="Delete"
+                                      action="#{ReqDocsBean.confirmDeleteAction}"
+                                      partialSubmit="true"/>
+                  </h:panelGrid>
+                  <af:table value="#{bindings.RequiredDocument.collectionModel}"
+                            var="row"
+                            rows="#{bindings.RequiredDocument.rangeSize}"
+                            emptyText="#{bindings.RequiredDocument.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.RequiredDocument.rangeSize}"
+                            rowBandingInterval="0"
+                            selectionListener="#{bindings.RequiredDocument.collectionModel.makeCurrent}"
+                            rowSelection="single"
+                            styleClass="AFAuxiliaryStretchWidth"
+                            id="tblRequiredDocs"
+                            binding="#{ReqDocsBean.tblRequiredDocs}">
+                    <af:column sortProperty="shortDesc" sortable="true"
+                               headerText="Short Description" id="c8">
+                      <af:outputText value="#{row.shortDesc}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="description" sortable="true"
+                               headerText="Description" id="c6" width="200">
+                      <af:outputText value="#{row.description}" id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="mandatory" sortable="true"
+                               headerText="Mandatory" id="c7">
+                      <af:outputText value='#{row.mandatory == "Y" ? "YES" : "NO"}'
+                                     id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="dateAdded" sortable="true"
+                               headerText="Date Added" id="c5">
+                      <af:outputText value="#{row.dateAdded}" id="ot8">
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column headerText="Applies to"
+                               id="c1">
+                      <af:outputText value="#{row.account_type}" id="ot1"/>
+                    </af:column>
+                  </af:table>
+                </af:panelGroupLayout>
+              </af:panelBox>
+            </af:panelBox>
+          
+          <af:popup id="reqDocsPopup" contentDelivery="lazyUncached">
+                  <af:dialog id="d2" type="none" title="Required Documents">
+                    <h:panelGrid columns="2" id="pg2">
+                    
+                  <af:outputLabel value="Req Doc Code : " id="ol2" visible="false"/>
+                  <af:inputText label="Req Doc Code : " id="txtReqCode"
+                                binding="#{ReqDocsBean.txtReqCode}" 
+                                simple="true"
+                                visible="false"/>
+                  
+                  <af:outputLabel value="Short Description :" id="ol1" showRequired="true"/>
+                      <af:inputText label="Label 1" 
+                                    id="txtReqShortDesc" 
+                                    simple="true"
+                                    binding="#{ReqDocsBean.txtReqShortDesc}"/>
+                                    
+                      <af:outputLabel value="Description : " id="outputLabel1" showRequired="true"/>
+                      <af:inputText label="Label 1" 
+                                    id="txtReqDesc"
+                                    simple="true"
+                                    binding="#{ReqDocsBean.txtReqDesc}"/>
+                                    
+                      <af:outputLabel value="Mandatory?" id="outputLabel2" showRequired="true"/>
+                      <af:selectOneChoice label="Label 1" 
+                                          id="txtReqMandatory"
+                                          simple="true"
+                                          binding="#{ReqDocsBean.txtReqMandatory}"
+                                          value="Y">
+                        <af:selectItem label="Yes" value="Y" id="si2"/>
+                        <af:selectItem label="No" value="N" id="si31"/>
+                      </af:selectOneChoice>
+                    <!--     <af:outputLabel value="Exempted?" id="ol3" showRequired="true"/>
+                      <af:selectOneChoice label="Label 1" 
+                                          id="soc1"
+                                          simple="true"
+                                          binding="#{ReqDocsBean.txtRegExempted}"
+                                          value="Y">
+                        <af:selectItem label="Yes" value="Y" id="si3"/>
+                        <af:selectItem label="No" value="N" id="si4"/>
+                      </af:selectOneChoice>
+                       -->
+                  <af:outputLabel value="Applies To" id="ol3"  showRequired="true"/>
+                  <af:selectOneChoice label="Label 2" simple="true" id="soc1"
+                                      binding="#{ReqDocsBean.docApplicationlevel}">
+                     <f:selectItems value="#{ReqDocsBean.listOfItems}"
+                           id="selectItems1"/>
+                  </af:selectOneChoice>
+                </h:panelGrid>
+                    <h:panelGrid columns="2" id="pg3">
+                      <af:commandButton text="Save" id="btnSaveUpdateReqDocuments" partialSubmit="true"
+                                        action="#{ReqDocsBean.SaveRequiredDocuments}"
+                                        binding="#{ReqDocsBean.btnSaveUpdateReqDocuments}"/>
+                      <af:commandButton text="Cancel" id="btnCancelReqDocuments"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+                
+                <af:popup id="confirmationDialog"
+                          contentDelivery="lazyUncached">
+                <af:dialog title="Confirm Action" id="confirmChangeDialog"
+                            type="yesNo"
+                           dialogListener="#{ReqDocsBean.confirmationDialogListener}">
+                                
+                <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="olConfirmMsgValue"/>
+                </af:dialog>
+            </af:popup>
+                
+                <af:popup id="ServerMessage" contentDelivery="lazyUncached">
+              <af:dialog id="d14" title="Server Response" type="ok"
+                         inlineStyle="width:300.0px;">
+                <af:outputText id="textToShow"
+                               binding="#{ReqDocsBean.textToShow}"/>
+              </af:dialog>
+            </af:popup>
+                
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

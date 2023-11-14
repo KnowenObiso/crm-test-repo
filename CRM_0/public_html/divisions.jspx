@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crmTemplate">
+        <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+        <f:attribute name="mode" value="index"/>
+        <f:facet name="center">
+        <af:group id="g1">
+        
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+        
+        <table cellspacing="2" cellpadding="3" border="0" width="100%">
+                <tr>
+                  <td width="50%">
+                    <af:inputText id="it1" 
+                                    readOnly="true" 
+                                    simple="false"
+                                    helpTopicId="CRMdivisions"/>
+                  </td>
+                  
+                  <td width="50%" align="right">
+                    <af:statusIndicator id="si1"/>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="panelGrid5">
+                <af:outputLabel value="Divisions" id="outputLabel7"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="separator1"/>
+              <af:panelGroupLayout layout="scroll" halign="left" valign="top"
+                               id="pgl1">
+                <af:panelSplitter id="ps1" inlineStyle="height:550.0px;"
+                                  styleClass="AFAuxiliaryStretchWidth">
+                  <f:facet name="first">
+                    <af:panelBox text="Divisions" id="pb13" showHeader="never"
+                                 inlineStyle="width:300.0px;">
+                      <h:panelGrid columns="2" id="pg7">
+                        <af:commandButton id="cb1" icon="/images/create.gif"
+                                          text="New"
+                                          action="#{DivisionBean.NewDivision}"/>
+                        <af:commandButton id="commandButton2"
+                                          icon="/images/delete.gif"
+                                          text="Delete"
+                                          action="#{DivisionBean.DeleteDivision}"/>
+                      </h:panelGrid>
+                      <af:tree value="#{bindings.Organization4.treeModel}"
+                               var="node"
+                               selectionListener="#{DivisionBean.treeOrgDivSelectionListener}"
+                               rowSelection="single" id="treeOrgDivisions"
+                               binding="#{DivisionBean.treeOrgDivisions}">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node}" id="ot1"/>
+                        </f:facet>
+                      </af:tree>
+                    </af:panelBox>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelBox id="pb2" styleClass="AFAuxiliaryStretchWidth">
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="4" id="pg3">
+                        <af:commandButton id="commandButton9"
+                                          icon="/images/update.gif" text="Edit"
+                                          rendered="false"
+                                          action="#{DivisionBean.EditDivision}"/>
+                        <af:commandButton id="commandButton1"
+                                          icon="/images/save.gif" text="Save"
+                                          action="#{DivisionBean.SaveDivision}"/>
+                        <af:commandButton text="Cancel" id="cb4"
+                                          action="#{DivisionBean.NewDivision}"/>
+                      </h:panelGrid>
+                      <h:panelGrid columns="2" id="pg1">
+                        <af:outputLabel value="Division Short Description"
+                                        id="ol1"/>
+                        <af:panelGroupLayout id="pgl2">
+                          <af:inputText label="Label 1" id="it11" simple="true"
+                                        binding="#{DivisionBean.shtDesc}"/>
+                        </af:panelGroupLayout>
+                        <af:outputLabel value="Division Name"
+                                        id="outputLabel1"/>
+                        <af:panelGroupLayout id="panelGroupLayout1">
+                          <af:inputText label="Label 1" id="inputText1"
+                                        simple="true"
+                                        binding="#{DivisionBean.divName}"/>
+                        </af:panelGroupLayout>
+                        <af:outputLabel value="Division Status"
+                                        id="outputLabel2"/>
+                        <af:panelGroupLayout id="panelGroupLayout2"
+                                             partialTriggers="treeOrgDivisions">
+                          <af:selectOneChoice label="Label 1" id="soc1"
+                                              simple="true" value="A"
+                                              binding="#{DivisionBean.divStatus}">
+                            <af:selectItem label="Active" value="A" id="si11"/>
+                            <af:selectItem label="Inactive" value="I" id="si2"/>
+                          </af:selectOneChoice>
+                        </af:panelGroupLayout>
+                      </h:panelGrid>
+                      <h:panelGrid columns="1" id="pg2">
+                        <af:spacer width="10" height="10" id="s1"/>
+                      </h:panelGrid>
+                      <af:panelTabbed id="pt1"
+                                      styleClass="AFAuxiliaryStretchWidth">
+                        <af:showDetailItem text="SubDivisions" id="sdi2">
+                          <h:panelGrid columns="3" id="panelGrid1">
+                            <af:commandButton id="commandButton3"
+                                              icon="/images/create.gif"
+                                              text="New"
+                                              action="#{DivisionBean.AddSubDivision}"/>
+                            <af:commandButton id="commandButton4"
+                                              icon="/images/update.gif"
+                                              text="Edit"
+                                              action="#{DivisionBean.EditSubDivision}"/>
+                            <af:commandButton id="commandButton5"
+                                              icon="/images/delete.gif"
+                                              text="Delete"
+                                              action="#{DivisionBean.DeleteSubDivision}"/>
+                          </h:panelGrid>
+                          <af:popup id="subDiv">
+                            <af:dialog id="d2" type="none"
+                                       title="Sub Divisions">
+                              <h:panelGrid columns="2" id="pg4">
+                                <af:outputLabel value="Short Description"
+                                                id="ol2"/>
+                                <af:inputText label="Label 2" id="it2"
+                                              simple="true"
+                                              binding="#{DivisionBean.subdivshtDesc}"/>
+                                <af:outputLabel value="Description"
+                                                id="outputLabel3"/>
+                                <af:inputText label="Label 2" id="inputText2"
+                                              simple="true"
+                                              binding="#{DivisionBean.subDivDesc}"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="2" id="pg5">
+                                <af:commandButton text="OK" id="cb2"
+                                                  action="#{DivisionBean.SaveSubDivision}"/>
+                                <af:commandButton text="Cancel"
+                                                  id="commandButton10"/>
+                              </h:panelGrid>
+                            </af:dialog>
+                          </af:popup>
+                          <af:table value="#{bindings.Division1.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Division1.rangeSize}"
+                                    emptyText="#{bindings.Division1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Division1.rangeSize}"
+                                    rowBandingInterval="0"
+                                    selectedRowKeys="#{bindings.Division1.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.Division1.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t2"
+                                    inlineStyle="height:120px; border-style:none;"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    binding="#{DivisionBean.subDivisionsLOV}">
+                            <af:column sortProperty="SDIV_SHT_DESC"
+                                       sortable="true"
+                                       headerText="Short Description" id="c2"
+                                       width="200">
+                              <af:outputText value="#{row.SDIV_SHT_DESC}"
+                                             id="ot2"/>
+                            </af:column>
+                            <af:column sortProperty="SDIV_NAME" sortable="true"
+                                       headerText="SubDivision" id="c1"
+                                       width="200">
+                              <af:outputText value="#{row.SDIV_NAME}" id="ot3"/>
+                            </af:column>
+                          </af:table>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="Branch Divisions" id="sdi3">
+                          <h:panelGrid columns="3" id="panelGrid2">
+                            <af:commandButton id="commandButton6"
+                                              icon="/images/create.gif"
+                                              text="New"
+                                              action="#{DivisionBean.AddBranchDivision}"/>
+                            <af:commandButton id="commandButton7"
+                                              icon="/images/update.gif"
+                                              text="Edit"
+                                              action="#{DivisionBean.EditBranchDivision}"/>
+                            <af:commandButton id="commandButton8"
+                                              icon="/images/delete.gif"
+                                              text="Delete"
+                                              action="#{DivisionBean.DeleteBranchDivision}"/>
+                          </h:panelGrid>
+                          <af:popup id="brnDivisions">
+                            <af:dialog id="dialog1" type="none"
+                                       title="Branch Divisions">
+                              <h:panelGrid columns="2" id="panelGrid3">
+                                <af:outputLabel value="Branch"
+                                                id="outputLabel6"/>
+                                <af:outputText value="outputText1" id="ot9"
+                                               binding="#{DivisionBean.branchLabel}"/>
+                                <af:outputLabel value="WEF" id="outputLabel4"
+                                                showRequired="true"/>
+                                <af:inputDate label="Label 1" id="id1"
+                                              simple="true"
+                                              binding="#{DivisionBean.wef}"
+                                              showRequired="true"/>
+                                <af:outputLabel value="WET" id="outputLabel5"
+                                                showRequired="true"/>
+                                <af:inputDate label="Label 1" id="inputDate1"
+                                              simple="true"
+                                              binding="#{DivisionBean.wet}"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="2" id="panelGrid4">
+                                <af:commandButton text="OK" id="commandButton11"
+                                                  action="#{DivisionBean.SaveBranchDivision}"/>
+                                <af:commandButton text="Cancel"
+                                                  id="commandButton12"/>
+                              </h:panelGrid>
+                            </af:dialog>
+                          </af:popup>
+                          <af:popup id="branches">
+                            <af:dialog id="d3" type="none" title="Branches">
+                              <af:table value="#{bindings.Division3.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.Division3.rangeSize}"
+                                        emptyText="#{bindings.Division3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.Division3.rangeSize}"
+                                        rowBandingInterval="0"
+                                        filterModel="#{bindings.Division3Query.queryDescriptor}"
+                                        queryListener="#{bindings.Division3Query.processQuery}"
+                                        filterVisible="true" varStatus="vs"
+                                        selectedRowKeys="#{bindings.Division3.collectionModel.selectedRow}"
+                                        selectionListener="#{bindings.Division3.collectionModel.makeCurrent}"
+                                        rowSelection="single" id="t4"
+                                        binding="#{DivisionBean.branchesLOV}">
+                                <af:column sortProperty="BRN_NAME"
+                                           filterable="true" sortable="true"
+                                           headerText="Branch" id="c7"
+                                           width="300">
+                                  <af:outputText value="#{row.BRN_NAME}"
+                                                 id="ot8"/>
+                                </af:column>
+                              </af:table>
+                              <h:panelGrid columns="2" id="pg6">
+                                <af:commandButton text="OK" id="cb3"
+                                                  action="#{DivisionBean.BranchSelected}"/>
+                                <af:commandButton text="Cancel"
+                                                  id="commandButton13"/>
+                              </h:panelGrid>
+                            </af:dialog>
+                          </af:popup>
+                          <af:table value="#{bindings.Division2.collectionModel}"
+                                    var="row"
+                                    rows="#{bindings.Division2.rangeSize}"
+                                    emptyText="#{bindings.Division2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                    fetchSize="#{bindings.Division2.rangeSize}"
+                                    rowBandingInterval="0"
+                                    selectedRowKeys="#{bindings.Division2.collectionModel.selectedRow}"
+                                    selectionListener="#{bindings.Division2.collectionModel.makeCurrent}"
+                                    rowSelection="single" id="t3"
+                                    inlineStyle="height:120px; border-style:none;"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    binding="#{DivisionBean.brnDivisionsLOV}">
+                            <af:column sortProperty="BRN_NAME" sortable="true"
+                                       headerText="Branch Name" id="c6">
+                              <af:outputText value="#{row.BRN_NAME}" id="ot6"/>
+                            </af:column>
+                            <af:column sortProperty="DIV_NAME" sortable="true"
+                                       headerText="Division" id="c3">
+                              <af:outputText value="#{row.DIV_NAME}" id="ot7"/>
+                            </af:column>
+                            <af:column sortProperty="BDIV_WEF" sortable="true"
+                                       headerText="WEF" id="c5">
+                              <af:outputText value="#{row.BDIV_WEF}" id="ot5">
+                                <af:convertDateTime pattern="#{bindings.Division2.hints.BDIV_WEF.format}"/>
+                              </af:outputText>
+                            </af:column>
+                            <af:column sortProperty="BDIV_WET" sortable="true"
+                                       headerText="WET" id="c4">
+                              <af:outputText value="#{row.BDIV_WET}" id="ot4">
+                                <af:convertDateTime pattern="#{bindings.Division2.hints.BDIV_WET.format}"/>
+                              </af:outputText>
+                            </af:column>
+                          </af:table>
+                        </af:showDetailItem>
+                      </af:panelTabbed>
+                    </af:panelBox>
+                  </f:facet>
+                </af:panelSplitter>
+          </af:panelGroupLayout>
+            </af:panelBox></af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>
+

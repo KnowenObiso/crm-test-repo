@@ -1,0 +1,919 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <af:inputText id="it1" 
+                                helpTopicId="CRMagencyActivities" 
+                                columns="13"
+                                readOnly="true" 
+                                shortDesc="Help"/>
+                </td>
+                <td width="100%" align="right">
+                
+                <af:statusIndicator id="si1"/>
+                </td>
+              </tr>
+            </table>
+            
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="Agencies" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              
+              <af:panelCollection id="pc1" styleClass="AFAuxiliaryStretchWidth" 
+                                  inlineStyle="height:200.0px;">
+                <af:table value="#{bindings.Agency.collectionModel}" var="row"
+                          rows="#{bindings.Agency.rangeSize}"
+                          emptyText="#{bindings.Agency.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.Agency.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.AgencyQuery.queryDescriptor}"
+                          queryListener="#{bindings.AgencyQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectionListener="#{agencyActivitiesBacking.tblAgenciesListener}"
+                          rowSelection="single" 
+                          id="t1"
+                          binding="#{agencyActivitiesBacking.tblAgencies}">
+                  <af:column sortProperty="code" filterable="true"
+                             sortable="true" headerText="Code" id="c3">
+                    <af:outputText value="#{row.code}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="shortDesc" filterable="true"
+                             sortable="true" headerText="Short Desc" id="c2" 
+                             width="200">
+                    <af:outputText value="#{row.shortDesc}" id="ot3"/>
+                  </af:column>
+                  <af:column sortProperty="name" filterable="true"
+                             sortable="true" headerText="Name" id="c1" 
+                             width="300">
+                    <af:outputText value="#{row.name}" id="ot2"/>
+                  </af:column>
+                </af:table>
+              </af:panelCollection>
+              
+              <af:spacer width="10" height="20" id="s6"/>
+				  
+                <h:panelGrid columns="2" id="pg4">
+                    <af:outputLabel value="Agency Activities" id="ol2"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s4"/>
+                  
+                  <h:panelGrid columns="3" id="pg3">
+                    
+                  <af:commandButton text="New"
+                                    id="btnNewAgencyActivity" 
+                                    icon="/images/create.gif"
+                                    action="#{agencyActivitiesBacking.actionNewAgencyActivity}"/>
+                                    
+                  <af:commandButton text="Edit" 
+                                    id="btnEditAgencyActivity" 
+                                    icon="/images/update.gif"
+                                    action="#{agencyActivitiesBacking.actionEditAgencyActivity}"/>
+                                    
+                  <af:commandButton text="Delete" 
+                                    id="btnDeleteAgencyActivity" 
+                                    icon="/images/delete.gif"
+                                    action="#{agencyActivitiesBacking.actionShowConfirmDeleteActivity}"/>
+                </h:panelGrid>
+                <af:separator id="s3"/>
+                
+              <af:panelCollection id="pc2" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:200.0px;">
+                <af:table value="#{bindings.AgencyActivity2.collectionModel}"
+                          var="row" rows="#{bindings.AgencyActivity2.rangeSize}"
+                          emptyText="#{bindings.AgencyActivity2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.AgencyActivity2.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.AgencyActivityQuery.queryDescriptor}"
+                          queryListener="#{bindings.AgencyActivityQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.AgencyActivity2.collectionModel.selectedRow}"
+                         
+                          rowSelection="single" id="t2"
+                          binding="#{agencyActivitiesBacking.tblAgencyActivity}"
+                          selectionListener="#{agencyActivitiesBacking.tblAgencyActivityListener}"
+                          >
+                          
+                
+                 <af:column sortProperty="activityDesc" filterable="true"
+                             sortable="true" headerText="DESC" id="c33" width="150">
+                    <af:outputText value="#{row.activityDesc}" id="ot18"/>
+                  </af:column>
+                  <af:column sortProperty="aacActivityTypeName"
+                             filterable="true" sortable="true"
+                             headerText="TYPE" id="c30">
+                    <af:outputText value="#{row.aacActivityTypeName}"
+                                   id="ot34"/>
+                  </af:column>
+                  <af:column sortProperty="aacRemarks" filterable="true" width="150"
+                             sortable="true" headerText="REMARKS" id="c38">
+                    <af:outputText value="#{row.aacRemarks}" id="ot31"/>
+                  </af:column>
+                   <af:column sortProperty="aacReasnsforActivity"
+                             filterable="true" sortable="true" width="150"
+                             headerText="REASONS" id="c31">
+                    <af:outputText value="#{row.aacReasnsforActivity}"
+                                   id="ot15"/>
+                  </af:column>
+                
+                 
+                  <af:column sortProperty="systemName" filterable="true"
+                             sortable="true"
+                             headerText="System Name"
+                             id="c18">
+                             
+                    <af:outputText value="#{row.systemName}" id="ot35"/>
+                  </af:column>
+                 
+                  
+                 
+                  <af:column sortProperty="aacWef" filterable="true"
+                             sortable="true" headerText="WEF" id="c37">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.aacWef}"
+                                    id="id1"/>
+                    </f:facet>
+                    <af:outputText value="#{row.aacWef}" id="ot32">
+                      <af:convertDateTime pattern="#{bindings.AgencyActivity2.hints.aacWef.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="aacEstimateWet" filterable="true"
+                             sortable="true" headerText="ESTIMATE WET" id="c36">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.aacEstimateWet}"
+                                    id="id2"/>
+                    </f:facet>
+                    <af:outputText value="#{row.aacEstimateWet}" id="ot19">
+                      <af:convertDateTime pattern="#{bindings.AgencyActivity2.hints.aacEstimateWet.format}"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="aacActualWet" filterable="true"
+                             sortable="true" headerText="ACTUAL WET" id="c39">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.aacActualWet}"
+                                    id="id3"/>
+                    </f:facet>
+                    <af:outputText value="#{row.aacActualWet}" id="ot30">
+                      <af:convertDateTime pattern="#{bindings.AgencyActivity2.hints.aacActualWet.format}"/>
+                    </af:outputText>
+                  </af:column>
+                 
+                </af:table>
+                <!-- <af:table value="#{bindings.AgencyActivity.collectionModel}"
+                          var="row" rows="#{bindings.AgencyActivity.rangeSize}"
+                          emptyText="#{bindings.AgencyActivity.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.AgencyActivity.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.AgencyActivityQuery.queryDescriptor}"
+                          queryListener="#{bindings.AgencyActivityQuery.processQuery}"
+                          filterVisible="true" 
+                          varStatus="vs"
+                          selectionListener="#{agencyActivitiesBacking.tblAgencyActivityListener}"
+                          rowSelection="single" 
+                          id="t2"
+                          binding="#{agencyActivitiesBacking.tblAgencyActivity}">
+                  <af:column sortProperty="activityDesc" filterable="true"
+                             sortable="true" headerText="Activity Desc"
+                             id="c12" width="200">
+                    <af:outputText value="#{row.activityDesc}" id="ot13"/>
+                  </af:column>
+                  <af:column sortProperty="aacWef" filterable="true"
+                             sortable="true" headerText="WEF" id="c18">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.aacWef}"
+                                    id="id1"/>
+                    </f:facet>
+                    <af:outputText value="#{row.aacWef}" id="ot15">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="aacEstimateWet" filterable="true"
+                             sortable="true" headerText="Estimate WET" id="c10">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.aacEstimateWet}"
+                                    id="id2"/>
+                    </f:facet>
+                    <af:outputText value="#{row.aacEstimateWet}" id="ot19">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="aacActualWet" filterable="true"
+                             sortable="true" headerText="Actual WET" id="c14">
+                    <f:facet name="filter">
+                      <af:inputDate value="#{vs.filterCriteria.aacActualWet}"
+                                    id="id3"/>
+                    </f:facet>
+                    <af:outputText value="#{row.aacActualWet}" id="ot18">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:outputText>
+                  </af:column>
+                  <af:column sortProperty="marketerAgencyName" filterable="true"
+                             sortable="true" headerText="Marketer Name"
+                             id="c4" width="200">
+                    <af:outputText value="#{row.marketerAgencyName}" id="ot4"/>
+                  </af:column>
+                  <af:column sortProperty="aacRemarks" filterable="true"
+                             sortable="true" headerText="Remarks" id="c15" 
+                             width="250">
+                    <af:outputText value="#{row.aacRemarks}" id="ot10"/>
+                  </af:column>
+                </af:table> -->
+              </af:panelCollection>
+              <h:panelGrid columns="3" id="pg9"/>
+               <h:panelGrid columns="2" id="pg14">
+                    <af:outputLabel value="Participants" id="ol4"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s5"/>
+              <h:panelGrid columns="3" id="pg10">
+                    
+                  <af:commandButton text="New"
+                                    id="btnSaveParticipants" 
+                                    icon="/images/create.gif"                             
+                                                               
+                                   action="#{agencyActivitiesBacking.actionShowAddEditParticipants}"/>
+                                    
+                  <af:commandButton text="Edit" 
+                                    id="btnEditPart" 
+                                    icon="/images/update.gif"
+                                    action="#{agencyActivitiesBacking.actionOnEditParticipantAct}"/>
+                                    
+                  <af:commandButton text="Delete" 
+                                    id="btnDeletePart" 
+                                    icon="/images/delete.gif"
+                                    action="#{agencyActivitiesBacking.actionShowConfirmDeleteParticipant}"/>
+                </h:panelGrid>
+              <af:separator id="s2"/>
+              <af:panelCollection id="pc8" styleClass="AFAuxiliaryStretchWidth">
+                <f:facet name="menus"/>
+                <f:facet name="toolbar"/>
+                <f:facet name="statusbar"/>
+                <af:table value="#{bindings.AgencyActivity1.collectionModel}"
+                          var="row" rows="#{bindings.AgencyActivity1.rangeSize}"
+                          emptyText="#{bindings.AgencyActivity1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.AgencyActivity1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.AgencyActivity1Query.queryDescriptor}"
+                          queryListener="#{bindings.AgencyActivity1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.AgencyActivity1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.AgencyActivity1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t8"
+                          binding="#{agencyActivitiesBacking.tblParticipants}"
+                           styleClass="AFAuxiliaryStretchWidth">
+                       
+                  <af:column sortProperty="participName" filterable="true"
+                             sortable="true" headerText="NAME" id="c27" width="250">
+                    <af:outputText value="#{row.participName}" id="ot5"/>
+                  </af:column>
+                   <af:column sortProperty="participActType" filterable="true"
+                             sortable="true" headerText="TYPE" id="c26" width="200">
+                    <af:outputText value="#{row.participActType}" id="ot28"/>
+                  </af:column>
+                <!--  <af:column sortProperty="participByCode" filterable="true"
+                             sortable="true"
+                             headerText="PARTICIPANT CODE"
+                             id="c7" width="200">
+                    <af:outputText value="#{row.participByCode}" id="ot26"/>
+                  </af:column>
+                  -->
+                  
+                  
+                </af:table>
+              </af:panelCollection>
+            </af:panelBox>
+            
+            <af:popup id="agencyActivityPop">
+              <af:dialog id="d2" title="Activity Type Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl1">
+                  <af:panelBox text="PanelBox2" id="pb2" showHeader="never"
+                               binding="#{agencyActivitiesBacking.panelActivityTypeDetail}" >
+                    <af:panelFormLayout id="pfl1">
+                    
+                      <af:inputText label="System Code : " id="it8"
+                                    visible="false"
+                                    binding="#{agencyActivitiesBacking.txtAacSysCode}"/>
+                                    
+                      <af:panelLabelAndMessage label="System : " id="plam4">
+                        <af:inputText label="Label 1" 
+                                      id="it13" 
+                                      simple="true" 
+                                      disabled="true"
+                                      binding="#{agencyActivitiesBacking.txtAacSystemName}"/>
+                        <af:commandButton id="cb4" 
+                                          icon="/images/dropdown.gif"
+                                          partialSubmit="true"
+                                          action="#{agencyActivitiesBacking.actionShowSystemsPop}"/>
+                      </af:panelLabelAndMessage>
+                      <af:inputText label="Code : " id="it2" 
+                                    visible="false"
+                                    binding="#{agencyActivitiesBacking.txtAacCode}" 
+                                    showRequired="true"/>
+                      
+                      <af:inputText label="Activity Type Code : " id="it3"
+                                    visible="false"
+                                    binding="#{agencyActivitiesBacking.txtAacActyCode}" 
+                                    showRequired="true"/>
+                      
+                      <af:panelLabelAndMessage label="Activity Type : " id="plam1" 
+                                               showRequired="true">
+                        <af:inputText label="Label 1" 
+                                      id="it10" 
+                                      simple="true" 
+                                      disabled="true"
+                                      binding="#{agencyActivitiesBacking.txtAacActyDesc}"/>
+                        <af:commandButton id="cb1" 
+                                          icon="/images/dropdown.gif" 
+                                          partialSubmit="true"
+                                          action="#{agencyActivitiesBacking.actionShowActivityTypesLov}"/>
+                      </af:panelLabelAndMessage>
+                      
+                      <af:inputDate label="WEF : " id="id4"
+                                    binding="#{agencyActivitiesBacking.txtAacWef}">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                      </af:inputDate>
+                      
+                      <af:inputDate label="Estimate WET : " id="id5"
+                                    binding="#{agencyActivitiesBacking.txtAacEstimateWet}">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                      </af:inputDate>
+                      
+                      <af:inputDate label="Actual WET : " id="id6"
+                                    binding="#{agencyActivitiesBacking.txtAacActualWet}">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                      </af:inputDate>
+                      
+                      <af:inputText label="Remarks : " id="it4" rows="2" columns="40"
+                                    binding="#{agencyActivitiesBacking.txtAacRemarks}"/>
+                      
+                      <af:inputText label="Agency Code : " id="it5"
+                                    visible="false"
+                                    binding="#{agencyActivitiesBacking.txtAacAgnCode}"/>
+                     
+                      <af:selectOneChoice label="Activity by type" id="soc1"
+                                          binding="#{agencyActivitiesBacking.socActByType}"
+                                          valueChangeListener="#{agencyActivitiesBacking.actionSubmitActivityType}"
+                                          autoSubmit="true">
+                        <af:selectItem label="CLIENT" value="CL" id="si3"/>
+                       
+                             <af:selectItem label="SERVICE PROVIDERS" value="SP"
+                                       id="si4"/>
+                                       
+                              <af:selectItem label="DIRECT" value="DIRECT"
+                                               id="si37" />
+                                <af:selectItem label="FACULTATIVE IN" value="FI"/>
+                                <af:selectItem label="FACULTATIVE OUT" value="FO"/>
+                                <af:selectItem label="INSURANCE COMPANY" value="I"/>
+                                <af:selectItem label="REINSURANCE COMPANY" value="R"/>
+                                <af:selectItem label="REINSURANCE CONSULTANCY" value="RC"/>
+                                <af:selectItem label="CHECK-OFF INSTITUTIONS" value="CK"/>
+                                <af:selectItem label="DEBTORS" value="DR"/>
+                                <af:selectItem label="DIRECT" value="D"/>
+                                <af:selectItem label="AGENTS" value="A"/>
+                                <af:selectItem label="BROKERS" value="B"/>
+                                <af:selectItem label="BRANCH EXECUTIVES" value="BM"/>
+                                <af:selectItem label="BRANCH MARKETING EXEC." value="BE"/>
+                                <af:selectItem label="STAFF" value="ST"/>
+                                <af:selectItem label="INHOUSE AGENTS" value="IA"/>
+                                <af:selectItem label="SALVAGES" value="SV"/>
+                                <af:selectItem label="EXCESS" value="XS"/>
+                                <af:selectItem label="BDE" value="BD"/>
+                                <af:selectItem label="MAKETER" value="MK"/>
+                                <af:selectItem label="MSP" value="MS"/>
+                                <af:selectItem label="MSE" value="ME"/>
+                                <af:selectItem label="UNIT MANAGER"  value="UM" />
+                                <af:selectItem label="BRANCH MANAGERS"  value="20"/>
+                                <af:selectItem label="BRANCH" value="BR"/>
+                                <af:selectItem label="AGENCY MANAGER" value="AM"/>
+                                <af:selectItem label="THIRD PARTY RECOVERY"  value="TP"/>
+                                <af:selectItem label="REGIONAL MANAGER" value="RM"/>
+                                <af:selectItem label="NATIONAL MANAGER"  value="NM"/>
+                                <af:selectItem label="PETTY CASH"  value="PC" />
+                      </af:selectOneChoice>
+                        <af:inputText label="Activity type Code" id="it7" visible="false"
+                                      binding="#{agencyActivitiesBacking.txtAaActTypeCode}"/>
+                      
+                          <af:inputText label="Activity by Code" 
+                                      id="it11" 
+                                      simple="false" 
+                                      disabled="true"
+                                     binding="#{agencyActivitiesBacking.txtActivityByCode}" visible="false"/>
+                      <af:panelLabelAndMessage label="Activity by Code : " id="plam2"  visible="true">
+                        <af:inputText label="Activity by Code" 
+                                      id="it18" 
+                                      simple="true" 
+                                      disabled="true"
+                                     binding="#{agencyActivitiesBacking.txtActivityByName}" />
+                        <af:commandButton id="cb2" 
+                                          icon="/images/dropdown.gif"
+                                          partialSubmit="true"
+                                          action="#{agencyActivitiesBacking.actionShowActivityByCode}"/>
+                      </af:panelLabelAndMessage>
+                      <af:inputText label="Reasons for Activity" id="it6" rows="2" columns="40"
+                                    binding="#{agencyActivitiesBacking.txtAacReasonsForAct}"/>
+                     <!--
+                      <af:inputText label="Client Code : " id="it15"
+                                    visible="false"
+                                    binding="#{agencyActivitiesBacking.txtAacClientCode}"/>
+                      
+                      <af:panelLabelAndMessage label="Client : " id="plam6"  visible="false">
+                        <af:inputText label="Label 1" 
+                                      id="it18" 
+                                      simple="true" 
+                                      disabled="true"
+                                      binding="#{agencyActivitiesBacking.txtAacClientName}"/>
+                        <af:commandButton id="cb8" 
+                                          icon="/images/dropdown.gif"
+                                          partialSubmit="true"
+                                          action="#{agencyActivitiesBacking.actionShowClientsPop}"/>
+                      </af:panelLabelAndMessage>
+                      
+                      <af:inputText label="Service Provider Code : " id="it16"
+                                    visible="false"
+                                    binding="#{agencyActivitiesBacking.txtAacSprCode}"/>
+                      
+                      <af:panelLabelAndMessage label="Service Provider : "
+                                               id="plam3" visible="false" >
+                        <af:inputText label="Label 1" 
+                                      id="it12" 
+                                      simple="true" 
+                                      disabled="true"
+                                      binding="#{agencyActivitiesBacking.txtAacServiceProviderName}"/>
+                        <af:commandButton id="cb3" 
+                                          icon="/images/dropdown.gif"
+                                          partialSubmit="true"
+                                          action="#{agencyActivitiesBacking.actionShowServiceProvidersPop}"/>
+                      </af:panelLabelAndMessage>
+                      
+                    
+                      
+                      <af:inputText label="Marketer Code : " id="it9"
+                                    visible="false"
+                                    binding="#{agencyActivitiesBacking.txtAacMktrAgnCode}"/>
+                      
+                      <af:panelLabelAndMessage label="Marketer : " id="plam5" visible="false">
+                        <af:inputText label="Label 1" 
+                                      id="it14" 
+                                      simple="true" 
+                                      disabled="true"
+                                     
+                                      binding="#{agencyActivitiesBacking.txtAacMarketerName}"/>
+                        <af:commandButton id="cb5" 
+                                          icon="/images/dropdown.gif" 
+                                          partialSubmit="true"
+                                          action="#{agencyActivitiesBacking.actionShowMarketersPop}"/>
+                      </af:panelLabelAndMessage>
+                      -->
+                    </af:panelFormLayout>
+                  
+                    <h:panelGrid columns="2" id="pg5">
+                      <af:commandButton text="Save" id="cb6"
+                                        binding="#{agencyActivitiesBacking.btnSaveUpdateAgencyActivity}"
+                                        action="#{agencyActivitiesBacking.actionSaveUpdateAgencyActivity}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="cb7"/>
+                    </h:panelGrid>
+                  
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="activityTypePop">
+              <af:dialog id="d3" title="Activity Type List" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelGroupLayout id="pgl2">
+                  <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                    <af:panelCollection id="pc3" styleClass="AFAuxiliaryStretchWidth">
+                    
+                     <!-- <af:table value="#{bindings.ActivityType.collectionModel}"
+                                var="row"
+                                rows="#{bindings.ActivityType.rangeSize}"
+                                emptyText="#{bindings.ActivityType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.ActivityType.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.ActivityTypeQuery.queryDescriptor}"
+                                queryListener="#{bindings.ActivityTypeQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.ActivityType.collectionModel.makeCurrent}"
+                                rowSelection="single" 
+                                id="t3"
+                                binding="#{agencyActivitiesBacking.tblActivityTypesPop}">
+                        <af:column sortProperty="actyCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c7">
+                          <af:outputText value="#{row.actyCode}" id="ot7"/>
+                        </af:column>
+                        <af:column sortProperty="actyDesc" filterable="true"
+                                   sortable="true" headerText="Description"
+                                   id="c6" 
+                                   width="200">
+                          <af:outputText value="#{row.actyDesc}" id="ot5"/>
+                        </af:column>
+                      </af:table> -->
+                      <af:table value="#{bindings.ActivityType1.collectionModel}"
+                                var="row"
+                                rows="#{bindings.ActivityType1.rangeSize}"
+                                emptyText="#{bindings.ActivityType1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.ActivityType1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.ActivityType1Query.queryDescriptor}"
+                                queryListener="#{bindings.ActivityType1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.ActivityType1.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.ActivityType1.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t3"
+                                binding="#{agencyActivitiesBacking.tblActivityTypesPop}">
+                     
+                        <af:column sortProperty="actyCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c24">
+                          <af:outputText value="#{row.actyCode}" id="ot25"/>
+                        </af:column>
+                       
+                        <af:column sortProperty="actyDesc" filterable="true"
+                                   sortable="true" headerText="Name" id="c25">
+                          <af:outputText value="#{row.actyDesc}" id="ot7"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg30">
+                      <af:commandButton text="Ok" id="btnAcceptActivityType"
+                                        action="#{agencyActivitiesBacking.actionAcceptActivityType}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelActivityType"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="clientsPop">
+              <af:dialog id="d6" title="Clients List" type="none"
+                         inlineStyle="width:480.0px;">
+                <af:panelGroupLayout id="pgl4">
+                  <af:panelBox text="PanelBox7" id="pb6" showHeader="never">
+                    <af:panelCollection id="pc6" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Client2.collectionModel}"
+                                var="row" rows="#{bindings.Client2.rangeSize}"
+                                emptyText="#{bindings.Client2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Client2.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.Client2Query.queryDescriptor}"
+                                queryListener="#{bindings.Client2Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.Client2.collectionModel.makeCurrent}"
+                                rowSelection="single" 
+                                id="t6"
+                                binding="#{agencyActivitiesBacking.tblClientsPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c20">
+                          <af:outputText value="#{row.code}" id="ot20"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c19">
+                          <af:outputText value="#{row.shortDesc}" id="ot17"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c17" 
+                                   width="200">
+                          <af:outputText value="#{row.name}" id="ot16"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg7">
+                      <af:commandButton text="Ok" id="btnAcceptClient"
+                                        action="#{agencyActivitiesBacking.actionAcceptClient}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelClient"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="serviceProvidersPop">
+              <af:dialog id="d7" title="Service Providers List" type="none"
+                         inlineStyle="width:480.0px;">
+                <af:panelGroupLayout id="pgl6">
+                  <af:panelBox text="PanelBox8" id="pb7" showHeader="never">
+                    <af:panelCollection id="pc7" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.ServiceProvider.collectionModel}"
+                                var="row"
+                                rows="#{bindings.ServiceProvider.rangeSize}"
+                                emptyText="#{bindings.ServiceProvider.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.ServiceProvider.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.ServiceProviderQuery.queryDescriptor}"
+                                queryListener="#{bindings.ServiceProviderQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.ServiceProvider.collectionModel.makeCurrent}"
+                                rowSelection="single" 
+                                id="t7"
+                                binding="#{agencyActivitiesBacking.tblServiceProvidersPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c23">
+                          <af:outputText value="#{row.code}" id="ot22"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c21">
+                          <af:outputText value="#{row.shortDesc}" id="ot23"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c22" 
+                                   width="200">
+                          <af:outputText value="#{row.name}" id="ot21"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg8">
+                      <af:commandButton text="Ok" id="btnAcceptServiceProvider"
+                                        action="#{agencyActivitiesBacking.actionAcceptServiceProvider}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelServiceProvider"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="systemsPop">
+              <af:dialog id="d5" title="Systems List" type="none"
+                         inlineStyle="width:480.0px;">
+                <af:panelGroupLayout id="pgl3">
+                  <af:panelBox text="PanelBox6" id="pb4" showHeader="never">
+                    <af:panelCollection id="pc5" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.System.collectionModel}"
+                                var="row" rows="#{bindings.System.rangeSize}"
+                                emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.System.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                                queryListener="#{bindings.SystemQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.System.collectionModel.makeCurrent}"
+                                rowSelection="single" 
+                                id="t5"
+                                binding="#{agencyActivitiesBacking.tblSystemsPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c16">
+                          <af:outputText value="#{row.code}" id="ot12"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c13">
+                          <af:outputText value="#{row.shortDesc}" id="ot14"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c11" 
+                                   width="200">
+                          <af:outputText value="#{row.name}" id="ot11"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg6">
+                      <af:commandButton text="Ok" id="btnAcceptSystem"
+                                        action="#{agencyActivitiesBacking.actionAcceptSystem}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelSystem"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="agentsListPop">
+              <af:dialog id="d4" title="Marketers List" type="none"
+                         inlineStyle="width:580.0px;">
+                <af:panelGroupLayout id="pgl5">
+                  <af:panelBox text="PanelBox5" id="pb5" showHeader="never">
+                    <af:panelCollection id="pc4" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Agency1.collectionModel}"
+                                var="row" rows="#{bindings.Agency1.rangeSize}"
+                                emptyText="#{bindings.Agency1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Agency1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.AgencyQuery.queryDescriptor}"
+                                queryListener="#{bindings.AgencyQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.Agency1.collectionModel.makeCurrent}"
+                                rowSelection="single" 
+                                id="t4"
+                                binding="#{agencyActivitiesBacking.tblMarketerPop}">
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="Code" id="c8">
+                          <af:outputText value="#{row.code}" id="ot6"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c9" 
+                                   width="150">
+                          <af:outputText value="#{row.shortDesc}" id="ot9"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c5" 
+                                   width="250">
+                          <af:outputText value="#{row.name}" id="ot8"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg2">
+                      <af:commandButton text="Ok" id="btnAcceptMarketer"
+                                        action="#{agencyActivitiesBacking.actionAcceptMarketer}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelMarketer"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            
+             <af:popup id="agentsListPopByAccType">
+              <af:dialog id="d9" title="List" type="none"
+                         inlineStyle="width:580.0px;">
+                <af:panelGroupLayout id="pgl8">
+                  <af:panelBox text="PanelBox5" id="pb9" showHeader="never">
+                    <af:panelCollection id="pc9" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.Agency2.collectionModel}"
+                                var="row" rows="#{bindings.Agency2.rangeSize}"
+                                emptyText="#{bindings.Agency2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Agency2.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.Agency2Query.queryDescriptor}"
+                                queryListener="#{bindings.Agency2Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.Agency2.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.Agency2.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t9" styleClass="AFAuxiliaryStretchWidth"
+                                binding="#{agencyActivitiesBacking.tblAgenciesByShortDesc}">
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Name" id="c28">
+                          <af:outputText value="#{row.name}" id="ot27"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c6">
+                          <af:outputText value="#{row.shortDesc}" id="ot24"/>
+                        </af:column>
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="ID" id="c29">
+                          <af:outputText value="#{row.code}" id="ot29"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    
+                    <h:panelGrid columns="2" id="pg12">
+                      <af:commandButton text="Ok" id="btnAcceptAgency"
+                                        action="#{agencyActivitiesBacking.actionAcceptAgency}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelAgency"/>
+                    </h:panelGrid>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            <af:popup id="participantsPop"  >
+              <af:dialog id="d8" inlineStyle="width:400.0px;" title="Participants Form" type="none">
+                <af:panelBox  id="pb8">
+                  <af:panelGroupLayout id="pgl7">
+                    <af:panelFormLayout id="pfl2">
+                      <f:facet name="footer"/>
+                   
+                    <af:inputText label="Activity Code" id="it15" visible="false" disabled="true"
+                              binding="#{agencyActivitiesBacking.txtParticipActivityCode}"/>
+                  <af:inputText label="Activity Code" id="it16" visible="false" disabled="true"
+                              binding="#{agencyActivitiesBacking.txtParticipId}"/>            
+                <af:selectOneChoice label="Activity by type" id="soc2"
+                                   binding="#{agencyActivitiesBacking.socSelectTypeParticip}"
+                                   valueChangeListener="#{agencyActivitiesBacking.actionSubmitParticipActivityType}"
+                                          autoSubmit="true">
+                        <af:selectItem label="CLIENT" value="CL" id="si2"/>
+                       
+                             <af:selectItem label="SERVICE PROVIDERS" value="SP"
+                                       id="si5"/>
+                                       
+                              <af:selectItem label="DIRECT" value="DIRECT"
+                                               id="si6" />
+                                <af:selectItem label="FACULTATIVE IN" value="FI"/>
+                                <af:selectItem label="FACULTATIVE OUT" value="FO"/>
+                                <af:selectItem label="INSURANCE COMPANY" value="I"/>
+                                <af:selectItem label="REINSURANCE COMPANY" value="R"/>
+                                <af:selectItem label="REINSURANCE CONSULTANCY" value="RC"/>
+                                <af:selectItem label="CHECK-OFF INSTITUTIONS" value="CK"/>
+                                <af:selectItem label="DEBTORS" value="DR"/>
+                                <af:selectItem label="DIRECT" value="D"/>
+                                <af:selectItem label="AGENTS" value="A"/>
+                                <af:selectItem label="BROKERS" value="B"/>
+                                <af:selectItem label="BRANCH EXECUTIVES" value="BM"/>
+                                <af:selectItem label="BRANCH MARKETING EXEC." value="BE"/>
+                                <af:selectItem label="STAFF" value="ST"/>
+                                <af:selectItem label="INHOUSE AGENTS" value="IA"/>
+                                <af:selectItem label="SALVAGES" value="SV"/>
+                                <af:selectItem label="EXCESS" value="XS"/>
+                                <af:selectItem label="BDE" value="BD"/>
+                                <af:selectItem label="MAKETER" value="MK"/>
+                                <af:selectItem label="MSP" value="MS"/>
+                                <af:selectItem label="MSE" value="ME"/>
+                                <af:selectItem label="UNIT MANAGER"  value="UM" />
+                                <af:selectItem label="BRANCH MANAGERS"  value="20"/>
+                                <af:selectItem label="BRANCH" value="BR"/>
+                                <af:selectItem label="AGENCY MANAGER" value="AM"/>
+                                <af:selectItem label="THIRD PARTY RECOVERY"  value="TP"/>
+                                <af:selectItem label="REGIONAL MANAGER" value="RM"/>
+                                <af:selectItem label="NATIONAL MANAGER"  value="NM"/>
+                                <af:selectItem label="PETTY CASH"  value="PC" />
+                      </af:selectOneChoice>
+                <af:inputText label="ActivityTypeCode" id="it14" visible="false"
+                              binding="#{agencyActivitiesBacking.txtPartActivityTypeCode}"/>
+               <af:inputText label="Label 2" id="it12" simple="true" disabled="true"
+                                binding="#{agencyActivitiesBacking.txtParticipByCode}"  visible="false"/>
+                <af:panelLabelAndMessage label="Activity By Code" id="plam3">
+                 <af:inputText label="Label 2" id="it17" simple="true" disabled="true"
+                               binding="#{agencyActivitiesBacking.txtParticipByName}"   visible="true" />
+                 
+                  
+                     <af:commandButton id="cb5" 
+                                          icon="/images/dropdown.gif" 
+                                          partialSubmit="true"
+                                       action="#{agencyActivitiesBacking.actionShowParticipActivityByCode}"/>
+                  
+                </af:panelLabelAndMessage>
+                
+                <af:inputText label="Code" id="it9"
+                              binding="#{agencyActivitiesBacking.txtPartCode}" visible="false"/>
+                  <h:panelGrid columns="2" id="pg11"  >
+                      <af:commandButton text="save" id="cb3"
+                                        action="#{agencyActivitiesBacking.saveEditParticipants}" 
+                                        partialSubmit="true"
+                                        binding="#{agencyActivitiesBacking.btnSaveEditParticipants}"/>
+                      <af:commandButton text="Cancel" id="cb8"/>
+                    </h:panelGrid>
+                </af:panelFormLayout>
+               </af:panelGroupLayout>
+                
+                </af:panelBox>
+              
+                
+              </af:dialog>
+            </af:popup>
+             <af:popup id="confirmedDeleteActivity">
+              <af:dialog id="d18"  title="Confirm Delete" type="yesNo"
+              
+              
+                         dialogListener="#{agencyActivitiesBacking.confirmDeleteActivity}"
+                          >
+                         <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="lbconfirmDeleteActivity"
+                                />
+           
+           </af:dialog>
+            </af:popup>
+            <af:popup id="confirmDeleteParticip">
+              <af:dialog id="d10" title="Confirm Delete"
+              
+              
+                         dialogListener="#{agencyActivitiesBacking.confirmDeleteParticipants}"
+                        type="yesNo"
+                         binding="#{agencyActivitiesBacking.confirmDeleteParticipants}">
+                         <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="ol3"
+                           />
+           </af:dialog>
+           
+            </af:popup>
+          </af:group>
+          </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

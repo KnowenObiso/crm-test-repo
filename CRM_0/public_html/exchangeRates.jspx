@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        
+        <af:group id="g1">
+            <af:panelBox text="PanelBox2" id="pb3" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMexchangeRates"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="Currency Exchange Rates" id="ol2"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s2"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <af:panelSplitter id="ps1" inlineStyle="height:590.0px;"
+                                  styleClass="AFAuxiliaryStretchWidth">
+                  <f:facet name="first">
+                    <af:panelGroupLayout id="pgl3">
+                      <h:panelGrid columns="2" id="pg11">
+                        <af:commandButton text="New" id="btnNewExchangeRate"
+                                          icon="/images/create.gif"
+                                          binding="#{baseSetupBacking.btnNewExchangeRate}"
+                                          action="#{baseSetupBacking.actionNewExchangeRate}"/>
+                        <af:commandButton text="Delete"
+                                          id="btnDeleteExchangeRate"
+                                          icon="/images/delete.gif"
+                                          binding="#{baseSetupBacking.btnDeleteExchangeRate}"
+                                          action="#{baseSetupBacking.actionDeleteExchangeRate}"/>
+                      </h:panelGrid>
+                      <af:outputLabel value="Base Currencies" id="ol1"
+                                      inlineStyle="font-weight:bold;"/>
+                      <af:tree value="#{bindings.Currency.treeModel}" var="node"
+                               selectionListener="#{baseSetupBacking.treeERCurrencySelectionListener}"
+                               rowSelection="single"
+                               inlineStyle="width:200.0px; height:550px;"
+                               id="treeERCurrency"
+                               binding="#{baseSetupBacking.treeERCurrency}">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node}" id="ot1"/>
+                        </f:facet>
+                      </af:tree>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  <f:facet name="second">
+                    <af:panelGroupLayout id="pgl1">
+                      <af:panelBox text="Exchange Rates" id="pb2"
+                                   showHeader="never">
+                        <h:panelGrid columns="1" id="pg5">
+                          <af:outputLabel value="Exchange Rates" id="ol3"
+                                          inlineStyle="font-weight:bold;"/>
+                        </h:panelGrid>
+                        <af:separator id="s3"/>
+                        <h:panelGrid columns="3" id="pg3">
+                          <af:commandButton text="Edit" id="btnEditExchangeRate"
+                                            icon="/images/update.gif"
+                                            binding="#{baseSetupBacking.btnEditExchangeRate}"
+                                            action="#{baseSetupBacking.actionEditExchangeRate}"/>
+                          <af:commandButton text="Cancel" id="cb1"/>
+                        </h:panelGrid>
+                        <af:table value="#{bindings.CurrencyRate.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.CurrencyRate.rangeSize}"
+                                  emptyText="#{bindings.CurrencyRate.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.CurrencyRate.rangeSize}"
+                                  rowBandingInterval="0"
+                                  selectionListener="#{bindings.CurrencyRate.collectionModel.makeCurrent}"
+                                  rowSelection="single"
+                                  styleClass="AFAuxiliaryStretchWidth"
+                                  id="tableERExchangeRates"
+                                  binding="#{baseSetupBacking.tableERExchangeRates}">
+                          <af:column sortProperty="currencyDesc" sortable="true"
+                                     headerText="Exchange Currency" id="c1"
+                                     width="200">
+                            <af:outputText value="#{row.currencyDesc}"
+                                           id="ot2"/>
+                          </af:column>
+                          <af:column sortProperty="currRate" sortable="true"
+                                     headerText="Rate" id="c3" width="200">
+                            <af:outputText value="#{row.currRate}" id="ot3"/>
+                          </af:column>
+                          <af:column sortProperty="currDate" sortable="true"
+                                     headerText="Date" id="c2" width="200">
+                            <af:outputText value="#{row.currDate}" id="ot4">
+                              <af:convertDateTime pattern="#{bindings.CurrencyRate.hints.currDate.format}"/>
+                            </af:outputText>
+                          </af:column>
+                        </af:table>
+                        <af:separator id="s1"/>
+                        <af:commandLink text="Open Report" id="cl1"/>
+                      </af:panelBox>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelSplitter>
+              </af:panelBox>
+            </af:panelBox>
+          
+            <af:popup id="exchangeRatePopup">
+              <af:dialog id="d2" title="New Exchange Rate" type="none">
+              
+                                              
+                <af:panelFormLayout id="pfl1" inlineStyle="width:320.0px;">
+                
+                  <af:inputText label="Code : " id="txtExchangeRateCode" 
+                                visible="false" 
+                                disabled="true" 
+                                showRequired="true"
+                                binding="#{baseSetupBacking.txtExchangeRateCode}"/>
+                                
+                  <af:inputText label="Currency Code : " id="txtCurrCodePop" 
+                                visible="false" 
+                                disabled="true" 
+                                showRequired="true"
+                                binding="#{baseSetupBacking.txtCurrCodePop}"/>
+                                
+                  <af:inputText label="Base Currency Code :" 
+                                id="txtBaseCurrCodePop" 
+                                visible="false" 
+                                disabled="true" 
+                                showRequired="true"
+                                binding="#{baseSetupBacking.txtBaseCurrCodePop}"/>
+                                
+                  
+                    <af:panelLabelAndMessage label="Exchange Rate Currency : " id="plam1" showRequired="true">
+                    <af:panelGroupLayout id="pgl2">
+                    <af:inputText label="Base Currency" id="txtBaseCurrPop"
+                                binding="#{baseSetupBacking.txtBaseCurrPop}" 
+                                showRequired="true" 
+                                simple="true" columns="20"
+                                disabled="true"/>
+                                <af:commandButton id="cb8"
+                                          icon="/images/dropdown.gif"
+                                           shortDesc="Click to select Base Currency" 
+                                           partialSubmit="true">
+                                  <af:showPopupBehavior popupId="baseCurrencyPopup"/>
+                                </af:commandButton>
+                    </af:panelGroupLayout>
+                    </af:panelLabelAndMessage>
+                  
+                  
+                  
+                  
+                                
+                  <af:inputText label="Rate : " id="txtRatePop"
+                                binding="#{baseSetupBacking.txtRatePop}"  
+                                columns="20"
+                                showRequired="true"/>
+                                
+                  <af:inputDate label="Date : " id="txtDatePop"
+                                shortDesc="Exchange Rate Date"
+                                binding="#{baseSetupBacking.txtDatePop}"  
+                                showRequired="true"/>
+                                
+                  
+                  <f:facet name="footer"/>
+                </af:panelFormLayout>
+                
+                <af:commandButton text="Save" id="btnCreateUpdateExchangeRate"
+                                    binding="#{baseSetupBacking.btnCreateUpdateExchangeRate}"
+                                    action="#{baseSetupBacking.actionCreateUpdateExchangeRate}"/>
+                  <af:commandButton text="Cancel" id="cb2"/>
+                
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="baseCurrencyPopup">
+              <af:dialog id="d3" title="Base Currencies" type="none">
+                <af:panelCollection id="pc2">
+                  
+                  <af:table value="#{bindings.Currency2.collectionModel}"
+                            var="row" rows="#{bindings.Currency2.rangeSize}"
+                            emptyText="#{bindings.Currency2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Currency2.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.Currency2Query.queryDescriptor}"
+                            queryListener="#{bindings.Currency2Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.Currency2.collectionModel.selectedRow}"
+                            selectionListener="#{baseSetupBacking.tableBaseCurrencyPopupSelectionListener}"
+                            rowSelection="single" id="tableBaseCurrencyPopup"
+                            binding="#{baseSetupBacking.tableBaseCurrencyPopup}">
+                    <af:column sortProperty="code" filterable="true"
+                               sortable="true" headerText="Code" id="c9">
+                      <af:outputText value="#{row.code}" id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="symbol" filterable="true"
+                               sortable="true" headerText="Symbol" id="c8">
+                      <af:outputText value="#{row.symbol}" id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="description" filterable="true"
+                               sortable="true" headerText="Description" id="c7">
+                      <af:outputText value="#{row.description}" id="ot10"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                
+                <af:commandButton text="OK" id="btnAcceptExchangeRate"
+                                  binding="#{baseSetupBacking.btnAcceptExchangeRate}"
+                                  action="#{baseSetupBacking.actionAcceptExchangeRate}"/>
+                <af:commandButton text="Cancel" id="cb3"/>
+              </af:dialog>
+            </af:popup>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

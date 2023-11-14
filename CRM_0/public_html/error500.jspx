@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:htmlmd="http://www.w3.org/1999/xhtml">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1">
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+          <af:panelBox id="pb1"
+                       inlineStyle="height:700px; width:526px;">
+            
+            <htmlmd:html>
+              <htmlmd:head>
+                <htmlmd:meta http-equiv="Content-Type"
+                             content="text/html; charset=UTF-8"/>
+                <htmlmd:title>
+                  500 Internal Server Error
+                </htmlmd:title>
+                <!-- Link to the style CSS sheet -->
+                <htmlmd:link rel="stylesheet" href="/error/style.css"
+                             type="text/css"/>
+              </htmlmd:head>
+              <htmlmd:body>
+                <htmlmd:div id="wrapper">
+                  <!-- Start Wrapper DIV -->
+                  <htmlmd:div id="logo" style="height:40px"/>
+                  <htmlmd:div id="main">
+                    <!-- Start Main DIV -->
+                    <htmlmd:div id="leftcolumn">
+                      <!-- Start Left Column DIV -->
+                      <htmlmd:h1>
+                        500
+                        <htmlmd:small>
+                          Internal Server Error...
+                        </htmlmd:small>
+                      </htmlmd:h1>
+                    </htmlmd:div>
+                    <!-- End Left Column DIV -->
+                    <htmlmd:div id="rightcolumn" style="height:110px;">
+                      <!-- Start Right Column DIV -->
+                      <htmlmd:h2>
+                        Sorry, an internal server error has occurred.
+                      </htmlmd:h2><!-- Subheader H2 -->
+                      <htmlmd:p>
+                        Our engineers have been notified about this and it will
+                        be resolved as soon as posible.
+                      </htmlmd:p>
+                      <!-- Paragraph of text -->
+                      <htmlmd:h3>
+                        Visit one of our existing pages:
+                      </htmlmd:h3><!-- Subheader H3 -->
+                      
+                      <htmlmd:ul class="navigation">
+                        <!-- Start Navigation UL -->
+                        <htmlmd:li>
+                          <htmlmd:a href="/home.jspx">»Home Page</htmlmd:a>
+                        </htmlmd:li>
+                      </htmlmd:ul>
+                      <!-- End Navigation UL -->
+                    </htmlmd:div>
+                    <!-- End Right Column DIV -->
+                    <htmlmd:br class="clear"/>
+                  </htmlmd:div>
+                  <!-- End Main DIV -->
+                </htmlmd:div>
+                <!-- End Wrapper DIV -->
+              </htmlmd:body>
+            </htmlmd:html>
+          </af:panelBox>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

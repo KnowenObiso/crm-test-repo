@@ -1,0 +1,670 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+          
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                   id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="demoTemplate">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox2" id="pb2" showDisclosure="false"
+                         showHeader="never">
+              <f:facet name="toolbar"/>
+              <af:panelSplitter id="ps1"
+                                inlineStyle="width:100.0%; height:500.0px;"
+                                splitterPosition="220">
+                <f:facet name="first">
+                  <af:panelBox text="PanelBox1" id="pb1" showDisclosure="false"
+                               showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <af:table value="#{bindings.Product1.collectionModel}"
+                              var="row" rows="#{bindings.Product1.rangeSize}"
+                              emptyText="#{bindings.Product1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.Product1.rangeSize}"
+                              rowBandingInterval="0" 
+                              filterModel="#{bindings.Product1Query.queryDescriptor}"
+                              queryListener="#{bindings.Product1Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectionListener="#{dynaProposal.productSelected}"
+                              rowSelection="single" id="t7"
+                              binding="#{dynaProposal.products}"
+                              selectedRowKeys="#{bindings.Product1.collectionModel.selectedRow}">
+                       <af:column filterFeatures="caseInsensitive"  sortProperty="productDesc"  filterable="true" width="200" 
+                                 sortable="true" headerText="Desc" id="c32">
+                        <af:outputText value="#{row.productDesc}" id="ot36"/>
+                      </af:column>
+                    </af:table>
+                  </af:panelBox>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelGroupLayout layout="scroll"
+                                       xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                       id="pgl3">
+                    <af:outputText value="Sub Units" id="ot8"
+                                   inlineStyle="font-weight:bold;"/>
+                
+                    <h:panelGrid columns="4" id="pg8">
+                    
+                      <af:commandButton icon="/images/field_group_plus_ena.png"
+                                        id="cb1"
+                                        action="#{dynaProposal.createScheduleModule}"
+                                        text="Add"/>
+                      <af:commandButton icon="/images/update_ena.png"
+                                        id="commandButton1"
+                                        action="#{dynaProposal.editScheduleModule}"
+                                        text="Edit"/>
+                      <af:commandButton icon="/images/delete_ena.png" id="cb2"
+                                        action="#{dynaProposal.deleteScheduleModule}"
+                                        text="Delete"/>
+                       <af:commandButton text="Preview" id="cb3"  action="#{QuotationManip.viewClientDetails}" />
+                    <af:popup id="p53234"
+                              binding="#{QuotationManip.previewButtonPop}">
+                       <af:dialog id="module" title="Preview"
+                                  binding="#{QuotationManip.prevDialogue}">
+                               <h:panelGrid columns="1" id="pg1"
+                           binding="#{QuotationManip.mainParent}"
+                           style="text-align:left; "/>  
+                            </af:dialog>
+                        </af:popup>
+                      <af:popup id="p3">
+                        <af:dialog id="d3" title="Sub Units Details"
+                                   type="none">
+                          <af:panelGroupLayout id="pgl6">
+                            <h:panelGrid columns="2" id="pg561">
+                              <af:outputLabel value="System Module" id="ol1"/>
+                              <h:panelGrid columns="2" id="pg2">
+                                <af:inputText label="Label 1" id="it1"
+                                              simple="true"
+                                              binding="#{dynaProposal.txtSysModule}"
+                                              disabled="true"/>
+                                <af:commandButton icon="/images/dropdown.gif"
+                                                  id="cb4">
+                                  <af:showPopupBehavior popupId="p5"/>
+                                </af:commandButton>
+                                <af:popup id="p5">
+                                  <af:dialog id="d6" title="Select Module"
+                                             dialogListener="#{dynaProposal.selectModule}">
+                                    <af:panelGroupLayout id="pgl4">
+                                      <af:table value="#{bindings.ProposalSchedulesBean5.collectionModel}"
+                                                var="row"
+                                                rows="#{bindings.ProposalSchedulesBean5.rangeSize}"
+                                                emptyText="#{bindings.ProposalSchedulesBean5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                fetchSize="#{bindings.ProposalSchedulesBean5.rangeSize}"
+                                                rowBandingInterval="0"
+                                                filterModel="#{bindings.ProposalSchedulesBean1Query.queryDescriptor}"
+                                                queryListener="#{bindings.ProposalSchedulesBean1Query.processQuery}"
+                                                filterVisible="true"
+                                                varStatus="vs"
+                                                selectedRowKeys="#{bindings.ProposalSchedulesBean5.collectionModel.selectedRow}"
+                                                selectionListener="#{bindings.ProposalSchedulesBean5.collectionModel.makeCurrent}"
+                                                rowSelection="single" id="t2"
+                                                width="350"
+                                                binding="#{dynaProposal.moduleLov}">
+                                        <af:column sortProperty="TSMS_SHT_DESC" filterFeatures="caseInsensitive"
+                                                   filterable="true" width="150"
+                                                   sortable="true"
+                                                   headerText="Sht Desc"
+                                                   id="c2">
+                                          <af:outputText value="#{row.TSMS_SHT_DESC}"
+                                                         id="ot3"/>
+                                        </af:column>
+                                        <af:column sortProperty="TSMS_DESC"
+                                                   filterable="true" width="150" filterFeatures="caseInsensitive"
+                                                   sortable="true"
+                                                   headerText="Desc" id="c30">
+                                          <af:outputText value="#{row.TSMS_DESC}"
+                                                         id="ot4"/>
+                                        </af:column>
+                                        <af:column sortProperty="TSMS_CODE"
+                                                   filterable="true" visible="false" filterFeatures="caseInsensitive"
+                                                   sortable="true"
+                                                   headerText="Code" id="c1">
+                                          <af:outputText value="#{row.TSMS_CODE}"
+                                                         id="ot5"/>
+                                        </af:column>
+                                      </af:table>
+                                    </af:panelGroupLayout>
+                                  </af:dialog>
+                                </af:popup>
+                              </h:panelGrid>
+                              <af:outputLabel value="Sub Class" id="ol5"
+                                              rendered="false"/>
+                              <h:panelGrid columns="2" id="pg3"
+                                           rendered="false">
+                                <af:inputText label="Label 4" id="it4"
+                                              simple="true"
+                                              binding="#{dynaProposal.txtSubClass}"
+                                              disabled="true"/>
+                                <af:commandButton icon="/images/dropdown.gif"
+                                                  id="cb5">
+                                  <af:showPopupBehavior popupId="p2"/>
+                                </af:commandButton>
+                                <af:popup id="p2">
+                                  <af:dialog id="d2" title="Select Sub Class"
+                                             dialogListener="#{dynaProposal.selectSubclas}">
+                                    <af:panelGroupLayout id="pgl5">
+                                      <af:table value="#{bindings.SubClassDef.collectionModel}"
+                                                var="row"
+                                                rows="#{bindings.SubClassDef.rangeSize}"
+                                                emptyText="#{bindings.SubClassDef.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                fetchSize="#{bindings.SubClassDef.rangeSize}"
+                                                rowBandingInterval="0"
+                                                filterModel="#{bindings.SubClassDefQuery.queryDescriptor}"
+                                                queryListener="#{bindings.SubClassDefQuery.processQuery}"
+                                                filterVisible="true"
+                                                varStatus="vs"
+                                                selectedRowKeys="#{bindings.SubClassDef.collectionModel.selectedRow}"
+                                                selectionListener="#{bindings.SubClassDef.collectionModel.makeCurrent}"
+                                                rowSelection="single" id="t3"
+                                                binding="#{dynaProposal.subclassLov}">
+                                        <af:column filterFeatures="caseInsensitive"
+                                                   sortProperty="subcode"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Sub Class Code"
+                                                   id="c5">
+                                          <af:outputText value="#{row.subcode}"
+                                                         id="ot6"/>
+                                        </af:column>
+                                        <af:column filterFeatures="caseInsensitive"
+                                                   sortProperty="subdesc"
+                                                   filterable="true" 
+                                                   sortable="true"
+                                                   headerText="Sub Class"
+                                                   id="c4">
+                                          <af:outputText value="#{row.subdesc}"
+                                                         id="ot7"/>
+                                        </af:column>
+                                      </af:table>
+                                    </af:panelGroupLayout>
+                                  </af:dialog>
+                                </af:popup>
+                              </h:panelGrid>
+                              <af:outputLabel value="Id" id="ol2"/>
+                              <h:panelGrid columns="1" id="pg4">
+                                <af:inputText label="Label 2" id="it2"
+                                              simple="true"
+                                              binding="#{dynaProposal.txtSchedId}"/>
+                              </h:panelGrid>
+                              <af:outputLabel value="Desc." id="ol3"/>
+                              <h:panelGrid columns="1" id="pg5">
+                                <af:inputText label="Label 3" id="it3"
+                                              simple="true"
+                                              binding="#{dynaProposal.txtSchedDesc}"/>
+                              </h:panelGrid>
+                              <af:outputLabel value="Order" id="ol4"/>
+                              <h:panelGrid columns="1" id="pg6">
+                                <af:inputNumberSpinbox label="Label 1" id="ins1"
+                                                       simple="true"
+                                                       binding="#{dynaProposal.txtSchedOrder}"/>
+                              </h:panelGrid>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" id="pg7" rendered="true">
+                              <af:commandButton text="Save"
+                                                icon="/images/save.gif"
+                                                id="cb12"
+                                                action="#{dynaProposal.saveScheduleModule}"
+                                                rendered="true"/>
+                              <af:commandButton text="Cancel" id="cb6"/>
+                            </h:panelGrid>
+                          </af:panelGroupLayout>
+                        </af:dialog>
+                      </af:popup>
+                    </h:panelGrid>
+                    <af:table value="#{bindings.ProposalSchedulesBean1.collectionModel}"
+                              var="row"
+                              rows="#{bindings.ProposalSchedulesBean1.rangeSize}"
+                              emptyText="#{bindings.ProposalSchedulesBean1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.ProposalSchedulesBean1.rangeSize}"
+                              rowBandingInterval="0"
+                              selectionListener="#{dynaProposal.selectSchedListener}"
+                              rowSelection="single" id="t1"
+                              inlineStyle="width:100%; height:100px;"
+                              binding="#{dynaProposal.modUnitsTable}">
+                      <af:column sortProperty="TSMS_SHT_DESC" sortable="true"
+                                headerText="Sht Desc"
+                                 id="c10">
+                        <af:outputText value="#{row.TSMS_SHT_DESC}" id="ot15"/>
+                      </af:column>
+                      <af:column sortProperty="TSMS_DESC" sortable="true"
+                                headerText="Description"
+                                 id="c6">
+                        <af:outputText value="#{row.TSMS_DESC}" id="ot12"/>
+                      </af:column>
+                      <af:column sortProperty="TSMS_ORDER" sortable="true"
+                                 headerText="Order"
+                                 id="c8">
+                        <af:outputText value="#{row.TSMS_ORDER}" id="ot10"/>
+                      </af:column>
+                      <af:column sortProperty="TSMS_CODE" sortable="true" 
+                                 headerText="#{bindings.ProposalSchedulesBean1.hints.TSMS_CODE.label}"
+                                 id="c9">
+                        <af:outputText value="#{row.TSMS_CODE}" id="ot14"/>
+                      </af:column>
+                      <af:column sortProperty="SCL_DESC" sortable="true" visible="false"
+                                 headerText="#{bindings.ProposalSchedulesBean1.hints.SCL_DESC.label}"
+                                 id="c12">
+                        <af:outputText value="#{row.SCL_DESC}" id="ot2"/>
+                      </af:column>
+                      <af:column sortProperty="TSM_DESC" sortable="true" visible="false"
+                                 headerText="#{bindings.ProposalSchedulesBean1.hints.TSM_DESC.label}"
+                                 id="c13">
+                        <af:outputText value="#{row.TSM_DESC}" id="ot16"/>
+                      </af:column>
+                      <af:column sortProperty="TSMS_TSM_CODE" sortable="true" visible="false"
+                                 headerText="#{bindings.ProposalSchedulesBean1.hints.TSMS_TSM_CODE.label}"
+                                 id="c11">
+                        <af:outputText value="#{row.TSMS_TSM_CODE}" id="ot13"/>
+                      </af:column>
+                      <af:column sortProperty="TSMS_SCL_CODE" sortable="true" visible="false"
+                                 headerText="#{bindings.ProposalSchedulesBean1.hints.TSMS_SCL_CODE.label}"
+                                 id="c7">
+                        <af:outputText value="#{row.TSMS_SCL_CODE}" id="ot11"/>
+                      </af:column>
+                    </af:table>
+                    <af:spacer width="10" height="10" id="s3"/>
+                    <af:outputText value="Sub Unit Details" id="ot17"
+                                   inlineStyle="font-weight:bold;"/>
+                    <af:separator id="s4"/>
+                    <h:panelGrid columns="3" id="pg9">
+                      <af:commandButton icon="/images/field_group_plus_ena.png"
+                                        id="cb14"
+                                        action="#{dynaProposal.addScheduleDetails}"
+                                        text="Add" partialSubmit="true"/>
+                      <af:commandButton icon="/images/update_ena.png" id="cb43"
+                                        action="#{dynaProposal.editScheduleDetails}"
+                                        text="Edit" partialSubmit="true"/>
+                      <af:commandButton icon="/images/delete_ena.png" id="cb42"
+                                        action="#{dynaProposal.deleteScheduleDetails}"
+                                        text="Delete" partialSubmit="true"/>
+                      <af:popup id="popup1" contentDelivery="lazyUncached">
+                        <af:dialog id="dialog2" title="Schedule Details"
+                                   type="none">
+                          <af:panelBox text="PanelBox3" id="pb3"
+                                       showHeader="never">
+                            <f:facet name="toolbar"/>
+                            <af:panelGroupLayout id="panelGroupLayout1">
+                              <h:panelGrid columns="2" id="panelGrid1">
+                                <af:outputLabel value="Name" id="outputLabel1"/>
+                                <af:inputText label="Label 1" id="inputText1"
+                                              simple="true"
+                                              binding="#{dynaProposal.txtName}"/>
+                                <af:outputLabel value="Prompt"
+                                                id="outputLabel2"/>
+                                <af:inputText label="Label 2" id="inputText3"
+                                              simple="true"
+                                              binding="#{dynaProposal.txtPrompt}"/>
+                                <af:outputLabel value="Type" id="outputLabel3"/>
+                                <af:selectOneChoice label="Label 5" id="soc5"
+                                                    simple="true"
+                                                    binding="#{dynaProposal.txtType}">
+                                  <af:selectItem label="INPUT_TEXT"
+                                                 value="INPUT_TEXT" id="si14"/>
+                                  <af:selectItem label="NUMBER" value="NUMBER"
+                                                 id="si11"/>
+                                  <af:selectItem label="TEXT" value="TEXT"
+                                                 id="si9"/>
+                                  <af:selectItem label="DATE" value="DATE"
+                                                 id="si12"/>
+                                  <af:selectItem label="OPTION" value="OPTION"
+                                                 id="si13"/>
+                                  <af:selectItem label="TABLE" value="TABLE"
+                                                 id="si15"/>
+                                  <af:selectItem label="CHECK" value="CHECK"
+                                                 id="si10"/>
+                                  <af:selectItem label="DROP" value="DROP"
+                                                 id="si14450"/>
+                                </af:selectOneChoice>
+                                <af:outputLabel value="Mapping" id="ol14"/>
+                                <h:panelGrid columns="2" id="pg13">
+                                  <af:inputText label="Label 7" id="it7"
+                                                disabled="true" simple="true"
+                                                binding="#{dynaProposal.mappingDesc}"/>
+                                  <af:commandButton id="cb9"
+                                                    icon="/images/dropdown.gif"
+                                                    partialSubmit="true"
+                                                    action="#{dynaProposal.launchMapping}"/>
+                                  <af:popup id="mapping">
+                                    <af:dialog id="d5" type="none">
+                                      <af:panelBox text="PanelBox4" id="pb4"
+                                                   showHeader="never">
+                                        <f:facet name="toolbar"/>
+                                        <h:panelGrid columns="1" id="pg14">
+                                          <af:table value="#{bindings.ProposalSchedulesBean.collectionModel}"
+                                                    var="row"
+                                                    rows="#{bindings.ProposalSchedulesBean.rangeSize}"
+                                                    emptyText="#{bindings.ProposalSchedulesBean.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                    fetchSize="#{bindings.ProposalSchedulesBean.rangeSize}"
+                                                    rowBandingInterval="0"
+                                                    filterModel="#{bindings.ProposalSchedulesBean4Query.queryDescriptor}"
+                                                    queryListener="#{bindings.ProposalSchedulesBean4Query.processQuery}"
+                                                    filterVisible="true"
+                                                    varStatus="vs"
+                                                    selectionListener="#{bindings.ProposalSchedulesBean.collectionModel.makeCurrent}"
+                                                    rowSelection="single"
+                                                    id="t4"
+                                                    binding="#{dynaProposal.mapTable}">
+                                            <af:column sortProperty="tmsc_desc"
+                                                       filterable="true" filterFeatures="caseInsensitive"
+                                                       sortable="true" width="300"
+                                                       headerText="Description"
+                                                       id="c31">
+                                              <af:outputText value="#{row.tmsc_desc}"
+                                                             id="ot9"/>
+                                            </af:column>
+                                            <af:column sortProperty="tmsc_code"
+                                                       filterable="true" visible="false" filterFeatures="caseInsensitive"
+                                                       sortable="true"
+                                                       headerText="#{bindings.ProposalSchedulesBean.hints.tmsc_code.label}"
+                                                       id="c33">
+                                              <af:outputText value="#{row.tmsc_code}"
+                                                             id="ot35"/>
+                                            </af:column>
+                                          </af:table>
+                                          <h:panelGrid columns="2" id="pg15">
+                                            <af:commandButton text="Ok"
+                                                              id="cb10"
+                                                              partialSubmit="true"
+                                                              action="#{dynaProposal.MappingSelected}"/>
+                                            <af:commandButton
+                                                              id="cb11"
+                                                              text="Cancel"/>
+                                          </h:panelGrid>
+                                        </h:panelGrid>
+                                      </af:panelBox>
+                                    </af:dialog>
+                                  </af:popup>
+                                </h:panelGrid>
+                                <af:outputLabel value="Order"
+                                                id="outputLabel4"/>
+                                <af:inputText label="Label 1" id="inputText5"
+                                              simple="true"
+                                              binding="#{dynaProposal.txtOrder}"/>
+                                <af:outputLabel value="Parent"
+                                                id="outputLabel5"/>
+                                <af:inputNumberSpinbox label="Label 2" id="ins2"
+                                                       simple="true"
+                                                       binding="#{dynaProposal.txtParent}"/>
+                                <af:outputLabel value="More Details Appl."
+                                                id="ol6"/>
+                                <af:selectOneChoice label="Label 1" id="soc1"
+                                                    simple="true"
+                                                    binding="#{dynaProposal.txtMoreDetApp}">
+                                  <af:selectItem label="Yes" value="Y"
+                                                 id="si1"/>
+                                  <af:selectItem label="No" value="N" id="si2"/>
+                                </af:selectOneChoice>
+                                <af:outputLabel value="More Details" id="ol7"/>
+                                <af:inputText label="Label 4" id="inputText6"
+                                              simple="true"
+                                              binding="#{dynaProposal.txtMoreDetails}"/>
+                                <af:outputLabel value="Root" id="ol8"/>
+                                <af:selectOneChoice label="Label 2" id="soc2"
+                                                    simple="true"
+                                                    binding="#{dynaProposal.txtRoot}">
+                                  <af:selectItem label="Yes" value="Y"
+                                                 id="si4"/>
+                                  <af:selectItem label="No" value="N" id="si3"/>
+                                </af:selectOneChoice>
+                                <af:outputLabel value="More Details Required"
+                                                id="ol9"/>
+                                <af:selectOneChoice label="Label 3" id="soc3"
+                                                    simple="true"
+                                                    binding="#{dynaProposal.txtMoreDetReq}">
+                                  <af:selectItem label="Yes" value="Y"
+                                                 id="si5"/>
+                                  <af:selectItem label="No" value="N" id="si6"/>
+                                </af:selectOneChoice>
+                              </h:panelGrid>
+                              <h:panelGrid columns="2" id="panelGrid2">
+                                <af:commandButton text="Save"
+                                                  id="commandButton2"
+                                                  action="#{dynaProposal.saveScheduleDetails}"
+                                                  partialSubmit="true"/>
+                                <af:commandButton text="Cancel"
+                                                  id="commandButton3"
+                                                  partialSubmit="true"
+                                                  action="#{dynaProposal.cancelScheduleDetails}"/>
+                              </h:panelGrid>
+                            </af:panelGroupLayout>
+                          </af:panelBox>
+                        </af:dialog>
+                      </af:popup>
+                    </h:panelGrid>
+                    <af:panelCollection id="pc1"
+                                        inlineStyle="width:100%; height:200.0px;">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.ProposalSchedulesBean4.collectionModel}"
+                                var="row"
+                                rows="#{bindings.ProposalSchedulesBean4.rangeSize}"
+                                emptyText="#{bindings.ProposalSchedulesBean4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.ProposalSchedulesBean4.rangeSize}"
+                                rowBandingInterval="0"
+                              selectionListener="#{dynaProposal.selectSchedOptionsListener}"
+                                rowSelection="single" id="t5"
+                                inlineStyle="width:99%;"
+                                binding="#{dynaProposal.modDetailsTable}"
+                                filterModel="#{bindings.ProposalSchedulesBean4Query1.queryDescriptor}"
+                                queryListener="#{bindings.ProposalSchedulesBean4Query1.processQuery}"
+                                filterVisible="true" varStatus="vs">
+                        <af:column sortProperty="TSMSD_NAME" filterable="true"
+                                   sortable="true"
+                                   headerText="Name"
+                                   id="c22">
+                          <af:outputText value="#{row.TSMSD_NAME}" id="ot25"/>
+                        </af:column>
+                        <af:column sortProperty="TSMSD_PROMPT" filterable="true"
+                                   sortable="true"
+                                  headerText="Prompt"
+                                   id="c23">
+                          <af:outputText value="#{row.TSMSD_PROMPT}" id="ot26"/>
+                        </af:column>
+                        <af:column sortProperty="TSMSD_TYPE" filterable="true"
+                                   sortable="true" filterFeatures="caseInsensitive"
+                                   headerText="Type"
+                                   id="c17">
+                          <af:outputText value="#{row.TSMSD_TYPE}" id="ot18"/>
+                        </af:column>
+                        <af:column sortProperty="TSMSD_MORE_DTLS_APPL"
+                                   filterable="true" sortable="true" filterFeatures="caseInsensitive"
+                              headerText="More Details Appl." 
+                                   id="c21">
+                          <af:outputText value="#{row.TSMSD_MORE_DTLS_APPL}"
+                                         id="ot27"/>
+                        </af:column>
+                        <af:column sortProperty="TSMSD_MORE_DTLS"
+                                   filterable="true" sortable="true" filterFeatures="caseInsensitive"
+                                    headerText="More Details"
+                                   id="c3">
+                          <af:outputText value="#{row.TSMSD_MORE_DTLS}"
+                                         id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="TSMSD_ROOT" filterable="true"
+                                   sortable="true" filterFeatures="caseInsensitive"
+                                 headerText="Root?"
+                                   id="c19">
+                          <af:outputText value="#{row.TSMSD_ROOT}" id="ot22"/>
+                        </af:column>
+                        <af:column sortProperty="TSMSD_MORE_DTLS_REQUIRED"
+                                   filterable="true" sortable="true" filterFeatures="caseInsensitive"
+                                  headerText="More Det. Required"
+                                   id="c18">
+                          <af:outputText value="#{row.TSMSD_MORE_DTLS_REQUIRED}"
+                                         id="ot19"/>
+                        </af:column>
+                        <af:column sortProperty="TSMSD_CODE" filterable="true" visible="false"
+                                   sortable="true"
+                                   headerText="#{bindings.ProposalSchedulesBean4.hints.TSMSD_CODE.label}"
+                                   id="c34">
+                          <af:outputText value="#{row.TSMSD_CODE}" id="ot21"/>
+                        </af:column>
+                        <af:column sortProperty="TSMSD_PARENT" filterable="true"
+                                   sortable="true" filterFeatures="caseInsensitive"
+                                  headerText="Parent"
+                                   id="c20">
+                          <af:outputText value="#{row.TSMSD_PARENT}" id="ot37"/>
+                        </af:column>
+                        <af:column sortProperty="TSMSD_ORDER" filterable="true"
+                                   sortable="true" filterFeatures="caseInsensitive"
+                                  headerText="Order" 
+                                   id="c14">
+                          <af:outputText value="#{row.TSMSD_ORDER}" id="ot24"/>
+                        </af:column>
+                        <af:column sortProperty="tmsc_desc" filterable="true"
+                                   sortable="true" filterFeatures="caseInsensitive"
+                                   headerText="#{bindings.ProposalSchedulesBean4.hints.tmsc_desc.label}"
+                                   id="c15">
+                          <af:outputText value="#{row.tmsc_desc}" id="ot23"/>
+                        </af:column>
+                        <af:column sortProperty="tmsc_code" filterable="true"
+                                   sortable="true" visible="false"
+                                   headerText="#{bindings.ProposalSchedulesBean4.hints.tmsc_code.label}"
+                                   id="c16">
+                          <af:outputText value="#{row.tmsc_code}" id="ot20"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <af:spacer width="10" height="10" id="s5"/>
+                    <af:outputText value="Sub Unit Detail Options" id="ot28"
+                                   inlineStyle="font-weight:bold;"/>
+                    <af:separator id="s6"/>
+                    <h:panelGrid columns="3" id="pg10">
+                      <af:commandButton icon="/images/field_group_plus_ena.png"
+                                        id="commandButton4"
+                                        action="#{dynaProposal.addOptions}"
+                                        text="Add"/>
+                      <af:commandButton icon="/images/update_ena.png"
+                                        id="commandButton5"
+                                        action="#{dynaProposal.editOptions}"
+                                        text="Edit"/>
+                      <af:commandButton icon="/images/delete_ena.png"
+                                        id="commandButton6"
+                                        action="#{dynaProposal.deleteOptions}"
+                                        text="Delete"/>
+                      <af:popup id="p4">
+                        <af:dialog id="d4" title="Options" type="none">
+                          <af:panelGroupLayout id="pgl7">
+                            <h:panelGrid columns="2" id="pg11">
+                              <af:outputLabel value="Option Name" id="ol10"/>
+                              <af:inputText label="Label 5" id="it5"
+                                            simple="true"
+                                            binding="#{dynaProposal.txtOptionName}"/>
+                              <af:outputLabel value="Option Desc" id="ol11"/>
+                              <af:inputText label="Label 6" id="it6"
+                                            simple="true"
+                                            binding="#{dynaProposal.txtOptionDesc}"/>
+                              <af:outputLabel value="Order" id="ol12"/>
+                              <af:inputNumberSpinbox label="Label 3" id="ins3"
+                                                     simple="true"
+                                                     binding="#{dynaProposal.txtOptionOrder}"/>
+                              <af:outputLabel value="Type" id="ol13"/>
+                              <af:selectOneChoice label="Label 4" id="soc4"
+                                                  simple="true"
+                                                  binding="#{dynaProposal.txtOptionType}">
+                                <af:selectItem label="TEXT" value="TEXT"
+                                               id="si7"/>
+                                <af:selectItem label="INPUT_TEXT"
+                                               value="INPUT_TEXT" id="si8"/>
+                              </af:selectOneChoice>
+                            </h:panelGrid>
+                            <h:panelGrid columns="2" id="pg12">
+                              <af:commandButton text="Save" id="cb7"
+                                                action="#{dynaProposal.saveOptions}"/>
+                              <af:commandButton text="Cancel" id="cb8"/>
+                            </h:panelGrid>
+                          </af:panelGroupLayout>
+                        </af:dialog>
+                      </af:popup>
+                    </h:panelGrid>
+                    <af:panelCollection id="pc2"
+                                        inlineStyle="width:100%; height:200.0px;">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.ProposalSchedulesBean2.collectionModel}"
+                                var="row"
+                                rows="#{bindings.ProposalSchedulesBean2.rangeSize}"
+                                emptyText="#{bindings.ProposalSchedulesBean2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.ProposalSchedulesBean2.rangeSize}"
+                                rowBandingInterval="0"
+                                selectedRowKeys="#{bindings.ProposalSchedulesBean2.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.ProposalSchedulesBean2.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t6"
+                                inlineStyle="width:99%;"
+                                binding="#{dynaProposal.modDetailsOptionTable}"
+                                filterModel="#{bindings.ProposalSchedulesBean2Query.queryDescriptor}"
+                                queryListener="#{bindings.ProposalSchedulesBean2Query.processQuery}"
+                                filterVisible="true" varStatus="vs">
+                        <af:column sortProperty="TSSO_CODE" filterable="true"
+                                   sortable="true" visible="false"
+                                   headerText="#{bindings.ProposalSchedulesBean2.hints.TSSO_CODE.label}"
+                                   id="c25">
+                          <af:outputText value="#{row.TSSO_CODE}" id="ot39"/>
+                        </af:column>
+                        <af:column sortProperty="TSSO_TSMSD_CODE" visible="false"
+                                   filterable="true" sortable="true"
+                                   headerText="#{bindings.ProposalSchedulesBean2.hints.TSSO_TSMSD_CODE.label}"
+                                   id="c26">
+                          <af:outputText value="#{row.TSSO_TSMSD_CODE}"
+                                         id="ot38"/>
+                        </af:column>
+                        <af:column sortProperty="TSSO_ORDER" filterable="true"
+                                   sortable="true" filterFeatures="caseInsensitive"
+                                  headerText="Order"
+                                   id="c27">
+                          <af:outputText value="#{row.TSSO_ORDER}" id="ot31"/>
+                        </af:column>
+                        <af:column sortProperty="TSSO_OPTION_NAME"
+                                   filterable="true" sortable="true"
+                                   headerText="Name" filterFeatures="caseInsensitive"
+                                   id="c36">
+                          <af:outputText value="#{row.TSSO_OPTION_NAME}"
+                                         id="ot29"/>
+                        </af:column>
+                        <af:column sortProperty="TSSO_OPTION_DESC"
+                                   filterable="true" sortable="true"
+                                    headerText="Desc" filterFeatures="caseInsensitive"
+                                   id="c35">
+                          <af:outputText value="#{row.TSSO_OPTION_DESC}"
+                                         id="ot33"/>
+                        </af:column>
+                        <af:column sortProperty="TSSO_TYPE" filterable="true"
+                                   sortable="true" filterFeatures="caseInsensitive"
+                                  headerText="Type"
+                                   id="c29">
+                          <af:outputText value="#{row.TSSO_TYPE}" id="ot32"/>
+                        </af:column>
+                        <af:column sortProperty="tmsc_desc" filterable="true"
+                                   sortable="true" visible="false" filterFeatures="caseInsensitive"
+                                   headerText="#{bindings.ProposalSchedulesBean2.hints.tmsc_desc.label}"
+                                   id="c28">
+                          <af:outputText value="#{row.tmsc_desc}" id="ot34"/>
+                        </af:column>
+                        <af:column sortProperty="tmsc_code" filterable="true"
+                                   sortable="true" visible="false"
+                                   headerText="#{bindings.ProposalSchedulesBean2.hints.tmsc_code.label}"
+                                   id="c24">
+                          <af:outputText value="#{row.tmsc_code}" id="ot30"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:panelSplitter>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+    </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

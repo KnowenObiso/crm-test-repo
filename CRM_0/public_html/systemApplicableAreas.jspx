@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1"  title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:inputText id="it1" helpTopicId="CRMagencyActivities"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="System Applicable Areas" id="ol1"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="panelGrid4">
+                  <af:commandButton text="New" id="commandButton5"
+                                    icon="/images/create.gif"
+                                    action="#{SysAppAreaBean.actionNewAppArea}"/>
+                  <af:commandButton text="Edit" id="commandButton6"
+                                    icon="/images/update.gif"
+                                    action="#{SysAppAreaBean.actionEditAppArea}"/>
+                  <af:commandButton text="Delete" id="commandButton7"
+                                    icon="/images/delete.gif"
+                                    action="#{SysAppAreaBean.actionDeleteAppArea}"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc1"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    inlineStyle="height:200.0px;">
+                  <af:table value="#{bindings.SysApplicableArea.collectionModel}"
+                            var="row"
+                            rows="#{bindings.SysApplicableArea.rangeSize}"
+                            emptyText="#{bindings.SysApplicableArea.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.SysApplicableArea.rangeSize}"
+                            rowBandingInterval="1"
+                            filterModel="#{bindings.SysApplicableAreaQuery.queryDescriptor}"
+                            queryListener="#{bindings.SysApplicableAreaQuery.processQuery}"
+                            filterVisible="false" varStatus="vs"
+                            selectionListener="#{bindings.SysApplicableArea.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1"
+                            binding="#{SysAppAreaBean.tblSystemAppAreas}">
+                    <af:column sortProperty="sysName"
+                               sortable="true"
+                               headerText="System"
+                               id="c4" width="200"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.sysName}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="sysAppAreaDesc"
+                               sortable="true"
+                               headerText="Applicable Area"
+                               id="c5" width="200"
+                               filterFeatures="caseInsensitive">
+                      <af:outputText value="#{row.sysAppAreaDesc}" id="ot2"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                <af:popup id="SystemsLOVPop">
+                  <af:dialog id="d3" title="List of Systems" type="none">
+                    <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <af:table value="#{bindings.System.collectionModel}"
+                                var="row" rows="#{bindings.System.rangeSize}"
+                                emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.System.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                                queryListener="#{bindings.SystemQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.System.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.System.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t2"
+                                binding="#{SysAppAreaBean.tblSystems}">
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c2">
+                          <af:outputText value="#{row.shortDesc}" id="ot4"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="Nmae" id="c3"
+                                   width="200">
+                          <af:outputText value="#{row.name}" id="ot3"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelBox>
+                    <h:panelGrid columns="2" id="panelGrid5">
+                      <af:commandButton text="Ok" id="commandButton2"
+                                        action="#{SysAppAreaBean.actionAcceptSystem}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="commandButton3"
+                                        partialSubmit="true"
+                                        action="#{SysAppAreaBean.actionCancelSystem}"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="SysAppAreaPOP">
+                  <af:dialog id="d2" type="none" title="System Applicable Area">
+                    <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="2" id="pg5">
+                        <h:panelGrid columns="1" id="panelGrid1">
+                          <af:outputLabel value="System" id="outputLabel1"
+                                          showRequired="true"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="panelGrid2">
+                          <af:panelLabelAndMessage id="plam1">
+                            <af:inputText label="System Name" id="inputText2"
+                                          simple="true"
+                                          binding="#{SysAppAreaBean.txtSystemName}"
+                                          disabled="true"/>
+                            <af:commandButton id="cb2"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true">
+                              <af:showPopupBehavior popupId="SystemsLOVPop"/>
+                            </af:commandButton>
+                          </af:panelLabelAndMessage>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg2">
+                          <af:outputLabel value="Description" id="ol2"
+                                          showRequired="true"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="panelGrid3">
+                          <af:inputText label="AppAreaDescription"
+                                        id="inputText1" simple="true"
+                                        binding="#{SysAppAreaBean.txtAppAreaDesc}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" id="panelGrid6">
+                          <af:inputText label="System Code" id="inputText3"
+                                        simple="true"
+                                        binding="#{SysAppAreaBean.txtSystemCode}"
+                                        visible="false" disabled="true"/>
+                          <af:inputText label="System App Area Code" id="inputText4"
+                                        simple="true"
+                                        binding="#{SysAppAreaBean.txtSysAppAreaCode}"
+                                        visible="false" disabled="true"/>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                    </af:panelBox>
+                    <h:panelGrid columns="2" id="pg3">
+                      <af:commandButton text="Save" id="cb1"
+                                        action="#{SysAppAreaBean.actionSaveSysAppArea}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="commandButton1"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+              </af:panelBox>
+              <af:spacer width="10" height="20" id="s6"/>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

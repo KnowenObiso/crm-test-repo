@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="pt1">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+            
+            <table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="50%" align="left">
+                  <af:inputText id="it1" 
+                                helpTopicId="CRMsectors" 
+                                columns="13"
+                                readOnly="true" 
+                                shortDesc="Help"/>
+                </td>
+                <td width="100%" align="right">
+                
+                <af:statusIndicator id="si1"/>
+                </td>
+              </tr>
+            </table>
+              
+              <h:panelGrid columns="1" id="pg1">
+                <af:outputLabel value="Client Type Definition" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>                
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="pg2">
+                  <af:commandButton text="New" id="btnNewClientType"
+                                    icon="/images/create.gif"
+                                    action="#{clientTypeBacking.actionNewClientType}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Edit" id="btnEditClientType"
+                                    icon="/images/update.gif"
+                                    action="#{clientTypeBacking.actionEditClientType}"
+                                    partialSubmit="true"/>
+                  <af:commandButton text="Delete" id="btnDeleteClientType"
+                                    icon="/images/delete.gif"
+                                    action="#{clientTypeBacking.actionDeleteClientType}"
+                                    partialSubmit="true"/>
+                </h:panelGrid>
+               <af:table value="#{bindings.ClientType.collectionModel}"
+                          var="row" rows="#{bindings.ClientType.rangeSize}"
+                          emptyText="#{bindings.ClientType.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.ClientType.rangeSize}"
+                          rowBandingInterval="0"
+                          binding="#{clientTypeBacking.clienttypesTable}"
+                          filterModel="#{bindings.ClientTypeQuery.queryDescriptor}"
+                          queryListener="#{bindings.ClientTypeQuery.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.ClientType.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ClientType.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1">
+                  <af:column sortProperty="#{bindings.ClientType.hints.code.name}"
+                                       sortable="false"
+                                       visible="false"
+                                       headerText="CODE"
+                                       id="col_ClientType_Code">
+                              <af:outputText value="#{row.code}" id="ot_ClientType_Code"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.ClientType.hints.clntType.name}"
+                                       sortable="false"
+                                       visible="true"
+                                       headerText="CLNT TYPE"
+                                       id="col_ClientType_ClntType">
+                              <af:outputText value="#{row.clntType}" id="ot_ClientType_ClntType"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.ClientType.hints.category.name}"
+                                       sortable="false"
+                                       visible="true"
+                                       headerText="CATEGORY"
+                                       id="col_ClientType_Category">
+                              <af:outputText value="#{row.category}" id="ot_ClientType_Category"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.ClientType.hints.type.name}"
+                                       sortable="false"
+                                       visible="true"
+                                       headerText="TYPE"
+                                       id="col_ClientType_Type">
+                              <af:outputText value="#{row.type}" id="ot_ClientType_Type"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.ClientType.hints.person.name}"
+                                       sortable="false"
+                                       visible="true"
+                                       headerText="PERSON"
+                                       id="col_ClientType_Person">
+                              <af:outputText value="#{row.person}" id="ot_ClientType_Person"/>
+                            </af:column>
+                            <af:column sortProperty="#{bindings.ClientType.hints.desc.name}"
+                                       sortable="false"
+                                       visible="true"
+                                       headerText="DESC"
+                                       id="col_ClientType_Desc">
+                              <af:outputText value="#{row.desc}" id="ot_ClientType_Desc"/>
+                            </af:column>
+                </af:table>
+              
+                <af:separator id="s2"/>
+              </af:panelBox>
+            </af:panelBox>
+            
+            <af:popup id="ClientTypePop" contentDelivery="lazyUncached">
+              <af:dialog id="d2" title="Add/Edit Client Types" type="none">
+                <af:panelGroupLayout id="pgl1">
+                <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                 
+                  
+                    <af:panelFormLayout id="pfl1" inlineStyle="width:300.0px;">
+                   
+                    <af:selectOneChoice label="Client Category" id="txtClientTypeCategory"
+                                                      showRequired="true"
+                                                       autoSubmit="true"
+                                                      unselectedLabel="select"
+                                                       immediate="true"
+                                           binding="#{clientTypeBacking.txtClientTypeCategory}"
+                                                        valuePassThru="true">
+                                    <af:selectItem label="Individual" value="Individual"
+                                                  />
+                                    <af:selectItem label="Corporate" value="Corporate"
+                                                   />
+                                    <af:selectItem label="Government"  value="Government"
+                                                  />
+                      </af:selectOneChoice>
+                      
+                       <af:selectOneChoice label="Client Person: " 
+                                           showRequired="true"
+                                           autoSubmit="true"
+                                           unselectedLabel="select"
+                                           immediate="true"
+                                           binding="#{clientTypeBacking.txtClientTypePerson}"
+                                                        valuePassThru="true">
+                                    <af:selectItem label="Yes" value="Y" />
+                                    <af:selectItem label="No" value="N" /> 
+                      </af:selectOneChoice>
+                      <af:inputText label="Client Type : " id="txtClientTypeType"
+                                    binding="#{clientTypeBacking.txtClientTypeType}" 
+                                    showRequired="true"
+                                    shortDesc="Client Type"/>
+                     <af:inputText label="Desc : " id="txtClientTypeDesc"
+                                    binding="#{clientTypeBacking.txtClientTypeDesc}" 
+                                    showRequired="true"
+                                    shortDesc="Desc"/> 
+                      </af:panelFormLayout>
+                     <af:commandButton text="Save" id="btnCreateUpdateClientType"
+                                      binding="#{clientTypeBacking.btnSaveClientType}" 
+                                      action="#{clientTypeBacking.actionSaveClientType}"/>
+                      <af:commandButton text="Cancel" id="cb2"/>
+                    
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+           
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

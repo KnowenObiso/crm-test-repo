@@ -1,0 +1,1007 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:panelGroupLayout id="pgl5">
+            <af:popup id="servRequest" contentDelivery="lazyUncached">
+              <af:dialog id="d2" type="none" title="Service Request">
+                <af:panelBox text="PanelBox21" id="pb7" showHeader="never">
+                  <f:facet name="toolbar"/>
+                  <h:panelGrid columns="5" id="pg6">
+                    <af:outputLabel value="Request Category" id="ol15"
+                                    showRequired="true"/>
+                    <h:panelGrid columns="2" id="pg7">
+                      <af:inputText label="Label 38" id="it2" simple="true"
+                                    disabled="true"
+                                    binding="#{ServiceRequest.serCat}"/>
+                      <af:commandButton id="cb2" partialSubmit="true"
+                                        icon="/images/dropdown.gif"
+                                        action="#{ServiceRequest.launchCategory}"/>
+                      <af:popup id="category">
+                        <af:dialog id="d3" type="none"
+                                   title="Request Categories">
+                          <af:panelBox text="PanelBox22" id="pb8"
+                                       showHeader="never">
+                            <f:facet name="toolbar"/>
+                            <af:panelGroupLayout id="pgl2">
+                              <h:panelGrid columns="1" id="pg11">
+                                <af:table value="#{bindings.ServiceReq3.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.ServiceReq3.rangeSize}"
+                                          emptyText="#{bindings.ServiceReq3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.ServiceReq3.rangeSize}"
+                                          rowBandingInterval="0"
+                                          filterModel="#{bindings.ServiceReq3Query.queryDescriptor}"
+                                          queryListener="#{bindings.ServiceReq3Query.processQuery}"
+                                          filterVisible="true" varStatus="vs"
+                                          selectedRowKeys="#{bindings.ServiceReq3.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.ServiceReq3.collectionModel.makeCurrent}"
+                                          rowSelection="single" id="t4"
+                                          binding="#{ServiceRequest.categories}">
+                                  <af:column sortProperty="tsrcName"
+                                             filterable="true" sortable="true"
+                                             headerText="Name" id="c8"
+                                             width="200">
+                                    <af:outputText value="#{row.tsrcName}"
+                                                   id="ot11"/>
+                                  </af:column>
+                                  <af:column sortProperty="tsrcValidity"
+                                             filterable="true" sortable="true"
+                                             headerText="Validity" id="c10"
+                                             width="50">
+                                    <af:outputText value="#{row.tsrcValidity}"
+                                                   id="ot9"/>
+                                  </af:column>
+                                </af:table>
+                                <h:panelGrid columns="2" id="pg12">
+                                  <af:commandButton text="Ok" id="cb7"
+                                                    partialSubmit="true"
+                                                    action="#{ServiceRequest.categorySelected}"/>
+                                  <af:commandButton text="Cancel" id="cb8"
+                                                    partialSubmit="true"
+                                                    action="#{ServiceRequest.cancelCategory}"/>
+                                </h:panelGrid>
+                              </h:panelGrid>
+                            </af:panelGroupLayout>
+                          </af:panelBox>
+                        </af:dialog>
+                      </af:popup>
+                    </h:panelGrid>
+                    <af:outputLabel id="ol16"/>
+                    <af:outputLabel value="Request Source" id="ol17"
+                                    showRequired="true"/>
+                    <af:selectOneChoice id="soc3" simple="true"
+                                        unselectedLabel="Source"
+                                        binding="#{ServiceRequest.reqSource}">
+                      <af:selectItem label="Email" value="Email" id="si2"/>
+                      <af:selectItem label="Phone Call" value="Phone Call"
+                                     id="si3"/>
+                      <af:selectItem label="Walk - in" value="Walk - in"
+                                     id="si4"/>
+                      <af:selectItem label="Others" value="Others" id="si5"/>
+                    </af:selectOneChoice>
+                    <af:outputLabel value="Account Type" id="ol18"/>
+                    <af:selectOneChoice label="Label 1" id="soc4"
+                                        unselectedLabel="Account Type"
+                                        simple="true" disabled="true"
+                                        binding="#{ServiceRequest.reqAccType}">
+                      <af:selectItem label="Agent" value="A" id="si6"/>
+                      <af:selectItem label="Service Provider" value="SP"
+                                     id="si9"/>
+                      <af:selectItem label="Client" value="C" id="si7"/>
+                    </af:selectOneChoice>
+                    <af:outputLabel id="ol19"/>
+                    <af:outputLabel value="Account" id="ol20"/>
+                    <af:inputText label="Label 39" id="it3" simple="true"
+                                  disabled="true"
+                                  binding="#{ServiceRequest.reqAccount}"/>
+                    <af:outputLabel value="Summary" id="ol30"
+                                    showRequired="true"/>
+                    <af:inputText label="Label 41" id="it6" simple="true"
+                                  binding="#{ServiceRequest.reqSummary}"/>
+                    <af:outputLabel id="ol31"/>
+                    <af:outputLabel value="Description" id="ol32"
+                                    showRequired="true"/>
+                    <af:inputText label="Label 42" id="it7" simple="true"
+                                  rows="3" binding="#{ServiceRequest.reqDesc}"/>
+                    <af:outputLabel value="Request Date" id="ol21"/>
+                    <af:inputDate label="Label 1" id="id1" simple="true"
+                                  disabled="true"
+                                  binding="#{ServiceRequest.reqDate}">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:outputLabel id="ol23"/>
+                    <af:outputLabel value="Assignee" id="ol22"
+                                    showRequired="true"/>
+                    <h:panelGrid columns="2" id="pg8">
+                      <af:inputText label="Label 40" id="it4" disabled="true"
+                                    simple="true"
+                                    binding="#{ServiceRequest.reqAssignee}"/>
+                      <af:commandButton id="cb3" icon="/images/dropdown.gif"
+                                        partialSubmit="true"
+                                        action="#{ServiceRequest.launchAssignee}"/>
+                      <af:popup id="users">
+                        <af:dialog id="d5" type="none" title="Users">
+                          <af:panelBox text="PanelBox23" id="pb9"
+                                       showHeader="never">
+                            <f:facet name="toolbar"/>
+                            <af:panelGroupLayout id="pgl3">
+                              <h:panelGrid columns="1" id="pg13">
+                                <af:table value="#{bindings.User.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.User.rangeSize}"
+                                          emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.User.rangeSize}"
+                                          rowBandingInterval="0"
+                                          filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                          queryListener="#{bindings.UserQuery.processQuery}"
+                                          filterVisible="true" varStatus="vs"
+                                          selectedRowKeys="#{bindings.User.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.User.collectionModel.makeCurrent}"
+                                          rowSelection="single" id="t5"
+                                          inlineStyle="width:425.0px;"
+                                          binding="#{ServiceRequest.users}">
+                                  <af:column sortProperty="username"
+                                             filterable="true" sortable="true"
+                                             headerText="Username" id="c9">
+                                    <af:outputText value="#{row.username}"
+                                                   id="ot8"/>
+                                  </af:column>
+                                  <af:column sortProperty="userFullname"
+                                             filterable="true" sortable="true"
+                                             headerText="Fullname" id="c12"
+                                             width="200">
+                                    <af:outputText value="#{row.userFullname}"
+                                                   id="ot17"/>
+                                  </af:column>
+                                  <af:column sortProperty="userEmail"
+                                             filterable="true" sortable="true"
+                                             headerText="Email" id="c11">
+                                    <af:outputText value="#{row.userEmail}"
+                                                   id="ot18"/>
+                                  </af:column>
+                                </af:table>
+                                <h:panelGrid columns="2" id="pg14">
+                                  <af:commandButton text="Ok" id="cb9"
+                                                    partialSubmit="true"
+                                                    action="#{ServiceRequest.userSelected}"/>
+                                  <af:commandButton text="Cancel" id="cb10"
+                                                    partialSubmit="true"
+                                                    action="#{ServiceRequest.cancelUser}"/>
+                                </h:panelGrid>
+                              </h:panelGrid>
+                            </af:panelGroupLayout>
+                          </af:panelBox>
+                        </af:dialog>
+                      </af:popup>
+                    </h:panelGrid>
+                    <af:outputLabel value="Owner Account Type" id="ol24"
+                                    showRequired="true"/>
+                    <af:selectOneChoice label="Label 1" id="soc5"
+                                        unselectedLabel="Account Type"
+                                        simple="true"
+                                        binding="#{ServiceRequest.reqOwnerAccType}">
+                      <af:selectItem label="Agent" value="A" id="si10"/>
+                      <af:selectItem label="Client" value="C" id="selectItem1"/>
+                      <af:selectItem label="Service Provider" value="SP"
+                                     id="si11"/>
+                      <af:selectItem label="User" value="U" id="si8"/>
+                    </af:selectOneChoice>
+                    <af:outputLabel id="ol25"/>
+                    <af:outputLabel value="Owner" id="ol26"
+                                    showRequired="true"/>
+                    <h:panelGrid columns="2" id="pg9">
+                      <af:inputText label="Label 40" id="it5" disabled="true"
+                                    simple="true"
+                                    binding="#{ServiceRequest.reqOwnerAccount}"/>
+                      <af:commandButton id="cb4" icon="/images/dropdown.gif"
+                                        partialSubmit="true"
+                                        action="#{ServiceRequest.launchAccount}"/>
+                      <af:popup id="accounts" contentDelivery="lazyUncached">
+                        <af:dialog id="d9" title="Add Participant" type="none">
+                          <af:panelBox text="PanelBox24" id="pb10"
+                                       showHeader="never">
+                            <f:facet name="toolbar"/>
+                            <af:panelGroupLayout id="pgl4">
+                              <h:panelGrid columns="1" id="pg15">
+                                <af:table value="#{bindings.Account.collectionModel}"
+                                          var="row"
+                                          rows="#{bindings.Account.rangeSize}"
+                                          emptyText="#{bindings.Account.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          fetchSize="#{bindings.Account.rangeSize}"
+                                          rowBandingInterval="1"
+                                          filterModel="#{bindings.AccountQuery.queryDescriptor}"
+                                          queryListener="#{bindings.AccountQuery.processQuery}"
+                                          filterVisible="true" varStatus="vs"
+                                          selectedRowKeys="#{bindings.Account.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.Account.collectionModel.makeCurrent}"
+                                          rowSelection="single" id="t6"
+                                          binding="#{ServiceRequest.accounts}"
+                                          inlineStyle="width:99%;">
+                                  <af:column sortProperty="accountName"
+                                             filterable="true" sortable="true"
+                                             headerText="Account Name" id="c19"
+                                             width="150">
+                                    <af:outputText value="#{row.accountName}"
+                                                   id="ot21"/>
+                                  </af:column>
+                                  <af:column sortProperty="accountEmail"
+                                             filterable="true" sortable="true"
+                                             headerText="Email Address"
+                                             id="c17">
+                                    <af:outputText value="#{row.accountEmail}"
+                                                   id="ot20"/>
+                                  </af:column>
+                                </af:table>
+                                <h:panelGrid columns="2" id="pg45">
+                                  <af:commandButton text="Ok" id="cb34"
+                                                    partialSubmit="true"
+                                                    action="#{ServiceRequest.saveOwner}"/>
+                                  <af:commandButton text="Cancel" id="cb35"
+                                                    partialSubmit="true"
+                                                    action="#{ServiceRequest.cancelAccount}"/>
+                                </h:panelGrid>
+                              </h:panelGrid>
+                            </af:panelGroupLayout>
+                          </af:panelBox>
+                        </af:dialog>
+                      </af:popup>
+                    </h:panelGrid>
+                    <af:outputLabel value="Due Date" id="ol27"/>
+                    <af:inputDate label="Label 2" id="id2" disabled="false"
+                                  simple="true"
+                                  binding="#{ServiceRequest.reqDueDate}">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:outputLabel id="ol28"/>
+                    <af:outputLabel value="Status" id="ol29"
+                                    showRequired="true"/>
+                    <af:selectOneChoice label="Label 2" id="soc6" simple="true"
+                                        unselectedLabel="Status"
+                                        binding="#{ServiceRequest.reqStatus}"
+                                        autoSubmit="true"
+                                        valueChangeListener="#{ServiceRequest.statusChanged}">
+                      <af:selectItem label="Open" value="Open" id="si12"/>
+                      <af:selectItem label="Closed" value="Closed" id="si13"/>
+                    </af:selectOneChoice>
+                    <af:outputLabel value="Resolution Date" id="ol33"/>
+                    <af:inputDate label="Label 3" id="id3" simple="true"
+                                  binding="#{ServiceRequest.reqResDate}">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                    <af:outputLabel id="ol35"/>
+                    <af:outputLabel value="Solution" id="ol34"/>
+                    <af:inputText label="Label 43" id="it8" rows="3"
+                                  simple="true"
+                                  binding="#{ServiceRequest.reqSolution}"/>
+                  </h:panelGrid>
+                  <h:panelGrid columns="2" id="pg10">
+                    <af:commandButton text="Save" id="cb5" partialSubmit="true"
+                                      action="#{ServiceRequest.saveServiceReq}"
+                                      partialTriggers="pc1:t7 pc2:t8"/>
+                    <af:commandButton text="Cancel" id="cb6"/>
+                  </h:panelGrid>
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMcurrencies"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <af:panelBox text="PanelBox19" id="pb2" showHeader="never"
+                           binding="#{ServiceRequest.searchCriteria}">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="2" id="panelGrid11">
+                  <af:outputLabel value="Service Request" id="outputLabel5"
+                                  inlineStyle="font-weight:bold;"/>
+                </h:panelGrid>
+                <af:separator id="s2"/>
+                <af:popup id="searchClientPop" contentDelivery="lazyUncached">
+                  <af:dialog id="d25" type="none"
+                             title=" SELECT SEARCH CRITERIA"
+                             inlineStyle="width:800.0px;">
+                    <af:panelBox text="PanelBox18" id="pb14" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="2" id="pg32"
+                                   binding="#{baseClientBackingBean1.gridClientSearchDetails}">
+                        <af:panelGroupLayout id="pgl31"
+                                             binding="#{baseClientBacking.searchFormHolder}">
+                          <af:panelFormLayout id="pfl9"
+                                              binding="#{ServiceRequest.SEARCHHOLDER}">
+                            <f:facet name="footer"/>
+                            <af:inputText label="Client Account No." id="it33"
+                                          binding="#{baseClientBackingBean1.txtAccountNo}"
+                                          disabled="true" autoSubmit="true"
+                                          valueChangeListener="#{baseClientBackingBean1.enterKeyPressed}"/>
+                            <af:inputText label="Short Desc" id="it19"
+                                          disabled="true"
+                                          binding="#{baseClientBackingBean1.txtSearchShortDesc}"
+                                          autoSubmit="true"
+                                          valueChangeListener="#{baseClientBackingBean1.enterKeyPressed}"/>
+                            <af:inputText label="Name" id="it20"
+                                          binding="#{baseClientBackingBean1.txtSearchName}"
+                                          disabled="true" autoSubmit="true"
+                                          valueChangeListener="#{baseClientBackingBean1.enterKeyPressed}"/>
+                            <af:inputText label="Other Name" id="it21"
+                                          disabled="true"
+                                          binding="#{baseClientBackingBean1.txtSearchOtherName}"
+                                          autoSubmit="true"
+                                          valueChangeListener="#{baseClientBackingBean1.enterKeyPressed}"/>
+                            <af:inputText label="Physical Addr" id="it25"
+                                          disabled="true"
+                                          binding="#{baseClientBackingBean1.txtSearchPhysical}"
+                                          autoSubmit="true"
+                                          valueChangeListener="#{baseClientBackingBean1.enterKeyPressed}"/>
+                            <af:inputText label="Postal Addr" id="it26"
+                                          disabled="true"
+                                          binding="#{baseClientBackingBean1.txtSearchPostal}"
+                                          autoSubmit="true"
+                                          valueChangeListener="#{baseClientBackingBean1.enterKeyPressed}"/>
+                            <af:inputText label="Sector" id="it22"
+                                          disabled="true"
+                                          binding="#{baseClientBackingBean1.txtSearchSector}"
+                                          visible="false" autoSubmit="true"
+                                          valueChangeListener="#{baseClientBackingBean1.enterKeyPressed}"/>
+                            <af:panelLabelAndMessage label="Sector" id="plam15"
+                                                     binding="#{baseClientBackingBean1.resetSearchContainer}">
+                              <af:inputText label="Sector Name" id="it18"
+                                            visible="true" columns="23"
+                                            disabled="true"
+                                            binding="#{baseClientBacking.txtSrchSectorName}"
+                                            simple="true" autoSubmit="true"
+                                            valueChangeListener="#{baseClientBackingBean1.enterKeyPressed}"/>
+                              <af:commandButton id="cb25" partialTriggers="it18"
+                                                icon="/images/dropdown.gif"
+                                                binding="#{baseClientBackingBean1.btnSectorLov}"
+                                                disabled="true"
+                                                partialSubmit="true">
+                                <af:showPopupBehavior popupId="sectorPop"/>
+                              </af:commandButton>
+                            </af:panelLabelAndMessage>
+                            <af:panelLabelAndMessage label="Status" id="plam13"
+                                                     binding="#{ServiceRequest.statusHolder}">
+                              <af:selectOneChoice id="soc2"
+                                                  binding="#{baseClientBackingBean1.txtSearchStatus}"
+                                                  unselectedLabel="select"
+                                                  disabled="true"
+                                                  valueChangeListener="#{baseClientBackingBean1.cboSearchStatusListener}"
+                                                  autoSubmit="true">
+                                <af:selectItem label="Active" value="A"
+                                               id="si41"/>
+                                <af:selectItem label="Inactive" value="I"
+                                               id="si44"/>
+                                <af:selectItem label="Draft" value="D"
+                                               id="si43"/>
+                                <af:selectItem label="Rejected" value="R"
+                                               id="si42"/>
+                              </af:selectOneChoice>
+                            </af:panelLabelAndMessage>
+                            <af:panelLabelAndMessage label="Client Type"
+                                                     id="plam14"
+                                                     binding="#{ServiceRequest.searchClientType}">
+                              <af:selectOneChoice id="soc1"
+                                                  unselectedLabel="select"
+                                                  disabled="true"
+                                                  binding="#{baseClientBackingBean1.txtSearchClntType}"
+                                                  valueChangeListener="#{baseClientBackingBean1.cboSearchClntTypelistener}"
+                                                  autoSubmit="true">
+                                <af:selectItem label="Individual" value="I"
+                                               id="si40"/>
+                                <af:selectItem label="Corporate" value="C"
+                                               id="si39"/>
+                              </af:selectOneChoice>
+                            </af:panelLabelAndMessage>
+                            <af:inputDate label="Date  Created   From" id="id4"
+                                          disabled="true"
+                                          binding="#{baseClientBackingBean1.clntDateCreatedFrom}"/>
+                            <af:inputDate label=" To" id="id5"
+                                          binding="#{baseClientBackingBean1.clntDateCreatedTo}"
+                                          disabled="true"/>
+                          </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                        <h:panelGrid columns="1" id="pg36">
+                          <h:panelGrid columns="1" id="pg35">
+                            <af:selectBooleanRadio text="Exact Client Account No."
+                                                   label="Exact Client Account No."
+                                                   id="sbr5"
+                                                   binding="#{baseClientBackingBean1.rbtnSearchAccountNo}"
+                                                   group="criteria"
+                                                   simple="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Any part of any name(Specify Only One Name )"
+                                                   label="Label 1" id="sbr3"
+                                                   binding="#{baseClientBackingBean1.rbtnPartOfAnyName}"
+                                                   simple="true"
+                                                   group="criteria"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Exact Name:(Specify Only One Name)"
+                                                   group="criteria"
+                                                   label="Label 2" id="sbr4"
+                                                   simple="true"
+                                                   binding="#{baseClientBackingBean1.rbtnExactName}"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Sector( Sector Required)"
+                                                   simple="true" label="Label 4"
+                                                   id="sbr6" group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnSector}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Status( Status Required:)"
+                                                   simple="true" id="sbr7"
+                                                   group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnStatus}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Client Type( Client Type required) "
+                                                   label="Label 7" id="sbr9"
+                                                   simple="true"
+                                                   group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnClientType}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Part of  Short Desc(Short Desc Required)"
+                                                   label="Label 7" id="sbr7794"
+                                                   simple="true"
+                                                   group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnShortDesc}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Part of  Legacy Sht Desc"
+                                                   label="Label 7" id="sbr8"
+                                                   simple="true"
+                                                   group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnShortDescLeg}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Date Created(Date 'From' and 'To' Required)"
+                                                   label="Label 7"
+                                                   id="sbr779489" simple="true"
+                                                   group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnDateCreated}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Part of  Physical Addr(Physical Addr Required)"
+                                                   label="Label 7" id="sbr18q91"
+                                                   simple="true"
+                                                   group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnPhySicalAddr}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Part of Postal Addr(Postal Addr Required)"
+                                                   label="Label 7" id="sbr1211"
+                                                   simple="true"
+                                                   group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnPostalAddr}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Part of Old Customer Id( Old Customer Id) "
+                                                   label="Label 7" id="sbr11"
+                                                   simple="true"
+                                                   group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnCustomerId}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                            <af:selectBooleanRadio text="Part of Old Names(Either of the Name Required) "
+                                                   label="Label 7" id="sbr13"
+                                                   simple="true"
+                                                   group="criteria"
+                                                   binding="#{baseClientBackingBean1.rbtnOldNames}"
+                                                   visible="true"
+                                                   autoSubmit="true"
+                                                   valueChangeListener="#{baseClientBackingBean1.criteriaValueChangeListener}"/>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                      <h:panelGrid columns="2" id="pg37">
+                        <af:commandButton text="Search" id="cb22"
+                                          action="#{baseClientBackingBean1.actionAcceptSearchCriteria}"
+                                          partialSubmit="true"
+                                          partialTriggers="pc22:t11"
+                                          immediate="false"/>
+                        <af:commandButton text="Reset" id="cb29"
+                                          action="#{baseClientBackingBean1.actionResetSearch}"
+                                          partialSubmit="true"
+                                          partialTriggers="pc22:t11"/>
+                      </h:panelGrid>
+                      <af:panelCollection id="pc22"
+                                          styleClass="AFAuxiliaryStretchWidth"
+                                          binding="#{ServiceRequest.panelCollSearch}"
+                                          inlineStyle="width:99%;">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.Client27.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.Client27.rangeSize}"
+                                  emptyText="#{bindings.Client27.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Client27.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.Client27Query.queryDescriptor}"
+                                  queryListener="#{bindings.Client27Query.processQuery}"
+                                  filterVisible="true" varStatus="vs" id="t11"
+                                  binding="#{baseClientBackingBean1.tblClientPop}"
+                                  partialTriggers=":::cb22 :::cb23"
+                                  rowSelection="single"
+                                  inlineStyle="width:99%;">
+                          <af:column sortProperty="code" filterable="true"
+                                     sortable="false" headerText="Action"
+                                     id="c104" width="50"
+                                     filterFeatures="caseInsensitive"
+                                     rendered="#{Rendering.whichSearch ? false : true}"
+                                     binding="#{baseClientBackingBean1.editCol}">
+                            <af:commandLink text="View" id="cl5"
+                                            action="#{ServiceRequest.clientSelected}"
+                                            inlineStyle="font-weight:bold; text-decoration:underline; color:Black;"/>
+                          </af:column>
+                          <af:column sortProperty="code"
+                                     filterFeatures="caseInsensitive" width="30"
+                                     rendered="#{Rendering.whichSearch ? true : false}"
+                                     sortable="true" headerText="Select"
+                                     id="c947"
+                                     binding="#{baseClientBackingBean1.checkboxCol}">
+                            <af:selectBooleanCheckbox value="#{row.selected}"
+                                                      autoSubmit="false"
+                                                      id="sbc1"
+                                                      binding="#{baseClientBackingBean1.columnSelect}"/>
+                          </af:column>
+                          <af:column sortProperty="name" filterable="true"
+                                     sortable="true" headerText="Name" id="c77"
+                                     width="200"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.name}" id="ot72"/>
+                          </af:column>
+                          <af:column sortProperty="otherNames" filterable="true"
+                                     sortable="true" headerText="Other Names"
+                                     id="c83" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.otherNames}" id="ot79"/>
+                          </af:column>
+                          <af:column sortProperty="physicalAddress"
+                                     filterable="true" sortable="true"
+                                     headerText="Physical Address" id="c84"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.physicalAddress}"
+                                           id="ot81"/>
+                          </af:column>
+                          <af:column sortProperty="postalAddress"
+                                     filterable="true" sortable="true"
+                                     headerText="Postal address" id="c87"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.postalAddress}"
+                                           id="ot82"/>
+                          </af:column>
+                          <af:column sortProperty="phone1" filterable="true"
+                                     sortable="true" headerText="Telephone"
+                                     id="c90" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.phone1}" id="ot84"/>
+                          </af:column>
+                          <af:column sortProperty="shortDesc" filterable="true"
+                                     sortable="true" headerText="Short Desc"
+                                     id="c91" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.shortDesc}" id="ot85"/>
+                          </af:column>
+                          <af:column sortProperty="idRegNo" filterable="true"
+                                     sortable="true" headerText="Id Reg No."
+                                     id="c92" filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.idRegNo}" id="ot86"/>
+                          </af:column>
+                          <af:column sortProperty="pin" filterable="true"
+                                     sortable="true" headerText="Pin" id="c97"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.pin}" id="ot96"/>
+                          </af:column>
+                          <af:column sortProperty="status" filterable="true"
+                                     sortable="true" headerText="Status"
+                                     id="c105" width="50"
+                                     filterFeatures="caseInsensitive">
+                            <af:outputText value="#{row.status}" id="ot76"/>
+                          </af:column>
+                          <af:column sortProperty="email"
+                                     filterFeatures="caseInsensitive"
+                                     filterable="true" sortable="true"
+                                     headerText="EMAIL" id="c89">
+                            <af:outputText value="#{row.email}" id="ot78"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <h:panelGrid columns="4" id="pg38">
+                        <af:commandButton text="Select All" id="cb26"
+                                          visible="false"
+                                          rendered="#{Rendering.whichSearch ? true : false}"
+                                          action="#{baseClientBackingBean1.selectAll}"
+                                          partialSubmit="true"
+                                          binding="#{baseClientBackingBean1.btnSelectAll}"/>
+                        <af:commandButton text="DeSelect All" visible="false"
+                                          rendered="#{Rendering.whichSearch ? true : false}"
+                                          id="cb28"
+                                          action="#{baseClientBackingBean1.deselectAll}"
+                                          partialSubmit="true"
+                                          binding="#{baseClientBackingBean1.btnDeselectAll}"/>
+                        <af:commandButton text="Add" id="cb23" visible="false"
+                                          rendered="#{Rendering.whichSearch ? true : false}"
+                                          action="#{baseClientBackingBean1.actionAcceptClientLov}"
+                                          partialSubmit="true"
+                                          partialTriggers="pc22:t11"
+                                          binding="#{baseClientBackingBean1.btnAddGrpMember}"/>
+                        <af:commandButton text="close" id="cb24"/>
+                      </h:panelGrid>
+                    </af:panelBox>
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="sectorPop" contentDelivery="lazyUncached">
+                  <af:dialog id="d4" title="Select a Sector" type="none"
+                             inlineStyle="width:260.0px;">
+                    <af:panelGroupLayout id="pgl1">
+                      <af:panelCollection id="pc4" inlineStyle="width:260.0px;">
+                        <af:table value="#{bindings.Sector.collectionModel}"
+                                  var="row" rows="#{bindings.Sector.rangeSize}"
+                                  emptyText="#{bindings.Sector.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.Sector.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.SectorQuery.queryDescriptor}"
+                                  queryListener="#{bindings.SectorQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  rowSelection="single" id="tblSectorPop"
+                                  binding="#{baseClientBacking.tblSectorPop}">
+                          <af:column sortProperty="code" sortable="true"
+                                     headerText="CODE" id="c15"
+                                     filterable="true">
+                            <af:outputText value="#{row.code}" id="ot15"/>
+                          </af:column>
+                          <af:column sortProperty="name" sortable="true"
+                                     headerText="SECTOR" id="c16" width="140"
+                                     filterable="true">
+                            <af:outputText value="#{row.name}" id="ot14"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:commandButton text="OK" id="btnAcceptSector"
+                                        partialSubmit="true"
+                                        action="#{baseClientBacking.actionAcceptSector}"/>
+                      <af:commandButton text="CANCEL" id="cancelSector"
+                                        partialSubmit="true"/>
+                    </af:panelGroupLayout>
+                  </af:dialog>
+                </af:popup>
+                <h:panelGrid columns="2" id="pg1">
+                  <af:outputLabel value="Clients" id="ol2"/>
+                  <af:selectBooleanRadio label="Label 1" id="sbr1" group="acc"
+                                         binding="#{ServiceRequest.clntRd}"
+                                         simple="true" autoSubmit="true"/>
+                  <af:outputLabel value="Agents" id="ol3"/>
+                  <af:selectBooleanRadio label="Label 2" id="sbr2" group="acc"
+                                         disabled="true"
+                                         binding="#{ServiceRequest.agentRd}"
+                                         simple="true" autoSubmit="true"/>
+                  <af:outputLabel value="Service Providers" id="ol4"/>
+                  <af:selectBooleanRadio label="Label 3"
+                                         id="selectBooleanRadio1" group="acc"
+                                         disabled="true"
+                                         binding="#{ServiceRequest.serProRd}"
+                                         simple="true" autoSubmit="true"/>
+                </h:panelGrid>
+                <h:panelGrid columns="1" id="pg2">
+                  <af:commandButton text="Next" id="cb1"
+                                    action="#{ServiceRequest.accTypeSelected}"/>
+                </h:panelGrid>
+              </af:panelBox>
+              <h:panelGrid columns="1" id="pg3">
+                <af:outputLabel value="Account Details" id="ol1"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <h:panelGrid columns="8" id="pg4">
+                <af:outputLabel value="Name" id="ol5"
+                                inlineStyle="font-weight:bold;"/>
+                <af:outputText value="outputText2" id="ot1"
+                               inlineStyle="font-weight:bold;"
+                               binding="#{ServiceRequest.nameDesc}"/>
+                <af:outputLabel id="ol6"/>
+                <af:outputLabel value="Sht Desc" id="ol8"
+                                inlineStyle="font-weight:bold;"/>
+                <af:outputText value="outputText3" id="ot2"
+                               inlineStyle="font-weight:bold;"
+                               binding="#{ServiceRequest.shtDesc}"/>
+                <af:outputLabel id="ol9"/>
+                <af:outputLabel value="Account No." id="ol7"
+                                inlineStyle="font-weight:bold;"/>
+                <af:outputText value="outputText4" id="ot3"
+                               inlineStyle="font-weight:bold;"
+                               binding="#{ServiceRequest.accNoDesc}"/>
+                <af:outputLabel value="Telephone Number" id="ol10"
+                                inlineStyle="font-weight:bold;"/>
+                <af:outputText value="outputText5" id="ot4"
+                               inlineStyle="font-weight:bold;"
+                               binding="#{ServiceRequest.telDesc}"/>
+                <af:outputLabel id="ol13"/>
+                <af:outputLabel value="Email Address" id="ol12"
+                                inlineStyle="font-weight:bold;"/>
+                <af:outputText value="outputText6" id="ot5"
+                               inlineStyle="font-weight:bold;"
+                               binding="#{ServiceRequest.emailDesc}"/>
+                <af:outputLabel id="ol14"/>
+                <af:outputLabel value="Physical Address" id="ol11"
+                                inlineStyle="font-weight:bold;"/>
+                <af:outputText value="outputText7" id="ot6"
+                               inlineStyle="font-weight:bold;"
+                               binding="#{ServiceRequest.addressDesc}"/>
+              </h:panelGrid>
+              <af:spacer width="10" height="10" id="s4"/>
+              <af:separator id="s3"/>
+              <af:commandLink text="Open New Case" id="cl1"
+                              inlineStyle="font-weight:bold; color:Black; text-decoration:underline;"
+                              action="#{ServiceRequest.newCase}"/>
+              <af:spacer width="10" height="10" id="s5"/>
+              <h:panelGrid columns="2" id="pg5">
+                <af:panelBox text="Open Requests" id="pb11">
+                  <f:facet name="toolbar"/>
+                  <af:panelCollection id="pc1" inlineStyle="height:200.0px;">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{bindings.ServiceReq4.collectionModel}"
+                              var="row" rows="#{bindings.ServiceReq4.rangeSize}"
+                              emptyText="#{bindings.ServiceReq4.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.ServiceReq4.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.ServiceReq4Query.queryDescriptor}"
+                              queryListener="#{bindings.ServiceReq4Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectedRowKeys="#{bindings.ServiceReq4.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.ServiceReq4.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t7"
+                              binding="#{ServiceRequest.clientPending}"
+                              inlineStyle="height:150.0px;">
+                      <af:column filterable="true" sortable="true" id="c26"
+                                 width="50">
+                        <af:commandLink text="View" id="cl2"
+                                        inlineStyle="font-weight:bold;"
+                                        action="#{ServiceRequest.viewClientPending}"/>
+                      </af:column>
+                      <af:column sortProperty="tsrcName" filterable="true"
+                                 sortable="true" headerText="Request Type"
+                                 id="c33">
+                        <af:outputText value="#{row.tsrcName}" id="ot19"/>
+                      </af:column>
+                      <af:column sortProperty="tsrType" filterable="true"
+                                 sortable="true" headerText="Source" id="c18">
+                        <af:outputText value="#{row.tsrType}" id="ot33"/>
+                      </af:column>
+                      <af:column sortProperty="tsrDate" filterable="false"
+                                 sortable="true" headerText="Date" id="c14">
+                        <af:outputText value="#{row.tsrDate}" id="ot30">
+                          <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss a"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="summary" filterable="true"
+                                 sortable="true" headerText="Summary" id="c39">
+                        <af:outputText value="#{row.summary}" id="ot32"/>
+                      </af:column>
+                      <af:column sortProperty="dueDate" filterable="false"
+                                 sortable="true" headerText="Due Date" id="c36">
+                        <af:outputText value="#{row.dueDate}" id="ot22">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="status" filterable="false"
+                                 sortable="true" headerText="Status" id="c37">
+                        <af:outputText value="#{row.status}" id="ot23"/>
+                      </af:column>
+                      <af:column sortProperty="assigneeDesc" filterable="false"
+                                 sortable="true" headerText="Assignee" id="c38">
+                        <af:outputText value="#{row.assigneeDesc}" id="ot24"/>
+                      </af:column>
+                        <af:column sortProperty="tsrMode" filterable="true"
+                                   sortable="true"
+                                   headerText="Communication Mode"
+                                   id="c27">
+                          <af:outputText value="#{row.tsrMode}" id="ot35"/>
+                        </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:panelBox>
+                <af:panelBox text="All Requests" id="pb12">
+                  <f:facet name="toolbar"/>
+                  <af:panelCollection id="pc2" inlineStyle="height:200.0px;">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{bindings.ServiceReq5.collectionModel}"
+                              var="row" rows="#{bindings.ServiceReq5.rangeSize}"
+                              emptyText="#{bindings.ServiceReq5.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.ServiceReq5.rangeSize}"
+                              rowBandingInterval="0"
+                              filterModel="#{bindings.ServiceReq5Query.queryDescriptor}"
+                              queryListener="#{bindings.ServiceReq5Query.processQuery}"
+                              filterVisible="true" varStatus="vs"
+                              selectedRowKeys="#{bindings.ServiceReq5.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.ServiceReq5.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t8"
+                              binding="#{ServiceRequest.allRequests}"
+                              inlineStyle="height:150.0px;">
+                      <af:column filterable="true" sortable="true" id="column1"
+                                 width="50">
+                        <af:commandLink text="View" id="cl4"
+                                        inlineStyle="font-weight:bold;"
+                                        action="#{ServiceRequest.allRequests}"/>
+                      </af:column>
+                      <af:column sortProperty="tsrcName" filterable="true"
+                                 sortable="true" headerText="Request Type"
+                                 id="c13">
+                        <af:outputText value="#{row.tsrcName}" id="ot12"/>
+                      </af:column>
+                      <af:column sortProperty="tsrType" filterable="true"
+                                 sortable="true" headerText="Source" id="c20">
+                        <af:outputText value="#{row.tsrType}" id="ot25"/>
+                      </af:column>
+                      <af:column sortProperty="tsrDate" filterable="false"
+                                 sortable="true" headerText="Date" id="c21">
+                        <af:outputText value="#{row.tsrDate}" id="ot26">
+                         <af:convertDateTime pattern="yyyy-MM-dd HH:mm:ss a"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="summary" filterable="true"
+                                 sortable="true" headerText="Summary" id="c22">
+                        <af:outputText value="#{row.summary}" id="ot27"/>
+                      </af:column>
+                      <af:column sortProperty="dueDate" filterable="false"
+                                 sortable="true" headerText="Due Date" id="c23">
+                        <af:outputText value="#{row.dueDate}" id="ot28">
+                          <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                        </af:outputText>
+                      </af:column>
+                      <af:column sortProperty="status" filterable="false"
+                                 sortable="true" headerText="Status" id="c24">
+                        <af:outputText value="#{row.status}" id="ot29"/>
+                      </af:column>
+                      <af:column sortProperty="assigneeDesc" filterable="false"
+                                 sortable="true" headerText="Assignee" id="c25">
+                        <af:outputText value="#{row.assigneeDesc}" id="ot31"/>
+                      </af:column>
+                        <af:column sortProperty="tsrMode" filterable="true"
+                                   sortable="true"
+                                   headerText="Communication Mode"
+                                   id="c30">
+                          <af:outputText value="#{row.tsrMode}" id="ot37"/>
+                        </af:column>
+                    </af:table>
+                  </af:panelCollection>
+                </af:panelBox>
+                <af:commandLink text="[All Client Businesses Report]"
+                                id="rpt1369"
+                                inlineStyle="text-decoration:underline; font-weight:bold; color:Black;"
+                                action="#{ServiceRequest.runClntBizRpt}"/>
+                <af:spacer width="10" height="10" id="s6"/>
+                <af:panelBox text="Individual Life Business" id="pb4">
+                  <f:facet name="toolbar"/>
+                  <af:table value="#{bindings.ServiceReq.collectionModel}"
+                            var="row" rows="#{bindings.ServiceReq.rangeSize}"
+                            emptyText="#{bindings.ServiceReq.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ServiceReq.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.ServiceReqQuery.queryDescriptor}"
+                            queryListener="#{bindings.ServiceReqQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.ServiceReq.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.ServiceReq.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t1"
+                            inlineStyle="height:150px; width:325.0px;"
+                            binding="#{ServiceRequest.individialTab}">
+                    <af:column sortProperty="proposalNo" filterable="true"
+                               sortable="true" headerText="Proposal Number"
+                               id="c4">
+                      <af:outputText value="#{row.proposalNo}" id="ot10"/>
+                    </af:column>
+                    <af:column sortProperty="policyNumber" filterable="true"
+                               sortable="true" headerText="Policy Number "
+                               id="c2">
+                      <af:goLink text="#{row.policyNumber}" id="gl1"
+                                 destination="#{row.urlString}?id=#{row.polCode}"
+                                 inlineStyle="color:Black; text-decoration:underline;"
+                                 targetFrame="_blank"/>
+                    </af:column>
+                    <af:column sortProperty="sumAssured" filterable="true"
+                               sortable="true" headerText="Sum Assured" id="c3"
+                               align="right">
+                      <af:outputText value="#{row.sumAssured}" id="ot7"/>
+                    </af:column>
+                  </af:table>
+                </af:panelBox>
+                <af:panelBox text="Group Life Business" id="pb5">
+                  <f:facet name="toolbar"/>
+                  <af:table value="#{bindings.ServiceReq1.collectionModel}"
+                            var="row" rows="#{bindings.ServiceReq1.rangeSize}"
+                            emptyText="#{bindings.ServiceReq1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ServiceReq1.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.ServiceReq1Query.queryDescriptor}"
+                            queryListener="#{bindings.ServiceReq1Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.ServiceReq1.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.ServiceReq1.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t2"
+                            inlineStyle="height:150px; width:325.0px;"
+                            binding="#{ServiceRequest.groupTab}">
+                    <af:column sortProperty="policyNumber" filterable="true"
+                               sortable="true" headerText="Policy Number"
+                               id="c5" width="200">
+                      <af:goLink text="#{row.policyNumber}" id="gl3"
+                                 destination="#{row.urlString}?id=#{row.polCode}"
+                                 inlineStyle="color:Black; text-decoration:underline;"
+                                 targetFrame="_blank"/>
+                    </af:column>
+                    <af:column sortProperty="sumAssured" filterable="true"
+                               sortable="true" headerText="Sum Assured" id="c1"
+                               align="right">
+                      <af:outputText value="#{row.sumAssured}" id="ot13"/>
+                    </af:column>
+                  </af:table>
+                </af:panelBox>
+                <af:panelBox text="General Insurance Business" id="pb6">
+                  <f:facet name="toolbar"/>
+                  <af:table value="#{bindings.ServiceReq2.collectionModel}"
+                            var="row" rows="#{bindings.ServiceReq2.rangeSize}"
+                            emptyText="#{bindings.ServiceReq2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.ServiceReq2.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.ServiceReq2Query.queryDescriptor}"
+                            queryListener="#{bindings.ServiceReq2Query.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.ServiceReq2.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.ServiceReq2.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t3"
+                            inlineStyle="width:325px; height:150.0px;"
+                            binding="#{ServiceRequest.generalTab}">
+                    <af:column sortProperty="policyNumber" filterable="true"
+                               sortable="true" headerText="Policy Number"
+                               id="c6" width="200">
+                      <af:goLink text="#{row.policyNumber}" id="gl2"
+                                 destination="#{row.urlString}?id=#{row.polCode}"
+                                 inlineStyle="color:Black; text-decoration:underline;"
+                                 targetFrame="_blank"/>
+                    </af:column>
+                    <af:column sortProperty="sumAssured" filterable="true"
+                               sortable="true" headerText="Sum Insured" id="c7"
+                               align="right">
+                      <af:outputText value="#{row.sumAssured}" id="ot16"/>
+                    </af:column>
+                  </af:table>
+                </af:panelBox>
+              </h:panelGrid>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

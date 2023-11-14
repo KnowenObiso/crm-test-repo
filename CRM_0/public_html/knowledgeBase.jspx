@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              
+              <table width="100%">
+            <tr><td  align="right">
+            <h:panelGrid columns="2" id="pg33">
+                <af:inputText id="it1" helpTopicId="CRMcurrencies" columns="13"
+                              readOnly="true" shortDesc="Help"/>
+                <af:statusIndicator id="si1"/>
+              </h:panelGrid>
+            </td></tr>
+              </table>
+              <af:panelBox text="PanelBox20" id="pb3"
+                           showHeader="never" rendered="true">
+                <f:facet name="toolbar"/>
+                <af:outputLabel value="Knowledge Base" id="ol20"
+                                inlineStyle="font-weight:bold;"/>
+                <af:separator id="s2"/>
+            <af:panelSplitter id="ps1"
+                                inlineStyle="width:99%; height:400.0px;"
+                                disabled="true" orientation="horizontal"
+                                splitterPosition="300">
+                <f:facet name="first">
+                  <af:panelBox text="PanelBox3" id="pb4" showHeader="never">
+                    <af:outputLabel value="Topics" id="outputLabel7"
+                                    inlineStyle="font-weight:bold;"/>
+                    <af:separator id="separator1"/>
+                    <h:panelGrid columns="3" id="panelGrid12">
+                      <af:commandButton text="New" id="commandButton5"
+                                        icon="/images/create.gif"
+                                        action="#{KnowledgeBase.actionNewKBTopic}"/>
+                      <af:commandButton text="Edit" id="commandButton6"
+                                        icon="/images/update.gif"
+                                        action="#{KnowledgeBase.actionEditKBTopic}"/>
+                      <af:commandButton text="Delete" id="commandButton7"
+                                        icon="/images/delete.gif"
+                                        action="#{KnowledgeBase.actionDeleteKBTopic}"/>
+                    </h:panelGrid>
+                    <af:separator id="s4"/>
+                    <f:facet name="toolbar"/>
+                    <af:tree value="#{bindings.KbTopic1.treeModel}" var="node"
+                             selectionListener="#{KnowledgeBase.actionTreeKBTopicsSelected}"
+                             rowSelection="single" id="t1"
+                             binding="#{KnowledgeBase.treeKBTopics}">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node.nodeName}" id="ot1"/>
+                        </f:facet>
+                      </af:tree>
+                    <af:popup id="newEditKBTopicPop">
+                      <af:dialog id="dialog2" title="Knowledgebase Topic"
+                                 type="none">
+                        <af:panelBox text="PanelBox2" id="panelBox4"
+                                     showHeader="never">
+                          <f:facet name="toolbar"/>
+                          <h:panelGrid columns="2" id="panelGrid14">
+                            <h:panelGrid columns="1" id="panelGrid15">
+                              <af:outputLabel value="Order :" id="outputLabel4"
+                                              showRequired="true"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid16">
+                              <af:inputNumberSpinbox label="To:"
+                                                     id="inputNumberSpinbox2"
+                                                     simple="true"
+                                                     binding="#{KnowledgeBase.txtKBOrder}"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid17">
+                              <af:outputLabel value="Short Desc:"
+                                              id="outputLabel5"
+                                              showRequired="true"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid18">
+                              <af:inputText label="Short Desc"
+                                            id="inputNumberSpinbox3"
+                                            simple="true"
+                                            binding="#{KnowledgeBase.txtKBShortDesc}"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid19">
+                              <af:outputLabel value="Description :"
+                                              id="outputLabel6"
+                                              showRequired="true"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid20">
+                              <af:inputText label="Desc" id="inputText5"
+                                            simple="true"
+                                            binding="#{KnowledgeBase.txtKBDesc}"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid7">
+                              <af:outputLabel value="Save as Main Topic:"
+                                              id="outputLabel3"
+                                              showRequired="true"
+                                              binding="#{KnowledgeBase.lblMainTopic}"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid8">
+                              <af:selectBooleanCheckbox id="sbc1"
+                                                        binding="#{KnowledgeBase.txtMainTopic}"
+                                                        valueChangeListener="#{KnowledgeBase.actionChangedMainTopic}"
+                                                        simple="true"/>
+                            </h:panelGrid>
+                            <h:panelGrid columns="1" id="panelGrid21">
+                              <af:inputText label="KBT  Id" id="inputText7"
+                                            binding="#{KnowledgeBase.txtKBTId}"
+                                            visible="false" simple="true"
+                                            disabled="true"/>
+                              <af:inputText label="KBT Parent  Id"
+                                            id="inputText1"
+                                            binding="#{KnowledgeBase.txtKBTParentId}"
+                                            visible="false" simple="true"
+                                            disabled="true"/>
+                            </h:panelGrid>
+                          </h:panelGrid>
+                        </af:panelBox>
+                        <h:panelGrid columns="4" id="panelGrid22">
+                          <af:commandButton text="Save" id="commandButton11"
+                                            partialSubmit="true"
+                                            action="#{KnowledgeBase.actionSaveKBTopic}"/>
+                          <af:spacer width="10" height="10" id="spacer7"/>
+                          <af:commandButton text="Cancel" id="commandButton12"
+                                            action="#{KnowledgeBase.actionCancelKBtopic}"/>
+                        </h:panelGrid>
+                      </af:dialog>
+                    </af:popup>
+                  </af:panelBox>
+                </f:facet>
+                <f:facet name="second">
+                  <af:panelGroupLayout layout="scroll"
+                                       xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                                       id="pgl1">
+                    <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                      <af:outputLabel value="Content" id="outputLabel8"
+                                      inlineStyle="font-weight:bold;"/>
+                      <af:separator id="separator2"/>
+                      <h:panelGrid columns="3" id="panelGrid1">
+                        <af:commandButton text="New" id="commandButton1"
+                                          icon="/images/create.gif"
+                                          action="#{KnowledgeBase.actionNewKBContent}"/>
+                        <af:commandButton text="Edit" id="commandButton2"
+                                          icon="/images/update.gif"
+                                          action="#{KnowledgeBase.actionEditKBContent}"/>
+                        <af:commandButton text="Delete" id="cb3"
+                                          icon="/images/delete.gif"
+                                          action="#{KnowledgeBase.actionDeleteKBContent}"/>
+                      </h:panelGrid>
+                      <f:facet name="toolbar"/>
+                      <af:panelCollection id="pc1" inlineStyle="width:99%;">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.KbContent.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.KbContent.rangeSize}"
+                                  emptyText="#{bindings.KbContent.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.KbContent.rangeSize}"
+                                  rowBandingInterval="1"
+                                  filterModel="#{bindings.KbContentQuery.queryDescriptor}"
+                                  queryListener="#{bindings.KbContentQuery.processQuery}"
+                                  filterVisible="false" varStatus="vs"
+                                  selectionListener="#{bindings.KbContent.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t2"
+                                  binding="#{KnowledgeBase.tblKBContents}">
+                          <af:column sortProperty="kbcOrder" filterable="true"
+                                     sortable="true" headerText="Order" id="c1">
+                            <af:outputText value="#{row.kbcOrder}" id="ot2"/>
+                          </af:column>
+                          <af:column sortProperty="kbcContent" filterable="true"
+                                     sortable="true" headerText="Content"
+                                     id="c4" width="300">
+                              <af:inputText label="Label 1" id="it2"
+                                            value="#{row.kbcContent}"
+                                            simple="true" disabled="true"
+                                            rows="4" columns="200"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                      <af:popup id="newEditKBContentPOP">
+                        <af:dialog id="dialog1" title="Knowledgebase Content"
+                                   type="none">
+                          <af:panelBox text="PanelBox2" id="panelBox1"
+                                       showHeader="never">
+                            <f:facet name="toolbar"/>
+                            <h:panelGrid columns="2" id="panelGrid2">
+                              <h:panelGrid columns="1" id="panelGrid3">
+                                <af:outputLabel value="Order :"
+                                                id="outputLabel1"
+                                                showRequired="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="panelGrid4">
+                                <af:inputNumberSpinbox label="To:"
+                                                       id="inputNumberSpinbox1"
+                                                       simple="true"
+                                                       binding="#{KnowledgeBase.txtKBCOrder}"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="panelGrid5">
+                                <af:outputLabel value="Content :"
+                                                id="outputLabel2"
+                                                showRequired="true"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="panelGrid6">
+                                <af:inputText label="Content" id="rte1"
+                                                   binding="#{KnowledgeBase.txtKBCContent}"
+                                                   simple="true" rows="5"/>
+                              </h:panelGrid>
+                              <h:panelGrid columns="1" id="panelGrid9">
+                                <af:inputText label="KBC Id" id="inputText3"
+                                              binding="#{KnowledgeBase.txtKBCId}"
+                                              visible="false" simple="true"
+                                              disabled="true"/>
+                              </h:panelGrid>
+                            </h:panelGrid>
+                          </af:panelBox>
+                          <h:panelGrid columns="4" id="panelGrid10">
+                            <af:commandButton text="Save" id="commandButton3"
+                                              partialSubmit="true"
+                                              action="#{KnowledgeBase.actionSaveKBContent}"/>
+                            <af:spacer width="10" height="10" id="spacer3"/>
+                            <af:commandButton text="Cancel"
+                                              id="commandButton4"/>
+                          </h:panelGrid>
+                        </af:dialog>
+                      </af:popup>
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </f:facet>
+              </af:panelSplitter>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:popup id="confirmDeletePop">
+                <af:dialog id="tm_d4" title="Confirm Delete Action" type="yesNo"
+                           dialogListener="#{KnowledgeBase.confirmDeletionListener}"
+                           binding="#{KnowledgeBase.dialogConfirmDelete}">
+                  <af:panelBox text="PanelBox3" id="tm_pb3" showHeader="never">
+                    <af:panelFormLayout id="tm_pfl4"
+                                        inlineStyle="width:300.0px;">
+                      <af:outputText value=" Are you sure you want to DELETE this record?"
+                                     id="tm_ot4"/>
+                    </af:panelFormLayout>
+                  </af:panelBox>
+                </af:dialog>
+              </af:popup>
+              </af:panelBox>
+            </af:panelBox>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

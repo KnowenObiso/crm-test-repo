@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelGroupLayout id="pgl1">
+              <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                <table width="100%">
+                  <tr>
+                    <td align="right">
+                      <h:panelGrid columns="2" id="pg33">
+                        <af:inputText id="it1" helpTopicId="CRMclients"
+                                      columns="13" readOnly="true"
+                                      shortDesc="Help"/>
+                        <af:statusIndicator id="statusIndicator1"/>
+                      </h:panelGrid>
+                    </td>
+                  </tr>
+                </table>
+                <h:panelGrid columns="2" id="pg1">
+                  <af:outputLabel value="Client Attributes" id="ol1"
+                                    inlineStyle="font-weight:bold;"/>
+                </h:panelGrid>
+                <af:separator id="s1"/>
+                <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                  <h:panelGrid columns="6" id="pg12">
+                    <af:commandButton text="New" id="btnNewAttribute"
+                                      visible="true" icon="/images/create.gif"
+                                      binding="#{clientAttributeBean.btnNewClntAttr}"
+                                      action="#{clientAttributeBean.actionNewAttributes}"/>
+                    <af:spacer width="10" height="10" id="s2"/>
+                    <af:commandButton text="Edit" id="btnEdiSequence"
+                                      icon="/images/update.gif"
+                                      action="#{clientAttributeBean.actionEditAttribute}"/>
+                    <af:spacer width="10" height="10" id="s3"/>
+                    <af:commandButton text="Delete" id="btnDeleteseq"
+                                      visible="true" icon="/images/delete.gif"
+                                      action="#{clientAttributeBean.actionShowDeleteAttributes}"/>
+                  </h:panelGrid>
+                  <af:panelCollection id="pc1"
+                                      styleClass="AFAuxiliaryStretchWidth">
+                    <af:table value="#{bindings.ClientAttribute.collectionModel}"
+                              var="row"
+                              rows="#{bindings.ClientAttribute.rangeSize}"
+                              emptyText="#{bindings.ClientAttribute.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              fetchSize="#{bindings.ClientAttribute.rangeSize}"
+                              rowBandingInterval="1"
+                              filterModel="#{bindings.ClientAttributeQuery.queryDescriptor}"
+                              queryListener="#{bindings.ClientAttributeQuery.processQuery}"
+                              filterVisible="false" varStatus="vs"
+                              selectionListener="#{bindings.ClientAttribute.collectionModel.makeCurrent}"
+                              rowSelection="single" id="t1"
+                              binding="#{clientAttributeBean.tblAttributes}"
+                              inlineStyle="width:99%;" visible="true">
+                      <af:column sortProperty="TCA_ATTRIBUTE_NAME"
+                                 filterFeatures="caseInsensitive"
+                                 filterable="true" sortable="true"
+                                 headerText="Name" id="c2" visible="true">
+                        <af:outputText value="#{row.TCA_ATTRIBUTE_NAME}"
+                                       id="ot3"/>
+                      </af:column>
+                      <af:column sortProperty="TCA_ATT_DESC" filterable="true"
+                                 filterFeatures="caseInsensitive"
+                                 sortable="true" headerText="Description" id="c6"
+                                 width="200" visible="true">
+                        <af:outputText value="#{row.TCA_ATT_DESC}" id="ot5"/>
+                      </af:column>
+                      <af:column sortProperty="TCA_PROMPT" filterable="true"
+                                 filterFeatures="caseInsensitive"
+                                 sortable="true" headerText="Prompt" id="c4"
+                                 visible="true">
+                        <af:outputText value="#{row.TCA_PROMPT}" id="ot4"/>
+                      </af:column>
+                      <af:column sortProperty="TCA_ATT_RANGE" filterable="true"
+                                 filterFeatures="caseInsensitive"
+                                 sortable="true" headerText="Range?" id="c5"
+                                 visible="true">
+                        <af:outputText value="#{row.TCA_ATT_RANGE}" id="ot1"/>
+                      </af:column>
+                      <af:column sortProperty="tableName" sortable="false"
+                                 headerText="Table Name"
+                                 id="c9" visible="false">
+                        <af:outputText value="#{row.tableName}" id="ot7"/>
+                      </af:column>
+                      <af:column sortProperty="colName"
+                                 sortable="true"
+                                 headerText="Column Name"
+                                 id="c10"
+                                 filterFeatures="caseInsensitive"
+                                 visible="false">
+                        <af:outputText value="#{row.colName}" id="ot8"/>
+                      </af:column>
+                    </af:table>
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar"/>
+                  </af:panelCollection>
+                  <af:popup id="attributePop">
+                    <af:dialog id="d5" type="none" title="Client Attributes "
+                               inlineStyle="font-weight:bolder; color:Black;">
+                      <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                        <h:panelGrid columns="2" id="pg3">
+                          <h:panelGrid columns="2" id="pg2">
+                            <af:outputLabel value="Name" id="ol3"
+                                            showRequired="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid5">
+                            <af:inputText label="Name" id="it3" visible="true"
+                                          binding="#{clientAttributeBean.txtAttrName}"
+                                          simple="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid1">
+                            <af:outputLabel value="Description" id="ol4"
+                                            showRequired="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid6">
+                            <af:inputText label="Description" id="it12"
+                                          visible="true"
+                                          binding="#{clientAttributeBean.txtDescription}"
+                                          simple="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid2">
+                            <af:outputLabel value="Prompt" id="ol5"
+                                            showRequired="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid7">
+                            <af:inputText label="Prompt" id="it2" visible="true"
+                                          binding="#{clientAttributeBean.txtPrompt}"
+                                          simple="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid9">
+                            <af:outputLabel value="Range?" id="ol6"
+                                            showRequired="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="2" id="panelGrid3">
+                            <af:selectOneChoice id="soc2"
+                                                binding="#{clientAttributeBean.chRange}">
+                              <af:selectItem label="Yes" value="Y" id="si8"/>
+                              <af:selectItem label="No" value="N" id="si7"/>
+                            </af:selectOneChoice>
+                            <af:inputText label="tca_code" id="it8"
+                                          visible="false"
+                                          binding="#{clientAttributeBean.txtCode}"
+                                          simple="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid10">
+                            <af:outputLabel value="Client Attribute"
+                                            id="outputLabel1"
+                                            showRequired="true"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid12">
+                            <af:panelLabelAndMessage id="plam1">
+                              <af:inputText label="Column Name" id="it6"
+                                            binding="#{clientAttributeBean.txtColName}"
+                                            simple="true" disabled="true"/>
+                              <af:commandButton id="cb1" partialSubmit="true"
+                                                icon="/images/dropdown.gif">
+                                <af:showPopupBehavior popupId="CulumnNamesPop"
+                                                      triggerType="click"/>
+                              </af:commandButton>
+                            </af:panelLabelAndMessage>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="pg4">
+                            <af:outputLabel id="outputLabel2" value="Table Name"
+                                            showRequired="true"
+                                            visible="false"/>
+                          </h:panelGrid>
+                          <h:panelGrid columns="1" id="panelGrid11">
+                            <af:inputText label="Table Name" id="it5"
+                                          simple="true"
+                                          binding="#{clientAttributeBean.txtTableName}"
+                                          visible="false" disabled="true"/>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" id="pg6">
+                          <af:commandButton text="save" id="cb12"
+                                            action="#{clientAttributeBean.actionCreateUpdateAttribute}"
+                                            binding="#{clientAttributeBean.btnCreateUpdateAttribute}"
+                                            partialSubmit="true"/>
+                          <af:commandButton text="cancel" id="cb13"
+                                            action="#{clientAttributeBean.cancelAttribute}"/>
+                        </h:panelGrid>
+                      </af:panelBox>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="confirmDeleteAttribute">
+                    <af:dialog id="d18"
+                               dialogListener="#{clientAttributeBean.actionConfirmedDeleteAttribute}"
+                               title="Confirm Delete" type="yesNo">
+                      <af:outputLabel value="Would you like to proceed with the current operation?
+                    (This action is irreversible)" id="ol2"/>
+                    </af:dialog>
+                  </af:popup>
+                  <af:popup id="CulumnNamesPop">
+                    <af:dialog id="d2" type="none" title="Client Attributes">
+                      <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                        <f:facet name="toolbar"/>
+                        <af:table value="#{bindings.ClientTable.collectionModel}"
+                                  var="row"
+                                  rows="#{bindings.ClientTable.rangeSize}"
+                                  emptyText="#{bindings.ClientTable.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.ClientTable.rangeSize}"
+                                  rowBandingInterval="1"
+                                  filterModel="#{bindings.ClientTableQuery.queryDescriptor}"
+                                  queryListener="#{bindings.ClientTableQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectedRowKeys="#{bindings.ClientTable.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.ClientTable.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t2"
+                                  binding="#{clientAttributeBean.tblColumnNames}"
+                                  inlineStyle="width:99%;">
+                          <af:column sortProperty="colName" filterable="true"
+                                     sortable="true"
+                                     headerText="#{bindings.ClientTable.hints.colName.label}"
+                                     id="c11" visible="false">
+                            <af:outputText value="#{row.colName}" id="ot11"/>
+                          </af:column>
+                          <af:column sortProperty="colDescription"
+                                     filterable="true" sortable="true"
+                                     headerText="Column Description"
+                                     id="c7"
+                                     width="200">
+                            <af:outputText value="#{row.colDescription}"
+                                           id="ot9"/>
+                          </af:column>
+                          <af:column sortProperty="tableName" filterable="true"
+                                     sortable="true"
+                                     headerText="#{bindings.ClientTable.hints.tableName.label}"
+                                     id="c8" visible="false">
+                            <af:outputText value="#{row.tableName}" id="ot10"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelBox>
+                      <h:panelGrid columns="2" id="panelGrid13">
+                        <af:commandButton text="Ok" id="cb2"
+                                          action="#{clientAttributeBean.actionAcceptColumn}"
+                                          partialSubmit="true"/>
+                        <af:commandButton text="cancel" id="commandButton2"
+                                          action="#{clientAttributeBean.actionCancelColumn}"
+                                          partialSubmit="true"/>
+                      </h:panelGrid>
+                    </af:dialog>
+                  </af:popup>
+                </af:panelBox>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

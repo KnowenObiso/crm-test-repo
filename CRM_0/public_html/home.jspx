@@ -1,0 +1,628 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <!--
+      <af:resource type="javascript" source="/js/jquery.min.js"/>
+      <af:resource type="javascript" source="/js/angular.min.js"/> -->
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="fms">
+        <f:facet name="center">
+          <af:group id="g1">
+           <af:popup id="popReAssignTaskUsers" contentDelivery="lazyUncached">
+                      <af:dialog type="none" title="Re-AssignTask" >
+                             <af:panelGroupLayout  >
+                            <h:panelGrid columns="1"  > 
+                                  <af:table value="#{bindings.User1.collectionModel}"
+                                            var="row" rows="#{bindings.User1.rangeSize}"
+                                            emptyText="#{bindings.User1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                            fetchSize="#{bindings.User1.rangeSize}"
+                                            rowBandingInterval="0"
+                                            width="320"
+                                            filterModel="#{bindings.User1Query.queryDescriptor}"
+                                            queryListener="#{bindings.User1Query.processQuery}"
+                                            filterVisible="true" varStatus="vs"
+                                            selectedRowKeys="#{bindings.User1.collectionModel.selectedRow}"
+                                            selectionListener="#{bindings.User1.collectionModel.makeCurrent}"
+                                            rowSelection="single" id="tblSystemUsers"
+                                            binding="#{taskManip.systemUsers}"
+                                            >
+                                    <af:column sortProperty="#{bindings.User1.hints.usrCode.name}"
+                                               filterable="true" sortable="true" visible="false"
+                                               headerText="User Code" id="c1">
+                                      <af:outputText value="#{row.usrCode}" id="ot1"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.User1.hints.usrName.name}"
+                                               filterable="true" sortable="true"  visible="true"
+                                               width="100"
+                                               headerText="UserName" id="c19">
+                                      <af:outputText value="#{row.usrName}" id="ot30"/>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.User1.hints.usrFullname.name}"
+                                               filterable="true" sortable="true" headerText="Full Name"
+                                               width="200" id="c27">
+                                      <af:outputText value="#{row.usrFullname}"
+                                                     id="ot27"/>
+                                    </af:column>
+                                  </af:table>
+                            <h:panelGrid columns="1"  >
+                                  <af:inputText label="Remarks : " id="txtRemarks" columns="40" rows="2" 
+                                          contentStyle="text-transform:lowercase;"
+                                           binding="#{taskManip.txtAssignRemarks}"/>                   
+                             </h:panelGrid>
+                                <h:panelGrid columns="2"  >
+                                <af:commandButton text="OK" action="#{taskManip.saveTaskAssignee}" partialSubmit="true"/>
+                                <af:commandButton text="Cancel"  />
+                              </h:panelGrid>
+                            </h:panelGrid> 
+                         
+                         
+                          </af:panelGroupLayout> 
+                    </af:dialog>
+            </af:popup> 
+            <af:panelGroupLayout id="pgl1">
+            <af:panelBox text="Self Service" id="pb1"
+                           rendered="#{Rendering.singleSignon}"
+                           showHeader="never" inlineStyle="text-align:center;">
+                <f:facet name="toolbar"/>
+                <div align="center">
+                  <af:panelBox id="pb2" text="Self service" disclosed="true"
+                               rendered="#{Rendering.SELF_SERVICE}">
+                    <f:facet name="toolbar"/>
+                    <h:panelGrid columns="2" id="pg2" style="padding:5px;"
+                                 rendered='#{Rendering.landScreen=="DEFAULT"}'>
+                      <af:goImageLink id="Wgil1"
+                                      destination="#{Rendering.fms1}?aid=#{Rendering.loginUser}"
+                                      targetFrame="_blank"
+                                      icon="/images/fms.png"
+                                      rendered="#{Rendering.fms1Active !=null ? true : false}"/>
+                      <af:goImageLink id="gl1"
+                                      destination="#{Rendering.gis}?aid=#{Rendering.loginUser}"
+                                      targetFrame="_blank"
+                                      rendered="#{Rendering.gisActive!=null ? true : false}"
+                                      icon="/images/gis.png"/>
+                      <af:goImageLink id="gil3"
+                                      destination="#{Rendering.lmsOrd}?aid=#{Rendering.loginUser}"
+                                      targetFrame="_blank"
+                                      icon="/images/ord.png"
+                                      rendered="#{Rendering.lmsOrdActive!=null ? true : false}"/>
+                      <af:goImageLink id="gl1w"
+                                      destination="#{Rendering.hrms}?aid=#{Rendering.loginUser}"
+                                      targetFrame="_blank"
+                                      icon="/images/hrms.png"
+                                      rendered="#{Rendering.hrmsActive!=null ? true : false}"/>
+                      <af:goImageLink id="gil2"
+                                      destination="#{Rendering.crm}?sn=#{Rendering.sessionUrl}"
+                                      targetFrame="_blank"
+                                      icon="/images/core.png"
+                                      rendered="#{Rendering.crmActive!=null ? true : false}"/>
+                      <af:goImageLink id="gilR1"
+                                      destination="#{Rendering.fms2}?aid=#{Rendering.loginUser}"
+                                      targetFrame="_blank"
+                                      icon="/images/fms2.png"
+                                      rendered="#{Rendering.fms2Active!=null ? true : false}"/>
+                      <af:goImageLink id="gil1"
+                                      destination="#{Rendering.group}?aid=#{Rendering.loginUser}"
+                                      targetFrame="_blank"
+                                      icon="/images/group.png"
+                                      rendered="#{Rendering.groupActive!=null ? true : false}"/>
+                    </h:panelGrid>
+                    <!-- <h:panelGrid columns="6" id="pg3" style="padding:5px;"
+                               rendered='#{Rendering.landScreen=="AIICO"}'>
+                    <af:goImageLink id="gil4"
+                                    destination="#{Rendering.fms1}?aid=#{Rendering.loginUser}"
+                                    targetFrame="_blank" icon="/images/fms1.jpg"
+                                    disabled="#{Rendering.fms1 != null ? false : true}"
+                                    rendered="#{Rendering.fms1Active != null ? true : false}"
+                                    disabledIcon="/images/fms1.jpg"/>
+                    <af:image source="/images/spacer.gif" id="i1"
+                              rendered="#{Rendering.fms1Active != null ? true : false}"/>
+                    <af:goImageLink id="gil7"
+                                    destination="#{Rendering.hrms}?aid=#{Rendering.loginUser}}"
+                                    targetFrame="_blank"
+                                    icon="/images/hrms1.gif"
+                                    disabled="#{Rendering.hrms !=null ? false : true}"
+                                    rendered="#{Rendering.hrmsActive !=null ? true : false}"
+                                    disabledIcon="/images/hrms1.gif"/>
+                    <af:image source="/images/spacer.gif" id="i2"
+                              rendered="#{Rendering.hrmsActive !=null ? true : false}"/>
+                    <af:goImageLink id="gil10"
+                                    destination="#{Rendering.group}?aid=#{Rendering.loginUser}"
+                                    targetFrame="_blank"
+                                    icon="/images/group1.gif"
+                                    disabled="#{Rendering.group !=null ? false : true}"
+                                    rendered="#{Rendering.groupActive !=null ? true : false}"
+                                    disabledIcon="/images/group1.gif"/>
+                    <af:image source="/images/spacer.gif" id="i5"
+                              rendered="#{Rendering.groupActive !=null ? true : false}"/>
+                    <af:goImageLink id="gil9"
+                                    destination="#{Rendering.fms2}?aid=#{Rendering.loginUser}"
+                                    targetFrame="_blank"
+                                    icon="/images/fms21.gif"
+                                    disabled="#{Rendering.fms2 !=null ? false : true}"
+                                    rendered="#{Rendering.fms2Active !=null ? true : false}"
+                                    disabledIcon="/images/fms21.gif"/>
+                    <af:image source="/images/spacer.gif" id="i3"
+                              rendered="#{Rendering.fms2Active !=null ? true : false}"/>
+                    <af:goImageLink id="gil5"
+                                    destination="#{Rendering.gis}?aid=#{Rendering.loginUser}"
+                                    targetFrame="_blank" icon="/images/gis1.jpg"
+                                    disabled="#{Rendering.gis !=null ? false : true}"
+                                    rendered="#{Rendering.gisActive !=null ? true : false}"
+                                    disabledIcon="/images/gis1.jpg"/>
+                    <af:image source="/images/spacer.gif" id="i4"
+                              rendered="#{Rendering.gisActive !=null ? true : false}"/>
+                    <af:goImageLink id="gil6"
+                                    destination="#{Rendering.lms}?aid=#{Rendering.loginUser}"
+                                    targetFrame="_blank"
+                                    icon="/images/individual1.gif"
+                                    disabled="#{Rendering.lms !=null ? false : true}"
+                                    rendered="#{Rendering.lmsActive !=null ? true : false}"
+                                    disabledIcon="/images/individual1.gif"/>
+                    <af:image source="/images/spacer.gif" id="i6"
+                              rendered="#{Rendering.lmsActive !=null ? true : false}"/>
+                    <af:goImageLink id="gil8"
+                                    destination="#{Rendering.crm}?aid=#{Rendering.loginUser}"
+                                    targetFrame="_blank" icon="/images/crm.gif"
+                                    disabled="#{Rendering.crm !=null ? false : true}"
+                                    rendered="#{Rendering.crmActive !=null ? true : false}"
+                                    disabledIcon="/images/crm.gif"/>
+                                   
+                  
+                                    
+                  </h:panelGrid> -->
+                  </af:panelBox>
+                </div>
+              </af:panelBox>
+            <af:panelBox text="My Tickets" visible="#{Rendering.TICKETS_APP}" disclosed="#{Rendering.TICKETS_APP}" >
+              <f:facet name="toolbar"/>
+              <af:panelGroupLayout id="pgl3">
+                <af:outputLabel value="My Pending Tickets" id="ol3"
+                                inlineStyle="font-weight:bold;"/>
+                <af:separator id="s15"/>
+                <af:outputLabel value="Total Tasks: " id="ol445"
+                                inlineStyle="font-weight:bold;"/>
+                <af:outputLabel value="#{sessionScope['totalUsrTsk']}" id="ol44"
+                                inlineStyle="font-weight:bold; color:Black;"/>
+                <af:outputLabel value="Ticket Type" id="ol124"/>
+                <af:selectOneChoice label="Label 5" id="soc9" simple="true"
+                                    value="S"
+                                    valueChangeListener="#{taskManip.tktTypeChanged}"
+                                    binding="#{taskManip.tktType}"
+                                    autoSubmit="true" immediate="true">
+                  <af:selectItem label="CRM Tickets" id="si20" value="S"/>
+                  <af:selectItem label="DMS Tickets" id="si21" value="D"/>
+                </af:selectOneChoice>
+                <af:panelCollection id="pc3"
+                                    inlineStyle="width:inherit; height:300.0px;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/> 
+                  <af:table value="#{bindings.BpmTask.collectionModel}"
+                            var="row" rows="#{bindings.BpmTask.rangeSize}"
+                            emptyText="#{bindings.BpmTask.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.BpmTask.rangeSize}"
+                            rowBandingInterval="0"
+                            binding="#{taskManip.userTickets}"
+                            filterModel="#{bindings.BpmTaskQuery.queryDescriptor}"
+                            queryListener="#{bindings.BpmTaskQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectedRowKeys="#{bindings.BpmTask.collectionModel.selectedRow}"
+                            selectionListener="#{bindings.BpmTask.collectionModel.makeCurrent}"
+                            rowSelection="single" id="t2">
+                    <af:column sortProperty="tckSelected" sortable="false"
+                               headerText="Select" width="60">
+                      <af:selectBooleanCheckbox label="#{row.ticketCode}"
+                                                simple="true"
+                                                value="#{row.tckSelected}"
+                                                autoSubmit="true"
+                                                valueChangeListener="#{taskManip.selectTicket}"/>
+                      <f:facet name="header">
+                        <af:group>
+                          <h:panelGrid columns="1">
+                            <af:selectBooleanCheckbox valueChangeListener="#{taskManip.toggleSelectTicket}"
+                                                      autoSubmit="true"
+                                                      text="Select?"
+                                                      simple="true"/>
+                          </h:panelGrid>
+                        </af:group>
+                      </f:facet>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketEntityCode.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="Entity Code" id="c10">
+                      <af:outputText value="#{row.ticketEntityCode}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketEntityRefNo.name}"
+                               filterable="true" sortable="true"
+                               headerText="Entity RefNo" id="c6">
+                      <af:outputText value="#{row.ticketEntityRefNo}"
+                                     id="ot26"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketEntityName.name}"
+                               filterable="true" sortable="true"
+                               headerText="Entity Name" id="c25">
+                      <af:outputText value="#{row.ticketEntityName}" id="ot12"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketName.name}"
+                               filterable="true" sortable="true"
+                               headerText="Ticket Name" id="c17">
+                      <af:outputText value="#{row.ticketName}" id="ot28"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketRemarks.name}"
+                               filterable="true" sortable="true"
+                               headerText="Remarks" id="c5">
+                      <af:outputText value="#{row.ticketRemarks}" id="ot14"/>
+                    </af:column> 
+                    <af:column sortProperty="#{bindings.BpmTask.hints.assignee.name}"
+                               filterable="true" sortable="true"
+                               headerText="Assignee" id="c26">
+                      <af:outputText value="#{row.assignee}" id="ot25"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.taskID.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="#{bindings.BpmTask.hints.taskID.label}"
+                               id="c11">
+                      <af:outputText value="#{row.taskID}" id="ot7"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketBy.name}"
+                               filterable="true" sortable="true"
+                               headerText="Ticket By" id="c18">
+                      <af:outputText value="#{row.ticketBy}" id="ot11"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="Ticket Date" id="c2">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.ticketDate}"
+                                      id="id3"/>
+                      </f:facet>
+                      <af:outputText value="#{row.ticketDate}" id="ot22">
+                        <af:convertDateTime pattern="#{bindings.BpmTask.hints.ticketDate.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.assignmentDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="Assignment Date" id="c4">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.assignmentDate}"
+                                      id="id4"/>
+                      </f:facet>
+                      <af:outputText value="#{row.assignmentDate}" id="ot15">
+                        <af:convertDateTime pattern="#{bindings.BpmTask.hints.assignmentDate.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketProcessId.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="#{bindings.BpmTask.hints.ticketProcessId.label}"
+                               id="c22">
+                      <af:outputText value="#{row.ticketProcessId}" id="ot23"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketProcessShtDesc.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="#{bindings.BpmTask.hints.ticketProcessShtDesc.label}"
+                               id="c16">
+                      <af:outputText value="#{row.ticketProcessShtDesc}"
+                                     id="ot19"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketProcessName.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="#{bindings.BpmTask.hints.ticketProcessName.label}"
+                               id="c13">
+                      <af:outputText value="#{row.ticketProcessName}"
+                                     id="ot17"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.sysModuleCode.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="#{bindings.BpmTask.hints.sysModuleCode.label}"
+                               id="c21">
+                      <af:outputText value="#{row.sysModuleCode}" id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.sysModule.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="#{bindings.BpmTask.hints.sysModule.label}"
+                               id="c7">
+                      <af:outputText value="#{row.sysModule}" id="ot20"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketTo.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="#{bindings.BpmTask.hints.ticketTo.label}"
+                               id="c3">
+                      <af:outputText value="#{row.ticketTo}" id="ot24"/>
+                    </af:column> 
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketDueDate.name}"
+                               filterable="true" sortable="true"
+                               headerText="Due Date" id="c20">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.ticketDueDate}"
+                                      id="id5"/>
+                      </f:facet>
+                      <af:outputText value="#{row.ticketDueDate}" id="ot10">
+                        <af:convertDateTime pattern="#{bindings.BpmTask.hints.ticketDueDate.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketTransNo.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="#{bindings.BpmTask.hints.ticketTransNo.label}"
+                               id="c9">
+                      <af:outputText value="#{row.ticketTransNo}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="#{bindings.BpmTask.hints.ticketScreen.name}"
+                               filterable="true" sortable="true" visible="false"
+                               headerText="#{bindings.BpmTask.hints.ticketScreen.label}"
+                               id="c14">
+                      <af:outputText value="#{row.ticketScreen}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="ticketType" filterable="true"
+                               sortable="true" visible="false"
+                               headerText="Ticket Type" id="c12">
+                      <af:outputText value="#{row.ticketType}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="ticketProcessPDL" filterable="true"
+                               sortable="true" visible="false"
+                               headerText="Process PDL">
+                      <af:outputText value="#{row.ticketProcessPDL}"/>
+                    </af:column>
+                    <af:column sortProperty="assignee" sortable="false"
+                               headerText="Reassign Task">
+                         <af:commandLink text="[Re-Assign Task]" id="cl452"
+                                              inlineStyle="color:Black; text-decoration:underline;"
+                                              partialSubmit="true"
+                                              action="#{taskManip.reAssignTask}"/> 
+                    </af:column>
+                    <af:column sortProperty="activityName" sortable="false"
+                               headerText="View Ticket">
+                      <af:commandLink text="[Process]"
+                                      inlineStyle="color:Black; text-decoration:underline;"
+                                      action="#{taskManip.viewTicket}"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              <h:panelGrid columns="8" id="pg2166">
+                     <af:commandButton text="Close Ticket(s)" id="cb184343"
+                                          action="#{taskManip.closeTicket}"
+                                          partialSubmit="true" />
+
+             </h:panelGrid>
+              </af:panelGroupLayout>
+            </af:panelBox>
+            <af:panelBox id="pb3" text="Service Request Tickets"
+                         disclosed="#{Rendering.SERVICE_REQ_APP}"
+                         visible="#{Rendering.SERVICE_REQ_APP}">
+              <f:facet name="toolbar"/>
+              <af:popup id="users">
+                <af:dialog id="d5" type="none" title="Users">
+                  <af:panelBox text="PanelBox23" id="pb9" showHeader="never">
+                    <f:facet name="toolbar"/>
+                    <af:panelGroupLayout>
+                      <h:panelGrid columns="1" id="pg13">
+                        <af:table value="#{bindings.User.collectionModel}"
+                                  var="row" rows="#{bindings.User.rangeSize}"
+                                  emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.User.rangeSize}"
+                                  rowBandingInterval="0"
+                                  filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                  queryListener="#{bindings.UserQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  selectedRowKeys="#{bindings.User.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.User.collectionModel.makeCurrent}"
+                                  rowSelection="single" id="t5"
+                                  inlineStyle="width:425.0px;"
+                                  binding="#{ServiceRequest.users}">
+                          <af:column sortProperty="username" filterable="true"
+                                     sortable="true" headerText="Username">
+                            <af:outputText value="#{row.username}" id="ot8"/>
+                          </af:column>
+                          <af:column sortProperty="userFullname"
+                                     filterable="true" sortable="true"
+                                     headerText="Fullname" width="200">
+                            <af:outputText value="#{row.userFullname}"/>
+                          </af:column>
+                          <af:column sortProperty="userEmail" filterable="true"
+                                     sortable="true" headerText="Email">
+                            <af:outputText value="#{row.userEmail}" id="ot18"/>
+                          </af:column>
+                        </af:table>
+                        <h:panelGrid columns="2" id="pg14">
+                          <af:commandButton text="Ok" id="cb9"
+                                            partialSubmit="true"
+                                            action="#{ServiceRequest.ticketReAssign}"/>
+                          <af:commandButton text="Cancel" id="cb10"
+                                            partialSubmit="true"
+                                            action="#{ServiceRequest.cancelUser}"/>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                    </af:panelGroupLayout>
+                  </af:panelBox>
+                </af:dialog>
+              </af:popup>
+              <af:table value="#{bindings.ServiceReq.collectionModel}" var="row"
+                        rows="#{bindings.ServiceReq.rangeSize}"
+                        emptyText="#{bindings.ServiceReq.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.ServiceReq.rangeSize}"
+                        rowBandingInterval="0"
+                        filterModel="#{bindings.ServiceReqQuery.queryDescriptor}"
+                        queryListener="#{bindings.ServiceReqQuery.processQuery}"
+                        filterVisible="true" varStatus="vs"
+                        selectionListener="#{bindings.ServiceReq.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t1"
+                        styleClass="AFStretchWidth"
+                        binding="#{ServiceRequest.clientPending}">
+                <f:facet name="contextMenu">
+                 <af:popup contentDelivery="lazyUncached" id="popup1">
+                      <af:menu id="first" text="Choose Option">
+                        <af:commandMenuItem text="Process" id="cmi1"
+                                            action="#{ServiceRequest.goToSrLanding}"/>
+                      </af:menu>
+                    </af:popup>
+                </f:facet>
+                <af:column sortProperty="tsrCode" filterable="true"
+                           visible="false" sortable="true" headerText="Code"
+                           id="c30">
+                  <af:outputText value="#{row.tsrCode}"/>
+                </af:column>
+                <af:column sortProperty="tsrcCode" filterable="true"
+                           sortable="true" visible="false"
+                           headerText="#{bindings.ServiceReq.hints.tsrcCode.label}">
+                  <af:outputText value="#{row.tsrcCode}" id="ot4"/>
+                </af:column>
+                <af:column sortProperty="tsrType" filterable="true"
+                           sortable="true" headerText="Method of Reporting">
+                  <af:outputText value="#{row.tsrType}"/>
+                </af:column>
+                <af:column sortProperty="accType" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Account Type">
+                  <af:outputText value="#{row.accType}"/>
+                </af:column>
+                <af:column sortProperty="accCode" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Account Code">
+                  <af:outputText value="#{row.accCode}"/>
+                </af:column>
+                <af:column sortProperty="tsrDate" filterable="false"
+                           sortable="true" headerText="Request Date">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.tsrDate}"
+                                  id="id2"/>
+                  </f:facet>
+                  <af:outputText value="#{row.tsrDate}">
+                    <af:convertDateTime pattern="#{bindings.ServiceReq.hints.tsrDate.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="assignee" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Assignee">
+                  <af:outputText value="#{row.assignee}" id="ot21"/>
+                </af:column>
+                <af:column sortProperty="ownType" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Own Type">
+                  <af:outputText value="#{row.ownType}"/>
+                </af:column>                
+                <af:column sortProperty="ownerCode" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Owner Code" id="c24">
+                  <af:outputText value="#{row.ownerCode}"/>
+                </af:column>
+                <af:column sortProperty="status" filterable="true"
+                           sortable="true" headerText="Status" id="c15">
+                  <af:outputText value="#{row.status}" id="ot13"/>
+                </af:column>
+                <af:column sortProperty="dueDate" filterable="false"
+                           sortable="true" headerText="Due Date">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.dueDate}"
+                                  id="id1"/>
+                  </f:facet>
+                  <af:outputText value="#{row.dueDate}">
+                    <af:convertDateTime pattern="#{bindings.ServiceReq.hints.dueDate.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="resDate" filterable="false"
+                           visible="false" sortable="true" headerText="Res Date"
+                           id="c31">
+                  <f:facet name="filter">
+                    <af:inputDate value="#{vs.filterCriteria.resDate}"/>
+                  </f:facet>
+                  <af:outputText value="#{row.resDate}" id="ot29">
+                    <af:convertDateTime pattern="#{bindings.ServiceReq.hints.resDate.format}"/>
+                  </af:outputText>
+                </af:column>
+                <af:column sortProperty="summary" filterable="true"
+                           visible="false" sortable="true" headerText="Summary">
+                  <af:outputText value="#{row.summary}"/>
+                </af:column>
+                <af:column sortProperty="desc" filterable="true" sortable="true"
+                           headerText="Desc">
+                  <af:outputText value="#{row.desc}"/>
+                </af:column>
+                <af:column sortProperty="solution" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Solution">
+                  <af:outputText value="#{row.solution}"/>
+                </af:column>
+                <af:column sortProperty="tsrcName" filterable="true"
+                           sortable="true" headerText="Name">
+                  <af:outputText value="#{row.tsrcName}" id="ot16"/>
+                </af:column>
+                <af:column sortProperty="accTypeDesc" filterable="true"
+                           sortable="true" headerText="Account Type">
+                  <af:outputText value="#{row.accTypeDesc}"/>
+                </af:column>
+                <af:column sortProperty="ownerType" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Owner Type" id="c8">
+                  <af:outputText value="#{row.ownerType}"/>
+                </af:column>
+                <af:column sortProperty="owner" filterable="true"
+                           sortable="true" headerText="Owner">
+                  <af:outputText value="#{row.owner}"/>
+                </af:column>
+                <af:column sortProperty="tsr_reporter" filterable="true"
+                           visible="true" sortable="true"
+                           headerText="Reporter/Initiator">
+                  <af:outputText value="#{row.tsr_reporter}"/>
+                </af:column>
+                <af:column sortProperty="tsrMode" filterable="true"
+                           visible="false" sortable="true" headerText="Mode"
+                           id="c23">
+                  <af:outputText value="#{row.tsrMode}"/>
+                </af:column>
+                <af:column sortProperty="requestRefNumber" filterable="true"
+                           sortable="true" headerText="Request Ref Number">
+                  <af:outputText value="#{row.requestRefNumber}"/>
+                </af:column>
+                <af:column sortProperty="comments" filterable="true"
+                           visible="false" sortable="true" headerText="Comment">
+                  <af:outputText value="#{row.comments}"/>
+                </af:column>
+                <af:column sortProperty="sprShtDesc" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Spr Sht Desc">
+                  <af:outputText value="#{row.sprShtDesc}"/>
+                </af:column>
+                <af:column sortProperty="agnPhysicalAddress" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Physical Address">
+                  <af:outputText value="#{row.agnPhysicalAddress}"/>
+                </af:column>
+                <af:column sortProperty="agnEmailAddress" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Email Address">
+                  <af:outputText value="#{row.agnEmailAddress}"/>
+                </af:column>
+                <af:column sortProperty="agnSmsNumber" filterable="true"
+                           visible="false" sortable="true"
+                           headerText="Sms Number">
+                  <af:outputText value="#{row.agnSmsNumber}"/>
+                </af:column>
+                <af:column filterable="true" sortable="true" width="100">
+                  <af:commandLink text="Process" inlineStyle="font-weight:bold;"
+                                  action="#{ServiceRequest.goToSrLanding}"/>
+                </af:column>
+                <af:column filterable="true" sortable="true" id="c33"
+                           width="100">
+                  <af:commandLink text="Re-Assign"
+                                  inlineStyle="font-weight:bold;"
+                                  action="#{ServiceRequest.reAssign}"/>
+                </af:column>
+              </af:table>
+              <af:commandLink text="[Re-Assign Task]" id="cl223223"
+                              inlineStyle="color:Black; text-decoration:underline;"
+                              action="#{taskManip.reAssignTask}"/>
+            </af:panelBox> 
+            </af:panelGroupLayout>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

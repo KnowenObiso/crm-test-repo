@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1"  title="TurnQuest CRM">
+      <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="pg4">
+                      <af:inputText id="it1" helpTopicId="CRMecmsetups"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="Document Management Set up" id="ol1"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+                <f:facet name="toolbar"/>
+                <h:panelGrid columns="3" id="panelGrid4">
+                  <af:commandButton text="New" id="commandButton5"
+                                    icon="/images/create.gif"
+                                    action="#{ecmBack.addEcms}"/>
+                  <af:commandButton text="Edit" id="commandButton6"
+                                    icon="/images/update.gif"
+                                    action="#{ecmBack.editEcm}"/>
+                  <af:commandButton text="Delete" id="commandButton7"
+                                    icon="/images/delete.gif"
+                                    action="#{ecmBack.deleteEcmSetups}"/>
+                </h:panelGrid>
+                <af:panelCollection id="pc1"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    inlineStyle="height:200.0px;">
+                  <af:table value="#{bindings.EcmBean.collectionModel}"
+                            var="row" rows="#{bindings.EcmBean.rangeSize}"
+                            emptyText="#{bindings.EcmBean.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.EcmBean.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.EcmBeanQuery.queryDescriptor}"
+                            queryListener="#{bindings.EcmBeanQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            rowSelection="single" id="t1"
+                            binding="#{ecmBack.tblEcm}">
+                    <af:column sortProperty="sysname" filterable="true"
+                               sortable="true" headerText="System" id="c2"
+                               width="200">
+                      <af:outputText value="#{row.sysname}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="estecmurl" filterable="true"
+                               sortable="true" headerText="Ecm Url" id="c7"
+                               width="300">
+                      <af:outputText value="#{row.estecmurl}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="estecmusername" filterable="true"
+                               sortable="true" headerText="Ecm Username"
+                               id="c5">
+                      <af:outputText value="#{row.estecmusername}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="estrootfolder" filterable="true"
+                               sortable="true" headerText="Ecm Root Folder"
+                               id="c6">
+                      <af:outputText value="#{row.estrootfolder}" id="ot1"/>
+                    </af:column>
+               
+                  </af:table>
+                </af:panelCollection>
+                 <af:popup id="SystemsLOVPop">
+                  <af:dialog id="d3" title="List of Systems"
+                             dialogListener="#{ecmBack.selectSystem}">
+                    <af:panelBox text="PanelBox4" id="pb4" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <af:table value="#{bindings.System.collectionModel}"
+                                var="row" rows="#{bindings.System.rangeSize}"
+                                emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.System.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                                queryListener="#{bindings.SystemQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.System.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.System.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t3"
+                                binding="#{ecmBack.tblSystems}">
+                       
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true"
+                                   headerText="Short Desc"
+                                   id="c4">
+                          <af:outputText value="#{row.shortDesc}" id="ot8"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true"
+                                   headerText="System Name"
+                                   id="c1">
+                          <af:outputText value="#{row.name}" id="ot6"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelBox>
+                  
+                  </af:dialog>
+                </af:popup>
+                <af:popup id="ecmsetupPOP">
+                  <af:dialog id="d2" type="none" title="Document Management Set ups">
+                    <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                      <f:facet name="toolbar"/>
+                      <h:panelGrid columns="2" id="pg5">
+                        <h:panelGrid columns="1" id="panelGrid1">
+                          <af:outputLabel value="System" id="outputLabel1"
+                                          showRequired="true"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="panelGrid2">
+                          <af:panelLabelAndMessage id="plam1">
+                            <af:inputText label="System Name" id="inputText2"
+                                          simple="true"
+                                          binding="#{ecmBack.txtSystemName}"
+                                          disabled="true"/>
+                            <af:commandButton id="cb2"
+                                              icon="/images/dropdown.gif"
+                                              partialSubmit="true">
+                              <af:showPopupBehavior popupId="SystemsLOVPop"/>
+                            </af:commandButton>
+                          </af:panelLabelAndMessage>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg2">
+                          <af:outputLabel value="Ecm Url" id="ol2"
+                                          showRequired="true"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="panelGrid3">
+                          <af:inputText
+                                        id="inputText1" simple="true"
+                                        binding="#{ecmBack.txtEcmUrl}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg6">
+                          <af:outputLabel value="Ecm Username" id="ol3"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg7">
+                          <af:inputText label="Label 1" id="it2" simple="true"
+                                        binding="#{ecmBack.txtEcmUsername}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg8">
+                          <af:outputLabel value="Ecm Password" id="ol4"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg9">
+                          <af:inputText label="Label 2" id="it3" secret="true"
+                                        simple="true"
+                                        binding="#{ecmBack.txtEcmPassword}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg10">
+                          <af:outputLabel value="Ecm Root Folder" id="ol5"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="1" id="pg11">
+                          <af:inputText label="Label 3" id="it4" simple="true"
+                                        binding="#{ecmBack.txtEcmRootFoldeer}"/>
+                        </h:panelGrid>
+                        <h:panelGrid columns="2" id="panelGrid6">
+                          <af:inputText label="System Code" id="inputText3"
+                                        simple="true"
+                                        binding="#{ecmBack.txtSystemCode}"
+                                        visible="false" disabled="true"/>
+                          <af:inputText label="Label 4" id="it5" simple="true"
+                                        binding="#{ecmBack.txtEcmCode}" visible="false"/>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                    </af:panelBox>
+                    <h:panelGrid columns="2" id="pg3">
+                      <af:commandButton text="Save" id="cb1"
+                                        action="#{ecmBack.saveEcmDetails}"
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="commandButton1"/>
+                    </h:panelGrid>
+                  </af:dialog>
+                </af:popup>
+              </af:panelBox>
+              <af:spacer width="10" height="20" id="s6"/>
+            </af:panelBox>
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

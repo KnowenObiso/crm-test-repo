@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+    <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+        <af:group id="g1">
+            <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+              
+              <table width="100%">
+            <tr><td  align="right">
+            <h:panelGrid columns="2" id="pg33">
+                <af:inputText id="it1" helpTopicId="CRMcurrencies" columns="13"
+                              readOnly="true" shortDesc="Help"/>
+                <af:statusIndicator id="si1"/>
+              </h:panelGrid>
+            </td></tr>
+              </table>
+              <af:panelBox text="PanelBox20" id="pb3"
+                           showHeader="never" rendered="true">
+                <f:facet name="toolbar"/>
+                <af:outputText value="Running Jobs" id="ot2"
+                               inlineStyle="font-weight:bold;"/>
+                <af:panelCollection id="pc2" inlineStyle="width:99%;">
+                  <f:facet name="menus"/>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.currentRunningJobs.collectionModel}"
+                            var="row"
+                            rows="#{bindings.currentRunningJobs.rangeSize}"
+                            emptyText="#{bindings.currentRunningJobs.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.currentRunningJobs.rangeSize}"
+                            rowBandingInterval="0" id="t1"
+                            inlineStyle="width:100.0%; height:250px;"
+                            rowSelection="single"
+                            binding="#{Scheduler.schedulerTbl}">
+                    <af:column sortProperty="qtJobName" sortable="true"
+                               headerText="Job Name" id="c2">
+                      <af:outputText value="#{row.qtJobName}" id="ot1"/>
+                    </af:column>
+                    <af:column sortProperty="qtDescription" sortable="true"
+                               headerText="Description" id="c1">
+                      <af:outputText value="#{row.qtDescription}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="qtNextFireTime" sortable="true"
+                               headerText="Next Fire Time" id="c5">
+                      <af:outputText value="#{row.qtNextFireTime}" id="ot3">
+                        <af:convertDateTime pattern="#{bindings.currentRunningJobs.hints.qtNextFireTime.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="qtPrevFireTime" sortable="true"
+                               headerText="Prev Fire Time" id="c3">
+                      <af:outputText value="#{row.qtPrevFireTime}" id="ot4">
+                        <af:convertDateTime pattern="#{bindings.currentRunningJobs.hints.qtPrevFireTime.format}"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="qtStatus" sortable="true"
+                               headerText="Status" id="c4">
+                      <af:outputText value="#{row.qtStatus}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="objLocation" headerText="Actions" sortable="false"
+                               id="c6">
+                               <!--<af:commandLink text="#{row.objLocation}" id="cl1"/>-->
+                      <af:commandLink text="#{row.objLocation}" id="cl1"
+                                      action="#{Scheduler.reschedule}"/>
+                     <af:commandLink text="Delete" id="cl12"
+                                      action="#{Scheduler.deleteJob}"/>
+                    </af:column>
+                
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+            </af:panelBox>
+            
+          </af:group>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

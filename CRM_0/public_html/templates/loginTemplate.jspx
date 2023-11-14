@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=windows-1252"/>
+  <af:pageTemplateDef var="attrs"> 
+    <af:xmlContent> 
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>login</display-name> 
+        <facet>
+          <facet-name>
+            center
+          </facet-name>
+        </facet>
+      </component>
+    </af:xmlContent>
+    <af:panelStretchLayout id="pt_psl1">
+      <f:facet name="center">
+        <af:panelGroupLayout layout="scroll"
+                             xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                             id="pt_pgl1" halign="center">
+          <af:image source="/images/CRM.jpg" id="pt_i1"
+                    shortDesc="TurnQuest CRM"/>
+          <h:panelGrid columns="1" id="pt_pg1">
+            <af:spacer width="10" height="20" id="pt_s1"/>
+            <af:panelBox text="PanelBox2" id="pt_pb1" showHeader="never">
+           <af:image source="#{Rendering.estabLogo}" id="pt_i2"
+                       inlineStyle="width:150.0px; height:100px;"/> 
+              <!--    <af:activeImage source="/imageservlet" id="pt_ai1"
+                      shortDesc="Organization Logo"
+                      />-->
+            </af:panelBox>
+          </h:panelGrid>
+            <af:popup id="error" contentDelivery="lazyUncached"
+                                   binding="#{GlobalCC.errorPop}">
+                <af:dialog id="dialog1" type="ok" closeIconVisible="false"
+                           title="Error">
+                  <af:panelBox text="PanelBox1" id="dtls" showHeader="never"
+                               inlineStyle="width:300.0px;">
+                  <h:panelGrid columns="3" id="pnl1">
+                    <af:message id="msg1"
+                                inlineStyle="font-weight:bold;"
+                                messageType="error"/>
+                    <af:spacer width="10" height="10" id="spc1"/>
+                    <af:message id="msg2" binding="#{GlobalCC.errText}"/>
+                  </h:panelGrid>
+                    <af:separator id="sep1"/>
+                    <af:panelBox text="More Details" id="moreDtls" disclosed="false">
+                      <af:message id="msg3" binding="#{GlobalCC.errCode}"/>
+                      <af:message id="msg4" binding="#{GlobalCC.errName}"/>
+                      <af:message id="msg5" binding="#{GlobalCC.syserrCode}"/>
+                      <af:message id="msg6" binding="#{GlobalCC.sysErrMsg}"/>
+                      <af:message id="msg7" binding="#{GlobalCC.rcmdendation}"/>
+                      <af:message id="msg8" binding="#{GlobalCC.errStack}"/>
+                      <af:message id="msg9" binding="#{GlobalCC.callStack}"/>
+                      <af:message id="msg10" binding="#{GlobalCC.envirment}"/>
+                    </af:panelBox>
+                  </af:panelBox>
+                </af:dialog>
+              </af:popup>
+          <af:facetRef facetName="center"/>
+        </af:panelGroupLayout>
+        <!-- id="af_one_column_footer_stretched"  -->
+      </f:facet>
+    </af:panelStretchLayout>
+  </af:pageTemplateDef>
+</jsp:root>
