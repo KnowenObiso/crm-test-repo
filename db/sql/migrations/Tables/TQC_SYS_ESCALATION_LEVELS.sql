@@ -1,0 +1,31 @@
+--
+-- TQC_SYS_ESCALATION_LEVELS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SYS_ESCALATION_LEVELS
+(
+  TSEL_CODE           NUMBER,
+  TSEL_JSD_SYS_CODE   NUMBER,
+  TSEL_JSD_JPDL_NAME  VARCHAR2(50 BYTE),
+  TSEL_ACTIVITY_NAME  VARCHAR2(50 BYTE),
+  TSEL_LEVEL          NUMBER,
+  TSEL_ASSIGNEE       NUMBER,
+  TSEL_DURATION       NUMBER,
+  TSEL_CC             NUMBER
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

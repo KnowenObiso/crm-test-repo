@@ -1,0 +1,26 @@
+--
+-- TQC_BACKUP_SYSTEMS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_BACKUP_SYSTEMS
+(
+  BKSYS_SYS_CODE   NUMBER(8)                    NOT NULL,
+  BKSYS_TIMESTAMP  NUMBER(20)                   NOT NULL,
+  BKSYS_COMPLETED  VARCHAR2(1 BYTE),
+  BKSYS_USERNAME   VARCHAR2(20 BYTE),
+  BKSYS_LOGFILE    VARCHAR2(256 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

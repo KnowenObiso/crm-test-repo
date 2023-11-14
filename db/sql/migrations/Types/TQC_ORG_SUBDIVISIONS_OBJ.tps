@@ -1,0 +1,24 @@
+--
+-- TQC_ORG_SUBDIVISIONS_OBJ  (Type) 
+--
+CREATE OR REPLACE TYPE TQ_CRM."TQC_ORG_SUBDIVISIONS_OBJ"                                          as object (
+OSD_CODE                VARCHAR2(50 BYTE),
+OSD_PARENT_OSD_CODE     VARCHAR2(30 BYTE),
+OSD_DLT_CODE            VARCHAR2(5 BYTE),
+OSD_ODL_CODE            VARCHAR2(10 BYTE),
+OSD_NAME                VARCHAR2(50 BYTE),
+OSD_WEF                 DATE,
+OSD_DIV_HEAD_AGN_CODE   NUMBER(8),
+OSD_SYS_CODE            NUMBER(8),
+OSD_BRN_CODE            NUMBER(8),
+OSD_REG_CODE            NUMBER(8),
+OSD_POST_LEVEL          VARCHAR2(1 BYTE),
+OSD_MANAGER_ALLWD       VARCHAR2(1 BYTE),
+OSD_OVER_COMM_EARN      VARCHAR2(1 BYTE),
+OSD_ID                  NUMBER(8),
+OSD_PARENT_ID           NUMBER(8),
+OSD_WET                 DATE,
+OSD_STATUS              VARCHAR2(50 BYTE),
+OSD_LOCATION_CODE       NUMBER(8)
+);
+/

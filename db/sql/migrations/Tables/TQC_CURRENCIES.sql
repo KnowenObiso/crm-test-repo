@@ -1,0 +1,29 @@
+--
+-- TQC_CURRENCIES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_CURRENCIES
+(
+  CUR_CODE           NUMBER(8)                  NOT NULL,
+  CUR_SYMBOL         VARCHAR2(15 BYTE)          NOT NULL,
+  CUR_DESC           VARCHAR2(80 BYTE)          NOT NULL,
+  CUR_RND            NUMBER(8),
+  CUR_NUM_WORD       VARCHAR2(50 BYTE),
+  CUR_DECIMAL_WORD   VARCHAR2(50 BYTE),
+  CUR_WEB_DEFAULT    VARCHAR2(16 BYTE),
+  GET_EXCHANGE_RATE  NUMBER
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

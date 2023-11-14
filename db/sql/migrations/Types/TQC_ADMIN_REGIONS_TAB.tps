@@ -1,0 +1,5 @@
+--
+-- TQC_ADMIN_REGIONS_TAB  (Type) 
+--
+CREATE OR REPLACE TYPE TQ_CRM."TQC_ADMIN_REGIONS_TAB"                                          AS TABLE OF TQC_ADMIN_REGIONS_OBJ; 
+/

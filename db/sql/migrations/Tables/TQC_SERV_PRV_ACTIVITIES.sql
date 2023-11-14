@@ -1,0 +1,29 @@
+--
+-- TQC_SERV_PRV_ACTIVITIES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SERV_PRV_ACTIVITIES
+(
+  SPA_CODE          NUMBER(15),
+  SPA_SPT_CODE      NUMBER(15)                  NOT NULL,
+  SPA_SPT_SHT_DESC  VARCHAR2(30 BYTE),
+  SPA_SPR_CODE      NUMBER(15)                  NOT NULL,
+  SPA_SPR_SHT_DESC  VARCHAR2(100 BYTE),
+  SPT_MAIN_ACT      VARCHAR2(2 BYTE),
+  SPA_DESC          VARCHAR2(100 BYTE),
+  SPA_SPTA_CODE     NUMBER(8)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,27 @@
+--
+-- TQC_SYS_USER_ROLES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SYS_USER_ROLES
+(
+  USRR_USR_CODE            NUMBER(8),
+  USRR_SRLS_CODE           NUMBER(15),
+  USRR_GRANT_DATE          DATE                 NOT NULL,
+  USRR_REVOKE_DATE         DATE,
+  USRR_GRANT_BY_USR_CODE   NUMBER(22),
+  USRR_REVOKE_BY_USR_CODE  NUMBER(22)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

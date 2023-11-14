@@ -1,0 +1,30 @@
+--
+-- TQC_SYS_RESERVED_WORDS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SYS_RESERVED_WORDS
+(
+  TSRW_CODE       NUMBER,
+  TSRW_SYS_CODE   NUMBER,
+  TSRW_TSRC_CODE  NUMBER,
+  TSRW_TYPE       VARCHAR2(5 BYTE),
+  TSRW_EDITABLE   VARCHAR2(1 BYTE)              DEFAULT 'Y',
+  TSRW_NAME       VARCHAR2(50 BYTE),
+  TSRW_DESC       VARCHAR2(500 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

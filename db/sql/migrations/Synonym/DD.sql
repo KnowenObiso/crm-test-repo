@@ -1,0 +1,4 @@
+--
+-- DD  (Synonym) 
+--
+CREATE PUBLIC SYNONYM DD FOR TQ_CRM.DD;

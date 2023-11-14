@@ -1,0 +1,38 @@
+--
+-- TQC_ACTIVITIES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_ACTIVITIES
+(
+  ACT_CODE           NUMBER(15)                 NOT NULL,
+  ACT_ACTY_CODE      NUMBER(8)                  NOT NULL,
+  ACT_WEF            DATE,
+  ACT_WET            DATE,
+  ACT_DURATION       NUMBER,
+  ACT_SUBJECT        VARCHAR2(300 BYTE),
+  ACT_LOCATION       VARCHAR2(100 BYTE),
+  ACT_ASSIGNED_TO    NUMBER(8),
+  ACT_RELATED_TO     NUMBER(8),
+  ACT_STATUS_ID      NUMBER(8),
+  ACT_DESCRIPTION    VARCHAR2(500 BYTE),
+  ACT_REMINDER       VARCHAR2(1 BYTE),
+  ACT_TEAM           NUMBER(8),
+  ACT_REMINDER_TIME  DATE,
+  ACT_MSGT_CODE      NUMBER(8)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

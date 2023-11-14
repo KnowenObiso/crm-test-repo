@@ -1,0 +1,31 @@
+--
+-- TQC_ERROR_CONTEXT  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_ERROR_CONTEXT
+(
+  ERRC_ID          INTEGER,
+  ERRC_ERRI_ID     INTEGER,
+  ERRC_NAME        VARCHAR2(500 BYTE)           NOT NULL,
+  ERRC_VALUE       VARCHAR2(4000 BYTE),
+  ERRC_CREATED_ON  DATE,
+  ERRC_CREATED_BY  VARCHAR2(100 BYTE),
+  ERRC_CHANGED_ON  DATE,
+  ERRC_CHANGED_BY  VARCHAR2(100 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          128K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;
+
+COMMENT ON TABLE TQ_CRM.TQC_ERROR_CONTEXT IS 'Actual value for the named context for a given error instance.';

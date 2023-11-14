@@ -1,0 +1,25 @@
+--
+-- TQC_COURTS_NAME  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_COURTS_NAME
+(
+  CTN_CODE      NUMBER(12),
+  CTN_SHT_DESC  VARCHAR2(30 BYTE),
+  CTN_NAME      VARCHAR2(60 BYTE),
+  CTN_LOCATION  VARCHAR2(60 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

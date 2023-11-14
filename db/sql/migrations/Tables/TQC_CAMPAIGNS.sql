@@ -1,0 +1,53 @@
+--
+-- TQC_CAMPAIGNS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_CAMPAIGNS
+(
+  CMP_CODE               NUMBER(15)             NOT NULL,
+  CMP_USR_CODE           NUMBER(15)             NOT NULL,
+  CMP_DATE               DATE,
+  CMP_SPONSOR            VARCHAR2(100 BYTE),
+  CMP_ORG_CODE           NUMBER(15)             NOT NULL,
+  CMP_PROD_CODE          NUMBER(15),
+  CMP_SYS_CODE           NUMBER(15)             NOT NULL,
+  CMP_NAME               VARCHAR2(100 BYTE),
+  CMP_TYPE               VARCHAR2(50 BYTE)      DEFAULT NULL,
+  CMP_STATUS             VARCHAR2(2 BYTE)       DEFAULT 'N',
+  CMP_EXPT_CLOSE_DATE    DATE,
+  CMP_TAR_AUDIANCE       VARCHAR2(50 BYTE),
+  CMP_TAR_SIZE           NUMBER,
+  CMP_NUM_SENT           VARCHAR2(50 BYTE),
+  CMP_BGT_COST           NUMBER(22,5),
+  CMP_ACTL_COST          NUMBER(22,5),
+  CMP_EXPT_REVENUE       NUMBER(22,5),
+  CMP_EXPT_SALES_CNT     NUMBER(15),
+  CMP_ACTL_SALES_CNT     NUMBER(15),
+  CMP_ACTL_RESPONSE_CNT  NUMBER(15),
+  CMP_EXPT_RESPONSE_CNT  NUMBER(15),
+  CMP_EXPT_ROI           NUMBER(22,5),
+  CMP_ACTL_ROI           NUMBER(22,5),
+  CMP_DESC               VARCHAR2(200 BYTE),
+  CMP_OBJECTIVE          VARCHAR2(100 BYTE),
+  CMP_IMPRESSION_CNT     NUMBER,
+  CMP_CUR_CODE           NUMBER(8),
+  CMP_EXPT_COST          NUMBER                 DEFAULT NULL,
+  CMP_TEAM_USR_CODE      NUMBER(15),
+  CMP_EVENT              VARCHAR2(200 BYTE),
+  CMP_VENUE              VARCHAR2(200 BYTE),
+  CMP_EVENT_TIME         DATE
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

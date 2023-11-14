@@ -1,0 +1,29 @@
+--
+-- TQC_USER_SYSTEM_ROLES_LOGS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_USER_SYSTEM_ROLES_LOGS
+(
+  USRLL_USR_CODE            NUMBER(8)           NOT NULL,
+  USRLL_SRL_CODE            NUMBER(8)           NOT NULL,
+  USRLL_GRANT_DATE          DATE,
+  USRLL_REVOKE_DATE         DATE,
+  USRLL_GRANT_BY_USR_CODE   NUMBER(22),
+  USRLL_REVOKE_BY_USR_CODE  NUMBER(22)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

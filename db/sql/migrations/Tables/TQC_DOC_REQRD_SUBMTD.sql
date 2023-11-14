@@ -1,0 +1,29 @@
+--
+-- TQC_DOC_REQRD_SUBMTD  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_DOC_REQRD_SUBMTD
+(
+  TQDOCR_CODE          NUMBER(22)               NOT NULL,
+  TQDOCR_DOCR_CODE     NUMBER(22)               NOT NULL,
+  TQDOCR_CLNT_CODE     NUMBER(22)               NOT NULL,
+  TQDOCR_SUBMITED      VARCHAR2(1 BYTE)         DEFAULT 'N'                   NOT NULL,
+  TQDOCR_DATE_S        DATE,
+  TQDOCR_REF_NO        VARCHAR2(50 BYTE),
+  TQDOCR_RMRK          VARCHAR2(50 BYTE),
+  TQDOCR_USER_RECEIVD  VARCHAR2(50 BYTE)        NOT NULL
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

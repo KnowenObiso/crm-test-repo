@@ -1,0 +1,35 @@
+--
+-- TQC_SYS_MOD_SUBUNITS_DETAILS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SYS_MOD_SUBUNITS_DETAILS
+(
+  TSMSD_CODE                NUMBER              NOT NULL,
+  TSMSD_TSMS_CODE           NUMBER              NOT NULL,
+  TSMSD_NAME                VARCHAR2(15 BYTE)   NOT NULL,
+  TSMSD_PROMPT              VARCHAR2(200 BYTE)  NOT NULL,
+  TSMSD_TYPE                VARCHAR2(10 BYTE)   NOT NULL,
+  TSMSD_ORDER               VARCHAR2(3 BYTE)    NOT NULL,
+  TSMSD_PARENT              NUMBER,
+  TSMSD_MORE_DTLS_APPL      VARCHAR2(1 BYTE)    NOT NULL,
+  TSMSD_MORE_DTLS           VARCHAR2(200 BYTE),
+  TSMSD_ROOT                VARCHAR2(1 BYTE)    DEFAULT 'N',
+  TSMSD_MORE_DTLS_REQUIRED  VARCHAR2(1 BYTE)    DEFAULT 'N',
+  TSMSD_TMSC_CODE           NUMBER
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

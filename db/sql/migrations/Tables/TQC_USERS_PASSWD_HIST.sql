@@ -1,0 +1,27 @@
+--
+-- TQC_USERS_PASSWD_HIST  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_USERS_PASSWD_HIST
+(
+  USRPH_CODE          NUMBER(20),
+  USRPH_USR_CODE      NUMBER(8),
+  USRPH_USR_USERNAME  VARCHAR2(15 BYTE),
+  USR_PWD             VARCHAR2(65 BYTE),
+  USR_PWD_CHANGE_DT   DATE,
+  USR_PWD_CHANGE_BY   VARCHAR2(15 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

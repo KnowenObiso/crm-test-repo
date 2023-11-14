@@ -1,0 +1,14 @@
+--
+-- TQC_PRODUCT_ATTRIBUTES_OBJ  (Type) 
+--
+CREATE OR REPLACE TYPE TQ_CRM."TQC_PRODUCT_ATTRIBUTES_OBJ"                                          as object (
+
+  TPA_CODE            NUMBER,
+  TPA_SYSTEM          NUMBER,
+  TPA_PROD_CODE       NUMBER,
+  TPA_PROD_SHTDESC    VARCHAR2(100),
+  TPA_PROD_DESC       VARCHAR2(300),
+  TPA_PROD_NARRATION  VARCHAR2(500)
+
+  ); 
+/

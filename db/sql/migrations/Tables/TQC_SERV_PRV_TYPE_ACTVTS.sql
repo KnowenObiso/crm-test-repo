@@ -1,0 +1,32 @@
+--
+-- TQC_SERV_PRV_TYPE_ACTVTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SERV_PRV_TYPE_ACTVTS
+(
+  SPTA_CODE                NUMBER(8)            NOT NULL,
+  SPTA_SPT_CODE            NUMBER(8),
+  SPTA_SHT_DESC            VARCHAR2(30 BYTE),
+  SPTA_DESC                VARCHAR2(100 BYTE),
+  SPTA_SMS_MSGT_CODE       NUMBER,
+  SPTA_EMAIL_MSGT_CODE     NUMBER,
+  SPTA_SEND_MSG_DEFAULT    VARCHAR2(1 BYTE),
+  SPTA_SEND_EMAIL_DEFAULT  VARCHAR2(1 BYTE),
+  SPTA_REPORT_DAYS         VARCHAR2(50 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

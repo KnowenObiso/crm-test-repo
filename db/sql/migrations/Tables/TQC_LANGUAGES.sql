@@ -1,0 +1,25 @@
+--
+-- TQC_LANGUAGES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_LANGUAGES
+(
+  LANG_CODE      NUMBER(15),
+  LANG_SHT_DESC  VARCHAR2(30 BYTE),
+  LANG_DESC      VARCHAR2(50 BYTE),
+  LANG_BUNDLE    VARCHAR2(50 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ServiceReqDAO" Package="TurnQuest.view.Activities"
+          BeanClass="TurnQuest.view.Activities.ServiceReqDAO"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findRequestCats" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findClientPropPols" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findGroupPropPols" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findGeneralPropPols" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Activities.Account"
+                  BeanClass="TurnQuest.view.Activities.Account"
+                  id="findAccounts" ReturnNodeName="Account"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findUserRequests" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findClientPendingRequests" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findClientRequests" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findUserOpenRequests" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findUserOverdueRequests" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findOverdueRequests" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findPendingRequests" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findOverdueRequestsChat" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findIncomingMail" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findOutgoingMail" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findReservedWords" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findOutgoingSMS" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findBranches" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findDepartments" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findRequestTypes" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findAgencies" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="agnShtDesc" Type="java.lang.String"
+                   isStructured="false"/>
+    <ParameterInfo id="agnname" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findServiceProviders" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findAllActiveRequests" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findOtherServiceSeekers" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="name" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="idNumber" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findAgentCommission" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findProviderFees" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ServiceReq"
+                  BeanClass="TurnQuest.view.Activities.ServiceReq"
+                  id="findServiceReqClientComments" ReturnNodeName="ServiceReq"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Activities.ServiceReqDAO"
+                     BeanClass="TurnQuest.view.Activities.ServiceReqDAO"
+                     id="ServiceReqDAO"/>
+</JavaBean>

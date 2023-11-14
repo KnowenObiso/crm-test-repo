@@ -1,0 +1,24 @@
+--
+-- TQC_MOB_PYMNT_TYPES_PREFIXES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_MOB_PYMNT_TYPES_PREFIXES
+(
+  MPTP_CODE           NUMBER(8),
+  MPTP_MOB_NO_PREFIX  VARCHAR2(7 BYTE),
+  MPTP_MPT_CODE       NUMBER(8)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

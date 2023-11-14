@@ -1,0 +1,31 @@
+--
+-- TQC_SUB_AGENCIES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SUB_AGENCIES
+(
+  TSA_CODE            NUMBER,
+  TSA_NAME            VARCHAR2(50 BYTE),
+  TSA_LOCATION        VARCHAR2(100 BYTE),
+  TSA_CONTACT_PERSON  VARCHAR2(100 BYTE),
+  TSA_ADDRESS         VARCHAR2(100 BYTE),
+  TSA_TEL_NO          VARCHAR2(100 BYTE),
+  TSA_STATUS          VARCHAR2(1 BYTE),
+  TSA_AGN_CODE        NUMBER
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,26 @@
+--
+-- TQC_COMPANY_MEMO_REMINDERS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_COMPANY_MEMO_REMINDERS
+(
+  REMNDR_CODE        NUMBER,
+  REMNDR_DATE        DATE                       DEFAULT SYSDATE,
+  REMNDR_COMEM_CODE  NUMBER,
+  REMNDR_USER        VARCHAR2(40 BYTE),
+  REMNDR_NUM         NUMBER
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

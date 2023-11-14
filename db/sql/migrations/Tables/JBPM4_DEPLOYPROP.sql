@@ -1,0 +1,27 @@
+--
+-- JBPM4_DEPLOYPROP  (Table) 
+--
+CREATE TABLE TQ_CRM.JBPM4_DEPLOYPROP
+(
+  DBID_        NUMBER(19)                       NOT NULL,
+  DEPLOYMENT_  NUMBER(19),
+  OBJNAME_     VARCHAR2(255 BYTE),
+  KEY_         VARCHAR2(255 BYTE),
+  STRINGVAL_   VARCHAR2(255 BYTE),
+  LONGVAL_     NUMBER(19)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

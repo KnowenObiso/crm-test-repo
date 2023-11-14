@@ -1,0 +1,27 @@
+--
+-- TQC_SERV_REQ_COMMENTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SERV_REQ_COMMENTS
+(
+  SRC_CODE            NUMBER,
+  SRC_TSR_CODE        NUMBER,
+  SRC_CLIENT_COMMENT  VARCHAR2(500 BYTE),
+  SRC_SOLUTION        VARCHAR2(500 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

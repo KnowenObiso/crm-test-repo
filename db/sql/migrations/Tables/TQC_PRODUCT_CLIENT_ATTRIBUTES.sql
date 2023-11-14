@@ -1,0 +1,29 @@
+--
+-- TQC_PRODUCT_CLIENT_ATTRIBUTES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_PRODUCT_CLIENT_ATTRIBUTES
+(
+  PCA_CODE         NUMBER(8)                    NOT NULL,
+  PCA_TPA_CODE     NUMBER(8)                    NOT NULL,
+  PCA_TCA_CODE     NUMBER(8)                    NOT NULL,
+  PCA_MIN_VALUE    VARCHAR2(100 BYTE),
+  PCA_MAX_VALUE    VARCHAR2(100 BYTE),
+  PCA_FIXED_VALUE  VARCHAR2(50 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

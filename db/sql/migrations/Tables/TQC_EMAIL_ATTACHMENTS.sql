@@ -1,0 +1,28 @@
+--
+-- TQC_EMAIL_ATTACHMENTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_EMAIL_ATTACHMENTS
+(
+  EATT_CODE        NUMBER(15)                   NOT NULL,
+  EATT_EMAIL_CODE  NUMBER(15),
+  EATT_PATH        VARCHAR2(150 BYTE),
+  EATT_FILENAME    VARCHAR2(150 BYTE),
+  EATT_FILE        BLOB
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

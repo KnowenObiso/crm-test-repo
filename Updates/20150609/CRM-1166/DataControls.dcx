@@ -1,0 +1,1264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
+                    version="11.1.1.51.56" id="DataControls"
+                    Package="TurnQuest.view">
+  <AdapterDataControl id="CurrentUser"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Base.CurrentUser"
+                      BeanClass="TurnQuest.view.Base.CurrentUser"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Base.CurrentUser"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Base.CurrentUser"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="LOVDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Base.LOVDAO"
+                      BeanClass="TurnQuest.view.Base.LOVDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Base.LOV"/>
+      <TypeInfo FullName="TurnQuest.view.Base.LOVDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Base.LOVDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ClientDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Clients.ClientDAO"
+                      BeanClass="TurnQuest.view.Clients.ClientDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName=""/>
+      <TypeInfo FullName="TurnQuest.view.Clients.ClientDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Clients.client"/>
+      <TypeInfo FullName="TurnQuest.view.Divisions.Division"/>
+      <TypeInfo FullName="TurnQuest.view.Clients.ClientTable"/>
+      <TypeInfo FullName="TurnQuest.view.models.PostalCode"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Clients.ClientDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="SettingsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Settings2.SettingsDAO"
+                      BeanClass="TurnQuest.view.Settings2.SettingsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Settings2.Settings"/>
+      <TypeInfo FullName="TurnQuest.view.Settings2.SettingsDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Settings2.SettingsValues"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Occupation"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Settings2.SettingsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="AppSettingsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Settings1.AppSettingsDAO"
+                      BeanClass="TurnQuest.view.Settings1.AppSettingsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Settings1.AppSettings"/>
+      <TypeInfo FullName="TurnQuest.view.Settings1.AppSettingsDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Settings1.AppSettingsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="AppClientsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Clients1.AppClientsDAO"
+                      BeanClass="TurnQuest.view.Clients1.AppClientsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Clients1.AppClients"/>
+      <TypeInfo FullName="TurnQuest.view.Clients1.AppClientsDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Clients1.AppClientsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="RoleDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.roles.RoleDAO"
+                      BeanClass="TurnQuest.view.roles.RoleDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.roles.Role"/>
+      <TypeInfo FullName="TurnQuest.view.roles.RoleDAO"/>
+      <TypeInfo FullName="TurnQuest.view.roles.SubRole"/>
+      <TypeInfo FullName="TurnQuest.view.models.SysProcessSubAreaLimit"/>
+      <TypeInfo FullName="TurnQuest.view.models.SysProcessSubAreaLevel"/>
+      <TypeInfo FullName="TurnQuest.view.models.UserObj"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.roles.RoleDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="UserDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Usr.UserDAO"
+                      BeanClass="TurnQuest.view.Usr.UserDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Usr.User"/>
+      <TypeInfo FullName="TurnQuest.view.Usr.UserDAO"/>
+      <TypeInfo FullName="TurnQuest.view.roles.SubRole"/>
+      <TypeInfo FullName="TurnQuest.view.roles.Role"/>
+      <TypeInfo FullName="TurnQuest.view.Usr.UtilObject"/>
+      <TypeInfo FullName="TurnQuest.view.Usr.Personnel"/>
+      <TypeInfo FullName="TurnQuest.view.models.UserSystem"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Usr.UserDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProcessDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.roles.ProcessDAO"
+                      BeanClass="TurnQuest.view.roles.ProcessDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.roles.Process"/>
+      <TypeInfo FullName="TurnQuest.view.roles.ProcessDAO"/>
+      <TypeInfo FullName="TurnQuest.view.roles.SubRole"/>
+      <TypeInfo FullName="TurnQuest.view.roles.Role"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.roles.ProcessDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="BranchDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Branches.BranchDAO"
+                      BeanClass="TurnQuest.view.Branches.BranchDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Branches.Branch"/>
+      <TypeInfo FullName="TurnQuest.view.Branches.BranchDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Branches.Region"/>
+      <TypeInfo FullName="TurnQuest.view.orgs.Organization"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Branches.BranchDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="OrganizationDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.orgs.OrganizationDAO"
+                      BeanClass="TurnQuest.view.orgs.OrganizationDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.orgs.Organization"/>
+      <TypeInfo FullName="TurnQuest.view.orgs.OrganizationDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Branches.Branch"/>
+      <TypeInfo FullName="TurnQuest.view.Branches.Region"/>
+      <TypeInfo FullName="TurnQuest.view.Divisions.Division"/>
+      <TypeInfo FullName="TurnQuest.view.setups.State"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Town"/>
+      <TypeInfo FullName="TurnQuest.view.models.BranchName"/>
+      <TypeInfo FullName="TurnQuest.view.setups.AdministrativeRegion"/>
+      <TypeInfo FullName="TurnQuest.view.setups.District"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.orgs.OrganizationDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="BaseSetupDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.setups.BaseSetupDAO"
+                      BeanClass="TurnQuest.view.setups.BaseSetupDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.setups.AgencyHoldingCompany"/>
+      <TypeInfo FullName="TurnQuest.view.setups.BaseSetupDAO"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Bank"/>
+      <TypeInfo FullName="TurnQuest.view.setups.BankBranch"/>
+      <TypeInfo FullName="TurnQuest.view.setups.AgencyClass"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Currency"/>
+      <TypeInfo FullName="TurnQuest.view.setups.CurrencyDenomination"/>
+      <TypeInfo FullName="TurnQuest.view.setups.CurrencyRate"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Sector"/>
+      <TypeInfo FullName="TurnQuest.view.setups.ServiceProviderType"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Country"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Town"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Location"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Parameter"/>
+      <TypeInfo FullName="TurnQuest.view.setups.PaymentMode"/>
+      <TypeInfo FullName="TurnQuest.view.setups.State"/>
+      <TypeInfo FullName="TurnQuest.view.setups.PrintServer"/>
+      <TypeInfo FullName="TurnQuest.view.setups.AdministrativeRegion"/>
+      <TypeInfo FullName="TurnQuest.view.setups.SysApplicableArea"/>
+      <TypeInfo FullName="TurnQuest.view.setups.EcmBean"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Occupation"/>
+      <TypeInfo FullName="TurnQuest.view.models.OrgSubDivision"/>
+      <TypeInfo FullName="TurnQuest.view.provider.System"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.setups.BaseSetupDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="BaseAccountsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Accounts.AccountsDAO"
+                      BeanClass="TurnQuest.view.Accounts.AccountsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AccountValues"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AccountType"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AccountsDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Accounts.AccountsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="AccountsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Accounts.AccountsDAO"
+                      BeanClass="TurnQuest.view.Accounts.AccountsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AccountValues"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AccountType"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AccountsDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.Agency"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Accounts.AccountsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DivisionsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Divisions.DivisionsDAO"
+                      BeanClass="TurnQuest.view.Divisions.DivisionsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Divisions.Division"/>
+      <TypeInfo FullName="TurnQuest.view.Divisions.DivisionsDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Branches.Branch"/>
+      <TypeInfo FullName="TurnQuest.view.Branches.Region"/>
+      <TypeInfo FullName="TurnQuest.view.orgs.Organization"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Divisions.DivisionsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ServiceProviderDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.provider.ServiceProviderDAO"
+                      BeanClass="TurnQuest.view.provider.ServiceProviderDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.provider.ServiceProvider"/>
+      <TypeInfo FullName="TurnQuest.view.setups.ServiceProviderType"/>
+      <TypeInfo FullName="TurnQuest.view.provider.ServiceProviderActivity"/>
+      <TypeInfo FullName="TurnQuest.view.provider.System"/>
+      <TypeInfo FullName="TurnQuest.view.provider.ServiceProviderSystem"/>
+      <TypeInfo FullName="TurnQuest.view.provider.ServiceProviderDAO"/>
+      <TypeInfo FullName="TurnQuest.view.models.OrgSubDivision"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.provider.ServiceProviderDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="MainAccountsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Accounts.MainAccountsDAO"
+                      BeanClass="TurnQuest.view.Accounts.MainAccountsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AccountsType"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.MainAccountsDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.Agency"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AgencyClass"/>
+      <TypeInfo FullName="TurnQuest.view.roles.SubRole"/>
+      <TypeInfo FullName="TurnQuest.view.roles.Role"/>
+      <TypeInfo FullName="TurnQuest.view.Usr.User"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AgencyAccounts"/>
+      <TypeInfo FullName="TurnQuest.view.models.AgencySystem"/>
+      <TypeInfo FullName="TurnQuest.view.client.Client2"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Accounts.MainAccountsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="MainClientDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.client.MainClientDAO"
+                      BeanClass="TurnQuest.view.client.MainClientDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.client.Client2"/>
+      <TypeInfo FullName="TurnQuest.view.client.MainClientDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Usr.User"/>
+      <TypeInfo FullName="TurnQuest.view.roles.SubRole"/>
+      <TypeInfo FullName="TurnQuest.view.roles.Role"/>
+      <TypeInfo FullName="TurnQuest.view.Settings1.AppSettings"/>
+      <TypeInfo FullName="TurnQuest.view.Divisions.Division"/>
+      <TypeInfo FullName="TurnQuest.view.Clients1.AppClients"/>
+      <TypeInfo FullName="TurnQuest.view.Settings2.SettingsValues"/>
+      <TypeInfo FullName="TurnQuest.view.client.ClientTitle"/>
+      <TypeInfo FullName="TurnQuest.view.Documents.RequiredDocument"/>
+      <TypeInfo FullName="TurnQuest.view.client.ClientAccount"/>
+      <TypeInfo FullName="TurnQuest.view.Branches.Region"/>
+      <TypeInfo FullName="TurnQuest.view.Branches.Branch"/>
+      <TypeInfo FullName="TurnQuest.view.client.Agents"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.client.MainClientDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="UtilDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.commons.UtilDAO"
+                      BeanClass="TurnQuest.view.commons.UtilDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.commons.UtilDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.commons.UtilDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ClientTitle"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.client.ClientTitle"
+                      BeanClass="TurnQuest.view.client.ClientTitle"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.client.ClientTitle"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.client.ClientTitle"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ServiceProviderType"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.setups.ServiceProviderType"
+                      BeanClass="TurnQuest.view.setups.ServiceProviderType"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.setups.ServiceProviderType"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.setups.ServiceProviderType"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DirectDebitDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.backing.DirectDebitDAO"
+                      BeanClass="TurnQuest.view.backing.DirectDebitDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.setups.Bank"/>
+      <TypeInfo FullName="TurnQuest.view.backing.DirectDebitDAO"/>
+      <TypeInfo FullName="TurnQuest.view.backing.GeneralBean"/>
+      <TypeInfo FullName="TurnQuest.view.models.Holiday"/>
+      <TypeInfo FullName="TurnQuest.view.models.DirectDebit"/>
+      <TypeInfo FullName="TurnQuest.view.models.DirectDebitHeader"/>
+      <TypeInfo FullName="TurnQuest.view.models.DirectDebitDetail"/>
+      <TypeInfo FullName="TurnQuest.view.models.HolidayDefinition"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.backing.DirectDebitDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+<AdapterDataControl id="MemoDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Memos.MemoDAO"
+                      BeanClass="TurnQuest.view.Memos.MemoDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Memos.memoValues"/>
+      <TypeInfo FullName="TurnQuest.view.Memos.Memo"/>
+      <TypeInfo FullName="TurnQuest.view.Memos.MemoDAO"/>
+      <TypeInfo FullName="TurnQuest.view.models.MessageTemplate"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Memos.MemoDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProspectDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.prospects.ProspectDAO"
+                      BeanClass="TurnQuest.view.prospects.ProspectDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.prospects.Prospect"/>
+      <TypeInfo FullName="TurnQuest.view.prospects.ProspectDAO"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Country"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Town"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Nation"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.prospects.ProspectDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+ 
+</AdapterDataControl>
+  <AdapterDataControl id="MessageDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.messaging.MessageDAO"
+                      BeanClass="TurnQuest.view.messaging.MessageDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.messaging.MessageBean"/>
+      <TypeInfo FullName="TurnQuest.view.messaging.MessageDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.messaging.MessageDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CurrencyDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.CurrencyDAO"
+                      BeanClass="TurnQuest.view.dao.CurrencyDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.setups.Currency"/>
+      <TypeInfo FullName="TurnQuest.view.setups.CurrencyDenomination"/>
+      <TypeInfo FullName="TurnQuest.view.setups.CurrencyRate"/>
+      <TypeInfo FullName="TurnQuest.view.dao.CurrencyDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.CurrencyDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="BankDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.BankDAO"
+                      BeanClass="TurnQuest.view.dao.BankDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.setups.Bank"/>
+      <TypeInfo FullName="TurnQuest.view.dao.BankDAO"/>
+      <TypeInfo FullName="TurnQuest.view.setups.BankBranch"/>
+      <TypeInfo FullName="TurnQuest.view.models.DirectDebitReport"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.BankDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="HierarchyDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.HierarchyDAO"
+                      BeanClass="TurnQuest.view.dao.HierarchyDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.provider.System"/>
+      <TypeInfo FullName="TurnQuest.view.models.OrgDivisionLevelType"/>
+      <TypeInfo FullName="TurnQuest.view.models.OrgDivisionLevel"/>
+      <TypeInfo FullName="TurnQuest.view.dao.HierarchyDAO"/>
+      <TypeInfo FullName="TurnQuest.view.models.OrgSubDivision"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.Agency"/>
+      <TypeInfo FullName="TurnQuest.view.models.AgencyActivity"/>
+      <TypeInfo FullName="TurnQuest.view.models.ActivityType"/>
+      <TypeInfo FullName="TurnQuest.view.client.Client2"/>
+      <TypeInfo FullName="TurnQuest.view.provider.ServiceProvider"/>
+      <TypeInfo FullName="TurnQuest.view.Accounts.AccountsType"/>
+      <TypeInfo FullName="TurnQuest.view.models.OrgSubDivPreviousHead"/>
+      <TypeInfo FullName="TurnQuest.view.roles.SubRole"/>
+      <TypeInfo FullName="TurnQuest.view.roles.Role"/>
+      <TypeInfo FullName="TurnQuest.view.Usr.User"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.HierarchyDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CountryDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.CountryDAO"
+                      BeanClass="TurnQuest.view.dao.CountryDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.models.PostalCode"/>
+      <TypeInfo FullName="TurnQuest.view.dao.CountryDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.CountryDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="MessagingDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.MessagingDAO"
+                      BeanClass="TurnQuest.view.dao.MessagingDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.models.MessageTemplate"/>
+      <TypeInfo FullName="TurnQuest.view.dao.MessagingDAO"/>
+      <TypeInfo FullName="TurnQuest.view.models.SmsMessage"/>
+      <TypeInfo FullName="TurnQuest.view.models.InboxMessage"/>
+      <TypeInfo FullName="TurnQuest.view.models.AlertType"/>
+      <TypeInfo FullName="TurnQuest.view.models.Alert"/>
+      <TypeInfo FullName="TurnQuest.view.models.OrgSubDivision"/>
+      <TypeInfo FullName="TurnQuest.view.provider.System"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.MessagingDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="SystemPostDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.SystemPostDAO"
+                      BeanClass="TurnQuest.view.dao.SystemPostDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.models.SystemPostLevel"/>
+      <TypeInfo FullName="TurnQuest.view.models.SystemPost"/>
+      <TypeInfo FullName="TurnQuest.view.dao.SystemPostDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.SystemPostDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ClaimsPaymentModeDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition=""
+                      BeanClass=""
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName=""/>
+      <TypeInfo FullName=""/>
+      <TypeInfo FullName="TurnQuest.view.models.ClaimPaymentModes"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass=""
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ClaimPaymentModesDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.ClaimPaymentModesDAO"
+                      BeanClass="TurnQuest.view.dao.ClaimPaymentModesDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.models.ClaimPaymentModes"/>
+      <TypeInfo FullName="TurnQuest.view.dao.ClaimPaymentModesDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.ClaimPaymentModesDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="User"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Usr.User"
+                      BeanClass="TurnQuest.view.Usr.User"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.roles.SubRole"/>
+      <TypeInfo FullName="TurnQuest.view.roles.Role"/>
+      <TypeInfo FullName="TurnQuest.view.Usr.User"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Usr.User"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="SequenceDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.SequenceDAO"
+                      BeanClass="TurnQuest.view.dao.SequenceDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.models.Sequence"/>
+      <TypeInfo FullName="TurnQuest.view.dao.SequenceDAO"/>
+      <TypeInfo FullName="TurnQuest.view.models.PeriodBean"/>
+      <TypeInfo FullName="TurnQuest.view.models.YearBean"/>
+      <TypeInfo FullName="TurnQuest.view.models.Branch"/>
+      <TypeInfo FullName="TurnQuest.view.models.OrgSubDivision"/>
+      <TypeInfo FullName="TurnQuest.view.provider.System"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.SequenceDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProductsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.ProductDAO"
+                      BeanClass="TurnQuest.view.dao.ProductDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.models.Product"/>
+      <TypeInfo FullName="TurnQuest.view.dao.ProductDAO"/>
+      <TypeInfo FullName="TurnQuest.view.models.ClientAttribute"/>
+      <TypeInfo FullName="TurnQuest.view.models.ProductClientAttribute"/>
+      <TypeInfo FullName="TurnQuest.view.Clients.client"/>
+      <TypeInfo FullName="TurnQuest.view.products.CoverTypes"/>
+      <TypeInfo FullName="TurnQuest.view.products.Product"/>
+      <TypeInfo FullName=""/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass=""
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="StatusDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Statuses.StatusDAO"
+                      BeanClass="TurnQuest.view.Statuses.StatusDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Statuses.Status"/>
+      <TypeInfo FullName="TurnQuest.view.Statuses.StatusDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.Status"/>
+      <TypeInfo FullName=""/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass=""
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ActivityDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Activities.ActivityDAO"
+                      BeanClass="TurnQuest.view.Activities.ActivityDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Activities.Activity"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.ActivityDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.Note"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.ActivityParticipant"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.PriorityLevel"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.Status"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.ActivityTask"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Activities.ActivityDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="AccountDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Activities.AccountDAO"
+                      BeanClass="TurnQuest.view.Activities.AccountDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Activities.Account"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.AccountDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Activities.AccountDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="StatusesDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition=""
+                      BeanClass=""
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Activities.Status"/>
+      <TypeInfo FullName=""/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass=""
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="CampaignDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Campaigns.CampaignDAO"
+                      BeanClass="TurnQuest.view.Campaigns.CampaignDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Campaigns.Campaign"/>
+      <TypeInfo FullName="TurnQuest.view.Campaigns.CampaignDAO"/>
+      <TypeInfo FullName="TurnQuest.view.models.OrgSubDivision"/>
+      <TypeInfo FullName="TurnQuest.view.provider.System"/>
+      <TypeInfo FullName="TurnQuest.view.Campaigns.CampaignProduct"/>
+      <TypeInfo FullName="TurnQuest.view.Campaigns.CampaignActivity"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.Account"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.Activity"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Campaigns.CampaignDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="LeadsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Leads.LeadsDAO"
+                      BeanClass="TurnQuest.view.Leads.LeadsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Leads.LeadValues"/>
+      <TypeInfo FullName="TurnQuest.view.Leads.LeadsDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Leads.LeadStatus"/>
+      <TypeInfo FullName="TurnQuest.view.Leads.LeadComment"/>
+      <TypeInfo FullName="TurnQuest.view.Leads.LeadActivity"/>
+      <TypeInfo FullName="TurnQuest.view.Leads.LeadSource"/>
+      <TypeInfo FullName="TurnQuest.view.client.Client2"/>
+      <TypeInfo FullName="TurnQuest.view.models.PostalCode"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Town"/>
+      <TypeInfo FullName="TurnQuest.view.setups.Sector"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Leads.LeadsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="IncidenceDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Incidences.IncidenceDAO"
+                      BeanClass="TurnQuest.view.Incidences.IncidenceDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Incidences.IncidenceValues"/>
+      <TypeInfo FullName="TurnQuest.view.Incidences.IncidenceDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Incidences.IncidenceDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ReportGroupDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.reports.ReportGroupDAO"
+                      BeanClass="TurnQuest.view.reports.ReportGroupDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.reports.ReportGroup"/>
+      <TypeInfo FullName="TurnQuest.view.reports.ReportGroupDAO"/>
+      <TypeInfo FullName="TurnQuest.view.reports.ReportGroupDivision"/>
+      <TypeInfo FullName="TurnQuest.view.Divisions.Division"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.reports.ReportGroupDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ServiceReqDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Activities.ServiceReqDAO"
+                      BeanClass="TurnQuest.view.Activities.ServiceReqDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Activities.ServiceReq"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.ServiceReqDAO"/>
+      <TypeInfo FullName="TurnQuest.view.Activities.Account"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Activities.ServiceReqDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="AlertDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.scheduler.AlertDAO"
+                      BeanClass="TurnQuest.view.scheduler.AlertDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.scheduler.AlertBean"/>
+      <TypeInfo FullName="TurnQuest.view.scheduler.AlertDAO"/>
+      <TypeInfo FullName="org.quartz.JobKey"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.scheduler.AlertDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="KBDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.knowledgeBase.KBDAO"
+                      BeanClass="TurnQuest.view.knowledgeBase.KBDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.knowledgeBase.KbTopic4"/>
+      <TypeInfo FullName="TurnQuest.view.knowledgeBase.KbTopic3"/>
+      <TypeInfo FullName="TurnQuest.view.knowledgeBase.KbTopic2"/>
+      <TypeInfo FullName="TurnQuest.view.knowledgeBase.KbTopic1"/>
+      <TypeInfo FullName="TurnQuest.view.knowledgeBase.KbContent"/>
+      <TypeInfo FullName="TurnQuest.view.knowledgeBase.KBDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.knowledgeBase.KBDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="TestAllerts"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Alerts.TestAllerts"
+                      BeanClass="TurnQuest.view.Alerts.TestAllerts"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Alerts.TestAllerts"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Alerts.TestAllerts"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="EscalationsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.bpm.EscalationsDAO"
+                      BeanClass="TurnQuest.view.bpm.EscalationsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.bpm.SysProcess"/>
+      <TypeInfo FullName="TurnQuest.view.bpm.Escalations"/>
+      <TypeInfo FullName="TurnQuest.view.bpm.EscalationsDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.bpm.EscalationsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProposalDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Proposals.ProposalDAO"
+                      BeanClass="TurnQuest.view.Proposals.ProposalDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Proposals.Proposal"/>
+      <TypeInfo FullName="TurnQuest.view.Proposals.ProposalSchedulesBean"/>
+      <TypeInfo FullName="TurnQuest.view.Proposals.ProposalDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Proposals.ProposalDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProductDetailDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.products.ProductDetailDAO"
+                      BeanClass="TurnQuest.view.products.ProductDetailDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.products.CoverTypes"/>
+      <TypeInfo FullName="TurnQuest.view.products.Product"/>
+      <TypeInfo FullName="TurnQuest.view.products.ProductDetailDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.products.ProductDetailDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="productCategoriesDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.product.productCategoriesDAO"
+                      BeanClass="TurnQuest.view.product.productCategoriesDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.product.Products"/>
+      <TypeInfo FullName="TurnQuest.view.product.productCategoriesDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.product.productCategoriesDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ProductDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.ProductDAO"
+                      BeanClass="TurnQuest.view.dao.ProductDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.models.Product"/>
+      <TypeInfo FullName="TurnQuest.view.models.ClientAttribute"/>
+      <TypeInfo FullName="TurnQuest.view.models.ProductClientAttribute"/>
+      <TypeInfo FullName="TurnQuest.view.Clients.client"/>
+      <TypeInfo FullName="TurnQuest.view.product.Products"/>
+      <TypeInfo FullName="TurnQuest.view.dao.ProductDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.ProductDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="subClassDescDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.portalsetups.subClassDescDAO"
+                      BeanClass="TurnQuest.view.portalsetups.subClassDescDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.portalsetups.SubClass"/>
+      <TypeInfo FullName="TurnQuest.view.portalsetups.subClassDescDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.portalsetups.subClassDescDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="WebDefsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.web.WebDefsDAO"
+                      BeanClass="TurnQuest.view.web.WebDefsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.web.WebDefs"/>
+      <TypeInfo FullName="TurnQuest.view.web.WebDefsDAO"/>
+      <TypeInfo FullName="TurnQuest.view.web.WebBean"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.web.WebDefsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="Authenticator"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Login.Authenticator"
+                      BeanClass="TurnQuest.view.Login.Authenticator"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Login.Authenticator"/>
+      <TypeInfo FullName="TurnQuest.view.Authenticator.Authenticator"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Authenticator.Authenticator"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="AgencyHoldingCompany"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.setups.AgencyHoldingCompany"
+                      BeanClass="TurnQuest.view.setups.AgencyHoldingCompany"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.setups.AgencyHoldingCompany"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.setups.AgencyHoldingCompany"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ReportsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.setups.ReportsDAO"
+                      BeanClass="TurnQuest.view.setups.ReportsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.setups.Report"/>
+      <TypeInfo FullName="TurnQuest.view.setups.ReportsDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.setups.ReportsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="DepartmentsDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.setups.DepartmentsDAO"
+                      BeanClass="TurnQuest.view.setups.DepartmentsDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.setups.Departments"/>
+      <TypeInfo FullName="TurnQuest.view.setups.DepartmentsDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.setups.DepartmentsDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="SysDAO"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.Base.SysDAO"
+                      BeanClass="TurnQuest.view.Base.SysDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.Base.sys"/>
+      <TypeInfo FullName="TurnQuest.view.Base.SysDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.Base.SysDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="GeneralDAO"
+                      FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="TurnQuest.view.dao.GeneralDAO"
+                      BeanClass="TurnQuest.view.dao.GeneralDAO"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="TurnQuest.view.dao.EcmBean"/>
+      <TypeInfo FullName="TurnQuest.view.models.PeriodBean"/>
+      <TypeInfo FullName="TurnQuest.view.dao.GeneralDAO"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="TurnQuest.view.dao.GeneralDAO"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

@@ -1,0 +1,26 @@
+--
+-- TQC_MISSED_AGENTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_MISSED_AGENTS
+(
+  NEWID        VARCHAR2(75 BYTE),
+  OLDCODE      VARCHAR2(75 BYTE),
+  AGENT        VARCHAR2(300 BYTE),
+  LISENCE      VARCHAR2(75 BYTE),
+  LISENCEDATE  DATE
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

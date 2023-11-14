@@ -1,0 +1,28 @@
+--
+-- TQC_LEAD_COMMENTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_LEAD_COMMENTS
+(
+  LCMNT_CODE      NUMBER(8),
+  LCMNT_LDS_CODE  NUMBER(8),
+  LCMNT_USR_CODE  NUMBER(8),
+  LCMNT_COMMENT   VARCHAR2(200 BYTE),
+  LCMNT_DATE      DATE
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

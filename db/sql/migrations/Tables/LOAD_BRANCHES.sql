@@ -1,0 +1,24 @@
+--
+-- LOAD_BRANCHES  (Table) 
+--
+CREATE TABLE TQ_CRM.LOAD_BRANCHES
+(
+  BRN_SHT_DESC  VARCHAR2(30 BYTE),
+  BRN_CODE      VARCHAR2(50 BYTE),
+  REGION        VARCHAR2(50 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

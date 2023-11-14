@@ -1,0 +1,31 @@
+--
+-- TQC_AGENCY_REFEREES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_AGENCY_REFEREES
+(
+  AREF_CODE              NUMBER                 NOT NULL,
+  AREF_NAME              VARCHAR2(50 BYTE),
+  AREF_PHYSICAL_ADDRESS  VARCHAR2(50 BYTE),
+  AREF_POSTAL_ADDRESS    VARCHAR2(50 BYTE),
+  AREF_TWN_CODE          NUMBER,
+  AREF_COU_CODE          NUMBER,
+  AREF_EMAIL_ADDRESS     VARCHAR2(50 BYTE),
+  AREF_TEL               VARCHAR2(50 BYTE),
+  AREF_ID_NO             VARCHAR2(50 BYTE),
+  AREF_AGN_CODE          NUMBER
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

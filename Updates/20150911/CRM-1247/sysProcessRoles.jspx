@@ -1,0 +1,1274 @@
+<?xml version='1.0' encoding='utf-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:afh="http://myfaces.apache.org/trinidad/html"
+          version="1.2" xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:tr="http://myfaces.apache.org/trinidad">
+  <jsp:directive.page contentType="text/html;charset=utf-8"/>
+  <f:view>
+   <af:document id="d1" title="TurnQuest CRM">
+      <af:messages id="m1"/>
+     <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                   id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="fms">
+       <af:resource type="css">
+         input[type=text] {
+             text-transform: uppercase;
+         }
+          textarea {
+         text-transform: uppercase;
+         }
+       </af:resource>
+      <f:attribute name="documentTitle" value="TurnQuest CRM"/>
+      <f:attribute name="mode" value="index"/>
+      <f:facet name="center">
+          <af:group id="g1">
+            <af:panelGroupLayout layout="scroll" halign="left" valign="top"
+                                 id="pgl3"
+                                 inlineStyle="height:700px; width:1150.0px;">
+              <af:panelBox text="PanelBox1" id="panelMain" showHeader="never" inlineStyle="height:600.0px;"
+                           binding="#{roleManipulation.panelMain}">
+              
+                <table width="100%">
+                <tr>
+                  <td align="right">
+                    <h:panelGrid columns="2" id="pg33">
+                      <af:inputText id="it1" helpTopicId="CRMorganization"
+                                    columns="13" readOnly="true"
+                                    shortDesc="Help"/>
+                      <af:statusIndicator id="si72"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              
+              <h:panelGrid columns="1" id="pg71">
+                <af:outputLabel value="System Roles Administration" id="ol71"
+                                inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s71"
+                            inlineStyle="font-size:large; font-weight:bold;"/>
+              
+                <af:panelSplitter id="ps1" splitterPosition="250" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:700px;">
+                
+                  <f:facet name="first">
+                    <af:panelGroupLayout id="pgl4">
+                      <h:panelGrid columns="2" id="pg7">
+                        <af:commandButton text="New Role" id="btnNewSystemRole"
+                                        icon="/images/create.gif"
+                                          action="#{roleManipulation.actionNewSystemRole}"/> 
+                        <af:commandButton text="Drop Role" id="btnDropSystemRole"
+                                        icon="/images/delete.gif"
+                                          action="#{roleManipulation.actionShowDropRole}"/>  
+                      </h:panelGrid>
+                      <af:panelCollection id="pc2" inlineStyle="height:500px; width:240.0px;">
+                                              
+                      <af:tree value="#{bindings.User1.treeModel}" var="node"
+                               selectionListener="#{roleManipulation.treeSystemRolesListener}"
+                                 rowSelection="single"                                  
+                                 id="treeSystemRoles"
+                                 binding="#{roleManipulation.treeSystemRoles}">
+                          <f:facet name="nodeStamp">
+                            <af:outputText value="#{node}" id="ot6"/>
+                          </f:facet>
+                        </af:tree>
+                      </af:panelCollection>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                  
+                  <f:facet name="second">
+                  
+                    <af:panelGroupLayout id="pgl5"
+                                         binding="#{roleManipulation.mainLay}">
+                      <af:panelTabbed id="pt1" 
+                                      inlineStyle="height:1000px; width:1000.0px;" rendered="false"
+                                      binding="#{roleManipulation.mainPanel}">
+                        <af:showDetailItem text="Role Areas and Sub-Areas." 
+                                           id="tabRoleAreas" 
+                                           binding="#{roleManipulation.tabRoleAreas}"
+                                           inlineStyle="width:1000px;height:800px;">
+                          <af:panelGroupLayout id="pgl7"
+                                               inlineStyle="height:800px; width:800.0px;"
+                                               halign="left">
+                          <af:panelBox text="PanelBox5" id="rolesPanel" 
+                                       showHeader="never" 
+                                       inlineStyle="height:500px; width:995.0px;" 
+                                       binding="#{roleManipulation.rolesPanel}">
+                            
+                        <h:panelGrid columns="1" id="pg65">
+                            <af:outputLabel value="Role Areas and Sub-Areas" id="ol63"
+                                            inlineStyle="font-weight:bold;"/>
+                          </h:panelGrid>
+                          <af:separator id="s63"/>
+                          
+                          <h:panelGrid columns="1" id="pg2">
+                          
+                    <af:commandButton text="Revoke Access" 
+                                      id="btnGrantRevokeRoles" visible="true"
+                                      partialTriggers="t13"
+                                      action="#{roleManipulation.grantRevokeProcess}"/>
+                                      
+                  </h:panelGrid>
+                              
+                              <af:panelSplitter id="ps2" styleClass="AFAuxiliaryStretchWidth" 
+                                                inlineStyle="height:500.0px;" 
+                                                splitterPosition="240">
+                                <f:facet name="first">
+                                  <af:tree value="#{bindings.Process8.treeModel}"
+                                           var="node"
+                                           inlineStyle="width:100.0%; height:100%;"
+                                             binding="#{roleManipulation.processAreas}"
+                                             rendered="true"
+                                             selectionListener="#{roleManipulation.selectTreeData}" 
+                                             styleClass="width:100%;"
+                                              fetchSize="50" immediate="true"
+                                               contentDelivery="immediate"
+                                                   rowSelection="single" id="t5"
+                                           partialTriggers="::t13">
+                                   <f:facet name="nodeStamp">
+                      <af:group id="g3">
+                      <af:selectBooleanCheckbox rendered="#{node.processSelected!=null}"
+                                                                      id="sbc222"
+                                                                      immediate="true"
+                                                                      value="#{node.processSelected}"
+                                                                      binding="#{roleManipulation.processCheck}"
+                                                                      simple="true"
+                                                valueChangeListener="#{roleManipulation.processSelected}"
+                                                autoSubmit="true"/>
+                       <af:outputLabel value="#{node.processName}" id="ol13"
+                                        inlineStyle="font-weight:bold;"/>
+                        </af:group>
+                    </f:facet>
+                                  </af:tree>
+                                </f:facet>
+                                 <f:facet name="second">
+                                  <af:panelBox  id="pb12"
+                                               inlineStyle="width:600.0px; height:550.0px;">
+                                    <af:commandButton text="Grant / Revoke Access"
+                                                      id="btnGrantRevokeRoles345"
+                                                      action="#{roleManipulation.grantProcessAreaRoles}"
+                                                      partialTriggers="t13"
+                                                      immediate="true"/>
+                                 <h:panelGrid columns="2" id="pg0" >
+   <h:panelGrid columns="1" id="pg26" >                              
+   <af:table value="#{bindings.SubRole3.collectionModel}"
+                                            var="row"
+                                            rows="#{bindings.SubRole3.rangeSize}"
+                                            emptyText="#{bindings.SubRole3.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                            fetchSize="#{bindings.SubRole3.rangeSize}"
+                                            rowBandingInterval="0"
+                                             selectionListener="#{bindings.SubRole3.collectionModel.makeCurrent}"
+                                            rowSelection="single" id="t13"
+                                            binding="#{roleManipulation.processAreasTbl}"
+                                             inlineStyle="width:200.0px; height:450.0px;"
+                                              immediate="true"
+                                              contentDelivery="immediate"
+             partialTriggers="::btnGrantRevokeRoles345">
+                                 <af:column sortProperty="processSubAreaSelected"
+                                                 sortable="false" width="10"
+                                                 id="c45">
+                                             <af:selectBooleanCheckbox value="#{row.processAreaSelected}"
+                                                label="Label 1" id="sbc1"
+                                                binding="#{uploadClients.rowSelect}"
+                                                                       autoSubmit="true"
+                                                                       immediate="true"
+                                                                       valueChangeListener="#{roleManipulation.areaSelected}"/>
+                                              </af:column>   
+                                    <af:column sortProperty="processAreaCode"
+                                               sortable="true" visible="false"
+                                               headerText="Process Area Code"
+                                               id="c52">
+                                      <af:outputText value="#{row.processAreaCode}"
+                                                     id="ot50"/>
+                                    </af:column>
+                                    <af:column sortProperty="processArea"
+                                               sortable="true" width="180"
+                                               headerText="Process Area"
+                                               id="c46">
+                                      <af:outputText value="#{row.processArea}"
+                                                     id="ot47"/>
+                                    </af:column>
+                                    <af:column sortProperty="processRoleAreaCode"
+                                               sortable="true" visible="false"
+                                               headerText="Role Area Code"
+                                               id="c48">
+                                      <af:outputText value="#{row.processRoleAreaCode}"
+                                                     id="ot44"/>
+                                    </af:column>
+                                    <af:column sortProperty="roleProcessCode"
+                                               sortable="true" visible="false"
+                                               headerText="Process Code"
+                                               id="c51">
+                                      <af:outputText value="#{row.roleProcessCode}"
+                                                     id="ot49"/>
+                                    </af:column>
+                                    <af:column sortProperty="areaSubArea"
+                                               sortable="true" width="30" visible="false"
+                                               headerText="Area Sub Area"
+                                               id="c50">
+                                      <af:outputText value="#{row.areaSubArea}"
+                                                     id="ot46"/>
+                                    </af:column>
+                                    <af:column sortProperty="processCode"
+                                               sortable="true" visible="false"
+                                               headerText="Process Code"
+                                               id="c47">
+                                      <af:outputText value="#{row.processCode}"
+                                                     id="ot48"/>
+                                    </af:column>
+                                  </af:table>
+     </h:panelGrid>                            
+    <h:panelGrid columns="1" id="pg23">
+   <af:commandButton text="Grant / Revoke Access"
+                                                      id="btnGrantRevokeRoles34577"
+                                                      action="#{roleManipulation.grantRevokesUserRoles}"
+                                                      partialTriggers="t12 t13"/>
+                                    <af:table value="#{bindings.SubRole2.collectionModel}"
+                                              var="row"
+                                              rows="#{bindings.SubRole2.rangeSize}"
+                                              emptyText="#{bindings.SubRole2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.SubRole2.rangeSize}"
+                                              rowBandingInterval="0"
+                                              filterModel="#{bindings.SubRole2Query.queryDescriptor}"
+                                              queryListener="#{bindings.SubRole2Query.processQuery}"
+                                              filterVisible="true"
+                                              varStatus="vs"
+                                              inlineStyle="width:350.0px; height:420.0px;"
+                                              selectionListener="#{bindings.SubRole2.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t12"
+                                              styleClass="width:100%;"
+                                              immediate="true"
+                                              contentDelivery="immediate"
+                                              binding="#{roleManipulation.processSubArea}">
+                                          
+                                             <af:column sortProperty="processSubAreaSelected"
+                                                 sortable="false" width="10"
+                                                 id="c49">
+                                             <af:selectBooleanCheckbox value="#{row.processSubAreaSelected}"
+                                                label="Label 1" id="sbc2"
+                                                binding="#{uploadClients.rowChecked}"
+                                                                       autoSubmit="true"
+                                                                       immediate="true"
+                                                                       valueChangeListener="#{roleManipulation.subAreaSelected}"/>
+                                              </af:column>   
+                                      <af:column sortProperty="processRoleSubAreaCode"
+                                                 visible="false"
+                                                 filterable="true"
+                                                 sortable="true"
+                                                 headerText="#{bindings.SubRole2.hints.processRoleSubAreaCode.label}"
+                                                 id="c44">
+                                        <af:outputText value="#{row.processRoleSubAreaCode}"
+                                                       id="ot40"/>
+                                      </af:column>
+                                      <af:column sortProperty="processSubAreaCode"
+                                                 visible="false"
+                                                 filterable="true"
+                                                 sortable="true"
+                                                 headerText="#{bindings.SubRole2.hints.processSubAreaCode.label}"
+                                                 id="c43">
+                                        <af:outputText value="#{row.processSubAreaCode}"
+                                                       id="ot42"/>
+                                      </af:column>
+                                      <af:column sortProperty="processSubArea"
+                                                 sortable="true"
+                                                 headerText="Process Sub Area"
+                                                 id="c39">
+                                        <af:outputText value="#{row.processSubArea}"
+                                                       id="ot41"/>
+                                      </af:column>
+                                      <af:column sortProperty="processSubAreaType"
+                                               width="10" sortable="true" visible="false"
+                                                 headerText="#{bindings.SubRole2.hints.processSubAreaType.label}"
+                                                 id="c40">
+                                        <af:outputText value="#{row.processSubAreaType}"
+                                                       id="ot43"/>
+                                      </af:column>
+                                      <af:column sortProperty="processSubAreaDebitLimit"
+                                                 sortable="true"
+                                                 headerText="Debit" id="c42">
+                                        <af:inputText value="#{row.bindings.processSubAreaDebitLimit.inputValue}"
+                                                      label="Dr"
+                                                       visible='#{row.processSubAreaType=="A"}'
+                                                      required="#{bindings.SubRole2.hints.processSubAreaDebitLimit.mandatory}"
+                                                      columns="13"
+                                                      maximumLength="#{bindings.SubRole2.hints.processSubAreaDebitLimit.precision}"
+                                                      shortDesc="#{bindings.SubRole2.hints.processSubAreaDebitLimit.tooltip}"
+                                                      id="it18">
+                                          <f:validator binding="#{row.bindings.processSubAreaDebitLimit.validator}"/>
+                                        </af:inputText>
+                                      </af:column>
+                                      <af:column sortProperty="processSubAredCreditLimit"
+                                                 sortable="true"
+                                                 headerText="Credit" id="c41">
+                                        <af:inputText value="#{row.bindings.processSubAredCreditLimit.inputValue}"
+                                                      label="Cr"
+                                                       visible='#{row.processSubAreaType=="A"}'
+                                                      required="#{bindings.SubRole2.hints.processSubAredCreditLimit.mandatory}"
+                                                      columns="13"
+                                                      maximumLength="#{bindings.SubRole2.hints.processSubAredCreditLimit.precision}"
+                                                      shortDesc="#{bindings.SubRole2.hints.processSubAredCreditLimit.tooltip}"
+                                                      id="it19">
+                                          <f:validator binding="#{row.bindings.processSubAredCreditLimit.validator}"/>
+                                        </af:inputText>
+                                      </af:column>
+                                   
+                                    </af:table>
+</h:panelGrid>
+                                
+</h:panelGrid>
+
+                               
+                                  </af:panelBox>
+  </f:facet>
+                                </af:panelSplitter>
+                          </af:panelBox>
+                          </af:panelGroupLayout>
+                               
+                              
+
+                        </af:showDetailItem>
+                        
+                        <af:showDetailItem text="Role Details" id="tabRoleDetails"
+                                           binding="#{roleManipulation.tabRoleDetails}" >
+                          <af:panelGroupLayout id="pgl6">
+                          
+                      <af:panelBox text="PanelBox3" id="panelMainSysRoleDetails" 
+                                showHeader="never" inlineStyle="height:400.0px;"
+                                   binding="#{roleManipulation.panelMainSysRoleDetails}">
+                        <h:panelGrid columns="1" id="pg5">
+                            <af:outputLabel value="Role Details" id="ol3"
+                                            inlineStyle="font-weight:bold;"/>
+                          </h:panelGrid>
+                          <af:separator id="s3"/>
+                          
+                          <h:panelGrid columns="3" id="pg4">
+                            
+                            <af:commandButton text="Save"
+                                                  id="btnCreateUpdateSystemRole"                                                  
+                                                  icon="/images/save.gif"
+                                              action="#{roleManipulation.actionCreateUpdateSystemRole}"
+                                              binding="#{roleManipulation.btnCreateUpdateSystemRole}"/>
+                                              
+                            <af:commandButton text="Cancel" id="btnCancelSystemRole"
+                                              action="#{roleManipulation.actionCancelSystemRole}"/>                            
+                          </h:panelGrid>
+                          <af:separator id="s4"/>
+                          
+                        <h:panelGrid columns="4" id="pg8">
+                          <af:inputText label="Role Code : " 
+                                        id="txtSysRoleCode" 
+                                        visible="false" 
+                                        rendered="false"
+                                        binding="#{roleManipulation.txtSysRoleCode}"/>
+                                        
+                          <af:inputText label="System Role Code : " 
+                                        id="txtSysCode" 
+                                        visible="false" 
+                                        rendered="false"
+                                        binding="#{roleManipulation.txtSysCode}"/>
+                                        
+                          <af:inputText label="Role name : " 
+                                        id="txtSysRoleName" 
+                                        columns="20"
+                                        binding="#{roleManipulation.txtSysRoleName}"/>                  
+                                        
+                          <af:inputText label="Short Desc : " 
+                                        id="txtSysRoleShortDesc" 
+                                        columns="20"
+                                        binding="#{roleManipulation.txtSysRoleShortDesc}"/>
+                                        
+                          <af:inputDate label="Created Date : " 
+                                        id="txtSysRoleDateCreated" 
+                                        disabled="true"
+                                        binding="#{roleManipulation.txtSysRoleDateCreated}"/>
+                                        
+                          <af:selectOneChoice label="Status : " 
+                                            value="A"
+                                              id="txtSysRoleStatus"
+                                              binding="#{roleManipulation.txtSysRoleStatus}">
+                            <af:selectItem label="Active" value="A" id="si3"/>
+                            <af:selectItem label="Inactive" value="I" id="si2"/>
+                          </af:selectOneChoice>
+                        </h:panelGrid>
+                        
+                        
+                        
+                      </af:panelBox>
+                    
+                          </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        
+                        
+                        <af:showDetailItem text="Role SubAreas Approval Levels" id="sdi1"
+                                           binding="#{roleManipulation.roleAreaLevels}">
+                          <af:panelGroupLayout id="pgl8">
+                            <af:panelBox text="PanelBox8" id="pb3" showHeader="never">
+                            
+                              <af:panelSplitter id="ps3" styleClass="AFAuxiliaryStretchWidth" 
+                                                inlineStyle="height:600.0px;" 
+                                                splitterPosition="210">
+                              
+                                <f:facet name="first">
+                                
+                                <af:table value="#{bindings.SubRole.collectionModel}"
+                                      var="row"
+                                      rows="#{bindings.SubRole.rangeSize}"
+                                      emptyText="#{bindings.SubRole.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      fetchSize="#{bindings.SubRole.rangeSize}"
+                                      rowBandingInterval="0"
+                                      filterModel="#{bindings.SubRoleQuery.queryDescriptor}"
+                                      queryListener="#{bindings.SubRoleQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs"
+                                      selectionListener="#{roleManipulation.subAreaSelected}"
+                                      rowSelection="single" id="t3"
+                                      binding="#{roleManipulation.subAreaTab}"
+                                      inlineStyle="width:225px; height:400.0px;">
+                              <af:column sortProperty="processRoleSubAreaCode"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.SubRole.hints.processRoleSubAreaCode.label}"
+                                         id="c13" visible="false">
+                                <af:outputText value="#{row.processRoleSubAreaCode}"
+                                               id="ot12"/>
+                              </af:column>
+                              <af:column sortProperty="processSubAreaCode"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.SubRole.hints.processSubAreaCode.label}"
+                                         id="c15" visible="false">
+                                <af:outputText value="#{row.processSubAreaCode}"
+                                               id="ot10"/>
+                              </af:column>
+                              <af:column sortProperty="Sub Area"
+                                         filterable="false" sortable="true"
+                                         headerText="Sub Area"
+                                         id="c14" width="200">
+                                <af:outputText value="#{row.processSubArea}"
+                                               id="ot15"/>
+                              </af:column>
+                              <af:column sortProperty="processSubAreaType"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.SubRole.hints.processSubAreaType.label}"
+                                         id="c10" visible="false">
+                                <af:outputText value="#{row.processSubAreaType}"
+                                               id="ot11"/>
+                              </af:column>
+                              <af:column sortProperty="processAreaCode"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.SubRole.hints.processAreaCode.label}"
+                                         id="c6" visible="false">
+                                <af:outputText value="#{row.processAreaCode}"
+                                               id="ot16"/>
+                              </af:column>
+                              <af:column sortProperty="processCode"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.SubRole.hints.processCode.label}"
+                                         id="c11" visible="false">
+                                <af:outputText value="#{row.processCode}"
+                                               id="ot13"/>
+                              </af:column>
+                              <af:column sortProperty="processSubAreaShtDesc"
+                                         filterable="true" sortable="true"
+                                         headerText="#{bindings.SubRole.hints.processSubAreaShtDesc.label}"
+                                         id="c12" visible="false">
+                                <af:outputText value="#{row.processSubAreaShtDesc}"
+                                               id="ot14"/>
+                              </af:column>
+                            </af:table>
+                                
+                                </f:facet>
+                                
+                                <f:facet name="second">
+                                
+                                
+                                <af:panelTabbed id="pt2" styleClass="AFAuxiliaryStretchWidth">
+                                
+                                  <af:showDetailItem text="Authorization Levels"
+                                                     id="sdi2">
+                                    <af:panelGroupLayout id="pgl9">
+                                      <af:panelBox text="PanelBox9" id="pb5" showHeader="never">
+                                      
+                                      <h:panelGrid columns="1" id="pg11">
+                              <h:panelGrid columns="3" id="pg10">
+                                <af:commandButton text="Add"
+                                                  id="cb1"
+                                                  icon="/images/create.gif"
+                                                  action="#{roleManipulation.adLevel}"/>
+                                <af:commandButton text="Edit"
+                                                  id="cb9"
+                                                  icon="/images/update.gif"
+                                                  action="#{roleManipulation.editlevel}"/>
+                                <af:commandButton text="Delete"
+                                                  id="cb10"
+                                                  icon="/images/delete.gif"
+                                                  action="#{roleManipulation.deleteLevel}"/>
+                              </h:panelGrid>
+                              
+                              <af:table value="#{bindings.SubRole1.collectionModel}"
+                                        var="row"
+                                        rows="#{bindings.SubRole1.rangeSize}"
+                                        emptyText="#{bindings.SubRole1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                        fetchSize="#{bindings.SubRole1.rangeSize}"
+                                        rowBandingInterval="0"
+                                        filterModel="#{bindings.SubRole1Query.queryDescriptor}"
+                                        queryListener="#{bindings.SubRole1Query.processQuery}"
+                                        filterVisible="false" varStatus="vs"
+                                        rowSelection="single" id="t4"
+                                        binding="#{roleManipulation.subAreaLevels}">
+                                <af:column sortProperty="tqualCode"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SubRole1.hints.tqualCode.label}"
+                                           id="c20" visible="false">
+                                  <af:outputText value="#{row.tqualCode}"
+                                                 id="ot17"/>
+                                </af:column>
+                                <af:column sortProperty="sprsaCode"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SubRole1.hints.sprsaCode.label}"
+                                           id="c21" visible="false">
+                                  <af:outputText value="#{row.sprsaCode}"
+                                                 id="ot19"/>
+                                </af:column>
+                                <af:column sortProperty="levelId"
+                                           filterable="true" sortable="true"
+                                           headerText="Level" id="c17"
+                                           width="50">
+                                  <af:outputText value="#{row.levelId}"
+                                                 id="ot20"/>
+                                </af:column>
+                                <af:column sortProperty="srlsCode"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SubRole1.hints.srlsCode.label}"
+                                           id="c16" visible="false">
+                                  <af:outputText value="#{row.srlsCode}"
+                                                 id="ot21"/>
+                                </af:column>
+                                <af:column sortProperty="srlsName"
+                                           filterable="true" sortable="true"
+                                           headerText="Role" id="c18"
+                                           width="200">
+                                  <af:outputText value="#{row.srlsName}"
+                                                 id="ot22"/>
+                                </af:column>
+                                <af:column sortProperty="subArea"
+                                           filterable="true" sortable="true"
+                                           headerText="#{bindings.SubRole1.hints.subArea.label}"
+                                           id="c19" visible="false">
+                                  <af:outputText value="#{row.subArea}"
+                                                 id="ot18"/>
+                                </af:column>
+                              </af:table>
+                            </h:panelGrid>
+                                        
+                                      </af:panelBox>
+                                    </af:panelGroupLayout>
+                                  </af:showDetailItem>
+                                                     
+                                  <af:showDetailItem text="Limits and Levels"
+                                                     id="sdi3">
+                                      <af:panelGroupLayout id="pgl10">
+                                        <af:panelBox text="PanelBox10" id="pb6" showHeader="never">
+                                        
+                                        <h:panelGrid columns="1" id="pg9">
+                                          <af:outputLabel value="Authorization Limits"
+                                                          id="ol6"
+                                                          inlineStyle="font-weight:bold;"/>
+                                        </h:panelGrid>
+                                        <af:separator id="s5"/>
+                                        
+                                        <h:panelGrid columns="3" id="pg17">
+                    
+                                        <af:commandButton text="New"
+                                                          id="cb8" 
+                                                          icon="/images/create.gif"
+                                                          action="#{roleManipulation.actionNewSubAreaLimit}"/>
+                                                          
+                                        <af:commandButton text="Edit" 
+                                                          id="cb16" 
+                                                          icon="/images/update.gif"
+                                                          action="#{roleManipulation.actionEditSubAreaLimit}"/>
+                                                          
+                                        <af:commandButton text="Delete" 
+                                                          id="cb17" 
+                                                          icon="/images/delete.gif"
+                                                          action="#{roleManipulation.actionDeleteSubAreaLimit}"/>
+                                      </h:panelGrid>
+                                      <af:separator id="s6"/>
+                                      
+                                          <af:panelCollection id="pc4" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:200.0px;">
+                                            <af:table value="#{bindings.SysProcessSubAreaLimit.collectionModel}"
+                                                      var="row"
+                                                      rows="#{bindings.SysProcessSubAreaLimit.rangeSize}"
+                                                      emptyText="#{bindings.SysProcessSubAreaLimit.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      fetchSize="#{bindings.SysProcessSubAreaLimit.rangeSize}"
+                                                      rowBandingInterval="1"
+                                                      filterModel="#{bindings.SysProcessSubAreaLimitQuery.queryDescriptor}"
+                                                      queryListener="#{bindings.SysProcessSubAreaLimitQuery.processQuery}"
+                                                      filterVisible="false"
+                                                      varStatus="vs"
+                                                      selectionListener="#{roleManipulation.tblSubAreaLimitsListener}"
+                                                      rowSelection="single"
+                                                      id="t7"
+                                                      binding="#{roleManipulation.tblSubAreaLimits}">
+                                              <af:column sortProperty="spsatNoOfLevel"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="No. Of. Levels"
+                                                         id="c28">
+                                                <af:outputText value="#{row.spsatNoOfLevel}"
+                                                               id="ot25"/>
+                                              </af:column>
+                                              <af:column sortProperty="spsatMinLimit"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Min Limit"
+                                                         id="c25" width="200">
+                                                <af:outputText value="#{row.spsatMinLimit}"
+                                                               id="ot26"/>
+                                              </af:column>
+                                              <af:column sortProperty="spsatMaxLimit"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Max Limit"
+                                                         id="c26" width="200">
+                                                <af:outputText value="#{row.spsatMaxLimit}"
+                                                               id="ot27"/>
+                                              </af:column>
+                                            </af:table>
+                                          </af:panelCollection>
+                                          
+                                          <af:spacer width="10" height="20"
+                                                     id="s1"/>
+                                                     
+                                          <h:panelGrid columns="1" id="pg16">
+                                            <af:outputLabel value="Authorization Levels"
+                                                            id="ol8"
+                                                            inlineStyle="font-weight:bold;"/>
+                                          </h:panelGrid>
+                                          <af:separator id="s2"/>
+                                          
+                                          <h:panelGrid columns="3" id="pg18">
+                    
+                                          <af:commandButton text="New"
+                                                            id="cb18" 
+                                                            icon="/images/create.gif"
+                                                            action="#{roleManipulation.actionNewSubAreaLevel}"/>
+                                                            
+                                          <af:commandButton text="Edit" 
+                                                            id="cb19" 
+                                                            icon="/images/update.gif"
+                                                            action="#{roleManipulation.actionEditSubAreaLevel}"/>
+                                                            
+                                          <af:commandButton text="Delete" 
+                                                            id="cb20" 
+                                                            icon="/images/delete.gif"
+                                                            action="#{roleManipulation.actionDeleteSubAreaLevel}"/>
+                                        </h:panelGrid>
+                                        <af:separator id="s7"/>
+                                        
+                                        <af:panelCollection id="pc5" styleClass="AFAuxiliaryStretchWidth" inlineStyle="height:200.0px;">
+                                            <af:table value="#{bindings.SysProcessSubAreaLevel.collectionModel}"
+                                                      var="row"
+                                                      rows="#{bindings.SysProcessSubAreaLevel.rangeSize}"
+                                                      emptyText="#{bindings.SysProcessSubAreaLevel.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      fetchSize="#{bindings.SysProcessSubAreaLevel.rangeSize}"
+                                                      rowBandingInterval="1"
+                                                      filterModel="#{bindings.SysProcessSubAreaLevelQuery.queryDescriptor}"
+                                                      queryListener="#{bindings.SysProcessSubAreaLevelQuery.processQuery}"
+                                                      filterVisible="false"
+                                                      varStatus="vs"
+                                                      rowSelection="single"
+                                                      id="t8"
+                                                      binding="#{roleManipulation.tblSubAreaLevels}">
+                                              <af:column sortProperty="spsalLevel"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Level"
+                                                         id="c29">
+                                                <af:outputText value="#{row.spsalLevel}"
+                                                               id="ot29"/>
+                                              </af:column>
+                                              <af:column sortProperty="spsalApproverType"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Approver Type"
+                                                         id="c27" width="200">
+                                                <af:outputText value="#{row.spsalApproverType}"
+                                                               id="ot30"/>
+                                              </af:column>
+                                              <af:column sortProperty="userName"
+                                                         filterable="true"
+                                                         sortable="true"
+                                                         headerText="Approver "
+                                                         id="c32" width="200">
+                                                <af:outputText value="#{row.userName}"
+                                                               id="ot32"/>
+                                              </af:column>
+                                            </af:table>
+                                          </af:panelCollection>
+                                        
+                                        </af:panelBox>
+                                      </af:panelGroupLayout>
+                                    </af:showDetailItem>
+                                                     
+                                </af:panelTabbed>
+                                
+                                
+                                </f:facet>
+                                
+                              </af:panelSplitter>
+                         
+                        
+                        </af:panelBox>
+                        </af:panelGroupLayout>
+                        </af:showDetailItem>
+                      </af:panelTabbed>
+                      </af:panelGroupLayout>
+                  </f:facet>
+                  
+                </af:panelSplitter>
+                
+                
+                <af:panelBox text="PanelBox4" id="pb2" rendered="false">
+                  
+                  
+                
+                <af:spacer width="10" height="10" id="s23"/>
+                <h:panelGrid columns="3" id="pg3">
+                  <af:outputLabel value="System" id="ol7"/>
+                  <af:inputText label="Label 1" id="it3" simple="true"
+                                disabled="true"
+                                binding="#{roleManipulation.sysVal}"/>
+                  <af:commandButton id="cb2" icon="/images/dropdown.gif" shortDesc="Roles">
+                    <af:showPopupBehavior popupId="p1"/>
+                  </af:commandButton>
+                </h:panelGrid>
+                </af:panelBox>
+                
+                <af:spacer width="10" height="30" id="s24"/>
+                <af:outputLabel value="Process Role Definition" id="ol4"
+                                inlineStyle="font-weight:bold;" rendered="false"/>
+                <af:panelCollection id="pc1"
+                                    inlineStyle="width:90%; height:150.0px;" rendered="false">
+                  <f:facet name="menus">
+                    <af:menu text="Role Manipulation" id="m1s">
+                      <af:commandMenuItem text="Create Role" id="cmi1">
+                        <af:showPopupBehavior popupId="p2"/>
+                      </af:commandMenuItem>
+                      <af:commandMenuItem text="Edit Role" id="cmi2"
+                                          action="#{roleManipulation.editRole}"/>
+                      <af:commandMenuItem text="Drop Role" id="cmi3"
+                                          action="#{roleManipulation.DropRole}"/>
+                      <af:commandMenuItem text="Restore Role" id="cmi4"
+                                          action="#{roleManipulation.RestoreRole}"/>
+                    </af:menu>
+                  </f:facet>
+                  
+                  <af:popup id="p2">
+                    <af:dialog id="d2" type="none" title="Role Details">
+                      <af:panelGroupLayout id="pgl1">
+                        <h:panelGrid columns="2" id="pg1">
+                          <af:outputLabel value="Role Name" id="ol10"/>
+                          <af:inputText label="Label 2" id="it4" simple="true"
+                                        binding="#{roleManipulation.sysRoleName}"/>
+                          <af:outputLabel value="Role Sht Desc" id="ol11"/>
+                          <af:inputText label="Label 3" id="it5" simple="true"
+                                        binding="#{roleManipulation.sysRoleShtDesc}"/>
+                          <af:outputLabel value="Process" id="ol12"
+                                          rendered="false"/>
+                          <af:selectOneChoice value="#{bindings.processCode.inputValue}"
+                                              label="#{bindings.processCode.label}"
+                                              required="#{bindings.processCode.hints.mandatory}"
+                                              shortDesc="#{bindings.processCode.hints.tooltip}"
+                                              id="soc1" simple="true"
+                                              binding="#{roleManipulation.sysProcessVal}"
+                                              rendered="false">
+                            <f:selectItems value="#{bindings.processCode.items}"
+                                           id="si1"/>
+                          </af:selectOneChoice>
+                          <h:panelGrid columns="2" id="pg6">
+                            <af:commandButton text="Create Role" id="cb5"
+                                              action="#{roleManipulation.createRole}"
+                                              binding="#{roleManipulation.saveBtn}"/>
+                            <af:commandButton text="Edit Role" id="cb7"
+                                              action="#{roleManipulation.saveEditRole}"
+                                              binding="#{roleManipulation.editBtn}"
+                                              rendered="false"/>
+                            <af:commandButton text="Cancel" id="cb6"/>
+                          </h:panelGrid>
+                        </h:panelGrid>
+                      </af:panelGroupLayout>
+                    </af:dialog>
+                  </af:popup>
+                  
+                  <af:table value="#{bindings.Role.collectionModel}" var="row"
+                            rows="#{bindings.Role.rangeSize}"
+                            emptyText="#{bindings.Role.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.Role.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.RoleQuery.queryDescriptor}"
+                            queryListener="#{bindings.RoleQuery.processQuery}"
+                            varStatus="vs" rowSelection="single" id="t1"
+                            binding="#{roleManipulation.sysRoles}"
+                            selectionListener="#{roleManipulation.rolesSelected}">
+                    <af:column sortProperty="roleCode" filterable="true"
+                               sortable="true"
+                               headerText="#{bindings.Role.hints.roleCode.label}"
+                               id="c3" visible="false">
+                      <af:outputText value="#{row.roleCode}" id="ot3"/>
+                    </af:column>
+                    <af:column sortProperty="roleShtDesc" filterable="true"
+                               sortable="true" headerText="Sht Desc" id="c2"
+                               visible="false">
+                      <af:outputText value="#{row.roleShtDesc}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="roleName" filterable="true"
+                               sortable="true" headerText="Name" id="c5"
+                               width="300">
+                      <af:outputText value="#{row.roleName}" id="ot2"/>
+                    </af:column>
+                    <af:column sortProperty="roleCrtDate" filterable="true"
+                               sortable="true" headerText="Created Date" id="c1"
+                               width="200">
+                      <af:outputText value="#{row.roleCrtDate}" id="ot1">
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="roleStatus" filterable="true"
+                               sortable="true" headerText="Status" id="c4">
+                      <af:outputText value="#{row.roleStatus}" id="ot5"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+                
+              </af:panelBox>
+            </af:panelGroupLayout>
+            
+            <af:popup id="p1">
+                  <af:dialog id="d1s" type="none">
+                    <af:panelGroupLayout id="pgl2">
+                      <h:panelGrid columns="1" id="pg24">
+                        <af:table var="row" rowBandingInterval="0" id="t2"
+                                  value="#{bindings.User.collectionModel}"
+                                  rows="#{bindings.User.rangeSize}"
+                                  emptyText="#{bindings.User.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  fetchSize="#{bindings.User.rangeSize}"
+                                  filterModel="#{bindings.UserQuery.queryDescriptor}"
+                                  queryListener="#{bindings.UserQuery.processQuery}"
+                                  filterVisible="true" varStatus="vs"
+                                  rowSelection="single"
+                                  binding="#{roleManipulation.systems}">
+                          <af:column sortProperty="sysCode" filterable="true"
+                                     sortable="true"
+                                     headerText="#{bindings.User.hints.sysCode.label}"
+                                     id="c9" visible="false">
+                            <af:outputText value="#{row.sysCode}" id="ot8"/>
+                          </af:column>
+                          <af:column sortProperty="sysShtDesc" filterable="true"
+                                     sortable="true" headerText="Sys Sht Desc"
+                                     id="c7">
+                            <af:outputText value="#{row.sysShtDesc}" id="ot9"/>
+                          </af:column>
+                          <af:column sortProperty="sysName" filterable="true"
+                                     sortable="true" headerText="Sys Name"
+                                     id="c8" width="200">
+                            <af:outputText value="#{row.sysName}" id="ot7"/>
+                          </af:column>
+                        </af:table>
+                        <h:panelGrid columns="2" id="pg25">
+                          <af:commandButton text="OK" id="cb3"
+                                            action="#{roleManipulation.systemSelected}"/>
+                          <af:commandButton text="Cancel" id="cb4"/>
+                        </h:panelGrid>
+                      </h:panelGrid>
+                    </af:panelGroupLayout>
+                  </af:dialog>
+                </af:popup>
+                
+                
+                                <af:popup id="authLvl">
+                                  <af:dialog id="d3" type="none"
+                                             title="System Areas Levels">
+                                    <af:panelBox text="PanelBox6" id="pb1"
+                                                 showHeader="never">
+                                      <f:facet name="toolbar"/>
+                                      <h:panelGrid columns="2" id="pg12">
+                                        <af:outputLabel value="Id"
+                                                        id="ol1"
+                                                        visible="false"/>
+                                        <af:inputNumberSpinbox label="Label 1"
+                                                               id="ins1"
+                                                               binding="#{roleManipulation.lvlId}"
+                                                               visible="false"/>
+                                        <af:outputLabel value="Level"
+                                                        id="ol2"/>
+                                        <af:inputNumberSpinbox label="Label 2"
+                                                               id="ins2"
+                                                               binding="#{roleManipulation.lvlNo}"
+                                                               disabled="true"
+                                                               simple="true"/>
+                                        <af:outputLabel value="Role"
+                                                        id="ol5"/>
+                                        <h:panelGrid columns="2" id="pg14">
+                                          <af:inputText label="Label 4"
+                                                        id="it2"
+                                                        binding="#{roleManipulation.lvlDesc}"
+                                                        simple="true"
+                                                        disabled="true"/>
+                                          <af:commandButton
+                                                            id="cb11"
+                                                            partialSubmit="true"
+                                                            icon="/images/dropdown.gif"
+                                                            action="#{roleManipulation.launchRoles}"/>
+                                        </h:panelGrid>
+                                      </h:panelGrid>
+                                      <h:panelGrid columns="2" id="pg13">
+                                        <af:commandButton text="Save"
+                                                          id="cb12"
+                                                          partialSubmit="true"
+                                                          action="#{roleManipulation.saveAuthLvl}"/>
+                                        <af:commandButton text="Cancel"
+                                                          id="cb13"/>
+                                      </h:panelGrid>
+                                    </af:panelBox>
+                                  </af:dialog>
+                                </af:popup>
+                                
+                                <af:popup id="sysRoles">
+                                  <af:dialog id="d4" type="none"
+                                             title="System Roles">
+                                    <af:panelBox text="PanelBox7" id="pb4"
+                                                 showHeader="never">
+                                      <f:facet name="toolbar"/>
+                                      <af:table value="#{bindings.Role1.collectionModel}"
+                                                var="row"
+                                                rows="#{bindings.Role1.rangeSize}"
+                                                emptyText="#{bindings.Role1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                fetchSize="#{bindings.Role1.rangeSize}"
+                                                rowBandingInterval="0"
+                                                filterModel="#{bindings.RoleQuery.queryDescriptor}"
+                                                queryListener="#{bindings.RoleQuery.processQuery}"
+                                                filterVisible="true"
+                                                varStatus="vs"
+                                                selectionListener="#{bindings.Role1.collectionModel.makeCurrent}"
+                                                rowSelection="single" id="t6"
+                                                binding="#{roleManipulation.sysAuthRoles}">
+                                        <af:column sortProperty="roleCode"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="#{bindings.Role1.hints.roleCode.label}"
+                                                   id="c23" visible="false">
+                                          <af:outputText value="#{row.roleCode}"
+                                                         id="ot23"/>
+                                        </af:column>
+                                        <af:column sortProperty="roleName"
+                                                   filterable="true"
+                                                   sortable="true"
+                                                   headerText="Role" id="c22"
+                                                   width="200">
+                                          <af:outputText value="#{row.roleName}"
+                                                         id="ot24"/>
+                                        </af:column>
+                                      </af:table>
+                                      <h:panelGrid columns="2" id="pg15">
+                                        <af:commandButton text="Save"
+                                                          id="cb14"
+                                                          action="#{roleManipulation.sysRoleSelected}"
+                                                          partialSubmit="true"/>
+                                        <af:commandButton text="Cancel"
+                                                          id="cb15"/>
+                                      </h:panelGrid>
+                                    </af:panelBox>
+                                  </af:dialog>
+                                </af:popup>
+                                
+            <af:popup id="subAreaLimit">
+              <af:dialog id="d5" title="SubArea Limit Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox11" id="pb7" showHeader="never">
+                  <af:panelFormLayout id="pfl1">
+                  
+                  <af:inputText label="Code : " id="it8"
+                                binding="#{roleManipulation.txtSpsatCode}" 
+                                visible="false"/>
+                    
+                    <af:inputText label="SubArea Code : " id="it9"
+                                  binding="#{roleManipulation.txtSpsatSprsaCode}" 
+                                  visible="false"/>
+                    
+                    <af:inputNumberSpinbox label="No. of Level : " id="it10"
+                                           binding="#{roleManipulation.txtSpsatNoOfLevel}" 
+                                           showRequired="true"/>
+                    
+                    <af:inputNumberSpinbox label="Min Limit : " id="ins3"
+                                           binding="#{roleManipulation.txtSpsatMinLimit}"
+                                           showRequired="true"/>
+                    
+                    <af:inputNumberSpinbox label="Max Limit : " id="ins4"
+                                           binding="#{roleManipulation.txtSpsatMaxLimit}"
+                                           showRequired="true"/>
+                    
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg19">
+                    <af:commandButton text="Save" id="cb21"
+                                      binding="#{roleManipulation.btnSaveUpdateSubAreaLimit}"
+                                      action="#{roleManipulation.actionSaveUpdateSubAreaLimit}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb22"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="subAreaLevel">
+              <af:dialog id="d6" title="SubArea Level Definition" type="none"
+                         inlineStyle="width:380.0px;">
+                <af:panelBox text="PanelBox12" id="pb8" showHeader="never"
+                             binding="#{roleManipulation.panelSubAreaLevel}">
+                  <af:panelFormLayout id="pfl2">
+                  
+                    <af:inputText label="Code : " id="it11"
+                                  binding="#{roleManipulation.txtSpsalCode}" 
+                                  visible="false"/>
+                    
+                    <af:inputText label="SubArea Code : " id="it12"
+                                  binding="#{roleManipulation.txtSpsalSprsaCode}" 
+                                  visible="false"/>
+                    
+                    <af:inputText label="SubArea Limit Code : " id="it13"
+                                  binding="#{roleManipulation.txtSpsalSpsatCode}" 
+                                  visible="false"
+                                  showRequired="true"/>
+                    
+                    <af:inputNumberSpinbox label="Level : " id="ins5"
+                                           binding="#{roleManipulation.txtSpsalLevel}"
+                                           showRequired="true"
+                                           autoSubmit="true"/>
+                                  
+                    <af:selectOneChoice label="Approver Type : " value="POST"
+                                        id="soc2"
+                                        binding="#{roleManipulation.txtSpsalApproverType}" 
+                                        unselectedLabel="- Select Type -" 
+                                        showRequired="true" autoSubmit="true"
+                                        valueChangeListener="#{roleManipulation.approverTypeChangeListener}">
+                      <af:selectItem label="POST" value="POST" id="si7"/>
+                      <af:selectItem label="RANK" value="RANK" id="si6"/>
+                      <af:selectItem label="USER" value="USER" id="si5"/>
+                      <af:selectItem label="USER GROUP" value="UGRP" id="si4"/>
+                    </af:selectOneChoice>
+                    
+                    <af:inputText label="Approver Id : " id="it15"
+                                  binding="#{roleManipulation.txtSpsalApproverId}"
+                                  showRequired="true" visible="false"/>
+                                  
+                    <af:panelLabelAndMessage label="Approver Name : " id="plamUser"
+                                             binding="#{roleManipulation.plamUser}" 
+                                             visible="false">
+                      <af:inputText label="Approver Name : " id="it14" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{roleManipulation.txtUsrApproverName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" 
+                                        id="cb25" 
+                                        partialSubmit="true"
+                                        action="#{roleManipulation.actionShowUsersByUser}" />
+                    </af:panelLabelAndMessage>
+                                  
+                    <af:panelLabelAndMessage label="User Group : " id="plamUserGroup"
+                                             binding="#{roleManipulation.plamUserGroup}"
+                                             visible="false">
+                      <af:inputText label="Approver Name : " id="it16" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{roleManipulation.txtUsrGrpApproverName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" 
+                                        id="cb26" 
+                                        partialSubmit="true"
+                                        action="#{roleManipulation.actionShowUsersByGroup}" />
+                    </af:panelLabelAndMessage>
+                    
+                    <af:panelLabelAndMessage label="System Post : "
+                                             id="plamSysPost"
+                                             binding="#{roleManipulation.plamSysPost}"
+                                             visible="false">
+                      <af:inputText label="Approver Name : " id="it17" 
+                                    simple="true" 
+                                    disabled="true"
+                                    binding="#{roleManipulation.txtSysPostApproverName}"/>
+                      <af:commandButton icon="/images/dropdown.gif" 
+                                        id="cb27" 
+                                        partialSubmit="true"
+                                        action="#{roleManipulation.actionShowSysPosts}" />
+                    </af:panelLabelAndMessage>
+                    
+                  </af:panelFormLayout>
+                  
+                  <h:panelGrid columns="2" id="pg20">
+                    <af:commandButton text="Save" id="cb23"
+                                      binding="#{roleManipulation.btnSaveUpdateSubAreaLevel}"
+                                      action="#{roleManipulation.actionSaveUpdateSubAreaLevel}" 
+                                      partialSubmit="true"/>
+                    <af:commandButton text="Cancel" id="cb24"/>
+                  </h:panelGrid>
+                  
+                </af:panelBox>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="usersByGroupPop">
+              <af:dialog id="d7" title="User Group List" type="none" 
+                         inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl11">
+                  <af:panelBox text="PanelBox4" id="pb9" showHeader="never">
+                    <af:panelCollection id="pc6" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.UserObj.collectionModel}"
+                                var="row" rows="#{bindings.UserObj.rangeSize}"
+                                emptyText="#{bindings.UserObj.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.UserObj.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.UserObjQuery.queryDescriptor}"
+                                queryListener="#{bindings.UserObjQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" 
+                                id="t9"
+                                binding="#{roleManipulation.tblUserGroups}">
+                        <af:column sortProperty="usrCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c30">
+                          <af:outputText value="#{row.usrCode}" id="ot31"/>
+                        </af:column>
+                        <af:column sortProperty="usrUsername" filterable="true"
+                                   sortable="true" headerText="Username"
+                                   id="c24">
+                          <af:outputText value="#{row.usrUsername}" id="ot28"/>
+                        </af:column>
+                        <af:column sortProperty="usrName" filterable="true"
+                                   sortable="true" headerText="Name" id="c31" 
+                                   width="200">
+                          <af:outputText value="#{row.usrName}" id="ot33"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+					
+                    <h:panelGrid columns="2" id="pg30">
+                      <af:commandButton text="Ok" id="btnAcceptUserGroup"
+                                        action="#{roleManipulation.actionAcceptUserGroup}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelUserGroup"/>
+                    </h:panelGrid>
+					
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="usersByUserTypePop">
+              <af:dialog id="d8" title="Users List" type="none" inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl12">
+                  <af:panelBox text="PanelBox4" id="pb10" showHeader="never">
+                    <af:panelCollection id="pc7" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.UserObj1.collectionModel}"
+                                var="row" rows="#{bindings.UserObj1.rangeSize}"
+                                emptyText="#{bindings.UserObj1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.UserObj1.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.UserObj1Query.queryDescriptor}"
+                                queryListener="#{bindings.UserObj1Query.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" 
+                                id="t10"
+                                binding="#{roleManipulation.tblUsersPop}">
+                        <af:column sortProperty="usrCode" filterable="false"
+                                   sortable="true" headerText="Code" id="c34">
+                          <af:outputText value="#{row.usrCode}" id="ot35"/>
+                        </af:column>
+                        <af:column sortProperty="usrUsername" filterable="true"
+                                   sortable="true" headerText="Username"
+                                   id="c35">
+                          <af:outputText value="#{row.usrUsername}" id="ot36"/>
+                        </af:column>
+                        <af:column sortProperty="usrName" filterable="true"
+                                   sortable="true" headerText="Name" id="c33" 
+                                   width="200">
+                          <af:outputText value="#{row.usrName}" id="ot34"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+					
+                    <h:panelGrid columns="2" id="pg21">
+                      <af:commandButton text="Ok" id="btnAcceptUser"
+                                        action="#{roleManipulation.actionAcceptUser}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelUser"/>
+                    </h:panelGrid>
+					
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+            <af:popup id="systemPostsPop">
+              <af:dialog id="d9" title="System Posts List" type="none" inlineStyle="width:400.0px;">
+                <af:panelGroupLayout id="pgl13">
+                  <af:panelBox text="PanelBox4" id="pb11" showHeader="never">
+                    <af:panelCollection id="pc8" styleClass="AFAuxiliaryStretchWidth">
+                      <af:table value="#{bindings.SystemPost.collectionModel}"
+                                var="row"
+                                rows="#{bindings.SystemPost.rangeSize}"
+                                emptyText="#{bindings.SystemPost.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.SystemPost.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.SystemPostQuery.queryDescriptor}"
+                                queryListener="#{bindings.SystemPostQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                rowSelection="single" 
+                                id="t11"
+                                binding="#{roleManipulation.tblSystemPostsPop}">
+                        <af:column sortProperty="spostCode" filterable="true"
+                                   sortable="true" headerText="Code" id="c36">
+                          <af:outputText value="#{row.spostCode}" id="ot37"/>
+                        </af:column>
+                        <af:column sortProperty="spostShtDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c37">
+                          <af:outputText value="#{row.spostShtDesc}" id="ot38"/>
+                        </af:column>
+                        <af:column sortProperty="spostDesc" filterable="true"
+                                   sortable="true" headerText="Description"
+                                   id="c38" width="200">
+                          <af:outputText value="#{row.spostDesc}" id="ot39"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+					
+                    <h:panelGrid columns="2" id="pg22">
+                      <af:commandButton text="Ok" id="btnAcceptSystemPost"
+                                        action="#{roleManipulation.actionAcceptSystemPost}" 
+                                        partialSubmit="true"/>
+                      <af:commandButton text="Cancel" id="btnCancelSystemPost"/>
+                    </h:panelGrid>
+					
+                  </af:panelBox>
+                </af:panelGroupLayout>
+              </af:dialog>
+            </af:popup>
+            
+              <af:popup id="confirmDeleteRole">
+              <af:dialog id="d13" title="Confirm Drop Action" type="yesNo"
+                         dialogListener="#{roleManipulation.actionConfirmDropRole}">
+                <af:panelFormLayout id="pfl6" inlineStyle="width:300.0px;">
+                  <af:outputText value=" Are you sure you want to DROP this record?"
+                                 id="ot52"
+                                />
+                </af:panelFormLayout>
+              </af:dialog>
+            </af:popup>
+          </af:group>
+        </f:facet>
+     
+    </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>
+

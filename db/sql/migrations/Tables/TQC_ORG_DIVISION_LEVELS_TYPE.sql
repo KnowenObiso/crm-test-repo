@@ -1,0 +1,35 @@
+--
+-- TQC_ORG_DIVISION_LEVELS_TYPE  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_ORG_DIVISION_LEVELS_TYPE
+(
+  DLT_CODE      VARCHAR2(5 BYTE)                NOT NULL,
+  DLT_SYS_CODE  NUMBER(8),
+  DLT_DESC      VARCHAR2(25 BYTE)               NOT NULL,
+  DLT_ACT_CODE  NUMBER,
+  DLT_CODE_VAL  NUMBER,
+  DLT_TYPE      VARCHAR2(5 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;
+
+COMMENT ON TABLE TQ_CRM.TQC_ORG_DIVISION_LEVELS_TYPE IS 'For various hierarchies types used by TurnQuest. E.g. Marketers Hierarchy, Inhouse Agents hierarchy etc.';
+
+COMMENT ON COLUMN TQ_CRM.TQC_ORG_DIVISION_LEVELS_TYPE.DLT_CODE IS 'Short Description';
+
+COMMENT ON COLUMN TQ_CRM.TQC_ORG_DIVISION_LEVELS_TYPE.DLT_DESC IS 'Description';

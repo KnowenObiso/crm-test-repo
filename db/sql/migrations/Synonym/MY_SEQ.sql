@@ -1,0 +1,4 @@
+--
+-- MY_SEQ  (Synonym) 
+--
+CREATE PUBLIC SYNONYM MY_SEQ FOR TQ_CRM.MY_SEQ;

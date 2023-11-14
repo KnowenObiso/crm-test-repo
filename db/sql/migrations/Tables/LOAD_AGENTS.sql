@@ -1,0 +1,31 @@
+--
+-- LOAD_AGENTS  (Table) 
+--
+CREATE TABLE TQ_CRM.LOAD_AGENTS
+(
+  AGENTNAME    VARCHAR2(30 BYTE),
+  AGTTYPE      VARCHAR2(15 BYTE),
+  ACCOUNT      VARCHAR2(15 BYTE),
+  CODE         NUMBER(15),
+  ADDR1        VARCHAR2(30 BYTE),
+  BOX          VARCHAR2(15 BYTE),
+  TOWN         VARCHAR2(30 BYTE),
+  A_TWN_CODE   NUMBER(15),
+  A_ACT_CODE   NUMBER(15),
+  A_AGNT_CODE  NUMBER(15)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          192K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

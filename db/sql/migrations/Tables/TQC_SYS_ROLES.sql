@@ -1,0 +1,31 @@
+--
+-- TQC_SYS_ROLES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SYS_ROLES
+(
+  SRLS_CODE           NUMBER(8)                 NOT NULL,
+  SRLS_SYS_CODE       NUMBER(8)                 NOT NULL,
+  SRLS_NAME           VARCHAR2(100 BYTE),
+  SRLS_CRT_DATE       DATE,
+  SRLS_SHT_DESC       VARCHAR2(50 BYTE)         NOT NULL,
+  SRLS_STATUS         VARCHAR2(1 BYTE)          NOT NULL,
+  SRLS_VISIBLE        VARCHAR2(1 BYTE)          DEFAULT 'Y',
+  SRLS_AUTHORIZED     VARCHAR2(1 BYTE),
+  SRLS_CREATED_BY     VARCHAR2(50 BYTE),
+  SRLS_AUTHORIZED_BY  VARCHAR2(50 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,25 @@
+--
+-- TQC_ERRORS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_ERRORS
+(
+  GERROR_CODE    NUMBER(15),
+  GERROR_MODULE  VARCHAR2(15 BYTE),
+  GERROR_OBJECT  VARCHAR2(75 BYTE),
+  GERROR_DESC    VARCHAR2(400 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          12M
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

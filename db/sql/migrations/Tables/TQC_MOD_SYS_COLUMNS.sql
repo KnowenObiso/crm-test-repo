@@ -1,0 +1,28 @@
+--
+-- TQC_MOD_SYS_COLUMNS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_MOD_SYS_COLUMNS
+(
+  TMSC_CODE         NUMBER,
+  TMSC_COLUMN_NAME  VARCHAR2(100 BYTE),
+  TMSC_TABLE_NAME   VARCHAR2(100 BYTE),
+  TMSC_DESC         VARCHAR2(100 BYTE),
+  TMSC_SYS_CODE     NUMBER
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

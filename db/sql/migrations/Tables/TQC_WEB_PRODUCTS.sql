@@ -1,0 +1,32 @@
+--
+-- TQC_WEB_PRODUCTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_WEB_PRODUCTS
+(
+  TWP_CODE       NUMBER,
+  TWP_TWPC_CODE  NUMBER,
+  TWP_PROD_CODE  NUMBER                         NOT NULL,
+  TWP_PROD_DESC  VARCHAR2(4000 BYTE)            NOT NULL,
+  TWP_BIND_CODE  NUMBER,
+  TWP_BINDER     CHAR(1 BYTE),
+  TWP_AGN_CODE   NUMBER,
+  TWP_AGA_CODE   NUMBER,
+  TWP_PROD_URL   VARCHAR2(1000 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

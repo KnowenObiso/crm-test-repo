@@ -1,0 +1,1 @@
+-- Index TQC_CLIENT_COMPLAINTS_PK is created automatically by Oracle with index organized table TQC_CLIENT_COMPLAINTS.

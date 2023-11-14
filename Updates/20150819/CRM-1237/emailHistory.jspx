@@ -1,0 +1,363 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+ <f:view>
+    <af:document id="d1" title="TurnQuest CRM">
+    <af:messages id="m1"/>
+      <h:outputText escape="false"
+                    value='&lt;link rel="icon" type="image/png" href="#{facesContext.externalContext.requestContextPath}/images/favicon.png">'
+                    id="fav"/>
+      <af:pageTemplate viewId="/templates/coreTemplate.jspx" id="crm">
+        <f:facet name="center">
+          <af:panelGroupLayout id="pgl1">
+            <af:panelBox text="PanelBox3" id="pb3" showHeader="never">
+              <f:facet name="toolbar"/>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td width="50%" align="right">
+                    <h:panelGrid columns="2" id="pg6">
+                      <af:inputText id="inputText1"
+                                    helpTopicId="CRMsingleMessage" columns="13"
+                                    readOnly="true" shortDesc="Help"/>
+                      <af:statusIndicator id="statusIndicator1"/>
+                    </h:panelGrid>
+                  </td>
+                </tr>
+              </table>
+              <h:panelGrid columns="2" id="pg1">
+                <af:outputLabel value="System Messages" id="ol1"
+                                  inlineStyle="font-weight:bold;"/>
+              </h:panelGrid>
+              <af:separator id="s1"/>
+              <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                <h:panelGrid columns="2" id="pg7" style="width:700.0px;">
+                  <h:panelGrid columns="1" id="pg8" style="width:340.0px;">
+                    <h:panelGrid columns="6" id="pg2">
+                      <af:outputLabel value="Systems" id="ol3"
+                                      inlineStyle="font-weight:bold;"/>
+                    </h:panelGrid>
+                    <af:separator id="s2"/>
+                    <af:panelCollection id="pc1"
+                                        styleClass="AFAuxiliaryStretchWidth"
+                                        inlineStyle="height:200.0px;">
+                      <af:table value="#{bindings.System.collectionModel}"
+                                var="row" rows="#{bindings.System.rangeSize}"
+                                emptyText="#{bindings.System.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.System.rangeSize}"
+                                rowBandingInterval="1"
+                                filterModel="#{bindings.SystemQuery.queryDescriptor}"
+                                queryListener="#{bindings.SystemQuery.processQuery}"
+                                filterVisible="false" varStatus="vs"
+                                selectionListener="#{messageTemplateBacking.getSystemEmail}"
+                                rowSelection="single" id="t1"
+                                binding="#{messageTemplateBacking.tblSystems}">
+                        <af:column sortProperty="code" filterable="true"
+                                   visible="false" sortable="true"
+                                   headerText="Code" id="c3">
+                          <af:outputText value="#{row.code}" id="ot2"/>
+                        </af:column>
+                        <af:column sortProperty="shortDesc" filterable="true"
+                                   sortable="true" headerText="Short Desc"
+                                   id="c1" width="100" visible="false">
+                          <af:outputText value="#{row.shortDesc}" id="ot1"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="System Name"
+                                   id="c2" width="300">
+                          <af:outputText value="#{row.name}" id="ot3"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </h:panelGrid>
+                  <h:panelGrid columns="2" id="pg7ax" style="width:350.0px;">
+                  
+                      <af:outputLabel value="Date From" id="ol3ax"
+                                      inlineStyle="font-weight:bold;"/>
+                      <af:inputDate label="Label 3" id="id4ax" simple="true"
+                                    binding="#{messageTemplateBacking.msgWEF}"
+                                    autoSubmit="true"
+                                    valueChangeListener="#{messageTemplateBacking.emailWEFChanged}">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                                    
+                                    <af:outputLabel value="" id="ol3ax4" />
+                                    <af:outputLabel value="" id="ol3ax5" />
+                                      
+                      <af:outputLabel value="Date To" id="ol3ax2"
+                                      inlineStyle="font-weight:bold;"/>
+                      <af:inputDate label="Label 3" id="id4ax2" simple="true"
+                                    binding="#{messageTemplateBacking.msgWET}"
+                                    autoSubmit="true"
+                                    valueChangeListener="#{messageTemplateBacking.emailWETChanged}">
+                      <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                    </af:inputDate>
+                                    
+                                    <af:outputLabel value="" id="ol3ax6" />
+                                    <af:outputLabel value="" id="ol3ax7" />
+                                  
+                      <af:outputLabel value="Transaction level" id="ol3ax3" visible="true"
+                                      inlineStyle="font-weight:bold;"/>
+                      <af:selectOneChoice label="Label 1" id="soc1" visible="true"
+                                          binding="#{messageTemplateBacking.msgTransType}"
+                                          unselectedLabel=".:: All Processes ::."
+                                          simple="true"
+                                          autoSubmit="true"
+                                          valueChangeListener="#{messageTemplateBacking.emailTransTypeChanged}">
+                        <af:selectItem label="Policy Authorization" value="AUTH" id="si3ax"/>
+                        <af:selectItem label="Policy Cancellation" value="CN" id="si3ax2"/>
+                        <af:selectItem label="Policy Lapsation" value="LAPSE" id="si3ax5"/>
+                        <af:selectItem label="Policy Conversion" value="CONV" id="si3ax3"/>
+                        <af:selectItem label="Policy Renewal" value="RN" id="si2ax"/>
+                        <af:selectItem label="Policy Inception" value="PI"
+                                       id="si1"/>
+                        <af:selectItem label="Premim allocation" value="PRA"
+                                       id="si3"/>
+                        <af:selectItem label="Deduction Ceased" value="DC"
+                                       id="si4"/>
+                        
+                        <af:selectItem label="Insufficient funds" value="IF"
+                                       id="si2"/>
+                        <af:selectItem label="Not Taken Up" value="NTU" id="si5"/>
+                        <af:selectItem label="Benefits" value="BN"
+                                       id="si6"/>
+                                    
+                         <af:selectItem label="Birthday messages" value="BM"
+                                       id="si7"/>
+                      </af:selectOneChoice>
+                  </h:panelGrid>
+                </h:panelGrid>
+                <h:panelGrid columns="2" id="pg4">
+                  <af:outputLabel value="Messages" id="ol2"
+                                  inlineStyle="font-weight:bold;"/>
+                </h:panelGrid>
+                 <af:separator id="s9"/>
+                 <h:panelGrid columns="10" id="pg3">
+                  <af:commandButton text="Select All" id="cb11"
+                  action="#{messageTemplateBacking.selectAllEmails}" />
+                   <af:commandButton text="Un Select All" id="cb13"
+                  action="#{messageTemplateBacking.unselectAllEmails}" />
+                  <af:commandButton text="Send" id="cb1"
+                  action="#{messageTemplateBacking.sendAllEmails}" />
+                  <af:commandButton text="Edit" id="cb4" partialSubmit="true"
+                                    action="#{messageTemplateBacking.editEmailMessage}"/>
+                 <af:commandButton text="Show All Emails" id="cb5"
+                                    partialSubmit="true"
+                                   action="#{messageTemplateBacking.showAllEmails}"/>
+                  <af:commandButton text="Show Unsent Emails" id="cb6"
+                                    partialSubmit="true"
+                                    action="#{messageTemplateBacking.showUnsentEmails}"/>
+                  <af:commandButton text="Show sent Emails" id="cb7"
+                                    partialSubmit="true"
+                                    action="#{messageTemplateBacking.showSentEmails}"/>
+               
+                  <af:commandButton text="Show Invalid Messages" id="cb8"
+                                    partialSubmit="true"
+                                    action="#{messageTemplateBacking.invalidEmailMessages}"/>
+                  <af:commandButton text="Show Valid Messages" id="cb9"
+                                    partialSubmit="true"
+                                    action="#{messageTemplateBacking.validEmailMessages}"/>
+                <af:popup id="messages" contentDelivery="lazyUncached">
+                  <af:dialog id="d3" type="none" title="Edit Message">
+                   <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                <af:panelGroupLayout id="pgl2">
+                  <af:panelFormLayout id="pfl1">
+                    <af:inputText label="Email Code : " id="it13"
+                                  binding="#{messageTemplateBacking.txtEmailCode}"
+                                  visible="false" disabled="true"/>
+                    <af:panelLabelAndMessage label="Email Address : " id="plam2">
+                      <af:inputText label="Email Address : " id="it6" simple="true"
+                                    binding="#{messageTemplateBacking.txtEmailAddress}"/>
+                    </af:panelLabelAndMessage>
+                    <af:panelLabelAndMessage label="Subject : "
+                                             id="plam1">
+                              <af:inputText label="Subject : " id="it1"
+                                            simple="true"
+                                            binding="#{messageTemplateBacking.txtSubject}"/>
+                            </af:panelLabelAndMessage>
+                            <af:inputText label="Message Tepmplate code : " id="it7"
+                                  visible="false"
+                                  binding="#{messageTemplateBacking.txtSmsMsgTemplateCode}"
+                                  disabled="true"/>
+                    <af:panelLabelAndMessage label="Message Templates : "
+                                             id="plam3">
+                      <af:inputText label="Message Templates : " id="it4"
+                                    simple="true" disabled="true"
+                                    binding="#{messageTemplateBacking.txtSmsMessageTemplate}"/>
+                      <af:commandButton icon="/images/dropdown.gif" id="cb3"
+                                        action="#{messageTemplateBacking.actionShowMeassageTemplate}"
+                                        partialSubmit="true"/>
+                    </af:panelLabelAndMessage>
+                  
+                  </af:panelFormLayout>
+                  <af:spacer width="10" height="10" id="s7"/>
+                  <af:separator id="s3"/>
+                  <af:spacer width="10" height="10" id="s8"/>
+                  <h:panelGrid columns="2" id="pg9">
+                    <af:outputLabel value="Message Details" id="ol4"
+                                    inlineStyle="font-weight:bold;"/>
+                  </h:panelGrid>
+                  <af:separator id="s5"/>
+                  <af:panelFormLayout id="pfl2">
+                
+                    <af:inputText label="Message : " id="it12" columns="100"
+                                  rows="10" autoSubmit="true"
+                                  binding="#{messageTemplateBacking.txtSmsMsg}"/>
+                                     
+                    <h:panelGrid columns="2" id="pg10">
+                      <af:commandButton text="Save Message" id="cb14"
+                                        partialSubmit="true"
+                                        action="#{messageTemplateBacking.saveEmailMessage}"/>
+                    </h:panelGrid>
+                  </af:panelFormLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+                  </af:dialog>
+                </af:popup>
+                </h:panelGrid>
+                <af:panelCollection id="pc4"
+                                    styleClass="AFAuxiliaryStretchWidth"
+                                    inlineStyle="height:300.0px;">
+                  <f:facet name="menus">
+                    <af:menu text="Export" id="m2" rendered="true">
+                      <af:commandMenuItem text="To Excel"
+                                          id="cmi1">
+                        <af:exportCollectionActionListener type="excelHTML"
+                                                           exportedId="emlTbl"
+                                                           filename="EMAILREPORT#{messageTemplateBacking.msgTransType.value}.xls"/>
+                      </af:commandMenuItem>
+                    </af:menu>
+                  </f:facet>
+                  <f:facet name="toolbar"/>
+                  <f:facet name="statusbar"/>
+                  <af:table value="#{bindings.SysApplicableArea.collectionModel}"
+                            var="row"
+                            rows="#{bindings.SysApplicableArea.rangeSize}"
+                            emptyText="#{bindings.SysApplicableArea.viewable ? 'No data to display.' : 'Access Denied.'}"
+                            fetchSize="#{bindings.SysApplicableArea.rangeSize}"
+                            rowBandingInterval="0"
+                            filterModel="#{bindings.SysApplicableAreaQuery.queryDescriptor}"
+                            queryListener="#{bindings.SysApplicableAreaQuery.processQuery}"
+                            filterVisible="true" varStatus="vs"
+                            selectionListener="#{bindings.SysApplicableArea.collectionModel.makeCurrent}"
+                            rowSelection="single" id="emlTbl"
+                            binding="#{messageTemplateBacking.emailTbl}">
+                      <af:column sortProperty="code" sortable="false"
+                               headerText="Select" id="c11" width="40">
+                      <af:selectBooleanCheckbox value="#{row.checked}"
+                                                label="Label 1" id="sbc522421"
+                                                binding="#{messageTemplateBacking.rowChecked}"/>
+                    </af:column>
+                    <af:column sortProperty="clntCode" filterable="true" visible="false"
+                               sortable="true" headerText="Clnt Code" id="c10">
+                      <af:outputText value="#{row.clntCode}" id="ot11"/>
+                    </af:column>
+                    <af:column sortProperty="agnCode" filterable="true" visible="false"
+                               sortable="true" headerText="Agn Code" id="c12">
+                      <af:outputText value="#{row.agnCode}" id="ot5"/>
+                    </af:column>
+                    <af:column sortProperty="policyNumber" filterable="true"
+                               sortable="true" headerText="Policy Number"
+                               id="c8">
+                      <af:outputText value="#{row.policyNumber}" id="ot14"/>
+                    </af:column>
+                    <af:column sortProperty="clmNumber" filterable="true"
+                               sortable="true" headerText="Claim Number"
+                               id="c5">
+                      <af:outputText value="#{row.clmNumber}" id="ot15"/>
+                    </af:column>
+                    <af:column sortProperty="smsTelNumber" filterable="true"
+                               sortable="true" headerText="Tel Number" id="c9">
+                      <af:outputText value="#{row.smsTelNumber}" id="ot17"/>
+                    </af:column>
+                    <af:column sortProperty="messages" filterable="true"
+                               sortable="true" headerText="Message" id="c7">
+                      <af:outputText value="#{row.messages}" id="ot8"/>
+                    </af:column>
+                    <af:column sortProperty="status" filterable="true"
+                               sortable="true" headerText="Status" id="c6">
+                      <af:outputText value="#{row.status}" id="ot16"
+                                     visible="true"/>
+                    </af:column>
+                    <af:column sortProperty="preparedBy" filterable="true"
+                               sortable="true" headerText="Prepared By"
+                               id="c17">
+                      <af:outputText value="#{row.preparedBy}" id="ot13"/>
+                    </af:column>
+                    <af:column sortProperty="preparedDate" filterable="true"
+                               sortable="true" headerText="Prepared Date"
+                               id="c14">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.preparedDate}"
+                                      id="id1"/>
+                      </f:facet>
+                      <af:outputText value="#{row.preparedDate}" id="ot10">
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="sendDate" filterable="true"
+                               sortable="true" headerText="Send Date" id="c15">
+                      <f:facet name="filter">
+                        <af:inputDate value="#{vs.filterCriteria.sendDate}"
+                                      id="id2"/>
+                      </f:facet>
+                      <af:outputText value="#{row.sendDate}" id="ot7">
+                        <af:convertDateTime pattern="dd-MMM-yyyy"/>
+                      </af:outputText>
+                    </af:column>
+                    <af:column sortProperty="qoutCode" filterable="true" visible="false"
+                               sortable="true" headerText="Quot Code" id="c13">
+                      <af:outputText value="#{row.qoutCode}" id="ot9"/>
+                    </af:column>
+                    <af:column sortProperty="quotationNumber" filterable="true"
+                               sortable="true" headerText="Quotation Number"
+                               id="c16">
+                      <af:outputText value="#{row.quotationNumber}" id="ot4"/>
+                    </af:column>
+                    <af:column sortProperty="userCode" filterable="true" visible="false"
+                               sortable="true" headerText="User Code" id="c21">
+                      <af:outputText value="#{row.userCode}" id="ot12"/>
+                    </af:column>
+                    <af:column sortProperty="sentResponse" filterable="true"
+                               sortable="true" headerText="Send Response"
+                               id="c4">
+                      <af:outputText value="#{row.sentResponse}" id="ot6"/>
+                    </af:column>
+                    <af:column sortProperty="clientName" sortable="false"
+                               headerText="Client Name"
+                               id="c18">
+                      <af:outputText value="#{row.clientName}" id="ot18"/>
+                    </af:column>
+                    <af:column sortProperty="agentName" sortable="false"
+                               headerText="Agent Name"
+                               id="c19">
+                      <af:outputText value="#{row.agentName}" id="ot19"/>
+                    </af:column>
+                    <af:column sortProperty="userName" sortable="false"
+                               headerText="User Name"
+                               id="c20">
+                      <af:outputText value="#{row.userName}" id="ot20"/>
+                    </af:column>
+                    <af:column sortProperty="emailAddress" sortable="false"
+                               headerText="Email Address"
+                               id="c22">
+                      <af:outputText value="#{row.emailAddress}" id="ot21"/>
+                    </af:column>
+                    <af:column sortProperty="emailSubject" sortable="false"
+                               headerText="Email Subject"
+                               id="c23">
+                      <af:outputText value="#{row.emailSubject}" id="ot22"/>
+                    </af:column>
+                  </af:table>
+                </af:panelCollection>
+              </af:panelBox>
+            </af:panelBox>
+            
+          </af:panelGroupLayout>
+        </f:facet>
+      </af:pageTemplate>
+    </af:document>
+  </f:view>
+</jsp:root>

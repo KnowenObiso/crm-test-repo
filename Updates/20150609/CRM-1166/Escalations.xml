@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.59.23"
+          id="Escalations" Package="TurnQuest.view.bpm"
+          BeanClass="TurnQuest.view.bpm.Escalations" isJavaBased="true">
+  <Attribute Name="sysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysShortDesc" Type="java.lang.String"/>
+  <Attribute Name="sysName" Type="java.lang.String"/>
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="activityType" Type="java.lang.String"/>
+  <Attribute Name="activityName" Type="java.lang.String"/>
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="jpdlName" Type="java.lang.String"/>
+  <Attribute Name="level" Type="java.math.BigDecimal"/>
+  <Attribute Name="userCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="username" Type="java.lang.String"/>
+  <Attribute Name="duration" Type="java.math.BigDecimal"/>
+  <Attribute Name="select" Type="boolean"/>
+  <Attribute Name="ccUser" Type="java.math.BigDecimal"/>
+  <Attribute Name="ccUsername" Type="java.lang.String"/>
+  <Attribute Name="sreCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sreSrtCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sreLvlDuration" Type="java.math.BigDecimal"/>
+  <Attribute Name="sreLvlOneAssignee" Type="java.math.BigDecimal"/>
+  <Attribute Name="sreLvlTwoDuration" Type="java.math.BigDecimal"/>
+  <Attribute Name="sreLvlTwoAssignee" Type="java.math.BigDecimal"/>
+  <Attribute Name="sreSrtName" Type="java.lang.String"/>
+  <Attribute Name="sreLvlOneAssigneeName" Type="java.lang.String"/>
+  <Attribute Name="sreLvlTwoAssigneeName" Type="java.lang.String"/>
+  <AccessorAttribute id="sysProcess" IsCollection="true"
+                     BeanClass="TurnQuest.view.bpm.SysProcess"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                     BeanClass="TurnQuest.view.bpm.Escalations"
+                     id="Escalations"/>
+</JavaBean>

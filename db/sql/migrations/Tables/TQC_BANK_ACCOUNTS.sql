@@ -1,0 +1,38 @@
+--
+-- TQC_BANK_ACCOUNTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_BANK_ACCOUNTS
+(
+  BACT_CODE             NUMBER,
+  BACT_NAME             VARCHAR2(100 BYTE),
+  BACT_ACCOUNT_NO       VARCHAR2(20 BYTE),
+  BACT_BBR_CODE         NUMBER,
+  BACT_CELL_NOS         VARCHAR2(20 BYTE),
+  BACT_TEL_NOS          VARCHAR2(20 BYTE),
+  BACT_ACCOUNT_TYPE     VARCHAR2(1 BYTE)        DEFAULT 'C'                   NOT NULL,
+  BACT_DEFAULT          VARCHAR2(1 BYTE)        DEFAULT 'N'                   NOT NULL,
+  BACT_CUR_CODE         NUMBER,
+  BACT_ACC_CODE         NUMBER,
+  BACT_ACCOUNT_OFFICER  VARCHAR2(40 BYTE),
+  BACT_IBAN             VARCHAR2(100 BYTE),
+  BACT_STATUS           VARCHAR2(1 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;
+
+COMMENT ON COLUMN TQ_CRM.TQC_BANK_ACCOUNTS.BACT_ACCOUNT_TYPE IS '(C) for client (A) for agent (S) for service provider';

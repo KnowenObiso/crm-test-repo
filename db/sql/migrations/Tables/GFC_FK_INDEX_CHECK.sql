@@ -1,0 +1,33 @@
+--
+-- GFC_FK_INDEX_CHECK  (Table) 
+--
+CREATE TABLE TQ_CRM.GFC_FK_INDEX_CHECK
+(
+  OWNER              VARCHAR2(30 BYTE)          NOT NULL,
+  TABLE_NAME         VARCHAR2(30 BYTE)          NOT NULL,
+  CONSTRAINT_NAME    VARCHAR2(30 BYTE)          NOT NULL,
+  R_OWNER            VARCHAR2(30 BYTE)          NOT NULL,
+  R_TABLE_NAME       VARCHAR2(30 BYTE)          NOT NULL,
+  R_CONSTRAINT_NAME  VARCHAR2(30 BYTE)          NOT NULL,
+  I_INDEX_OWNER      VARCHAR2(30 BYTE),
+  I_INDEX_NAME       VARCHAR2(30 BYTE),
+  I_STATUS           VARCHAR2(30 BYTE)          DEFAULT 'UNKNOWN',
+  I_COLUMN_LIST      VARCHAR2(300 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

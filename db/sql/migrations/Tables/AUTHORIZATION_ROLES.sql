@@ -1,0 +1,26 @@
+--
+-- AUTHORIZATION_ROLES  (Table) 
+--
+CREATE TABLE TQ_CRM.AUTHORIZATION_ROLES
+(
+  AROL_ID            VARCHAR2(15 BYTE)          NOT NULL,
+  AROL_NAME          VARCHAR2(100 BYTE)         NOT NULL,
+  AROL_DEBIT_LIMIT   NUMBER(29,5),
+  AROL_CREDIT_LIMIT  NUMBER(29,5),
+  AROL_APPL          VARCHAR2(5 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

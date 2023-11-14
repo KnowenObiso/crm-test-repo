@@ -1,0 +1,29 @@
+--
+-- TQC_AGENCY_SYSTEMS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_AGENCY_SYSTEMS
+(
+  ASYS_SYS_CODE      NUMBER(22),
+  ASYS_AGN_CODE      NUMBER(22),
+  ASYS_WEF           DATE                       NOT NULL,
+  ASYS_WET           DATE,
+  ASYS_COMMENT       VARCHAR2(100 BYTE),
+  ASYS_OSD_CODE      VARCHAR2(10 BYTE),
+  ASYS_OSD_ID        NUMBER,
+  ASYS_AGN_SHT_DESC  VARCHAR2(100 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          448K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

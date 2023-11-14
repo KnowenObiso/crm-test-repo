@@ -1,0 +1,31 @@
+--
+-- TQC_SALE_POINTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SALE_POINTS
+(
+  TSP_CODE            NUMBER,
+  TSP_NAME            VARCHAR2(50 BYTE),
+  TSP_LOCATION        VARCHAR2(100 BYTE),
+  TSP_CONTACT_PERSON  VARCHAR2(100 BYTE),
+  TSP_ADDRESS         VARCHAR2(100 BYTE),
+  TSP_TEL_NO          VARCHAR2(100 BYTE),
+  TSP_STATUS          VARCHAR2(1 BYTE),
+  TSP_AGN_CODE        NUMBER
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,5 @@
+--
+-- TQC_AGENCY_DIRECTORS_TAB  (Type) 
+--
+CREATE OR REPLACE TYPE TQ_CRM."TQC_AGENCY_DIRECTORS_TAB"                                          AS TABLE OF TQC_AGENCY_DIRECTORS_OBJ; 
+/

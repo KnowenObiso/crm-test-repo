@@ -1,0 +1,3078 @@
+package TurnQuest.view.Leads;
+
+import TurnQuest.view.Base.ADFUtils;
+import TurnQuest.view.Base.GlobalCC;
+import TurnQuest.view.Connect.DBConnector;
+import com.Ostermiller.util.CSVParser;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.math.BigDecimal;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.text.SimpleDateFormat;
+import java.util.Iterator;
+import java.util.List;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ValueChangeEvent;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import oracle.adf.model.binding.DCIteratorBinding;
+import oracle.adf.view.rich.component.rich.RichDialog;
+import oracle.adf.view.rich.component.rich.data.RichTable;
+import oracle.adf.view.rich.component.rich.data.RichTree;
+import oracle.adf.view.rich.component.rich.input.RichInputDate;
+import oracle.adf.view.rich.component.rich.input.RichInputFile;
+import oracle.adf.view.rich.component.rich.input.RichInputNumberSpinbox;
+import oracle.adf.view.rich.component.rich.input.RichInputText;
+import oracle.adf.view.rich.component.rich.input.RichSelectOneChoice;
+import oracle.adf.view.rich.component.rich.layout.RichPanelBox;
+import oracle.adf.view.rich.component.rich.nav.RichCommandButton;
+import oracle.adf.view.rich.component.rich.output.RichOutputLabel;
+import oracle.adf.view.rich.context.AdfFacesContext;
+import oracle.jbo.Key;
+import oracle.jbo.Row;
+import oracle.jbo.uicli.binding.JUCtrlValueBinding;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleConnection;
+import org.apache.commons.dbutils.DbUtils;
+import org.apache.myfaces.trinidad.event.SelectionEvent;
+import org.apache.myfaces.trinidad.model.RowKeySet;
+import org.apache.myfaces.trinidad.model.UploadedFile;
+import org.apache.myfaces.trinidad.render.ExtendedRenderKitService;
+import org.apache.myfaces.trinidad.util.Service;
+
+public class LeadsManipulation
+{
+  private RichInputText description;
+  private RichInputText coTel;
+  private RichInputText title;
+  private RichInputText surname;
+  private RichInputText otherNames;
+  private RichInputText mobileNo;
+  private RichInputText fax;
+  private RichInputText email;
+  private RichInputText postalAddress;
+  private RichInputText postalCode;
+  private RichInputText physicalAddress;
+  private RichInputText source;
+  private RichInputText status;
+  private RichInputDate leadDate;
+  private RichSelectOneChoice converted;
+  private RichInputText portName;
+  private RichSelectOneChoice portContr;
+  private RichInputNumberSpinbox portAmount;
+  private RichInputText portSale;
+  private RichInputDate portCloseDate;
+  private RichInputNumberSpinbox annRevenue;
+  private RichInputText website;
+  private RichTree leadsTree;
+  private RichInputText industry;
+  private RichInputText coName;
+  private RichInputText leadComment;
+  private RichInputDate leadCommentDate;
+  private RichTable leadCommentsTable;
+  private RichTable leadActivitiesTable;
+  private RichTable activitiesTable;
+  private RichTable sourcesTable;
+  private RichTable statusTable;
+  private RichTable tblCountryLOv;
+  private RichTable tblStatesLOV;
+  private RichTable tblUsersLOv;
+  private RichTable tblTeamsLOV;
+  private RichTable tblAccountsLOV;
+  private RichInputText txtCountryCode;
+  private RichInputText txtStateCode;
+  private RichInputText txtTownCode;
+  private RichInputText txtUserCode;
+  private RichInputText txtTeamCode;
+  private RichInputText txtAccountCode;
+  private RichInputText txtCountryName;
+  private RichInputText txtStateName;
+  private RichInputText txtTownName;
+  private RichInputText txtOrgName;
+  private RichInputText txtUserName;
+  private RichInputText txtTeamName;
+  private RichInputText txtAccountName;
+  private RichTable tblOrgsLOV;
+  private RichInputText txtOrgCode;
+  private RichTable tblTowns;
+  private RichInputText desc;
+  private RichTable leadStatusesTable;
+  private RichTable leadSources;
+  private RichTable tblLeads;
+  private RichTable tblSystems;
+  private RichInputText txtSystemCode;
+  private RichInputText txtProductCode;
+  private RichInputText txtCampaignCode;
+  private RichInputText txtCurrencyCode;
+  private RichTable tblProducts;
+  private RichTable tblCurrencies;
+  private RichInputText txtLeadCode;
+  private RichInputText txtSystemName;
+  private RichInputText txtProductName;
+  private RichInputText txtCampaignName;
+  private RichInputText txtCurrencyName;
+  private RichDialog dlgNewEditLead;
+  private RichInputText txtLeadSrcCode;
+  private RichInputText txtLeadStatusCode;
+  private RichTable tblCampaigns;
+  private RichPanelBox pnBoxLeadDetails;
+  private RichInputText txtSearchValue;
+  private RichOutputLabel lblSearchValue;
+  private RichSelectOneChoice selectCriteria;
+  private RichCommandButton btnCountry;
+  private RichCommandButton btnCampaign;
+  private RichCommandButton btnSystems;
+  private RichTable tblSystemsSearch;
+  private RichCommandButton btnProducts;
+  private RichCommandButton btnLeadSource;
+  private RichCommandButton btnLeadStatus;
+  private RichInputDate dtDateCreated;
+  private RichCommandButton btnUsers;
+  private RichCommandButton btnTeams;
+  private RichCommandButton btnAccounts;
+  private RichTable tblOrgDivisions;
+  private RichInputText txtOrgDivCode;
+  private RichInputText txtOrgDivName;
+  private RichInputText txtOccupation;
+  private RichInputText txtClntShtDesc;
+  private RichInputFile upFile;
+  private UploadedFile uploadedFile;
+  private String filename;
+  private long filesize;
+  private String filetype;
+  HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+  
+  public void clearLeadDetails()
+  {
+    this.description.setValue(null);
+    this.coName.setValue(null);
+    this.coTel.setValue(null);
+    this.title.setValue(null);
+    this.surname.setValue(null);
+    this.otherNames.setValue(null);
+    this.mobileNo.setValue(null);
+    this.fax.setValue(null);
+    this.email.setValue(null);
+    this.postalAddress.setValue(null);
+    this.postalCode.setValue(null);
+    this.physicalAddress.setValue(null);
+    this.source.setValue(null);
+    this.status.setValue(null);
+    this.leadDate.setValue(null);
+    this.converted.setValue(null);
+    this.portName.setValue(null);
+    this.portContr.setValue(null);
+    this.portAmount.setValue(null);
+    this.portSale.setValue(null);
+    this.portCloseDate.setValue(null);
+    this.annRevenue.setValue(null);
+    this.website.setValue(null);
+    this.industry.setValue(null);
+    
+    this.txtCountryCode.setValue(null);
+    this.txtStateCode.setValue(null);
+    this.txtTownCode.setValue(null);
+    this.txtUserCode.setValue(null);
+    this.txtTeamCode.setValue(null);
+    this.txtAccountCode.setValue(null);
+    this.txtCountryName.setValue(null);
+    this.txtStateName.setValue(null);
+    this.txtTownName.setValue(null);
+    this.txtOrgName.setValue(null);
+    this.txtUserName.setValue(null);
+    this.txtTeamName.setValue(null);
+    this.txtAccountName.setValue(null);
+    this.txtOrgCode.setValue(null);
+    this.txtOrgDivName.setValue(null);
+    this.txtOrgDivCode.setValue(null);
+    this.txtCurrencyName.setValue(null);
+    this.txtCurrencyCode.setValue(null);
+    this.txtProductCode.setValue(null);
+    this.txtProductName.setValue(null);
+    this.txtCampaignCode.setValue(null);
+    this.txtCampaignName.setValue(null);
+    this.txtSystemCode.setValue(null);
+    this.txtSystemName.setValue(null);
+    this.txtSearchValue.setValue(null);
+    this.session.setAttribute("Lead_code", null);
+    ADFUtils.findIterator("findLeadActivitiesIterator").executeQuery();
+    AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadActivitiesTable);
+    
+    AdfFacesContext.getCurrentInstance().addPartialTarget(this.pnBoxLeadDetails);
+    AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+    ADFUtils.findIterator("findLeadCommentsIterator").executeQuery();
+    AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadCommentsTable);
+  }
+  
+  public String AddLead()
+  {
+    clearLeadDetails();
+    
+    return null;
+  }
+  
+  public String findStatusSelected()
+  {
+    Object key = this.statusTable.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding == null)
+    {
+      GlobalCC.dismissPopUp("crm", "leadStatusPOP");
+      return null;
+    }
+    if (this.btnLeadStatus.getShortDesc() != null)
+    {
+      this.txtSearchValue.setValue(nodeBinding.getAttribute("leadStatusDesc"));
+      String statusCode = nodeBinding.getAttribute("leadStatusCode").toString();
+      
+      String searchCriteria = "WHERE LDS_LSTS_CODE=" + statusCode;
+      this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+      ADFUtils.findIterator("findLeadsIterator").executeQuery();
+      this.txtSearchValue.setDisabled(true);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+      
+      this.btnLeadStatus.setShortDesc(null);
+      GlobalCC.dismissPopUp("crm", "leadStatusPOP");
+    }
+    this.status.setValue(nodeBinding.getAttribute("leadStatusDesc"));
+    this.txtLeadStatusCode.setValue(nodeBinding.getAttribute("leadStatusCode"));
+    AdfFacesContext.getCurrentInstance().addPartialTarget(this.status);
+    GlobalCC.dismissPopUp("crm", "leadStatusPOP");
+    return null;
+  }
+  
+  public String findSourceSelected()
+  {
+    Object key = this.sourcesTable.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding == null)
+    {
+      GlobalCC.dismissPopUp("crm", "leadSourcePOP");
+      return null;
+    }
+    if (this.btnLeadSource.getShortDesc() != null)
+    {
+      this.txtSearchValue.setValue(nodeBinding.getAttribute("leadSourceDesc"));
+      String leadSourceCode = nodeBinding.getAttribute("leadSourceCode").toString();
+      
+      String searchCriteria = "WHERE LDS_LDSRC_CODE=" + leadSourceCode;
+      this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+      ADFUtils.findIterator("findLeadsIterator").executeQuery();
+      this.txtSearchValue.setDisabled(true);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+      
+      GlobalCC.dismissPopUp("crm", "leadSourcePOP");
+      this.btnLeadSource.setShortDesc(null);
+    }
+    this.source.setValue(nodeBinding.getAttribute("leadSourceDesc"));
+    this.txtLeadSrcCode.setValue(nodeBinding.getAttribute("leadSourceCode"));
+    AdfFacesContext.getCurrentInstance().addPartialTarget(this.source);
+    GlobalCC.dismissPopUp("crm", "leadSourcePOP");
+    return null;
+  }
+  
+  public String DeleteLeadDetails()
+  {
+    OracleConnection conn = null;
+    try
+    {
+      DBConnector dbCon = new DBConnector();
+      conn = dbCon.getDatabaseConnection();
+      if (this.session.getAttribute("ldsCode") == null)
+      {
+        GlobalCC.sysInformation("Select A Lead");
+        return null;
+      }
+      String query = "begin TQC_SETUPS_PKG.delete_lead(?); end;";
+      
+      OracleCallableStatement callStmt = null;
+      callStmt = (OracleCallableStatement)conn.prepareCall(query);
+      callStmt.setBigDecimal(1, (BigDecimal)this.session.getAttribute("ldsCode"));
+      
+
+      callStmt.execute();
+      
+      callStmt.close();
+      conn.close();
+      
+      GlobalCC.sysInformation("Lead Details Successfully Deleted.");
+      
+      this.session.setAttribute("ldsCode", null);
+      
+      ADFUtils.findIterator("findLeadsIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadsTree);
+      
+      this.description.setValue(null);
+      this.coName.setValue(null);
+      this.coTel.setValue(null);
+      this.title.setValue(null);
+      this.surname.setValue(null);
+      this.otherNames.setValue(null);
+      this.mobileNo.setValue(null);
+      this.fax.setValue(null);
+      this.email.setValue(null);
+      this.postalAddress.setValue(null);
+      this.postalCode.setValue(null);
+      this.physicalAddress.setValue(null);
+      this.source.setValue(null);
+      this.status.setValue(null);
+      this.leadDate.setValue(null);
+      this.converted.setValue(null);
+      this.portName.setValue(null);
+      this.portContr.setValue(null);
+      this.portAmount.setValue(null);
+      this.portSale.setValue(null);
+      this.portCloseDate.setValue(null);
+      this.annRevenue.setValue(null);
+      this.website.setValue(null);
+      this.industry.setValue(null);
+      
+      this.txtCountryCode.setValue(null);
+      this.txtStateCode.setValue(null);
+      this.txtTownCode.setValue(null);
+      this.txtUserCode.setValue(null);
+      this.txtTeamCode.setValue(null);
+      this.txtAccountCode.setValue(null);
+      this.txtCountryName.setValue(null);
+      this.txtStateName.setValue(null);
+      this.txtTownName.setValue(null);
+      this.txtOrgName.setValue(null);
+      this.txtUserName.setValue(null);
+      this.txtTeamName.setValue(null);
+      this.txtAccountName.setValue(null);
+      this.txtOrgCode.setValue(null);
+      this.txtOrgDivName.setValue(null);
+      this.txtOrgDivCode.setValue(null);
+      
+
+      this.session.setAttribute("ldsCode", null);
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(conn, e);
+    }
+    return null;
+  }
+  
+  public String AddLeadComments()
+  {
+    try
+    {
+      if (this.txtLeadCode.getValue() == null)
+      {
+        GlobalCC.EXCEPTIONREPORTING(new Exception("You need to select a Lead to  add its comment"));
+        return null;
+      }
+      this.session.setAttribute("lcmntCode", null);
+      this.leadComment.setValue(null);
+      this.leadCommentDate.setValue(null);
+      
+      this.session.setAttribute("action", "A");
+      
+
+      ExtendedRenderKitService erkService = (ExtendedRenderKitService)Service.getService(FacesContext.getCurrentInstance().getRenderKit(), ExtendedRenderKitService.class);
+      
+
+      erkService.addScript(FacesContext.getCurrentInstance(), "var hints = {autodismissNever:false}; AdfPage.PAGE.findComponent('crm:p3').show(hints);");
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String EditLeadComment()
+  {
+    try
+    {
+      if (this.txtLeadCode.getValue() == null)
+      {
+        GlobalCC.EXCEPTIONREPORTING(new Exception("You need to select a Lead to  edit its activity"));
+        return null;
+      }
+      DCIteratorBinding dciter = ADFUtils.findIterator("findLeadCommentsIterator");
+      
+      RowKeySet set = this.leadCommentsTable.getSelectedRowKeys();
+      Iterator rowKeySetIter = set.iterator();
+      while (rowKeySetIter.hasNext())
+      {
+        List l = (List)rowKeySetIter.next();
+        Key key = (Key)l.get(0);
+        dciter.setCurrentRowWithKey(key.toStringFormat(true));
+        
+
+        Row r = dciter.getCurrentRow();
+        this.session.setAttribute("lcmntCode", r.getAttribute("LCMNT_CODE"));
+        
+        this.leadComment.setValue(r.getAttribute("LCMNT_COMMENT"));
+        this.leadCommentDate.setValue(r.getAttribute("LCMNT_DATE"));
+        
+        this.session.setAttribute("action", "E");
+        
+
+        ExtendedRenderKitService erkService = (ExtendedRenderKitService)Service.getService(FacesContext.getCurrentInstance().getRenderKit(), ExtendedRenderKitService.class);
+        
+
+        erkService.addScript(FacesContext.getCurrentInstance(), "var hints = {autodismissNever:false}; AdfPage.PAGE.findComponent('crm:p3').show(hints);");
+      }
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String DeleteLeadComment()
+  {
+    try
+    {
+      if (this.txtLeadCode.getValue() == null)
+      {
+        GlobalCC.EXCEPTIONREPORTING(new Exception("You need to select a Lead to  delete its comment"));
+        return null;
+      }
+      DCIteratorBinding dciter = ADFUtils.findIterator("findLeadCommentsIterator");
+      
+      RowKeySet set = this.leadCommentsTable.getSelectedRowKeys();
+      Iterator rowKeySetIter = set.iterator();
+      while (rowKeySetIter.hasNext())
+      {
+        List l = (List)rowKeySetIter.next();
+        Key key = (Key)l.get(0);
+        dciter.setCurrentRowWithKey(key.toStringFormat(true));
+        
+
+        Row r = dciter.getCurrentRow();
+        this.session.setAttribute("lcmntCode", r.getAttribute("leadCommentCode"));
+        
+        this.leadComment.setValue(r.getAttribute("leadComment"));
+        this.leadCommentDate.setValue(r.getAttribute("leadCommentDate"));
+        
+        this.session.setAttribute("action", "D");
+        
+        SaveLeadComment();
+      }
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String SaveLeadComment()
+  {
+    OracleConnection conn = null;
+    try
+    {
+      DBConnector dbCon = new DBConnector();
+      conn = dbCon.getDatabaseConnection();
+      
+      String query = "begin TQC_SETUPS_PKG.save_lead_comment(?,?,?,?,?,?); end;";
+      
+
+      OracleCallableStatement callStmt = null;
+      callStmt = (OracleCallableStatement)conn.prepareCall(query);
+      
+      callStmt.setString(1, (String)this.session.getAttribute("action"));
+      callStmt.setObject(2, this.txtLeadCode.getValue());
+      callStmt.setBigDecimal(3, (BigDecimal)this.session.getAttribute("lcmntCode"));
+      if (this.leadComment.getValue() == null) {
+        callStmt.setString(4, null);
+      } else {
+        callStmt.setString(4, this.leadComment.getValue().toString());
+      }
+      callStmt.setDate(5, GlobalCC.extractDate(this.leadCommentDate));
+      
+      callStmt.setBigDecimal(6, (BigDecimal)this.session.getAttribute("UserCode"));
+      
+      callStmt.execute();
+      callStmt.close();
+      conn.close();
+      ADFUtils.findIterator("findLeadCommentsIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadCommentsTable);
+      GlobalCC.dismissPopUp("crm", "p3");
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(conn, e);
+    }
+    return null;
+  }
+  
+  public String AddLeadActivities()
+  {
+    try
+    {
+      if (this.txtLeadCode.getValue() == null)
+      {
+        GlobalCC.EXCEPTIONREPORTING(new Exception("You need to select a Lead to  add its activity"));
+        return null;
+      }
+      this.session.setAttribute("lactsCode", null);
+      
+      this.session.setAttribute("action", "A");
+      
+
+      ExtendedRenderKitService erkService = (ExtendedRenderKitService)Service.getService(FacesContext.getCurrentInstance().getRenderKit(), ExtendedRenderKitService.class);
+      
+
+      erkService.addScript(FacesContext.getCurrentInstance(), "var hints = {autodismissNever:false}; AdfPage.PAGE.findComponent('crm:popup1').show(hints);");
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String DeleteLeadActivity()
+  {
+    if (this.txtLeadCode.getValue() == null)
+    {
+      GlobalCC.EXCEPTIONREPORTING(new Exception("You need to select a Lead to  delete its activity"));
+      return null;
+    }
+    OracleConnection conn = null;
+    try
+    {
+      DBConnector dbCon = new DBConnector();
+      conn = dbCon.getDatabaseConnection();
+      
+      String query = "begin TQC_SETUPS_PKG.save_lead_activities(?,?,?,?); end;";
+      
+
+      DCIteratorBinding dciter = ADFUtils.findIterator("findLeadActivitiesIterator");
+      
+      RowKeySet set = this.leadActivitiesTable.getSelectedRowKeys();
+      Iterator rowKeySetIter = set.iterator();
+      while (rowKeySetIter.hasNext())
+      {
+        List l = (List)rowKeySetIter.next();
+        Key key = (Key)l.get(0);
+        dciter.setCurrentRowWithKey(key.toStringFormat(true));
+        
+
+        Row r = dciter.getCurrentRow();
+        
+        OracleCallableStatement callStmt = null;
+        callStmt = (OracleCallableStatement)conn.prepareCall(query);
+        callStmt.setString(1, "D");
+        callStmt.setBigDecimal(2, (BigDecimal)r.getAttribute("leadActivityCode"));
+        
+        callStmt.setBigDecimal(3, null);
+        callStmt.setObject(4, this.txtLeadCode.getValue());
+        
+        callStmt.execute();
+        callStmt.close();
+      }
+      conn.close();
+      ADFUtils.findIterator("findLeadActivitiesIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadActivitiesTable);
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(conn, e);
+    }
+    return null;
+  }
+  
+  public String SaveLeadActivity()
+  {
+    OracleConnection conn = null;
+    try
+    {
+      DBConnector dbCon = new DBConnector();
+      conn = dbCon.getDatabaseConnection();
+      
+      String query = "begin TQC_SETUPS_PKG.save_lead_activities(?,?,?,?); end;";
+      
+
+      DCIteratorBinding dciter = ADFUtils.findIterator("findActivitiesIterator");
+      
+      RowKeySet set = this.activitiesTable.getSelectedRowKeys();
+      Iterator rowKeySetIter = set.iterator();
+      while (rowKeySetIter.hasNext())
+      {
+        List l = (List)rowKeySetIter.next();
+        Key key = (Key)l.get(0);
+        dciter.setCurrentRowWithKey(key.toStringFormat(true));
+        
+
+        Row r = dciter.getCurrentRow();
+        
+        OracleCallableStatement callStmt = null;
+        callStmt = (OracleCallableStatement)conn.prepareCall(query);
+        callStmt.setString(1, "A");
+        callStmt.setBigDecimal(2, (BigDecimal)this.session.getAttribute("lactsCode"));
+        
+        callStmt.setObject(3, r.getAttribute("activityCode"));
+        callStmt.setObject(4, this.txtLeadCode.getValue());
+        
+        callStmt.execute();
+        callStmt.close();
+      }
+      ADFUtils.findIterator("findLeadActivitiesIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadActivitiesTable);
+      GlobalCC.dismissPopUp("crm", "popup1");
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(conn, e);
+    }
+    return null;
+  }
+  
+  public void setDescription(RichInputText description)
+  {
+    this.description = description;
+  }
+  
+  public RichInputText getDescription()
+  {
+    return this.description;
+  }
+  
+  public void setCoTel(RichInputText coTel)
+  {
+    this.coTel = coTel;
+  }
+  
+  public RichInputText getCoTel()
+  {
+    return this.coTel;
+  }
+  
+  public void setTitle(RichInputText title)
+  {
+    this.title = title;
+  }
+  
+  public RichInputText getTitle()
+  {
+    return this.title;
+  }
+  
+  public void setSurname(RichInputText surname)
+  {
+    this.surname = surname;
+  }
+  
+  public RichInputText getSurname()
+  {
+    return this.surname;
+  }
+  
+  public void setOtherNames(RichInputText otherNames)
+  {
+    this.otherNames = otherNames;
+  }
+  
+  public RichInputText getOtherNames()
+  {
+    return this.otherNames;
+  }
+  
+  public void setMobileNo(RichInputText mobileNo)
+  {
+    this.mobileNo = mobileNo;
+  }
+  
+  public RichInputText getMobileNo()
+  {
+    return this.mobileNo;
+  }
+  
+  public void setFax(RichInputText fax)
+  {
+    this.fax = fax;
+  }
+  
+  public RichInputText getFax()
+  {
+    return this.fax;
+  }
+  
+  public void setEmail(RichInputText email)
+  {
+    this.email = email;
+  }
+  
+  public RichInputText getEmail()
+  {
+    return this.email;
+  }
+  
+  public void setPostalAddress(RichInputText postalAddress)
+  {
+    this.postalAddress = postalAddress;
+  }
+  
+  public RichInputText getPostalAddress()
+  {
+    return this.postalAddress;
+  }
+  
+  public void setPostalCode(RichInputText postalCode)
+  {
+    this.postalCode = postalCode;
+  }
+  
+  public RichInputText getPostalCode()
+  {
+    return this.postalCode;
+  }
+  
+  public void setPhysicalAddress(RichInputText physicalAddress)
+  {
+    this.physicalAddress = physicalAddress;
+  }
+  
+  public RichInputText getPhysicalAddress()
+  {
+    return this.physicalAddress;
+  }
+  
+  public void setSource(RichInputText source)
+  {
+    this.source = source;
+  }
+  
+  public RichInputText getSource()
+  {
+    return this.source;
+  }
+  
+  public void setStatus(RichInputText status)
+  {
+    this.status = status;
+  }
+  
+  public RichInputText getStatus()
+  {
+    return this.status;
+  }
+  
+  public void setLeadDate(RichInputDate leadDate)
+  {
+    this.leadDate = leadDate;
+  }
+  
+  public RichInputDate getLeadDate()
+  {
+    return this.leadDate;
+  }
+  
+  public void setConverted(RichSelectOneChoice converted)
+  {
+    this.converted = converted;
+  }
+  
+  public RichSelectOneChoice getConverted()
+  {
+    return this.converted;
+  }
+  
+  public void setPortName(RichInputText portName)
+  {
+    this.portName = portName;
+  }
+  
+  public RichInputText getPortName()
+  {
+    return this.portName;
+  }
+  
+  public void setPortContr(RichSelectOneChoice portContr)
+  {
+    this.portContr = portContr;
+  }
+  
+  public RichSelectOneChoice getPortContr()
+  {
+    return this.portContr;
+  }
+  
+  public void setPortAmount(RichInputNumberSpinbox portAmount)
+  {
+    this.portAmount = portAmount;
+  }
+  
+  public RichInputNumberSpinbox getPortAmount()
+  {
+    return this.portAmount;
+  }
+  
+  public void setPortSale(RichInputText portSale)
+  {
+    this.portSale = portSale;
+  }
+  
+  public RichInputText getPortSale()
+  {
+    return this.portSale;
+  }
+  
+  public void setPortCloseDate(RichInputDate portCloseDate)
+  {
+    this.portCloseDate = portCloseDate;
+  }
+  
+  public RichInputDate getPortCloseDate()
+  {
+    return this.portCloseDate;
+  }
+  
+  public void setAnnRevenue(RichInputNumberSpinbox annRevenue)
+  {
+    this.annRevenue = annRevenue;
+  }
+  
+  public RichInputNumberSpinbox getAnnRevenue()
+  {
+    return this.annRevenue;
+  }
+  
+  public void setWebsite(RichInputText website)
+  {
+    this.website = website;
+  }
+  
+  public RichInputText getWebsite()
+  {
+    return this.website;
+  }
+  
+  public void setLeadsTree(RichTree leadsTree)
+  {
+    this.leadsTree = leadsTree;
+  }
+  
+  public RichTree getLeadsTree()
+  {
+    return this.leadsTree;
+  }
+  
+  public void setIndustry(RichInputText industry)
+  {
+    this.industry = industry;
+  }
+  
+  public RichInputText getIndustry()
+  {
+    return this.industry;
+  }
+  
+  public void setCoName(RichInputText coName)
+  {
+    this.coName = coName;
+  }
+  
+  public RichInputText getCoName()
+  {
+    return this.coName;
+  }
+  
+  public void setLeadComment(RichInputText leadComment)
+  {
+    this.leadComment = leadComment;
+  }
+  
+  public RichInputText getLeadComment()
+  {
+    return this.leadComment;
+  }
+  
+  public void setLeadCommentDate(RichInputDate leadCommentDate)
+  {
+    this.leadCommentDate = leadCommentDate;
+  }
+  
+  public RichInputDate getLeadCommentDate()
+  {
+    return this.leadCommentDate;
+  }
+  
+  public void setLeadCommentsTable(RichTable leadCommentsTable)
+  {
+    this.leadCommentsTable = leadCommentsTable;
+  }
+  
+  public RichTable getLeadCommentsTable()
+  {
+    return this.leadCommentsTable;
+  }
+  
+  public void setLeadActivitiesTable(RichTable leadActivitiesTable)
+  {
+    this.leadActivitiesTable = leadActivitiesTable;
+  }
+  
+  public RichTable getLeadActivitiesTable()
+  {
+    return this.leadActivitiesTable;
+  }
+  
+  public void setActivitiesTable(RichTable activitiesTable)
+  {
+    this.activitiesTable = activitiesTable;
+  }
+  
+  public RichTable getActivitiesTable()
+  {
+    return this.activitiesTable;
+  }
+  
+  public void setSourcesTable(RichTable sourcesTable)
+  {
+    this.sourcesTable = sourcesTable;
+  }
+  
+  public RichTable getSourcesTable()
+  {
+    return this.sourcesTable;
+  }
+  
+  public void setStatusTable(RichTable statusTable)
+  {
+    this.statusTable = statusTable;
+  }
+  
+  public RichTable getStatusTable()
+  {
+    return this.statusTable;
+  }
+  
+  public void setTblCountryLOv(RichTable tblCountryLOv)
+  {
+    this.tblCountryLOv = tblCountryLOv;
+  }
+  
+  public RichTable getTblCountryLOv()
+  {
+    return this.tblCountryLOv;
+  }
+  
+  public void setTblStatesLOV(RichTable tblStatesLOV)
+  {
+    this.tblStatesLOV = tblStatesLOV;
+  }
+  
+  public RichTable getTblStatesLOV()
+  {
+    return this.tblStatesLOV;
+  }
+  
+  public String actionAcceptCountry()
+  {
+    Object key = this.tblCountryLOv.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      if (this.btnCountry.getShortDesc() != null)
+      {
+        this.txtSearchValue.setValue(nodeBinding.getAttribute("name"));
+        String countryCode = nodeBinding.getAttribute("code").toString();
+        
+        String searchCriteria = "WHERE LDS_COU_CODE=" + countryCode;
+        this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+        ADFUtils.findIterator("findLeadsIterator").executeQuery();
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+        
+        GlobalCC.dismissPopUp("crm", "CountriesPop");
+        this.btnCountry.setShortDesc(null);
+      }
+      this.txtCountryCode.setValue(nodeBinding.getAttribute("code"));
+      this.txtCountryName.setValue(nodeBinding.getAttribute("name"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtCountryName);
+      
+      this.txtStateCode.setValue(null);
+      this.txtTownCode.setValue(null);
+      this.txtStateName.setValue(null);
+      this.txtTownName.setValue(null);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtStateName);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtTownName);
+    }
+    GlobalCC.dismissPopUp("crm", "CountriesPop");
+    
+    return null;
+  }
+  
+  public String actionAcceptState()
+  {
+    Object key = this.tblStatesLOV.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      this.txtStateCode.setValue(nodeBinding.getAttribute("stateCode"));
+      this.txtStateName.setValue(nodeBinding.getAttribute("stateName"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtStateName);
+    }
+    GlobalCC.dismissPopUp("crm", "StatesPop");
+    return null;
+  }
+  
+  public String actionAcceptTown()
+  {
+    if (this.txtCountryCode.getValue() == null)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, new Exception("Select a Country first"));
+      
+      return null;
+    }
+    Object key = this.tblTowns.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      this.txtTownCode.setValue(nodeBinding.getAttribute("code"));
+      this.txtTownName.setValue(nodeBinding.getAttribute("name"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtTownName);
+    }
+    GlobalCC.dismissPopUp("crm", "TownsPop");
+    return null;
+  }
+  
+  public void setTblUsersLOv(RichTable tblUsersLOv)
+  {
+    this.tblUsersLOv = tblUsersLOv;
+  }
+  
+  public RichTable getTblUsersLOv()
+  {
+    return this.tblUsersLOv;
+  }
+  
+  public void setTblTeamsLOV(RichTable tblTeamsLOV)
+  {
+    this.tblTeamsLOV = tblTeamsLOV;
+  }
+  
+  public RichTable getTblTeamsLOV()
+  {
+    return this.tblTeamsLOV;
+  }
+  
+  public void setTblAccountsLOV(RichTable tblAccountsLOV)
+  {
+    this.tblAccountsLOV = tblAccountsLOV;
+  }
+  
+  public RichTable getTblAccountsLOV()
+  {
+    return this.tblAccountsLOV;
+  }
+  
+  public String actionAcceptAccount()
+  {
+    Object key = this.tblAccountsLOV.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      if (this.btnAccounts.getShortDesc() != null)
+      {
+        this.txtSearchValue.setValue(nodeBinding.getAttribute("accountName"));
+        String accountCode = nodeBinding.getAttribute("accountCode").toString();
+        
+        String searchCriteria = "WHERE LDS_ACC_CODE=" + accountCode;
+        this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+        ADFUtils.findIterator("findLeadsIterator").executeQuery();
+        this.txtSearchValue.setDisabled(true);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+        
+        GlobalCC.dismissPopUp("crm", "AccountsPop");
+        this.btnAccounts.setShortDesc(null);
+      }
+      this.txtAccountCode.setValue(nodeBinding.getAttribute("accountCode"));
+      this.txtAccountName.setValue(nodeBinding.getAttribute("accountName"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtAccountName);
+    }
+    GlobalCC.dismissPopUp("crm", "AccountsPop");
+    return null;
+  }
+  
+  public String actionAcceptTeam()
+  {
+    Object key = this.tblTeamsLOV.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      if (this.btnTeams.getShortDesc() != null)
+      {
+        this.txtSearchValue.setValue(nodeBinding.getAttribute("username"));
+        String teamCode = nodeBinding.getAttribute("userCode").toString();
+        
+        String searchCriteria = "WHERE LDS_TEAM_USR_CODE=" + teamCode;
+        this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+        ADFUtils.findIterator("findLeadsIterator").executeQuery();
+        this.txtSearchValue.setDisabled(true);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+        
+        GlobalCC.dismissPopUp("crm", "TeamsPop");
+        this.btnTeams.setShortDesc(null);
+      }
+      this.txtTeamCode.setValue(nodeBinding.getAttribute("userCode"));
+      this.txtTeamName.setValue(nodeBinding.getAttribute("username"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtTeamName);
+    }
+    GlobalCC.dismissPopUp("crm", "TeamsPop");
+    return null;
+  }
+  
+  public String actionAcceptUser()
+  {
+    Object key = this.tblUsersLOv.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      if (this.btnUsers.getShortDesc() != null)
+      {
+        this.txtSearchValue.setValue(nodeBinding.getAttribute("username"));
+        String userCode = nodeBinding.getAttribute("userCode").toString();
+        
+        String searchCriteria = "WHERE LDS_USR_CODE=" + userCode;
+        this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+        ADFUtils.findIterator("findLeadsIterator").executeQuery();
+        this.txtSearchValue.setDisabled(true);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+        
+        GlobalCC.dismissPopUp("crm", "UsersPop");
+        this.btnUsers.setShortDesc(null);
+      }
+      this.txtUserCode.setValue(nodeBinding.getAttribute("userCode"));
+      this.txtUserName.setValue(nodeBinding.getAttribute("username"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtUserName);
+    }
+    GlobalCC.dismissPopUp("crm", "UsersPop");
+    return null;
+  }
+  
+  public String actionAcceptOrg()
+  {
+    Object key = this.tblOrgsLOV.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      this.txtOrgCode.setValue(nodeBinding.getAttribute("orgCode"));
+      this.txtOrgName.setValue(nodeBinding.getAttribute("orgName"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtOrgName);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtOrgCode);
+    }
+    GlobalCC.dismissPopUp("crm", "OrganisationsPop");
+    
+    return null;
+  }
+  
+  public void setTxtCountryCode(RichInputText txtCountryCode)
+  {
+    this.txtCountryCode = txtCountryCode;
+  }
+  
+  public RichInputText getTxtCountryCode()
+  {
+    return this.txtCountryCode;
+  }
+  
+  public void setTxtStateCode(RichInputText txtStateCode)
+  {
+    this.txtStateCode = txtStateCode;
+  }
+  
+  public RichInputText getTxtStateCode()
+  {
+    return this.txtStateCode;
+  }
+  
+  public void setTxtTownCode(RichInputText txtTownCode)
+  {
+    this.txtTownCode = txtTownCode;
+  }
+  
+  public RichInputText getTxtTownCode()
+  {
+    return this.txtTownCode;
+  }
+  
+  public void setTxtUserCode(RichInputText txtUserCode)
+  {
+    this.txtUserCode = txtUserCode;
+  }
+  
+  public RichInputText getTxtUserCode()
+  {
+    return this.txtUserCode;
+  }
+  
+  public void setTxtTeamCode(RichInputText txtTeamCode)
+  {
+    this.txtTeamCode = txtTeamCode;
+  }
+  
+  public RichInputText getTxtTeamCode()
+  {
+    return this.txtTeamCode;
+  }
+  
+  public void setTxtAccountCode(RichInputText txtAccountCode)
+  {
+    this.txtAccountCode = txtAccountCode;
+  }
+  
+  public RichInputText getTxtAccountCode()
+  {
+    return this.txtAccountCode;
+  }
+  
+  public void setTxtCountryName(RichInputText txtCountryName)
+  {
+    this.txtCountryName = txtCountryName;
+  }
+  
+  public RichInputText getTxtCountryName()
+  {
+    return this.txtCountryName;
+  }
+  
+  public void setTxtStateName(RichInputText txtStateName)
+  {
+    this.txtStateName = txtStateName;
+  }
+  
+  public RichInputText getTxtStateName()
+  {
+    return this.txtStateName;
+  }
+  
+  public void setTxtTownName(RichInputText txtTownName)
+  {
+    this.txtTownName = txtTownName;
+  }
+  
+  public RichInputText getTxtTownName()
+  {
+    return this.txtTownName;
+  }
+  
+  public void setTxtOrgName(RichInputText txtOrgName)
+  {
+    this.txtOrgName = txtOrgName;
+  }
+  
+  public RichInputText getTxtOrgName()
+  {
+    return this.txtOrgName;
+  }
+  
+  public void setTxtUserName(RichInputText txtUserName)
+  {
+    this.txtUserName = txtUserName;
+  }
+  
+  public RichInputText getTxtUserName()
+  {
+    return this.txtUserName;
+  }
+  
+  public void setTxtTeamName(RichInputText txtTeamName)
+  {
+    this.txtTeamName = txtTeamName;
+  }
+  
+  public RichInputText getTxtTeamName()
+  {
+    return this.txtTeamName;
+  }
+  
+  public void setTxtAccountName(RichInputText txtAccountName)
+  {
+    this.txtAccountName = txtAccountName;
+  }
+  
+  public RichInputText getTxtAccountName()
+  {
+    return this.txtAccountName;
+  }
+  
+  public void setTblOrgsLOV(RichTable tblOrgsLOV)
+  {
+    this.tblOrgsLOV = tblOrgsLOV;
+  }
+  
+  public RichTable getTblOrgsLOV()
+  {
+    return this.tblOrgsLOV;
+  }
+  
+  public void setTxtOrgCode(RichInputText txtOrgCode)
+  {
+    this.txtOrgCode = txtOrgCode;
+  }
+  
+  public RichInputText getTxtOrgCode()
+  {
+    return this.txtOrgCode;
+  }
+  
+  public void setTblTowns(RichTable tblTowns)
+  {
+    this.tblTowns = tblTowns;
+  }
+  
+  public RichTable getTblTowns()
+  {
+    return this.tblTowns;
+  }
+  
+  public String showCountries()
+  {
+    this.txtStateCode.setValue(null);
+    this.txtTownCode.setValue(null);
+    this.txtStateName.setValue(null);
+    this.txtTownName.setValue(null);
+    AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtStateName);
+    
+    GlobalCC.showPopUp("crm", "CountriesPop");
+    return null;
+  }
+  
+  public String showStates()
+  {
+    if (this.txtCountryCode.getValue() == null)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, new Exception("Select a Country first"));
+      
+      return null;
+    }
+    this.session.setAttribute("countryCode", this.txtCountryCode.getValue());
+    ADFUtils.findIterator("fetchStatesByCountryIterator").executeQuery();
+    GlobalCC.showPopUp("crm", "StatesPop");
+    return null;
+  }
+  
+  public String showTowns()
+  {
+    if (this.txtCountryCode.getValue() == null)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, new Exception("Select a Country first"));
+      
+      return null;
+    }
+    this.session.setAttribute("countryCode", this.txtCountryCode.getValue());
+    GlobalCC.showPopUp("crm", "TownsPop");
+    return null;
+  }
+  
+  public String showOrgs()
+  {
+    ADFUtils.findIterator("fetchTownsByCountryIterator").executeQuery();
+    AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblTowns);
+    GlobalCC.showPopUp("crm", "OrganisationsPop");
+    return null;
+  }
+  
+  public String showUsers()
+  {
+    GlobalCC.showPopUp("crm", "UsersPop");
+    return null;
+  }
+  
+  public String showTeams()
+  {
+    GlobalCC.showPopUp("crm", "TeamsPop");
+    return null;
+  }
+  
+  public String showAccounts()
+  {
+    GlobalCC.showPopUp("crm", "AccountsPop");
+    return null;
+  }
+  
+  public String AddLeadSource()
+  {
+    try
+    {
+      this.session.setAttribute("leadSourceCode", null);
+      this.desc.setValue(null);
+      
+      this.session.setAttribute("action", "A");
+      GlobalCC.showPopUp("crm", "leadSourcePOP");
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String AddLeadStatus()
+  {
+    try
+    {
+      this.session.setAttribute("leadStatusCode", null);
+      this.desc.setValue(null);
+      
+      this.session.setAttribute("action", "A");
+      GlobalCC.showPopUp("crm", "leadStatusPOP");
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String EditLeadStatuses()
+  {
+    try
+    {
+      DCIteratorBinding dciter = ADFUtils.findIterator("findLeadStatusesIterator");
+      
+      RowKeySet set = this.leadStatusesTable.getSelectedRowKeys();
+      Iterator rowKeySetIter = set.iterator();
+      while (rowKeySetIter.hasNext())
+      {
+        List l = (List)rowKeySetIter.next();
+        Key key = (Key)l.get(0);
+        dciter.setCurrentRowWithKey(key.toStringFormat(true));
+        
+
+        Row r = dciter.getCurrentRow();
+        
+        this.session.setAttribute("leadStatusCode", r.getAttribute("leadStatusCode"));
+        
+        this.desc.setValue(r.getAttribute("leadStatusDesc"));
+        
+        this.session.setAttribute("action", "E");
+        GlobalCC.showPopUp("crm", "leadStatusPOP");
+      }
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String EditLeadSources()
+  {
+    try
+    {
+      DCIteratorBinding dciter = ADFUtils.findIterator("findLeadSourcesIterator");
+      
+      RowKeySet set = this.leadSources.getSelectedRowKeys();
+      Iterator rowKeySetIter = set.iterator();
+      while (rowKeySetIter.hasNext())
+      {
+        List l = (List)rowKeySetIter.next();
+        Key key = (Key)l.get(0);
+        dciter.setCurrentRowWithKey(key.toStringFormat(true));
+        
+
+        Row r = dciter.getCurrentRow();
+        
+        this.session.setAttribute("leadSourceCode", r.getAttribute("leadSourceCode"));
+        
+        this.desc.setValue(r.getAttribute("leadSourceDesc"));
+        
+        this.session.setAttribute("action", "E");
+        GlobalCC.showPopUp("crm", "leadSourcePOP");
+      }
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String DeleteLeadStatuses()
+  {
+    try
+    {
+      DCIteratorBinding dciter = ADFUtils.findIterator("findLeadStatusesIterator");
+      
+      RowKeySet set = this.leadStatusesTable.getSelectedRowKeys();
+      Iterator rowKeySetIter = set.iterator();
+      while (rowKeySetIter.hasNext())
+      {
+        List l = (List)rowKeySetIter.next();
+        Key key = (Key)l.get(0);
+        dciter.setCurrentRowWithKey(key.toStringFormat(true));
+        
+
+        Row r = dciter.getCurrentRow();
+        
+        this.session.setAttribute("leadStatusCode", r.getAttribute("leadStatusCode"));
+        
+        this.desc.setValue(r.getAttribute("leadStatusDesc"));
+        this.session.setAttribute("action", "D");
+        
+        SaveLeadStatuses();
+      }
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String DeleteLeadSources()
+  {
+    try
+    {
+      DCIteratorBinding dciter = ADFUtils.findIterator("findLeadSourcesIterator");
+      
+      RowKeySet set = this.leadSources.getSelectedRowKeys();
+      Iterator rowKeySetIter = set.iterator();
+      while (rowKeySetIter.hasNext())
+      {
+        List l = (List)rowKeySetIter.next();
+        Key key = (Key)l.get(0);
+        dciter.setCurrentRowWithKey(key.toStringFormat(true));
+        
+
+        Row r = dciter.getCurrentRow();
+        
+        this.session.setAttribute("leadSourceCode", r.getAttribute("leadSourceCode"));
+        
+        this.desc.setValue(r.getAttribute("leadSourceDesc"));
+        this.session.setAttribute("action", "D");
+        
+        SaveLeadSources();
+      }
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, e);
+    }
+    return null;
+  }
+  
+  public String SaveLeadSources()
+  {
+    OracleConnection conn = null;
+    try
+    {
+      DBConnector dbCon = new DBConnector();
+      conn = dbCon.getDatabaseConnection();
+      
+      String query = "begin TQC_SETUPS_PKG.save_lead_sources(?,?,?); end;";
+      
+
+      OracleCallableStatement callStmt = null;
+      callStmt = (OracleCallableStatement)conn.prepareCall(query);
+      callStmt.setString(1, (String)this.session.getAttribute("action"));
+      callStmt.setBigDecimal(2, (BigDecimal)this.session.getAttribute("leadSourceCode"));
+      if (this.desc.getValue() == null) {
+        callStmt.setString(3, null);
+      } else {
+        callStmt.setString(3, this.desc.getValue().toString());
+      }
+      callStmt.execute();
+      callStmt.close();
+      
+      ADFUtils.findIterator("findLeadSourcesIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadSources);
+      GlobalCC.dismissPopUp("crm", "leadSourcePOP");
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(conn, e);
+    }
+    return null;
+  }
+  
+  public String SaveLeadStatuses()
+  {
+    OracleConnection conn = null;
+    try
+    {
+      DBConnector dbCon = new DBConnector();
+      conn = dbCon.getDatabaseConnection();
+      
+      String query = "begin TQC_SETUPS_PKG.save_lead_statuses(?,?,?); end;";
+      
+
+      OracleCallableStatement callStmt = null;
+      callStmt = (OracleCallableStatement)conn.prepareCall(query);
+      
+      callStmt.setString(1, (String)this.session.getAttribute("action"));
+      callStmt.setBigDecimal(2, (BigDecimal)this.session.getAttribute("leadStatusCode"));
+      if (this.desc.getValue() == null) {
+        callStmt.setString(3, null);
+      } else {
+        callStmt.setString(3, this.desc.getValue().toString());
+      }
+      callStmt.execute();
+      callStmt.close();
+      conn.close();
+      ADFUtils.findIterator("findLeadStatusesIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadStatusesTable);
+      GlobalCC.dismissPopUp("crm", "leadStatusPOP");
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(conn, e);
+    }
+    return null;
+  }
+  
+  public void setDesc(RichInputText desc)
+  {
+    this.desc = desc;
+  }
+  
+  public RichInputText getDesc()
+  {
+    return this.desc;
+  }
+  
+  public void setLeadStatusesTable(RichTable leadStatusesTable)
+  {
+    this.leadStatusesTable = leadStatusesTable;
+  }
+  
+  public RichTable getLeadStatusesTable()
+  {
+    return this.leadStatusesTable;
+  }
+  
+  public void setLeadSources(RichTable leadSources)
+  {
+    this.leadSources = leadSources;
+  }
+  
+  public RichTable getLeadSources()
+  {
+    return this.leadSources;
+  }
+  
+  public String actionDeleteLead()
+  {
+    if (this.txtLeadCode.getValue() == null)
+    {
+      GlobalCC.EXCEPTIONREPORTING(new Exception("You need to select a Lead to  delete"));
+      return null;
+    }
+    OracleConnection conn = null;
+    try
+    {
+      DBConnector dbCon = new DBConnector();
+      conn = dbCon.getDatabaseConnection();
+      String query = "begin TQC_SETUPS_PKG.delete_lead(?); end;";
+      
+      OracleCallableStatement callStmt = null;
+      callStmt = (OracleCallableStatement)conn.prepareCall(query);
+      callStmt.setObject(1, this.txtLeadCode.getValue());
+      
+
+      callStmt.execute();
+      
+      callStmt.close();
+      conn.close();
+      
+      GlobalCC.sysInformation("Lead  Successfully Deleted.");
+      
+      ADFUtils.findIterator("findLeadsIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+      clearLeadDetails();
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(conn, e);
+    }
+    return null;
+  }
+  
+  public void setTblLeads(RichTable tblLeads)
+  {
+    this.tblLeads = tblLeads;
+  }
+  
+  public RichTable getTblLeads()
+  {
+    return this.tblLeads;
+  }
+  
+  public void actionTblLeadsSelected(SelectionEvent selectionEvent)
+  {
+    if (selectionEvent.getAddedSet() != selectionEvent.getRemovedSet())
+    {
+      Object key = this.tblLeads.getSelectedRowData();
+      JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+      this.description.setValue(nodeBinding.getAttribute("LDS_DESC"));
+      this.coName.setValue(nodeBinding.getAttribute("companyName"));
+      this.coTel.setValue(nodeBinding.getAttribute("LDS_CAMP_TEL"));
+      this.title.setValue(nodeBinding.getAttribute("LDS_TITLE"));
+      this.surname.setValue(nodeBinding.getAttribute("LDS_SURNNAME"));
+      this.otherNames.setValue(nodeBinding.getAttribute("LDS_OTHERNAMES"));
+      this.mobileNo.setValue(nodeBinding.getAttribute("LDS_MOB_TEL"));
+      this.fax.setValue(nodeBinding.getAttribute("LDS_FAX"));
+      this.email.setValue(nodeBinding.getAttribute("LDS_EMAIL_ADDRS"));
+      this.postalAddress.setValue(nodeBinding.getAttribute("LDS_POSTAL_ADDRS"));
+      this.postalCode.setValue(nodeBinding.getAttribute("LDS_POSTAL_CODE"));
+      this.physicalAddress.setValue(nodeBinding.getAttribute("LDS_PHYSICAL_ADDRS"));
+      this.source.setValue(nodeBinding.getAttribute("LDSRC_DESC"));
+      this.status.setValue(nodeBinding.getAttribute("LDS_LSTS_DESC"));
+      this.leadDate.setValue(nodeBinding.getAttribute("LDS_DATE"));
+      this.converted.setValue(nodeBinding.getAttribute("LDS_CONVERTED"));
+      this.portName.setValue(nodeBinding.getAttribute("LDS_PONT_NAME"));
+      this.portContr.setValue(nodeBinding.getAttribute("LDS_PONT_CONRT"));
+      this.portAmount.setValue(nodeBinding.getAttribute("LDS_PONT_AMOUNT"));
+      this.portSale.setValue(nodeBinding.getAttribute("LDS_PONT_SALE_STAGE"));
+      this.portCloseDate.setValue(nodeBinding.getAttribute("LDS_PONT_CLOSE_DATE"));
+      this.annRevenue.setValue(nodeBinding.getAttribute("LDS_ANN_REVENUE"));
+      this.website.setValue(nodeBinding.getAttribute("LDS_WEB_SITE"));
+      this.industry.setValue(nodeBinding.getAttribute("LDS_INDUSTRY"));
+      
+      this.txtCountryCode.setValue(nodeBinding.getAttribute("LDS_COU_CODE"));
+      this.txtStateCode.setValue(nodeBinding.getAttribute("LDS_STATE_CODE"));
+      this.txtTownCode.setValue(nodeBinding.getAttribute("LDS_TWN_CODE"));
+      this.txtUserCode.setValue(nodeBinding.getAttribute("LDS_USR_CODE"));
+      this.txtTeamCode.setValue(nodeBinding.getAttribute("LDS_TEAM_USR_CODE"));
+      this.txtAccountCode.setValue(nodeBinding.getAttribute("LDS_ACC_CODE"));
+      this.txtCountryName.setValue(nodeBinding.getAttribute("LDS_COUNTRY"));
+      this.txtStateName.setValue(nodeBinding.getAttribute("LDS_STATE"));
+      this.txtTownName.setValue(nodeBinding.getAttribute("LDS_TOWN_NAME"));
+      this.txtOrgName.setValue(nodeBinding.getAttribute("LDS_ORG_NAME"));
+      this.txtUserName.setValue(nodeBinding.getAttribute("LDS_USR_NAME"));
+      this.txtTeamName.setValue(nodeBinding.getAttribute("LDS_TEAM_NAME"));
+      this.txtAccountName.setValue(nodeBinding.getAttribute("LDS_ACCOUNT_NAME"));
+      this.txtOrgCode.setValue(nodeBinding.getAttribute("LDS_ORG_CODE"));
+      this.txtLeadCode.setValue(nodeBinding.getAttribute("LDS_CODE"));
+      this.txtCampaignCode.setValue(nodeBinding.getAttribute("LDS_CMP_CODE"));
+      this.txtProductCode.setValue(nodeBinding.getAttribute("leadProdCode"));
+      this.txtCurrencyCode.setValue(nodeBinding.getAttribute("LDS_CUR_CODE"));
+      this.txtSystemCode.setValue(nodeBinding.getAttribute("LDS_SYS_CODE"));
+      this.txtCampaignName.setValue(nodeBinding.getAttribute("LDS_CAMP_NAME"));
+      this.txtProductName.setValue(nodeBinding.getAttribute("leadProdName"));
+      this.txtCurrencyName.setValue(nodeBinding.getAttribute("leadCurName"));
+      this.txtSystemName.setValue(nodeBinding.getAttribute("leadSysName"));
+      this.txtLeadSrcCode.setValue(nodeBinding.getAttribute("LDSRC_CODE"));
+      this.txtLeadStatusCode.setValue(nodeBinding.getAttribute("LDS_LSTS_CODE"));
+      this.txtOrgDivCode.setValue(nodeBinding.getAttribute("leadDivCode"));
+      this.txtOrgDivName.setValue(nodeBinding.getAttribute("leadDivName"));
+      this.txtOccupation.setValue(nodeBinding.getAttribute("occupation"));
+      this.txtClntShtDesc.setValue(nodeBinding.getAttribute("clientShtDesc"));
+      this.session.setAttribute("Lead_code", this.txtLeadCode.getValue());
+      ADFUtils.findIterator("findLeadActivitiesIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadActivitiesTable);
+      ADFUtils.findIterator("findLeadCommentsIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.leadCommentsTable);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.pnBoxLeadDetails);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtOccupation);
+    }
+  }
+  
+  public void setTblSystems(RichTable tblSystems)
+  {
+    this.tblSystems = tblSystems;
+  }
+  
+  public RichTable getTblSystems()
+  {
+    return this.tblSystems;
+  }
+  
+  public String actionAcceptSystem()
+  {
+    Object key = this.tblSystems.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      if (this.btnSystems.getShortDesc() != null)
+      {
+        this.txtSearchValue.setValue(nodeBinding.getAttribute("name"));
+        String sysCode = nodeBinding.getAttribute("code").toString();
+        String searchCriteria = "WHERE LDS_SYS_CODE=" + sysCode;
+        this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+        ADFUtils.findIterator("findLeadsIterator").executeQuery();
+        this.txtSearchValue.setDisabled(true);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+        
+
+        this.btnSystems.setShortDesc(null);
+      }
+      this.session.setAttribute("sysCode", nodeBinding.getAttribute("code"));
+      this.txtSystemCode.setValue(nodeBinding.getAttribute("code"));
+      this.txtSystemName.setValue(nodeBinding.getAttribute("name"));
+      this.txtProductName.setValue(null);
+      this.txtProductCode.setValue(null);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSystemName);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtProductName);
+    }
+    GlobalCC.dismissPopUp("crm", "SystemsPop");
+    return null;
+  }
+  
+  public void setTxtSystemCode(RichInputText txtSystemCode)
+  {
+    this.txtSystemCode = txtSystemCode;
+  }
+  
+  public RichInputText getTxtSystemCode()
+  {
+    return this.txtSystemCode;
+  }
+  
+  public void setTxtProductCode(RichInputText txtProductCode)
+  {
+    this.txtProductCode = txtProductCode;
+  }
+  
+  public RichInputText getTxtProductCode()
+  {
+    return this.txtProductCode;
+  }
+  
+  public void setTxtCampaignCode(RichInputText txtCampaignCode)
+  {
+    this.txtCampaignCode = txtCampaignCode;
+  }
+  
+  public RichInputText getTxtCampaignCode()
+  {
+    return this.txtCampaignCode;
+  }
+  
+  public void setTxtCurrencyCode(RichInputText txtCurrencyCode)
+  {
+    this.txtCurrencyCode = txtCurrencyCode;
+  }
+  
+  public RichInputText getTxtCurrencyCode()
+  {
+    return this.txtCurrencyCode;
+  }
+  
+  public String showSystems()
+  {
+    GlobalCC.showPopUp("crm", "SystemsPop");
+    return null;
+  }
+  
+  public String showProducts()
+  {
+    if (this.txtSystemCode.getValue() == null)
+    {
+      GlobalCC.EXCEPTIONREPORTING(new Exception("You need to select a system first"));
+      return null;
+    }
+    this.session.setAttribute("sysCode", this.txtSystemCode.getValue());
+    ADFUtils.findIterator("findCampaignProductsIterator").executeQuery();
+    GlobalCC.showPopUp("crm", "CampaignProductsPop");
+    return null;
+  }
+  
+  public String showCampaigns()
+  {
+    GlobalCC.showPopUp("crm", "CampaignsPOp");
+    return null;
+  }
+  
+  public String showCurrecies()
+  {
+    GlobalCC.showPopUp("crm", "CurrenciesPop");
+    return null;
+  }
+  
+  public String actionAcceptCampaign()
+  {
+    Object key = this.tblCampaigns.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      if (this.btnCampaign.getShortDesc() != null)
+      {
+        this.txtSearchValue.setValue(nodeBinding.getAttribute("campName"));
+        String campaignCode = nodeBinding.getAttribute("campCode").toString();
+        
+        String searchCriteria = "WHERE LDS_CAMP_CODE=" + campaignCode;
+        this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+        ADFUtils.findIterator("findLeadsIterator").executeQuery();
+        this.txtSearchValue.setDisabled(true);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+        
+
+        this.btnCampaign.setShortDesc(null);
+      }
+      this.txtCampaignCode.setValue(nodeBinding.getAttribute("campCode"));
+      this.txtCampaignName.setValue(nodeBinding.getAttribute("campName"));
+      
+
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtCampaignName);
+      GlobalCC.dismissPopUp("crm", "CampaignsPOp");
+    }
+    return null;
+  }
+  
+  public void setTblProducts(RichTable tblProducts)
+  {
+    this.tblProducts = tblProducts;
+  }
+  
+  public RichTable getTblProducts()
+  {
+    return this.tblProducts;
+  }
+  
+  public String actionAcceptProduct()
+  {
+    Object key = this.tblProducts.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      if (this.btnProducts.getShortDesc() != null)
+      {
+        if (this.session.getAttribute("sysCode") == null)
+        {
+          GlobalCC.EXCEPTIONREPORTING(new Exception("Please Select a system first"));
+          return null;
+        }
+        this.txtSearchValue.setValue(nodeBinding.getAttribute("prodDesc"));
+        String productCode = nodeBinding.getAttribute("productCode").toString();
+        
+        String searchCriteria = "WHERE LDS_SYS_CODE =" + this.session.getAttribute("sysCode") + " AND LDS_PROD_CODE=" + productCode;
+        
+
+        this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+        ADFUtils.findIterator("findLeadsIterator").executeQuery();
+        this.txtSearchValue.setDisabled(true);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+        
+
+        GlobalCC.dismissPopUp("crm", "CampaignProductsPop");
+      }
+      this.txtProductCode.setValue(nodeBinding.getAttribute("productCode"));
+      this.txtProductName.setValue(nodeBinding.getAttribute("prodDesc"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtProductName);
+      GlobalCC.dismissPopUp("crm", "ProductSystemsPOP");
+      GlobalCC.dismissPopUp("crm", "CampaignProductsPop");
+      this.btnProducts.setShortDesc(null);
+    }
+    return null;
+  }
+  
+  public void setTblCurrencies(RichTable tblCurrencies)
+  {
+    this.tblCurrencies = tblCurrencies;
+  }
+  
+  public RichTable getTblCurrencies()
+  {
+    return this.tblCurrencies;
+  }
+  
+  public String actionAcceptCurrency()
+  {
+    Object key = this.tblCurrencies.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      this.txtCurrencyCode.setValue(nodeBinding.getAttribute("code"));
+      this.txtCurrencyName.setValue(nodeBinding.getAttribute("description"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtCurrencyName);
+    }
+    GlobalCC.dismissPopUp("crm", "CurrenciesPop");
+    return null;
+  }
+  
+  public void setTxtLeadCode(RichInputText txtLeadCode)
+  {
+    this.txtLeadCode = txtLeadCode;
+  }
+  
+  public RichInputText getTxtLeadCode()
+  {
+    return this.txtLeadCode;
+  }
+  
+  public void setTxtSystemName(RichInputText txtSystemName)
+  {
+    this.txtSystemName = txtSystemName;
+  }
+  
+  public RichInputText getTxtSystemName()
+  {
+    return this.txtSystemName;
+  }
+  
+  public void setTxtProductName(RichInputText txtProductName)
+  {
+    this.txtProductName = txtProductName;
+  }
+  
+  public RichInputText getTxtProductName()
+  {
+    return this.txtProductName;
+  }
+  
+  public void setTxtCampaignName(RichInputText txtCampaignName)
+  {
+    this.txtCampaignName = txtCampaignName;
+  }
+  
+  public RichInputText getTxtCampaignName()
+  {
+    return this.txtCampaignName;
+  }
+  
+  public void setTxtCurrencyName(RichInputText txtCurrencyName)
+  {
+    this.txtCurrencyName = txtCurrencyName;
+  }
+  
+  public RichInputText getTxtCurrencyName()
+  {
+    return this.txtCurrencyName;
+  }
+  
+  public void setDlgNewEditLead(RichDialog dlgNewEditLead)
+  {
+    this.dlgNewEditLead = dlgNewEditLead;
+  }
+  
+  public RichDialog getDlgNewEditLead()
+  {
+    return this.dlgNewEditLead;
+  }
+  
+  public String actionSaveLead()
+  {
+    OracleConnection conn = null;
+    try
+    {
+      DBConnector dbCon = new DBConnector();
+      conn = dbCon.getDatabaseConnection();
+      if (GlobalCC.checkNullValues(surname.getValue()) == null) {
+                      GlobalCC.errorValueNotEntered("Enter Surname!");
+                      return null;
+                  }
+      String Occupation; 
+      
+      if (this.txtOccupation.getValue() != null) {
+        Occupation = this.txtOccupation.getValue().toString();
+      } else {
+        Occupation = null;
+      }
+      if (this.description.getValue() == null)
+      {
+        GlobalCC.errorValueNotEntered("Enter A Description");
+        return null;
+      }
+      String companyName; 
+      if (this.coName.getValue() != null) {
+        companyName = this.coName.getValue().toString();
+      } else {
+        companyName = null;
+      }
+      if (this.leadDate.getValue() == null)
+      {
+        GlobalCC.errorValueNotEntered("Enter A Lead Date");
+        return null;
+      }
+      String query = "begin TQC_SETUPS_PKG.save_lead_details(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); end;";
+      
+
+
+
+      OracleCallableStatement callStmt = null;
+      callStmt = (OracleCallableStatement)conn.prepareCall(query);
+      callStmt.setObject(1, this.txtLeadCode.getValue());
+      if (this.description.getValue() == null) {
+        callStmt.setString(2, null);
+      } else {
+        callStmt.setString(2, this.description.getValue().toString());
+      }
+      callStmt.setObject(3, this.txtCampaignCode.getValue());
+      
+      callStmt.setObject(4, this.coTel.getValue());
+      callStmt.setObject(5, this.title.getValue());
+      callStmt.setObject(6, this.surname.getValue());
+      callStmt.setObject(7, this.otherNames.getValue());
+      if (this.mobileNo.getValue() == null) {
+        callStmt.setString(8, null);
+      } else {
+        callStmt.setString(8, this.mobileNo.getValue().toString());
+      }
+      if (this.fax.getValue() == null) {
+        callStmt.setString(9, null);
+      } else {
+        callStmt.setString(9, this.fax.getValue().toString());
+      }
+      if (this.email.getValue() == null) {
+        callStmt.setString(10, null);
+      } else {
+        callStmt.setString(10, this.email.getValue().toString());
+      }
+      if (this.postalAddress.getValue() == null) {
+        callStmt.setString(11, null);
+      } else {
+        callStmt.setString(11, this.postalAddress.getValue().toString());
+      }
+      if (this.postalCode.getValue() == null) {
+        callStmt.setString(12, null);
+      } else {
+        callStmt.setString(12, this.postalCode.getValue().toString());
+      }
+      if (this.physicalAddress.getValue() == null) {
+        callStmt.setString(13, null);
+      } else {
+        callStmt.setString(13, this.physicalAddress.getValue().toString());
+      }
+      callStmt.setObject(14, this.txtLeadSrcCode.getValue());
+      callStmt.setObject(15, this.txtLeadStatusCode.getValue());
+      if (this.leadDate.getValue() == null) {
+        callStmt.setString(16, null);
+      } else if (this.leadDate.getValue().toString().contains(":")) {
+        callStmt.setString(16, GlobalCC.parseDate(this.leadDate.getValue().toString()));
+      } else {
+        callStmt.setString(16, GlobalCC.upDateParseDate(this.leadDate.getValue().toString()));
+      }
+      if (this.converted.getValue() == null) {
+        callStmt.setString(17, null);
+      } else {
+        callStmt.setString(17, this.converted.getValue().toString());
+      }
+      if (this.portName.getValue() == null) {
+        callStmt.setString(18, null);
+      } else {
+        callStmt.setString(18, this.portName.getValue().toString());
+      }
+      if (this.portContr.getValue() == null) {
+        callStmt.setString(19, null);
+      } else {
+        callStmt.setString(19, this.portContr.getValue().toString());
+      }
+      if (this.portAmount.getValue() == null) {
+        callStmt.setString(20, null);
+      } else {
+        callStmt.setString(20, this.portAmount.getValue().toString());
+      }
+      if (this.portSale.getValue() == null) {
+        callStmt.setString(21, null);
+      } else {
+        callStmt.setString(21, this.portSale.getValue().toString());
+      }
+      if (this.portCloseDate.getValue() == null) {
+        callStmt.setString(22, null);
+      } else if (this.portCloseDate.getValue().toString().contains(":")) {
+        callStmt.setString(22, GlobalCC.parseDate(this.portCloseDate.getValue().toString()));
+      } else {
+        callStmt.setString(22, GlobalCC.upDateParseDate(this.portCloseDate.getValue().toString()));
+      }
+      if (this.annRevenue.getValue() == null) {
+        callStmt.setString(23, null);
+      } else {
+        callStmt.setString(23, this.annRevenue.getValue().toString());
+      }
+      if (this.website.getValue() == null) {
+        callStmt.setString(24, null);
+      } else {
+        callStmt.setString(24, this.website.getValue().toString());
+      }
+      if (this.industry.getValue() == null) {
+        callStmt.setString(25, null);
+      } else {
+        callStmt.setString(25, this.industry.getValue().toString());
+      }
+      callStmt.setObject(26, this.txtCountryCode.getValue());
+      callStmt.setObject(27, this.txtStateCode.getValue());
+      callStmt.setObject(28, this.txtTownCode.getValue());
+      callStmt.setObject(29, this.txtOrgCode.getValue());
+      callStmt.setObject(30, this.txtUserCode.getValue());
+      callStmt.setObject(31, this.txtTeamCode.getValue());
+      callStmt.setObject(32, this.txtAccountCode.getValue());
+      callStmt.setObject(33, this.txtProductCode.getValue());
+      callStmt.setObject(34, this.txtCurrencyCode.getValue());
+      callStmt.setObject(35, this.txtSystemCode.getValue());
+      callStmt.setObject(36, this.txtOrgDivCode.getValue());
+      callStmt.setString(37, Occupation);
+      callStmt.setObject(38, companyName);
+      callStmt.execute();
+      
+      callStmt.close();
+      conn.close();
+      GlobalCC.dismissPopUp("crm", "newEditLeadPop");
+      
+      GlobalCC.sysInformation("Lead Details Successfully Saved.");
+      ADFUtils.findIterator("findLeadsIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(conn, e);
+    }
+    return null;
+  }
+  
+  public void processLeads(InputStream csvFile)
+  {
+    String[][] csvvalues = (String[][])null;
+    int count = 0;
+    
+
+    String leadDate = null;
+    String closeDate = null;
+    DBConnector datahandler = new DBConnector();
+    
+    Connection conn = datahandler.getDatabaseConnection();
+    CallableStatement cst = null;
+    try
+    {
+      csvvalues = CSVParser.parse(new InputStreamReader(csvFile));
+      String query = "begin TQC_SETUPS_PKG.save_lead_details(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?); end;";
+      
+
+
+
+      OracleCallableStatement callStmt = null;
+      callStmt = (OracleCallableStatement)conn.prepareCall(query);
+      for (int i = 1; i < csvvalues.length; i++) {
+        if (i != 0)
+        {
+          SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+          
+
+          callStmt.setObject(1, null);
+          callStmt.setString(2, null);
+          callStmt.setObject(3, null);
+          
+          callStmt.setObject(4, csvvalues[i][0]);
+          callStmt.setObject(5, csvvalues[i][1]);
+          callStmt.setObject(6, csvvalues[i][2]);
+          callStmt.setObject(7, csvvalues[i][3]);
+          callStmt.setString(8, csvvalues[i][4]);
+          callStmt.setString(9, csvvalues[i][5]);
+          callStmt.setString(10, csvvalues[i][6]);
+          callStmt.setString(11, csvvalues[i][7]);
+          callStmt.setString(12, csvvalues[i][8]);
+          callStmt.setString(13, csvvalues[i][9]);
+          java.sql.Date dateLead = null;
+          if (csvvalues[i][10] != null) {
+            try
+            {
+              leadDate = csvvalues[i][10].toString();
+              java.util.Date dateofLead = sdf1.parse(leadDate);
+              dateLead = new java.sql.Date(dateofLead.getTime());
+            }
+            catch (Exception e)
+            {
+              dateLead = null;
+            }
+          } else {
+            dateLead = null;
+          }
+          callStmt.setObject(14, null);
+          callStmt.setObject(15, null);
+          callStmt.setObject(16, dateLead);
+          callStmt.setString(17, "N");
+          callStmt.setString(18, csvvalues[i][11]);
+          callStmt.setString(19, "N");
+          callStmt.setString(20, csvvalues[i][12]);
+          callStmt.setString(21, csvvalues[i][13]);
+          java.sql.Date dateClose = null;
+          if (csvvalues[i][14] != null) {
+            try
+            {
+              closeDate = csvvalues[i][14].toString();
+              java.util.Date dateodClose = sdf1.parse(closeDate);
+              dateClose = new java.sql.Date(dateodClose.getTime());
+            }
+            catch (Exception e)
+            {
+              dateClose = null;
+            }
+          } else {
+            dateClose = null;
+          }
+          callStmt.setObject(22, dateClose);
+          callStmt.setString(23, csvvalues[i][15]);
+          callStmt.setString(24, csvvalues[i][16]);
+          callStmt.setString(25, csvvalues[i][17]);
+          callStmt.setObject(26, null);
+          callStmt.setObject(27, null);
+          callStmt.setObject(28, null);
+          callStmt.setObject(29, null);
+          callStmt.setObject(30, null);
+          callStmt.setObject(31, null);
+          callStmt.setObject(32, null);
+          callStmt.setObject(33, null);
+          callStmt.setObject(34, null);
+          callStmt.setObject(35, null);
+          callStmt.setObject(36, null);
+          callStmt.setString(37, csvvalues[i][18]);
+          callStmt.setObject(38, null);
+          callStmt.addBatch();
+        }
+      }
+      callStmt.executeBatch();
+      callStmt.close();
+      conn.close();
+      
+
+      ADFUtils.findIterator("findLeadsIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+      
+      GlobalCC.INFORMATIONREPORTING("Data Successfully inserted...");
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(e);
+      e.printStackTrace();
+    }
+    finally
+    {
+      DbUtils.closeQuietly(conn, cst, null);
+    }
+  }
+  
+  public void fileChangeListenerLeads(ValueChangeEvent valueChangeEvent)
+  {
+    if (valueChangeEvent.getNewValue() != valueChangeEvent.getOldValue())
+    {
+      UploadedFile _file = (UploadedFile)valueChangeEvent.getNewValue();
+      this.uploadedFile = _file;
+      this.filename = _file.getFilename();
+      this.filesize = _file.getLength();
+      this.filetype = _file.getContentType();
+      try
+      {
+        processLeads(this.uploadedFile.getInputStream());
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
+    }
+  }
+  
+  public void setTxtLeadSrcCode(RichInputText txtLeadSrcCode)
+  {
+    this.txtLeadSrcCode = txtLeadSrcCode;
+  }
+  
+  public RichInputText getTxtLeadSrcCode()
+  {
+    return this.txtLeadSrcCode;
+  }
+  
+  public void setTxtLeadStatusCode(RichInputText txtLeadStatusCode)
+  {
+    this.txtLeadStatusCode = txtLeadStatusCode;
+  }
+  
+  public RichInputText getTxtLeadStatusCode()
+  {
+    return this.txtLeadStatusCode;
+  }
+  
+  public void setTblCampaigns(RichTable tblCampaigns)
+  {
+    this.tblCampaigns = tblCampaigns;
+  }
+  
+  public RichTable getTblCampaigns()
+  {
+    return this.tblCampaigns;
+  }
+  
+  public String actionCancelLead()
+  {
+    GlobalCC.dismissPopUp("crm", "newEditLeadPop");
+    return null;
+  }
+  
+  public String actionHideSources()
+  {
+    GlobalCC.dismissPopUp("crm", "leadSourcePOP");
+    return null;
+  }
+  
+  public String actionHideStatues()
+  {
+    GlobalCC.dismissPopUp("crm", "leadStatusPOP");
+    return null;
+  }
+  
+  public String actionHideCoutries()
+  {
+    GlobalCC.dismissPopUp("crm", "CountriesPop");
+    return null;
+  }
+  
+  public String actionHideStates()
+  {
+    GlobalCC.dismissPopUp("crm", "StatesPop");
+    return null;
+  }
+  
+  public String actionHideTowns()
+  {
+    GlobalCC.dismissPopUp("crm", "TownsPop");
+    return null;
+  }
+  
+  public String actionHideOrgs()
+  {
+    GlobalCC.dismissPopUp("crm", "OrganisationsPop");
+    return null;
+  }
+  
+  public String actionHideUsers()
+  {
+    GlobalCC.dismissPopUp("crm", "UsersPop");
+    return null;
+  }
+  
+  public String actionHideTeams()
+  {
+    GlobalCC.dismissPopUp("crm", "TeamsPop");
+    return null;
+  }
+  
+  public String actionHideAccounts()
+  {
+    GlobalCC.dismissPopUp("crm", "AccountsPop");
+    return null;
+  }
+  
+  public String actionHideProducts()
+  {
+    GlobalCC.dismissPopUp("crm", "CampaignProductsPop");
+    return null;
+  }
+  
+  public String actionHideCampaigns()
+  {
+    GlobalCC.dismissPopUp("crm", "CampaignsPOp");
+    return null;
+  }
+  
+  public String actionHideSystems()
+  {
+    GlobalCC.dismissPopUp("crm", "SystemsPop");
+    return null;
+  }
+  
+  public String actionHideCurrencies()
+  {
+    GlobalCC.dismissPopUp("crm", "CurrenciesPop");
+    return null;
+  }
+  
+  public void setPnBoxLeadDetails(RichPanelBox pnBoxLeadDetails)
+  {
+    this.pnBoxLeadDetails = pnBoxLeadDetails;
+  }
+  
+  public RichPanelBox getPnBoxLeadDetails()
+  {
+    return this.pnBoxLeadDetails;
+  }
+  
+  public void setTxtSearchValue(RichInputText txtSearchValue)
+  {
+    this.txtSearchValue = txtSearchValue;
+  }
+  
+  public RichInputText getTxtSearchValue()
+  {
+    return this.txtSearchValue;
+  }
+  
+  public void setLblSearchValue(RichOutputLabel lblSearchValue)
+  {
+    this.lblSearchValue = lblSearchValue;
+  }
+  
+  public RichOutputLabel getLblSearchValue()
+  {
+    return this.lblSearchValue;
+  }
+  
+  public void setSelectCriteria(RichSelectOneChoice selectCriteria)
+  {
+    this.selectCriteria = selectCriteria;
+  }
+  
+  public RichSelectOneChoice getSelectCriteria()
+  {
+    return this.selectCriteria;
+  }
+  
+  public void actionSelectCriteriaChanged(ValueChangeEvent valueChangeEvent)
+  {
+    if ((valueChangeEvent.getNewValue() != valueChangeEvent.getOldValue()) && (valueChangeEvent.getNewValue() != null))
+    {
+      System.out.println("Selected");
+      Object selectedValue = null;
+      if (valueChangeEvent.getNewValue() == null) {
+        selectedValue = valueChangeEvent.getOldValue();
+      } else {
+        selectedValue = valueChangeEvent.getNewValue();
+      }
+      if (selectedValue.toString().equals("1"))
+      {
+        clearLeadDetails();
+        this.lblSearchValue.setValue("Surname ");
+        this.txtSearchValue.setDisabled(false);
+        this.txtSearchValue.setVisible(true);
+        this.dtDateCreated.setVisible(false);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+      }
+      if (selectedValue.toString().equals("2"))
+      {
+        clearLeadDetails();
+        this.lblSearchValue.setValue("Country Name");
+        this.txtSearchValue.setDisabled(true);
+        this.txtSearchValue.setVisible(true);
+        this.dtDateCreated.setVisible(false);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+        
+
+
+        this.btnCountry.setShortDesc("SEACRH");
+        GlobalCC.showPopUp("crm", "CountriesPop");
+      }
+      if (selectedValue.toString().equals("3"))
+      {
+        clearLeadDetails();
+        this.lblSearchValue.setValue("Campaign Name");
+        this.txtSearchValue.setDisabled(true);
+        this.txtSearchValue.setVisible(true);
+        this.dtDateCreated.setVisible(false);
+        
+
+
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+        
+
+
+        this.btnCampaign.setShortDesc("SEARCH");
+        GlobalCC.showPopUp("crm", "CampaignsPOp");
+      }
+      if (selectedValue.toString().equals("4"))
+      {
+        clearLeadDetails();
+        this.lblSearchValue.setValue("Product Name");
+        this.txtSearchValue.setDisabled(true);
+        this.txtSearchValue.setVisible(true);
+        this.dtDateCreated.setVisible(false);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+        
+
+
+        this.btnCampaign.setShortDesc("SEARCH");
+        GlobalCC.showPopUp("crm", "ProductSystemsPOP");
+      }
+      if (selectedValue.toString().equals("5"))
+      {
+        this.lblSearchValue.setValue("System Name");
+        this.txtSearchValue.setDisabled(true);
+        this.txtSearchValue.setVisible(true);
+        this.dtDateCreated.setVisible(false);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+        
+
+
+        this.btnSystems.setShortDesc("SEARCH");
+        GlobalCC.showPopUp("crm", "SystemsPop");
+      }
+      if (selectedValue.toString().equals("7"))
+      {
+        clearLeadDetails();
+        this.lblSearchValue.setValue("Lead Source");
+        this.txtSearchValue.setDisabled(true);
+        this.txtSearchValue.setVisible(true);
+        this.dtDateCreated.setVisible(false);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+        
+
+
+        this.btnLeadSource.setShortDesc("SEARCH");
+        GlobalCC.showPopUp("crm", "leadSourcePOP");
+      }
+      if (selectedValue.toString().equals("8"))
+      {
+        clearLeadDetails();
+        this.lblSearchValue.setValue("Lead Status");
+        this.txtSearchValue.setDisabled(true);
+        this.txtSearchValue.setVisible(true);
+        this.dtDateCreated.setVisible(false);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+        
+
+
+        this.btnLeadStatus.setShortDesc("SEARCH");
+        GlobalCC.showPopUp("crm", "leadStatusPOP");
+      }
+      if (selectedValue.toString().equals("9"))
+      {
+        clearLeadDetails();
+        this.lblSearchValue.setValue("Date Created");
+        this.dtDateCreated.setVisible(true);
+        this.txtSearchValue.setVisible(false);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+      }
+      if (selectedValue.toString().equals("10"))
+      {
+        clearLeadDetails();
+        this.lblSearchValue.setValue("Assigned To");
+        this.dtDateCreated.setVisible(false);
+        this.txtSearchValue.setDisabled(true);
+        this.txtSearchValue.setVisible(true);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+        
+
+
+        this.btnUsers.setShortDesc("SEARCH");
+        GlobalCC.showPopUp("crm", "UsersPop");
+      }
+      if (selectedValue.toString().equals("11"))
+      {
+        this.lblSearchValue.setValue("Team");
+        this.dtDateCreated.setVisible(false);
+        this.txtSearchValue.setDisabled(true);
+        this.txtSearchValue.setVisible(true);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+        
+
+
+        this.btnTeams.setShortDesc("SEARCH");
+        GlobalCC.showPopUp("crm", "TeamsPop");
+      }
+      if (selectedValue.toString().equals("12"))
+      {
+        clearLeadDetails();
+        this.lblSearchValue.setValue("Account");
+        this.dtDateCreated.setVisible(false);
+        this.txtSearchValue.setDisabled(true);
+        this.txtSearchValue.setVisible(true);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.lblSearchValue);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(this.dtDateCreated);
+        
+
+
+        this.btnAccounts.setShortDesc("SEARCH");
+        GlobalCC.showPopUp("crm", "AccountsPop");
+      }
+    }
+  }
+  
+  public void setBtnCountry(RichCommandButton btnCountry)
+  {
+    this.btnCountry = btnCountry;
+  }
+  
+  public RichCommandButton getBtnCountry()
+  {
+    return this.btnCountry;
+  }
+  
+  public void actionSearchValueChanged(ValueChangeEvent valueChangeEvent)
+  {
+    if (valueChangeEvent.getOldValue() != valueChangeEvent.getNewValue())
+    {
+      String selectedValue = valueChangeEvent.getNewValue().toString().trim();
+      
+      String searchCriteria = "WHERE UPPER(LDS_SURNNAME) like UPPER('%" + selectedValue + "%')";
+      
+
+      this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+      ADFUtils.findIterator("findLeadsIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+    }
+  }
+  
+  public void setBtnCampaign(RichCommandButton btnCampaign)
+  {
+    this.btnCampaign = btnCampaign;
+  }
+  
+  public RichCommandButton getBtnCampaign()
+  {
+    return this.btnCampaign;
+  }
+  
+  public void setBtnSystems(RichCommandButton btnSystems)
+  {
+    this.btnSystems = btnSystems;
+  }
+  
+  public RichCommandButton getBtnSystems()
+  {
+    return this.btnSystems;
+  }
+  
+  public String actionAcceptSearchSystem()
+  {
+    Object key = this.tblSystemsSearch.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      this.session.setAttribute("sysCode", nodeBinding.getAttribute("code"));
+      this.btnProducts.setShortDesc("SEARCH");
+      GlobalCC.showPopUp("crm", "CampaignProductsPop");
+    }
+    GlobalCC.dismissPopUp("crm", "SystemsPop");
+    return null;
+  }
+  
+  public void setTblSystemsSearch(RichTable tblSystemsSearch)
+  {
+    this.tblSystemsSearch = tblSystemsSearch;
+  }
+  
+  public RichTable getTblSystemsSearch()
+  {
+    return this.tblSystemsSearch;
+  }
+  
+  public void setBtnProducts(RichCommandButton btnProducts)
+  {
+    this.btnProducts = btnProducts;
+  }
+  
+  public RichCommandButton getBtnProducts()
+  {
+    return this.btnProducts;
+  }
+  
+  public void setBtnLeadSource(RichCommandButton btnLeadSource)
+  {
+    this.btnLeadSource = btnLeadSource;
+  }
+  
+  public RichCommandButton getBtnLeadSource()
+  {
+    return this.btnLeadSource;
+  }
+  
+  public void setBtnLeadStatus(RichCommandButton btnLeadStatus)
+  {
+    this.btnLeadStatus = btnLeadStatus;
+  }
+  
+  public RichCommandButton getBtnLeadStatus()
+  {
+    return this.btnLeadStatus;
+  }
+  
+  public void setDtDateCreated(RichInputDate dtDateCreated)
+  {
+    this.dtDateCreated = dtDateCreated;
+  }
+  
+  public RichInputDate getDtDateCreated()
+  {
+    return this.dtDateCreated;
+  }
+  
+  public void setBtnUsers(RichCommandButton btnUsers)
+  {
+    this.btnUsers = btnUsers;
+  }
+  
+  public RichCommandButton getBtnUsers()
+  {
+    return this.btnUsers;
+  }
+  
+  public void setBtnTeams(RichCommandButton btnTeams)
+  {
+    this.btnTeams = btnTeams;
+  }
+  
+  public RichCommandButton getBtnTeams()
+  {
+    return this.btnTeams;
+  }
+  
+  public void setBtnAccounts(RichCommandButton btnAccounts)
+  {
+    this.btnAccounts = btnAccounts;
+  }
+  
+  public RichCommandButton getBtnAccounts()
+  {
+    return this.btnAccounts;
+  }
+  
+  public void dateCreatedChanged(ValueChangeEvent valueChangeEvent)
+  {
+    if ((valueChangeEvent.getNewValue() != valueChangeEvent.getOldValue()) && (valueChangeEvent.getNewValue() != null))
+    {
+      java.sql.Date date = GlobalCC.extractDate(this.dtDateCreated);
+      SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+      String dateCreated = sdf.format(date);
+      
+      String searchCriteria = "WHERE LDS_DATE=TO_DATE('" + dateCreated + "','DD/MM/yyyy')";
+      
+      this.session.setAttribute("SEARCHCRITERIA", searchCriteria);
+      ADFUtils.findIterator("findLeadsIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+    }
+  }
+  
+  public void setTblOrgDivisions(RichTable tblOrgDivisions)
+  {
+    this.tblOrgDivisions = tblOrgDivisions;
+  }
+  
+  public RichTable getTblOrgDivisions()
+  {
+    return this.tblOrgDivisions;
+  }
+  
+  public String actionAcceptOrgDivision()
+  {
+    Object key = this.tblOrgDivisions.getSelectedRowData();
+    JUCtrlValueBinding nodeBinding = (JUCtrlValueBinding)key;
+    if (nodeBinding != null)
+    {
+      this.txtOrgDivCode.setValue(nodeBinding.getAttribute("DIV_CODE"));
+      this.txtOrgDivName.setValue(nodeBinding.getAttribute("DIV_NAME"));
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtOrgDivName);
+    }
+    GlobalCC.dismissPopUp("crm", "orgDivisionsPOP");
+    return null;
+  }
+  
+  public void setTxtOrgDivCode(RichInputText txtOrgDivCode)
+  {
+    this.txtOrgDivCode = txtOrgDivCode;
+  }
+  
+  public RichInputText getTxtOrgDivCode()
+  {
+    return this.txtOrgDivCode;
+  }
+  
+  public void setTxtOrgDivName(RichInputText txtOrgDivName)
+  {
+    this.txtOrgDivName = txtOrgDivName;
+  }
+  
+  public RichInputText getTxtOrgDivName()
+  {
+    return this.txtOrgDivName;
+  }
+  
+  public String actionShowOrgDivisions()
+  {
+    if (this.txtOrgCode.getValue() == null)
+    {
+      GlobalCC.EXCEPTIONREPORTING(null, new Exception("Select an Organization first"));
+      
+      return null;
+    }
+    this.session.setAttribute("ORGCode", this.txtOrgCode.getValue());
+    ADFUtils.findIterator("fetchOrgDivisionsIterator").executeQuery();
+    GlobalCC.showPopUp("crm", "orgDivisionsPOP");
+    return null;
+  }
+  
+  public String actionHideOrgDivision()
+  {
+    GlobalCC.dismissPopUp("crm", "orgDivisionsPOP");
+    return null;
+  }
+  
+  public void setTxtOccupation(RichInputText txtOccupation)
+  {
+    this.txtOccupation = txtOccupation;
+  }
+  
+  public RichInputText getTxtOccupation()
+  {
+    return this.txtOccupation;
+  }
+  
+  public void setTxtClntShtDesc(RichInputText txtClntShtDesc)
+  {
+    this.txtClntShtDesc = txtClntShtDesc;
+  }
+  
+  public RichInputText getTxtClntShtDesc()
+  {
+    return this.txtClntShtDesc;
+  }
+  
+  public String convertLeadtoClient()
+  {
+    if ((GlobalCC.checkNullValues(this.txtClntShtDesc.getValue()) != null) && (this.txtLeadCode.getValue() != null))
+    {
+      GlobalCC.errorValueNotEntered("Lead Already Converted to Client");
+      return null;
+    }
+    OracleConnection conn = null;
+    try
+    {
+      DBConnector dbCon = new DBConnector();
+      conn = dbCon.getDatabaseConnection();
+      
+
+      String query = "begin TQC_SETUPS_PKG.convert_lead_to_client(?,?); end;";
+      
+
+      OracleCallableStatement callStmt = null;
+      callStmt = (OracleCallableStatement)conn.prepareCall(query);
+      callStmt.setObject(1, this.txtLeadCode.getValue());
+      callStmt.registerOutParameter(2, 12);
+      callStmt.execute();
+      this.txtClntShtDesc.setValue(callStmt.getString(2));
+      callStmt.close();
+      conn.close();
+      
+      GlobalCC.sysInformation("Lead Successfully Converted to Client");
+      ADFUtils.findIterator("findLeadsIterator").executeQuery();
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.tblLeads);
+      AdfFacesContext.getCurrentInstance().addPartialTarget(this.txtClntShtDesc);
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(conn, e);
+    }
+    return null;
+  }
+  
+  public void setUpFile(RichInputFile upFile)
+  {
+    this.upFile = upFile;
+  }
+  
+  public RichInputFile getUpFile()
+  {
+    return this.upFile;
+  }
+  
+  public void setUploadedFile(UploadedFile uploadedFile)
+  {
+    this.uploadedFile = uploadedFile;
+  }
+  
+  public UploadedFile getUploadedFile()
+  {
+    return this.uploadedFile;
+  }
+  
+  public void setFilename(String filename)
+  {
+    this.filename = filename;
+  }
+  
+  public String getFilename()
+  {
+    return this.filename;
+  }
+  
+  public void setFilesize(long filesize)
+  {
+    this.filesize = filesize;
+  }
+  
+  public long getFilesize()
+  {
+    return this.filesize;
+  }
+  
+  public void setFiletype(String filetype)
+  {
+    this.filetype = filetype;
+  }
+  
+  public String getFiletype()
+  {
+    return this.filetype;
+  }
+  
+  public String GenerateTemplateFile()
+  {
+    try
+    {
+      FacesContext context = FacesContext.getCurrentInstance();
+      ServletContext sc = (ServletContext)context.getExternalContext().getContext();
+      
+
+      String Header = sc.getRealPath("leadsTemplate.csv");
+      
+
+
+      byte[] barray = Header.getBytes();
+      
+
+
+      HttpServletResponse response = (HttpServletResponse)FacesContext.getCurrentInstance().getExternalContext().getResponse();
+      
+
+
+      response.reset();
+      response.resetBuffer();
+      ServletOutputStream servletOutputStream = response.getOutputStream();
+      BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(servletOutputStream);
+      
+
+      String output = "leadsTemplate.csv";
+      response.setContentType("application/octet-stream");
+      response.setHeader("Content-disposition", "attachment; filename=" + output + "");
+      
+
+
+      response.setContentLength(barray.length);
+      
+      bufferedOutputStream.write(barray, 0, barray.length);
+      bufferedOutputStream.flush();
+      bufferedOutputStream.close();
+      
+      response.reset();
+      response.resetBuffer();
+    }
+    catch (Exception e)
+    {
+      GlobalCC.EXCEPTIONREPORTING(e);
+      e.printStackTrace();
+    }
+    return null;
+  }
+}

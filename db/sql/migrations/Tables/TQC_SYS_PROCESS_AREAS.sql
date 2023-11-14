@@ -1,0 +1,26 @@
+--
+-- TQC_SYS_PROCESS_AREAS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SYS_PROCESS_AREAS
+(
+  SPRCA_CODE       NUMBER(15),
+  SPRCA_SPRC_CODE  NUMBER(15),
+  SPRCA_AREA       VARCHAR2(75 BYTE),
+  SPRCA_SHT_DESC   VARCHAR2(25 BYTE),
+  SPRCA_VISIBLE    VARCHAR2(1 BYTE)             DEFAULT 'Y'
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

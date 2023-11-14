@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="MessagingDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.MessagingDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.MessageTemplate"
+                  BeanClass="TurnQuest.view.models.MessageTemplate"
+                  id="fetchMessageTemplatesBySystem"
+                  ReturnNodeName="MessageTemplate"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.SmsMessage"
+                  BeanClass="TurnQuest.view.models.SmsMessage"
+                  id="fetchAllSmsMessages" ReturnNodeName="SmsMessage"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.InboxMessage"
+                  BeanClass="TurnQuest.view.models.InboxMessage"
+                  id="fetchNewInboxMessages" ReturnNodeName="InboxMessage"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.InboxMessage"
+                  BeanClass="TurnQuest.view.models.InboxMessage"
+                  id="fetchAssignedInboxMessages" ReturnNodeName="InboxMessage"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.AlertType"
+                  BeanClass="TurnQuest.view.models.AlertType"
+                  id="fetchAlertTypes" ReturnNodeName="AlertType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Alert"
+                  BeanClass="TurnQuest.view.models.Alert" id="fetchAlerts"
+                  ReturnNodeName="Alert"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.MessageTemplate"
+                  BeanClass="TurnQuest.view.models.MessageTemplate"
+                  id="fetchMessageTemplatesByType"
+                  ReturnNodeName="MessageTemplate"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchAllmessages" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.dao.MessageProduct"
+                  BeanClass="TurnQuest.view.dao.MessageProduct"
+                  id="fetchMessageProducts" ReturnNodeName="MessageProduct"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="messageType"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="msg" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.AlertType"
+                  BeanClass="TurnQuest.view.models.AlertType"
+                  id="fetchDispatchDocuments" ReturnNodeName="AlertType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.AlertType"
+                  BeanClass="TurnQuest.view.models.AlertType"
+                  id="findDispatchDocuments" ReturnNodeName="AlertType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.MessagingDAO"
+                     BeanClass="TurnQuest.view.dao.MessagingDAO"
+                     id="MessagingDAO"/>
+</JavaBean>

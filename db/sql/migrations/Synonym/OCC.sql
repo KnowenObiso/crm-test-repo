@@ -1,0 +1,4 @@
+--
+-- OCC  (Synonym) 
+--
+CREATE PUBLIC SYNONYM OCC FOR TQ_CRM.OCC;

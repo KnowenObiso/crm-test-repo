@@ -1,0 +1,33 @@
+--
+-- TQC_DIRECT_DEBIT_REC  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_DIRECT_DEBIT_REC
+(
+  DDD_AMOUNT            NUMBER,
+  DDH_BBR_SHT_DESC      VARCHAR2(30 BYTE),
+  DDH_CLNT_BANK_ACC_NO  VARCHAR2(50 BYTE),
+  DD_BBR_SHT_DESC       VARCHAR2(30 BYTE),
+  DD_ACC_NO             VARCHAR2(30 BYTE),
+  DD_POLICIES           VARCHAR2(600 BYTE),
+  DDH_ACC_HOLDER        VARCHAR2(200 BYTE),
+  DD_CODE               NUMBER,
+  DD_BOOK_DATE          DATE,
+  DD_GEN_DATE_VALUE     NUMBER
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,26 @@
+--
+-- TQC_LOCATIONS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_LOCATIONS
+(
+  LOC_CODE      NUMBER,
+  LOC_TWN_CODE  NUMBER,
+  LOC_SHT_DESC  VARCHAR2(20 BYTE),
+  LOC_NAME      VARCHAR2(50 BYTE),
+  LOC_LANDMARK  VARCHAR2(50 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

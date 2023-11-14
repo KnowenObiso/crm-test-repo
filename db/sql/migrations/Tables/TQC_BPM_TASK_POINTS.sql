@@ -1,0 +1,26 @@
+--
+-- TQC_BPM_TASK_POINTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_BPM_TASK_POINTS
+(
+  TBTP_CODE       NUMBER(15),
+  TBTP_SPRC_CODE  NUMBER(15),
+  TPTP_DESC       VARCHAR2(100 BYTE),
+  TPTP_SHT_DESC   VARCHAR2(100 BYTE),
+  TPTP_SYS_CODE   NUMBER
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

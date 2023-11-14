@@ -1,0 +1,36 @@
+--
+-- LMS_AGENT_PROMOTION  (Table) 
+--
+CREATE TABLE TQ_CRM.LMS_AGENT_PROMOTION
+(
+  PROM_CODE                     NUMBER(15)      NOT NULL,
+  PROM_TRANSACTION_DATE         DATE,
+  PROM_AGN_CODE                 NUMBER(15),
+  PROM_DONE_BY                  VARCHAR2(50 BYTE),
+  PROM_BRN_CODE                 NUMBER(15),
+  PROM_BRA_CODE                 NUMBER(15),
+  PROM_DEMO_PROMO_TYPE          VARCHAR2(5 BYTE),
+  PROM_TRANSACTION_TYPE         VARCHAR2(10 BYTE),
+  PROM_LTR_TRANS_NO             NUMBER(15),
+  PROM_BRU_AGN_SEQ_NO           NUMBER,
+  PROM_BRU_UNT_SHT_DESC_PREFIX  NUMBER,
+  PROM_BRA_UNT_SHT_DESC_PREFIX  NUMBER,
+  PROM_PRECONTRACT_AGN_SEQ      VARCHAR2(15 BYTE)
+)
+TABLESPACE LMSDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,27 @@
+--
+-- TQC_PARAMETERS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_PARAMETERS
+(
+  PARAM_CODE      NUMBER(22)                    NOT NULL,
+  PARAM_NAME      VARCHAR2(100 BYTE)            NOT NULL,
+  PARAM_VALUE     VARCHAR2(4000 BYTE)           NOT NULL,
+  PARAM_STATUS    VARCHAR2(15 BYTE),
+  PARAM_DESC      VARCHAR2(200 BYTE),
+  MAIL_AGENT_PWD  VARCHAR2(60 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

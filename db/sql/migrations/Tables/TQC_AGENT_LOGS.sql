@@ -1,0 +1,32 @@
+--
+-- TQC_AGENT_LOGS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_AGENT_LOGS
+(
+  AGNL_CODE       NUMBER(8),
+  AGNL_FIELD      VARCHAR2(50 BYTE),
+  AGNL_OLD_VALUE  VARCHAR2(60 BYTE),
+  AGNL_NEW_VALUE  VARCHAR2(60 BYTE),
+  AGNL_ACTION     VARCHAR2(1 BYTE),
+  AGNL_DATE       DATE,
+  AGNL_AGN_CODE   NUMBER,
+  AGNL_POSTED_BY  VARCHAR2(100 BYTE),
+  AGNL_NO         NUMBER
+)
+TABLESPACE CRMDATA
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

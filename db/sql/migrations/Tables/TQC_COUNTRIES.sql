@@ -1,0 +1,34 @@
+--
+-- TQC_COUNTRIES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_COUNTRIES
+(
+  COU_CODE                 NUMBER(8)            NOT NULL,
+  COU_SHT_DESC             VARCHAR2(15 BYTE)    NOT NULL,
+  COU_NAME                 VARCHAR2(50 BYTE)    NOT NULL,
+  COU_BASE_CURR            NUMBER(8),
+  COU_NATIONALITY          VARCHAR2(50 BYTE)    NOT NULL,
+  COU_ZIP_CODE             NUMBER(15),
+  COU_SCHEGEN              VARCHAR2(1 BYTE)     DEFAULT 'N',
+  COU_ADMIN_REG_TYPE       VARCHAR2(20 BYTE),
+  COU_ADMIN_REG_MANDATORY  VARCHAR2(1 BYTE)     DEFAULT 'N',
+  COU_EMB_CODE             VARCHAR2(20 BYTE),
+  COU_CURR_SERIAL          NUMBER(38),
+  COU_MOBILE_PREFIX        NUMBER(3),
+  COU_CLIENT_NUMBER        NUMBER(10)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

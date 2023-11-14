@@ -1,0 +1,30 @@
+--
+-- TQC_SERVICE_PROVIDER_TYPES  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SERVICE_PROVIDER_TYPES
+(
+  SPT_CODE           NUMBER(8)                  NOT NULL,
+  SPT_SHT_DESC       VARCHAR2(15 BYTE)          NOT NULL,
+  SPT_NAME           VARCHAR2(100 BYTE)         NOT NULL,
+  SPT_STATUS         VARCHAR2(1 BYTE)           NOT NULL,
+  SPT_WHTX_RATE      NUMBER(10,5),
+  SPT_VAT_RATE       NUMBER(10,5),
+  SPT_SUFFIXES       VARCHAR2(14 BYTE),
+  SPT_NEXT_NO        NUMBER(22),
+  SPT_SERIAL_FORMAT  VARCHAR2(100 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

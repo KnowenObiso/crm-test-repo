@@ -1,0 +1,30 @@
+--
+-- TQC_SPR_CONTACT_PERSONS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SPR_CONTACT_PERSONS
+(
+  SPR_CNT_CODE        NUMBER(30)                NOT NULL,
+  SPR_CODE            NUMBER(30)                NOT NULL,
+  SPR_CNT_NAME        VARCHAR2(100 BYTE),
+  SPR_CNT_TITLE       VARCHAR2(40 BYTE),
+  SPR_CNT_OFFICE_TEL  VARCHAR2(20 BYTE),
+  SPR_CNT_HOME_TEL    VARCHAR2(20 BYTE),
+  SPR_CNT_EMAIL       VARCHAR2(40 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,30 @@
+--
+-- DD_DATA  (Table) 
+--
+CREATE TABLE TQ_CRM.DD_DATA
+(
+  CLIENT_NAME  VARCHAR2(200 BYTE),
+  BANK_CODE    VARCHAR2(200 BYTE),
+  ACCOUNT_NO   VARCHAR2(200 BYTE),
+  AMOUNT       NUMBER,
+  POLICIES     VARCHAR2(200 BYTE),
+  INST_DATE    VARCHAR2(10 BYTE),
+  BRANCH_CODE  VARCHAR2(5 BYTE)
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

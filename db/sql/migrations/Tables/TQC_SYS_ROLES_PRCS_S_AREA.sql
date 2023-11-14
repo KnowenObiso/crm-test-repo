@@ -1,0 +1,26 @@
+--
+-- TQC_SYS_ROLES_PRCS_S_AREA  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SYS_ROLES_PRCS_S_AREA
+(
+  SRPSA_CODE          NUMBER(15),
+  SRPSA_SRPRA_CODE    NUMBER(15)                NOT NULL,
+  SRPSA_SPRSA_CODE    NUMBER(15)                NOT NULL,
+  SRPSA_DEBIT_LIMIT   NUMBER(25,5),
+  SRPSA_CREDIT_LIMIT  NUMBER(25,5)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,31 @@
+--
+-- TQC_AGENCY_DIRECTORS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_AGENCY_DIRECTORS
+(
+  ADIR_CODE            NUMBER(8),
+  ADIR_AGN_CODE        NUMBER(15)               NOT NULL,
+  ADIR_YEAR            NUMBER(4)                NOT NULL,
+  ADIR_NAME            VARCHAR2(100 BYTE)       NOT NULL,
+  ADIR_QUALIFICATIONS  VARCHAR2(300 BYTE),
+  ADIR_PCT_HOLDG       NUMBER(8,4),
+  ADIR_DESIGNATION     VARCHAR2(20 BYTE),
+  ADIR_PHONE_NUMBER    VARCHAR2(200 BYTE),
+  ADIR_PRINCIPLE       VARCHAR2(1 BYTE)         DEFAULT 'N',
+  ADIR_COU_CODE        NUMBER
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

@@ -1,0 +1,10 @@
+--
+-- TQC_HOLIDAYS_DEFINITIONS_OBJ  (Type) 
+--
+CREATE OR REPLACE TYPE TQ_CRM."TQC_HOLIDAYS_DEFINITIONS_OBJ"                                          as object (
+  THD_DESC      VARCHAR2(200 BYTE),
+  THD_DAY       NUMBER(3),
+  THD_MON       NUMBER(3),
+  THD_STATUS    VARCHAR2(5 BYTE),
+  THD_COU_CODE  NUMBER(8)); 
+/

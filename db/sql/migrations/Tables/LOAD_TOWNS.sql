@@ -1,0 +1,26 @@
+--
+-- LOAD_TOWNS  (Table) 
+--
+CREATE TABLE TQ_CRM.LOAD_TOWNS
+(
+  TOWNCODE          VARCHAR2(10 BYTE),
+  COUNTRY           VARCHAR2(100 BYTE),
+  TOWNNAME          VARCHAR2(100 BYTE),
+  STSCODE           NUMBER,
+  STATEDESCRIPTION  VARCHAR2(100 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

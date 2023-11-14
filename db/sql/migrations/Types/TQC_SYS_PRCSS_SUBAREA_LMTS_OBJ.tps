@@ -1,0 +1,11 @@
+--
+-- TQC_SYS_PRCSS_SUBAREA_LMTS_OBJ  (Type) 
+--
+CREATE OR REPLACE TYPE TQ_CRM."TQC_SYS_PRCSS_SUBAREA_LMTS_OBJ"                                          as object (
+  SPSAT_CODE         NUMBER(8),
+  SPSAT_SPRSA_CODE   NUMBER(8),
+  SPSAT_NO_OF_LEVEL  NUMBER(5),
+  SPSAT_MIN_LIMIT    NUMBER(22,5),
+  SPSAT_MAX_LIMIT    NUMBER(22,5)
+  ); 
+/

@@ -1,0 +1,24 @@
+--
+-- LOAD_REGIONS  (Table) 
+--
+CREATE TABLE TQ_CRM.LOAD_REGIONS
+(
+  REGIONCODE  VARCHAR2(5 BYTE),
+  REGIONNAME  VARCHAR2(100 BYTE),
+  REGION_WEF  DATE
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

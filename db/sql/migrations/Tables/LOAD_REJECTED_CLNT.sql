@@ -1,0 +1,23 @@
+--
+-- LOAD_REJECTED_CLNT  (Table) 
+--
+CREATE TABLE TQ_CRM.LOAD_REJECTED_CLNT
+(
+  CLNT_ID  VARCHAR2(200 BYTE),
+  ERR      VARCHAR2(200 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          128K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

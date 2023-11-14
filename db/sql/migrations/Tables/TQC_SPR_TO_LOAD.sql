@@ -1,0 +1,32 @@
+--
+-- TQC_SPR_TO_LOAD  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SPR_TO_LOAD
+(
+  SPRSHTDESC   VARCHAR2(30 BYTE),
+  NAME         VARCHAR2(300 BYTE),
+  SPRPOSTAL    VARCHAR2(300 BYTE),
+  SPRPHYSICAL  VARCHAR2(300 BYTE),
+  SPTCODE      NUMBER,
+  MOBILE       VARCHAR2(100 BYTE),
+  EMAIL        VARCHAR2(100 BYTE),
+  PHONE2       VARCHAR2(300 BYTE),
+  LOADED       VARCHAR2(1 BYTE)                 DEFAULT 'N'                   NOT NULL
+)
+TABLESPACE CRMDATA
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

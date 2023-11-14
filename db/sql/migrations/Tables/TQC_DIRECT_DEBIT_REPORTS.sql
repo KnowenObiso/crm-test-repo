@@ -1,0 +1,23 @@
+--
+-- TQC_DIRECT_DEBIT_REPORTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_DIRECT_DEBIT_REPORTS
+(
+  DDR_CODE                NUMBER                NOT NULL,
+  DDR_REPORT_DESCRIPTION  VARCHAR2(100 BYTE)    NOT NULL
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

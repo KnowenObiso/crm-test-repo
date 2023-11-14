@@ -1,0 +1,20 @@
+--
+-- SYS_MTABLE_00001CBDC_IND_2  (Index) 
+--
+CREATE INDEX TQ_CRM.SYS_MTABLE_00001CBDC_IND_2 ON TQ_CRM.SYS_EXPORT_FULL_01
+(BASE_PROCESS_ORDER)
+TABLESPACE CRMDATA
+PCTFREE    10
+INITRANS   2
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+           );

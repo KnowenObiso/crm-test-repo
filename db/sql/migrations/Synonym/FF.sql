@@ -1,0 +1,4 @@
+--
+-- FF  (Synonym) 
+--
+CREATE PUBLIC SYNONYM FF FOR TQ_CRM.FF;

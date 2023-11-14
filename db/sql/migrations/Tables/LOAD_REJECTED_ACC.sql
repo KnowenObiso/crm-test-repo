@@ -1,0 +1,23 @@
+--
+-- LOAD_REJECTED_ACC  (Table) 
+--
+CREATE TABLE TQ_CRM.LOAD_REJECTED_ACC
+(
+  ACC_ID  VARCHAR2(250 BYTE),
+  ERR     VARCHAR2(250 BYTE)
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          128K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;

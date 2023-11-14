@@ -1,0 +1,32 @@
+--
+-- TQC_SYSTEM_REPORTS  (Table) 
+--
+CREATE TABLE TQ_CRM.TQC_SYSTEM_REPORTS
+(
+  RPT_CODE           NUMBER,
+  RPT_SYS_CODE       NUMBER                     NOT NULL,
+  RPT_NAME           VARCHAR2(50 BYTE)          NOT NULL,
+  RPT_DESCRIPTION    VARCHAR2(250 BYTE),
+  RPT_DATA_FILE      VARCHAR2(50 BYTE)          NOT NULL,
+  RPT_APPLCTN_LEVEL  VARCHAR2(5 BYTE),
+  RPT_ACTIVE         VARCHAR2(1 BYTE)           DEFAULT 'A',
+  RPT_RSM_CODE       NUMBER,
+  RPT_ORDER          NUMBER
+)
+TABLESPACE USERS
+PCTUSED    0
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          128K
+            NEXT             1M
+            MAXSIZE          UNLIMITED
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            BUFFER_POOL      DEFAULT
+           )
+NOCOMPRESS ;
+
+COMMENT ON COLUMN TQ_CRM.TQC_SYSTEM_REPORTS.RPT_APPLCTN_LEVEL IS 'Application Level';

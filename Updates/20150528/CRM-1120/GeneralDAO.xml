@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="GeneralDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.GeneralDAO" isJavaBased="true">
+  <AccessorAttribute id="enquireDocs" IsCollection="true"
+                     BeanClass="TurnQuest.view.dao.EcmBean"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="serviceRequestDocs" IsCollection="true"
+                     BeanClass="TurnQuest.view.dao.EcmBean"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.sql.Date" id="getSqlDate"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="strDate" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="TurnQuest.view.models.PeriodBean"
+                  BeanClass="TurnQuest.view.models.PeriodBean" id="getPeriod"
+                  ReturnNodeName="PeriodBean">
+    <ParameterInfo id="branchCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+    <ParameterInfo id="period" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="year" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="getOrgName"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="orgCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.GeneralDAO"
+                     BeanClass="TurnQuest.view.dao.GeneralDAO" id="GeneralDAO"/>
+</JavaBean>
