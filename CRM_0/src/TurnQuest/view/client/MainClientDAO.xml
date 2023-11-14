@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="MainClientDAO" Package="TurnQuest.view.client"
+          BeanClass="TurnQuest.view.client.MainClientDAO" isJavaBased="true">
+  <AccessorAttribute id="clientCode" IsCollection="true"
+                     BeanClass="TurnQuest.view.client.Client2"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2" id="fetchAllClients"
+                  ReturnNodeName="Client"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="fetchAllAccountManagers" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings1.AppSettings"
+                  BeanClass="TurnQuest.view.Settings1.AppSettings"
+                  id="fetchAllBanks" ReturnNodeName="AppSettings"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="fetchDivisionByBranch" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Clients1.AppClients"
+                  BeanClass="TurnQuest.view.Clients1.AppClients"
+                  id="fetchClientWebAccounts" ReturnNodeName="AppClients"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="fetchUnallocatedClientSystems" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="fetchAllocatedClientSystems" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="fetchClientRequiredDocs" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Documents.RequiredDocument"
+                  BeanClass="TurnQuest.view.Documents.RequiredDocument"
+                  id="fetchAllRequiredDocuments"
+                  ReturnNodeName="RequiredDocument"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.ClientAccount"
+                  BeanClass="TurnQuest.view.client.ClientAccount"
+                  id="fetchClientAccounts" ReturnNodeName="ClientAccount"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchClientByCode" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchAllClientsByNames" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchAllClientsByTrigger" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findClientsDirectors" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findClientsAuditors" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Branches.Branch"
+                  BeanClass="TurnQuest.view.Branches.Branch" id="findBranches"
+                  ReturnNodeName="Branch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findClientGroups" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findClientGroupMembers" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchClientsByCriteria" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2" id="findParCompany"
+                  ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchAllClientsByAccountOfficer" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2" id="findHouseHolds"
+                  ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findHouseHoldMembers" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.ClientAccount"
+                  BeanClass="TurnQuest.view.client.ClientAccount"
+                  id="fetchClientContacts" ReturnNodeName="ClientAccount"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findHoldingCompanies" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findLoadedClients" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Agents"
+                  BeanClass="TurnQuest.view.client.Agents" id="findLoadedAgents"
+                  ReturnNodeName="Agents"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Agents"
+                  BeanClass="TurnQuest.view.client.Agents"
+                  id="selectBranchDetails" ReturnNodeName="Agents"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.ClientTitle"
+                  BeanClass="TurnQuest.view.client.ClientTitle"
+                  id="fetchAllClientTitles" ReturnNodeName="ClientTitle"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="clientShtDesc" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findWebClientBranches" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findUnassignedCompanies" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findassignedCompanies" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findDefaultBranchLov" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2" id="findWebProducts"
+                  ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2" id="findWebUsers"
+                  ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findWebProductsDetails" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.ClientTitle"
+                  BeanClass="TurnQuest.view.client.ClientTitle"
+                  id="fetchAllClientTitles" ReturnNodeName="ClientTitle"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findClientAccount" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findAgencyAccount" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findHoldingCompanySubsidiary" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.ClientTitle"
+                  BeanClass="TurnQuest.view.client.ClientTitle"
+                  id="fetchAllBussinessPeople" ReturnNodeName="ClientTitle"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2" id="findOccupation"
+                  ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findSpecializations" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchAllClientsByPin" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="fetchAgentRequiredDocs" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Documents.RequiredDocument"
+                  BeanClass="TurnQuest.view.Documents.RequiredDocument"
+                  id="fetchAllAgentRequiredDocuments"
+                  ReturnNodeName="RequiredDocument"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Documents.RequiredDocument"
+                  BeanClass="TurnQuest.view.Documents.RequiredDocument"
+                  id="fetchAllClientRequiredDocuments"
+                  ReturnNodeName="RequiredDocument"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="fetchSpRequiredDocs" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.client.ClientEmployer"
+                  BeanClass="TurnQuest.view.client.ClientEmployer"
+                  id="fetchClientEmployers" ReturnNodeName="ClientEmployer"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.client.ClientEmployerContact"
+                  BeanClass="TurnQuest.view.client.ClientEmployerContact"
+                  id="fetchClientEmployerContacts"
+                  ReturnNodeName="ClientEmployerContact"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.ClientSignatory"
+                  BeanClass="TurnQuest.view.models.ClientSignatory"
+                  id="findClientsSignatories" ReturnNodeName="ClientSignatory"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.ClientDirector"
+                  BeanClass="TurnQuest.view.models.ClientDirector"
+                  id="findClientDirectors" ReturnNodeName="ClientDirector"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findSignatoryOccupation" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.Boolean"
+                  id="actionSaveClientDirector" ReturnNodeName="Return">
+    <ParameterInfo id="action" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="clientCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+    <ParameterInfo id="val" Type="TurnQuest.view.models.ClientDirector"
+                   isStructured="true"/>
+    <ParameterInfo id="directorCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Client"
+                  BeanClass="TurnQuest.view.models.Client" id="findClients"
+                  ReturnNodeName="Client"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="TurnQuest.view.models.Client"
+                  BeanClass="TurnQuest.view.models.Client"
+                  id="fetchClientByClientCode" ReturnNodeName="Client">
+    <ParameterInfo id="clientCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.IncomeSources"
+                  BeanClass="TurnQuest.view.models.IncomeSources"
+                  id="fetchIncomeSources" ReturnNodeName="IncomeSources"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.ClientType"
+                  BeanClass="TurnQuest.view.models.ClientType"
+                  id="fetchClientTypes" ReturnNodeName="ClientType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.client.MainClientDAO"
+                     BeanClass="TurnQuest.view.client.MainClientDAO"
+                     id="MainClientDAO"/>
+</JavaBean>

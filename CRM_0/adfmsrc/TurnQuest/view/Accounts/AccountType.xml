@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="AccountType" Package="TurnQuest.view.Accounts"
+          BeanClass="TurnQuest.view.Accounts.AccountType" isJavaBased="true">
+  <Attribute Name="id" Type="java.lang.String"/>
+  <Attribute Name="cmapping" Type="java.lang.String"/>
+  <Attribute Name="smapping" Type="java.lang.String"/>
+  <Attribute Name="wrate" Type="java.math.BigDecimal"/>
+  <Attribute Name="orate" Type="java.math.BigDecimal"/>
+  <Attribute Name="crate" Type="java.math.BigDecimal"/>
+  <Attribute Name="acformat" Type="java.lang.String"/>
+  <Attribute Name="vatrate" Type="java.math.BigDecimal"/>
+  <Attribute Name="year" Type="java.lang.String"/>
+  <Attribute Name="regno" Type="java.lang.String"/>
+  <Attribute Name="wef" Type="java.util.Date"/>
+  <Attribute Name="wet" Type="java.util.Date"/>
+  <Attribute Name="accepted" Type="java.lang.String"/>
+  <Attribute Name="graceperiod" Type="java.math.BigDecimal"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="qualification" Type="java.lang.String"/>
+  <Attribute Name="shareholding" Type="java.math.BigDecimal"/>
+  <Attribute Name="designation" Type="java.lang.String"/>
+  <Attribute Name="phyaddress" Type="java.lang.String"/>
+  <Attribute Name="postaddress" Type="java.lang.String"/>
+  <Attribute Name="idno" Type="java.lang.String"/>
+  <Attribute Name="email" Type="java.lang.String"/>
+  <Attribute Name="telno" Type="java.lang.String"/>
+  <Attribute Name="username" Type="java.lang.String"/>
+  <Attribute Name="personalrank" Type="java.lang.String"/>
+  <Attribute Name="createdby" Type="java.lang.String"/>
+  <Attribute Name="allowlogin" Type="java.lang.String"/>
+  <Attribute Name="status" Type="java.lang.String"/>
+  <Attribute Name="reset" Type="java.lang.String"/>
+  <Attribute Name="datecreated" Type="java.util.Date"/>
+  <Attribute Name="ACT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="accountFormat" Type="java.lang.String"/>
+  <Attribute Name="odl_code" Type="java.lang.String"/>
+  <Attribute Name="rank" Type="java.lang.String"/>
+  <Attribute Name="mgrNoInFix" Type="java.lang.String"/>
+  <Attribute Name="spr_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="spr_sht_desc" Type="java.lang.String"/>
+  <Attribute Name="spr_name" Type="java.lang.String"/>
+  <Attribute Name="selected" Type="boolean"/>
+  <Attribute Name="telNo" Type="java.lang.String"/>
+  <Attribute Name="branchAgnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="brnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="branchName" Type="java.lang.String"/>
+  <Attribute Name="agentCode" Type="java.lang.String"/>
+  <Attribute Name="brnShtDesc" Type="java.lang.String"/>
+  <Attribute Name="phoneNumber" Type="java.lang.String"/>
+  <Attribute Name="bruCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bruBrnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bruShtDesc" Type="java.lang.String"/>
+  <Attribute Name="bruName" Type="java.lang.String"/>
+  <Attribute Name="braShtDesc" Type="java.lang.String"/>
+  <Attribute Name="agnShtDesc" Type="java.lang.String"/>
+  <Attribute Name="principleDirecor" Type="java.lang.String"/>
+  <Attribute Name="nationality" Type="java.lang.String"/>
+  <Attribute Name="country" Type="java.lang.String"/>
+  <Attribute Name="accountGroups" Type="java.lang.String"/>
+  <Attribute Name="COVERAGE_AREA" Type="java.lang.String"/>
+  <Attribute Name="SPOKE" Type="java.lang.String"/>
+  <Attribute Name="SBU" Type="java.lang.String"/>
+  <Attribute Name="COVERAGE_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="SPOKE_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="SBU_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="ACT_COMMISION_LEVY_RATE" Type="java.math.BigDecimal"/>
+  <Attribute Name="ACT_ACCOUNT_TYPE" Type="java.lang.String"/>
+  <Attribute Name="ACT_TYPE_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="regionName" Type="java.lang.String"/>
+  <Attribute Name="regionCode" Type="java.lang.String"/>
+  <Attribute Name="entShtDesc" Type="java.lang.String"/>
+  <Attribute Name="entName" Type="java.lang.String"/>
+  <Attribute Name="entPin" Type="java.lang.String"/>
+  <Attribute Name="entCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agnName" Type="java.lang.String"/>
+  <Attribute Name="agnPin" Type="java.lang.String"/>
+  <Attribute Name="agnEmail" Type="java.lang.String"/>
+  <Attribute Name="agnTel" Type="java.lang.String"/>
+  <Attribute Name="agnBnkAccNo" Type="java.lang.String"/>
+  <Attribute Name="relation" Type="java.lang.String"/>
+  <Attribute Name="newRelation" Type="java.lang.String"/>
+  <Attribute Name="entPosatalAddress" Type="java.lang.String"/>
+  <Attribute Name="entEmailAddress" Type="java.lang.String"/>
+  <Attribute Name="entSmsTel" Type="java.lang.String"/>
+  <AccessorAttribute id="produces" IsCollection="true"
+                     BeanClass="TurnQuest.view.Accounts.AccountValues"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Accounts.AccountType"
+                     BeanClass="TurnQuest.view.Accounts.AccountType"
+                     id="AccountType"/>
+</JavaBean>

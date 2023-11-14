@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="servReqCatPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findRequestCats.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findRequestCatsIterator"/>
+    <searchRegion Binds="findRequestCatsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReqQuery"/>
+    <methodIterator Binds="findUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersIterator"/>
+    <searchRegion Binds="findUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="findBranches.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findBranchesIterator"/>
+    <searchRegion Binds="findBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReq1Query"/>
+    <methodIterator Binds="findDepartments.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findDepartmentsIterator"/>
+    <searchRegion Binds="findDepartmentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReq2Query"/>
+    <methodIterator Binds="findRequestTypes.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findRequestTypesIterator"/>
+    <searchRegion Binds="findRequestTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReq3Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findRequestCats" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRequestCats"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findRequestCats_ServiceReqDAO_dataProvider_findRequestCats_result"/>
+    <tree IterBinding="findRequestCatsIterator" id="ServiceReq">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq0">
+        <AttrNames>
+          <Item Value="tsrcCode"/>
+          <Item Value="tsrcName"/>
+          <Item Value="tsrcValidity"/>
+          <Item Value="usrCode"/>
+          <Item Value="usrName"/>
+          <Item Value="brnName"/>
+          <Item Value="brnCode"/>
+          <Item Value="proposalNo"/>
+          <Item Value="depCode"/>
+          <Item Value="depName"/>
+          <Item Value="tsrcType"/>
+          <Item Value="tsrcDefault"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <tree IterBinding="findUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranches"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="ServiceReqDAO.methodResults.findBranches_ServiceReqDAO_dataProvider_findBranches_result"/>
+    <tree IterBinding="findBranchesIterator" id="ServiceReq1">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq10">
+        <AttrNames>
+          <Item Value="brnCode"/>
+          <Item Value="brnShtDesc"/>
+          <Item Value="regCode"/>
+          <Item Value="brnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findDepartments" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findDepartments"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="ServiceReqDAO.methodResults.findDepartments_ServiceReqDAO_dataProvider_findDepartments_result"/>
+    <tree IterBinding="findDepartmentsIterator" id="ServiceReq2">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq20">
+        <AttrNames>
+          <Item Value="depCode"/>
+          <Item Value="depShtDesc"/>
+          <Item Value="depName"/>
+          <Item Value="depWef"/>
+          <Item Value="depWet"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRequestTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRequestTypes"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="ServiceReqDAO.methodResults.findRequestTypes_ServiceReqDAO_dataProvider_findRequestTypes_result"/>
+    <tree IterBinding="findRequestTypesIterator" id="ServiceReq3">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq30">
+        <AttrNames>
+          <Item Value="srtCode"/>
+          <Item Value="srtShtDesc"/>
+          <Item Value="srtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findUsersIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="userFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

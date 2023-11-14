@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="subClassDescDAO" Package="TurnQuest.view.portalsetups"
+          BeanClass="TurnQuest.view.portalsetups.subClassDescDAO"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.portalsetups.SubClass"
+                  BeanClass="TurnQuest.view.portalsetups.SubClass"
+                  id="findSubClassDesc" ReturnNodeName="SubClass"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.portalsetups.subClassDescDAO"
+                     BeanClass="TurnQuest.view.portalsetups.subClassDescDAO"
+                     id="subClassDescDAO"/>
+</JavaBean>

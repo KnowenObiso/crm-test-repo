@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="sys" Package="TurnQuest.view.Base"
+          BeanClass="TurnQuest.view.Base.sys" isJavaBased="true">
+  <Attribute Name="usysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysShtDesc" Type="java.lang.String"/>
+  <Attribute Name="usysWef" Type="java.util.Date"/>
+  <Attribute Name="sysDesc" Type="java.lang.String"/>
+  <Attribute Name="usysWet" Type="java.util.Date"/>
+  <Attribute Name="syspath" Type="java.lang.String"/>
+  <Attribute Name="usrCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Base.sys"
+                     BeanClass="TurnQuest.view.Base.sys" id="sys"/>
+</JavaBean>

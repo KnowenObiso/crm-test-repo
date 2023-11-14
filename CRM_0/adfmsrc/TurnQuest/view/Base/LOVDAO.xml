@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.51.56"
+          id="LOVDAO" Package="TurnQuest.view.Base"
+          BeanClass="TurnQuest.view.Base.LOVDAO" isJavaBased="true">
+  <Attribute Name="clientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clientDesc" Type="java.lang.String"/>
+  <Attribute Name="clientFullname" Type="java.lang.String"/>
+  <Attribute Name="countryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="countryShtDesc" Type="java.lang.String"/>
+  <Attribute Name="townCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="postalZIPCode" Type="java.lang.String"/>
+  <Attribute Name="sectorCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sectorName" Type="java.lang.String"/>
+  <Attribute Name="domicileCountry" Type="java.math.BigDecimal"/>
+  <Attribute Name="processCode" Type="java.math.BigDecimal"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Base.LOV"
+                  BeanClass="TurnQuest.view.Base.LOV" id="findInitial"
+                  ReturnNodeName="LOV"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Base.LOV"
+                  BeanClass="TurnQuest.view.Base.LOV" id="findAllClients"
+                  ReturnNodeName="LOV"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="reInitializeVariables" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Base.LOV"
+                  BeanClass="TurnQuest.view.Base.LOV" id="findReportQuery"
+                  ReturnNodeName="LOV"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setBranchCode"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="branchCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="setBranchName"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="branchName" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="setTownName"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="TownName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="resetPageButtons" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getBranchCode" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="getBranchName" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="getTownName"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Base.LOV"
+                  BeanClass="TurnQuest.view.Base.LOV" id="findQueryParameters"
+                  ReturnNodeName="LOV"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="search" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Base.LOVDAO"
+                     BeanClass="TurnQuest.view.Base.LOVDAO" id="LOVDAO"/>
+</JavaBean>

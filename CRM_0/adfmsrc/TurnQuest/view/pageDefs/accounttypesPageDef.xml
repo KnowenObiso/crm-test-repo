@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="accounttypesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fingAccountTypes.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="fingAccountTypesIterator"/>
+    <methodIterator Binds="fetchOrganizationInfo.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchOrganizationInfoIterator"/>
+    <searchRegion Binds="fingAccountTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountTypeQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fingAccountTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fingAccountTypes"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.fingAccountTypes_AccountsDAO_dataProvider_fingAccountTypes_result"/>
+    <tree IterBinding="fingAccountTypesIterator" id="AccountType1">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType10">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="cmapping"/>
+          <Item Value="wrate"/>
+          <Item Value="orate"/>
+          <Item Value="crate"/>
+          <Item Value="acformat"/>
+          <Item Value="vatrate"/>
+          <Item Value="ACT_CODE"/>
+          <Item Value="smapping"/>
+          <Item Value="mgrNoInFix"/>
+         
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchOrganizationInfo" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchOrganizationInfo"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchOrganizationInfo_OrganizationDAO_dataProvider_fetchOrganizationInfo_result"/>
+    <tree IterBinding="fingAccountTypesIterator" id="AccountType">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType0">
+        <AttrNames>
+          <Item Value="datecreated"/>
+          <Item Value="ACT_CODE"/>
+          <Item Value="type"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fingAccountTypesIterator" id="AccountType2">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType20">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="cmapping"/>
+          <Item Value="smapping"/>
+          <Item Value="wrate"/>
+          <Item Value="orate"/>
+          <Item Value="crate"/>
+          <Item Value="acformat"/>
+          <Item Value="vatrate"/>
+          <Item Value="accountFormat"/>
+          <Item Value="odl_code"/>
+          <Item Value="rank"/>
+          <Item Value="mgrNoInFix"/>
+          <Item Value="ACT_COMMISION_LEVY_RATE"/>
+         
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

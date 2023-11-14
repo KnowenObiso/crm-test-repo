@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="exchangeRatesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllCurrencies.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Currency"
+                    id="fetchAllCurrenciesIterator"/>
+    <methodIterator Binds="fetchCurrencyRatesByCurrency.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.CurrencyRate"
+                    id="fetchCurrencyRatesByCurrencyIterator"/>
+    <methodIterator Binds="fetchCurrenciesExcludeCurrency.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Currency"
+                    id="fetchCurrenciesExcludeCurrencyIterator"/>
+    <searchRegion Binds="fetchCurrenciesExcludeCurrencyIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Currency2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllCurrencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCurrencies"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCurrencies_BaseSetupDAO_dataProvider_fetchAllCurrencies_result"/>
+    <tree IterBinding="fetchAllCurrenciesIterator" id="Currency">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency" Name="Currency0">
+        <AttrNames>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchCurrencyRatesByCurrency" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchCurrencyRatesByCurrency"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchCurrencyRatesByCurrency_BaseSetupDAO_dataProvider_fetchCurrencyRatesByCurrency_result"/>
+    <tree IterBinding="fetchCurrencyRatesByCurrencyIterator" id="CurrencyRate">
+      <nodeDefinition DefName="TurnQuest.view.setups.CurrencyRate"
+                      Name="CurrencyRate0">
+        <AttrNames>
+          <Item Value="currencyDesc"/>
+          <Item Value="currRate"/>
+          <Item Value="currDate"/>
+          <Item Value="baseCurrencyName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllCurrenciesIterator" id="Currency1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency"
+                      Name="Currency10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="symbol"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchCurrenciesExcludeCurrency" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchCurrenciesExcludeCurrency"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchCurrenciesExcludeCurrency_BaseSetupDAO_dataProvider_fetchCurrenciesExcludeCurrency_result"/>
+    <tree IterBinding="fetchCurrenciesExcludeCurrencyIterator" id="Currency2">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency"
+                      Name="Currency20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="symbol"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

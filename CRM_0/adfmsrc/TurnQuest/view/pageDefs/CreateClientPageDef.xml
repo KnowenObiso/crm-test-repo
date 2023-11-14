@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="CreateClientPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <methodIterator Binds="findCountries.result" DataControl="SettingsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                    id="findCountriesIterator"/>
+    <methodIterator Binds="findAllClients1.result" DataControl="LOVDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Base.LOV"
+                    id="findAllClients1Iterator"/>
+    <methodIterator Binds="findCountries1.result" DataControl="AppSettingsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Settings1.AppSettings"
+                    id="findCountries1Iterator"/>
+    <searchRegion Binds="findCountries1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AppSettingsQuery"/>
+    <methodIterator Binds="findTowns1.result" DataControl="AppSettingsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Settings1.AppSettings"
+                    id="findTowns1Iterator"/>
+    <searchRegion Binds="findTowns1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AppSettings1Query"/>
+    <methodIterator Binds="findSectors1.result" DataControl="AppSettingsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Settings1.AppSettings"
+                    id="findSectors1Iterator"/>
+    <searchRegion Binds="findSectors1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AppSettings2Query"/>
+    <methodIterator Binds="findBanks1.result" DataControl="AppSettingsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Settings1.AppSettings"
+                    id="findBanks1Iterator"/>
+    <searchRegion Binds="findBanks1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AppSettings4Query"/>
+    <methodIterator Binds="findSimilarClients.result"
+                    DataControl="AppClientsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Clients1.AppClients"
+                    id="findSimilarClientsIterator"/>
+    <methodIterator Binds="findUnallocatedClientSystems.result"
+                    DataControl="AppClientsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Clients1.AppClients"
+                    id="findUnallocatedClientSystemsIterator"/>
+    <methodIterator Binds="findallocatedClientSystems.result"
+                    DataControl="AppClientsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Clients1.AppClients"
+                    id="findallocatedClientSystemsIterator"/>
+    <searchRegion Binds="findAllClients1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LOV1Query"/>
+    <methodIterator Binds="findclientwebaccounts.result"
+                    DataControl="AppClientsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Clients1.AppClients"
+                    id="findclientwebaccountsIterator"/>
+    <methodIterator Binds="findClientRequiredDocs.result"
+                    DataControl="SettingsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                    id="findClientRequiredDocsIterator"/>
+    <methodIterator Binds="findAccountManagers.result" DataControl="SettingsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                    id="findAccountManagersIterator"/>
+    <searchRegion Binds="findAccountManagersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Settings1Query"/>
+    <searchRegion Binds="findCountriesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SettingsValuesQuery"/>
+    <methodIterator Binds="fetchDivisionByBranch.result" DataControl="ClientDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Divisions.Division"
+                    id="fetchDivisionByBranchIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="findCountries" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCountries"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="SettingsDAO.methodResults.findCountries_SettingsDAO_dataProvider_findCountries_result"/>
+    <methodAction id="findTowns" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findTowns"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="SettingsDAO.methodResults.findTowns_SettingsDAO_dataProvider_findTowns_result"/>
+    <methodAction id="findSectors" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSectors"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="SettingsDAO.methodResults.findSectors_SettingsDAO_dataProvider_findSectors_result"/>
+    <methodAction id="findBanks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBanks"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="SettingsDAO.methodResults.findBanks_SettingsDAO_dataProvider_findBanks_result"/>
+    <methodAction id="findUserByAgencyCode" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUserByAgencyCode"
+                  IsViewObjectMethod="false" DataControl="ClientDAO"
+                  InstanceName="ClientDAO.dataProvider"
+                  ReturnName="ClientDAO.methodResults.findUserByAgencyCode_ClientDAO_dataProvider_findUserByAgencyCode_result"/>
+    <methodAction id="findAllClients" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllClients"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="SettingsDAO.methodResults.findAllClients_SettingsDAO_dataProvider_findAllClients_result"/>
+    <methodAction id="findAllClients1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllClients"
+                  IsViewObjectMethod="false" DataControl="LOVDAO"
+                  InstanceName="LOVDAO.dataProvider"
+                  ReturnName="LOVDAO.methodResults.findAllClients_LOVDAO_dataProvider_findAllClients_result"/>
+    <methodAction id="findCountries1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCountries"
+                  IsViewObjectMethod="false" DataControl="AppSettingsDAO"
+                  InstanceName="AppSettingsDAO.dataProvider"
+                  ReturnName="AppSettingsDAO.methodResults.findCountries_AppSettingsDAO_dataProvider_findCountries_result"/>
+    <tree IterBinding="findCountries1Iterator" id="AppSettings">
+      <nodeDefinition DefName="TurnQuest.view.Settings1.AppSettings"
+                      Name="AppSettings0">
+        <AttrNames>
+          <Item Value="countryCode"/>
+          <Item Value="countryShtDesc"/>
+          <Item Value="countryName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findTowns1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findTowns"
+                  IsViewObjectMethod="false" DataControl="AppSettingsDAO"
+                  InstanceName="AppSettingsDAO.dataProvider"
+                  ReturnName="AppSettingsDAO.methodResults.findTowns_AppSettingsDAO_dataProvider_findTowns_result"/>
+    <tree IterBinding="findTowns1Iterator" id="AppSettings1">
+      <nodeDefinition DefName="TurnQuest.view.Settings1.AppSettings"
+                      Name="AppSettings10">
+        <AttrNames>
+          <Item Value="townCode"/>
+          <Item Value="townShtDesc"/>
+          <Item Value="townName"/>
+          <Item Value="postalZIPCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSectors1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSectors"
+                  IsViewObjectMethod="false" DataControl="AppSettingsDAO"
+                  InstanceName="AppSettingsDAO.dataProvider"
+                  ReturnName="AppSettingsDAO.methodResults.findSectors_AppSettingsDAO_dataProvider_findSectors_result"/>
+    <tree IterBinding="findSectors1Iterator" id="AppSettings2">
+      <nodeDefinition DefName="TurnQuest.view.Settings1.AppSettings"
+                      Name="AppSettings20">
+        <AttrNames>
+          <Item Value="sectorCode"/>
+          <Item Value="sectorShtDesc"/>
+          <Item Value="sectorName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findCountries1Iterator" id="AppSettings3">
+      <nodeDefinition DefName="TurnQuest.view.Settings1.AppSettings"
+                      Name="AppSettings30">
+        <AttrNames>
+          <Item Value="countryCode"/>
+          <Item Value="countryShtDesc"/>
+          <Item Value="countryName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBanks1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBanks"
+                  IsViewObjectMethod="false" DataControl="AppSettingsDAO"
+                  InstanceName="AppSettingsDAO.dataProvider"
+                  ReturnName="AppSettingsDAO.methodResults.findBanks_AppSettingsDAO_dataProvider_findBanks_result"/>
+    <tree IterBinding="findBanks1Iterator" id="AppSettings4">
+      <nodeDefinition DefName="TurnQuest.view.Settings1.AppSettings"
+                      Name="AppSettings40">
+        <AttrNames>
+          <Item Value="bankName"/>
+          <Item Value="branchName"/>
+          <Item Value="bankBranchCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSimilarClients" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSimilarClients"
+                  IsViewObjectMethod="false" DataControl="AppClientsDAO"
+                  InstanceName="AppClientsDAO.dataProvider"
+                  ReturnName="AppClientsDAO.methodResults.findSimilarClients_AppClientsDAO_dataProvider_findSimilarClients_result"/>
+    <tree IterBinding="findSimilarClientsIterator" id="AppClients">
+      <nodeDefinition DefName="TurnQuest.view.Clients1.AppClients"
+                      Name="AppClients0">
+        <AttrNames>
+          <Item Value="clientCode"/>
+          <Item Value="PINNumber"/>
+          <Item Value="postalAddress"/>
+          <Item Value="telphoneOne"/>
+          <Item Value="othernames"/>
+          <Item Value="fullname"/>
+          <Item Value="idRegNumber"/>
+          <Item Value="shortDescription"/>
+          <Item Value="ZIPCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUnallocatedClientSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="findUnallocatedClientSystems"
+                  IsViewObjectMethod="false" DataControl="AppClientsDAO"
+                  InstanceName="AppClientsDAO.dataProvider"
+                  ReturnName="AppClientsDAO.methodResults.findUnallocatedClientSystems_AppClientsDAO_dataProvider_findUnallocatedClientSystems_result"/>
+    <tree IterBinding="findUnallocatedClientSystemsIterator" id="AppClients1">
+      <nodeDefinition DefName="TurnQuest.view.Clients1.AppClients"
+                      Name="AppClients10">
+        <AttrNames>
+          <Item Value="unallocatedSystemCode"/>
+          <Item Value="unallocatedSystemShtDesc"/>
+          <Item Value="unallocatedSystemName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findallocatedClientSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findallocatedClientSystems"
+                  IsViewObjectMethod="false" DataControl="AppClientsDAO"
+                  InstanceName="AppClientsDAO.dataProvider"
+                  ReturnName="AppClientsDAO.methodResults.findallocatedClientSystems_AppClientsDAO_dataProvider_findallocatedClientSystems_result"/>
+    <tree IterBinding="findallocatedClientSystemsIterator" id="AppClients2">
+      <nodeDefinition DefName="TurnQuest.view.Clients1.AppClients"
+                      Name="AppClients20">
+        <AttrNames>
+          <Item Value="allocatefSystemCode"/>
+          <Item Value="allocatedSystemShtDesc"/>
+          <Item Value="allocatedSystemName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findAllClients1Iterator" id="LOV1">
+      <nodeDefinition DefName="TurnQuest.view.Base.LOV" Name="LOV10">
+        <AttrNames>
+          <Item Value="clientCode"/>
+          <Item Value="othernames"/>
+          <Item Value="fullname"/>
+          <Item Value="postalAddress"/>
+          <Item Value="telphoneOne"/>
+          <Item Value="shortDescription"/>
+          <Item Value="idRegNumber"/>
+          <Item Value="PINNumber"/>
+          <Item Value="ZIPCode"/>
+          <Item Value="btrTransCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findclientwebaccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findclientwebaccounts"
+                  IsViewObjectMethod="false" DataControl="AppClientsDAO"
+                  InstanceName="AppClientsDAO.dataProvider"
+                  ReturnName="AppClientsDAO.methodResults.findclientwebaccounts_AppClientsDAO_dataProvider_findclientwebaccounts_result"/>
+    <tree IterBinding="findclientwebaccountsIterator" id="AppClients3">
+      <nodeDefinition DefName="TurnQuest.view.Clients1.AppClients"
+                      Name="AppClients30">
+        <AttrNames>
+          <Item Value="clientAccCode"/>
+          <Item Value="clientAccUserName"/>
+          <Item Value="clientAccName"/>
+          <Item Value="clientAccEmail"/>
+          <Item Value="clientAccPersonelRank"/>
+          <Item Value="clientAccCreatedBy"/>
+          <Item Value="clientAccDateCreated"/>
+          <Item Value="clientAccLoginAllowed"/>
+          <Item Value="clientAccStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findClientRequiredDocs" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findClientRequiredDocs"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="SettingsDAO.methodResults.findClientRequiredDocs_SettingsDAO_dataProvider_findClientRequiredDocs_result"/>
+    <tree IterBinding="findClientRequiredDocsIterator" id="Settings">
+      <nodeDefinition DefName="TurnQuest.view.Settings.SettingsValues"
+                      Name="Settings0">
+        <AttrNames>
+          <Item Value="ROC_DESC"/>
+          <Item Value="CDOCR_SUBMITED"/>
+          <Item Value="CDOCR_DATE_S"/>
+          <Item Value="CDOCR_REF_NO"/>
+          <Item Value="CDOCR_RMRK"/>
+          <Item Value="CDOCR_USER_RECEIVD"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAccountManagers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAccountManagers"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="SettingsDAO.methodResults.findAccountManagers_SettingsDAO_dataProvider_findAccountManagers_result"/>
+    <tree IterBinding="findAccountManagersIterator" id="Settings1">
+      <nodeDefinition DefName="TurnQuest.view.Settings.SettingsValues"
+                      Name="Settings10">
+        <AttrNames>
+          <Item Value="USR_USERNAME"/>
+          <Item Value="USR_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findCountriesIterator" id="SettingsValues">
+      <nodeDefinition DefName="TurnQuest.view.Settings.SettingsValues"
+                      Name="SettingsValues0">
+        <AttrNames>
+          <Item Value="CDOCR_SUBMITED"/>
+          <Item Value="CDOCR_DATE_S"/>
+          <Item Value="CDOCR_REF_NO"/>
+          <Item Value="CDOCR_RMRK"/>
+          <Item Value="CDOCR_USER_RECEIVD"/>
+          <Item Value="USR_USERNAME"/>
+          <Item Value="USR_NAME"/>
+          <Item Value="USR_CODE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDivisionByBranch" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDivisionByBranch"
+                  IsViewObjectMethod="false" DataControl="ClientDAO"
+                  InstanceName="ClientDAO.dataProvider"
+                  ReturnName="ClientDAO.methodResults.fetchDivisionByBranch_ClientDAO_dataProvider_fetchDivisionByBranch_result"/>
+    <tree IterBinding="fetchDivisionByBranchIterator" id="Division">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division0">
+        <AttrNames>
+          <Item Value="DIV_CODE"/>
+          <Item Value="DIV_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

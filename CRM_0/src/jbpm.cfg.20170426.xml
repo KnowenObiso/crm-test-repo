@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<jbpm-configuration>
+<!--<jbpm-context>
+    <service name='persistence' factory='org.jbpm.persistence.db.DbPersistenceServiceFactory' />
+    
+  </jbpm-context>
+
+<import resource="jbpm.default.cfg.xml"/>
+<import resource="jbpm.tx.hibernate.cfg.xml"/>
+<import resource="jbpm.jpdl.cfg.xml"/>
+<import resource="jbpm.businesscalendar.cfg.xml"/>-->
+<jbpm-context>
+    <service name='persistence' factory='org.jbpm.persistence.db.DbPersistenceServiceFactory' />
+    
+  </jbpm-context>
+
+<import resource="jbpm.default.cfg.xml"/>
+<import resource="jbpm.hibernate.cfg.xml"/>
+<import resource="jbpm.jpdl.cfg.xml"/>
+<import resource="jbpm.identity.cfg.xml"/>
+<import resource="jbpm.jobexecutor.cfg.xml"/>
+
+</jbpm-configuration>

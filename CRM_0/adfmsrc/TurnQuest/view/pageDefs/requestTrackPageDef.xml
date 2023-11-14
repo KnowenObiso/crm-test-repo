@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="requestTrackPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findOverdueRequestsChat.result"
+                    DataControl="ServiceReqDAO" RangeSize="-1"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findOverdueRequestsChatIterator"/>
+    <methodIterator Binds="findOverdueRequests.result"
+                    DataControl="ServiceReqDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findOverdueRequestsIterator"/>
+    <searchRegion Binds="findOverdueRequestsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReq4Query"/>
+    <methodIterator Binds="findPendingRequests.result"
+                    DataControl="ServiceReqDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findPendingRequestsIterator"/>
+    <searchRegion Binds="findPendingRequestsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReq5Query"/>
+    <methodIterator Binds="findRequestCats.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findRequestCatsIterator"/>
+    <searchRegion Binds="findRequestCatsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReq3Query"/>
+    <methodIterator Binds="findUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersIterator"/>
+    <searchRegion Binds="findUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="findAccounts.result" DataControl="ServiceReqDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Activities.Account"
+                    id="findAccountsIterator"/>
+    <searchRegion Binds="findAccountsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountQuery"/>
+    <methodIterator Binds="findRequestTypes.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findRequestTypesIterator"/>
+    <searchRegion Binds="findRequestTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReq1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findOverdueRequestsChat" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findOverdueRequestsChat"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findOverdueRequestsChat_ServiceReqDAO_dataProvider_findOverdueRequestsChat_result"/>
+    <graph IterBinding="findOverdueRequestsChatIterator" id="ServiceReq"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="PIE">
+      <graphDataMap leafOnly="true">
+        <series>
+          <item value="assigneeDesc"/>
+        </series>
+        <groups>
+          <data>
+            <item value="count"/>
+          </data>
+        </groups>
+      </graphDataMap>
+    </graph>
+    <methodAction id="findOverdueRequests" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findOverdueRequests"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findOverdueRequests_ServiceReqDAO_dataProvider_findOverdueRequests_result"/>
+    <tree IterBinding="findOverdueRequestsIterator" id="ServiceReq4">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq40">
+        <AttrNames>
+          <Item Value="tsrcCode"/>
+          <Item Value="tsrcName"/>
+          <Item Value="tsrcValidity"/>
+          <Item Value="proposalNo"/>
+          <Item Value="policyNumber"/>
+          <Item Value="sumAssured"/>
+          <Item Value="polCode"/>
+          <Item Value="urlString"/>
+          <Item Value="tsrCode"/>
+          <Item Value="tsrType"/>
+          <Item Value="accType"/>
+          <Item Value="accCode"/>
+          <Item Value="tsrDate"/>
+          <Item Value="assignee"/>
+          <Item Value="assigneeDesc"/>
+          <Item Value="ownType"/>
+          <Item Value="ownerCode"/>
+          <Item Value="status"/>
+          <Item Value="resDate"/>
+          <Item Value="summary"/>
+          <Item Value="desc"/>
+          <Item Value="solution"/>
+          <Item Value="accTypeDesc"/>
+          <Item Value="accountName"/>
+          <Item Value="ownerType"/>
+          <Item Value="owner"/>
+          <Item Value="tsrMode"/>
+          <Item Value="dueDate"/>
+          <Item Value="requestRefNumber"/>
+          <Item Value="comments"/>
+          <Item Value="sprShtDesc"/>
+          <Item Value="agnPhysicalAddress"/>
+          <Item Value="agnEmailAddress"/>
+          <Item Value="agnSmsNumber"/>
+          <Item Value="tsrSrtCode"/>
+          <Item Value="srtDesc"/>
+          <Item Value="TSR_POLICY_NO"/>   
+          <Item Value="closeByAssignee"/>
+          <Item Value="closeByReporter"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findPendingRequests" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findPendingRequests"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findPendingRequests_ServiceReqDAO_dataProvider_findPendingRequests_result"/>
+    <tree IterBinding="findPendingRequestsIterator" id="ServiceReq5">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq50">
+        <AttrNames>
+          <Item Value="tsrcCode"/>
+          <Item Value="tsrcName"/>
+          <Item Value="tsrcValidity"/>
+          <Item Value="proposalNo"/>
+          <Item Value="policyNumber"/>
+          <Item Value="sumAssured"/>
+          <Item Value="polCode"/>
+          <Item Value="urlString"/>
+          <Item Value="tsrCode"/>
+          <Item Value="tsrType"/>
+          <Item Value="accType"/>
+          <Item Value="accCode"/>
+          <Item Value="tsrDate"/>
+          <Item Value="assignee"/>
+          <Item Value="ownType"/>
+          <Item Value="ownerCode"/>
+          <Item Value="status"/>
+          <Item Value="resDate"/>
+          <Item Value="summary"/>
+          <Item Value="desc"/>
+          <Item Value="solution"/>
+          <Item Value="accTypeDesc"/>
+          <Item Value="accountName"/>
+          <Item Value="ownerType"/>
+          <Item Value="owner"/>
+          <Item Value="tsrMode"/>
+          <Item Value="dueDate"/>
+          <Item Value="assigneeDesc"/>
+          <Item Value="requestRefNumber"/>
+          <Item Value="TSR_RECEIVE_DATE" />
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRequestCats" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRequestCats"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findRequestCats_ServiceReqDAO_dataProvider_findRequestCats_result"/>
+    <tree IterBinding="findRequestCatsIterator" id="ServiceReq3">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq30">
+        <AttrNames>
+          <Item Value="tsrcCode"/>
+          <Item Value="tsrcName"/>
+          <Item Value="tsrcValidity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <tree IterBinding="findUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAccounts"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findAccounts_ServiceReqDAO_dataProvider_findAccounts_result"/>
+    <tree IterBinding="findAccountsIterator" id="Account">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Account"
+                      Name="Account0">
+        <AttrNames>
+          <Item Value="accountCode"/>
+          <Item Value="accountType"/>
+          <Item Value="accountTypeCode"/>
+          <Item Value="accountName"/>
+          <Item Value="accountEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRequestTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRequestTypes"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="ServiceReqDAO.methodResults.findRequestTypes_ServiceReqDAO_dataProvider_findRequestTypes_result"/>
+    <tree IterBinding="findRequestTypesIterator" id="ServiceReq1">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq10">
+        <AttrNames>
+          <Item Value="srtCode"/>
+          <Item Value="srtShtDesc"/>
+          <Item Value="srtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

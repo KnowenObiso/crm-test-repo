@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="userParametersPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllParameters.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Parameter"
+                    id="fetchAllParametersIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllParameters" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllParameters"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllParameters_BaseSetupDAO_dataProvider_fetchAllParameters_result"/>
+    <tree IterBinding="fetchAllParametersIterator" id="Parameter">
+      <nodeDefinition DefName="TurnQuest.view.setups.Parameter"
+                      Name="Parameter0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="value"/>
+          <Item Value="description"/>		  
+		  <Item Value="code"/>
+          <Item Value="status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

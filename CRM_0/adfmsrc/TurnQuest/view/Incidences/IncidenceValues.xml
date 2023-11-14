@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="IncidenceValues" Package="TurnQuest.view.Incidences"
+          BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+          isJavaBased="true">
+  <Attribute Name="INCT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="INCT_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="INCT_DESC" Type="java.lang.String"/>
+  <Attribute Name="INCT_OWNER" Type="java.lang.String"/>
+  <Attribute Name="INCT_OWNER_DESC" Type="java.lang.String"/>
+  <Attribute Name="ICTY_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="ICTY_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="ICTY_DESC" Type="java.lang.String"/>
+  <Attribute Name="ICTY_DATE" Type="java.util.Date"/>
+  <Attribute Name="IDEP_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="IDEP_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="IDEP_DESC" Type="java.lang.String"/>
+  <Attribute Name="IDEP_BRN_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BRN_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="BRN_NAME" Type="java.lang.String"/>
+  <Attribute Name="DEPICT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="DEPICT_INCT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="DEPICT_IDEP_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="DEPICT_SEND_EMAIL" Type="java.lang.String"/>
+  <Attribute Name="DEPICT_PRIORITY_LVL" Type="java.lang.String"/>
+  <Attribute Name="DEPICT_ESCALATE" Type="java.lang.String"/>
+  <Attribute Name="DEPICT_ESC_DAYS" Type="java.math.BigDecimal"/>
+  <Attribute Name="DEPICT_CLOSE_DAYS" Type="java.math.BigDecimal"/>
+  <Attribute Name="BRN_CODE" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Incidences.IncidenceValues"
+                     BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                     id="IncidenceValues"/>
+</JavaBean>

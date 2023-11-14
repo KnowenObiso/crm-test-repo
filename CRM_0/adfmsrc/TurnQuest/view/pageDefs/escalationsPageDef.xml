@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.59.23" id="escalationsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findSystemProcesses.result"
+                    DataControl="EscalationsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.bpm.Escalations"
+                    id="findSystemProcessesIterator"/>
+    <methodIterator Binds="findProcessDefActivities.result"
+                    DataControl="EscalationsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.bpm.Escalations"
+                    id="findProcessDefActivitiesIterator"/>
+    <searchRegion Binds="findProcessDefActivitiesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Escalations1Query"/>
+    <methodIterator Binds="findEscalationLevels.result"
+                    DataControl="EscalationsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.bpm.Escalations"
+                    id="findEscalationLevelsIterator"/>
+    <searchRegion Binds="findEscalationLevelsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Escalations2Query"/>
+    <methodIterator Binds="findUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersIterator"/>
+    <searchRegion Binds="findUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="findEscalationLevelsOne.result"
+                    DataControl="EscalationsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.bpm.Escalations"
+                    id="findEscalationLevelsOneIterator"/>
+    <methodIterator Binds="findEscalationLevelsTwo.result"
+                    DataControl="EscalationsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.bpm.Escalations"
+                    id="findEscalationLevelsTwoIterator"/>
+                     <methodIterator Binds="findEscalationLevelsThree.result"
+                    DataControl="EscalationsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.bpm.Escalations"
+                    id="findEscalationLevelsThreeIterator"/>
+                     <methodIterator Binds="findEscalationLevelsFour.result"
+                    DataControl="EscalationsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.bpm.Escalations"
+                    id="findEscalationLevelsFourIterator"/>
+    <methodIterator Binds="findServiceReqEscalations.result"
+                    DataControl="EscalationsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.bpm.Escalations"
+                    id="findServiceReqEscalationsIterator"/>
+    <searchRegion Binds="findServiceReqEscalationsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Escalations4Query"/>
+    <methodIterator Binds="findRequestTypes.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findRequestTypesIterator"/>
+    <searchRegion Binds="findRequestTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReqQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findSystemProcesses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystemProcesses"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="data.EscalationsDAO.methodResults.findSystemProcesses_EscalationsDAO_dataProvider_findSystemProcesses_result"/>
+    <tree IterBinding="findSystemProcessesIterator" id="Escalations">
+      <nodeDefinition DefName="TurnQuest.view.bpm.Escalations"
+                      Name="Escalations0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysName"/>
+          <Item Value="sysShortDesc"/>
+          <Item Value="type"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="sysProcess"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.bpm.SysProcess"
+                      Name="Escalations1">
+        <AttrNames>
+          <Item Value="type"/>
+          <Item Value="jpdlDesc"/>
+          <Item Value="name"/>
+          <Item Value="deployment"/>
+          <Item Value="sysCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findProcessDefActivities" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProcessDefActivities"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="data.EscalationsDAO.methodResults.findProcessDefActivities_EscalationsDAO_dataProvider_findProcessDefActivities_result"/>
+    <tree IterBinding="findProcessDefActivitiesIterator" id="Escalations1">
+      <nodeDefinition DefName="TurnQuest.view.bpm.Escalations"
+                      Name="Escalations10">
+        <AttrNames>
+          <Item Value="activityType"/>
+          <Item Value="activityName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEscalationLevels" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEscalationLevels"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="data.EscalationsDAO.methodResults.findEscalationLevels_EscalationsDAO_dataProvider_findEscalationLevels_result"/>
+    <tree IterBinding="findEscalationLevelsIterator" id="Escalations2">
+      <nodeDefinition DefName="TurnQuest.view.bpm.Escalations"
+                      Name="Escalations20">
+        <AttrNames>
+          <Item Value="sysCode"/>
+          <Item Value="activityName"/>
+          <Item Value="code"/>
+          <Item Value="jpdlName"/>
+          <Item Value="level"/>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="ccUser"/>
+          <Item Value="ccUsername"/>
+          <Item Value="duration"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <tree IterBinding="findUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEscalationLevelsOne" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEscalationLevelsOne"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="EscalationsDAO.methodResults.findEscalationLevelsOne_EscalationsDAO_dataProvider_findEscalationLevelsOne_result"/>
+    <attributeValues IterBinding="findEscalationLevelsOneIterator" id="select">
+      <AttrNames>
+        <Item Value="select"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsOneIterator" id="code">
+      <AttrNames>
+        <Item Value="code"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsOneIterator"
+                     id="duration">
+      <AttrNames>
+        <Item Value="duration"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsOneIterator"
+                     id="userCode">
+      <AttrNames>
+        <Item Value="userCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsOneIterator"
+                     id="username">
+      <AttrNames>
+        <Item Value="username"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsOneIterator"
+                     id="ccUser">
+      <AttrNames>
+        <Item Value="ccUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsOneIterator"
+                     id="ccUsername">
+      <AttrNames>
+        <Item Value="ccUsername"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="findEscalationLevelsTwo" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEscalationLevelsTwo"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="EscalationsDAO.methodResults.findEscalationLevelsTwo_EscalationsDAO_dataProvider_findEscalationLevelsTwo_result"/>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator" id="select1">
+      <AttrNames>
+        <Item Value="select"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator" id="code1">
+      <AttrNames>
+        <Item Value="code"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="duration1">
+      <AttrNames>
+        <Item Value="duration"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="userCode1">
+      <AttrNames>
+        <Item Value="userCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="username1">
+      <AttrNames>
+        <Item Value="username"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="ccUser1">
+      <AttrNames>
+        <Item Value="ccUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="ccUsername1">
+      <AttrNames>
+        <Item Value="ccUsername"/>
+      </AttrNames>
+    </attributeValues>
+     <methodAction id="findEscalationLevelsThree" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEscalationLevelsThree"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="EscalationsDAO.methodResults.findEscalationLevelsThree_EscalationsDAO_dataProvider_findEscalationLevelsThree_result"/>
+    <attributeValues IterBinding="findEscalationLevelsThreeIterator" id="select2">
+      <AttrNames>
+        <Item Value="select"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsThreeIterator" id="code2">
+      <AttrNames>
+        <Item Value="code"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsThreeIterator"
+                     id="duration2">
+      <AttrNames>
+        <Item Value="duration"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsThreeIterator"
+                     id="userCode2">
+      <AttrNames>
+        <Item Value="userCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsThreeIterator"
+                     id="username2">
+      <AttrNames>
+        <Item Value="username"/>
+      </AttrNames>
+    </attributeValues>
+     <attributeValues IterBinding="findEscalationLevelsThreeIterator"
+                     id="ccUser2">
+      <AttrNames>
+        <Item Value="ccUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsThreeIterator"
+                     id="ccUsername2">
+      <AttrNames>
+        <Item Value="ccUsername"/>
+      </AttrNames>
+    </attributeValues>
+     <methodAction id="findEscalationLevelsFour" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEscalationLevelsFour"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="EscalationsDAO.methodResults.findEscalationLevelsFour_EscalationsDAO_dataProvider_findEscalationLevelsFour_result"/>
+    <attributeValues IterBinding="findEscalationLevelsFourIterator" id="select3">
+      <AttrNames>
+        <Item Value="select"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator" id="code3">
+      <AttrNames>
+        <Item Value="code"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="duration3">
+      <AttrNames>
+        <Item Value="duration"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="userCode3">
+      <AttrNames>
+        <Item Value="userCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="username3">
+      <AttrNames>
+        <Item Value="username"/>
+      </AttrNames>
+      
+    </attributeValues>
+     <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="ccUser3">
+      <AttrNames>
+        <Item Value="ccUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findEscalationLevelsTwoIterator"
+                     id="ccUsername3">
+      <AttrNames>
+        <Item Value="ccUsername"/>
+      </AttrNames>
+      
+    </attributeValues>
+    <methodAction id="findServiceReqEscalations" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findServiceReqEscalations"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="data.EscalationsDAO.methodResults.findServiceReqEscalations_EscalationsDAO_dataProvider_findServiceReqEscalations_result"/>
+    <tree IterBinding="findServiceReqEscalationsIterator" id="Escalations3">
+      <nodeDefinition DefName="TurnQuest.view.bpm.Escalations"
+                      Name="Escalations30">
+        <AttrNames>
+          <Item Value="sreCode"/>
+          <Item Value="sreSrtCode"/>
+          <Item Value="sreLvlDuration"/>
+          <Item Value="sreLvlOneAssignee"/>
+          <Item Value="sreLvlTwoDuration"/>
+          <Item Value="sreLvlTwoAssignee"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findServiceReqEscalationsIterator" id="Escalations4">
+      <nodeDefinition DefName="TurnQuest.view.bpm.Escalations"
+                      Name="Escalations40">
+        <AttrNames>
+          <Item Value="sreCode"/>
+          <Item Value="sreSrtCode"/>
+          <Item Value="sreLvlDuration"/>
+          <Item Value="sreLvlOneAssignee"/>
+          <Item Value="sreLvlTwoDuration"/>
+          <Item Value="sreLvlTwoAssignee"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findServiceReqEscalationsIterator" id="Escalations5">
+      <nodeDefinition DefName="TurnQuest.view.bpm.Escalations"
+                      Name="Escalations50">
+        <AttrNames>
+          <Item Value="sreCode"/>
+          <Item Value="sreSrtCode"/>
+          <Item Value="sreLvlDuration"/>
+          <Item Value="sreLvlOneAssignee"/>
+          <Item Value="sreLvlTwoDuration"/>
+          <Item Value="sreLvlTwoAssignee"/>
+          <Item Value="sreSrtName"/>
+          <Item Value="sreLvlOneAssigneeName"/>
+          <Item Value="sreLvlTwoAssigneeName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRequestTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRequestTypes"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findRequestTypes_ServiceReqDAO_dataProvider_findRequestTypes_result"/>
+    <tree IterBinding="findRequestTypesIterator" id="ServiceReq">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq0">
+        <AttrNames>
+          <Item Value="srtCode"/>
+          <Item Value="srtShtDesc"/>
+          <Item Value="srtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findUsersIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

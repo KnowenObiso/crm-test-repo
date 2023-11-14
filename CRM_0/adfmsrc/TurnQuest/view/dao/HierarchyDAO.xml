@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="HierarchyDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.HierarchyDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchAllSystems" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgDivisionLevelType"
+                  BeanClass="TurnQuest.view.models.OrgDivisionLevelType"
+                  id="fetchOrgDivisionLevelTypes"
+                  ReturnNodeName="OrgDivisionLevelType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgDivisionLevel"
+                  BeanClass="TurnQuest.view.models.OrgDivisionLevel"
+                  id="fetchOrgDivisionLevels" ReturnNodeName="OrgDivisionLevel"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgSubDivision"
+                  BeanClass="TurnQuest.view.models.OrgSubDivision"
+                  id="fetchOrgSubDivisionsBySystem"
+                  ReturnNodeName="OrgSubDivision"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgSubDivision"
+                  BeanClass="TurnQuest.view.models.OrgSubDivision"
+                  id="fetchOrgSubDivisionsBySystem"
+                  ReturnNodeName="OrgSubDivision"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="sysCode" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgSubDivision"
+                  BeanClass="TurnQuest.view.models.OrgSubDivision"
+                  id="fetchOrgSubDivisionsBySubDiv"
+                  ReturnNodeName="OrgSubDivision"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgSubDivision"
+                  BeanClass="TurnQuest.view.models.OrgSubDivision"
+                  id="fetchOrgSubDivisionsBySubDiv"
+                  ReturnNodeName="OrgSubDivision"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="osdCode" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchSystemsOrgSubDivisions" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchAllAgenciesLov" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.AgencyActivity"
+                  BeanClass="TurnQuest.view.models.AgencyActivity"
+                  id="fetchAgencyActivities" ReturnNodeName="AgencyActivity"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.ActivityType"
+                  BeanClass="TurnQuest.view.models.ActivityType"
+                  id="fetchAllActivityTypes" ReturnNodeName="ActivityType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchAllClientsLov" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.provider.ServiceProvider"
+                  BeanClass="TurnQuest.view.provider.ServiceProvider"
+                  id="fetchAllServiceProvidersLov"
+                  ReturnNodeName="ServiceProvider"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchAllAgencyMarketersLov" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.ActivityType"
+                  BeanClass="TurnQuest.view.models.ActivityType"
+                  id="fetchActivityTypeBySystem" ReturnNodeName="ActivityType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgSubDivision"
+                  BeanClass="TurnQuest.view.models.OrgSubDivision"
+                  id="fetchOrgSubDivisionsByDlt" ReturnNodeName="OrgSubDivision"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AccountsType"
+                  BeanClass="TurnQuest.view.Accounts.AccountsType"
+                  id="fetchAllAccountTypesLov" ReturnNodeName="AccountsType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgSubDivPreviousHead"
+                  BeanClass="TurnQuest.view.models.OrgSubDivPreviousHead"
+                  id="fetchOrgSubDivPrevHeadsByOrgSubDivision"
+                  ReturnNodeName="OrgSubDivPreviousHead"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchSpecificAgencyMarketersLov" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AccountsType"
+                  BeanClass="TurnQuest.view.Accounts.AccountsType"
+                  id="fetchHierarchyAccountTypesLov"
+                  ReturnNodeName="AccountsType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgSubDivision"
+                  BeanClass="TurnQuest.view.models.OrgSubDivision"
+                  id="fetchLowestOrgSubDivisionsBySystem"
+                  ReturnNodeName="OrgSubDivision"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgDivisionLevel"
+                  BeanClass="TurnQuest.view.models.OrgDivisionLevel"
+                  id="fetchOrgDivisionLevelsByRanking"
+                  ReturnNodeName="OrgDivisionLevel"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.AgencyActivity"
+                  BeanClass="TurnQuest.view.models.AgencyActivity"
+                  id="fetchActivityByParticipants"
+                  ReturnNodeName="AgencyActivity"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchAgencyActivityLov" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="findGroupUser"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgDivisionLevelType"
+                  BeanClass="TurnQuest.view.models.OrgDivisionLevelType"
+                  id="fetchOrgLevelTypes" ReturnNodeName="OrgDivisionLevelType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgDivisionLevelType"
+                  BeanClass="TurnQuest.view.models.OrgDivisionLevelType"
+                  id="fetchDivisionLocation"
+                  ReturnNodeName="OrgDivisionLevelType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.OrgSubDivision"
+                  BeanClass="TurnQuest.view.models.OrgSubDivision"
+                  id="fetchOSDHeadsHist" ReturnNodeName="OrgSubDivision"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.HierarchyDAO"
+                     BeanClass="TurnQuest.view.dao.HierarchyDAO"
+                     id="HierarchyDAO"/>
+</JavaBean>

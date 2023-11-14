@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+ <session-factory> 
+  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+  <property name="connection.datasource">jdbc/CRMDS</property>
+   
+  <property name="hibernate.format_sql">true</property>
+  <property name="hibernate.id.new_generator_mappings">true</property> 
+  <property name="hibernate.hbm2ddl.auto">update</property>
+  <property name="show_sql">true</property> 
+  
+  <mapping class="TurnQuest.view.models.Client"/>
+  <mapping class="TurnQuest.view.models.ClientSignatory"/>
+  <mapping class="TurnQuest.view.models.ClientDirector"/>
+  <mapping class="TurnQuest.view.models.TransferItem"/>
+  <mapping class="TurnQuest.view.models.ExchangeRate"/> 
+  <mapping class="TurnQuest.view.models.Currency"/> 
+  <mapping class="TurnQuest.view.models.SourceOfIncome"/> 
+  <mapping class="TurnQuest.view.models.Agent"/> 
+  <mapping class="TurnQuest.view.models.AccountType"/> 
+  <mapping class="TurnQuest.view.models.ClientType"/> 
+ </session-factory>
+</hibernate-configuration>

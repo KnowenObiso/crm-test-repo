@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="usersPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables" Refresh="RefreshAfter"/>
+    <methodIterator Binds="findUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersIterator"/>
+    <searchRegion Binds="findUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="findUserSystems.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUserSystemsIterator"/>
+    <methodIterator Binds="findOrganizations.result" DataControl="BranchDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Branches.Branch"
+                    id="findOrganizationsIterator"/>
+    <methodIterator Binds="findRegions.result" DataControl="BranchDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Branches.Branch"
+                    id="findRegionsIterator"/>
+    <methodIterator Binds="fetchAllBranches.result" DataControl="BranchDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Branches.Branch"
+                    id="fetchAllBranchesIterator"/>
+    <methodIterator Binds="findUserBranches.result" DataControl="BranchDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Branches.Branch"
+                    id="findUserBranchesIterator"/>
+    <methodIterator Binds="findSystems.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findSystemsIterator"/>
+    <methodIterator Binds="fetchAllSystemRoles.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.roles.Role"
+                    id="fetchAllSystemRolesIterator"/>
+    <methodIterator Binds="fetchAllUserRoles.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.roles.Role"
+                    id="fetchAllUserRolesIterator"/>
+    <methodIterator Binds="findDivisions.result" DataControl="DivisionsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findDivisionsIterator"/>
+    <methodIterator Binds="fetchUserDivisions.result" DataControl="DivisionsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Divisions.Division"
+                    id="fetchUserDivisionsIterator"/>
+    <methodIterator Binds="fetchUnassignedUserSystems.result"
+                    DataControl="UserDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchUnassignedUserSystemsIterator"/>
+    <!--<methodIterator Binds="fetchAssignedUserSystems.result"
+                    DataControl="UserDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchAssignedUserSystemsIterator"/>-->
+    <methodIterator Binds="fetchAssignedUserRoles.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchAssignedUserRolesIterator"/>
+    <methodIterator Binds="fetchUnassignedUserRoles.result"
+                    DataControl="UserDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchUnassignedUserRolesIterator"/>
+    <methodIterator Binds="fetchUserAssignedBranches.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchUserAssignedBranchesIterator"/>
+    <methodIterator Binds="fetchUserUnassignedDivisions.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchUserUnassignedDivisionsIterator"/>
+    <methodIterator Binds="fetchUserAssignedDivisions.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchUserAssignedDivisionsIterator"/>
+    <methodIterator Binds="fetchUserNonDefaultBranches.result"
+                    DataControl="UserDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.UtilObject"
+                    id="fetchUserNonDefaultBranchesIterator"/>
+    <methodIterator Binds="fetchUserNonDefaultDivisions.result"
+                    DataControl="UserDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.UtilObject"
+                    id="fetchUserNonDefaultDivisionsIterator"/>
+    <methodIterator Binds="fetchAllPersonnels.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.Personnel"
+                    id="fetchAllPersonnelsIterator"/>
+    <searchRegion Binds="fetchAllPersonnelsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PersonnelQuery"/>
+    <methodIterator Binds="fetchAllUserAssignedSystems.result"
+                    DataControl="UserDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.UserSystem"
+                    id="fetchAllUserAssignedSystemsIterator"/>
+    <searchRegion Binds="fetchAllUserAssignedSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserSystemQuery"/>
+    <methodIterator Binds="fetchUserUnassignedBranches.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchUserUnassignedBranchesIterator"/>
+    <methodIterator Binds="fetchSystemPostsBySystem.result"
+                    DataControl="SystemPostDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.SystemPost"
+                    id="fetchSystemPostsBySystemIterator"/>
+    <searchRegion Binds="fetchSystemPostsBySystemIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SystemPostQuery"/>
+    <methodIterator Binds="findUsersGroupMembers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersGroupMembersIterator"/>
+    <searchRegion Binds="findUsersGroupMembersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User7Query"/>
+    <methodIterator Binds="findGroupUser.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findGroupUserIterator"/>
+    <searchRegion Binds="findGroupUserIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User4Query1"/>
+    <methodIterator Binds="findUsersNotInGroup.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersNotInGroupIterator"/>
+    <searchRegion Binds="findUsersNotInGroupIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User12Query"/>
+    <methodIterator Binds="findAllUsersNotInGroup.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findAllUsersNotInGroupIterator"/>
+    <searchRegion Binds="findAllUsersNotInGroupIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User13Query"/>
+    <methodIterator Binds="findDomainUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findDomainUsersIterator"/>
+    <searchRegion Binds="findDomainUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery1"/>
+    <methodIterator Binds="findUserSubAcctTypes.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUserSubAcctTypesIterator"/>
+    <searchRegion Binds="findUserSubAcctTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User15Query"/>
+    <methodIterator Binds="findKpiTasks.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findKpiTasksIterator"/>
+    <searchRegion Binds="findKpiTasksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization4Query"/>
+    <methodIterator Binds="fetchKpis.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchKpisIterator"/>
+    <searchRegion Binds="fetchKpisIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User8Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <methodAction id="findUserSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUserSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findUserSystems_UserDAO_dataProvider_findUserSystems_result"/>
+    <tree IterBinding="findUserSystemsIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userSysCode"/>
+          <Item Value="sysName"/>
+          <Item Value="sysWef"/>
+          <Item Value="sysWet"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findOrganizations" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findOrganizations"
+                  IsViewObjectMethod="false" DataControl="BranchDAO"
+                  InstanceName="BranchDAO.dataProvider"
+                  ReturnName="BranchDAO.methodResults.findOrganizations_BranchDAO_dataProvider_findOrganizations_result"/>
+    <tree IterBinding="findOrganizationsIterator" id="Branch">
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch" Name="Branch0">
+        <AttrNames>
+          <Item Value="orgShtDesc"/>
+          <Item Value="orgName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRegions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRegions"
+                  IsViewObjectMethod="false" DataControl="BranchDAO"
+                  InstanceName="BranchDAO.dataProvider"
+                  ReturnName="BranchDAO.methodResults.findRegions_BranchDAO_dataProvider_findRegions_result"/>
+    <tree IterBinding="findRegionsIterator" id="Branch2">
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch" Name="Branch20">
+        <AttrNames>
+          <Item Value="regCode"/>
+          <Item Value="regName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllBranches"
+                  IsViewObjectMethod="false" DataControl="BranchDAO"
+                  InstanceName="BranchDAO.dataProvider"
+                  ReturnName="BranchDAO.methodResults.fetchAllBranches_BranchDAO_dataProvider_fetchAllBranches_result"/>
+    <tree IterBinding="fetchAllBranchesIterator" id="Branch1">
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch" Name="Branch10">
+        <AttrNames>
+          <Item Value="regCode"/>
+          <Item Value="regName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUserBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUserBranches"
+                  IsViewObjectMethod="false" DataControl="BranchDAO"
+                  InstanceName="BranchDAO.dataProvider"
+                  ReturnName="BranchDAO.methodResults.findUserBranches_BranchDAO_dataProvider_findUserBranches_result"/>
+    <tree IterBinding="findUserBranchesIterator" id="Branch3">
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch" Name="Branch30">
+        <AttrNames>
+          <Item Value="branchCode"/>
+          <Item Value="branchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findSystems_UserDAO_dataProvider_findSystems_result"/>
+    <tree IterBinding="findSystemsIterator" id="User2">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User20">
+        <AttrNames>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSystemRoles" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystemRoles"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAllSystemRoles_UserDAO_dataProvider_fetchAllSystemRoles_result"/>
+    <tree IterBinding="fetchAllSystemRolesIterator" id="Role">
+      <nodeDefinition DefName="TurnQuest.view.roles.Role" Name="Role0">
+        <AttrNames>
+          <Item Value="roleCode"/>
+          <Item Value="roleShtDesc"/>
+          <Item Value="roleName"/>
+          <Item Value="roleSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllUserRoles" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllUserRoles"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAllUserRoles_UserDAO_dataProvider_fetchAllUserRoles_result"/>
+    <tree IterBinding="fetchAllUserRolesIterator" id="Role1">
+      <nodeDefinition DefName="TurnQuest.view.roles.Role" Name="Role10">
+        <AttrNames>
+          <Item Value="roleCode"/>
+          <Item Value="roleShtDesc"/>
+          <Item Value="roleName"/>
+          <Item Value="roleSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findDivisions_DivisionsDAO_dataProvider_findDivisions_result"/>
+    <tree IterBinding="findDivisionsIterator" id="Division">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division0">
+        <AttrNames>
+          <Item Value="DIV_CODE"/>
+          <Item Value="DIV_SHT_DESC"/>
+          <Item Value="DIV_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUserDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.fetchUserDivisions_DivisionsDAO_dataProvider_fetchUserDivisions_result"/>
+    <tree IterBinding="fetchUserDivisionsIterator" id="Division1">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division10">
+        <AttrNames>
+          <Item Value="DIV_CODE"/>
+          <Item Value="DIV_SHT_DESC"/>
+          <Item Value="DIV_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUnassignedUserSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUnassignedUserSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchUnassignedUserSystems_UserDAO_dataProvider_fetchUnassignedUserSystems_result"/>
+    <tree IterBinding="fetchUnassignedUserSystemsIterator" id="User3">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User30">
+        <AttrNames>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <!--<methodAction id="fetchAssignedUserSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAssignedUserSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAssignedUserSystems_UserDAO_dataProvider_fetchAssignedUserSystems_result"/>
+    <tree IterBinding="fetchAssignedUserSystemsIterator" id="User4">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User40">
+        <AttrNames>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>-->
+    <methodAction id="fetchAssignedUserRoles" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAssignedUserRoles"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAssignedUserRoles_UserDAO_dataProvider_fetchAssignedUserRoles_result"/>
+    <tree IterBinding="fetchAssignedUserRolesIterator" id="User6">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User60">
+        <AttrNames>
+          <Item Value="sysName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="rolesList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.roles.Role" Name="User61">
+        <AttrNames>
+          <Item Value="roleName"/>
+          <Item Value="roleSelected"/>
+          <Item Value="roleCode"/>
+          <Item Value="wetDate"/>
+          <Item Value="wefDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUnassignedUserRoles" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUnassignedUserRoles"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchUnassignedUserRoles_UserDAO_dataProvider_fetchUnassignedUserRoles_result"/>
+    <tree IterBinding="fetchUnassignedUserRolesIterator" id="User5">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User50">
+        <AttrNames>
+          <Item Value="sysName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="rolesList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.roles.Role" Name="User51">
+        <AttrNames>
+          <Item Value="roleName"/>
+          <Item Value="roleSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserUnassignedBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUserUnassignedBranches"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchUserUnassignedBranches_OrganizationDAO_dataProvider_fetchUserUnassignedBranches_result"/>
+    <tree IterBinding="fetchUserUnassignedBranchesIterator" id="Organization">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization0">
+        <AttrNames>
+          <Item Value="orgShortDesc"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="regionsList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Branches.Region"
+                      Name="Organization1">
+        <AttrNames>
+          <Item Value="regionName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="branchesList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch"
+                      Name="Organization2">
+        <AttrNames>
+          <Item Value="branchName"/>
+          <Item Value="branchSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserAssignedBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUserAssignedBranches"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchUserAssignedBranches_OrganizationDAO_dataProvider_fetchUserAssignedBranches_result"/>
+    <tree IterBinding="fetchUserAssignedBranchesIterator" id="Organization1">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization10">
+        <AttrNames>
+          <Item Value="orgShortDesc"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="regionsList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Branches.Region"
+                      Name="Organization11">
+        <AttrNames>
+          <Item Value="regionName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="branchesList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch"
+                      Name="Organization12">
+        <AttrNames>
+          <Item Value="branchName"/>
+          <Item Value="branchSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserUnassignedDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchUserUnassignedDivisions"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchUserUnassignedDivisions_OrganizationDAO_dataProvider_fetchUserUnassignedDivisions_result"/>
+    <tree IterBinding="fetchUserUnassignedDivisionsIterator" id="Organization2">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization20">
+        <AttrNames>
+          <Item Value="orgShortDesc"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="regionsList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Branches.Region"
+                      Name="Organization21">
+        <AttrNames>
+          <Item Value="regionName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="branchesList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch"
+                      Name="Organization22">
+        <AttrNames>
+          <Item Value="branchName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="divisionsList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Organization23">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+          <Item Value="divisionSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserAssignedDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUserAssignedDivisions"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchUserAssignedDivisions_OrganizationDAO_dataProvider_fetchUserAssignedDivisions_result"/>
+    <tree IterBinding="fetchUserAssignedDivisionsIterator" id="Organization3">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization30">
+        <AttrNames>
+          <Item Value="orgShortDesc"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="regionsList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Branches.Region"
+                      Name="Organization31">
+        <AttrNames>
+          <Item Value="regionName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="branchesList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch"
+                      Name="Organization32">
+        <AttrNames>
+          <Item Value="branchName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="divisionsList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Organization33">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+          <Item Value="divisionSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserNonDefaultBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUserNonDefaultBranches"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchUserNonDefaultBranches_UserDAO_dataProvider_fetchUserNonDefaultBranches_result"/>
+    <tree IterBinding="fetchUserNonDefaultBranchesIterator" id="UtilObject">
+      <nodeDefinition DefName="TurnQuest.view.Usr.UtilObject"
+                      Name="UtilObject0">
+        <AttrNames>
+          <Item Value="orgName"/>
+          <Item Value="regionName"/>
+          <Item Value="branchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserNonDefaultDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchUserNonDefaultDivisions"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchUserNonDefaultDivisions_UserDAO_dataProvider_fetchUserNonDefaultDivisions_result"/>
+    <tree IterBinding="fetchUserNonDefaultDivisionsIterator" id="UtilObject1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.UtilObject"
+                      Name="UtilObject10">
+        <AttrNames>
+          <Item Value="orgName"/>
+          <Item Value="regionName"/>
+          <Item Value="branchName"/>
+          <Item Value="divisionName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllPersonnels" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllPersonnels"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAllPersonnels_UserDAO_dataProvider_fetchAllPersonnels_result"/>
+    <tree IterBinding="fetchAllPersonnelsIterator" id="Personnel">
+      <nodeDefinition DefName="TurnQuest.view.Usr.Personnel" Name="Personnel0">
+        <AttrNames>
+          <Item Value="perId"/>
+          <Item Value="perFullNames"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllUserAssignedSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllUserAssignedSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAllUserAssignedSystems_UserDAO_dataProvider_fetchAllUserAssignedSystems_result"/>
+    <tree IterBinding="fetchAllUserAssignedSystemsIterator" id="UserSystem">
+      <nodeDefinition DefName="TurnQuest.view.models.UserSystem"
+                      Name="UserSystem0">
+        <AttrNames>
+          <Item Value="sysName"/>
+          <Item Value="spostDesc"/>
+          <Item Value="usysCode"/>
+          <Item Value="usysUsrCode"/>
+          <Item Value="usysSysCode"/>
+          <Item Value="usysWef"/>
+          <Item Value="usysWet"/>
+          <Item Value="usysSpostCode"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysActive"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchSystemPostsBySystem" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchSystemPostsBySystem"
+                  IsViewObjectMethod="false" DataControl="SystemPostDAO"
+                  InstanceName="SystemPostDAO.dataProvider"
+                  ReturnName="SystemPostDAO.methodResults.fetchSystemPostsBySystem_SystemPostDAO_dataProvider_fetchSystemPostsBySystem_result"/>
+    <tree IterBinding="fetchSystemPostsBySystemIterator" id="SystemPost">
+      <nodeDefinition DefName="TurnQuest.view.models.SystemPost"
+                      Name="SystemPost0">
+        <AttrNames>
+          <Item Value="spostCode"/>
+          <Item Value="spostShtDesc"/>
+          <Item Value="spostDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUsersGroupMembers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsersGroupMembers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findUsersGroupMembers_UserDAO_dataProvider_findUsersGroupMembers_result"/>
+    <tree IterBinding="findUsersGroupMembersIterator" id="User7">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User70">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="gusr_Code"/>
+          <Item Value="grpUsrCode"/>
+          <Item Value="userSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findGroupUser" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findGroupUser"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.findGroupUser_HierarchyDAO_dataProvider_findGroupUser_result"/>
+    <tree IterBinding="findGroupUserIterator" id="User4">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User40">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="userPersonnelRank"/>
+          <Item Value="userDateCreated"/>
+          <Item Value="userType"/>
+          <Item Value="userStatus"/>
+          <Item Value="userPassReset"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+          <Item Value="sysActive"/>
+          <Item Value="sysWef"/>
+          <Item Value="userSysCode"/>
+          <Item Value="sysWet"/>
+          <Item Value="nodeType"/>
+          <Item Value="userSys_userCode"/>
+          <Item Value="userSys_sysCode"/>
+          <Item Value="userPerId"/>
+          <Item Value="userCreatedBy"/>
+          <Item Value="gusr_Code"/>
+          <Item Value="grpUsrCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findGroupUserIterator" id="User9">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User90">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userDateCreated"/>
+          <Item Value="userCreatedBy"/>
+          <Item Value="userSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findUsersGroupMembersIterator" id="User10">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User100">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="gusr_Code"/>
+          <Item Value="grpUsrCode"/>
+          <Item Value="userSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findUsersIterator" id="User11">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User110">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userDateCreated"/>
+          <Item Value="userCreatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUsersNotInGroup" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsersNotInGroup"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findUsersNotInGroup_UserDAO_dataProvider_findUsersNotInGroup_result"/>
+    <tree IterBinding="findUsersNotInGroupIterator" id="User12">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User120">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="userPersonnelRank"/>
+          <Item Value="userDateCreated"/>
+          <Item Value="userType"/>
+          <Item Value="userStatus"/>
+          <Item Value="userPassReset"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+          <Item Value="sysActive"/>
+          <Item Value="sysWef"/>
+          <Item Value="userSysCode"/>
+          <Item Value="sysWet"/>
+          <Item Value="nodeType"/>
+          <Item Value="userSys_userCode"/>
+          <Item Value="userSys_sysCode"/>
+          <Item Value="userPerId"/>
+          <Item Value="userCreatedBy"/>
+          <Item Value="gusr_Code"/>
+          <Item Value="grpUsrCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAllUsersNotInGroup" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllUsersNotInGroup"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findAllUsersNotInGroup_UserDAO_dataProvider_findAllUsersNotInGroup_result"/>
+    <tree IterBinding="findAllUsersNotInGroupIterator" id="User13">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User130">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="userPersonnelRank"/>
+          <Item Value="userDateCreated"/>
+          <Item Value="userType"/>
+          <Item Value="userStatus"/>
+          <Item Value="userPassReset"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+          <Item Value="sysActive"/>
+          <Item Value="sysWef"/>
+          <Item Value="userSysCode"/>
+          <Item Value="sysWet"/>
+          <Item Value="nodeType"/>
+          <Item Value="userSys_userCode"/>
+          <Item Value="userSys_sysCode"/>
+          <Item Value="userPerId"/>
+          <Item Value="userCreatedBy"/>
+          <Item Value="gusr_Code"/>
+          <Item Value="grpUsrCode"/>
+          <Item Value="userSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findUsersIterator" id="User14">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User140">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="userPersonnelRank"/>
+          <Item Value="userDateCreated"/>
+          <Item Value="userType"/>
+          <Item Value="userStatus"/>
+          <Item Value="userAuthorized"/>
+          <Item Value="userAuthorizedBy"/>
+          <Item Value="userPassReset"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+          <Item Value="sysActive"/>
+          <Item Value="sysWef"/>
+          <Item Value="userSysCode"/>
+          <Item Value="sysWet"/>
+          <Item Value="nodeType"/>
+          <Item Value="userSys_userCode"/>
+          <Item Value="userSys_sysCode"/>
+          <Item Value="userPerId"/>
+          <Item Value="userCreatedBy"/>
+          <Item Value="gusr_Code"/>
+          <Item Value="grpUsrCode"/>
+          <Item Value="userAccManager"/>
+          <Item Value="phoneNumber"/>
+          <Item Value="usrSecurityQuestion"/>
+          <Item Value="usrSecurityAnswer"/>
+          <Item Value="USR_SACT_CODE"/>
+          <Item Value="SACT_DESCRIPTION"/>
+          <Item Value="updatedBy"/>
+          <Item Value="updatedDate"/>
+          <Item Value="pin"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findDomainUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findDomainUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findDomainUsers_UserDAO_dataProvider_findDomainUsers_result"/>
+    <tree IterBinding="findDomainUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUserSubAcctTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUserSubAcctTypes"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.findUserSubAcctTypes_UserDAO_dataProvider_findUserSubAcctTypes_result"/>
+    <tree IterBinding="findUserSubAcctTypesIterator" id="User15">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User150">
+        <AttrNames>
+          <Item Value="SACT_CODE"/>
+          <Item Value="SACT_SHT_DESC"/>
+          <Item Value="SACT_DESCRIPTION"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findKpiTasks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findKpiTasks"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.findKpiTasks_OrganizationDAO_dataProvider_findKpiTasks_result"/>
+    <tree IterBinding="findKpiTasksIterator" id="Organization4">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization40">
+        <AttrNames>
+          <Item Value="kpiTask"/>
+          <Item Value="kpiTcktCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findKpiTasksIterator" id="Organization5">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization50">
+        <AttrNames>
+          <Item Value="kpiSubTask"/>
+          <Item Value="kpidbId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findKpiTasksIterator" id="Organization6">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization60">
+        <AttrNames>
+          <Item Value="kpiTask"/>
+          <Item Value="kpiTcktCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findKpiTasksIterator" id="Organization7">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization70">
+        <AttrNames>
+          <Item Value="kpiTask"/>
+          <Item Value="kpiTcktCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findKpiTasksIterator" id="Organization8">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization80">
+        <AttrNames>
+          <Item Value="kpiSubTask"/>
+          <Item Value="kpidbId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchKpis" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchKpis"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.fetchKpis_UserDAO_dataProvider_fetchKpis_result"/>
+    <tree IterBinding="fetchKpisIterator" id="User8">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User80">
+        <AttrNames>
+          <Item Value="kpiCode"/>
+          <Item Value="kpiTask"/>
+          <Item Value="kpiSubTask"/>
+          <Item Value="kpiParameter"/>
+          <Item Value="kpiUnit"/>
+          <Item Value="kpiComment"/>
+          <Item Value="kpiTaskCode"/>
+          <Item Value="kpiSubTaskCode"/>
+          <Item Value="kpiUserGroupCode"/>
+          
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

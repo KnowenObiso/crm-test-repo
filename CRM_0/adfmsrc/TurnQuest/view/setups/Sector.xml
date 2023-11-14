@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="Sector" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.Sector" isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="shortDesc" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="agentCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agentAccountCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agentShtDesc" Type="java.lang.String"/>
+  <Attribute Name="agentName" Type="java.lang.String"/>
+  <Attribute Name="occupationCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.setups.Sector"
+                     BeanClass="TurnQuest.view.setups.Sector" id="Sector"/>
+</JavaBean>

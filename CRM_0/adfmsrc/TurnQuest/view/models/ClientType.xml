@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ClientType" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.ClientType" isJavaBased="true">
+  <Attribute Name="code" PrimaryKey="true" Type="java.math.BigDecimal"/>
+  <Attribute Name="clntType" Type="java.lang.String"/>
+  <Attribute Name="category" Type="java.lang.String"/>
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="person" Type="java.lang.String"/>
+  <Attribute Name="desc" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.ClientType"
+                     BeanClass="TurnQuest.view.models.ClientType"
+                     id="ClientType"/>
+</JavaBean>

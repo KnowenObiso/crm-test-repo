@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="printerSetupsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllPrintServers.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.PrintServer"
+                    id="fetchAllPrintServersIterator"/>
+    <searchRegion Binds="fetchAllPrintServersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PrintServerQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllPrintServers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllPrintServers"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllPrintServers_BaseSetupDAO_dataProvider_fetchAllPrintServers_result"/>
+    <tree IterBinding="fetchAllPrintServersIterator" id="PrintServer">
+      <nodeDefinition DefName="TurnQuest.view.setups.PrintServer"
+                      Name="PrintServer0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+          <Item Value="filter"/>
+          <Item Value="uri"/>
+          <Item Value="filter_command"/>
+          <Item Value="sec_username"/>
+          <Item Value="sec_password"/>
+          <Item Value="sec_auth_type"/>
+          <Item Value="sec_encrpt_type"/>
+          <Item Value="proxy_host"/>
+          <Item Value="proxy_port"/>
+          <Item Value="proxy_username"/>
+          <Item Value="proxy_pasword"/>
+          <Item Value="proxy_authen_type"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

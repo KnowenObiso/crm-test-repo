@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Agents" Package="TurnQuest.view.client"
+          BeanClass="TurnQuest.view.client.Agents" isJavaBased="true">
+  <Attribute Name="agntCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agentShtDesc" Type="java.lang.String"/>
+  <Attribute Name="agentName" Type="java.lang.String"/>
+  <Attribute Name="physicalAddress" Type="java.lang.String"/>
+  <Attribute Name="postalAddress" Type="java.lang.String"/>
+  <Attribute Name="townCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="countryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="emailAddress" Type="java.lang.String"/>
+  <Attribute Name="contactPerson" Type="java.lang.String"/>
+  <Attribute Name="accountNumber" Type="java.lang.String"/>
+  <Attribute Name="creditAllowed" Type="java.lang.String"/>
+  <Attribute Name="dateCreated" Type="java.sql.Date"/>
+  <Attribute Name="createdby" Type="java.lang.String"/>
+  <Attribute Name="branchCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agentRunOff" Type="java.lang.String"/>
+  <Attribute Name="checked" Type="boolean"/>
+  <Attribute Name="selected" Type="boolean"/>
+  <Attribute Name="select" Type="boolean"/>
+  <Attribute Name="creditRating" Type="java.lang.String"/>
+  <Attribute Name="agentAccountCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="townCodeStr" Type="java.lang.String"/>
+  <Attribute Name="countryCodeStr" Type="java.lang.String"/>
+  <Attribute Name="branchCodeStr" Type="java.lang.String"/>
+  <Attribute Name="branchCodelov" Type="java.math.BigDecimal"/>
+  <Attribute Name="branchShtDesc" Type="java.lang.String"/>
+  <Attribute Name="branchName" Type="java.lang.String"/>
+  <Attribute Name="branchRegCode" Type="java.lang.String"/>
+  <Attribute Name="regCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="systemName" Type="java.lang.String"/>
+  <Attribute Name="agnlCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agnlAccountCode" Type="java.lang.String"/>
+  <Attribute Name="agnlaccountType" Type="java.lang.String"/>
+  <Attribute Name="agnlaccountName" Type="java.lang.String"/>
+  <Attribute Name="agnlphysicalAddress" Type="java.lang.String"/>
+  <Attribute Name="agnlpostalAddress" Type="java.lang.String"/>
+  <Attribute Name="agnlTownName" Type="java.lang.String"/>
+  <Attribute Name="agnlregCode" Type="java.lang.String"/>
+  <Attribute Name="agnlcontactperson" Type="java.lang.String"/>
+  <Attribute Name="agnltelephoneNumber" Type="java.lang.String"/>
+  <Attribute Name="agnlfaxNumber" Type="java.lang.String"/>
+  <Attribute Name="agnlemailAddress" Type="java.lang.String"/>
+  <Attribute Name="agnldateCreated" Type="java.sql.Date"/>
+  <Attribute Name="agnlcheckDate" Type="java.sql.Date"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.client.Agents"
+                     BeanClass="TurnQuest.view.client.Agents" id="Agents"/>
+</JavaBean>

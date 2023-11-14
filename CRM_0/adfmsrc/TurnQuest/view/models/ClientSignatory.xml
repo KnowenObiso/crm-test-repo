@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ClientSignatory" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.ClientSignatory" isJavaBased="true">
+    <Attribute Name="code" Type="java.math.BigDecimal"/>
+    <Attribute Name="title" Type="java.lang.String"/>
+    <Attribute Name="name" Type="java.lang.String"/>
+    <Attribute Name="occupation" Type="java.lang.String"/>
+    <Attribute Name="gender" Type="java.lang.String"/>
+    <Attribute Name="nationality" Type="java.lang.String"/>
+    <Attribute Name="dateOfbirth" Type="java.sql.Date"/>
+    <Attribute Name="placeOfbirth" Type="java.lang.String"/>
+    <Attribute Name="pobCountry" Type="java.lang.String"/>
+    <Attribute Name="pobState" Type="java.lang.String"/>
+    <Attribute Name="pobTown" Type="java.lang.String"/>
+    <Attribute Name="phoneNo" Type="java.lang.String"/>
+    <Attribute Name="meansOfId" Type="java.lang.String"/>
+    <Attribute Name="meansOfIdVal" Type="java.lang.String"/>
+    <Attribute Name="taxNo" Type="java.lang.String"/>
+    <Attribute Name="email" Type="java.lang.String"/>
+    <Attribute Name="address" Type="java.lang.String"/>
+    <Attribute Name="sourceOfIncome" Type="java.lang.String"/>
+    <Attribute Name="clientCode" Type="java.math.BigDecimal"/>
+    <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                    ReturnNodeName="Return"/>
+    <ConstructorMethod IsCollection="true"
+                       Type="TurnQuest.view.models.ClientSignatory"
+                       BeanClass="TurnQuest.view.models.ClientSignatory"
+                       id="ClientSignatory"/>
+</JavaBean>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="AgencySystem" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.AgencySystem" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="asysSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="asysAgnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="asysWef" Type="java.util.Date"/>
+  <Attribute Name="asysWet" Type="java.util.Date"/>
+  <Attribute Name="asysComment" Type="java.lang.String"/>
+  <Attribute Name="asysOsdCode" Type="java.lang.String"/>
+  <Attribute Name="sysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysShtDesc" Type="java.lang.String"/>
+  <Attribute Name="sysName" Type="java.lang.String"/>
+  <Attribute Name="sysActive" Type="java.lang.String"/>
+  <Attribute Name="subdivisionName" Type="java.lang.String"/>
+  <Attribute Name="asysOsdId" Type="java.math.BigDecimal"/>
+  <Attribute Name="asysShtDesc" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.AgencySystem"
+                     BeanClass="TurnQuest.view.models.AgencySystem"
+                     id="AgencySystem"/>
+</JavaBean>

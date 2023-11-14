@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="SysProcessSubAreaLevel" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.SysProcessSubAreaLevel"
+          isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="spsalCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="spsalSprsaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="spsalSpsatCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="spsalLevel" Type="java.math.BigDecimal"/>
+  <Attribute Name="spsalApproverType" Type="java.lang.String"/>
+  <Attribute Name="spsalApproverId" Type="java.math.BigDecimal"/>
+  <Attribute Name="userName" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.SysProcessSubAreaLevel"
+                     BeanClass="TurnQuest.view.models.SysProcessSubAreaLevel"
+                     id="SysProcessSubAreaLevel"/>
+</JavaBean>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="bankTemplatePageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllBanks.result" DataControl="BankDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Bank"
+                    id="fetchAllBanksIterator"/>
+    <searchRegion Binds="fetchAllBanksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BankQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllBanks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllBanks"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="BankDAO.methodResults.fetchAllBanks_BankDAO_dataProvider_fetchAllBanks_result"/>
+    <tree IterBinding="fetchAllBanksIterator" id="Bank">
+      <nodeDefinition DefName="TurnQuest.view.setups.Bank" Name="Bank0">
+        <AttrNames>
+          <Item Value="bankCode"/>
+          <Item Value="bankName"/>
+          <Item Value="remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="ratingOrganizationsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findUndefinedRptGroupDivisions.result"
+                    DataControl="ReportGroupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findUndefinedRptGroupDivisionsIterator"/>
+    <searchRegion Binds="findUndefinedRptGroupDivisionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DivisionQuery"/>
+    <methodIterator Binds="findRatingOrganizations.result"
+                    DataControl="ReportGroupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findRatingOrganizationsIterator"/>
+    <searchRegion Binds="findRatingOrganizationsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Division1Query"/>
+    <methodIterator Binds="findRatingStartndards.result"
+                    DataControl="ReportGroupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findRatingStartndardsIterator"/>
+    <searchRegion Binds="findRatingStartndardsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Division2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllReportGroups" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllReportGroups"
+                  IsViewObjectMethod="false" DataControl="ReportGroupDAO"
+                  InstanceName="ReportGroupDAO.dataProvider"
+                  ReturnName="ReportGroupDAO.methodResults.fetchAllReportGroups_ReportGroupDAO_dataProvider_fetchAllReportGroups_result"/>
+    <methodAction id="fetchReportGroupDivision" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchReportGroupDivision"
+                  IsViewObjectMethod="false" DataControl="ReportGroupDAO"
+                  InstanceName="ReportGroupDAO.dataProvider"
+                  ReturnName="ReportGroupDAO.methodResults.fetchReportGroupDivision_ReportGroupDAO_dataProvider_fetchReportGroupDivision_result"/>
+    <methodAction id="findDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findDivisions_DivisionsDAO_dataProvider_findDivisions_result"/>
+    <methodAction id="findUndefinedRptGroupDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="findUndefinedRptGroupDivisions"
+                  IsViewObjectMethod="false" DataControl="ReportGroupDAO"
+                  InstanceName="ReportGroupDAO.dataProvider"
+                  ReturnName="ReportGroupDAO.methodResults.findUndefinedRptGroupDivisions_ReportGroupDAO_dataProvider_findUndefinedRptGroupDivisions_result"/>
+    <tree IterBinding="findUndefinedRptGroupDivisionsIterator" id="Division">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division0">
+        <AttrNames>
+          <Item Value="DIV_CODE"/>
+          <Item Value="DIV_NAME"/>
+          <Item Value="divOrder"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRatingOrganizations" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRatingOrganizations"
+                  IsViewObjectMethod="false" DataControl="ReportGroupDAO"
+                  InstanceName="ReportGroupDAO.dataProvider"
+                  ReturnName="ReportGroupDAO.methodResults.findRatingOrganizations_ReportGroupDAO_dataProvider_findRatingOrganizations_result"/>
+    <tree IterBinding="findRatingOrganizationsIterator" id="Division1">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division10">
+        <AttrNames>
+          <Item Value="rorgCode"/>
+          <Item Value="rorgDesc"/>
+          <Item Value="rorgShtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRatingStartndards" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRatingStartndards"
+                  IsViewObjectMethod="false" DataControl="ReportGroupDAO"
+                  InstanceName="ReportGroupDAO.dataProvider"
+                  ReturnName="ReportGroupDAO.methodResults.findRatingStartndards_ReportGroupDAO_dataProvider_findRatingStartndards_result"/>
+    <tree IterBinding="findRatingStartndardsIterator" id="Division2">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division20">
+        <AttrNames>
+          <Item Value="orsDesc"/>
+          <Item Value="orsCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

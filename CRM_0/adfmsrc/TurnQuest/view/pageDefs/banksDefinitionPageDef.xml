@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="banksDefinitionPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllBanks.result" DataControl="BankDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Bank"
+                    id="fetchAllBanksIterator"/>
+    <searchRegion Binds="fetchAllBanksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BankQuery"/>     
+    <methodIterator Binds="fetchAllDirectDebitReports.result"
+                    DataControl="BankDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebitReport"
+                    id="fetchAllDirectDebitReportsIterator"/>
+    <searchRegion Binds="fetchAllDirectDebitReportsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebitReportQuery"/>
+    <methodIterator Binds="fetchAllForwadingBanks.result" DataControl="BankDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Bank"
+                    id="fetchAllForwadingBanksIterator"/>
+    <searchRegion Binds="fetchAllForwadingBanksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Bank1Query"/>
+    <methodIterator Binds="fetchTownsByState.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Town"
+                    id="fetchTownsByStateIterator"/>
+    <searchRegion Binds="fetchTownsByStateIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="TownQuery"/>
+    <methodIterator Binds="fetchTowns.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Town"
+                    id="fetchTownsIterator"/>
+    <searchRegion Binds="fetchTownsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Town2Query"/>
+ 
+ <methodIterator Binds="fetchBankTerritoryByBankCode.result"
+                    DataControl="BankDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.BankTerritory"
+                    id="fetchBankTerritoryByBankCodeIterator"/>
+
+  <searchRegion Binds="fetchBankTerritoryByBankCodeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BankTerritoryQuery"/>
+                  
+    <methodIterator Binds="fetchBankBranchByTerritoryCode.result"
+                    DataControl="BankDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.BankBranch"
+                    id="fetchBankBranchByTerritoryCodeIterator"/>
+                    
+    <searchRegion Binds="fetchBankBranchByTerritoryCodeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BankBranchQuery"/>
+    <methodIterator Binds="fetchCountryCode.result" DataControl="BankDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.BankBranch"
+                    id="fetchCountryCodeIterator"/>
+    <searchRegion Binds="fetchCountryCodeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BankBranch1Query"/>
+    <methodIterator Binds="fetchAllCountries.result" DataControl="BaseSetupDAO1"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Country"
+                    id="fetchAllCountriesIterator"/>
+    <searchRegion Binds="fetchAllCountriesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Country1Query"/>
+    <methodIterator Binds="fetchBancassuranceByBranchCode.result"
+                    DataControl="BankDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.BankBranch"
+                    id="fetchBancassuranceByBranchCodeIterator"/>
+    <searchRegion Binds="fetchBancassuranceByBranchCodeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BankBranch2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllBanks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllBanks"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="BankDAO.methodResults.fetchAllBanks_BankDAO_dataProvider_fetchAllBanks_result"/>
+    <tree IterBinding="fetchAllBanksIterator" id="Bank">
+      <nodeDefinition DefName="TurnQuest.view.setups.Bank" Name="Bank0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="bankName"/>
+          <Item Value="remarks"/>
+          <Item Value="bankCode"/>
+          <Item Value="DDRCode"/>
+          <Item Value="DDFormatDesc"/>
+          <Item Value="forwardingBankCode"/>
+          <Item Value="KBACode"/>
+          <Item Value="bbrBranchName"/>
+          <Item Value="bbrCode"/>
+          <Item Value="bctNum"/>
+          <Item Value="fwdBankName"/>
+          <Item Value="ddReportFormat"/>
+          <Item Value="eftSupported"/>
+          <Item Value="classType"/>
+          <Item Value="characterNo"/>
+          <Item Value="negotiatedBank"/>
+          <Item Value="administativeAmnt"/>
+          <Item Value="logo"/>
+          <Item Value="bnkWef"/>
+          <Item Value="bnkWet"/>
+          <Item Value="bnkStatus"/>
+          <Item Value="characterMaxNo"/>
+          <Item Value="characterMinNo"/>
+          <Item Value="countryCode"/>
+          <Item Value="countryName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchBankBranchByBankCode" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchBankBranchByBankCode"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="BankDAO.methodResults.fetchBankBranchByBankCode_BankDAO_dataProvider_fetchBankBranchByBankCode_result"/>
+    <tree IterBinding="fetchBankBranchByBankCodeIterator" id="BankBranch">
+      <nodeDefinition DefName="TurnQuest.view.setups.BankBranch"
+                      Name="BankBranch0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="branchName"/>
+          <Item Value="refCode"/>
+          <Item Value="EFTSupported"/>
+          <Item Value="DDSupported"/>
+          <Item Value="remarks"/>
+          <Item Value="createdBy"/>
+          <Item Value="dateCreated"/>
+          <Item Value="branchCode"/>
+          <Item Value="branchBankCode"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="KBACode"/>
+          <Item Value="bankTownCode"/>
+          <Item Value="bankTownName"/>
+          
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllDirectDebitReports" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllDirectDebitReports"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="BankDAO.methodResults.fetchAllDirectDebitReports_BankDAO_dataProvider_fetchAllDirectDebitReports_result"/>
+    <tree IterBinding="fetchAllDirectDebitReportsIterator"
+          id="DirectDebitReport">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebitReport"
+                      Name="DirectDebitReport0">
+        <AttrNames>
+          <Item Value="ddrCode"/>
+          <Item Value="ddrReportDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllForwadingBanks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllForwadingBanks"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="BankDAO.methodResults.fetchAllForwadingBanks_BankDAO_dataProvider_fetchAllForwadingBanks_result"/>
+    <tree IterBinding="fetchAllForwadingBanksIterator" id="Bank1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Bank" Name="Bank10">
+        <AttrNames>
+          <Item Value="bankCode"/>
+          <Item Value="bankName"/>
+          <Item Value="ddrReportDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchTownsByState" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchTownsByState"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.fetchTownsByState_OrganizationDAO_dataProvider_fetchTownsByState_result"/>
+    <tree IterBinding="fetchTownsByStateIterator" id="Town">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchTownsByStateIterator" id="Town1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchTowns" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchTowns"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.fetchTowns_OrganizationDAO_dataProvider_fetchTowns_result"/>
+    <tree IterBinding="fetchTownsIterator" id="Town2">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+        </AttrNames>  
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchBankTerritoryByBankCode" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchBankTerritoryByBankCode"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="data.BankDAO.methodResults.fetchBankTerritoryByBankCode_BankDAO_dataProvider_fetchBankTerritoryByBankCode_result"/>
+                  
+    <tree IterBinding="fetchBankTerritoryByBankCodeIterator" id="BankTerritory" >
+      <nodeDefinition DefName="TurnQuest.view.setups.BankTerritory"
+                      Name="BankTerritory0">
+        <AttrNames>
+          <Item Value="bankTerritoryName"/>
+          <Item Value="bankTerritoryCode"/>
+          <Item Value="bankTerritoryShtDesc"/>
+          <Item Value="territoryBankCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchBankBranchByTerritoryCode" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchBankBranchByTerritoryCode"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="data.BankDAO.methodResults.fetchBankBranchByTerritoryCode_BankDAO_dataProvider_fetchBankBranchByTerritoryCode_result"/>
+                  
+    <tree IterBinding="fetchBankBranchByTerritoryCodeIterator" id="BankBranchX">
+      <nodeDefinition DefName="TurnQuest.view.setups.BankBranch"
+                      Name="BankBranch10">
+        <AttrNames>
+          <Item Value="branchCode"/>
+          <Item Value="branchBankCode"/>
+          <Item Value="branchName"/>
+          <Item Value="remarks"/>
+          <Item Value="shortDesc"/>
+          <Item Value="refCode"/>
+          <Item Value="EFTSupported"/>
+          <Item Value="DDSupported"/>
+          <Item Value="dateCreated"/>
+          <Item Value="createdBy"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="KBACode"/>
+          <Item Value="logo"/>
+          <Item Value="countryCode"/>
+          <Item Value="branchEmail"/>
+          <Item Value="branchPersonName"/>
+          <Item Value="branchPersonEmail"/>
+          <Item Value="branchPersonPhone"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchCountryCode" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchCountryCode"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="data.BankDAO.methodResults.fetchCountryCode_BankDAO_dataProvider_fetchCountryCode_result"/>
+    <tree IterBinding="fetchCountryCodeIterator" id="BankBranch1">
+      <nodeDefinition DefName="TurnQuest.view.setups.BankBranch"
+                      Name="BankBranch10">
+        <AttrNames>
+          <Item Value="countryCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllCountries" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCountries"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="data.BaseSetupDAO.methodResults.fetchAllCountries_BaseSetupDAO_dataProvider_fetchAllCountries_result"/>
+    <tree IterBinding="fetchAllCountriesIterator" id="Country">
+      <nodeDefinition DefName="TurnQuest.view.setups.Country" Name="Country0">
+        <AttrNames>
+          <Item Value="couCode"/>
+          <Item Value="couShortDesc"/>
+          <Item Value="couName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllCountriesIterator" id="Country1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Country" Name="Country10">
+        <AttrNames>
+          <Item Value="couCode"/>
+          <Item Value="couShortDesc"/>
+          <Item Value="couName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchBancassuranceByBranchCode" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchBancassuranceByBranchCode"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="data.BankDAO.methodResults.fetchBancassuranceByBranchCode_BankDAO_dataProvider_fetchBancassuranceByBranchCode_result"/>
+    <tree IterBinding="fetchBancassuranceByBranchCodeIterator" id="BankBranch2">
+      <nodeDefinition DefName="TurnQuest.view.setups.BankBranch"
+                      Name="BankBranch20">
+        <AttrNames>
+          <Item Value="branchCode"/>
+          <Item Value="branchBankCode"/>
+          <Item Value="branchName"/>
+          <Item Value="shortDesc"/>
+          <Item Value="KBACode"/>
+          <Item Value="bankTerritoryName"/>
+          <Item Value="dateCreated"/>
+          <Item Value="createdBy"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="remarks"/>
+          <Item Value="branchEmail"/>
+          <Item Value="branchPersonName"/>
+          <Item Value="branchPersonEmail"/>
+          <Item Value="branchPersonPhone"/>
+          <Item Value="countryCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

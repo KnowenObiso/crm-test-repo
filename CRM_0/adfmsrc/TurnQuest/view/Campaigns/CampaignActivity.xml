@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="CampaignActivity" Package="TurnQuest.view.Campaigns"
+          BeanClass="TurnQuest.view.Campaigns.CampaignActivity"
+          isJavaBased="true">
+  <Attribute Name="actName" Type="java.lang.String"/>
+  <Attribute Name="campActCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="campCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="actCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="actSubject" Type="java.lang.String"/>
+  <Attribute Name="actWef" Type="java.sql.Date"/>
+  <Attribute Name="actWet" Type="java.sql.Date"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Campaigns.CampaignActivity"
+                     BeanClass="TurnQuest.view.Campaigns.CampaignActivity"
+                     id="CampaignActivity"/>
+</JavaBean>

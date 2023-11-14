@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="CurrencyRate" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.CurrencyRate" isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="currencyCode" Type="java.lang.String"/>
+  <Attribute Name="currRate" Type="java.lang.String"/>
+  <Attribute Name="currDate" Type="java.lang.String"/>
+  <Attribute Name="baseCurrencyCode" Type="java.lang.String"/>
+  <Attribute Name="currencyDesc" Type="java.lang.String"/>
+  <Attribute Name="baseCurrencyName" Type="java.lang.String"/>
+  <Attribute Name="crtWefDate" Type="java.lang.String"/>
+  <Attribute Name="crtWetDate" Type="java.lang.String"/>
+  <Attribute Name="currDate1" Type="java.lang.String"/>
+  <Attribute Name="crtWefDate1" Type="java.lang.String"/>
+  <Attribute Name="crtWetDate1" Type="java.lang.String"/>
+  <Attribute Name="crtCreatedDate" Type="java.lang.String"/>
+  <Attribute Name="crtCreatedBy" Type="java.lang.String"/>
+  <Attribute Name="crtUpdatedDate" Type="java.lang.String"/>
+  <Attribute Name="crtUpdatedBy" Type="java.lang.String"/>
+  <Attribute Name="crtAuthorized" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.CurrencyRate"
+                     BeanClass="TurnQuest.view.setups.CurrencyRate"
+                     id="CurrencyRate"/>
+</JavaBean>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="PostalCode" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.PostalCode" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="pstCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="pstTownCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="pstDesc" Type="java.lang.String"/>
+  <Attribute Name="pstZipCode" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.PostalCode"
+                     BeanClass="TurnQuest.view.models.PostalCode"
+                     id="PostalCode"/>
+</JavaBean>

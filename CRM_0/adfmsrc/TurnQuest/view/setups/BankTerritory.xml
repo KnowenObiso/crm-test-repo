@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="BankTerritory" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.BankTerritory" isJavaBased="true">
+  <Attribute Name="bankTerritoryName" Type="java.lang.String"/>
+  <Attribute Name="bankTerritoryCode" Type="java.lang.String"/>
+  <Attribute Name="bankTerritoryShtDesc" Type="java.lang.String"/>
+  <Attribute Name="territoryBankCode" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.BankTerritory"
+                     BeanClass="TurnQuest.view.setups.BankTerritory"
+                     id="BankTerritory"/>
+</JavaBean>

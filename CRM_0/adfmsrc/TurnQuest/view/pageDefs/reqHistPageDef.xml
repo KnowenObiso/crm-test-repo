@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="reqHistPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findQueryParameters.result" DataControl="LOVDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Base.LOV"
+                    id="findQueryParametersIterator"/>
+    <searchRegion Binds="findQueryParametersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LOVQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findQueryParameters" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findQueryParameters"
+                  IsViewObjectMethod="false" DataControl="LOVDAO"
+                  InstanceName="LOVDAO.dataProvider"
+                  ReturnName="data.LOVDAO.methodResults.findQueryParameters_LOVDAO_dataProvider_findQueryParameters_result">
+      <NamedData NDName="search" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="findQueryParametersIterator" id="LOV">
+      <nodeDefinition DefName="TurnQuest.view.Base.LOV" Name="LOV0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="value"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

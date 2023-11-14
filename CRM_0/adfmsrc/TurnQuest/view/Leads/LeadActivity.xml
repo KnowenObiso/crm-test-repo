@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="LeadActivity" Package="TurnQuest.view.Leads"
+          BeanClass="TurnQuest.view.Leads.LeadActivity" isJavaBased="true">
+  <Attribute Name="leadActivityCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="activityCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="activitySubject" Type="java.lang.String"/>
+  <Attribute Name="activityLocation" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Leads.LeadActivity"
+                     BeanClass="TurnQuest.view.Leads.LeadActivity"
+                     id="LeadActivity"/>
+</JavaBean>

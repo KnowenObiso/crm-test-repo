@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="sysLabelPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllLabels.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Parameter"
+                    id="fetchAllLabelsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllLabels" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllLabels"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllLabels_BaseSetupDAO_dataProvider_fetchAllLabels_result"/>
+    <tree IterBinding="fetchAllLabelsIterator" id="Parameter">
+      <nodeDefinition DefName="TurnQuest.view.setups.Parameter"
+                      Name="Parameter0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="value"/>
+          <Item Value="description"/>		  
+		  <Item Value="code"/>
+          <Item Value="status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+
+</pageDefinition>

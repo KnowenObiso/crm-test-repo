@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="AgentTypesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllAgentTypes.result" DataControl="AgentsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Agents.Agent"
+                    id="fetchAllAgentTypesIterator"/>
+    <searchRegion Binds="fetchAllAgentTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgentQuery"/>
+    <methodIterator Binds="fetchAccountTypes.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="fetchAccountTypesIterator"/>
+    <searchRegion Binds="fetchAccountTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountTypeQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllAgentTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllAgentTypes"
+                  IsViewObjectMethod="false" DataControl="AgentsDAO"
+                  InstanceName="AgentsDAO.dataProvider"
+                  ReturnName="data.AgentsDAO.methodResults.fetchAllAgentTypes_AgentsDAO_dataProvider_fetchAllAgentTypes_result"/>
+    <tree IterBinding="fetchAllAgentTypesIterator" id="Agent">
+      <nodeDefinition DefName="TurnQuest.view.Agents.Agent" Name="Agent0">
+        <AttrNames>
+          <Item Value="AGNTY_CODE"/>
+          <Item Value="AGNTY_TYPE_SHT_DESC"/>
+          <Item Value="AGNTY_TYPE"/>
+          <Item Value="AGNTY_ACT_CODE"/>
+          <Item Value="ACT_ACCOUNT_TYPE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAccountTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAccountTypes"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="data.AccountsDAO.methodResults.fetchAccountTypes_AccountsDAO_dataProvider_fetchAccountTypes_result"/>
+    <tree IterBinding="fetchAccountTypesIterator" id="AccountType">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType0">
+        <AttrNames>
+          <Item Value="ACT_CODE"/>
+          <Item Value="ACT_ACCOUNT_TYPE"/>
+          <Item Value="ACT_TYPE_SHT_DESC"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

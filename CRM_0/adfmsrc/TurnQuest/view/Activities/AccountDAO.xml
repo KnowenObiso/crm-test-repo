@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="AccountDAO" Package="TurnQuest.view.Activities"
+          BeanClass="TurnQuest.view.Activities.AccountDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Activities.Account"
+                  BeanClass="TurnQuest.view.Activities.Account"
+                  id="findAllAccounts" ReturnNodeName="Account"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Activities.Account"
+                  BeanClass="TurnQuest.view.Activities.Account"
+                  id="findUnInvitedAccounts" ReturnNodeName="Account"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Activities.AccountDAO"
+                     BeanClass="TurnQuest.view.Activities.AccountDAO"
+                     id="AccountDAO"/>
+</JavaBean>

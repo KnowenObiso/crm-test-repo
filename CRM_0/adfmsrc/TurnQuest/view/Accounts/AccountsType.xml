@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="AccountsType" Package="TurnQuest.view.Accounts"
+          BeanClass="TurnQuest.view.Accounts.AccountsType" isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="accountType" Type="java.lang.String"/>
+  <Attribute Name="accountTypeShortDesc" Type="java.lang.String"/>
+  <Attribute Name="wthtxRate" Type="java.lang.String"/>
+  <Attribute Name="typeId" Type="java.lang.String"/>
+  <Attribute Name="commReserveRate" Type="java.lang.String"/>
+  <Attribute Name="maxAdvAmt" Type="java.lang.String"/>
+  <Attribute Name="maxAdvRepaymentPrd" Type="java.lang.String"/>
+  <Attribute Name="rcptsIncludeComm" Type="java.lang.String"/>
+  <Attribute Name="overideRate" Type="java.lang.String"/>
+  <Attribute Name="idSerialFormat" Type="java.lang.String"/>
+  <Attribute Name="vatRate" Type="java.lang.String"/>
+  <Attribute Name="accNumber" Type="java.lang.String"/>
+  <Attribute Name="accName" Type="java.lang.String"/>
+  <Attribute Name="agentname" Type="java.lang.String"/>
+  <Attribute Name="agentCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agentShtDesc" Type="java.lang.String"/>
+  <Attribute Name="sysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysName" Type="java.lang.String"/>
+  <Attribute Name="sysShtDesc" Type="java.lang.String"/>
+  <Attribute Name="sprCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sprShtDesc" Type="java.lang.String"/>
+  <Attribute Name="sprName" Type="java.lang.String"/>
+  <Attribute Name="sprPhysicalAddress" Type="java.lang.String"/>
+  <Attribute Name="sprPostalAddress" Type="java.lang.String"/>
+  <Attribute Name="sprPhone" Type="java.lang.String"/>
+  <Attribute Name="sprFax" Type="java.lang.String"/>
+  <Attribute Name="sprEmail" Type="java.lang.String"/>
+  <Attribute Name="sprCreatedBy" Type="java.lang.String"/>
+  <Attribute Name="sprDateCreated" Type="java.sql.Date"/>
+  <Attribute Name="sprStatusRemarks" Type="java.lang.String"/>
+  <Attribute Name="sprStatus" Type="java.lang.String"/>
+  <Attribute Name="sprPinNumber" Type="java.lang.String"/>
+  <Attribute Name="sprMobileNumber" Type="java.lang.String"/>
+  <Attribute Name="sprInhouse" Type="java.lang.String"/>
+  <Attribute Name="sprSmsNumber" Type="java.lang.String"/>
+  <Attribute Name="cpmShtDesc" Type="java.lang.String"/>
+  <Attribute Name="cpmDesc" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Accounts.AccountsType"
+                     BeanClass="TurnQuest.view.Accounts.AccountsType"
+                     id="AccountsType"/>
+</JavaBean>

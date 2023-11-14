@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="messageTemplatePageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllSystems.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="fetchAllSystemsIterator"/>
+    <searchRegion Binds="fetchAllSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SystemQuery"/>
+    <methodIterator Binds="fetchMessageTemplatesBySystem.result"
+                    DataControl="MessagingDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.MessageTemplate"
+                    id="fetchMessageTemplatesBySystemIterator"/>
+    <searchRegion Binds="fetchMessageTemplatesBySystemIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageTemplateQuery"/>
+    <methodIterator Binds="fetchMessageProducts.result"
+                    DataControl="MessagingDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.dao.MessageProduct"
+                    id="fetchMessageProductsIterator"/>
+    <searchRegion Binds="fetchMessageProductsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageProductQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllSystems_HierarchyDAO_dataProvider_fetchAllSystems_result"/>
+    <tree IterBinding="fetchAllSystemsIterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchMessageTemplatesBySystem" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchMessageTemplatesBySystem"
+                  IsViewObjectMethod="false" DataControl="MessagingDAO"
+                  InstanceName="MessagingDAO.dataProvider"
+                  ReturnName="MessagingDAO.methodResults.fetchMessageTemplatesBySystem_MessagingDAO_dataProvider_fetchMessageTemplatesBySystem_result"/>
+    <tree IterBinding="fetchMessageTemplatesBySystemIterator"
+          id="MessageTemplate">
+      <nodeDefinition DefName="TurnQuest.view.models.MessageTemplate"
+                      Name="MessageTemplate0">
+        <AttrNames>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysModule"/>
+          <Item Value="msgtType"/>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtSysCode"/>
+          <Item Value="msgtSysProd"/>
+          <Item Value="msgtSysProdName"/>
+          <Item Value="msgtSubject"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchMessageProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchMessageProducts"
+                  IsViewObjectMethod="false" DataControl="MessagingDAO"
+                  InstanceName="MessagingDAO.dataProvider"
+                  ReturnName="data.MessagingDAO.methodResults.fetchMessageProducts_MessagingDAO_dataProvider_fetchMessageProducts_result"/>
+    <tree IterBinding="fetchMessageProductsIterator" id="MessageProduct">
+      <nodeDefinition DefName="TurnQuest.view.dao.MessageProduct"
+                      Name="MessageProduct0">
+        <AttrNames>
+          <Item Value="prodCode"/>
+          <Item Value="prodDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

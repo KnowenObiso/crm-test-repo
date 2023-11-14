@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="countryHolidaysPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllCountries.result" DataControl="ProspectDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Nation"
+                    id="fetchAllCountriesIterator"/>
+    <searchRegion Binds="fetchAllCountriesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="NationQuery"/>
+    <methodIterator Binds="fetchHolidayDefinitionsByCountry.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.HolidayDefinition"
+                    id="fetchHolidayDefinitionsByCountryIterator"/>
+    <searchRegion Binds="fetchHolidayDefinitionsByCountryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="HolidayDefinitionQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllCountries" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCountries"
+                  IsViewObjectMethod="false" DataControl="ProspectDAO"
+                  InstanceName="ProspectDAO.dataProvider"
+                  ReturnName="ProspectDAO.methodResults.fetchAllCountries_ProspectDAO_dataProvider_fetchAllCountries_result"/>
+    <tree IterBinding="fetchAllCountriesIterator" id="Nation">
+      <nodeDefinition DefName="TurnQuest.view.setups.Nation" Name="Nation0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="baseCurrency"/>
+          <Item Value="nationality"/>
+          <Item Value="zipCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchHolidayDefinitionsByCountry"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchHolidayDefinitionsByCountry"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchHolidayDefinitionsByCountry_DirectDebitDAO_dataProvider_fetchHolidayDefinitionsByCountry_result"/>
+    <tree IterBinding="fetchHolidayDefinitionsByCountryIterator"
+          id="HolidayDefinition">
+      <nodeDefinition DefName="TurnQuest.view.models.HolidayDefinition"
+                      Name="HolidayDefinition0">
+        <AttrNames>
+          <Item Value="thdDesc"/>
+          <Item Value="monthName"/>
+          <Item Value="thdDay"/>
+          <Item Value="thdStatus"/>
+          <Item Value="thdMonth"/>
+          <Item Value="thdCouCode"/>
+          <Item Value="dayName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

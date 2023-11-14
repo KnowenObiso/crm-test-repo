@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="BankDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.BankDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Bank"
+                  BeanClass="TurnQuest.view.setups.Bank" id="fetchAllBanks"
+                  ReturnNodeName="Bank"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.BankBranch"
+                  BeanClass="TurnQuest.view.setups.BankBranch"
+                  id="fetchBankBranchByBankCode" ReturnNodeName="BankBranch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Bank"
+                  BeanClass="TurnQuest.view.setups.Bank"
+                  id="fetchAllForwadingBanks" ReturnNodeName="Bank"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.DirectDebitReport"
+                  BeanClass="TurnQuest.view.models.DirectDebitReport"
+                  id="fetchAllDirectDebitReports"
+                  ReturnNodeName="DirectDebitReport"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.DirectDebitReport"
+                  BeanClass="TurnQuest.view.models.DirectDebitReport"
+                  id="fetchDDFailedRemarks" ReturnNodeName="DirectDebitReport"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.BankTerritory"
+                  BeanClass="TurnQuest.view.setups.BankTerritory"
+                  id="fetchBankTerritoryByBankCode"
+                  ReturnNodeName="BankTerritory"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.BankBranch"
+                  BeanClass="TurnQuest.view.setups.BankBranch"
+                  id="fetchBankBranchByTerritoryCode"
+                  ReturnNodeName="BankBranch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.BankBranch"
+                  BeanClass="TurnQuest.view.setups.BankBranch"
+                  id="fetchCountryCode" ReturnNodeName="BankBranch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.dao.BankAccount"
+                  BeanClass="TurnQuest.view.dao.BankAccount"
+                  id="fetchBankAccounts" ReturnNodeName="BankAccount"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.dao.BankAccount"
+                  BeanClass="TurnQuest.view.dao.BankAccount"
+                  id="fetchLoadedBankAccounts" ReturnNodeName="BankAccount"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.BankBranch"
+                  BeanClass="TurnQuest.view.setups.BankBranch"
+                  id="fetchBancassuranceByBranchCode"
+                  ReturnNodeName="BankBranch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.BankDAO"
+                     BeanClass="TurnQuest.view.dao.BankDAO" id="BankDAO"/>
+</JavaBean>

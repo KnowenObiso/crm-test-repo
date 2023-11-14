@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="Agent" Package="TurnQuest.view.Agents"
+          BeanClass="TurnQuest.view.Agents.Agent" isJavaBased="true">
+  <Attribute Name="AGNTY_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="AGNTY_TYPE_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="AGNTY_TYPE" Type="java.lang.String"/>
+  <Attribute Name="AGNTY_ACT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="ACT_ACCOUNT_TYPE" Type="java.lang.String"/>
+  <Attribute Name="fa_agn_org_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="fa_agn_sht_desc" Type="java.lang.String"/>
+  <Attribute Name="fa_team_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="fa_agn_name" Type="java.lang.String"/>
+  <Attribute Name="fa_agent_code" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Agents.Agent"
+                     BeanClass="TurnQuest.view.Agents.Agent" id="Agent"/>
+</JavaBean>

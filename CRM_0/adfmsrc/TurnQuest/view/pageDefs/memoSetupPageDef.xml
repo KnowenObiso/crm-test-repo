@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="memoSetupPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <methodIterator Binds="findSystemMemos.result" DataControl="MemoDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Memos.Memo"
+                    id="findSystemMemosIterator"/>
+    <methodIterator Binds="findMemoSubjectDetails.result" DataControl="MemoDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Memos.Memo"
+                    id="findMemoSubjectDetailsIterator"/>
+    <methodIterator Binds="findSubClasses.result" DataControl="MemoDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Memos.Memo"
+                    id="findSubClassesIterator"/>
+    <searchRegion Binds="findSubClassesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Memo2Query"/>
+    <methodIterator Binds="fetchSystemApplicableAreas.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                    id="fetchSystemApplicableAreasIterator"/>
+    <searchRegion Binds="fetchSystemApplicableAreasIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SysApplicableAreaQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findSystemMemos" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystemMemos"
+                  IsViewObjectMethod="false" DataControl="MemoDAO"
+                  InstanceName="MemoDAO.dataProvider"
+                  ReturnName="MemoDAO.methodResults.findSystemMemos_MemoDAO_dataProvider_findSystemMemos_result"/>
+    <tree IterBinding="findSystemMemosIterator" id="Memo">
+      <nodeDefinition DefName="TurnQuest.view.Memos.Memo" Name="Memo0">
+        <AttrNames>
+          <Item Value="type"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysName"/>
+          <Item Value="sysShortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="produces"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Memos.memoValues" Name="Memo1">
+        <AttrNames>
+          <Item Value="type"/>
+          <Item Value="appAreaCode"/>
+          <Item Value="appAreaDesc"/>
+          <Item Value="mtypCode"/>
+          <Item Value="mtypMemoType"/>
+          <Item Value="mtypStatus"/>
+          <Item Value="mtypSubCode"/>
+          <Item Value="mtypSysCode"/>
+          <Item Value="name"/>
+          <Item Value="sclDesc"/>
+          <Item Value="applLvl"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findMemoSubjectDetails" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findMemoSubjectDetails"
+                  IsViewObjectMethod="false" DataControl="MemoDAO"
+                  InstanceName="MemoDAO.dataProvider"
+                  ReturnName="MemoDAO.methodResults.findMemoSubjectDetails_MemoDAO_dataProvider_findMemoSubjectDetails_result"/>
+    <tree IterBinding="findMemoSubjectDetailsIterator" id="Memo1">
+      <nodeDefinition DefName="TurnQuest.view.Memos.Memo" Name="Memo10">
+        <AttrNames>
+          <Item Value="memdetCode"/>
+          <Item Value="memdetContent"/>
+          <Item Value="memdetMemoCode"/>
+          <Item Value="memoCode"/>
+          <Item Value="memoMtypCode"/>
+          <Item Value="memoSubject"/>
+          <Item Value="sclCode"/>
+          <Item Value="sclDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSubClasses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSubClasses"
+                  IsViewObjectMethod="false" DataControl="MemoDAO"
+                  InstanceName="MemoDAO.dataProvider"
+                  ReturnName="MemoDAO.methodResults.findSubClasses_MemoDAO_dataProvider_findSubClasses_result"/>
+    <tree IterBinding="findSubClassesIterator" id="Memo2">
+      <nodeDefinition DefName="TurnQuest.view.Memos.Memo" Name="Memo20">
+        <AttrNames>
+          <Item Value="sclDesc"/>
+          <Item Value="sclCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchSystemApplicableAreas" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchSystemApplicableAreas"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchSystemApplicableAreas_BaseSetupDAO_dataProvider_fetchSystemApplicableAreas_result"/>
+    <tree IterBinding="fetchSystemApplicableAreasIterator"
+          id="SysApplicableArea">
+      <nodeDefinition DefName="TurnQuest.view.setups.SysApplicableArea"
+                      Name="SysApplicableArea0">
+        <AttrNames>
+          <Item Value="sysAppAreaCode"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysName"/>
+          <Item Value="sysAppAreaDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

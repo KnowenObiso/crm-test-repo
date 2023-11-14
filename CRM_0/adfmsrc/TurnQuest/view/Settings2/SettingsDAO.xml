@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.51.88"
+          id="SettingsDAO" Package="TurnQuest.view.Settings2"
+          BeanClass="TurnQuest.view.Settings2.SettingsDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="findCountries" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="findTowns" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="findSectors" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="findBanks" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="findRequiredDocs" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="findClientRequiredDocs" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings2.SettingsValues"
+                  BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                  id="findAccountManagers" ReturnNodeName="SettingsValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Occupation"
+                  BeanClass="TurnQuest.view.setups.Occupation"
+                  id="findSectorOccupations" ReturnNodeName="Occupation"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Occupation"
+                  BeanClass="TurnQuest.view.setups.Occupation"
+                  id="findAllOccupations" ReturnNodeName="Occupation"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Occupation"
+                  BeanClass="TurnQuest.view.setups.Occupation"
+                  id="fetchSelectedOccupations" ReturnNodeName="Occupation"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Settings2.SettingsDAO"
+                     BeanClass="TurnQuest.view.Settings2.SettingsDAO"
+                     id="SettingsDAO"/>
+</JavaBean>

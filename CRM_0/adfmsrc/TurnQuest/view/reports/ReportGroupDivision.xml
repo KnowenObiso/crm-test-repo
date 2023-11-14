@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ReportGroupDivision" Package="TurnQuest.view.reports"
+          BeanClass="TurnQuest.view.reports.ReportGroupDivision"
+          isJavaBased="true">
+  <Attribute Name="rptGroupDivCode" Type="java.lang.String"/>
+  <Attribute Name="rptGroupCode" Type="java.lang.String"/>
+  <Attribute Name="divCode" Type="java.lang.String"/>
+  <Attribute Name="divName" Type="java.lang.String"/>
+  <Attribute Name="divOrder" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.reports.ReportGroupDivision"
+                     BeanClass="TurnQuest.view.reports.ReportGroupDivision"
+                     id="ReportGroupDivision"/>
+</JavaBean>

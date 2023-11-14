@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+ <session-factory>
+  <property name="connection.datasource">jdbc/CRMDS</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+  <!--<property name="connection.datasource">jdbc/DEVGISCRMDS</property>-->
+  <!--<property name="connection.datasource">jdbc/GISBRKCRMDS</property>-->
+<!--<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+<property name="show_sql">true</property>
+      <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+<property name="hibernate.connection.url">jdbc:oracle:thin:@10.176.18.41:1521:apagis</property>
+<property name="hibernate.connection.username">TQ_GIS</property>
+<property name="hibernate.connection.password">TQ_GIS</property>-->
+  
+ <!-- <property name="hibernate.format_sql">true</property>
+  <property name="hibernate.hbm2ddl.auto">update</property>
+  <property name="show_sql">true</property> -->
+  <!--bpm.jpdl.hbm.xml -->
+  <mapping resource="jbpm.repository.hbm.xml"/>
+  <mapping resource="jbpm.execution.hbm.xml"/>
+  <mapping resource="jbpm.history.hbm.xml"/>
+  <mapping resource="jbpm.task.hbm.xml"/>
+  <mapping resource="jbpm.identity.hbm.xml"/>
+ </session-factory>
+</hibernate-configuration>

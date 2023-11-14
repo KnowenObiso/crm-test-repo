@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="CurrencyDenomination" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.CurrencyDenomination"
+          isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="currencyCode" Type="java.lang.String"/>
+  <Attribute Name="value" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="wef" Type="java.util.Date"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.CurrencyDenomination"
+                     BeanClass="TurnQuest.view.setups.CurrencyDenomination"
+                     id="CurrencyDenomination"/>
+</JavaBean>

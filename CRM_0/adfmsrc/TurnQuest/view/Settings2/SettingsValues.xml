@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="SettingsValues" Package="TurnQuest.view.Settings2"
+          BeanClass="TurnQuest.view.Settings2.SettingsValues"
+          isJavaBased="true">
+  <Attribute Name="countryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="countryShtDesc" Type="java.lang.String"/>
+  <Attribute Name="countryName" Type="java.lang.String"/>
+  <Attribute Name="townCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="postalDesc" Type="java.lang.String"/>
+  <Attribute Name="townShtDesc" Type="java.lang.String"/>
+  <Attribute Name="townName" Type="java.lang.String"/>
+  <Attribute Name="postalZIPCode" Type="java.lang.String"/>
+  <Attribute Name="sectorShtDesc" Type="java.lang.String"/>
+  <Attribute Name="sectorName" Type="java.lang.String"/>
+  <Attribute Name="sectorCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bankName" Type="java.lang.String"/>
+  <Attribute Name="branchName" Type="java.lang.String"/>
+  <Attribute Name="bankBranchCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="RDOC_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="RDOC_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="ROC_DESC" Type="java.lang.String"/>
+  <Attribute Name="ROC_MANDATORY" Type="java.lang.String"/>
+  <Attribute Name="ROC_DATE_ADDED" Type="java.util.Date"/>
+  <Attribute Name="CDOCR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CDOCR_RDOC_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CDOCR_CLNT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CDOCR_SUBMITED" Type="java.lang.String"/>
+  <Attribute Name="CDOCR_DATE_S" Type="java.util.Date"/>
+  <Attribute Name="CDOCR_REF_NO" Type="java.lang.String"/>
+  <Attribute Name="CDOCR_RMRK" Type="java.lang.String"/>
+  <Attribute Name="CDOCR_USER_RECEIVD" Type="java.lang.String"/>
+  <Attribute Name="USR_USERNAME" Type="java.lang.String"/>
+  <Attribute Name="USR_NAME" Type="java.lang.String"/>
+  <Attribute Name="USR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CDOCR_RDOC_NAME" Type="java.lang.String"/>
+  <Attribute Name="CDOCR_DOCID" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Settings2.SettingsValues"
+                     BeanClass="TurnQuest.view.Settings2.SettingsValues"
+                     id="SettingsValues"/>
+</JavaBean>

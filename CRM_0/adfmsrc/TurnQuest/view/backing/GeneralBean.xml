@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="GeneralBean" Package="TurnQuest.view.backing"
+          BeanClass="TurnQuest.view.backing.GeneralBean" isJavaBased="true">
+  <Attribute Name="sysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="polCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="pprCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prpCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clientShortDesc" Type="java.lang.String"/>
+  <Attribute Name="clientName" Type="java.lang.String"/>
+  <Attribute Name="clientBankAccNum" Type="java.lang.String"/>
+  <Attribute Name="clientBbrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bbrBankCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bbrBranchName" Type="java.lang.String"/>
+  <Attribute Name="bbrShortDesc" Type="java.lang.String"/>
+  <Attribute Name="bbrRefCode" Type="java.lang.String"/>
+  <Attribute Name="polType" Type="java.lang.String"/>
+  <Attribute Name="proposalNum" Type="java.lang.String"/>
+  <Attribute Name="policyNum" Type="java.lang.String"/>
+  <Attribute Name="premAmount" Type="java.math.BigDecimal"/>
+  <Attribute Name="remarks" Type="java.lang.String"/>
+  <Attribute Name="prevDdhCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bookDate" Type="java.util.Date"/>
+  <Attribute Name="accountHolder" Type="java.lang.String"/>
+  <Attribute Name="payType" Type="java.lang.String"/>
+  <Attribute Name="loanNo" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.backing.GeneralBean"
+                     BeanClass="TurnQuest.view.backing.GeneralBean"
+                     id="GeneralBean"/>
+</JavaBean>

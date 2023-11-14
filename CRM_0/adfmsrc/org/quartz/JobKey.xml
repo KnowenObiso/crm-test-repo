@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="JobKey" Package="org.quartz" BeanClass="org.quartz.JobKey"
+          isJavaBased="true">
+  <Attribute Name="name" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="group" IsUpdateable="0" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="org.quartz.JobKey"
+                  BeanClass="org.quartz.JobKey" id="jobKey"
+                  ReturnNodeName="JobKey">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="org.quartz.JobKey"
+                  BeanClass="org.quartz.JobKey" id="jobKey"
+                  ReturnNodeName="JobKey">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="int" id="hashCode"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="equals"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="compareTo"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="org.quartz.utils.Key&lt;org.quartz.JobKey>"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="createUniqueName" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="org.quartz.JobKey"
+                     BeanClass="org.quartz.JobKey" id="JobKey">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.String" isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="org.quartz.JobKey"
+                     BeanClass="org.quartz.JobKey" id="JobKey">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </ConstructorMethod>
+</JavaBean>

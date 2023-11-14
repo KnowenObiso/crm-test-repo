@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="memoValues" Package="TurnQuest.view.Memos"
+          BeanClass="TurnQuest.view.Memos.memoValues" isJavaBased="true">
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="mtypCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="mtypSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="mtypMemoType" Type="java.lang.String"/>
+  <Attribute Name="mtypStatus" Type="java.lang.String"/>
+  <Attribute Name="mtypSubCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sclDesc" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="appAreaCode" Type="java.lang.String"/>
+  <Attribute Name="appAreaDesc" Type="java.lang.String"/>
+  <Attribute Name="applLvl" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Memos.memoValues"
+                     BeanClass="TurnQuest.view.Memos.memoValues"
+                     id="memoValues"/>
+</JavaBean>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="ActivitiesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findActivities.result" DataControl="ActivityDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.Activity"
+                    id="findActivitiesIterator"/>
+    <searchRegion Binds="findActivitiesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ActivityQuery"/>
+    <methodIterator Binds="findAllAccounts.result" DataControl="AccountDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Activities.Account"
+                    id="findAllAccountsIterator"/>
+    <searchRegion Binds="findAllAccountsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountQuery"/>
+    <methodIterator Binds="fetchAllActivityTypes.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ActivityType"
+                    id="fetchAllActivityTypesIterator"/>
+    <searchRegion Binds="fetchAllActivityTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ActivityTypeQuery"/>
+    <methodIterator Binds="findAllIndividualUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findAllIndividualUsersIterator"/>
+    <searchRegion Binds="findAllIndividualUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="findGroupUser.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findGroupUserIterator"/>
+    <searchRegion Binds="findGroupUserIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User1Query"/>
+    <methodIterator Binds="findStatuses1.result" DataControl="ActivityDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Activities.Status"
+                    id="findStatuses1Iterator"/>
+    <searchRegion Binds="findStatuses1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StatusQuery"/>
+    <methodIterator Binds="findActivityTasks.result" DataControl="ActivityDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ActivityTask"
+                    id="findActivityTasksIterator"/>
+    <searchRegion Binds="findActivityTasksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ActivityTaskQuery"/>
+    <methodIterator Binds="findActivityParticipants.result"
+                    DataControl="ActivityDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ActivityParticipant"
+                    id="findActivityParticipantsIterator"/>
+    <searchRegion Binds="findActivityParticipantsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ActivityParticipantQuery"/>
+    <methodIterator Binds="findActivityNotes.result" DataControl="ActivityDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Activities.Note"
+                    id="findActivityNotesIterator"/>
+    <searchRegion Binds="findActivityNotesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="NoteQuery"/>
+    <methodIterator Binds="findPriorityLevels.result" DataControl="ActivityDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.PriorityLevel"
+                    id="findPriorityLevelsIterator"/>
+    <methodIterator Binds="findUnInvitedAccounts.result"
+                    DataControl="AccountDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.Account"
+                    id="findUnInvitedAccountsIterator"/>
+    <searchRegion Binds="findUnInvitedAccountsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Account1Query"/>
+    <methodIterator Binds="findMessageTemplates.result" DataControl="MessageDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.messaging.MessageBean"
+                    id="findMessageTemplatesIterator"/>
+    <searchRegion Binds="findMessageTemplatesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageBeanQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findActivities" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findActivities"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findActivities_ActivityDAO_dataProvider_findActivities_result"/>
+    <tree IterBinding="findActivitiesIterator" id="Activity">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Activity"
+                      Name="Activity0">
+        <AttrNames>
+          <Item Value="activityCode"/>
+          <Item Value="activityTypeCode"/>
+          <Item Value="activityWEF"/>
+          <Item Value="activityWET"/>
+          <Item Value="activityDuration"/>
+          <Item Value="activitysubject"/>
+          <Item Value="activityLocation"/>
+          <Item Value="activityAssignedTo"/>
+          <Item Value="activityRelatedTo"/>
+          <Item Value="activityStatusId"/>
+          <Item Value="activityDescription"/>
+          <Item Value="activityReminder"/>
+          <Item Value="activityTeam"/>
+          <Item Value="activityType"/>
+          <Item Value="activityAssignedUser"/>
+          <Item Value="activityStatus"/>
+          <Item Value="activityTeamName"/>
+          <Item Value="activityRelatedAccount"/>
+          <Item Value="activityReminderTime"/>
+          <Item Value="msgTemplateCode"/>
+          <Item Value="msgTemplateDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAllAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllAccounts"
+                  IsViewObjectMethod="false" DataControl="AccountDAO"
+                  InstanceName="AccountDAO.dataProvider"
+                  ReturnName="AccountDAO.methodResults.findAllAccounts_AccountDAO_dataProvider_findAllAccounts_result"/>
+    <tree IterBinding="findAllAccountsIterator" id="Account">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Account"
+                      Name="Account0">
+        <AttrNames>
+          <Item Value="accountCode"/>
+          <Item Value="accountType"/>
+          <Item Value="accountTypeCode"/>
+          <Item Value="accountName"/>
+          <Item Value="accountEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllActivityTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllActivityTypes"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllActivityTypes_HierarchyDAO_dataProvider_fetchAllActivityTypes_result"/>
+    <tree IterBinding="fetchAllActivityTypesIterator" id="ActivityType">
+      <nodeDefinition DefName="TurnQuest.view.models.ActivityType"
+                      Name="ActivityType0">
+        <AttrNames>
+          <Item Value="actyCode"/>
+          <Item Value="actySysCode"/>
+          <Item Value="actyDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAllIndividualUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllIndividualUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findAllIndividualUsers_UserDAO_dataProvider_findAllIndividualUsers_result"/>
+    <tree IterBinding="findAllIndividualUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findStatuses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findStatuses"
+                  IsViewObjectMethod="false" DataControl="StatusesDAO"
+                  InstanceName="StatusesDAO.dataProvider"
+                  ReturnName="StatusesDAO.methodResults.findStatuses_StatusesDAO_dataProvider_findStatuses_result"/>
+    <methodAction id="findGroupUser" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findGroupUser"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.findGroupUser_HierarchyDAO_dataProvider_findGroupUser_result"/>
+    <tree IterBinding="findGroupUserIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findStatuses1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findStatuses"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findStatuses_ActivityDAO_dataProvider_findStatuses_result"/>
+    <tree IterBinding="findStatuses1Iterator" id="Status">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Status" Name="Status0">
+        <AttrNames>
+          <Item Value="statusId"/>
+          <Item Value="statusCode"/>
+          <Item Value="statusDecription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findActivityNotes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findActivityNotes"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findActivityNotes_ActivityDAO_dataProvider_findActivityNotes_result"/>
+    <methodAction id="findActivityTasks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findActivityTasks"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findActivityTasks_ActivityDAO_dataProvider_findActivityTasks_result"/>
+    <tree IterBinding="findActivityTasksIterator" id="ActivityTask">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ActivityTask"
+                      Name="ActivityTask0">
+        <AttrNames>
+          <Item Value="tastCode"/>
+          <Item Value="activityCode"/>
+          <Item Value="taskFrom"/>
+          <Item Value="taskTo"/>
+          <Item Value="taskSubject"/>
+          <Item Value="taskStatusCode"/>
+          <Item Value="taskPriorityCode"/>
+          <Item Value="taskAccountCode"/>
+          <Item Value="status"/>
+          <Item Value="priority"/>
+          <Item Value="relatedAccount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findActivityParticipants" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findActivityParticipants"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findActivityParticipants_ActivityDAO_dataProvider_findActivityParticipants_result"/>
+    <tree IterBinding="findActivityParticipantsIterator"
+          id="ActivityParticipant">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ActivityParticipant"
+                      Name="ActivityParticipant0">
+        <AttrNames>
+          <Item Value="participantId"/>
+          <Item Value="participantActCode"/>
+          <Item Value="participantAccountCode"/>
+          <Item Value="accountName"/>
+          <Item Value="accountEmail"/>
+          <Item Value="selected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findActivityNotesIterator" id="Note">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Note" Name="Note0">
+        <AttrNames>
+          <Item Value="noteSubject"/>
+          <Item Value="relatedAccount"/>
+          <Item Value="noteCode"/>
+          <Item Value="noteAcccountCode"/>
+          <Item Value="noteContactCode"/>
+          <Item Value="noteDescription"/>
+          <Item Value="noteActivityCode"/>
+          <Item Value="noteAttachmentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findPriorityLevels" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findPriorityLevels"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findPriorityLevels_ActivityDAO_dataProvider_findPriorityLevels_result"/>
+    <tree IterBinding="findPriorityLevelsIterator" id="PriorityLevel">
+      <nodeDefinition DefName="TurnQuest.view.Activities.PriorityLevel"
+                      Name="PriorityLevel0">
+        <AttrNames>
+          <Item Value="plCode"/>
+          <Item Value="plDescription"/>
+          <Item Value="prShortDescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUnInvitedAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUnInvitedAccounts"
+                  IsViewObjectMethod="false" DataControl="AccountDAO"
+                  InstanceName="AccountDAO.dataProvider"
+                  ReturnName="AccountDAO.methodResults.findUnInvitedAccounts_AccountDAO_dataProvider_findUnInvitedAccounts_result"/>
+    <tree IterBinding="findUnInvitedAccountsIterator" id="Account1">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Account"
+                      Name="Account10">
+        <AttrNames>
+          <Item Value="accountCode"/>
+          <Item Value="accountType"/>
+          <Item Value="accountTypeCode"/>
+          <Item Value="accountName"/>
+          <Item Value="accountEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findMessageTemplates" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findMessageTemplates"
+                  IsViewObjectMethod="false" DataControl="MessageDAO"
+                  InstanceName="MessageDAO.dataProvider"
+                  ReturnName="MessageDAO.methodResults.findMessageTemplates_MessageDAO_dataProvider_findMessageTemplates_result"/>
+    <tree IterBinding="findMessageTemplatesIterator" id="MessageBean">
+      <nodeDefinition DefName="TurnQuest.view.messaging.MessageBean"
+                      Name="MessageBean0">
+        <AttrNames>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysModule"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

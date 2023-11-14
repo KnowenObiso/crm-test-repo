@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="EcmBean" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.EcmBean" isJavaBased="true">
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="modifiedBy" Type="java.lang.String"/>
+  <Attribute Name="dateCreated" Type="java.lang.String"/>
+  <Attribute Name="versionLabel" Type="java.lang.String"/>
+  <Attribute Name="id" Type="java.lang.String"/>
+  <Attribute Name="mimeType" Type="java.lang.String"/>
+  <Attribute Name="actualName" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.EcmBean"
+                     BeanClass="TurnQuest.view.dao.EcmBean" id="EcmBean"/>
+</JavaBean>

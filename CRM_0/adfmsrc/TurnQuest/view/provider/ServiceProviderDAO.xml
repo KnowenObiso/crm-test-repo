@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="ServiceProviderDAO" Package="TurnQuest.view.provider"
+          BeanClass="TurnQuest.view.provider.ServiceProviderDAO"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.provider.ServiceProvider"
+                  BeanClass="TurnQuest.view.provider.ServiceProvider"
+                  id="fetchAllServiceProviders" ReturnNodeName="ServiceProvider"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.ServiceProviderType"
+                  BeanClass="TurnQuest.view.setups.ServiceProviderType"
+                  id="fetchAllServiceProviderTypes"
+                  ReturnNodeName="ServiceProviderType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.provider.ServiceProviderActivity"
+                  BeanClass="TurnQuest.view.provider.ServiceProviderActivity"
+                  id="fetchAllServiceProviderActivities"
+                  ReturnNodeName="ServiceProviderActivity"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchAllSystems" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.provider.ServiceProviderSystem"
+                  BeanClass="TurnQuest.view.provider.ServiceProviderSystem"
+                  id="fetchAllServiceProviderSystems"
+                  ReturnNodeName="ServiceProviderSystem"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.provider.ServiceProviderActivity"
+                  BeanClass="TurnQuest.view.provider.ServiceProviderActivity"
+                  id="fetchActivitiesByProvider"
+                  ReturnNodeName="ServiceProviderActivity"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchProviderAssignedSystems" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchProviderUnassignedSystems" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchallBranches" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchbankBranches" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.provider.ServiceProvider"
+                  BeanClass="TurnQuest.view.provider.ServiceProvider"
+                  id="fetchAlLMobileTypePrefix" ReturnNodeName="ServiceProvider"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.provider.ServiceProvider"
+                  BeanClass="TurnQuest.view.provider.ServiceProvider"
+                  id="fetchAlLMobileTypePrefix2"
+                  ReturnNodeName="ServiceProvider"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.provider.ServiceProvider"
+                  BeanClass="TurnQuest.view.provider.ServiceProvider"
+                  id="fetchProviderContacts" ReturnNodeName="ServiceProvider"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.provider.ServiceProviderDAO"
+                     BeanClass="TurnQuest.view.provider.ServiceProviderDAO"
+                     id="ServiceProviderDAO"/>
+</JavaBean>

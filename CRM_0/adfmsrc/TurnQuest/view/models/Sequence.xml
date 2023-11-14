@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Sequence" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.Sequence" isJavaBased="true">
+  <Attribute Name="tseq_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="tseq_type" Type="java.lang.String"/>
+  <Attribute Name="tseq_no_type" Type="java.lang.String"/>
+  <Attribute Name="tseq_brn" Type="java.math.BigDecimal"/>
+  <Attribute Name="tseq_uwyr" Type="java.math.BigDecimal"/>
+  <Attribute Name="tseq_next_no" Type="java.math.BigDecimal"/>
+  <Attribute Name="branch_name" Type="java.lang.String"/>
+  <Attribute Name="org_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="clientType" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.Sequence"
+                     BeanClass="TurnQuest.view.models.Sequence" id="Sequence"/>
+</JavaBean>

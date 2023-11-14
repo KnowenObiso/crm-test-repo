@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="CampaignManagementPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findCampaigns.result" DataControl="CampaignDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Campaigns.Campaign"
+                    id="findCampaignsIterator"/>
+    <searchRegion Binds="findCampaignsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CampaignQuery"/>
+    <methodIterator Binds="findCampaignSystems.result" DataControl="CampaignDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="findCampaignSystemsIterator"/>
+    <methodIterator Binds="findUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersIterator"/>
+    <searchRegion Binds="findUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="findGroupUser.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findGroupUserIterator"/>
+    <searchRegion Binds="findGroupUserIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User1Query"/>
+    <methodIterator Binds="findStatuses.result" DataControl="ActivityDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Activities.Status"
+                    id="findStatusesIterator"/>
+    <methodIterator Binds="fetchOrganizationInfo.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchOrganizationInfoIterator"/>
+    <searchRegion Binds="fetchOrganizationInfoIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="OrganizationQuery"/>
+    <methodIterator Binds="fetchAllCurrencies.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Currency"
+                    id="fetchAllCurrenciesIterator"/>
+    <searchRegion Binds="fetchAllCurrenciesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CurrencyQuery"/>
+    <methodIterator Binds="findCampaignProducts.result"
+                    DataControl="CampaignDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Campaigns.CampaignProduct"
+                    id="findCampaignProductsIterator"/>
+    <searchRegion Binds="findCampaignProductsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CampaignProductQuery"/>
+    <methodIterator Binds="findCampaignActivities.result"
+                    DataControl="CampaignDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Campaigns.CampaignActivity"
+                    id="findCampaignActivitiesIterator"/>
+    <searchRegion Binds="findCampaignActivitiesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CampaignActivityQuery"/>
+    <methodIterator Binds="findCampaignTargets.result" DataControl="CampaignDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="findCampaignTargetsIterator"/>
+    <searchRegion Binds="findCampaignTargetsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="System1Query"/>
+    <methodIterator Binds="findCampaignMessages.result"
+                    DataControl="CampaignDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.provider.System"
+                    id="findCampaignMessagesIterator"/>
+    <searchRegion Binds="findCampaignMessagesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="System2Query"/>
+    <methodIterator Binds="fetchMessageTemplatesByType.result"
+                    DataControl="MessagingDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.MessageTemplate"
+                    id="fetchMessageTemplatesByTypeIterator"/>
+    <searchRegion Binds="fetchMessageTemplatesByTypeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageTemplateQuery"/>
+    <methodIterator Binds="findUndefinedTargetAccounts.result"
+                    DataControl="CampaignDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.Account"
+                    id="findUndefinedTargetAccountsIterator"/>
+    <searchRegion Binds="findUndefinedTargetAccountsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Account1Query"/>
+    <methodIterator Binds="findUndefinedCampaignActivities.result"
+                    DataControl="CampaignDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.Activity"
+                    id="findUndefinedCampaignActivitiesIterator"/>
+    <searchRegion Binds="findUndefinedCampaignActivitiesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Activity1Query"/>
+    <methodIterator Binds="findProductAttribute.result" DataControl="ProductDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.Product"
+                    id="findProductAttributeIterator"/>
+    <searchRegion Binds="findProductAttributeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProductQuery"/>
+    <methodIterator Binds="findClientsPerProduct.result"
+                    DataControl="ProductDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Clients.client"
+                    id="findClientsPerProductIterator"/>
+    <searchRegion Binds="findClientsPerProductIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="clientQuery"/>
+    <methodIterator Binds="findAllProducts.result" DataControl="CampaignDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="findAllProductsIterator"/>
+    <searchRegion Binds="findAllProductsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="System3Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findCampaigns" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaigns"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaigns_CampaignDAO_dataProvider_findCampaigns_result"/>
+    <tree IterBinding="findCampaignsIterator" id="Campaign">
+      <nodeDefinition DefName="TurnQuest.view.Campaigns.Campaign"
+                      Name="Campaign0">
+        <AttrNames>
+          <Item Value="campSysName"/>
+          <Item Value="campCode"/>
+          <Item Value="campUserCode"/>
+          <Item Value="campUserName"/>
+          <Item Value="campTeamUserCode"/>
+          <Item Value="campTeamName"/>
+          <Item Value="campDate"/>
+          <Item Value="campSponsor"/>
+          <Item Value="campOrgCode"/>
+          <Item Value="campOrgName"/>
+          <Item Value="campProdCode"/>
+          <Item Value="campProdName"/>
+          <Item Value="campSysCode"/>
+          <Item Value="campName"/>
+          <Item Value="campType"/>
+          <Item Value="campStatus"/>
+          <Item Value="campExpCloseDate"/>
+          <Item Value="campTargetAudience"/>
+          <Item Value="campTargetSize"/>
+          <Item Value="campNumSent"/>
+          <Item Value="campBudgetedCost"/>
+          <Item Value="campExpCost"/>
+          <Item Value="campExpRevenue"/>
+          <Item Value="campExpSalesCount"/>
+          <Item Value="campActualSalesCount"/>
+          <Item Value="campExpResponseCount"/>
+          <Item Value="campExpROI"/>
+          <Item Value="campActualROI"/>
+          <Item Value="campDescription"/>
+          <Item Value="currencyCode"/>
+          <Item Value="currencyName"/>
+          <Item Value="campActualCost"/>
+          <Item Value="campObjective"/>
+          <Item Value="campActualResponseCount"/>
+          <Item Value="campImpressionCount"/>
+          <Item Value="event"/>
+          <Item Value="venue"/>
+          <Item Value="eventTime"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findCampaignSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaignSystems"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaignSystems_CampaignDAO_dataProvider_findCampaignSystems_result"/>
+    <tree IterBinding="findCampaignSystemsIterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <tree IterBinding="findUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findGroupUser" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findGroupUser"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.findGroupUser_HierarchyDAO_dataProvider_findGroupUser_result"/>
+    <tree IterBinding="findGroupUserIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findStatuses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findStatuses"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findStatuses_ActivityDAO_dataProvider_findStatuses_result"/>
+    <tree IterBinding="findStatusesIterator" id="Status">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Status" Name="Status0">
+        <AttrNames>
+          <Item Value="statusId"/>
+          <Item Value="statusCode"/>
+          <Item Value="statusDecription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchOrganizationInfo" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchOrganizationInfo"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchOrganizationInfo_OrganizationDAO_dataProvider_fetchOrganizationInfo_result"/>
+    <tree IterBinding="fetchOrganizationInfoIterator" id="Organization">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization0">
+        <AttrNames>
+          <Item Value="orgCode"/>
+          <Item Value="orgShortDesc"/>
+          <Item Value="orgName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllCurrencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCurrencies"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCurrencies_BaseSetupDAO_dataProvider_fetchAllCurrencies_result"/>
+    <tree IterBinding="fetchAllCurrenciesIterator" id="Currency">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency" Name="Currency0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="symbol"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findCampaignProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaignProducts"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaignProducts_CampaignDAO_dataProvider_findCampaignProducts_result"/>
+    <tree IterBinding="findCampaignProductsIterator" id="CampaignProduct">
+      <nodeDefinition DefName="TurnQuest.view.Campaigns.CampaignProduct"
+                      Name="CampaignProduct0">
+        <AttrNames>
+          <Item Value="productCode"/>
+          <Item Value="productShortDesc"/>
+          <Item Value="prodDesc"/>
+          <Item Value="prodSystem"/>
+          <Item Value="checked"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findActivities" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findActivities"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findActivities_ActivityDAO_dataProvider_findActivities_result"/>
+    <methodAction id="findCampaignActivities" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaignActivities"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaignActivities_CampaignDAO_dataProvider_findCampaignActivities_result"/>
+    <tree IterBinding="findCampaignActivitiesIterator" id="CampaignActivity">
+      <nodeDefinition DefName="TurnQuest.view.Campaigns.CampaignActivity"
+                      Name="CampaignActivity0">
+        <AttrNames>
+          <Item Value="actName"/>
+          <Item Value="campActCode"/>
+          <Item Value="campCode"/>
+          <Item Value="actSubject"/>
+          <Item Value="actCode"/>
+          <Item Value="actWef"/>
+          <Item Value="actWet"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findCampaignTargets" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaignTargets"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaignTargets_CampaignDAO_dataProvider_findCampaignTargets_result"/>
+    <tree IterBinding="findCampaignTargetsIterator" id="System1">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System10">
+        <AttrNames>
+          <Item Value="RELATED_ACCOUNT"/>
+          <Item Value="RELATED_EMAIL"/>
+          <Item Value="CMT_DATE"/>
+          <Item Value="code"/>
+          <Item Value="CMT_CODE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAllAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllAccounts"
+                  IsViewObjectMethod="false" DataControl="AccountDAO"
+                  InstanceName="AccountDAO.dataProvider"
+                  ReturnName="AccountDAO.methodResults.findAllAccounts_AccountDAO_dataProvider_findAllAccounts_result"/>
+    <methodAction id="findCampaignMessages" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaignMessages"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaignMessages_CampaignDAO_dataProvider_findCampaignMessages_result"/>
+    <tree IterBinding="findCampaignMessagesIterator" id="System2">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System20">
+        <AttrNames>
+          <Item Value="CMSG_CODE"/>
+          <Item Value="CMSG_TYPE_DESC"/>
+          <Item Value="CMSG_SUBJ"/>
+          <Item Value="CMSG_BODY"/>
+          <Item Value="CMSG_STATUS_DESC"/>
+          <Item Value="CMSG_STATUS"/>
+          <Item Value="CMSG_TYPE"/>
+          <Item Value="code"/>
+          <Item Value="CMSG_DATE"/>
+          <Item Value="shortDesc"/>
+          <Item Value="CMSG_SEND_ALL"/>
+          <Item Value="name"/>
+          <Item Value="CMSG_SEND_ALL_DESC"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchMessageTemplatesByType" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchMessageTemplatesByType"
+                  IsViewObjectMethod="false" DataControl="MessagingDAO"
+                  InstanceName="MessagingDAO.dataProvider"
+                  ReturnName="MessagingDAO.methodResults.fetchMessageTemplatesByType_MessagingDAO_dataProvider_fetchMessageTemplatesByType_result"/>
+    <tree IterBinding="fetchMessageTemplatesByTypeIterator"
+          id="MessageTemplate">
+      <nodeDefinition DefName="TurnQuest.view.models.MessageTemplate"
+                      Name="MessageTemplate0">
+        <AttrNames>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUndefinedTargetAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUndefinedTargetAccounts"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findUndefinedTargetAccounts_CampaignDAO_dataProvider_findUndefinedTargetAccounts_result"/>
+    <tree IterBinding="findUndefinedTargetAccountsIterator" id="Account1">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Account"
+                      Name="Account10">
+        <AttrNames>
+          <Item Value="accountType"/>
+          <Item Value="accountName"/>
+          <Item Value="accountEmail"/>
+          <Item Value="accountCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUndefinedCampaignActivities"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findUndefinedCampaignActivities"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findUndefinedCampaignActivities_CampaignDAO_dataProvider_findUndefinedCampaignActivities_result"/>
+    <tree IterBinding="findUndefinedCampaignActivitiesIterator" id="Activity1">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Activity"
+                      Name="Activity10">
+        <AttrNames>
+          <Item Value="activityCode"/>
+          <Item Value="activitysubject"/>
+          <Item Value="activityLocation"/>
+          <Item Value="activityDescription"/>
+          <Item Value="activityType"/>
+          <Item Value="activityStatus"/>
+          <Item Value="actWef"/>
+          <Item Value="activityTypeCode"/>
+          <Item Value="actWet"/>
+          <Item Value="activityWEF"/>
+          <Item Value="activityWET"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUserByAgencyCode" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUserByAgencyCode"
+                  IsViewObjectMethod="false" DataControl="ClientDAO"
+                  InstanceName="ClientDAO.dataProvider"
+                  ReturnName="ClientDAO.methodResults.findUserByAgencyCode_ClientDAO_dataProvider_findUserByAgencyCode_result"/>
+    <methodAction id="findProductAttribute" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProductAttribute"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findProductAttribute_ProductDAO_dataProvider_findProductAttribute_result"/>
+    <tree IterBinding="findProductAttributeIterator" id="Product">
+      <nodeDefinition DefName="TurnQuest.view.models.Product" Name="Product0">
+        <AttrNames>
+          <Item Value="TPA_CODE"/>
+          <Item Value="TPA_SYSTEM"/>
+          <Item Value="TPA_PROD_CODE"/>
+          <Item Value="TPA_PROD_SHTDESC"/>
+          <Item Value="TPA_PROD_DESC"/>
+          <Item Value="TPA_PROD_NARRATION"/>
+          <Item Value="SYSNAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findClientsPerProduct" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findClientsPerProduct"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findClientsPerProduct_ProductDAO_dataProvider_findClientsPerProduct_result"/>
+    <tree IterBinding="findClientsPerProductIterator" id="client">
+      <nodeDefinition DefName="TurnQuest.view.Clients.client" Name="client0">
+        <AttrNames>
+          <Item Value="othernames"/>
+          <Item Value="surname"/>
+          <Item Value="town"/>
+          <Item Value="postalCode"/>
+          <Item Value="postalAddress"/>
+          <Item Value="country"/>
+          <Item Value="telphoneOne"/>
+          <Item Value="telphoneTwo"/>
+          <Item Value="fax"/>
+          <Item Value="clientID"/>
+          <Item Value="agentCode"/>
+          <Item Value="previousLastLoginOn"/>
+          <Item Value="fullname"/>
+          <Item Value="clientCode"/>
+          <Item Value="shortDescription"/>
+          <Item Value="idRegNumber"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="email"/>
+          <Item Value="smsTel"/>
+          <Item Value="policyNumber"/>
+          <Item Value="PINNumber"/>
+          <Item Value="ZIPCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAllProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllProducts"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findAllProducts_CampaignDAO_dataProvider_findAllProducts_result"/>
+    <tree IterBinding="findAllProductsIterator" id="System3">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System30">
+        <AttrNames>
+          <Item Value="cproCode"/>
+          <Item Value="cproProCode"/>
+          <Item Value="cproShtDesc"/>
+          <Item Value="cproCmpCode"/>
+          <Item Value="cproProShtDesc"/>
+          <Item Value="cproProDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

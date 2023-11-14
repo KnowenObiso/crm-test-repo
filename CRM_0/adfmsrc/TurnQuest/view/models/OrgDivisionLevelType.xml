@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="OrgDivisionLevelType" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.OrgDivisionLevelType"
+          isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="dltCode" Type="java.lang.String"/>
+  <Attribute Name="dltSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dltDesc" Type="java.lang.String"/>
+  <Attribute Name="dltActCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="accountTypeName" Type="java.lang.String"/>
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="dltType" Type="java.lang.String"/>
+  <Attribute Name="dltHeadActCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="headAccountTypeName" Type="java.lang.String"/>
+  <Attribute Name="dltIntCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dltPayIntermediary" Type="java.lang.String"/>
+  <Attribute Name="agencyIntermediary" Type="java.lang.String"/>
+  <Attribute Name="divLocationCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="divLocationType" Type="java.lang.String"/>
+  <Attribute Name="divLocationName" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.OrgDivisionLevelType"
+                     BeanClass="TurnQuest.view.models.OrgDivisionLevelType"
+                     id="OrgDivisionLevelType"/>
+</JavaBean>

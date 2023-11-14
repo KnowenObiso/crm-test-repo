@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="divisionsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findDivisions.result" DataControl="DivisionsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findDivisionsIterator"/>
+    <methodIterator Binds="findSubDivisions.result" DataControl="DivisionsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findSubDivisionsIterator"/>
+    <methodIterator Binds="findBranchDivisions.result"
+                    DataControl="DivisionsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findBranchDivisionsIterator"/>
+    <methodIterator Binds="findBranches.result" DataControl="DivisionsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findBranchesIterator"/>
+    <searchRegion Binds="findBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Division3Query"/>
+    <searchRegion Binds="findDivisionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Division4Query"/>
+    <methodIterator Binds="findDivisionsByOrg.result" DataControl="DivisionsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findDivisionsByOrgIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="findDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findDivisions_DivisionsDAO_dataProvider_findDivisions_result"/>
+    <tree IterBinding="findDivisionsIterator" id="Division">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division0">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSubDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSubDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findSubDivisions_DivisionsDAO_dataProvider_findSubDivisions_result"/>
+    <tree IterBinding="findSubDivisionsIterator" id="Division1">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division10">
+        <AttrNames>
+          <Item Value="SDIV_SHT_DESC"/>
+          <Item Value="SDIV_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranchDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranchDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findBranchDivisions_DivisionsDAO_dataProvider_findBranchDivisions_result"/>
+    <tree IterBinding="findBranchDivisionsIterator" id="Division2">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division20">
+        <AttrNames>
+          <Item Value="BRN_NAME"/>
+          <Item Value="DIV_NAME"/>
+          <Item Value="BDIV_WEF"/>
+          <Item Value="BDIV_WET"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranches"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findBranches_DivisionsDAO_dataProvider_findBranches_result"/>
+    <tree IterBinding="findBranchesIterator" id="Division3">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division30">
+        <AttrNames>
+          <Item Value="BRN_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findDivisionsIterator" id="Division4">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division40">
+        <AttrNames>
+          <Item Value="BDIV_WET"/>
+          <Item Value="BRN_CODE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findDivisionsByOrg" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findDivisionsByOrg"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findDivisionsByOrg_DivisionsDAO_dataProvider_findDivisionsByOrg_result"/>
+    <tree IterBinding="findDivisionsByOrgIterator" id="Organization">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization0">
+        <AttrNames>
+          <Item Value="orgName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="divisionList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Organization1">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findDivisionsByOrgIterator" id="Organization1">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization10">
+        <AttrNames>
+          <Item Value="orgName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="divisionList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Organization11">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findDivisionsByOrgIterator" id="Organization2">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization20">
+        <AttrNames>
+          <Item Value="orgName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findDivisionsByOrgIterator" id="Organization3">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization30">
+        <AttrNames>
+          <Item Value="orgName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findDivisionsByOrgIterator" id="Organization4">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization40">
+        <AttrNames>
+          <Item Value="orgName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="divisionList"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Organization41">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

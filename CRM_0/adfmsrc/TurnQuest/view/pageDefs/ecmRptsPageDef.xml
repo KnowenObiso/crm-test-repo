@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="ecmRptsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findEcmSystems.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.EcmBean"
+                    id="findEcmSystemsIterator"/>
+    <methodIterator Binds="findEcmProcesses.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.EcmBean"
+                    id="findEcmProcessesIterator"/>
+    <searchRegion Binds="findEcmProcessesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EcmBean1Query"/>
+    <methodIterator Binds="findEcmProcessReports.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.EcmBean"
+                    id="findEcmProcessReportsIterator"/>
+    <searchRegion Binds="findEcmProcessReportsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EcmBean2Query"/>
+    <methodIterator Binds="findEcmsystemReports.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.EcmBean"
+                    id="findEcmsystemReportsIterator"/>
+    <searchRegion Binds="findEcmsystemReportsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EcmBean3Query"/>
+    <methodIterator Binds="findEcmProcessDocTypes.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.EcmBean"
+                    id="findEcmProcessDocTypesIterator"/>
+    <searchRegion Binds="findEcmProcessDocTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EcmBean4Query"/>
+    <methodIterator Binds="findEcmProcessContentTypes.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.EcmBean"
+                    id="findEcmProcessContentTypesIterator"/>
+    <searchRegion Binds="findEcmProcessContentTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EcmBean5Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findEcmSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEcmSystems"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findEcmSystems_BaseSetupDAO_dataProvider_findEcmSystems_result"/>
+    <tree IterBinding="findEcmSystemsIterator" id="EcmBean">
+      <nodeDefinition DefName="TurnQuest.view.setups.EcmBean" Name="EcmBean0">
+        <AttrNames>
+          <Item Value="sysname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEcmProcesses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEcmProcesses"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findEcmProcesses_BaseSetupDAO_dataProvider_findEcmProcesses_result"/>
+    <tree IterBinding="findEcmProcessesIterator" id="EcmBean1">
+      <nodeDefinition DefName="TurnQuest.view.setups.EcmBean" Name="EcmBean10">
+        <AttrNames>
+          <Item Value="processCode"/>
+          <Item Value="processName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEcmProcessReports" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEcmProcessReports"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findEcmProcessReports_BaseSetupDAO_dataProvider_findEcmProcessReports_result"/>
+    <tree IterBinding="findEcmProcessReportsIterator" id="EcmBean2">
+      <nodeDefinition DefName="TurnQuest.view.setups.EcmBean" Name="EcmBean20">
+        <AttrNames>
+          <Item Value="rptcode"/>
+          <Item Value="rptname"/>
+          <Item Value="rptdesc"/>
+          <Item Value="sprrDesc"/>
+          <Item Value="sprrCode"/>
+          <Item Value="type"/>
+           <Item Value="contDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEcmsystemReports" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEcmsystemReports"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findEcmsystemReports_BaseSetupDAO_dataProvider_findEcmsystemReports_result"/>
+    <tree IterBinding="findEcmsystemReportsIterator" id="EcmBean3">
+      <nodeDefinition DefName="TurnQuest.view.setups.EcmBean" Name="EcmBean30">
+        <AttrNames>
+          <Item Value="rptcode"/>
+          <Item Value="rptname"/>
+          <Item Value="rptdesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEcmProcessDocTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEcmProcessDocTypes"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findEcmProcessDocTypes_BaseSetupDAO_dataProvider_findEcmProcessDocTypes_result"/>
+    <tree IterBinding="findEcmProcessDocTypesIterator" id="EcmBean4">
+      <nodeDefinition DefName="TurnQuest.view.setups.EcmBean" Name="EcmBean40">
+        <AttrNames>
+          <Item Value="content_name"/>
+          <Item Value="content_desc"/>
+          <Item Value="sdt_code"/>
+           <Item Value="contentType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEcmProcessContentTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEcmProcessContentTypes"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findEcmProcessContentTypes_BaseSetupDAO_dataProvider_findEcmProcessContentTypes_result"/>
+    <tree IterBinding="findEcmProcessContentTypesIterator" id="EcmBean5">
+      <nodeDefinition DefName="TurnQuest.view.setups.EcmBean" Name="EcmBean50">
+        <AttrNames>
+          <Item Value="content_name"/>
+          <Item Value="content_desc"/>
+          <Item Value="sdt_code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findEcmProcessDocTypesIterator" id="EcmBean6">
+      <nodeDefinition DefName="TurnQuest.view.setups.EcmBean" Name="EcmBean60">
+        <AttrNames>
+          <Item Value="content_name"/>
+          <Item Value="content_desc"/>
+          <Item Value="contentType"/>
+          <Item Value="sdt_code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+     <tree IterBinding="findEcmProcessContentTypesIterator" id="EcmBean8">
+      <nodeDefinition DefName="TurnQuest.view.setups.EcmBean" Name="EcmBean80">
+        <AttrNames>
+          <Item Value="content_name"/>
+          <Item Value="content_desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+     <tree IterBinding="findEcmProcessDocTypesIterator" id="EcmBean7">
+      <nodeDefinition DefName="TurnQuest.view.setups.EcmBean" Name="EcmBean70">
+        <AttrNames>
+          <Item Value="content_name"/>
+          <Item Value="content_desc"/>
+          <Item Value="contentType"/>
+          <Item Value="sdt_code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

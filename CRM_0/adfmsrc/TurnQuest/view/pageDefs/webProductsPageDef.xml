@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="webProductsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findProductCategories.result"
+                    DataControl="WebDefsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.web.WebDefs"
+                    id="findProductCategoriesIterator"/>
+    <searchRegion Binds="findProductCategoriesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WebDefsQuery"/>
+    <methodIterator Binds="findCatProducts.result" DataControl="WebDefsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.web.WebDefs"
+                    id="findCatProductsIterator"/>
+    <searchRegion Binds="findCatProductsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WebDefs2Query"/>
+    <methodIterator Binds="findProductOptions.result" DataControl="WebDefsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.web.WebDefs"
+                    id="findProductOptionsIterator"/>
+    <searchRegion Binds="findProductOptionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WebDefs3Query"/>
+    <methodIterator Binds="findLifeProducts.result" DataControl="WebDefsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.web.WebDefs"
+                    id="findLifeProductsIterator"/>
+    <searchRegion Binds="findLifeProductsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WebDefs4Query"/>
+    <methodIterator Binds="findLifeOptions.result" DataControl="WebDefsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.web.WebDefs"
+                    id="findLifeOptionsIterator"/>
+    <searchRegion Binds="findLifeOptionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WebDefs5Query"/>
+    <methodIterator Binds="findSystems.result" DataControl="WebDefsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.web.WebDefs"
+                    id="findSystemsIterator"/>
+    <searchRegion Binds="findSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WebDefs1Query"/>
+    <methodIterator Binds="findprodCategories.result" DataControl="WebDefsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.web.WebDefs"
+                    id="findprodCategoriesIterator"/>
+    <searchRegion Binds="findprodCategoriesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WebDefs7Query"/>
+    <methodIterator Binds="findTransProducts.result" DataControl="WebDefsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.web.WebDefs"
+                    id="findTransProductsIterator"/>
+    <searchRegion Binds="findTransProductsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WebDefs8Query"/>
+    <methodIterator Binds="findAgencyAccount.result" DataControl="WebDefsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.web.WebDefs"
+                    id="findAgencyAccountIterator"/>
+    <searchRegion Binds="findAgencyAccountIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="WebDefs10Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findProductCategories" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProductCategories"
+                  IsViewObjectMethod="false" DataControl="WebDefsDAO"
+                  InstanceName="WebDefsDAO.dataProvider"
+                  ReturnName="WebDefsDAO.methodResults.findProductCategories_WebDefsDAO_dataProvider_findProductCategories_result"/>
+    <methodAction id="findCatProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCatProducts"
+                  IsViewObjectMethod="false" DataControl="WebDefsDAO"
+                  InstanceName="WebDefsDAO.dataProvider"
+                  ReturnName="WebDefsDAO.methodResults.findCatProducts_WebDefsDAO_dataProvider_findCatProducts_result"/>
+    <tree IterBinding="findCatProductsIterator" id="WebDefs2">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs20">
+        <AttrNames>
+          <Item Value="twpCode"/>
+          <Item Value="prodCode"/>
+          <Item Value="prodDesc"/>
+          <Item Value="twpProdDesc"/>
+          <Item Value="twpcCode"/>
+          <Item Value="binder"/>
+          <Item Value="bindName"/>
+          <Item Value="bindCode"/>
+          <Item Value="agencyCode"/>
+          <Item Value="agencyAccounts"/>
+          <Item Value="agaCode"/>
+          <Item Value="twpcName"/>
+          <Item Value="agaShtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findProductOptions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProductOptions"
+                  IsViewObjectMethod="false" DataControl="WebDefsDAO"
+                  InstanceName="WebDefsDAO.dataProvider"
+                  ReturnName="WebDefsDAO.methodResults.findProductOptions_WebDefsDAO_dataProvider_findProductOptions_result"/>
+    <tree IterBinding="findProductOptionsIterator" id="WebDefs3">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs30">
+        <AttrNames>
+          <Item Value="twpoCode"/>
+          <Item Value="popCode"/>
+          <Item Value="twpoDesc"/>
+          <Item Value="popDesc"/>
+          <Item Value="twpcCode"/>
+          <Item Value="bindName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findLifeProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLifeProducts"
+                  IsViewObjectMethod="false" DataControl="WebDefsDAO"
+                  InstanceName="WebDefsDAO.dataProvider"
+                  ReturnName="WebDefsDAO.methodResults.findLifeProducts_WebDefsDAO_dataProvider_findLifeProducts_result"/>
+    <tree IterBinding="findLifeProductsIterator" id="WebDefs4">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs40">
+        <AttrNames>
+          <Item Value="prodCode"/>
+          <Item Value="prodShtDesc"/>
+          <Item Value="prodDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findLifeOptions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLifeOptions"
+                  IsViewObjectMethod="false" DataControl="WebDefsDAO"
+                  InstanceName="WebDefsDAO.dataProvider"
+                  ReturnName="WebDefsDAO.methodResults.findLifeOptions_WebDefsDAO_dataProvider_findLifeOptions_result"/>
+    <tree IterBinding="findLifeOptionsIterator" id="WebDefs5">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs50">
+        <AttrNames>
+          <Item Value="popCode"/>
+          <Item Value="popShtDesc"/>
+          <Item Value="popDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findProductCategoriesIterator" id="WebDefs">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs0">
+        <AttrNames>
+          <Item Value="twpcCode"/>
+          <Item Value="twpcName"/>
+          <Item Value="twpcDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystems"
+                  IsViewObjectMethod="false" DataControl="WebDefsDAO"
+                  InstanceName="WebDefsDAO.dataProvider"
+                  ReturnName="WebDefsDAO.methodResults.findSystems_WebDefsDAO_dataProvider_findSystems_result"/>
+    <tree IterBinding="findSystemsIterator" id="WebDefs1">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs10">
+        <AttrNames>
+          <Item Value="systemName"/>
+          <Item Value="systemCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findprodCategories" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findprodCategories"
+                  IsViewObjectMethod="false" DataControl="WebDefsDAO"
+                  InstanceName="WebDefsDAO.dataProvider"
+                  ReturnName="WebDefsDAO.methodResults.findprodCategories_WebDefsDAO_dataProvider_findprodCategories_result"/>
+    <tree IterBinding="findprodCategoriesIterator" id="WebDefs7">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs70">
+        <AttrNames>
+          <Item Value="twpCode"/>
+          <Item Value="twpcName"/>
+          <Item Value="twpcDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findProductCategoriesIterator" id="WebDefs6">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs60">
+        <AttrNames>
+          <Item Value="systemName"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="products"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.web.WebBean" Name="WebDefs61">
+        <AttrNames>
+          <Item Value="twpcName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findTransProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findTransProducts"
+                  IsViewObjectMethod="false" DataControl="WebDefsDAO"
+                  InstanceName="WebDefsDAO.dataProvider"
+                  ReturnName="WebDefsDAO.methodResults.findTransProducts_WebDefsDAO_dataProvider_findTransProducts_result"/>
+    <tree IterBinding="findTransProductsIterator" id="WebDefs8">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs80">
+        <AttrNames>
+          <Item Value="binderCode"/>
+          <Item Value="binderShtDesc"/>
+          <Item Value="binderName"/>
+          <Item Value="productCode"/>
+          <Item Value="productShtCode"/>
+          <Item Value="productDesc"/>
+          <Item Value="productAccomodation"/>
+          <Item Value="proPreReqShtDesc"/>
+          <Item Value="productMinimumPremium"/>
+          <Item Value="proEditPolNo"/>
+          <Item Value="agntCode"/>
+          <Item Value="agntName"/>
+          <Item Value="AGN_COMM_ALLOWED"/>
+          <Item Value="prgType"/>
+          <Item Value="agntShtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findTransProductsIterator" id="WebDefs9">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs90">
+        <AttrNames>
+          <Item Value="binderCode"/>
+          <Item Value="binderShtDesc"/>
+          <Item Value="binderName"/>
+          <Item Value="productCode"/>
+          <Item Value="productShtCode"/>
+          <Item Value="productDesc"/>
+          <Item Value="productAccomodation"/>
+          <Item Value="proPreReqShtDesc"/>
+          <Item Value="productMinimumPremium"/>
+          <Item Value="proEditPolNo"/>
+          <Item Value="agntCode"/>
+          <Item Value="agntName"/>
+          <Item Value="AGN_COMM_ALLOWED"/>
+          <Item Value="prgType"/>
+          <Item Value="agntShtDesc"/>
+          <Item Value="twpcCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAgencyAccount" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAgencyAccount"
+                  IsViewObjectMethod="false" DataControl="WebDefsDAO"
+                  InstanceName="WebDefsDAO.dataProvider"
+                  ReturnName="WebDefsDAO.methodResults.findAgencyAccount_WebDefsDAO_dataProvider_findAgencyAccount_result"/>
+    <tree IterBinding="findAgencyAccountIterator" id="WebDefs10">
+      <nodeDefinition DefName="TurnQuest.view.web.WebDefs" Name="WebDefs100">
+        <AttrNames>
+          <Item Value="agaCode"/>
+          <Item Value="agaShtDesc"/>
+          <Item Value="agaName"/>
+          <Item Value="agaCreatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

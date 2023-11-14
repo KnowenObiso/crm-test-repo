@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.54.7"
+          id="Branch" Package="TurnQuest.view.Branches"
+          BeanClass="TurnQuest.view.Branches.Branch" isJavaBased="true">
+  <Attribute Name="orgCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="orgShtDesc" Type="java.lang.String"/>
+  <Attribute Name="orgName" Type="java.lang.String"/>
+  <Attribute Name="regCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="regOrgCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="regName" Type="java.lang.String"/>
+  <Attribute Name="usrBranchCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="branchCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="usrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="usrStatus" Type="java.lang.String"/>
+  <Attribute Name="usrDftBranch" Type="java.lang.String"/>
+  <Attribute Name="branchName" Type="java.lang.String"/>
+  <Attribute Name="regShtDesc" Type="java.lang.String"/>
+  <Attribute Name="nodeType" Type="java.lang.String"/>
+  <Attribute Name="branchSelected" Type="java.lang.Boolean"/>
+  <Attribute Name="branchShtDesc" Type="java.lang.String"/>
+  <AccessorAttribute id="regionsList" IsCollection="true"
+                     BeanClass="TurnQuest.view.Branches.Region"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="divisionsList" IsCollection="true"
+                     BeanClass="TurnQuest.view.Divisions.Division"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Branches.Branch"
+                     BeanClass="TurnQuest.view.Branches.Branch" id="Branch"/>
+</JavaBean>

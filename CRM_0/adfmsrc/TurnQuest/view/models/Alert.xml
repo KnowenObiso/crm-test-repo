@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Alert" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.Alert" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="alrt_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="sys_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="agn_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="clnt_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="date" Type="java.util.Date"/>
+  <Attribute Name="period" Type="java.math.BigDecimal"/>
+  <Attribute Name="user_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="dest_type" Type="java.lang.String"/>
+  <Attribute Name="dest_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="msgt_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="agency_name" Type="java.lang.String"/>
+  <Attribute Name="template_sht_desc" Type="java.lang.String"/>
+  <Attribute Name="acc_name" Type="java.lang.String"/>
+  <Attribute Name="status" Type="java.lang.String"/>
+  <Attribute Name="short_desc" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.Alert"
+                     BeanClass="TurnQuest.view.models.Alert" id="Alert"/>
+</JavaBean>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.54.7"
+          id="UserDAO" Package="TurnQuest.view.Usr"
+          BeanClass="TurnQuest.view.Usr.UserDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="findUsers"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="findSystems"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="findUserSystems"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="findAllSystemUsers"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.Role"
+                  BeanClass="TurnQuest.view.roles.Role" id="fetchAllSystemRoles"
+                  ReturnNodeName="Role"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.Role"
+                  BeanClass="TurnQuest.view.roles.Role" id="fetchAllUserRoles"
+                  ReturnNodeName="Role"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="fetchUnassignedUserSystems" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="fetchAssignedUserSystems" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="fetchUnassignedUserRoles" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="fetchAssignedUserRoles" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.UtilObject"
+                  BeanClass="TurnQuest.view.Usr.UtilObject"
+                  id="fetchUserNonDefaultBranches" ReturnNodeName="UtilObject"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.UtilObject"
+                  BeanClass="TurnQuest.view.Usr.UtilObject"
+                  id="fetchUserNonDefaultDivisions" ReturnNodeName="UtilObject"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.Personnel"
+                  BeanClass="TurnQuest.view.Usr.Personnel"
+                  id="fetchAllPersonnels" ReturnNodeName="Personnel"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="getPersonnelName" ReturnNodeName="Return">
+    <ParameterInfo id="personnelId" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="findAllSystems"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.UserSystem"
+                  BeanClass="TurnQuest.view.models.UserSystem"
+                  id="fetchAllUserAssignedSystems" ReturnNodeName="UserSystem"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="findUsersGroupMembers"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="findAllUsersNotInGroup" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="FindAccountOfficers"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="fetchAllSystems"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="findAllIndividualUsers" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="findDomainUsers"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="findUserSubAcctTypes"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="fetchAllUsers"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User" id="fetchKpis"
+                  ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Usr.UserDAO"
+                     BeanClass="TurnQuest.view.Usr.UserDAO" id="UserDAO"/>
+</JavaBean>

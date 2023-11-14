@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="singleMessagePageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchClientsByCriteria.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.Client2"
+                    id="fetchClientsByCriteriaIterator"/>
+    <searchRegion Binds="fetchClientsByCriteriaIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client2Query"/>
+    <methodIterator Binds="fetchAllSystems.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchAllSystemsIterator"/>
+    <searchRegion Binds="fetchAllSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="findMsgTemplate.result" DataControl="MemoDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.models.MessageTemplate"
+                    id="findMsgTemplateIterator"/>
+    <searchRegion Binds="findMsgTemplateIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageTemplateQuery"/>
+                   <methodIterator Binds="fetchAllAccountAgenciesInfoOnly.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.Agency"
+                    id="fetchAllAccountAgenciesInfoOnlyIterator"/>
+    <searchRegion Binds="fetchAllAccountAgenciesInfoOnlyIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencyQuery33"/>
+                   <methodIterator Binds="fetchAllAccountTypes.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountsType"
+                    id="fetchAllAccountTypesIterator"/>
+    <searchRegion Binds="fetchAllAccountTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountsTypeQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchClientsByCriteria" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchClientsByCriteria"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.fetchClientsByCriteria_MainClientDAO_dataProvider_fetchClientsByCriteria_result"/>
+    <tree IterBinding="fetchClientsByCriteriaIterator" id="Client2">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="otherNames"/>
+          <Item Value="idRegNo"/>
+          <Item Value="dob"/>
+          <Item Value="pin"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="countryCode"/>
+          <Item Value="countryName"/>
+          <Item Value="townCode"/>
+          <Item Value="townName"/>
+          <Item Value="email"/>
+          <Item Value="phone1"/>
+          <Item Value="phone2"/>
+          <Item Value="status"/>
+          <Item Value="fax"/>
+          <Item Value="remarks"/>
+          <Item Value="specialTerms"/>
+          <Item Value="declinedProp"/>
+          <Item Value="increasedPremium"/>
+          <Item Value="policyCancelled"/>
+          <Item Value="proposer"/>
+          <Item Value="accountNum"/>
+          <Item Value="domicileCountries"/>
+          <Item Value="wef"/>
+          <Item Value="wet"/>
+          <Item Value="withdrawalReason"/>
+          <Item Value="sectorCode"/>
+          <Item Value="surname"/>
+          <Item Value="type"/>
+          <Item Value="title"/>
+          <Item Value="business"/>
+          <Item Value="zipCode"/>
+          <Item Value="bankBranchCode"/>
+          <Item Value="bankAccountNum"/>
+          <Item Value="clientCode"/>
+          <Item Value="nonDirect"/>
+          <Item Value="createdBy"/>
+          <Item Value="sms"/>
+          <Item Value="agentStatus"/>
+          <Item Value="dateCreated"/>
+          <Item Value="runOff"/>
+          <Item Value="loadedBy"/>
+          <Item Value="directClient"/>
+          <Item Value="oldAccountNum"/>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="passportNumber"/>
+          <Item Value="contactName1"/>
+          <Item Value="contactPhone1"/>
+          <Item Value="contactEmail1"/>
+          <Item Value="contactName2"/>
+          <Item Value="contactPhone2"/>
+          <Item Value="contactEmail2"/>
+          <Item Value="gender"/>
+          <Item Value="stsCode"/>
+          <Item Value="stsName"/>
+          <Item Value="sectorName"/>
+          <Item Value="website"/>
+          <Item Value="auditors"/>
+          <Item Value="parent_company"/>
+          <Item Value="current_insurer"/>
+          <Item Value="projected_business"/>
+          <Item Value="date_of_empl"/>
+          <Item Value="driving_licence"/>
+          <Item Value="clnt_code"/>
+          <Item Value="clntdir_code"/>
+          <Item Value="clntdir_clnt_code"/>
+          <Item Value="clntdir_year"/>
+          <Item Value="clntdir_name"/>
+          <Item Value="clntdir_qualifications"/>
+          <Item Value="clntdir_pct_holdg"/>
+          <Item Value="clntdir_designation"/>
+          <Item Value="clntaud_code"/>
+          <Item Value="clntaud_clnt_code"/>
+          <Item Value="clntaud_year"/>
+          <Item Value="clntaud_name"/>
+          <Item Value="clntaud_qualifications"/>
+          <Item Value="clntaud_telephone"/>
+          <Item Value="clntaud_designation"/>
+          <Item Value="parent_company_name"/>
+          <Item Value="brnCode"/>
+          <Item Value="brnName"/>
+          <Item Value="grp_Code"/>
+          <Item Value="grp_Name"/>
+          <Item Value="grp_Minimum"/>
+          <Item Value="grp_Maximum"/>
+          <Item Value="grpd_Code"/>
+          <Item Value="grpd_Clnt_Code"/>
+          <Item Value="grpd_Grp_Code"/>
+          <Item Value="selected"/>
+          <Item Value="aacOfficer"/>
+          <Item Value="aacOfficerName"/>
+          <Item Value="select"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAllSystems_UserDAO_dataProvider_fetchAllSystems_result"/>
+    <tree IterBinding="fetchAllSystemsIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+          <Item Value="sysActive"/>
+          <Item Value="sysWef"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findMsgTemplate" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findMsgTemplate"
+                  IsViewObjectMethod="false" DataControl="MemoDAO"
+                  InstanceName="MemoDAO.dataProvider"
+                  ReturnName="MemoDAO.methodResults.findMsgTemplate_MemoDAO_dataProvider_findMsgTemplate_result"/>
+    <tree IterBinding="findMsgTemplateIterator" id="MessageTemplate">
+      <nodeDefinition DefName="TurnQuest.view.models.MessageTemplate"
+                      Name="MessageTemplate0">
+        <AttrNames>
+          <Item Value="SQLTypeName"/>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysCode"/>
+          <Item Value="msgtSysModule"/>
+          <Item Value="msgtType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+      <methodAction id="fetchAllAccountAgenciesInfoOnly"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchAllAccountAgenciesInfoOnly"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAllAccountAgenciesInfoOnly_MainAccountsDAO_dataProvider_fetchAllAccountAgenciesInfoOnly_result"/>
+    <tree IterBinding="fetchAllAccountAgenciesInfoOnlyIterator" id="Agency">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="code"/>
+          <Item Value="accountCode"/>
+          <Item Value="shortDesc"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="townCode"/>
+          <Item Value="countryCode"/>
+          <Item Value="emailAddress"/>
+          <Item Value="webAddress"/>
+          <Item Value="zip"/>
+          <Item Value="contactPerson"/>
+          <Item Value="contactTitle"/>
+          <Item Value="telephone1"/>
+          <Item Value="telephone2"/>
+          <Item Value="fax"/>
+          <Item Value="accountNum"/>
+          <Item Value="PIN"/>
+          <Item Value="commission"/>
+          <Item Value="creditAllowed"/>
+          <Item Value="witholdTx"/>
+          <Item Value="printDbNote"/>
+          <Item Value="status"/>
+          <Item Value="dateCreated"/>
+          <Item Value="createdBy"/>
+          <Item Value="registrationCode"/>
+          <Item Value="commReserverate"/>
+          <Item Value="annualBudget"/>
+          <Item Value="statusEffectiveDate"/>
+          <Item Value="creditPeriod"/>
+          <Item Value="commStatEffectiveDate"/>
+          <Item Value="commStatusDate"/>
+          <Item Value="commAllowed"/>
+          <Item Value="checked"/>
+          <Item Value="checkedBy"/>
+          <Item Value="checkDate"/>
+          <Item Value="compCommArrears"/>
+          <Item Value="reinsurer"/>
+          <Item Value="branchCode"/>
+          <Item Value="town"/>
+          <Item Value="country"/>
+          <Item Value="statusDesc"/>
+          <Item Value="IDNum"/>
+          <Item Value="conCode"/>
+          <Item Value="agentCode"/>
+          <Item Value="sms"/>
+          <Item Value="holdCompanyCode"/>
+          <Item Value="sectorCode"/>
+          <Item Value="classCode"/>
+          <Item Value="expiriyDate"/>
+          <Item Value="licenseNum"/>
+          <Item Value="runOff"/>
+          <Item Value="licensed"/>
+          <Item Value="licenseGracePeriod"/>
+          <Item Value="oldAccountNum"/>
+          <Item Value="statusRemarks"/>
+          <Item Value="branchName"/>
+          <Item Value="holdCompanyName"/>
+          <Item Value="sectorName"/>
+          <Item Value="className"/>
+          <Item Value="bankCode"/>
+          <Item Value="bankName"/>
+          <Item Value="bankBranchCode"/>
+          <Item Value="bankBranchName"/>
+          <Item Value="accountNo"/>
+          <Item Value="agentPrefix"/>
+          <Item Value="couAdminType"/>
+          <Item Value="agentStateCode"/>
+          <Item Value="agentStateName"/>
+          <Item Value="agentCrRating"/>
+          <Item Value="clientName"/>
+          <Item Value="accountManager"/>
+          <Item Value="bru_code"/>
+          <Item Value="promTransDate"/>
+          <Item Value="transType"/>
+          <Item Value="promDemType"/>
+          <Item Value="brnName"/>
+          <Item Value="braName"/>
+          <Item Value="brnCode"/>
+          <Item Value="agencyPrefix"/>
+          <Item Value="unitPrefix"/>
+          <Item Value="agencySeqNumber"/>
+          <Item Value="precontractCode"/>
+          <Item Value="couZipCode"/>
+           <Item Value="select"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+     <methodAction id="fetchAllAccountTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllAccountTypes"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAllAccountTypes_MainAccountsDAO_dataProvider_fetchAllAccountTypes_result"/>
+    <tree IterBinding="fetchAllAccountTypesIterator" id="AccountsType">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountsType"
+                      Name="AccountsType0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="accountTypeShortDesc"/>
+          <Item Value="accountType"/>
+          <Item Value="wthtxRate"/>
+          <Item Value="typeId"/>
+          <Item Value="commReserveRate"/>
+          <Item Value="maxAdvAmt"/>
+          <Item Value="maxAdvRepaymentPrd"/>
+          <Item Value="rcptsIncludeComm"/>
+          <Item Value="overideRate"/>
+          <Item Value="idSerialFormat"/>
+          <Item Value="vatRate"/>
+          <Item Value="accNumber"/>
+          <Item Value="accName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+   
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ClaimPaymentModesDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.ClaimPaymentModesDAO"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.ClaimPaymentModes"
+                  BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+                  id="fetchAlClaimsModes" ReturnNodeName="ClaimPaymentModes"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.ClaimPaymentModes"
+                  BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+                  id="fetchAlLMobileTypes" ReturnNodeName="ClaimPaymentModes"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.ClaimPaymentModes"
+                  BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+                  id="fetchAlLMobileTypePrefix"
+                  ReturnNodeName="ClaimPaymentModes"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.dao.ClaimPaymentModesDAO"
+                     BeanClass="TurnQuest.view.dao.ClaimPaymentModesDAO"
+                     id="ClaimPaymentModesDAO"/>
+</JavaBean>

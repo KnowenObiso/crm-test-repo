@@ -1,0 +1,149 @@
+package TurnQuest.view.models;
+
+import java.math.BigDecimal;
+import java.sql.Date;
+
+public class ClientSignatory {
+    private BigDecimal code;
+    private BigDecimal clientCode;
+    private String    title;
+    private String    name;
+    private String    sourceOfIncome;
+    private String    occupation;
+    private String    gender;
+    private String    nationality; 
+    private Date     dateOfbirth;
+    private String    placeOfbirth;
+    private String    phoneNo;
+    private String    meansOfId;
+    private String    taxNo;
+    private String    email;
+    private String    address;
+
+    public void setCode(BigDecimal code) {
+        this.code = code;
+    }
+
+    public BigDecimal getCode() {
+        return code;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public void setDateOfbirth(Date dateOfbirth) {
+        this.dateOfbirth = dateOfbirth;
+    }
+
+    public Date getDateOfbirth() {
+        return dateOfbirth;
+    }
+
+    public void setPlaceOfbirth(String placeOfbirth) {
+        this.placeOfbirth = placeOfbirth;
+    }
+
+    public String getPlaceOfbirth() {
+        return placeOfbirth;
+    }
+
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public String getPhoneNo() {
+        return phoneNo;
+    }
+
+    public void setMeansOfId(String meansOfId) {
+        this.meansOfId = meansOfId;
+    }
+
+    public String getMeansOfId() {
+        return meansOfId;
+    }
+
+    public void setTaxNo(String taxNo) {
+        this.taxNo = taxNo;
+    }
+
+    public String getTaxNo() {
+        return taxNo;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setSourceOfIncome(String sourceOfIncome) {
+        this.sourceOfIncome = sourceOfIncome;
+    }
+
+    public String getSourceOfIncome() {
+        return sourceOfIncome;
+    }
+
+    public void setClientCode(BigDecimal clientCode) {
+        this.clientCode = clientCode;
+    }
+
+    public BigDecimal getClientCode() {
+        return clientCode;
+    }
+    @Override
+    public String toString() {
+        return "ClientSignatory [code=" + code + ", name=" + name + ", email=" + email
+                + ", phoneNo=" + phoneNo + "]";
+    }
+}

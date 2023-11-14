@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="MobileSmsMessagesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllSystems.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="fetchAllSystemsIterator"/>
+    <searchRegion Binds="fetchAllSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SystemQuery"/>
+     <methodIterator Binds="fetchAllmessages.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="fetchAllmessagesIterator"/>
+    <searchRegion Binds="fetchAllmessagesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="System1Query"/>
+    <methodIterator Binds="fetchAllmessages1.result" DataControl="MessagingDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="fetchAllmessages1Iterator"/>
+    <searchRegion Binds="fetchAllmessages1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="System2Query"/>
+     <methodIterator Binds="fetchClientsByCriteria.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.Client2"
+                    id="fetchClientsByCriteriaIterator"/>
+    <searchRegion Binds="fetchClientsByCriteriaIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client2Query"/>
+    
+    <methodIterator Binds="findMsgTemplate.result" DataControl="MemoDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.models.MessageTemplate"
+                    id="findMsgTemplateIterator"/>
+    <searchRegion Binds="findMsgTemplateIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageTemplateQuery"/>
+    <methodIterator Binds="fetchAlLMobileTypePrefix.result"
+                    DataControl="ServiceProviderDAO" RangeSize="200"
+                    BeanClass="TurnQuest.view.provider.ServiceProvider"
+                    id="fetchAlLMobileTypePrefixIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllSystems_HierarchyDAO_dataProvider_fetchAllSystems_result"/>
+    <tree IterBinding="fetchAllSystemsIterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  
+    <methodAction id="fetchAllmessages" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllmessages"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllmessages_HierarchyDAO_dataProvider_fetchAllmessages_result"/>
+    <tree IterBinding="fetchAllmessagesIterator" id="System1">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System10">
+        <AttrNames>
+          <Item Value="sms_pol_no"/>
+          <Item Value="sms_clnt_code"/>
+          <Item Value="sms_tel_no"/>
+          <Item Value="sms_msg"/>
+          <Item Value="sms_status"/>
+          <Item Value="sms_prepared_by"/>
+          <Item Value="pol_current_status"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllmessages1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllmessages"
+                  IsViewObjectMethod="false" DataControl="MessagingDAO"
+                  InstanceName="MessagingDAO.dataProvider"
+                  ReturnName="MessagingDAO.methodResults.fetchAllmessages_MessagingDAO_dataProvider_fetchAllmessages_result"/>
+    <tree IterBinding="fetchAllmessages1Iterator" id="System2">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System20">
+        <AttrNames>
+          <Item Value="sms_pol_no"/>
+          <Item Value="sms_clnt_code"/>
+          <Item Value="sms_tel_no"/>
+          <Item Value="sms_msg"/>
+          <Item Value="selected"/>
+          <Item Value="sms_status"/>
+          <Item Value="sms_prepared_by"/>
+          <Item Value="pol_current_status"/>
+          <Item Value="code"/>
+          <Item Value="couCode"/>
+          <Item Value="couZipCode"/>
+          <Item Value="sms_code"/>
+          <Item Value="sms_sys_module"/>
+          <Item Value="sms_send_date"/>
+          <Item Value="clientName"/>
+           <Item Value="transLevel"/>
+           <Item Value="divName"/>
+           <Item Value="datePrepared"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+     <methodAction id="fetchClientsByCriteria" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchClientsByCriteria"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.fetchClientsByCriteria_MainClientDAO_dataProvider_fetchClientsByCriteria_result"/>
+    <tree IterBinding="fetchClientsByCriteriaIterator" id="Client2">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="otherNames"/>
+          <Item Value="idRegNo"/>
+          <Item Value="dob"/>
+          <Item Value="pin"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="countryCode"/>
+          <Item Value="countryName"/>
+          <Item Value="townCode"/>
+          <Item Value="townName"/>
+          <Item Value="email"/>
+          <Item Value="phone1"/>
+          <Item Value="phone2"/>
+          <Item Value="status"/>
+          <Item Value="fax"/>
+          <Item Value="remarks"/>
+          <Item Value="specialTerms"/>
+          <Item Value="declinedProp"/>
+          <Item Value="increasedPremium"/>
+          <Item Value="policyCancelled"/>
+          <Item Value="proposer"/>
+          <Item Value="accountNum"/>
+          <Item Value="domicileCountries"/>
+          <Item Value="wef"/>
+          <Item Value="wet"/>
+          <Item Value="withdrawalReason"/>
+          <Item Value="sectorCode"/>
+          <Item Value="surname"/>
+          <Item Value="type"/>
+          <Item Value="title"/>
+          <Item Value="business"/>
+          <Item Value="zipCode"/>
+          <Item Value="couZipCode"/>
+          <Item Value="bankBranchCode"/>
+          <Item Value="bankAccountNum"/>
+          <Item Value="clientCode"/>
+          <Item Value="nonDirect"/>
+          <Item Value="createdBy"/>
+          <Item Value="sms"/>
+          <Item Value="agentStatus"/>
+          <Item Value="dateCreated"/>
+          <Item Value="runOff"/>
+          <Item Value="loadedBy"/>
+          <Item Value="directClient"/>
+          <Item Value="oldAccountNum"/>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="passportNumber"/>
+          <Item Value="contactName1"/>
+          <Item Value="contactPhone1"/>
+          <Item Value="contactEmail1"/>
+          <Item Value="contactName2"/>
+          <Item Value="contactPhone2"/>
+          <Item Value="contactEmail2"/>
+          <Item Value="gender"/>
+          <Item Value="stsCode"/>
+          <Item Value="stsName"/>
+          <Item Value="sectorName"/>
+          <Item Value="website"/>
+          <Item Value="auditors"/>
+          <Item Value="parent_company"/>
+          <Item Value="current_insurer"/>
+          <Item Value="projected_business"/>
+          <Item Value="date_of_empl"/>
+          <Item Value="driving_licence"/>
+          <Item Value="clnt_code"/>
+          <Item Value="clntdir_code"/>
+          <Item Value="clntdir_clnt_code"/>
+          <Item Value="clntdir_year"/>
+          <Item Value="clntdir_name"/>
+          <Item Value="clntdir_qualifications"/>
+          <Item Value="clntdir_pct_holdg"/>
+          <Item Value="clntdir_designation"/>
+          <Item Value="clntaud_code"/>
+          <Item Value="clntaud_clnt_code"/>
+          <Item Value="clntaud_year"/>
+          <Item Value="clntaud_name"/>
+          <Item Value="clntaud_qualifications"/>
+          <Item Value="clntaud_telephone"/>
+          <Item Value="clntaud_designation"/>
+          <Item Value="parent_company_name"/>
+          <Item Value="brnCode"/>
+          <Item Value="brnName"/>
+          <Item Value="grp_Code"/>
+          <Item Value="grp_Name"/>
+          <Item Value="grp_Minimum"/>
+          <Item Value="grp_Maximum"/>
+          <Item Value="grpd_Code"/>
+          <Item Value="grpd_Clnt_Code"/>
+          <Item Value="grpd_Grp_Code"/>
+          <Item Value="selected"/>
+          <Item Value="aacOfficer"/>
+          <Item Value="aacOfficerName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+   
+    <methodAction id="findMsgTemplate" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findMsgTemplate"
+                  IsViewObjectMethod="false" DataControl="MemoDAO"
+                  InstanceName="MemoDAO.dataProvider"
+                  ReturnName="MemoDAO.methodResults.findMsgTemplate_MemoDAO_dataProvider_findMsgTemplate_result"/>
+    <tree IterBinding="findMsgTemplateIterator" id="MessageTemplate">
+      <nodeDefinition DefName="TurnQuest.view.models.MessageTemplate"
+                      Name="MessageTemplate0">
+        <AttrNames>
+          <Item Value="SQLTypeName"/>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysCode"/>
+          <Item Value="msgtSysModule"/>
+          <Item Value="msgtType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAlLMobileTypePrefix" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAlLMobileTypePrefix"
+                  IsViewObjectMethod="false" DataControl="ServiceProviderDAO"
+                  InstanceName="ServiceProviderDAO.dataProvider"
+                  ReturnName="ServiceProviderDAO.methodResults.fetchAlLMobileTypePrefix_ServiceProviderDAO_dataProvider_fetchAlLMobileTypePrefix_result"/>
+    <list IterBinding="fetchAlLMobileTypePrefixIterator"
+          ListOperMode="navigation" ListIter="fetchAlLMobileTypePrefixIterator"
+          id="ServiceProvider" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="prefix"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

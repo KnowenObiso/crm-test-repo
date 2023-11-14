@@ -1,6 +1,0 @@
-This is the first file here
-
-Another added line.
-line 3 of infinity
-
-next line

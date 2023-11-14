@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="System" Package="TurnQuest.view.provider"
+          BeanClass="TurnQuest.view.provider.System" isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="shortDesc" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="mainFormName" Type="java.lang.String"/>
+  <Attribute Name="active" Type="java.lang.String"/>
+  <Attribute Name="dbUsername" Type="java.lang.String"/>
+  <Attribute Name="dbPassword" Type="java.lang.String"/>
+  <Attribute Name="dbString" Type="java.lang.String"/>
+  <Attribute Name="path" Type="java.lang.String"/>
+  <Attribute Name="orgCode" Type="java.lang.String"/>
+  <Attribute Name="agentMainFormName" Type="java.lang.String"/>
+  <Attribute Name="kbaCode" Type="java.lang.String"/>
+  <Attribute Name="signaturePath" Type="java.lang.String"/>
+  <Attribute Name="sysTemplate" Type="java.lang.String"/>
+  <Attribute Name="nodeType" Type="java.lang.String"/>
+  <Attribute Name="CMT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CMT_ACC_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CMT_DATE" Type="java.util.Date"/>
+  <Attribute Name="RELATED_ACCOUNT" Type="java.lang.String"/>
+  <Attribute Name="RELATED_EMAIL" Type="java.lang.String"/>
+  <Attribute Name="CMSG_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CMSG_TYPE" Type="java.lang.String"/>
+  <Attribute Name="CMSG_TYPE_DESC" Type="java.lang.String"/>
+  <Attribute Name="CMSG_SUBJ" Type="java.lang.String"/>
+  <Attribute Name="CMSG_BODY" Type="java.lang.String"/>
+  <Attribute Name="CMSG_STATUS" Type="java.lang.String"/>
+  <Attribute Name="CMSG_STATUS_DESC" Type="java.lang.String"/>
+  <Attribute Name="CMSG_DATE" Type="java.util.Date"/>
+  <Attribute Name="CMSG_SEND_ALL" Type="java.lang.String"/>
+  <Attribute Name="CMSG_SEND_ALL_DESC" Type="java.lang.String"/>
+  <Attribute Name="brn_code" Type="java.lang.String"/>
+  <Attribute Name="brn_sht_desc" Type="java.lang.String"/>
+  <Attribute Name="brn_reg_code" Type="java.lang.String"/>
+  <Attribute Name="brn_name" Type="java.lang.String"/>
+  <Attribute Name="brn_phy_addrs" Type="java.lang.String"/>
+  <Attribute Name="brn_email_addrs" Type="java.lang.String"/>
+  <Attribute Name="brn_post_addrs" Type="java.lang.String"/>
+  <Attribute Name="brn_twn_code" Type="java.lang.String"/>
+  <Attribute Name="brn_cou_code" Type="java.lang.String"/>
+  <Attribute Name="brn_contact" Type="java.lang.String"/>
+  <Attribute Name="brn_manager" Type="java.lang.String"/>
+  <Attribute Name="brn_agn_code" Type="java.lang.String"/>
+  <Attribute Name="selected" Type="boolean"/>
+  <Attribute Name="brn_post_level" Type="java.lang.String"/>
+  <Attribute Name="v_bbr_code" Type="java.lang.String"/>
+  <Attribute Name="v_bbr_branch_name" Type="java.lang.String"/>
+  <Attribute Name="v_bbr_sht_desc" Type="java.lang.String"/>
+  <Attribute Name="v_bbr_ref_code" Type="java.lang.String"/>
+  <Attribute Name="v_bbr_bnk_code" Type="java.lang.String"/>
+  <Attribute Name="sms_code" Type="java.lang.String"/>
+  <Attribute Name="sms_sys_code" Type="java.lang.String"/>
+  <Attribute Name="sms_sys_module" Type="java.lang.String"/>
+  <Attribute Name="sms_clnt_code" Type="java.lang.String"/>
+  <Attribute Name="sms_agn_code" Type="java.lang.String"/>
+  <Attribute Name="sms_pol_no" Type="java.lang.String"/>
+  <Attribute Name="pol_current_status" Type="java.lang.String"/>
+  <Attribute Name="sms_pol_code" Type="java.lang.String"/>
+  <Attribute Name="sms_clm_no" Type="java.lang.String"/>
+  <Attribute Name="sms_tel_no" Type="java.lang.String"/>
+  <Attribute Name="sms_msg" Type="java.lang.String"/>
+  <Attribute Name="sms_status" Type="java.lang.String"/>
+  <Attribute Name="sms_prepared_by" Type="java.lang.String"/>
+  <Attribute Name="sms_send_date" Type="java.lang.String"/>
+  <Attribute Name="clientName" Type="java.lang.String"/>
+  <Attribute Name="couCode" Type="java.lang.String"/>
+  <Attribute Name="couZipCode" Type="java.lang.String"/>
+  <Attribute Name="cproCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="cproProCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="cproShtDesc" Type="java.lang.String"/>
+  <Attribute Name="cproCmpCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="cproProShtDesc" Type="java.lang.String"/>
+  <Attribute Name="cproProDesc" Type="java.lang.String"/>
+  <Attribute Name="emailType" Type="java.lang.String"/>
+  <Attribute Name="transLevel" Type="java.lang.String"/>
+  <Attribute Name="divName" Type="java.lang.String"/>
+  <Attribute Name="datePrepared" Type="java.util.Date"/>
+  <Attribute Name="out" IsUpdateable="0" Type="java.lang.Object"/>
+  <AccessorAttribute id="orgSubDivisions" IsCollection="true"
+                     BeanClass="TurnQuest.view.models.OrgSubDivision"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setOut"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="out" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.provider.System"
+                     BeanClass="TurnQuest.view.provider.System" id="System"/>
+</JavaBean>
