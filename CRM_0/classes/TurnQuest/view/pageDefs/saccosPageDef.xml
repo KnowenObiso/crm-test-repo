@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="saccosPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchSaccos.result" DataControl="AccountsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Accounts.Sacco"
+                    id="fetchSaccosIterator"/>
+    <searchRegion Binds="fetchSaccosIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SaccoQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchSaccos" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchSaccos"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="data.AccountsDAO.methodResults.fetchSaccos_AccountsDAO_dataProvider_fetchSaccos_result"/>
+    <tree IterBinding="fetchSaccosIterator" id="Sacco">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Sacco" Name="Sacco0">
+        <AttrNames>
+          <Item Value="saccoRegulatorNo"/>
+          <Item Value="saccoName"/>
+          <Item Value="saccoPhysicalAddress"/>
+          <Item Value="saccoPostalAddress"/>
+          <Item Value="saccoCountryCode"/>
+          <Item Value="saccoCountryName"/>
+          <Item Value="saccoStateCode"/>
+          <Item Value="saccoAdminRegionName"/>
+          <Item Value="saccoStateName"/>
+          <Item Value="saccoTownName"/>
+          <Item Value="saccoEmail"/>
+          <Item Value="saccoTownCode"/>
+          <Item Value="saccoWebAddress"/>
+          <Item Value="saccoPostalCode"/>
+          <Item Value="saccoContactPerson"/>
+          <Item Value="saccoContactTitle"/>
+          <Item Value="saccoTel1"/>
+          <Item Value="saccoTel2"/>
+          <Item Value="saccoFax"/>
+          <Item Value="saccoAccountNumber"/>
+          <Item Value="saccoPIN"/>
+          <Item Value="saccoStatus"/>
+          <Item Value="saccoDateCreated"/>
+          <Item Value="saccoBranchCode"/>
+          <Item Value="saccoBranchName"/>
+          <Item Value="saccoBankAccountNo"/>
+          <Item Value="saccoBankBranchCode"/>
+          <Item Value="saccoBankBranch"/>
+          <Item Value="saccoAccountNo"/>
+          <Item Value="saccoSms"/>
+          <Item Value="saccoUniquePrefix"/>
+          <Item Value="saccoLicensed"/>
+          <Item Value="saccoCode"/>
+          <Item Value="saccoShortDesc"/>
+          <Item Value="saccoCreatedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.54.7"
+          id="RoleDAO" Package="TurnQuest.view.roles"
+          BeanClass="TurnQuest.view.roles.RoleDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.Role"
+                  BeanClass="TurnQuest.view.roles.Role" id="findSysRoles"
+                  ReturnNodeName="Role"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.Role"
+                  BeanClass="TurnQuest.view.roles.Role" id="findRoleAreas"
+                  ReturnNodeName="Role"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.Role"
+                  BeanClass="TurnQuest.view.roles.Role" id="findSysProcesses"
+                  ReturnNodeName="Role"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.SubRole"
+                  BeanClass="TurnQuest.view.roles.SubRole"
+                  id="findSystemSubAreas" ReturnNodeName="SubRole"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.SubRole"
+                  BeanClass="TurnQuest.view.roles.SubRole"
+                  id="findSubAreaAuthLevels" ReturnNodeName="SubRole"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.SysProcessSubAreaLimit"
+                  BeanClass="TurnQuest.view.models.SysProcessSubAreaLimit"
+                  id="fetchSysProcessSubAreaLimits"
+                  ReturnNodeName="SysProcessSubAreaLimit"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.SysProcessSubAreaLevel"
+                  BeanClass="TurnQuest.view.models.SysProcessSubAreaLevel"
+                  id="fetchSysProcessSubAreaLevels"
+                  ReturnNodeName="SysProcessSubAreaLevel"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.UserObj"
+                  BeanClass="TurnQuest.view.models.UserObj"
+                  id="fetchUsersByTypeGroup" ReturnNodeName="UserObj"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.UserObj"
+                  BeanClass="TurnQuest.view.models.UserObj"
+                  id="fetchUsersByTypeUser" ReturnNodeName="UserObj"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.SubRole"
+                  BeanClass="TurnQuest.view.roles.SubRole"
+                  id="findSystemProcessAreas" ReturnNodeName="SubRole"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.SubRole"
+                  BeanClass="TurnQuest.view.roles.SubRole"
+                  id="findSystemRoleAreas" ReturnNodeName="SubRole"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.Role"
+                  BeanClass="TurnQuest.view.roles.Role" id="findSystemRoles"
+                  ReturnNodeName="Role"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.Role"
+                  BeanClass="TurnQuest.view.roles.Role"
+                  id="findSystemUserRights" ReturnNodeName="Role"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.roles.RoleDAO"
+                     BeanClass="TurnQuest.view.roles.RoleDAO" id="RoleDAO"/>
+</JavaBean>

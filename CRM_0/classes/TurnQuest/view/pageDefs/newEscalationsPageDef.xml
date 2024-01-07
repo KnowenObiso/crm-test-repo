@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="newEscalationsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findEscalationPoints.result"
+                    DataControl="EscalationsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.bpm.Escalations"
+                    id="findEscalationPointsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="findEscalationPoints" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEscalationPoints"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="data.EscalationsDAO.methodResults.findEscalationPoints_EscalationsDAO_dataProvider_findEscalationPoints_result"/>
+    <tree IterBinding="findEscalationPointsIterator" id="Escalations">
+      <nodeDefinition DefName="TurnQuest.view.bpm.Escalations"
+                      Name="Escalations0">
+        <AttrNames>
+          <Item Value="name"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="levels"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

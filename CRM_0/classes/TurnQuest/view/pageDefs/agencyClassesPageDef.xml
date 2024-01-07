@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="agencyClassesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllAgencyClasses.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.AgencyClass"
+                    id="fetchAllAgencyClassesIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllAgencyClasses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllAgencyClasses"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllAgencyClasses_BaseSetupDAO_dataProvider_fetchAllAgencyClasses_result"/>
+    <tree IterBinding="fetchAllAgencyClassesIterator" id="AgencyClass">
+      <nodeDefinition DefName="TurnQuest.view.setups.AgencyClass"
+                      Name="AgencyClass0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="LeadSource" Package="TurnQuest.view.Leads"
+          BeanClass="TurnQuest.view.Leads.LeadSource" isJavaBased="true">
+  <Attribute Name="leadSourceCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="leadSourceDesc" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Leads.LeadSource"
+                     BeanClass="TurnQuest.view.Leads.LeadSource"
+                     id="LeadSource"/>
+</JavaBean>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="UserObj" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.UserObj" isJavaBased="true">
+  <Attribute Name="usrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="usrUsername" Type="java.lang.String"/>
+  <Attribute Name="usrName" Type="java.lang.String"/>
+  <Attribute Name="usrLastDate" Type="java.util.Date"/>
+  <Attribute Name="usrDateCreated" Type="java.util.Date"/>
+  <Attribute Name="usrStatus" Type="java.lang.String"/>
+  <Attribute Name="usrPassword" Type="java.lang.String"/>
+  <Attribute Name="usrCreatedBy" Type="java.lang.String"/>
+  <Attribute Name="usrEmail" Type="java.lang.String"/>
+  <Attribute Name="usrPerRankId" Type="java.math.BigDecimal"/>
+  <Attribute Name="usrPerRankShortDesc" Type="java.lang.String"/>
+  <Attribute Name="usrPerId" Type="java.math.BigDecimal"/>
+  <Attribute Name="usrPersonelRank" Type="java.lang.String"/>
+  <Attribute Name="usrPasswordChanged" Type="java.util.Date"/>
+  <Attribute Name="usrPasswordReset" Type="java.lang.String"/>
+  <Attribute Name="usrLoginAttempts" Type="java.math.BigDecimal"/>
+  <Attribute Name="usrSign" Type="java.lang.String"/>
+  <Attribute Name="usrRef" Type="java.lang.String"/>
+  <Attribute Name="usrType" Type="java.lang.String"/>
+  <Attribute Name="usrSignature" Type="java.lang.String"/>
+  <Attribute Name="usrAccountManager" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.UserObj"
+                     BeanClass="TurnQuest.view.models.UserObj" id="UserObj"/>
+</JavaBean>

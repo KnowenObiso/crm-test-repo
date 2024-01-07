@@ -1,0 +1,1153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="organizationPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findCountries.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findCountriesIterator"/>
+    <searchRegion Binds="findCountriesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization1Query"/>
+    <methodIterator Binds="findTowns.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findTownsIterator"/>
+    <searchRegion Binds="findTownsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization2Query"/>
+    <methodIterator Binds="findCurrencies.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findCurrenciesIterator"/>
+    <searchRegion Binds="findCurrenciesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization3Query"/>
+    <methodIterator Binds="findRegions.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findRegionsIterator"/>
+    <searchRegion Binds="findRegionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization4Query"/>
+    <methodIterator Binds="findBranches.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findBranchesIterator"/>
+    <searchRegion Binds="findBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization5Query"/>
+    <methodIterator Binds="findBranchUnits.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findBranchUnitsIterator"/>
+    <searchRegion Binds="findBranchUnitsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization6Query"/>
+    <methodIterator Binds="findBranchNames.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findBranchNamesIterator"/>
+    <searchRegion Binds="findBranchNamesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization7Query"/>
+    <methodIterator Binds="findManagers.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findManagersIterator"/>
+    <searchRegion Binds="findManagersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization8Query"/>
+    <methodIterator Binds="findAgencyManagers.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findAgencyManagersIterator"/>
+    <searchRegion Binds="findAgencyManagersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization11Query"/>
+    <methodIterator Binds="findUnitManagers.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findUnitManagersIterator"/>
+    <searchRegion Binds="findUnitManagersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization12Query"/>
+    <methodIterator Binds="findBranchAgencies.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findBranchAgenciesIterator"/>
+    <searchRegion Binds="findBranchAgenciesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization9Query"/>
+    <methodIterator Binds="findOrgManagers.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findOrgManagersIterator"/>
+    <searchRegion Binds="findOrgManagersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization10Query"/>
+    <methodIterator Binds="findOrganization.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findOrganizationIterator"/>
+    <methodIterator Binds="fetchOrgDivisions.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Divisions.Division"
+                    id="fetchOrgDivisionsIterator"/>
+    <methodIterator Binds="findSubDivisions.result" DataControl="DivisionsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findSubDivisionsIterator"/>
+    <methodIterator Binds="findBranchUnassignedDivisions.result"
+                    DataControl="DivisionsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findBranchUnassignedDivisionsIterator"/>
+    <methodIterator Binds="findBranchDivisions.result"
+                    DataControl="DivisionsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findBranchDivisionsIterator"/>
+    <methodIterator Binds="fetchDivisionsByBranch.result"
+                    DataControl="DivisionsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Divisions.Division"
+                    id="fetchDivisionsByBranchIterator"/>
+    <!--<methodIterator Binds="fetchStatesByCountry.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.State"
+                    id="fetchStatesByCountryIterator"/>
+    <searchRegion Binds="fetchStatesByCountryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StateQuery"/>-->
+    <methodIterator Binds="fetchStatesByCountry.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.State"
+                    id="fetchStatesByCountryIterator"/>
+    <searchRegion Binds="fetchStatesByCountryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StateQuery"/>
+    <methodIterator Binds="fetchBranchNames.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.BranchName"
+                    id="fetchBranchNamesIterator"/>
+    <searchRegion Binds="fetchBranchNamesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BranchNameQuery"/>
+    <methodIterator Binds="fetchAllPersonnels.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.Personnel"
+                    id="fetchAllPersonnelsIterator"/>
+    <searchRegion Binds="fetchAllPersonnelsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PersonnelQuery"/>
+    <methodIterator Binds="findBranches1.result" DataControl="DivisionsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findBranches1Iterator"/>
+    <searchRegion Binds="findBranches1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Division6Query"/>
+    <searchRegion Binds="findBranchDivisionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Division7Query"/>
+    <methodIterator Binds="fetchAlLMobileTypePrefix.result"
+                    DataControl="ServiceProviderDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.provider.ServiceProvider"
+                    id="fetchAlLMobileTypePrefixIterator"/>
+    <methodIterator Binds="fetchAlLMobileTypePrefix2.result"
+                    DataControl="ServiceProviderDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.provider.ServiceProvider"
+                    id="fetchAlLMobileTypePrefix2Iterator"/>
+    <methodIterator Binds="findBranchContacts.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findBranchContactsIterator"/>
+    <searchRegion Binds="findBranchContactsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization13Query"/>
+    <methodIterator Binds="findBankRegions.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findBankRegionsIterator"/>
+    <searchRegion Binds="findBankRegionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization14Query"/>
+    <methodIterator Binds="findOrgBranches.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findOrgBranchesIterator"/>
+    <searchRegion Binds="findOrgBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization16Query"/>
+    <methodIterator Binds="fetchTranferableItems.result"
+                    DataControl="OrganizationDAO" 
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchTranferableItemsIterator"/>
+    <searchRegion Binds="fetchTranferableItemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization17Query"/>        
+    <methodIterator Binds="fetchTranferedItems.result"
+                    DataControl="OrganizationDAO" 
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchTranferedItemsIterator"/>
+    <searchRegion Binds="fetchTranferedItemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization18Query"/>
+    <methodIterator Binds="fetchUnitAgents.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchUnitAgentsIterator"/>
+    <searchRegion Binds="fetchUnitAgentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization20Query"/>
+    <methodIterator Binds="fetchDestLovItems.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchDestLovItemsIterator"/>
+    <searchRegion Binds="fetchDestLovItemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization21Query"/>
+    <methodIterator Binds="fetchOrgBankNames.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchOrgBankNamesIterator"/>
+    <searchRegion Binds="fetchOrgBankNamesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization22Query"/>
+    <methodIterator Binds="fetchOrgBankBranches.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="fetchOrgBankBranchesIterator"/>
+    <searchRegion Binds="fetchOrgBankBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization23Query"/>
+   <methodIterator Binds="fetchAllClientTitles.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.ClientTitle"
+                    id="fetchAllClientTitlesIterator"/>
+    <searchRegion Binds="fetchAllClientTitlesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClientTitleQuery"/>
+    <methodIterator Binds="fetchAllAccountAgenciesInfoOnly.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.Agency"
+                    id="fetchAllAccountAgenciesInfoOnlyIterator"/>
+    <searchRegion Binds="fetchAllAccountAgenciesInfoOnlyIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencyQuery"/>
+    <methodIterator Binds="findAgencyDevelopmentExecutives.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findAgencyDevelopmentExecutivesIterator"/>
+    <searchRegion Binds="findAgencyDevelopmentExecutivesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Organization24Query"/>
+    <methodIterator Binds="fetchFaAgents.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Agents.Agent"
+                    id="fetchFaAgentsIterator"/>
+    <searchRegion Binds="fetchFaAgentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgentQuery"/>
+    <methodIterator Binds="fetchAllZones.result" DataControl="ZoneDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.Zone"
+                    id="fetchAllZonesIterator"/>
+    <methodIterator Binds="fetchManagers.result" DataControl="AgentsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.Manager"
+                    id="fetchManagersIterator"/>
+    <searchRegion Binds="fetchManagersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ManagerQuery"/>
+    <methodIterator Binds="findAllActiveUsers.result" DataControl="UserDAO"
+                RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                id="findAllActiveUsersIterator"/>
+    <searchRegion Binds="findAllActiveUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery2"/>
+  </executables>
+  <bindings>
+    <methodAction id="findOrganization" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findOrganization"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findOrganization_OrganizationDAO_dataProvider_findOrganization_result"/>
+    <methodAction id="findCountries" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCountries"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findCountries_OrganizationDAO_dataProvider_findCountries_result"/>
+    <tree IterBinding="findCountriesIterator" id="Organization1">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization10">
+        <AttrNames>
+          <Item Value="couCode"/>
+          <Item Value="couShortDesc"/>
+          <Item Value="couName"/>
+          <Item Value="couBaseCurr"/>
+          <Item Value="couNationality"/>
+          <Item Value="couZipCode"/>
+          <Item Value="administrativeType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findTowns" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findTowns"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findTowns_OrganizationDAO_dataProvider_findTowns_result"/>
+    <tree IterBinding="findTownsIterator" id="Organization2">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization20">
+        <AttrNames>
+          <Item Value="twnCode"/>
+          <Item Value="twnCouCode"/>
+          <Item Value="twnShortDesc"/>
+          <Item Value="twnName"/>
+          <Item Value="twnStsCode"/>
+          <Item Value="twnPostalCode" />
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findCurrencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCurrencies"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findCurrencies_OrganizationDAO_dataProvider_findCurrencies_result"/>
+    <tree IterBinding="findCurrenciesIterator" id="Organization3">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization30">
+        <AttrNames>
+          <Item Value="curCode"/>
+          <Item Value="curSymbol"/>
+          <Item Value="curDesc"/>
+          <Item Value="curRnd"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRegions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRegions"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findRegions_OrganizationDAO_dataProvider_findRegions_result"/>
+    <tree IterBinding="findRegionsIterator" id="Organization4">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization40">
+        <AttrNames>
+          <Item Value="regCode"/>
+          <Item Value="regOrgCode"/>
+          <Item Value="regShortDesc"/>
+          <Item Value="regName"/>
+          <Item Value="regWef"/>
+          <Item Value="regWet"/>
+          <Item Value="regAgnCode"/>
+          <Item Value="regPostLevel"/>
+          <Item Value="regMngrAllowed"/>
+          <Item Value="regOverideCommEarned"/>
+          <Item Value="orgCode"/>
+          <Item Value="regManager"/>
+          <Item Value="regBrnMngrSeq_no"/>
+          <Item Value="regAgnSeqNo"/>
+          <Item Value="regProvinceName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranches"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findBranches_OrganizationDAO_dataProvider_findBranches_result"/>
+    <tree IterBinding="findBranchesIterator" id="Organization5">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization50">
+        <AttrNames>
+          <Item Value="brnCode"/>
+          <Item Value="brnShortDesc"/>
+          <Item Value="brnRegCode"/>
+          <Item Value="brnName"/>
+          <Item Value="brnPhyAddrs"/>
+          <Item Value="brnEmail"/>
+          <Item Value="brnPostAddrs"/>
+          <Item Value="brnTwnCode"/>
+          <Item Value="brnCouCode"/>
+          <Item Value="brnContact"/>
+          <Item Value="brnManager"/>
+          <Item Value="brnTel"/>
+          <Item Value="brnFax"/>
+          <Item Value="brnGenPolClm"/>
+          <Item Value="brnBnsCode"/>
+          <Item Value="brnAgnCode"/>
+          <Item Value="brnPostLevel"/>
+          <Item Value="brnMngrAllowed"/>
+          <Item Value="brnOverideCommEarned"/>
+          <Item Value="brnBrnMngrSeq_no"/>
+          <Item Value="brnAgnSeqNo"/>
+          <Item Value="brnAgnPolPrefix"/>
+          <Item Value="orgCode"/>
+          <Item Value="orgShortDesc"/>
+          <Item Value="unitspolicySeq"/>
+          <Item Value="unitspropSeq"/>
+          <Item Value="policySeq"/>
+          <Item Value="propSeq"/>
+          <Item Value="ref"/>
+          <Item Value="brnAdeCode"/>
+          <Item Value="brnAdeName"/>
+          <Item Value="brnTownName"/>
+          <Item Value="brnPostCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranchUnits" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranchUnits"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findBranchUnits_OrganizationDAO_dataProvider_findBranchUnits_result"/>
+    <tree IterBinding="findBranchUnitsIterator" id="Organization6">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization60">
+        <AttrNames>
+          <Item Value="bruCode"/>
+          <Item Value="bruBrnCode"/>
+          <Item Value="bruShortDesc"/>
+          <Item Value="bruName"/>
+          <Item Value="bruSupervisor"/>
+          <Item Value="bruStatus"/>
+          <Item Value="bruAgnCode"/>
+          <Item Value="bruBraCode"/>
+          <Item Value="bruManager"/>
+          <Item Value="bruPostLevel"/>
+          <Item Value="bruMngrAllowed"/>
+          <Item Value="bruOverideCommEarned"/>
+          <Item Value="bruAgnSeqNo"/>
+          <Item Value="orgCode"/>
+          <Item Value="orgShortDesc"/>
+          <Item Value="unitspolicySeq"/>
+          <Item Value="policySeq"/>
+          <Item Value="propSeq"/>
+          <Item Value="unitspropSeq"/>
+           <Item Value="txtAgencyName"/>
+          <Item Value="txtTeamManagerSequenceNo"/>
+         <Item Value="txtAgentsSequenceNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranchNames" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranchNames"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findBranchNames_OrganizationDAO_dataProvider_findBranchNames_result"/>
+    <tree IterBinding="findBranchNamesIterator" id="Organization7">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization70">
+        <AttrNames>
+          <Item Value="bnsCode"/>
+          <Item Value="bnsShortDesc"/>
+          <Item Value="bnsName"/>
+          <Item Value="bnsPhyAddrs"/>
+          <Item Value="bnsEmail"/>
+          <Item Value="bnsPostAddrs"/>
+          <Item Value="bnsTwnCode"/>
+          <Item Value="bnsCouCode"/>
+          <Item Value="bnsContact"/>
+          <Item Value="bnsManager"/>
+          <Item Value="bnsTel"/>
+          <Item Value="bnsFax"/>
+          <Item Value="bnsPostalCode"/>
+         
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findManagers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findManagers"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findManagers_OrganizationDAO_dataProvider_findManagers_result"/>
+    <tree IterBinding="findManagersIterator" id="Organization8">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization80">
+        <AttrNames>
+          <Item Value="agnCode"/>
+          <Item Value="agnShortDesc"/>
+          <Item Value="agnName"/>
+          <Item Value="agnTwnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAgencyManagers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAgencyManagers"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findAgencyManagers_OrganizationDAO_dataProvider_findAgencyManagers_result"/>
+    <tree IterBinding="findAgencyManagersIterator" id="Organization11">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization110">
+        <AttrNames>
+          <Item Value="agnCode"/>
+          <Item Value="agnShortDesc"/>
+          <Item Value="agnName"/>
+          <Item Value="agnTwnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUnitManagers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUnitManagers"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findUnitManagers_OrganizationDAO_dataProvider_findUnitManagers_result"/>
+    <tree IterBinding="findUnitManagersIterator" id="Organization12">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization120">
+        <AttrNames>
+          <Item Value="agnCode"/>
+          <Item Value="agnShortDesc"/>
+          <Item Value="agnName"/>
+          <Item Value="agnTwnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranchAgencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranchAgencies"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findBranchAgencies_OrganizationDAO_dataProvider_findBranchAgencies_result"/>
+    <tree IterBinding="findBranchAgenciesIterator" id="Organization9">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization90">
+        <AttrNames>
+          <Item Value="braCode"/>
+          <Item Value="braBrnCode"/>
+          <Item Value="braShortDesc"/>
+          <Item Value="braName"/>
+          <Item Value="braStatus"/>
+          <Item Value="braManager"/>
+          <Item Value="braAgnCode"/>
+          <Item Value="braPostLevel"/>
+          <Item Value="braMngrAllowed"/>
+          <Item Value="braOverideCommEarned"/>
+          <Item Value="braBrnMngrSeq_no"/>
+          <Item Value="braAgnSeqNo"/>
+          <Item Value="orgCode"/>
+          <Item Value="orgShortDesc"/>
+          <Item Value="agencypolicySeq"/>
+          <Item Value="agencypropSeq"/>
+          <Item Value="shtDescPrefix"/>
+          <Item Value="shtDescPrefix"/>
+          <Item Value="agnTxtCombuss"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findOrgManagers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findOrgManagers"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findOrgManagers_OrganizationDAO_dataProvider_findOrgManagers_result"/>
+    <tree IterBinding="findOrgManagersIterator" id="Organization10">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization100">
+        <AttrNames>
+          <Item Value="agnCode"/>
+          <Item Value="agnShortDesc"/>
+          <Item Value="agnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findOrganizationIterator" id="Organization">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization0">
+        <AttrNames>
+          <Item Value="orgName"/>
+          <Item Value="orgCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchOrgDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchOrgDivisions"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchOrgDivisions_OrganizationDAO_dataProvider_fetchOrgDivisions_result"/>
+    <tree IterBinding="fetchOrgDivisionsIterator" id="Division">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division0">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+          <Item Value="DIV_SHT_DESC"/>
+          <Item Value="DIV_DIVISION_STATUS"/>
+          <Item Value="DIV_CODE"/>
+          <Item Value="divOrder"/>
+          <Item Value="divDirectorCode"/>
+          <Item Value="divDirectorName"/>
+          <Item Value="divAssDirectorCode"/>
+          <Item Value="divAssDirectorName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSubDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSubDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findSubDivisions_DivisionsDAO_dataProvider_findSubDivisions_result"/>
+    <tree IterBinding="findSubDivisionsIterator" id="Division1">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division10">
+        <AttrNames>
+          <Item Value="SDIV_NAME"/>
+          <Item Value="SDIV_SHT_DESC"/>
+          <Item Value="SDIV_CODE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranchUnassignedDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="findBranchUnassignedDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findBranchUnassignedDivisions_DivisionsDAO_dataProvider_findBranchUnassignedDivisions_result"/>
+    <tree IterBinding="findBranchUnassignedDivisionsIterator" id="Division2">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division20">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranchDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranchDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findBranchDivisions_DivisionsDAO_dataProvider_findBranchDivisions_result"/>
+    <tree IterBinding="findBranchDivisionsIterator" id="Division3">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division30">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+          <Item Value="BRN_NAME"/>
+          <Item Value="BDIV_WEF"/>
+          <Item Value="BDIV_WET"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDivisionsByBranch" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDivisionsByBranch"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.fetchDivisionsByBranch_DivisionsDAO_dataProvider_fetchDivisionsByBranch_result"/>
+    <tree IterBinding="fetchDivisionsByBranchIterator" id="Division4">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division40">
+        <AttrNames>
+          <Item Value="DIV_NAME"/>
+          <Item Value="BRN_NAME"/>
+          <Item Value="BDIV_WEF"/>
+          <Item Value="BDIV_WET"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchDivisionsByBranchIterator" id="Division5">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division50">
+        <AttrNames>
+          <Item Value="BDIV_CODE"/>
+          <Item Value="DIV_CODE"/>
+          <Item Value="DIV_NAME"/>
+          <Item Value="BRN_NAME"/>
+          <Item Value="BDIV_WEF"/>
+          <Item Value="BDIV_WET"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <!--<methodAction id="fetchStatesByCountry" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchStatesByCountry"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchStatesByCountry_BaseSetupDAO_dataProvider_fetchStatesByCountry_result"/>
+    <tree IterBinding="fetchStatesByCountryIterator" id="State">
+      <nodeDefinition DefName="TurnQuest.view.setups.State" Name="State0">
+        <AttrNames>
+          <Item Value="stateShortDesc"/>
+          <Item Value="stateName"/>
+          <Item Value="stateCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>-->
+    <methodAction id="fetchStatesByCountry" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchStatesByCountry"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchStatesByCountry_BaseSetupDAO_dataProvider_fetchStatesByCountry_result"/>
+    <tree IterBinding="fetchStatesByCountryIterator" id="State">
+      <nodeDefinition DefName="TurnQuest.view.setups.State" Name="State0">
+        <AttrNames>
+          <Item Value="stateShortDesc"/>
+          <Item Value="stateName"/>
+          <Item Value="stateCode"/>
+          <Item Value="stateCountryCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchBranchNames" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchBranchNames"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchBranchNames_OrganizationDAO_dataProvider_fetchBranchNames_result"/>
+    <tree IterBinding="fetchBranchNamesIterator" id="BranchName">
+      <nodeDefinition DefName="TurnQuest.view.models.BranchName"
+                      Name="BranchName0">
+        <AttrNames>
+          <Item Value="bns_code"/>
+          <Item Value="bns_sht_desc"/>
+          <Item Value="bns_name"/>
+          <Item Value="bns_phy_addrs"/>
+          <Item Value="bns_email_addrs"/>
+          <Item Value="bns_post_addrs"/>
+          <Item Value="bns_twn_code"/>
+          <Item Value="bns_cou_code"/>
+          <Item Value="bns_contact"/>
+          <Item Value="bns_manager"/>
+          <Item Value="bns_tel"/>
+          <Item Value="bns_fax"/>
+          <Item Value="state_code"/>
+          <Item Value="townName"/>
+          <Item Value="countryName"/>
+          <Item Value="stateName"/>
+          <Item Value="accType"/>
+          <Item Value="region"/>
+           <Item Value="bnsPostalCod"/>
+          <Item Value="bnsEmailFrom"/>
+          <Item Value="bnsManager"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchBranchNamesIterator" id="BranchName1">
+      <nodeDefinition DefName="TurnQuest.view.models.BranchName"
+                      Name="BranchName10">
+        <AttrNames>
+          <Item Value="bns_code"/>
+          <Item Value="bns_sht_desc"/>
+          <Item Value="bns_name"/>
+          <Item Value="bns_phy_addrs"/>
+          <Item Value="bns_email_addrs"/>
+          <Item Value="bns_post_addrs"/>
+          <Item Value="bns_twn_code"/>
+          <Item Value="bns_cou_code"/>
+          <Item Value="bns_contact"/>
+          <Item Value="bns_manager"/>
+          <Item Value="bns_tel"/>
+          <Item Value="bns_fax"/>
+          <Item Value="state_code"/>
+          <Item Value="townName"/>
+          <Item Value="countryName"/>
+          <Item Value="stateName"/>
+          <Item Value="accType"/>
+          <Item Value="region"/>
+          <Item Value="bnsPostalCod"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllPersonnels" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllPersonnels"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAllPersonnels_UserDAO_dataProvider_fetchAllPersonnels_result"/>
+    <tree IterBinding="fetchAllPersonnelsIterator" id="Personnel">
+      <nodeDefinition DefName="TurnQuest.view.Usr.Personnel" Name="Personnel0">
+        <AttrNames>
+          <Item Value="perId"/>
+          <Item Value="perFullNames"/>
+          <Item Value="perEsCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranches1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranches"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findBranches_DivisionsDAO_dataProvider_findBranches_result"/>
+    <tree IterBinding="findBranches1Iterator" id="Division6">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division60">
+        <AttrNames>
+          <Item Value="BRN_NAME"/>
+          <Item Value="BRN_CODE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findBranchDivisionsIterator" id="Division7">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division70">
+        <AttrNames>
+          <Item Value="BRN_NAME"/>
+          <Item Value="DIV_NAME"/>
+          <Item Value="BDIV_WEF"/>
+          <Item Value="BDIV_WET"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAlLMobileTypePrefix" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAlLMobileTypePrefix"
+                  IsViewObjectMethod="false" DataControl="ServiceProviderDAO"
+                  InstanceName="ServiceProviderDAO.dataProvider"
+                  ReturnName="ServiceProviderDAO.methodResults.fetchAlLMobileTypePrefix_ServiceProviderDAO_dataProvider_fetchAlLMobileTypePrefix_result"/>
+    <list IterBinding="fetchAlLMobileTypePrefixIterator"
+          ListOperMode="navigation" ListIter="fetchAlLMobileTypePrefixIterator"
+          id="ServiceProvider" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="prefix"/>
+      </AttrNames>
+    </list>
+    <methodAction id="fetchAlLMobileTypePrefix2" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAlLMobileTypePrefix2"
+                  IsViewObjectMethod="false" DataControl="ServiceProviderDAO"
+                  InstanceName="ServiceProviderDAO.dataProvider"
+                  ReturnName="ServiceProviderDAO.methodResults.fetchAlLMobileTypePrefix2_ServiceProviderDAO_dataProvider_fetchAlLMobileTypePrefix2_result"/>
+    <list IterBinding="fetchAlLMobileTypePrefix2Iterator"
+          ListOperMode="navigation" ListIter="fetchAlLMobileTypePrefix2Iterator"
+          id="ServiceProvider1" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="prefix"/>
+      </AttrNames>
+    </list>
+    <methodAction id="findBranchContacts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranchContacts"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findBranchContacts_OrganizationDAO_dataProvider_findBranchContacts_result"/>
+    <tree IterBinding="findBranchContactsIterator" id="Organization13">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization130">
+        <AttrNames>
+          <Item Value="tbcCode"/>
+          <Item Value="tbcName"/>
+          <Item Value="tbcDesignation"/>
+          <Item Value="tbcMobile"/>
+          <Item Value="tbcPhone"/>
+          <Item Value="tbcIdNumber"/>
+          <Item Value="tbcPhysicalAdd"/>
+          <Item Value="tbcEmailAdd"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBankRegions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBankRegions"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.findBankRegions_OrganizationDAO_dataProvider_findBankRegions_result"/>
+    <tree IterBinding="findBankRegionsIterator" id="Organization14">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization140">
+        <AttrNames>
+          <Item Value="bnkrCode"/>
+          <Item Value="bnkrOrgCode"/>
+          <Item Value="bnkrShtDesc"/>
+          <Item Value="bnkrName"/>
+          <Item Value="bnkrWef"/>
+          <Item Value="bnkrWet"/>
+          <Item Value="bnkrRegCode"/>
+          <Item Value="bnkrAgnCode"/>
+          <Item Value="bnkrManager"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findManagersIterator" id="Organization15">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization150">
+        <AttrNames>
+          <Item Value="agnCode"/>
+          <Item Value="agnShortDesc"/>
+          <Item Value="agnName"/>
+          <Item Value="agnTwnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findOrgBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findOrgBranches"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.findOrgBranches_OrganizationDAO_dataProvider_findOrgBranches_result"/>
+    <tree IterBinding="findOrgBranchesIterator" id="Organization16">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization160">
+        <AttrNames>
+          <Item Value="brnCode"/>
+          <Item Value="brnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchTranferableItems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchTranferableItems"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.fetchTranferableItems_OrganizationDAO_dataProvider_fetchTranferableItems_result"/>
+    <tree IterBinding="fetchTranferableItemsIterator" id="Organization17">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization170">
+        <AttrNames>
+          <Item Value="ttiSelected"/>
+          <Item Value="ttiCode"/>
+          <Item Value="ttiTtCode"/>
+          <Item Value="ttiItemCode"/>
+          <Item Value="ttiItemName"/>
+          <Item Value="ttiItemShtDesc"/>
+          <Item Value="ttiItemType"/>
+          <Item Value="ttiFromCode"/>
+          <Item Value="ttiFromName"/>  
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <!--<tree IterBinding="fetchTranferableItemsIterator" id="Organization19">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization190">
+        <AttrNames>
+          <Item Value="ttiSelected"/>
+          <Item Value="ttiCode"/>
+          <Item Value="ttiTtCode"/>
+          <Item Value="ttiItemCode"/>
+          <Item Value="ttiItemName"/>
+          <Item Value="ttiItemShtDesc"/>
+          <Item Value="ttiItemType"/>
+          <Item Value="ttiFromCode"/>
+          <Item Value="ttiFromName"/> 
+        </AttrNames>
+      </nodeDefinition>
+    </tree> -->
+    <methodAction id="fetchTranferedItems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchTranferedItems"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.fetchTranferedItems_OrganizationDAO_dataProvider_fetchTranferedItems_result"/>
+    <tree IterBinding="fetchTranferedItemsIterator" id="Organization18">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization180">
+        <AttrNames>
+          <Item Value="ttiSelected"/>
+          <Item Value="ttiCode"/>
+          <Item Value="ttiTtCode"/>
+          <Item Value="ttiItemCode"/>
+          <Item Value="ttiItemName"/>
+          <Item Value="ttiItemShtDesc"/>
+          <Item Value="ttiItemType"/>
+          <Item Value="ttiFromCode"/>
+          <Item Value="ttiFromName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    
+    <methodAction id="fetchUnitAgents" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUnitAgents"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.fetchUnitAgents_OrganizationDAO_dataProvider_fetchUnitAgents_result"/>
+    <tree IterBinding="fetchUnitAgentsIterator" id="Organization20">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization200">
+        <AttrNames>
+          <Item Value="unaCode"/>
+          <Item Value="unaBruCode"/>
+          <Item Value="unaShortDesc"/>
+          <Item Value="unaName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDestLovItems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDestLovItems"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.fetchDestLovItems_OrganizationDAO_dataProvider_fetchDestLovItems_result"/>
+    <tree IterBinding="fetchDestLovItemsIterator" id="Organization21">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization210">
+        <AttrNames>
+          <Item Value="destCode"/>
+          <Item Value="destName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchOrgBankNames" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchOrgBankNames"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.fetchOrgBankNames_OrganizationDAO_dataProvider_fetchOrgBankNames_result"/>
+    <tree IterBinding="fetchOrgBankNamesIterator" id="Organization22">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization220">
+        <AttrNames>
+          <Item Value="bnkCode"/>
+          <Item Value="bnkName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchOrgBankBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchOrgBankBranches"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.fetchOrgBankBranches_OrganizationDAO_dataProvider_fetchOrgBankBranches_result"/>
+    <tree IterBinding="fetchOrgBankBranchesIterator" id="Organization23">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization230">
+        <AttrNames>
+          <Item Value="bbrCode"/>
+          <Item Value="bbrName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAccountAgenciesInfoOnly"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchAllAccountAgenciesInfoOnly"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="data.MainAccountsDAO.methodResults.fetchAllAccountAgenciesInfoOnly_MainAccountsDAO_dataProvider_fetchAllAccountAgenciesInfoOnly_result"/>
+    <tree IterBinding="fetchAllAccountAgenciesInfoOnlyIterator" id="Agency">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency0">
+        <AttrNames>
+          <Item Value="accountCode"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="physicalAddress"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllAccountAgenciesInfoOnlyIterator" id="Agency1">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="accountCode"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAgencyDevelopmentExecutives"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findAgencyDevelopmentExecutives"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.findAgencyDevelopmentExecutives_OrganizationDAO_dataProvider_findAgencyDevelopmentExecutives_result"/>
+    <tree IterBinding="findAgencyDevelopmentExecutivesIterator"
+          id="Organization25">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization250">
+        <AttrNames>
+          <Item Value="agnCode"/>
+          <Item Value="agnShortDesc"/>
+          <Item Value="agnName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+ <methodAction id="fetchAllClientTitles" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllClientTitles"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="data.MainClientDAO.methodResults.fetchAllClientTitles_MainClientDAO_dataProvider_fetchAllClientTitles_result"/>
+    <tree IterBinding="fetchAllClientTitlesIterator" id="ClientTitle">
+      <nodeDefinition DefName="TurnQuest.view.client.ClientTitle"
+                      Name="ClientTitle0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="description"/>
+          <Item Value="bpnCode"/>
+          <Item Value="bpnIdNumber"/>
+          <Item Value="bpnAddress"/>
+          <Item Value="bpnTelNumber"/>
+          <Item Value="bpnMobileNumber"/>
+          <Item Value="bpnEmail"/>
+          <Item Value="bpnType"/>
+          <Item Value="bpnZip"/>
+          <Item Value="bpnTown"/>
+          <Item Value="bpnCountryCode"/>
+          <Item Value="bpnName"/>
+          <Item Value="bpnPin"/>
+          <Item Value="bpnBbrCode"/>
+          <Item Value="bpnBankAccount"/>
+          <Item Value="bpnBbrSwiftCode"/>
+          <Item Value="bpnRegClmtCode"/>
+          <Item Value="bpnBranchName"/>
+          <Item Value="bpnCountryName"/>
+          <Item Value="bpnRegClaimant"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchFaAgents" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchFaAgents"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.fetchFaAgents_OrganizationDAO_dataProvider_fetchFaAgents_result"/>
+    <tree IterBinding="fetchFaAgentsIterator" id="Agent">
+      <nodeDefinition DefName="TurnQuest.view.Agents.Agent" Name="Agent0">
+        <AttrNames>
+          <Item Value="AGNTY_CODE"/>
+          <Item Value="AGNTY_TYPE_SHT_DESC"/>
+          <Item Value="AGNTY_TYPE"/>
+          <Item Value="AGNTY_ACT_CODE"/>
+          <Item Value="ACT_ACCOUNT_TYPE"/>
+          <Item Value="fa_agn_org_code"/>
+          <Item Value="fa_agn_sht_desc"/>
+          <Item Value="fa_team_code"/>
+          <Item Value="fa_agn_name"/>
+          <Item Value="fa_agent_code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findBranchAgenciesIterator" id="Organization19">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization190">
+        <AttrNames>
+          <Item Value="braCode"/>
+          <Item Value="braShortDesc"/>
+          <Item Value="braName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findBranchAgenciesIterator" id="Organization24">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization240">
+        <AttrNames>
+          <Item Value="braCode"/>
+          <Item Value="braShortDesc"/>
+          <Item Value="braName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllZones" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllZones"
+                  IsViewObjectMethod="false" DataControl="ZoneDAO"
+                  InstanceName="ZoneDAO.dataProvider"
+                  ReturnName="data.ZoneDAO.methodResults.fetchAllZones_ZoneDAO_dataProvider_fetchAllZones_result"/>
+    <tree IterBinding="fetchAllZonesIterator" id="Zone">
+      <nodeDefinition DefName="TurnQuest.view.models.Zone" Name="Zone0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="orgCode"/>
+          <Item Value="shtDesc"/>
+          <Item Value="name"/>
+          <Item Value="wef"/>
+          <Item Value="wet"/>
+          <Item Value="agnCode"/>
+          <Item Value="postLevel"/>
+          <Item Value="mngrAllowed"/>
+          <Item Value="overideCommEarned"/>
+          <Item Value="regMngrSeqNo"/>
+          <Item Value="agnSeqNo"/>
+          <Item Value="polSeq"/>
+          <Item Value="propSeq"/>
+          <Item Value="preContractAgnSeqNo"/>
+          <Item Value="comptOvOnOwnBuss"/>
+          <Item Value="bbrRefCode"/>
+          <Item Value="locCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchManagers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchManagers"
+                  IsViewObjectMethod="false" DataControl="AgentsDAO"
+                  InstanceName="AgentsDAO.dataProvider"
+                  ReturnName="data.AgentsDAO.methodResults.fetchManagers_AgentsDAO_dataProvider_fetchManagers_result"/>
+    <tree IterBinding="fetchManagersIterator" id="Manager">
+      <nodeDefinition DefName="TurnQuest.view.models.Manager" Name="Manager0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shtDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+        <methodAction id="findAllActiveUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllActiveUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.findAllActiveUsers_UserDAO_dataProvider_findAllActiveUsers_result"/>
+    <tree IterBinding="findAllActiveUsersIterator" id="User2">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User2">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

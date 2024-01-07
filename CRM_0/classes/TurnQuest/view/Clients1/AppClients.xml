@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.51.88"
+          id="AppClients" Package="TurnQuest.view.Clients1"
+          BeanClass="TurnQuest.view.Clients1.AppClients" isJavaBased="true">
+  <Attribute Name="clientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="PINNumber" Type="java.lang.String"/>
+  <Attribute Name="postalAddress" Type="java.lang.String"/>
+  <Attribute Name="telphoneOne" Type="java.lang.String"/>
+  <Attribute Name="othernames" Type="java.lang.String"/>
+  <Attribute Name="fullname" Type="java.lang.String"/>
+  <Attribute Name="idRegNumber" Type="java.lang.String"/>
+  <Attribute Name="shortDescription" Type="java.lang.String"/>
+  <Attribute Name="ZIPCode" Type="java.lang.String"/>
+  <Attribute Name="unallocatedSystemCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="unallocatedSystemShtDesc" Type="java.lang.String"/>
+  <Attribute Name="unallocatedSystemName" Type="java.lang.String"/>
+  <Attribute Name="allocatefSystemCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="allocatedSystemShtDesc" Type="java.lang.String"/>
+  <Attribute Name="allocatedSystemName" Type="java.lang.String"/>
+  <Attribute Name="clientAccCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clientAccUserName" Type="java.lang.String"/>
+  <Attribute Name="clientAccName" Type="java.lang.String"/>
+  <Attribute Name="clientAccEmail" Type="java.lang.String"/>
+  <Attribute Name="clientAccPersonelRank" Type="java.lang.String"/>
+  <Attribute Name="clientAccCreatedBy" Type="java.lang.String"/>
+  <Attribute Name="clientAccDateCreated" Type="java.sql.Date"/>
+  <Attribute Name="clientAccLoginAllowed" Type="java.lang.String"/>
+  <Attribute Name="clientAccStatus" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Clients1.AppClients"
+                     BeanClass="TurnQuest.view.Clients1.AppClients"
+                     id="AppClients"/>
+</JavaBean>

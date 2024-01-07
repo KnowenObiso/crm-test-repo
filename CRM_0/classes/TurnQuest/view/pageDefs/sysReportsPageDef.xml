@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="sysReportsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="findQueryParameters_search"
+                IsQueriable="false"/>
+    </variableIterator>
+    <methodIterator Binds="findReportQuery.result" DataControl="LOVDAO"
+                    RangeSize="250" BeanClass="TurnQuest.view.base.LOV"
+                    id="findReportQueryIterator"/>
+    <searchRegion Binds="findReportQueryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LOVQuery"/>
+    <methodIterator Binds="findQueryParameters.result" DataControl="LOVDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Base.LOV"
+                    id="findQueryParametersIterator"/>
+    <searchRegion Binds="findQueryParametersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LOVQuery1"/>
+  </executables>
+  <bindings>
+    <methodAction id="findReportQuery" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findReportQuery"
+                  IsViewObjectMethod="false" DataControl="LOVDAO"
+                  InstanceName="LOVDAO.dataProvider"
+                  ReturnName="LOVDAO.methodResults.findReportQuery_LOVDAO_dataProvider_findReportQuery_result"/>
+    <tree IterBinding="findReportQueryIterator" id="LOV1">
+      <nodeDefinition DefName="TurnQuest.view.Base.LOV" Name="LOV10">
+        <AttrNames>
+          <Item Value="valueCode"/>
+          <Item Value="valueDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findQueryParameters" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findQueryParameters"
+                  IsViewObjectMethod="false" DataControl="LOVDAO"
+                  InstanceName="LOVDAO.dataProvider"
+                  ReturnName="LOVDAO.methodResults.findQueryParameters_LOVDAO_dataProvider_findQueryParameters_result">
+      <NamedData NDName="search" NDType="java.lang.String"
+                 NDValue="${bindings.findQueryParameters_search}"/>
+    </methodAction>
+    <tree IterBinding="findQueryParametersIterator" id="LOV">
+      <nodeDefinition DefName="TurnQuest.view.Base.LOV" Name="LOV0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="value"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="variables" id="search">
+      <AttrNames>
+        <Item Value="findQueryParameters_search"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

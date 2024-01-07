@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="SequenceDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.SequenceDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Sequence"
+                  BeanClass="TurnQuest.view.models.Sequence" id="findSequences"
+                  ReturnNodeName="Sequence"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Branch"
+                  BeanClass="TurnQuest.view.models.Branch" id="findAllBranches"
+                  ReturnNodeName="Branch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchallBranches" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System"
+                  id="fetchbankBranches" ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.SequenceDAO"
+                     BeanClass="TurnQuest.view.dao.SequenceDAO"
+                     id="SequenceDAO"/>
+</JavaBean>

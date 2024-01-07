@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="TurnQuest.view.helper.AppModule">
+      <AppModuleConfig name="AppModuleLocal" ApplicationName="TurnQuest.view.helper.AppModule" DeployPlatform="LOCAL" jbo.project="TurnQuest.view.TurnQuest">
+         <Security AppModuleJndiName="TurnQuest.view.helper.AppModule"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="AppModuleShared" ApplicationName="TurnQuest.view.helper.AppModule" DeployPlatform="LOCAL" jbo.project="TurnQuest.view.TurnQuest">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="TurnQuest.view.helper.AppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="AttributeCriterion" Package="oracle.adf.view.rich.model"
+          BeanClass="oracle.adf.view.rich.model.AttributeCriterion"
+          isJavaBased="true">
+  <Attribute Name="removable" IsUpdateable="0" Type="boolean"/>
+  <Attribute Name="matchCase" Type="boolean"/>
+  <AccessorAttribute id="attribute" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.model.AttributeDescriptor"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="modelList" IsCollection="true" Type="java.util.List"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="operator" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.model.AttributeDescriptor.Operator"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="operators" IsCollection="true" Type="java.util.Map"
+                     CollectionBeanClass="UpdateableCollection">
+    <Attribute Name="element"
+               Type="java.lang.String, oracle.adf.view.rich.model.AttributeDescriptor.Operator"/>
+  </AccessorAttribute>
+  <AccessorAttribute id="values" IsCollection="true" Type="java.util.List"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="required" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.model.AttributeCriterion.RequiredType"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false"
+                  Type="oracle.adf.view.rich.model.AttributeDescriptor.ComponentType"
+                  BeanClass="oracle.adf.view.rich.model.AttributeDescriptor.ComponentType"
+                  id="getComponentType" ReturnNodeName="ComponentType">
+    <ParameterInfo id="p0"
+                   Type="oracle.adf.view.rich.model.AttributeDescriptor.Operator"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="hasDependentCriterion"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="oracle.adf.view.rich.model.AttributeCriterion"
+                     BeanClass="oracle.adf.view.rich.model.AttributeCriterion"
+                     id="AttributeCriterion"/>
+</JavaBean>

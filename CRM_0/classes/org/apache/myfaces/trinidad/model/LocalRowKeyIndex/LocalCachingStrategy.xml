@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="LocalCachingStrategy"
+          Package="org.apache.myfaces.trinidad.model.LocalRowKeyIndex"
+          BeanClass="org.apache.myfaces.trinidad.model.LocalRowKeyIndex.LocalCachingStrategy"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="org.apache.myfaces.trinidad.model.LocalRowKeyIndex.LocalCachingStrategy"
+                  BeanClass="org.apache.myfaces.trinidad.model.LocalRowKeyIndex.LocalCachingStrategy"
+                  id="values" ReturnNodeName="LocalCachingStrategy"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false"
+                  Type="org.apache.myfaces.trinidad.model.LocalRowKeyIndex.LocalCachingStrategy"
+                  BeanClass="org.apache.myfaces.trinidad.model.LocalRowKeyIndex.LocalCachingStrategy"
+                  id="valueOf" ReturnNodeName="LocalCachingStrategy">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

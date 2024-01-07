@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="BpmwDAO" Package="TurnQuest.view.bpm"
+          BeanClass="TurnQuest.view.bpm.BpmwDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Bpmw"
+                  BeanClass="TurnQuest.view.bpm.Bpmw" id="findPersonalTasks"
+                  ReturnNodeName="Bpmw"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Bpmw"
+                  BeanClass="TurnQuest.view.bpm.Bpmw" id="findUserTasks"
+                  ReturnNodeName="Bpmw"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Bpmw"
+                  BeanClass="TurnQuest.view.bpm.Bpmw" id="findCommonUserTasks"
+                  ReturnNodeName="Bpmw"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Bpmw"
+                  BeanClass="TurnQuest.view.bpm.Bpmw" id="findAllSysTasks"
+                  ReturnNodeName="Bpmw"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Bpmw"
+                  BeanClass="TurnQuest.view.bpm.Bpmw" id="findAllTasks"
+                  ReturnNodeName="Bpmw"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Bpmw"
+                  BeanClass="TurnQuest.view.bpm.Bpmw" id="findGroupTasks"
+                  ReturnNodeName="Bpmw"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Bpmw"
+                  BeanClass="TurnQuest.view.bpm.Bpmw" id="findUserTasksByTckt"
+                  ReturnNodeName="Bpmw"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.BpmTask"
+                  BeanClass="TurnQuest.view.bpm.BpmTask" id="fetchUserTasks"
+                  ReturnNodeName="BpmTask"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.bpm.BpmwDAO"
+                     BeanClass="TurnQuest.view.bpm.BpmwDAO" id="BpmwDAO"/>
+</JavaBean>

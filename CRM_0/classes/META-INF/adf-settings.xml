@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!-- Copyright (c) 2008, 2009, Oracle and/or its affiliates. All rights reserved. -->
+<adf-settings xmlns="http://xmlns.oracle.com/adf/settings">
+  <adf-faces-config xmlns="http://xmlns.oracle.com/adf/faces/settings">
+  <!--   <help-provider prefix="HELP_">
+      <help-provider-class > oracle.adf.view.rich.help.ResourceBundleHelpProvider  </help-provider-class>
+      <property>
+        <property-name>baseName</property-name>
+        <value>HRMS.view.help.helpFile</value>
+      </property>
+    </help-provider>-->
+   <!-- <help-provider prefix="DEMOHELP_">
+      <help-provider-class>oracle.adf.view.rich.help.ResourceBundleHelpProvider</help-provider-class>
+      <property>
+        <property-name>baseName</property-name>
+        <value>oracle.adfdemo.view.resource.DemoHelp</value>
+      </property>
+    </help-provider> 
+    <help-provider   prefix="HELP_">
+      <help-provider-class>oracle.adf.view.rich.help.ResourceBundleHelpProvider</help-provider-class>
+      <property>
+        <property-name>baseName</property-name>
+        <value>oracle.adfdemo.view.resource.fileExplorer.helpStrings</value>
+      </property>
+    </help-provider> 
+
+    <help-provider prefix="MAPHELP_">
+      <help-provider-class>oracle.adf.view.rich.help.ELHelpProvider</help-provider-class>
+      <property>
+        <property-name>helpSource</property-name>
+        <value>#{helpTranslationMap.helpMap}</value>
+      </property>
+    </help-provider>  -->
+    <help-provider>
+
+ <help-provider-class>oracle.help.web.rich.helpProvider.OHWHelpProvider</help-provider-class>
+
+ <property>
+ <property-name>ohwConfigFileURL</property-name>
+ <value>/helpsets/ohwconfig.xml</value>
+ </property>
+
+ <!--property>
+ <property-name>group</property-name>
+ <value>null</value>
+ </property-->
+
+ <property>
+ <property-name>baseURI</property-name>
+ <value>http://10.176.18.11:7001/TurnQuestHelp/crmhelp/</value>
+ </property>
+
+ </help-provider>
+  </adf-faces-config> 
+</adf-settings>

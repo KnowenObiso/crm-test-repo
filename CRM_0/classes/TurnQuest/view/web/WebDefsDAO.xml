@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="WebDefsDAO" Package="TurnQuest.view.web"
+          BeanClass="TurnQuest.view.web.WebDefsDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                  BeanClass="TurnQuest.view.web.WebDefs"
+                  id="findProductCategories" ReturnNodeName="WebDefs"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                  BeanClass="TurnQuest.view.web.WebDefs" id="findCatProducts"
+                  ReturnNodeName="WebDefs"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                  BeanClass="TurnQuest.view.web.WebDefs" id="findProductOptions"
+                  ReturnNodeName="WebDefs"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                  BeanClass="TurnQuest.view.web.WebDefs" id="findLifeProducts"
+                  ReturnNodeName="WebDefs"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                  BeanClass="TurnQuest.view.web.WebDefs" id="findLifeOptions"
+                  ReturnNodeName="WebDefs"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                  BeanClass="TurnQuest.view.web.WebDefs" id="findSystems"
+                  ReturnNodeName="WebDefs"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                  BeanClass="TurnQuest.view.web.WebDefs" id="findprodCategories"
+                  ReturnNodeName="WebDefs"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                  BeanClass="TurnQuest.view.web.WebDefs" id="findTransProducts"
+                  ReturnNodeName="WebDefs"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                  BeanClass="TurnQuest.view.web.WebDefs" id="findAgencyAccount"
+                  ReturnNodeName="WebDefs"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.web.WebDefsDAO"
+                     BeanClass="TurnQuest.view.web.WebDefsDAO" id="WebDefsDAO"/>
+</JavaBean>

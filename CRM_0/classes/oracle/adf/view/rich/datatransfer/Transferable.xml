@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Transferable" Package="oracle.adf.view.rich.datatransfer"
+          BeanClass="oracle.adf.view.rich.datatransfer.Transferable"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="boolean" id="isDataFlavorSupported"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0"
+                   Type="oracle.adf.view.rich.datatransfer.DataFlavor&lt;?>"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="T" id="getData" ReturnNodeName="T"
+                  CollectionBeanClass="ReadOnlySingleValue">
+    <ParameterInfo id="p0" Type="java.lang.Class&lt;T>" isStructured="false"/>
+    <Attribute Name="element" Type="T"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="T" id="getData" ReturnNodeName="T"
+                  CollectionBeanClass="ReadOnlySingleValue">
+    <ParameterInfo id="p0"
+                   Type="oracle.adf.view.rich.datatransfer.DataFlavor&lt;T>"
+                   isStructured="false"/>
+    <Attribute Name="element" Type="T"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true"
+                  Type="oracle.adf.view.rich.datatransfer.TransferData&lt;T>"
+                  id="getTransferData" ReturnNodeName="TransferData&lt;T>"
+                  CollectionBeanClass="ReadOnlySingleValue">
+    <ParameterInfo id="p0"
+                   Type="oracle.adf.view.rich.datatransfer.DataFlavor&lt;T>"
+                   isStructured="false"/>
+    <Attribute Name="element"
+               Type="oracle.adf.view.rich.datatransfer.TransferData&lt;T>"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="java.util.List"
+                  id="getSuitableTransferData"
+                  ReturnNodeName="TransferData&lt;?>"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="java.util.Set" isStructured="false"/>
+    <Attribute Name="element"
+               Type="oracle.adf.view.rich.datatransfer.TransferData&lt;?>"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="addTransferData"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0"
+                   Type="oracle.adf.view.rich.datatransfer.TransferData&lt;?>"
+                   isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

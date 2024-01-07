@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.54.7"
+          id="Role" Package="TurnQuest.view.roles"
+          BeanClass="TurnQuest.view.roles.Role" isJavaBased="true">
+  <Attribute Name="processCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="roleName" Type="java.lang.String"/>
+  <Attribute Name="processName" Type="java.lang.String"/>
+  <Attribute Name="roleCrtDate" Type="java.util.Date"/>
+  <Attribute Name="roleStatus" Type="java.lang.String"/>
+  <Attribute Name="roleAuthorized" Type="java.lang.String"/>
+  <Attribute Name="roleProcessCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processAreaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processArea" Type="java.lang.String"/>
+  <Attribute Name="processRoleAreaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="areaSubArea" Type="java.lang.String"/>
+  <Attribute Name="roleShtDesc" Type="java.lang.String"/>
+  <Attribute Name="roleCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="nodeType" Type="java.lang.String"/>
+  <Attribute Name="roleSelected" Type="java.lang.Boolean"/>
+  <Attribute Name="processAreaSelected" Type="boolean"/>
+  <Attribute Name="wetDate" Type="java.util.Date"/>
+  <Attribute Name="wefDate" Type="java.util.Date"/>
+  <Attribute Name="mkcCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sprsaSubArea" Type="java.lang.String"/>
+  <Attribute Name="mkcStatus" Type="boolean"/>
+  <Attribute Name="mkcApplicableArea" Type="java.lang.String"/>
+  <AccessorAttribute id="subAreas" IsCollection="true"
+                     BeanClass="TurnQuest.view.roles.SubRole"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.roles.Role"
+                     BeanClass="TurnQuest.view.roles.Role" id="Role"/>
+</JavaBean>

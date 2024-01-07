@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="IncidenceDAO" Package="TurnQuest.view.Incidences"
+          BeanClass="TurnQuest.view.Incidences.IncidenceDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Incidences.IncidenceValues"
+                  BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                  id="findIncidenceTypes" ReturnNodeName="IncidenceValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Incidences.IncidenceValues"
+                  BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                  id="findIncidenceStatuses" ReturnNodeName="IncidenceValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Incidences.IncidenceValues"
+                  BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                  id="findIncidenceDepartments" ReturnNodeName="IncidenceValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Incidences.IncidenceValues"
+                  BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                  id="findIDepartmentIncidTypes"
+                  ReturnNodeName="IncidenceValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Incidences.IncidenceValues"
+                  BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                  id="findSystemBranches" ReturnNodeName="IncidenceValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Incidences.IncidenceDAO"
+                     BeanClass="TurnQuest.view.Incidences.IncidenceDAO"
+                     id="IncidenceDAO"/>
+</JavaBean>

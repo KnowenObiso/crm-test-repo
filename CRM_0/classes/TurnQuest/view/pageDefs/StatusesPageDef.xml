@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="StatusesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findStatuses.result" DataControl="ActivityDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Activities.Status"
+                    id="findStatusesIterator"/>
+    <searchRegion Binds="findStatusesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StatusQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findStatuses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findStatuses"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findStatuses_ActivityDAO_dataProvider_findStatuses_result"/>
+    <tree IterBinding="findStatusesIterator" id="Status">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Status" Name="Status0">
+        <AttrNames>
+          <Item Value="statusId"/>
+          <Item Value="statusCode"/>
+          <Item Value="statusDecription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

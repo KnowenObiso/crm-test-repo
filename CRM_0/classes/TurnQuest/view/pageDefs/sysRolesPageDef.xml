@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.54.7" id="sysRolesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findSysRoles.result" DataControl="RoleDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.roles.Role"
+                    id="findSysRolesIterator"/>
+    <searchRegion Binds="findSysRolesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="RoleQuery"/>
+    <methodIterator Binds="findRoleAreas.result" DataControl="RoleDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.roles.Role"
+                    id="findRoleAreasIterator"/>
+    <methodIterator Binds="findSystems.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findSystemsIterator"/>
+    <searchRegion Binds="findSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <iterator Binds="root" RangeSize="25" DataControl="LOVDAO"
+              id="LOVDAOIterator"/>
+    <methodIterator Binds="findSysProcesses.result" DataControl="RoleDAO"
+                    RangeSize="-1" BeanClass="TurnQuest.view.roles.Role"
+                    id="findSysProcessesIter"/>
+  </executables>
+  <bindings>
+    <methodAction id="findSysRoles" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSysRoles"
+                  IsViewObjectMethod="false" DataControl="RoleDAO"
+                  InstanceName="RoleDAO.dataProvider"
+                  ReturnName="RoleDAO.methodResults.findSysRoles_RoleDAO_dataProvider_findSysRoles_result"/>
+    <tree IterBinding="findSysRolesIterator" id="Role">
+      <nodeDefinition DefName="TurnQuest.view.roles.Role" Name="Role0">
+        <AttrNames>
+          <Item Value="processCode"/>
+          <Item Value="roleName"/>
+          <Item Value="processName"/>
+          <Item Value="roleCrtDate"/>
+          <Item Value="roleStatus"/>
+          <Item Value="roleProcessCode"/>
+          <Item Value="roleShtDesc"/>
+          <Item Value="roleAuthorized"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRoleAreas" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRoleAreas"
+                  IsViewObjectMethod="false" DataControl="RoleDAO"
+                  InstanceName="RoleDAO.dataProvider"
+                  ReturnName="RoleDAO.methodResults.findRoleAreas_RoleDAO_dataProvider_findRoleAreas_result"/>
+    <tree IterBinding="findRoleAreasIterator" id="Role4">
+      <nodeDefinition DefName="TurnQuest.view.roles.Role" Name="Role40">
+        <AttrNames>
+          <Item Value="processCode"/>
+          <Item Value="processArea"/>
+          <Item Value="processAreaCode"/>
+          <Item Value="processAreaSelected"/>
+          <Item Value="processName"/>
+          <Item Value="processRoleAreaCode"/>          
+          <Item Value="areaSubArea"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="subAreas"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.roles.SubRole" Name="Role41">
+        <AttrNames>
+          <Item Value="processRoleSubAreaCode"/>
+          <Item Value="processSubArea"/>
+          <Item Value="processSubAreaCode"/>
+          <Item Value="processSubAreaDebitLimit"/>
+          <Item Value="processSubAreaSelected"/>
+          <Item Value="processSubAreaType"/>
+          <Item Value="processSubAredCreditLimit"/>
+          <Item Value="areaSubArea"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findSystems_UserDAO_dataProvider_findSystems_result"/>
+    <tree IterBinding="findSystemsIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSysProcesses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSysProcesses"
+                  IsViewObjectMethod="false" DataControl="RoleDAO"
+                  InstanceName="RoleDAO.dataProvider"
+                  ReturnName="RoleDAO.methodResults.findSysProcesses_RoleDAO_dataProvider_findSysProcesses_result"/>
+    <list IterBinding="LOVDAOIterator" id="processCode" DTSupportsMRU="true"
+          StaticList="false" ListIter="findSysProcessesIter">
+      <AttrNames>
+        <Item Value="processCode"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="processCode"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="processName"/>
+      </ListDisplayAttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

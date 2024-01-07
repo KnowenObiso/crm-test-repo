@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="currencyRatesDefinitionPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchCurrencyRatesByBaseCurrency.result"
+                    DataControl="CurrencyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.CurrencyRate"
+                    id="fetchCurrencyRatesByBaseCurrencyIterator"/>
+    <searchRegion Binds="fetchCurrencyRatesByBaseCurrencyIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CurrencyRateQuery"/>
+    <methodIterator Binds="fetchCurrenciesExcludeCurrency.result"
+                    DataControl="CurrencyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Currency"
+                    id="fetchCurrenciesExcludeCurrencyIterator"/>
+    <searchRegion Binds="fetchCurrenciesExcludeCurrencyIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Currency1Query"/>
+    <methodIterator Binds="fetchBaseCurrencies.result" DataControl="CurrencyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Currency"
+                    id="fetchBaseCurrenciesIterator"/>
+    <searchRegion Binds="fetchBaseCurrenciesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Currency2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllCurrencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCurrencies"
+                  IsViewObjectMethod="false" DataControl="CurrencyDAO"
+                  InstanceName="CurrencyDAO.dataProvider"
+                  ReturnName="CurrencyDAO.methodResults.fetchAllCurrencies_CurrencyDAO_dataProvider_fetchAllCurrencies_result"/>
+    <methodAction id="fetchCurrencyRatesByBaseCurrency"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchCurrencyRatesByBaseCurrency"
+                  IsViewObjectMethod="false" DataControl="CurrencyDAO"
+                  InstanceName="CurrencyDAO.dataProvider"
+                  ReturnName="CurrencyDAO.methodResults.fetchCurrencyRatesByBaseCurrency_CurrencyDAO_dataProvider_fetchCurrencyRatesByBaseCurrency_result"/>
+    <tree IterBinding="fetchCurrencyRatesByBaseCurrencyIterator"
+          id="CurrencyRate">
+      <nodeDefinition DefName="TurnQuest.view.setups.CurrencyRate"
+                      Name="CurrencyRate0">
+        <AttrNames>
+          <Item Value="currencyDesc"/>
+          <Item Value="currRate"/>
+          <Item Value="currDate"/>
+          <Item Value="code"/>
+          <Item Value="currencyCode"/>
+          <Item Value="baseCurrencyCode"/>
+          <Item Value="baseCurrencyName"/>
+          <Item Value="crtWefDate"/>
+          <Item Value="crtWetDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchCurrenciesExcludeCurrency" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchCurrenciesExcludeCurrency"
+                  IsViewObjectMethod="false" DataControl="CurrencyDAO"
+                  InstanceName="CurrencyDAO.dataProvider"
+                  ReturnName="CurrencyDAO.methodResults.fetchCurrenciesExcludeCurrency_CurrencyDAO_dataProvider_fetchCurrenciesExcludeCurrency_result"/>
+    <tree IterBinding="fetchCurrenciesExcludeCurrencyIterator" id="Currency1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency"
+                      Name="Currency10">
+        <AttrNames>
+          <Item Value="symbol"/>
+          <Item Value="description"/>
+          <Item Value="code"/>
+          <Item Value="round"/>
+          <Item Value="curNumWord"/>
+          <Item Value="curDecimalWord"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchBaseCurrencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchBaseCurrencies"
+                  IsViewObjectMethod="false" DataControl="CurrencyDAO"
+                  InstanceName="CurrencyDAO.dataProvider"
+                  ReturnName="data.CurrencyDAO.methodResults.fetchBaseCurrencies_CurrencyDAO_dataProvider_fetchBaseCurrencies_result"/>
+    <tree IterBinding="fetchBaseCurrenciesIterator" id="Currency2">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency"
+                      Name="Currency20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="symbol"/>
+          <Item Value="description"/>
+          <Item Value="round"/>
+          <Item Value="curNumWord"/>
+          <Item Value="curDecimalWord"/>
+          <Item Value="numWords"/>
+          <Item Value="decimalWord"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchCurrencyRatesByBaseCurrencyIterator"
+          id="CurrencyRate1">
+      <nodeDefinition DefName="TurnQuest.view.setups.CurrencyRate"
+                      Name="CurrencyRate10">
+        <AttrNames>
+          <Item Value="currencyDesc"/>
+          <Item Value="currRate"/>
+          <Item Value="crtWefDate"/>
+          <Item Value="crtWetDate"/>
+          <Item Value="crtCreatedBy"/>
+          <Item Value="crtCreatedDate"/>
+          <Item Value="crtUpdatedBy"/>
+          <Item Value="crtUpdatedDate"/>
+          <Item Value="code"/>
+          <Item Value="currencyCode"/>
+          <Item Value="currDate"/>
+          <Item Value="baseCurrencyCode"/>
+          <Item Value="baseCurrencyName"/>
+          <Item Value="currDate1"/>
+          <Item Value="crtWefDate1"/>
+          <Item Value="crtWetDate1"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchCurrencyRatesByBaseCurrencyIterator"
+          id="CurrencyRate2">
+      <nodeDefinition DefName="TurnQuest.view.setups.CurrencyRate"
+                      Name="CurrencyRate20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="currencyCode"/>
+          <Item Value="currRate"/>
+          <Item Value="currDate"/>
+          <Item Value="baseCurrencyCode"/>
+          <Item Value="currencyDesc"/>
+          <Item Value="baseCurrencyName"/>
+          <Item Value="crtWefDate"/>
+          <Item Value="crtWetDate"/>
+          <Item Value="currDate1"/>
+          <Item Value="crtWefDate1"/>
+          <Item Value="crtWetDate1"/>
+          <Item Value="crtCreatedDate"/>
+          <Item Value="crtCreatedBy"/>
+          <Item Value="crtUpdatedDate"/>
+          <Item Value="crtUpdatedBy"/>
+          <Item Value="crtAuthorized"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

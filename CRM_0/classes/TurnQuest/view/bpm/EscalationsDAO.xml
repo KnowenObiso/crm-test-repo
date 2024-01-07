@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.59.23"
+          id="EscalationsDAO" Package="TurnQuest.view.bpm"
+          BeanClass="TurnQuest.view.bpm.EscalationsDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="findSystemProcesses" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="findProcessDefActivities" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="findEscalationLevels" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="findEscalationLevelsOne" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="findEscalationLevelsTwo" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="findEscalationLevelsThree" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="findEscalationLevelsFour" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="findServiceReqEscalations" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations" id="findSystems"
+                  ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="findEscalationPoints" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.bpm.Escalations"
+                  BeanClass="TurnQuest.view.bpm.Escalations"
+                  id="fetchEscalationPointsLevel" ReturnNodeName="Escalations"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="vCode" Type="java.math.BigDecimal" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.bpm.EscalationsDAO"
+                     BeanClass="TurnQuest.view.bpm.EscalationsDAO"
+                     id="EscalationsDAO"/>
+</JavaBean>

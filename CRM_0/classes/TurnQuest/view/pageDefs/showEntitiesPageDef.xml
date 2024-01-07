@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="showEntitiesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+
+    <methodIterator Binds="fetchEntitiesRelations.result"
+                    DataControl="AccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="fetchEntitiesRelationsIterator"/>
+    <searchRegion Binds="fetchEntitiesRelationsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountType1Query"/>
+    <methodIterator Binds="fetchEntities.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="fetchEntitiesIterator"/>
+    <searchRegion Binds="fetchEntitiesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountTypeQuery"/>
+  </executables>
+  <bindings>
+
+    <methodAction id="fetchEntitiesRelations" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchEntitiesRelations"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="data.AccountsDAO.methodResults.fetchEntitiesRelations_AccountsDAO_dataProvider_fetchEntitiesRelations_result"/>
+    <tree IterBinding="fetchEntitiesRelationsIterator" id="AccountType1">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType10">
+        <AttrNames>
+          <Item Value="relation"/>
+          <Item Value="agnShtDesc"/>
+          <Item Value="agnName"/>
+          <Item Value="agnPin"/>
+          <Item Value="agnEmail"/>
+          <Item Value="agnTel"/>
+          <Item Value="agnBnkAccNo"/>
+          <Item Value="entCode"/>
+          
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchEntities" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchEntities"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="data.AccountsDAO.methodResults.fetchEntities_AccountsDAO_dataProvider_fetchEntities_result"/>
+    <tree IterBinding="fetchEntitiesIterator" id="AccountType">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType0">
+        <AttrNames>
+          <Item Value="entShtDesc"/>
+          <Item Value="entName"/>
+          <Item Value="entPin"/>
+          <Item Value="entCode"/>
+          <Item Value="entPosatalAddress"/>
+          <Item Value="entEmailAddress"/>
+          <Item Value="entSmsTel"/>
+           <Item Value="newRelation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

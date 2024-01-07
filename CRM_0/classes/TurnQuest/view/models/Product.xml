@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Product" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.Product" isJavaBased="true">
+  <Attribute Name="TPA_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="TPA_SYSTEM" Type="java.math.BigDecimal"/>
+  <Attribute Name="TPA_PROD_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="TPA_PROD_SHTDESC" Type="java.lang.String"/>
+  <Attribute Name="TPA_PROD_DESC" Type="java.lang.String"/>
+  <Attribute Name="TPA_PROD_NARRATION" Type="java.lang.String"/>
+  <Attribute Name="SYSNAME" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.Product"
+                     BeanClass="TurnQuest.view.models.Product" id="Product"/>
+</JavaBean>

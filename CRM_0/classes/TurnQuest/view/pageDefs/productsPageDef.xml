@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="productsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findSystemProducts.result" DataControl="ProductDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.Product"
+                    id="findSystemProductsIterator"/>
+    <searchRegion Binds="findSystemProductsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProductQuery"/>
+    <methodIterator Binds="findProductAttribute.result" DataControl="ProductDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.Product"
+                    id="findProductAttributeIterator"/>
+    <searchRegion Binds="findProductAttributeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Product1Query"/>
+    <methodIterator Binds="findCampaignSystems.result" DataControl="CampaignDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="findCampaignSystemsIterator"/>
+    <searchRegion Binds="findCampaignSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SystemQuery"/>
+    <methodIterator Binds="findProductClientAttribute.result"
+                    DataControl="ProductDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ProductClientAttribute"
+                    id="findProductClientAttributeIterator"/>
+    <searchRegion Binds="findProductClientAttributeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProductClientAttributeQuery"/>
+    <methodIterator Binds="findUndefinedClientAttributes.result"
+                    DataControl="ProductDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ClientAttribute"
+                    id="findUndefinedClientAttributesIterator"/>
+    <searchRegion Binds="findUndefinedClientAttributesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClientAttributeQuery"/>
+    <methodIterator Binds="fetchAllSectors.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Sector"
+                    id="fetchAllSectorsIterator"/>
+    <searchRegion Binds="fetchAllSectorsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SectorQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAllSystems_UserDAO_dataProvider_fetchAllSystems_result"/>
+    <methodAction id="findSystemProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystemProducts"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findSystemProducts_ProductDAO_dataProvider_findSystemProducts_result"/>
+    <tree IterBinding="findSystemProductsIterator" id="Product">
+      <nodeDefinition DefName="TurnQuest.view.models.Product" Name="Product0">
+        <AttrNames>
+          <Item Value="TPA_PROD_CODE"/>
+          <Item Value="TPA_PROD_SHTDESC"/>
+          <Item Value="TPA_PROD_DESC"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findProductAttribute" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProductAttribute"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findProductAttribute_ProductDAO_dataProvider_findProductAttribute_result"/>
+    <tree IterBinding="findProductAttributeIterator" id="Product1">
+      <nodeDefinition DefName="TurnQuest.view.models.Product" Name="Product10">
+        <AttrNames>
+          <Item Value="TPA_CODE"/>
+          <Item Value="TPA_SYSTEM"/>
+          <Item Value="TPA_PROD_CODE"/>
+          <Item Value="TPA_PROD_SHTDESC"/>
+          <Item Value="TPA_PROD_DESC"/>
+          <Item Value="TPA_PROD_NARRATION"/>
+          <Item Value="SYSNAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findCampaignSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaignSystems"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaignSystems_CampaignDAO_dataProvider_findCampaignSystems_result"/>
+    <tree IterBinding="findCampaignSystemsIterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findProductClientAttribute" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProductClientAttribute"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findProductClientAttribute_ProductDAO_dataProvider_findProductClientAttribute_result"/>
+    <tree IterBinding="findProductClientAttributeIterator"
+          id="ProductClientAttribute">
+      <nodeDefinition DefName="TurnQuest.view.models.ProductClientAttribute"
+                      Name="ProductClientAttribute0">
+        <AttrNames>
+          <Item Value="prodCode"/>
+          <Item Value="prodMinValue"/>
+          <Item Value="prodMaxValue"/>
+          <Item Value="prodClientAttrCode"/>
+          <Item Value="clientAttributeName"/>
+          <Item Value="prodFixedValue"/>
+          <Item Value="clientAttrCode"/>
+          <Item Value="attributeRange"/>
+          <Item Value="colName"/>
+          <Item Value="prompt"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findClientAttributes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findClientAttributes"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findClientAttributes_ProductDAO_dataProvider_findClientAttributes_result"/>
+    <methodAction id="findUndefinedClientAttributes" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="findUndefinedClientAttributes"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findUndefinedClientAttributes_ProductDAO_dataProvider_findUndefinedClientAttributes_result"/>
+    <tree IterBinding="findUndefinedClientAttributesIterator"
+          id="ClientAttribute">
+      <nodeDefinition DefName="TurnQuest.view.models.ClientAttribute"
+                      Name="ClientAttribute0">
+        <AttrNames>
+          <Item Value="TCA_CODE"/>
+          <Item Value="TCA_ATTRIBUTE_NAME"/>
+          <Item Value="TCA_ATT_RANGE"/>
+          <Item Value="tableName"/>
+          <Item Value="colName"/>
+          <Item Value="TCA_PROMPT"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSectors" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSectors"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllSectors_BaseSetupDAO_dataProvider_fetchAllSectors_result"/>
+    <tree IterBinding="fetchAllSectorsIterator" id="Sector">
+      <nodeDefinition DefName="TurnQuest.view.setups.Sector" Name="Sector0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

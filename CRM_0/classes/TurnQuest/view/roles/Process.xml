@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.54.7"
+          id="Process" Package="TurnQuest.view.roles"
+          BeanClass="TurnQuest.view.roles.Process" isJavaBased="true">
+  <Attribute Name="processCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processRoleCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processName" Type="java.lang.String"/>
+  <Attribute Name="processAssigned" Type="java.lang.String"/>
+  <Attribute Name="processSelected" Type="boolean"/>
+  <Attribute Name="areaSubArea" Type="java.lang.String"/>
+  <AccessorAttribute id="areas" IsCollection="true"
+                     BeanClass="TurnQuest.view.roles.Role"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.roles.Process"
+                     BeanClass="TurnQuest.view.roles.Process" id="Process"/>
+</JavaBean>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ProductClientAttribute" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.ProductClientAttribute"
+          isJavaBased="true">
+  <Attribute Name="prodCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prodMinValue" Type="java.lang.String"/>
+  <Attribute Name="prodMaxValue" Type="java.lang.String"/>
+  <Attribute Name="prodClientAttrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clientAttributeName" Type="java.lang.String"/>
+  <Attribute Name="prodFixedValue" Type="java.lang.String"/>
+  <Attribute Name="clientAttrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="attributeRange" Type="java.lang.String"/>
+  <Attribute Name="colName" Type="java.lang.String"/>
+  <Attribute Name="prompt" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.ProductClientAttribute"
+                     BeanClass="TurnQuest.view.models.ProductClientAttribute"
+                     id="ProductClientAttribute"/>
+</JavaBean>

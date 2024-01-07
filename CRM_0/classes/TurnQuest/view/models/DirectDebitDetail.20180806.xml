@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="DirectDebitDetail" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.DirectDebitDetail"
+          isJavaBased="true">
+  <Attribute Name="dddCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dddDdhCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dddDdCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dddSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dddPolCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dddPolPrpCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dddPolProposalNo" Type="java.lang.String"/>
+  <Attribute Name="dddPolPolicyNo" Type="java.lang.String"/>
+  <Attribute Name="dddOtherIdentifier" Type="java.lang.String"/>
+  <Attribute Name="dddAmount" Type="java.math.BigDecimal"/>
+  <Attribute Name="dddRemarks" Type="java.lang.String"/>
+  <Attribute Name="dddStartDate" Type="java.util.Date"/>
+  <Attribute Name="dddStopDate" Type="java.util.Date"/>
+  <Attribute Name="dddStatus" Type="java.lang.String"/>
+  <Attribute Name="dddFailDate" Type="java.util.Date"/>
+  <Attribute Name="dddReceipted" Type="java.lang.String"/>
+  <Attribute Name="dddFailUpdatedBy" Type="java.lang.String"/>
+  <Attribute Name="dddFailUpdateDate" Type="java.util.Date"/>
+  <Attribute Name="dddPprCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dddPolType" Type="java.lang.String"/>
+  <Attribute Name="dddReceiptedBy" Type="java.lang.String"/>
+  <Attribute Name="dddReceiptNo" Type="java.lang.String"/>
+  <Attribute Name="dddReceiptDate" Type="java.util.Date"/>
+  <Attribute Name="dddReceiptedDate" Type="java.util.Date"/>
+  <Attribute Name="dddFailRemarks" Type="java.lang.String"/>
+  <Attribute Name="dddRelaunchDate" Type="java.util.Date"/>
+  <Attribute Name="dddRelaunchStopDate" Type="java.util.Date"/>
+  <Attribute Name="dddRelaunchedBy" Type="java.lang.String"/>
+  <Attribute Name="dddRelaunchStoppedBy" Type="java.lang.String"/>
+  <Attribute Name="ddRefNumber" Type="java.lang.String"/>
+  <Attribute Name="ddBankBranch" Type="java.lang.String"/>
+  <Attribute Name="dddBankAmount" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.DirectDebitDetail"
+                     BeanClass="TurnQuest.view.models.DirectDebitDetail"
+                     id="DirectDebitDetail"/>
+</JavaBean>

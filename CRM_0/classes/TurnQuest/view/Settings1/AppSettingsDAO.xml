@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.51.88"
+          id="AppSettingsDAO" Package="TurnQuest.view.Settings1"
+          BeanClass="TurnQuest.view.Settings1.AppSettingsDAO"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings1.AppSettings"
+                  BeanClass="TurnQuest.view.Settings1.AppSettings"
+                  id="findCountries" ReturnNodeName="AppSettings"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings1.AppSettings"
+                  BeanClass="TurnQuest.view.Settings1.AppSettings"
+                  id="findTowns" ReturnNodeName="AppSettings"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings1.AppSettings"
+                  BeanClass="TurnQuest.view.Settings1.AppSettings"
+                  id="findSectors" ReturnNodeName="AppSettings"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Settings1.AppSettings"
+                  BeanClass="TurnQuest.view.Settings1.AppSettings"
+                  id="findBanks" ReturnNodeName="AppSettings"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Settings1.AppSettingsDAO"
+                     BeanClass="TurnQuest.view.Settings1.AppSettingsDAO"
+                     id="AppSettingsDAO"/>
+</JavaBean>

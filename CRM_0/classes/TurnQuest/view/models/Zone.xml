@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="Zone" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.Zone" isJavaBased="true">
+  <Attribute Name="code" PrimaryKey="true" Type="java.math.BigDecimal"/>
+  <Attribute Name="orgCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="shtDesc" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="wef" Type="java.sql.Timestamp"/>
+  <Attribute Name="wet" Type="java.sql.Timestamp"/>
+  <Attribute Name="agnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="postLevel" Type="java.lang.String"/>
+  <Attribute Name="mngrAllowed" Type="java.lang.String"/>
+  <Attribute Name="overideCommEarned" Type="java.lang.String"/>
+  <Attribute Name="regMngrSeqNo" Type="java.lang.String"/>
+  <Attribute Name="agnSeqNo" Type="java.lang.String"/>
+  <Attribute Name="polSeq" Type="java.math.BigDecimal"/>
+  <Attribute Name="propSeq" Type="java.math.BigDecimal"/>
+  <Attribute Name="preContractAgnSeqNo" Type="java.lang.String"/>
+  <Attribute Name="comptOvOnOwnBuss" Type="java.lang.String"/>
+  <Attribute Name="bbrRefCode" Type="java.lang.String"/>
+  <Attribute Name="locCode" Type="java.math.BigDecimal"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.Zone"
+                     BeanClass="TurnQuest.view.models.Zone" id="Zone"/>
+</JavaBean>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="Operator" Package="oracle.adf.view.rich.model.AttributeDescriptor"
+          BeanClass="oracle.adf.view.rich.model.AttributeDescriptor.Operator"
+          isJavaBased="true">
+  <Attribute Name="label" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="value" IsUpdateable="0" Type="java.lang.Object"/>
+  <Attribute Name="operandCount" IsUpdateable="0" Type="int"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="oracle.adf.view.rich.model.AttributeDescriptor.Operator"
+                     BeanClass="oracle.adf.view.rich.model.AttributeDescriptor.Operator"
+                     id="Operator">
+    <ParameterInfo id="p0" Type="oracle.adf.view.rich.model.AttributeDescriptor"
+                   isStructured="true"/>
+  </ConstructorMethod>
+</JavaBean>

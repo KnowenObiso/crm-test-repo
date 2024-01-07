@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="PepClassifications" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.PepClassifications" isJavaBased="true">
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="shtDesc" Type="java.lang.String"/>  
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.PepClassifications"
+                     BeanClass="TurnQuest.view.models.PepClassifications"
+                     id="PepClassifications"/>
+</JavaBean>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ClientAmlDetails" Package="TurnQuest.view.client"
+          BeanClass="TurnQuest.view.client.ClientAmlDetails" isJavaBased="true">
+  <Attribute Name="CAML_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CAML_CLNT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CAML_TRADE_NAME" Type="java.lang.String"/>
+  <Attribute Name="CAML_REG_NAME" Type="java.lang.String"/>
+  <Attribute Name="CAML_CERT_REG_NO" Type="java.lang.String"/>
+  <Attribute Name="CAML_CERT_REG_YR" Type="java.math.BigDecimal"/>
+  <Attribute Name="CAML_INCORP_COU_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CAML_PARENT_COU_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CAML_SOU_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CAML_CREATED_BY" Type="java.lang.String"/>
+  <Attribute Name="CAML_CREATED_DATE" Type="java.util.Date"/>
+  <Attribute Name="CAML_UPDATED_BY" Type="java.lang.String"/>
+  <Attribute Name="CAML_UPDATED_DATE" Type="java.util.Date"/>
+  <Attribute Name="CLNT_NAME" Type="java.lang.String"/>
+  <Attribute Name="INCORP_COU_NAME" Type="java.lang.String"/>
+  <Attribute Name="PARENT_COU_NAME" Type="java.lang.String"/>
+  <Attribute Name="SOU_NAME" Type="java.lang.String"/>
+  <Attribute Name="CAML_ID_TYPE" Type="java.lang.String"/>
+  <Attribute Name="CAML_ID_EXP_DT" Type="java.util.Date"/>
+  <Attribute Name="CAML_CITIZEN_COU_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CAML_NATIONALITY_COU_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="CAML_PAY_FREQ" Type="java.lang.String"/>
+  <Attribute Name="CAML_EMPLOYED_STATUS" Type="java.lang.String"/>
+  <Attribute Name="CAML_SELF_EMPLOYED" Type="java.lang.String"/>
+  <Attribute Name="CAML_MARITAL_STATUS" Type="java.lang.String"/>
+  <Attribute Name="CITIZEN_COU_NAME" Type="java.lang.String"/>
+  <Attribute Name="NATIONALITY_COU_NAME" Type="java.lang.String"/>
+  <Attribute Name="CAML_CLIENT_TYPE" Type="java.lang.String"/>
+  <Attribute Name="CAML_ACCOUNT_TYPE" Type="java.lang.String"/>
+  <Attribute Name="WLTH_NAME" Type="java.lang.String"/>
+  <Attribute Name="CAML_WLTH_CODE" Type="java.math.BigDecimal"/>
+ <Attribute Name="amlDetailOfacStatus" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.client.ClientAmlDetails"
+                     BeanClass="TurnQuest.view.client.ClientAmlDetails"
+                     id="ClientAmlDetails"/>
+</JavaBean>

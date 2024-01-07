@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="consolidateAccountsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="fetchAllAgencies_agentName"
+                IsQueriable="false"/>
+      <variable Type="java.lang.String" Name="fetchAllAgencies_agentId"
+                IsQueriable="false"/>
+    </variableIterator>
+    <methodIterator Binds="fetchAllAgencies.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.Agency"
+                    id="fetchAllAgenciesIterator"/>
+    <searchRegion Binds="fetchAllAgenciesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencyQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllAgencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllAgencies"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAllAgencies_MainAccountsDAO_dataProvider_fetchAllAgencies_result">
+      <NamedData NDName="agentName" NDType="java.lang.String"
+                 NDValue="${bindings.fetchAllAgencies_agentName}"/>
+      <NamedData NDName="agentId" NDType="java.lang.String"
+                 NDValue="${bindings.fetchAllAgencies_agentId}"/>
+    </methodAction> <attributeValues IterBinding="variables" id="agentName">
+      <AttrNames>
+        <Item Value="fetchAllAgencies_agentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="agentId">
+      <AttrNames>
+        <Item Value="fetchAllAgencies_agentId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="fetchAllAgenciesIterator" id="Agency">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="townCode"/>
+          <Item Value="countryCode"/>
+          <Item Value="emailAddress"/>
+          <Item Value="webAddress"/>
+          <Item Value="zip"/>
+          <Item Value="contactPerson"/>
+          <Item Value="contactTitle"/>
+          <Item Value="telephone1"/>
+          <Item Value="telephone2"/>
+          <Item Value="fax"/>
+          <Item Value="accountNum"/>
+          <Item Value="PIN"/>
+          <Item Value="commission"/>
+          <Item Value="creditAllowed"/>
+          <Item Value="witholdTx"/>
+          <Item Value="printDbNote"/>
+          <Item Value="status"/>
+          <Item Value="dateCreated"/>
+          <Item Value="createdBy"/>
+          <Item Value="registrationCode"/>
+          <Item Value="commReserverate"/>
+          <Item Value="annualBudget"/>
+          <Item Value="statusEffectiveDate"/>
+          <Item Value="creditPeriod"/>
+          <Item Value="commStatEffectiveDate"/>
+          <Item Value="commStatusDate"/>
+          <Item Value="commAllowed"/>
+          <Item Value="checked"/>
+          <Item Value="checkedBy"/>
+          <Item Value="checkDate"/>
+          <Item Value="compCommArrears"/>
+          <Item Value="reinsurer"/>
+          <Item Value="branchCode"/>
+          <Item Value="town"/>
+          <Item Value="country"/>
+          <Item Value="statusDesc"/>
+          <Item Value="IDNum"/>
+          <Item Value="conCode"/>
+          <Item Value="agentCode"/>
+          <Item Value="sms"/>
+          <Item Value="holdCompanyCode"/>
+          <Item Value="sectorCode"/>
+          <Item Value="classCode"/>
+          <Item Value="expiriyDate"/>
+          <Item Value="licenseNum"/>
+          <Item Value="runOff"/>
+          <Item Value="licensed"/>
+          <Item Value="licenseGracePeriod"/>
+          <Item Value="oldAccountNum"/>
+          <Item Value="statusRemarks"/>
+          <Item Value="branchName"/>
+          <Item Value="holdCompanyName"/>
+          <Item Value="sectorName"/>
+          <Item Value="className"/>
+          <Item Value="bankCode"/>
+          <Item Value="bankName"/>
+          <Item Value="bankBranchCode"/>
+          <Item Value="bankBranchName"/>
+          <Item Value="accountNo"/>
+          <Item Value="agentPrefix"/>
+          <Item Value="couAdminType"/>
+          <Item Value="agentStateCode"/>
+          <Item Value="agentStateName"/>
+          <Item Value="agentCrRating"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllAgenciesIterator" id="Agency1">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="accountCode"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="townCode"/>
+          <Item Value="countryCode"/>
+          <Item Value="emailAddress"/>
+          <Item Value="webAddress"/>
+          <Item Value="zip"/>
+          <Item Value="contactPerson"/>
+          <Item Value="contactTitle"/>
+          <Item Value="telephone1"/>
+          <Item Value="telephone2"/>
+          <Item Value="fax"/>
+          <Item Value="accountNum"/>
+          <Item Value="PIN"/>
+          <Item Value="commission"/>
+          <Item Value="creditAllowed"/>
+          <Item Value="witholdTx"/>
+          <Item Value="printDbNote"/>
+          <Item Value="status"/>
+          <Item Value="dateCreated"/>
+          <Item Value="createdBy"/>
+          <Item Value="registrationCode"/>
+          <Item Value="commReserverate"/>
+          <Item Value="annualBudget"/>
+          <Item Value="statusEffectiveDate"/>
+          <Item Value="creditPeriod"/>
+          <Item Value="commStatEffectiveDate"/>
+          <Item Value="commStatusDate"/>
+          <Item Value="commAllowed"/>
+          <Item Value="checked"/>
+          <Item Value="checkedBy"/>
+          <Item Value="checkDate"/>
+          <Item Value="compCommArrears"/>
+          <Item Value="reinsurer"/>
+          <Item Value="branchCode"/>
+          <Item Value="town"/>
+          <Item Value="country"/>
+          <Item Value="statusDesc"/>
+          <Item Value="IDNum"/>
+          <Item Value="conCode"/>
+          <Item Value="agentCode"/>
+          <Item Value="sms"/>
+          <Item Value="holdCompanyCode"/>
+          <Item Value="sectorCode"/>
+          <Item Value="classCode"/>
+          <Item Value="expiriyDate"/>
+          <Item Value="licenseNum"/>
+          <Item Value="runOff"/>
+          <Item Value="licensed"/>
+          <Item Value="licenseGracePeriod"/>
+          <Item Value="oldAccountNum"/>
+          <Item Value="statusRemarks"/>
+          <Item Value="branchName"/>
+          <Item Value="holdCompanyName"/>
+          <Item Value="sectorName"/>
+          <Item Value="className"/>
+          <Item Value="bankCode"/>
+          <Item Value="bankName"/>
+          <Item Value="bankBranchCode"/>
+          <Item Value="bankBranchName"/>
+          <Item Value="accountNo"/>
+          <Item Value="agentPrefix"/>
+          <Item Value="couAdminType"/>
+          <Item Value="agentStateCode"/>
+          <Item Value="agentStateName"/>
+          <Item Value="agentCrRating"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

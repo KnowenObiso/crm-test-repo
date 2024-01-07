@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.51.88"
+          id="AppClientsDAO" Package="TurnQuest.view.Clients1"
+          BeanClass="TurnQuest.view.Clients1.AppClientsDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Clients1.AppClients"
+                  BeanClass="TurnQuest.view.Clients1.AppClients"
+                  id="findSimilarClients" ReturnNodeName="AppClients"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Clients1.AppClients"
+                  BeanClass="TurnQuest.view.Clients1.AppClients"
+                  id="findUnallocatedClientSystems" ReturnNodeName="AppClients"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Clients1.AppClients"
+                  BeanClass="TurnQuest.view.Clients1.AppClients"
+                  id="findallocatedClientSystems" ReturnNodeName="AppClients"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Clients1.AppClients"
+                  BeanClass="TurnQuest.view.Clients1.AppClients"
+                  id="findclientwebaccounts" ReturnNodeName="AppClients"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Clients1.AppClientsDAO"
+                     BeanClass="TurnQuest.view.Clients1.AppClientsDAO"
+                     id="AppClientsDAO"/>
+</JavaBean>

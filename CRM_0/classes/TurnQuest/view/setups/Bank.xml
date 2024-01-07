@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="Bank" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.Bank" isJavaBased="true">
+  <Attribute Name="bankCode" Type="java.lang.String"/>
+  <Attribute Name="bankName" Type="java.lang.String"/>
+  <Attribute Name="remarks" Type="java.lang.String"/>
+  <Attribute Name="shortDesc" Type="java.lang.String"/>
+  <Attribute Name="DDRCode" Type="java.lang.String"/>
+  <Attribute Name="DDFormatDesc" Type="java.lang.String"/>
+  <Attribute Name="forwardingBankCode" Type="java.lang.String"/>
+  <Attribute Name="KBACode" Type="java.lang.String"/>
+  <Attribute Name="bbrBranchName" Type="java.lang.String"/>
+  <Attribute Name="bbrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bctNum" Type="java.lang.String"/>
+  <Attribute Name="fwdBankName" Type="java.lang.String"/>
+  <Attribute Name="ddReportFormat" Type="java.lang.String"/>
+  <Attribute Name="ddrReportDesc" Type="java.lang.String"/>
+  <Attribute Name="eftSupported" Type="java.lang.String"/>
+  <Attribute Name="classType" Type="java.lang.String"/>
+  <Attribute Name="characterNo" Type="java.math.BigDecimal"/>
+  <Attribute Name="negotiatedBank" Type="java.lang.String"/>
+  <Attribute Name="administativeAmnt" Type="java.math.BigDecimal"/>
+  <Attribute Name="logo" Type="java.sql.Blob"/>
+  <Attribute Name="bnkWef" Type="java.util.Date"/>
+  <Attribute Name="bnkWet" Type="java.util.Date"/>
+  <Attribute Name="bnkStatus" Type="java.lang.String"/>
+  <Attribute Name="characterMaxNo" Type="java.lang.String"/>
+  <Attribute Name="characterMinNo" Type="java.lang.String"/>
+  <Attribute Name="countryCode" Type="java.lang.String"/>
+  <Attribute Name="countryName" Type="java.lang.String"/>
+  <Attribute Name="ddiCharge" Type="java.math.BigDecimal"/>
+  <Attribute Name="parentBankCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="parentBank" Type="java.lang.String"/>
+  <Attribute Name="pesaLink" Type="java.lang.String"/>
+  <Attribute Name="bnkPhyAddress" Type="java.lang.String"/>
+  <Attribute Name="bnkSortCode" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.setups.Bank"
+                     BeanClass="TurnQuest.view.setups.Bank" id="Bank"/>
+</JavaBean>

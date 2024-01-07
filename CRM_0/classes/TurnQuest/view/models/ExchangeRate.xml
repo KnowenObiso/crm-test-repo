@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ExchangeRate" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.ExchangeRate" isJavaBased="true">
+  <Attribute Name="code" PrimaryKey="true" Type="java.math.BigDecimal"/>
+  <Attribute Name="curCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="rate" Type="java.math.BigDecimal"/>
+  <Attribute Name="date" Type="java.sql.Timestamp"/>
+  <Attribute Name="baseCurCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="wef" Type="java.sql.Timestamp"/>
+  <Attribute Name="wet" Type="java.sql.Timestamp"/>
+  <Attribute Name="createdBy" Type="java.lang.String"/>
+  <Attribute Name="updatedBy" Type="java.lang.String"/>
+  <Attribute Name="createdDate" Type="java.sql.Date"/>
+  <Attribute Name="updatedDate" Type="java.sql.Date"/>
+  <AccessorAttribute id="currency" IsCollection="false"
+                     BeanClass="TurnQuest.view.models.Currency"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.ExchangeRate"
+                     BeanClass="TurnQuest.view.models.ExchangeRate"
+                     id="ExchangeRate"/>
+</JavaBean>

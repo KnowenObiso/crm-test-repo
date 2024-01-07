@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="IncomeSources" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.IncomeSources" isJavaBased="true">
+  <Attribute Name="code" PrimaryKey="true" Type="java.math.BigDecimal"/>
+  <Attribute Name="clientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="incomeName" Type="java.lang.String"/>
+  <Attribute Name="incomeType" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.IncomeSources"
+                     BeanClass="TurnQuest.view.models.IncomeSources"
+                     id="IncomeSources"/>
+</JavaBean>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="leadStatusesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findLeadStatuses.result" DataControl="LeadsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Leads.LeadStatus"
+                    id="findLeadStatusesIterator"/>
+    <searchRegion Binds="findLeadStatusesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LeadStatusQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findLeadStatuses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLeadStatuses"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="LeadsDAO.methodResults.findLeadStatuses_LeadsDAO_dataProvider_findLeadStatuses_result"/>
+    <tree IterBinding="findLeadStatusesIterator" id="LeadStatus">
+      <nodeDefinition DefName="TurnQuest.view.Leads.LeadStatus"
+                      Name="LeadStatus0">
+        <AttrNames>
+          <Item Value="leadStatusCode"/>
+          <Item Value="leadStatusDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

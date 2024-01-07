@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="Personnel" Package="TurnQuest.view.Usr"
+          BeanClass="TurnQuest.view.Usr.Personnel" isJavaBased="true">
+  <Attribute Name="perEsCode" Type="java.lang.String"/>
+  <Attribute Name="perNpCode" Type="java.lang.String"/>
+  <Attribute Name="perAuthorizedByConId" Type="java.math.BigDecimal"/>
+  <Attribute Name="perVpappId" Type="java.math.BigDecimal"/>
+  <Attribute Name="perCouId" Type="java.math.BigDecimal"/>
+  <Attribute Name="perReligionCode" Type="java.lang.String"/>
+  <Attribute Name="perEoCode" Type="java.lang.String"/>
+  <Attribute Name="perStatusId" Type="java.math.BigDecimal"/>
+  <Attribute Name="perId" Type="java.math.BigDecimal"/>
+  <Attribute Name="perNo" Type="java.lang.String"/>
+  <Attribute Name="perFirstName" Type="java.lang.String"/>
+  <Attribute Name="perMiddleName" Type="java.lang.String"/>
+  <Attribute Name="perLastName" Type="java.lang.String"/>
+  <Attribute Name="perGender" Type="java.lang.String"/>
+  <Attribute Name="perMaritalStatus" Type="java.lang.String"/>
+  <Attribute Name="perDateOfBirth" Type="java.util.Date"/>
+  <Attribute Name="perWef" Type="java.util.Date"/>
+  <Attribute Name="perLoaded" Type="java.lang.String"/>
+  <Attribute Name="perFullNames" Type="java.lang.String"/>
+  <Attribute Name="conCode" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Usr.Personnel"
+                     BeanClass="TurnQuest.view.Usr.Personnel" id="Personnel"/>
+</JavaBean>

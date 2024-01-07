@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="MainAccountsDAO" Package="TurnQuest.view.Accounts"
+          BeanClass="TurnQuest.view.Accounts.MainAccountsDAO"
+          isJavaBased="true">
+  <Attribute Name="accountTypeCode" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AccountsType"
+                  BeanClass="TurnQuest.view.Accounts.AccountsType"
+                  id="fetchAllAccountTypes" ReturnNodeName="AccountsType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchAllAccountAgencies" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.AgencyClass"
+                  BeanClass="TurnQuest.view.Accounts.AgencyClass"
+                  id="fetchAllAgencyClasses" ReturnNodeName="AgencyClass"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="fetchUnassignedAccountSystems" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="fetchAssignedAccountSystems" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchAllAccountAgenciesInfoOnly" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AgencyAccounts"
+                  BeanClass="TurnQuest.view.Accounts.AgencyAccounts"
+                  id="fetchAgencyAccounts" ReturnNodeName="AgencyAccounts"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AccountsType"
+                  BeanClass="TurnQuest.view.Accounts.AccountsType"
+                  id="fetchAllGlAccounts" ReturnNodeName="AccountsType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.AgencySystem"
+                  BeanClass="TurnQuest.view.models.AgencySystem"
+                  id="fetchAllAgencyAssignedSystems"
+                  ReturnNodeName="AgencySystem"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchAllAccountAgenciesBasedOnNames"
+                  ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchAgencyClients" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchAgencyNoneClients" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="fetchAgencyServiceProviders" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AccountsType"
+                  BeanClass="TurnQuest.view.Accounts.AccountsType"
+                  id="fetchAllAgents" ReturnNodeName="AccountsType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.AgencyClass"
+                  BeanClass="TurnQuest.view.Accounts.AgencyClass"
+                  id="fetchSubAgentsDetails" ReturnNodeName="AgencyClass"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AccountsType"
+                  BeanClass="TurnQuest.view.Accounts.AccountsType"
+                  id="fetchAllAgentDetails" ReturnNodeName="AccountsType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchAllAgencies" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="agentName" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="agentId" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AccountsType"
+                  BeanClass="TurnQuest.view.Accounts.AccountsType"
+                  id="fetchAllSystems" ReturnNodeName="AccountsType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AccountsType"
+                  BeanClass="TurnQuest.view.Accounts.AccountsType"
+                  id="fetchExistingServiceProv" ReturnNodeName="AccountsType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchAgencyProducts" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchNoneAgencyProducts" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Accounts.AccountsType"
+                  BeanClass="TurnQuest.view.Accounts.AccountsType"
+                  id="fetchClaimPaymentModes" ReturnNodeName="AccountsType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Accounts.Agency"
+                  BeanClass="TurnQuest.view.Accounts.Agency"
+                  id="fetchReplacementMgrs" ReturnNodeName="Agency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Agent"
+                  BeanClass="TurnQuest.view.models.Agent" id="fetchAgents"
+                  ReturnNodeName="Agent"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="updateAgent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.Agent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="addAgent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.Agent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="TurnQuest.view.models.Agent"
+                  BeanClass="TurnQuest.view.models.Agent"
+                  id="fetchAgentByAgentCode" ReturnNodeName="Agent">
+    <ParameterInfo id="agentCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Accounts.MainAccountsDAO"
+                     BeanClass="TurnQuest.view.Accounts.MainAccountsDAO"
+                     id="MainAccountsDAO"/>
+</JavaBean>

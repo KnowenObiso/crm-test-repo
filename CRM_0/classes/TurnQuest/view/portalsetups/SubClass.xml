@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="SubClass" Package="TurnQuest.view.portalsetups"
+          BeanClass="TurnQuest.view.portalsetups.SubClass" isJavaBased="true">
+  <Attribute Name="sclCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sclDesc" Type="java.lang.String"/>
+  <Attribute Name="sclShtDesc" Type="java.lang.String"/>
+  <Attribute Name="sclWebSclDescription" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.portalsetups.SubClass"
+                     BeanClass="TurnQuest.view.portalsetups.SubClass"
+                     id="SubClass"/>
+</JavaBean>

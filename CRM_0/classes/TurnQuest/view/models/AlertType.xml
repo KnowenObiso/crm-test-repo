@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="AlertType" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.AlertType" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="ALRT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="ALRT_TYPE" Type="java.lang.String"/>
+  <Attribute Name="ALRT_SYS_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="ALRT_EMAIL" Type="java.lang.String"/>
+  <Attribute Name="ALRT_SMS" Type="java.lang.String"/>
+  <Attribute Name="sysName" Type="java.lang.String"/>
+  <Attribute Name="alertGrpUsrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="alertScreen" Type="java.lang.String"/>
+  <Attribute Name="alertEmailMsgCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="alertSmsMsgtCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="alertEmail" Type="java.lang.String"/>
+  <Attribute Name="alertSms" Type="java.lang.String"/>
+  <Attribute Name="grpUsers" Type="java.lang.String"/>
+  <Attribute Name="alertCheckAlert" Type="java.lang.String"/>
+  <Attribute Name="alrtshtDesc" Type="java.lang.String"/>
+  <Attribute Name="docCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dispatchDocCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="docShtDesc" Type="java.lang.String"/>
+  <Attribute Name="docDescription" Type="java.lang.String"/>
+ <Attribute Name="dispatchDocName" Type="java.lang.String"/>
+  <Attribute Name="daAlertCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dispatchDocRptDesc" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.AlertType"
+                     BeanClass="TurnQuest.view.models.AlertType"
+                     id="AlertType"/>
+</JavaBean>

@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.59.23" id="updateDirectDebitsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchBankBranches.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Bank"
+                    id="fetchBankBranchesIterator"/>
+    <searchRegion Binds="fetchBankBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BankQuery"/>
+    <methodIterator Binds="fetchClientRecords.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.backing.GeneralBean"
+                    id="fetchClientRecordsIterator"/>
+    <methodIterator Binds="fetchHolidayYearsLov.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.Holiday"
+                    id="fetchHolidayYearsLovIterator"/>
+    <searchRegion Binds="fetchHolidayYearsLovIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="HolidayQuery"/>
+    <methodIterator Binds="fetchHolidays.result" DataControl="DirectDebitDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.Holiday"
+                    id="fetchHolidaysIterator"/>
+    <methodIterator Binds="fetchDirectDebitNonReceipt.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebit"
+                    id="fetchDirectDebitNonReceiptIterator"/>
+    <searchRegion Binds="fetchDirectDebitNonReceiptIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebitQuery"/>
+    <methodIterator Binds="fetchDirectDebitHeaders.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebitHeader"
+                    id="fetchDirectDebitHeadersIterator"/>
+    <searchRegion Binds="fetchDirectDebitHeadersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebitHeaderQuery"/>
+    <methodIterator Binds="fetchDirectDebitDetails.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebitDetail"
+                    id="fetchDirectDebitDetailsIterator"/>
+    <searchRegion Binds="fetchDirectDebitDetailsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebitDetailQuery"/>
+    <methodIterator Binds="fetchDirectDebitAuthorised.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebit"
+                    id="fetchDirectDebitAuthorisedIterator"/>
+    <searchRegion Binds="fetchDirectDebitAuthorisedIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebit1Query"/>
+    <methodIterator Binds="fetchDirectDebitHeaders2.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebitHeader"
+                    id="fetchDirectDebitHeaders2Iterator"/>
+    <searchRegion Binds="fetchDirectDebitHeaders2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebitHeader2Query"/>
+    <methodIterator Binds="fetchDirectDebitDetails2.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebitDetail"
+                    id="fetchDirectDebitDetails2Iterator"/>
+    <searchRegion Binds="fetchDirectDebitDetails2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebitDetail3Query"/>
+    <methodIterator Binds="fetchDirectDebitReport.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebit"
+                    id="fetchDirectDebitReportIterator"/>
+    <searchRegion Binds="fetchDirectDebitReportIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebit2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchBankBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchBankBranches"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchBankBranches_DirectDebitDAO_dataProvider_fetchBankBranches_result"/>
+    <tree IterBinding="fetchBankBranchesIterator" id="Bank">
+      <nodeDefinition DefName="TurnQuest.view.setups.Bank" Name="Bank0">
+        <AttrNames>
+          <Item Value="bankCode"/>
+          <Item Value="shortDesc"/>
+          <Item Value="bankName"/>
+          <Item Value="bbrBranchName"/>
+          <Item Value="bbrCode"/>
+          <Item Value="bctNum"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchClientRecords" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchClientRecords"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchClientRecords_DirectDebitDAO_dataProvider_fetchClientRecords_result"/>
+    <tree IterBinding="fetchClientRecordsIterator" id="GeneralBean">
+      <nodeDefinition DefName="TurnQuest.view.backing.GeneralBean"
+                      Name="GeneralBean0">
+        <AttrNames>
+          <Item Value="clientName"/>
+          <Item Value="clientCode"/>
+          <Item Value="clientBankAccNum"/>
+          <Item Value="proposalNum"/>
+          <Item Value="policyNum"/>
+          <Item Value="premAmount"/>
+          <Item Value="remarks"/>
+          <Item Value="prevDdhCode"/>
+          <Item Value="bookDate"/>
+          <Item Value="accountHolder"/>
+          <Item Value="payType"/>
+          <Item Value="loanNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchHolidayYearsLov" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchHolidayYearsLov"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchHolidayYearsLov_DirectDebitDAO_dataProvider_fetchHolidayYearsLov_result"/>
+    <tree IterBinding="fetchHolidayYearsLovIterator" id="Holiday">
+      <nodeDefinition DefName="TurnQuest.view.models.Holiday" Name="Holiday0">
+        <AttrNames>
+          <Item Value="HYear"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchHolidays" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchHolidays"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchHolidays_DirectDebitDAO_dataProvider_fetchHolidays_result"/>
+    <tree IterBinding="fetchHolidaysIterator" id="Holiday1">
+      <nodeDefinition DefName="TurnQuest.view.models.Holiday" Name="Holiday10">
+        <AttrNames>
+          <Item Value="hldDate"/>
+          <Item Value="hldDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDirectDebitNonReceipt" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDirectDebitNonReceipt"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchDirectDebitNonReceipt_DirectDebitDAO_dataProvider_fetchDirectDebitNonReceipt_result"/>
+    <tree IterBinding="fetchDirectDebitNonReceiptIterator" id="DirectDebit">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebit"
+                      Name="DirectDebit0">
+        <AttrNames>
+          <Item Value="ddBookDate"/>
+          <Item Value="ddRefNo"/>
+          <Item Value="bankBranch"/>
+          <Item Value="ddStatus"/>
+          <Item Value="ddCode"/>
+          <Item Value="ddSentYn"/>
+          <Item Value="ddAccountNum"/>
+          <Item Value="ddBbrCode"/>
+          <Item Value="ddReceipted"/>
+          <Item Value="ddValueDate"/>
+          <Item Value="ddRaisedBy"/>
+          <Item Value="ddDate"/>
+          <Item Value="ddBankCode"/>
+          <Item Value="ddAuthBy"/>
+          <Item Value="ddAuthDate"/>
+          <Item Value="ddAuthorized"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDirectDebitHeaders" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDirectDebitHeaders"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchDirectDebitHeaders_DirectDebitDAO_dataProvider_fetchDirectDebitHeaders_result"/>
+    <tree IterBinding="fetchDirectDebitHeadersIterator" id="DirectDebitHeader">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebitHeader"
+                      Name="DirectDebitHeader0">
+        <AttrNames>
+          <Item Value="ddhClientName"/>
+          <Item Value="ddhClientCode"/>
+          <Item Value="ddhAccHolder"/>
+          <Item Value="bankBranch"/>
+          <Item Value="ddhClientBankAccNum"/>
+          <Item Value="ddhTotAmount"/>
+          <Item Value="ddhInitialBookDate"/>
+          <Item Value="ddhCode"/>
+          <Item Value="ddhDDCode"/>
+          <Item Value="ddhClientBbrCode"/>
+          <Item Value="ddhBbrBankCode"/>
+          <Item Value="ddhClientShortDesc"/>
+          <Item Value="ddhBbrBranchName"/>
+          <Item Value="ddhBbrShortDesc"/>
+          <Item Value="ddhBbrRefCode"/>
+          <Item Value="ddhStatus"/>
+          <Item Value="ddhReceipted"/>
+          <Item Value="ddhFailDate"/>
+          <Item Value="ddhFailUpdatedBy"/>
+          <Item Value="ddhFailUpdateDate"/>
+          <Item Value="ddhFailRemarks"/>
+          <Item Value="ddhRelaunchDate"/>
+          <Item Value="ddhRelaunchStopDate"/>
+          <Item Value="ddhRelaunchedBy"/>
+          <Item Value="ddhRelaunchStoppedBy"/>
+          <Item Value="ddhPrevDdhCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDirectDebitDetails" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDirectDebitDetails"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchDirectDebitDetails_DirectDebitDAO_dataProvider_fetchDirectDebitDetails_result"/>
+    <tree IterBinding="fetchDirectDebitDetailsIterator" id="DirectDebitDetail">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebitDetail"
+                      Name="DirectDebitDetail0">
+        <AttrNames>
+          <Item Value="dddPolProposalNo"/>
+          <Item Value="dddPolPolicyNo"/>
+          <Item Value="dddAmount"/>
+          <Item Value="dddRemarks"/>
+          <Item Value="dddStatus"/>
+          <Item Value="dddCode"/>
+          <Item Value="dddDdhCode"/>
+          <Item Value="dddDdCode"/>
+          <Item Value="dddSysCode"/>
+          <Item Value="dddPolCode"/>
+          <Item Value="dddPolPrpCode"/>
+          <Item Value="dddOtherIdentifier"/>
+          <Item Value="dddStartDate"/>
+          <Item Value="dddStopDate"/>
+          <Item Value="dddFailDate"/>
+          <Item Value="dddReceipted"/>
+          <Item Value="dddFailUpdatedBy"/>
+          <Item Value="dddFailUpdateDate"/>
+          <Item Value="dddPprCode"/>
+          <Item Value="dddPolType"/>
+          <Item Value="dddReceiptedBy"/>
+          <Item Value="dddReceiptNo"/>
+          <Item Value="dddReceiptDate"/>
+          <Item Value="dddReceiptedDate"/>
+          <Item Value="dddFailRemarks"/>
+          <Item Value="ddRefNumber"/>
+          <Item Value="ddBankBranch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDirectDebitAuthorised" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDirectDebitAuthorised"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchDirectDebitAuthorised_DirectDebitDAO_dataProvider_fetchDirectDebitAuthorised_result"/>
+    <tree IterBinding="fetchDirectDebitAuthorisedIterator" id="DirectDebit1">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebit"
+                      Name="DirectDebit10">
+        <AttrNames>
+          <Item Value="ddRefNo"/>
+          <Item Value="ddBookDate"/>
+          <Item Value="bankBranch"/>
+          <Item Value="ddAccountNum"/>
+          <Item Value="ddReceipted"/>
+          <Item Value="ddCode"/>
+          <Item Value="ddSentYn"/>
+          <Item Value="ddBbrCode"/>
+          <Item Value="ddStatus"/>
+          <Item Value="ddValueDate"/>
+          <Item Value="ddRaisedBy"/>
+          <Item Value="ddDate"/>
+          <Item Value="ddBankCode"/>
+          <Item Value="ddAuthBy"/>
+          <Item Value="ddAuthDate"/>
+          <Item Value="ddAuthorized"/>
+          <Item Value="DD_RECEIPT_DATE"/>
+          <Item Value="DD_RECEIPT_NO"/>
+          <Item Value="DD_ALLOC_STATUS"/>
+          <Item Value="DD_TOTAL_RECORDS"/>
+          <Item Value="DD_RECORDS_ALLOCATED"/>
+          <Item Value="DD_RECORDS_ALLOC_SUCCESS"/>
+          <Item Value="DD_ALLOC_PERCENT"/>
+          <Item Value="DD_RECORDS_ALLOC_FAIL"/>
+          <Item Value="DD_ALLOC_SUCCESS_PERC"/>
+          <Item Value="DD_EST_ALLOC_COMPL_DATE"/>
+          <Item Value="DD_ALLOC_STATUS_CODE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchDirectDebitHeadersIterator" id="DirectDebitHeader1">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebitHeader"
+                      Name="DirectDebitHeader10">
+        <AttrNames>
+          <Item Value="ddhClientName"/>
+          <Item Value="ddhClientCode"/>
+          <Item Value="ddhAccHolder"/>
+          <Item Value="bankBranch"/>
+          <Item Value="ddhClientBankAccNum"/>
+          <Item Value="ddhTotAmount"/>
+          <Item Value="ddhStatus"/>
+          <Item Value="ddhCode"/>
+          <Item Value="ddhDDCode"/>
+          <Item Value="ddhClientBbrCode"/>
+          <Item Value="ddhBbrBankCode"/>
+          <Item Value="ddhClientShortDesc"/>
+          <Item Value="ddhBbrBranchName"/>
+          <Item Value="ddhBbrShortDesc"/>
+          <Item Value="ddhBbrRefCode"/>
+          <Item Value="ddhReceipted"/>
+          <Item Value="ddhFailDate"/>
+          <Item Value="ddhFailUpdatedBy"/>
+          <Item Value="ddhFailUpdateDate"/>
+          <Item Value="ddhFailRemarks"/>
+          <Item Value="ddhRelaunchDate"/>
+          <Item Value="ddhRelaunchStopDate"/>
+          <Item Value="ddhRelaunchedBy"/>
+          <Item Value="ddhRelaunchStoppedBy"/>
+          <Item Value="ddhInitialBookDate"/>
+          <Item Value="ddhPrevDdhCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchDirectDebitDetailsIterator" id="DirectDebitDetail1">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebitDetail"
+                      Name="DirectDebitDetail10">
+        <AttrNames>
+          <Item Value="dddPolProposalNo"/>
+          <Item Value="dddPolPolicyNo"/>
+          <Item Value="dddReceiptNo"/>
+          <Item Value="dddReceiptDate"/>
+          <Item Value="dddAmount"/>
+          <Item Value="dddStatus"/>
+          <Item Value="dddReceipted"/>
+          <Item Value="dddCode"/>
+          <Item Value="dddDdhCode"/>
+          <Item Value="dddDdCode"/>
+          <Item Value="dddSysCode"/>
+          <Item Value="dddPolCode"/>
+          <Item Value="dddPolPrpCode"/>
+          <Item Value="dddOtherIdentifier"/>
+          <Item Value="dddRemarks"/>
+          <Item Value="dddStartDate"/>
+          <Item Value="dddStopDate"/>
+          <Item Value="dddFailDate"/>
+          <Item Value="dddFailUpdatedBy"/>
+          <Item Value="dddFailUpdateDate"/>
+          <Item Value="dddPprCode"/>
+          <Item Value="dddPolType"/>
+          <Item Value="dddReceiptedBy"/>
+          <Item Value="dddReceiptedDate"/>
+          <Item Value="dddFailRemarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchDirectDebitDetailsIterator" id="DirectDebitDetail2">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebitDetail"
+                      Name="DirectDebitDetail20">
+        <AttrNames>
+          <Item Value="dddPolProposalNo"/>
+          <Item Value="dddPolPolicyNo"/>
+          <Item Value="dddReceiptNo"/>
+          <Item Value="dddReceiptDate"/>
+          <Item Value="dddAmount"/>
+          <Item Value="dddStatus"/>
+          <Item Value="dddRelaunchDate"/>
+          <Item Value="dddReceipted"/>
+          <Item Value="dddCode"/>
+          <Item Value="dddDdhCode"/>
+          <Item Value="dddDdCode"/>
+          <Item Value="dddSysCode"/>
+          <Item Value="dddPolCode"/>
+          <Item Value="dddPolPrpCode"/>
+          <Item Value="dddOtherIdentifier"/>
+          <Item Value="dddRemarks"/>
+          <Item Value="dddStartDate"/>
+          <Item Value="dddStopDate"/>
+          <Item Value="dddFailDate"/>
+          <Item Value="dddFailUpdatedBy"/>
+          <Item Value="dddFailUpdateDate"/>
+          <Item Value="dddPprCode"/>
+          <Item Value="dddPolType"/>
+          <Item Value="dddReceiptedBy"/>
+          <Item Value="dddReceiptedDate"/>
+          <Item Value="dddFailRemarks"/>
+          <Item Value="dddRelaunchStopDate"/>
+          <Item Value="dddRelaunchedBy"/>
+          <Item Value="dddRelaunchStoppedBy"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDirectDebitHeaders2" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDirectDebitHeaders2"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchDirectDebitHeaders2_DirectDebitDAO_dataProvider_fetchDirectDebitHeaders2_result"/>
+    <tree IterBinding="fetchDirectDebitHeaders2Iterator"
+          id="DirectDebitHeader2">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebitHeader"
+                      Name="DirectDebitHeader20">
+        <AttrNames>
+          <Item Value="ddhCode"/>
+          <Item Value="ddhDDCode"/>
+          <Item Value="ddhClientCode"/>
+          <Item Value="ddhClientBbrCode"/>
+          <Item Value="ddhBbrBankCode"/>
+          <Item Value="ddhClientShortDesc"/>
+          <Item Value="ddhClientName"/>
+          <Item Value="ddhClientBankAccNum"/>
+          <Item Value="ddhBbrBranchName"/>
+          <Item Value="ddhBbrShortDesc"/>
+          <Item Value="ddhBbrRefCode"/>
+          <Item Value="ddhTotAmount"/>
+          <Item Value="ddhStatus"/>
+          <Item Value="ddhReceipted"/>
+          <Item Value="ddhFailDate"/>
+          <Item Value="ddhFailUpdatedBy"/>
+          <Item Value="ddhFailUpdateDate"/>
+          <Item Value="ddhFailRemarks"/>
+          <Item Value="bankBranch"/>
+          <Item Value="ddhRelaunchDate"/>
+          <Item Value="ddhRelaunchStopDate"/>
+          <Item Value="ddhRelaunchedBy"/>
+          <Item Value="ddhRelaunchStoppedBy"/>
+          <Item Value="ddhInitialBookDate"/>
+          <Item Value="ddhPrevDdhCode"/>
+          <Item Value="ddhAccHolder"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDirectDebitDetails2" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDirectDebitDetails2"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="DirectDebitDAO.methodResults.fetchDirectDebitDetails2_DirectDebitDAO_dataProvider_fetchDirectDebitDetails2_result"/>
+    <tree IterBinding="fetchDirectDebitDetails2Iterator"
+          id="DirectDebitDetail3">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebitDetail"
+                      Name="DirectDebitDetail30">
+        <AttrNames>
+          <Item Value="dddCode"/>
+          <Item Value="dddDdhCode"/>
+          <Item Value="dddDdCode"/>
+          <Item Value="dddSysCode"/>
+          <Item Value="dddPolCode"/>
+          <Item Value="dddPolPrpCode"/>
+          <Item Value="dddPolProposalNo"/>
+          <Item Value="dddPolPolicyNo"/>
+          <Item Value="dddOtherIdentifier"/>
+          <Item Value="dddAmount"/>
+          <Item Value="dddRemarks"/>
+          <Item Value="dddStartDate"/>
+          <Item Value="dddStopDate"/>
+          <Item Value="dddStatus"/>
+          <Item Value="dddFailDate"/>
+          <Item Value="dddReceipted"/>
+          <Item Value="dddFailUpdatedBy"/>
+          <Item Value="dddFailUpdateDate"/>
+          <Item Value="dddPprCode"/>
+          <Item Value="dddPolType"/>
+          <Item Value="dddReceiptedBy"/>
+          <Item Value="dddReceiptNo"/>
+          <Item Value="dddReceiptDate"/>
+          <Item Value="dddReceiptedDate"/>
+          <Item Value="dddFailRemarks"/>
+          <Item Value="dddRelaunchDate"/>
+          <Item Value="dddRelaunchStopDate"/>
+          <Item Value="dddRelaunchedBy"/>
+          <Item Value="dddRelaunchStoppedBy"/>
+          <Item Value="dddBankAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDirectDebitReport" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDirectDebitReport"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="data.DirectDebitDAO.methodResults.fetchDirectDebitReport_DirectDebitDAO_dataProvider_fetchDirectDebitReport_result"/>
+    <tree IterBinding="fetchDirectDebitReportIterator" id="DirectDebit2">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebit"
+                      Name="DirectDebit20">
+        <AttrNames>
+          <Item Value="dddCode"/>
+          <Item Value="policyNo"/>
+          <Item Value="accountNo"/>
+          <Item Value="sortCode"/>
+          <Item Value="amount"/>
+          <Item Value="accName"/>
+          <Item Value="narration"/>
+          <Item Value="company"/>
+          <Item Value="fail"/>
+          <Item Value="failRemarks"/>
+          <Item Value="bbRefCode"/>
+          <Item Value="payFreq"/>
+          <Item Value="nextDueDate"/>
+          <Item Value="ddCode"/>
+          <Item Value="ddRefNo"/>
+          <Item Value="ddRefNumber"/>
+          <Item Value="ddBankBranch"/>
+          <Item Value="ddDebitDay"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

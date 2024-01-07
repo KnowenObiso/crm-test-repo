@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="MemoDAO" Package="TurnQuest.view.Memos"
+          BeanClass="TurnQuest.view.Memos.MemoDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Memos.Memo"
+                  BeanClass="TurnQuest.view.Memos.Memo" id="findSystemMemos"
+                  ReturnNodeName="Memo"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Memos.Memo"
+                  BeanClass="TurnQuest.view.Memos.Memo" id="findSubClasses"
+                  ReturnNodeName="Memo"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Memos.Memo"
+                  BeanClass="TurnQuest.view.Memos.Memo" id="findMemoSubject"
+                  ReturnNodeName="Memo"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Memos.Memo"
+                  BeanClass="TurnQuest.view.Memos.Memo" id="findMemoDetails"
+                  ReturnNodeName="Memo"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Memos.Memo"
+                  BeanClass="TurnQuest.view.Memos.Memo"
+                  id="findMemoSubjectDetails" ReturnNodeName="Memo"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.MessageTemplate"
+                  BeanClass="TurnQuest.view.models.MessageTemplate"
+                  id="findMsgTemplate" ReturnNodeName="MessageTemplate"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.MessageTemplate"
+                  BeanClass="TurnQuest.view.models.MessageTemplate"
+                  id="findSmsTemplate" ReturnNodeName="MessageTemplate"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.MessageTemplate"
+                  BeanClass="TurnQuest.view.models.MessageTemplate"
+                  id="findEmailTemplate" ReturnNodeName="MessageTemplate"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Memos.MemoDAO"
+                     BeanClass="TurnQuest.view.Memos.MemoDAO" id="MemoDAO"/>
+</JavaBean>

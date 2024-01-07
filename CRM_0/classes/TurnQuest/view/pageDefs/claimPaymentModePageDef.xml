@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="claimPaymentModePageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllClaimsModes.result"
+                    DataControl="ClaimsPaymentModeDAO" RangeSize="25"
+                    BeanClass="" id="fetchAllClaimsModesIterator"/>
+    <searchRegion Binds="fetchAllClaimsModesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClaimPaymentModeQuery"/>
+    <methodIterator Binds="fetchClaimsModes.result"
+                    DataControl="ClaimsPaymentModeDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+                    id="fetchClaimsModesIterator"/>
+    <searchRegion Binds="fetchClaimsModesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClaimPaymentModesQuery"/>
+    <methodIterator Binds="fetchAlClaimsModes.result"
+                    DataControl="ClaimPaymentModesDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+                    id="fetchAlClaimsModesIterator"/>
+    <searchRegion Binds="fetchAlClaimsModesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClaimPaymentModes1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllClaimsModes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllClaimsModes"
+                  IsViewObjectMethod="false" DataControl="ClaimsPaymentModeDAO"
+                  InstanceName="ClaimsPaymentModeDAO.dataProvider"
+                  ReturnName="ClaimsPaymentModeDAO.methodResults.fetchAllClaimsModes_ClaimsPaymentModeDAO_dataProvider_fetchAllClaimsModes_result"/>
+    <tree IterBinding="fetchAllClaimsModesIterator" id="ClaimPaymentMode">
+      <nodeDefinition DefName="" Name="ClaimPaymentMode0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortdesc"/>
+          <Item Value="description"/>
+          <Item Value="minAmt"/>
+          <Item Value="maxAmt"/>
+          <Item Value="default_value"/>
+          <Item Value="remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchClaimsModes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchClaimsModes"
+                  IsViewObjectMethod="false" DataControl="ClaimsPaymentModeDAO"
+                  InstanceName="ClaimsPaymentModeDAO.dataProvider"
+                  ReturnName="ClaimsPaymentModeDAO.methodResults.fetchClaimsModes_ClaimsPaymentModeDAO_dataProvider_fetchClaimsModes_result"/>
+    <tree IterBinding="fetchClaimsModesIterator" id="ClaimPaymentModes">
+      <nodeDefinition DefName="TurnQuest.view.models.ClaimPaymentModes"
+                      Name="ClaimPaymentModes0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortdesc"/>
+          <Item Value="description"/>
+          <Item Value="minAmt"/>
+          <Item Value="maxAmt"/>
+          <Item Value="default_value"/>
+          <Item Value="remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAlClaimsModes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAlClaimsModes"
+                  IsViewObjectMethod="false" DataControl="ClaimPaymentModesDAO"
+                  InstanceName="ClaimPaymentModesDAO.dataProvider"
+                  ReturnName="ClaimPaymentModesDAO.methodResults.fetchAlClaimsModes_ClaimPaymentModesDAO_dataProvider_fetchAlClaimsModes_result"/>
+    <tree IterBinding="fetchAlClaimsModesIterator" id="ClaimPaymentModes1">
+      <nodeDefinition DefName="TurnQuest.view.models.ClaimPaymentModes"
+                      Name="ClaimPaymentModes10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortdesc"/>
+          <Item Value="description"/>
+          <Item Value="maxAmt"/>
+          <Item Value="minAmt"/>
+          <Item Value="default_value"/>
+          <Item Value="remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

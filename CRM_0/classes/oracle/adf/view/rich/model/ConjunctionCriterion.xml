@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ConjunctionCriterion" Package="oracle.adf.view.rich.model"
+          BeanClass="oracle.adf.view.rich.model.ConjunctionCriterion"
+          isJavaBased="true">
+  <AccessorAttribute id="conjunction" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.model.ConjunctionCriterion.Conjunction"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="criterionList" IsCollection="true"
+                     BeanClass="oracle.adf.view.rich.model.Criterion"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.Object" id="getKey"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="oracle.adf.view.rich.model.Criterion"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false"
+                  Type="oracle.adf.view.rich.model.Criterion"
+                  BeanClass="oracle.adf.view.rich.model.Criterion"
+                  id="getCriterion" ReturnNodeName="Criterion">
+    <ParameterInfo id="p0" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="oracle.adf.view.rich.model.ConjunctionCriterion"
+                     BeanClass="oracle.adf.view.rich.model.ConjunctionCriterion"
+                     id="ConjunctionCriterion"/>
+</JavaBean>

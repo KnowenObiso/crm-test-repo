@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="LeadStatus" Package="TurnQuest.view.Leads"
+          BeanClass="TurnQuest.view.Leads.LeadStatus" isJavaBased="true">
+  <Attribute Name="leadStatusCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="leadStatusDesc" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Leads.LeadStatus"
+                     BeanClass="TurnQuest.view.Leads.LeadStatus"
+                     id="LeadStatus"/>
+</JavaBean>

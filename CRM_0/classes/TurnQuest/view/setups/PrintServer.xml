@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="PrintServer" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.PrintServer" isJavaBased="true">
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="filter" Type="java.lang.String"/>
+  <Attribute Name="uri" Type="java.lang.String"/>
+  <Attribute Name="filter_command" Type="java.lang.String"/>
+  <Attribute Name="sec_username" Type="java.lang.String"/>
+  <Attribute Name="sec_password" Type="java.lang.String"/>
+  <Attribute Name="sec_auth_type" Type="java.lang.String"/>
+  <Attribute Name="sec_encrpt_type" Type="java.lang.String"/>
+  <Attribute Name="proxy_host" Type="java.lang.String"/>
+  <Attribute Name="proxy_port" Type="java.lang.String"/>
+  <Attribute Name="proxy_username" Type="java.lang.String"/>
+  <Attribute Name="proxy_pasword" Type="java.lang.String"/>
+  <Attribute Name="proxy_authen_type" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.PrintServer"
+                     BeanClass="TurnQuest.view.setups.PrintServer"
+                     id="PrintServer"/>
+</JavaBean>

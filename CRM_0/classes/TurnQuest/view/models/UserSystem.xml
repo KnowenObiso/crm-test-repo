@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="UserSystem" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.UserSystem" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="usysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="usysUsrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="usysSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="usysWef" Type="java.util.Date"/>
+  <Attribute Name="usysWet" Type="java.util.Date"/>
+  <Attribute Name="usysSpostCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysCode" Type="java.math.BigDecimal" DefaultValue=""/>
+  <Attribute Name="sysShtDesc" Type="java.lang.String"/>
+  <Attribute Name="sysName" Type="java.lang.String"/>
+  <Attribute Name="sysActive" Type="java.lang.String"/>
+  <Attribute Name="spostDesc" Type="java.lang.String"/>
+  <Attribute Name="clcoCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clntCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clcoName" Type="java.lang.String"/>
+  <Attribute Name="clcoPostAddress" Type="java.lang.String"/>
+  <Attribute Name="clcoPhysAddress" Type="java.lang.String"/>
+  <Attribute Name="clcoSecCode" Type="java.math.BigDecimal"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.UserSystem"
+                     BeanClass="TurnQuest.view.models.UserSystem"
+                     id="UserSystem"/>
+</JavaBean>

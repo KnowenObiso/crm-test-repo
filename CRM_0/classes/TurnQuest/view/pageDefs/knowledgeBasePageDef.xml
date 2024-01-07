@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.59.23" id="knowledgeBasePageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+     <methodIterator Binds="findKbContentPerTopic.result" DataControl="KBDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.knowledgeBase.KbContent"
+                    id="findKbContentPerTopicIterator"/>
+    <searchRegion Binds="findKbContentPerTopicIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="KbContentQuery"/>
+    <methodIterator Binds="findKbTopics.result" DataControl="KBDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.knowledgeBase.KbTopic1"
+                    id="findKbTopicsIterator"/>
+  </executables>
+  <bindings>
+  <methodAction id="findKbTopics" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findKbTopics"
+                  IsViewObjectMethod="false" DataControl="KBDAO"
+                  InstanceName="KBDAO.dataProvider"
+                  ReturnName="KBDAO.methodResults.findKbTopics_KBDAO_dataProvider_findKbTopics_result"/>
+    <methodAction id="findKbContentPerTopic" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findKbContentPerTopic"
+                  IsViewObjectMethod="false" DataControl="KBDAO"
+                  InstanceName="KBDAO.dataProvider"
+                  ReturnName="KBDAO.methodResults.findKbContentPerTopic_KBDAO_dataProvider_findKbContentPerTopic_result"/>
+    <tree IterBinding="findKbContentPerTopicIterator" id="KbContent">
+      <nodeDefinition DefName="TurnQuest.view.knowledgeBase.KbContent"
+                      Name="KbContent0">
+        <AttrNames>
+          <Item Value="kbcOrder"/>
+          <Item Value="kbcContent"/>
+          <Item Value="kbcId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findKbTopicsIterator" id="KbTopic1">
+      <nodeDefinition DefName="TurnQuest.view.knowledgeBase.KbTopic1"
+                      Name="KbTopic10">
+        <AttrNames>
+          <Item Value="kbtId"/>
+          <Item Value="kbtDesc"/>
+          <Item Value="kbtOrder"/>
+          <Item Value="kbtParentId"/>
+          <Item Value="kbtShrtDesc"/>
+          <Item Value="nodeName"/>
+          <Item Value="nodeType"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="subKbTopics"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.knowledgeBase.KbTopic2"
+                      Name="KbTopic11">
+        <AttrNames>
+          <Item Value="kbtId"/>
+          <Item Value="kbtDesc"/>
+          <Item Value="kbtOrder"/>
+          <Item Value="kbtParentId"/>
+          <Item Value="kbtShrtDesc"/>
+          <Item Value="nodeName"/>
+          <Item Value="nodeType"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="subKbTopics"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.knowledgeBase.KbTopic3"
+                      Name="KbTopic12">
+        <AttrNames>
+          <Item Value="kbtId"/>
+          <Item Value="kbtDesc"/>
+          <Item Value="kbtOrder"/>
+          <Item Value="kbtParentId"/>
+          <Item Value="kbtShrtDesc"/>
+          <Item Value="nodeName"/>
+          <Item Value="nodeType"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="subKbTopics"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="TurnQuest.view.knowledgeBase.KbTopic4"
+                      Name="KbTopic13">
+        <AttrNames>
+          <Item Value="kbtId"/>
+          <Item Value="kbtDesc"/>
+          <Item Value="kbtOrder"/>
+          <Item Value="kbtParentId"/>
+          <Item Value="kbtShrtDesc"/>
+          <Item Value="nodeName"/>
+          <Item Value="nodeType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

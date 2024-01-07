@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="ClientTypesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchClientTypes.result" DataControl="ClientTypeDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.ClientType"
+                    id="fetchClientTypesIterator"/>
+    <searchRegion Binds="fetchClientTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClientTypeQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchClientTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchClientTypes"
+                  IsViewObjectMethod="false" DataControl="ClientTypeDAO"
+                  InstanceName="ClientTypeDAO.dataProvider"
+                  ReturnName="data.ClientTypeDAO.methodResults.fetchClientTypes_ClientTypeDAO_dataProvider_fetchClientTypes_result"/>
+    <tree IterBinding="fetchClientTypesIterator" id="ClientType">
+      <nodeDefinition DefName="TurnQuest.view.models.ClientType"
+                      Name="ClientType0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="clntType"/>
+          <Item Value="category"/>
+          <Item Value="type"/>
+          <Item Value="person"/>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="EmployeeAdminDAO" Package="TurnQuest.view.employeeAdministration"
+          BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdminDAO"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchActiveEmployees" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchInActiveEmployees" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="findAssignedResources" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="findUnassignedResources" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchAllEmployees" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchDraftUsers" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchEmployeeDepartments" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchEmployeeBranches" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchSysUsers" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="findAssignedRoles" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchActiveEmployeesWoutRoles"
+                  ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchResources" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="findAssignedRescStatus" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="findUnAssignedRescStatus" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="findResourcesStatusMap" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                  id="fetchPersonnelRanks" ReturnNodeName="EmployeeAdmin"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.employeeAdministration.EmployeeAdminDAO"
+                     BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdminDAO"
+                     id="EmployeeAdminDAO"/>
+</JavaBean>

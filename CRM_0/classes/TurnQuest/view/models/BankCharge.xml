@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="BankCharge" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.BankCharge" isJavaBased="true">
+  <Attribute Name="code" PrimaryKey="true" Type="java.math.BigDecimal"/>
+  <Attribute Name="bnkCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="rate" Type="java.math.BigDecimal"/>
+  <Attribute Name="dateFrom" Type="java.sql.Timestamp"/>
+  <Attribute Name="dateTo" Type="java.sql.Timestamp"/>
+  <Attribute Name="rateType" Type="java.lang.String"/>
+  <Attribute Name="systemName" Type="java.lang.String"/>
+   <Attribute Name="productName" Type="java.lang.String"/> 
+  <Attribute Name="sysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="proCode" Type="java.math.BigDecimal"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.BankCharge"
+                     BeanClass="TurnQuest.view.models.BankCharge"
+                     id="BankCharge"/>
+</JavaBean>

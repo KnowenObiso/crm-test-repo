@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="requiredDocumentsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchReqDocsAccTypes.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Documents.RequiredDocument"
+                    id="fetchReqDocsAccTypesIterator"/>
+    <methodIterator Binds="findAccountTypes.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="findAccountTypesIterator"/>
+    <methodIterator Binds="fetchRequiredDocumentTitles.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Documents.RequiredDocument"
+                    id="fetchRequiredDocumentTitlesIterator"/>
+    <methodIterator Binds="findTypesByAccountLevel.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="findTypesByAccountLevelIterator"/> 
+    <searchRegion Binds="fetchReqDocsAccountTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ReqDocsAccountTypesQuery"/>                
+    <methodIterator Binds="fetchReqDocsAccountTypes.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Documents.RequiredDocument"
+                    id="fetchReqDocsAccountTypesIterator"/>                                 
+  </executables>
+  <bindings>
+    <methodAction id="fetchReqDocsAccTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchReqDocsAccTypes"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.fetchReqDocsAccTypes_MainClientDAO_dataProvider_fetchReqDocsAccTypes_result"/>
+    <tree IterBinding="fetchReqDocsAccTypesIterator" id="RequiredDocument">
+      <nodeDefinition DefName="TurnQuest.view.Documents.RequiredDocument"
+                      Name="RequiredDocument0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="description"/>
+          <Item Value="mandatory"/>
+          <Item Value="dateAdded"/>
+          <Item Value="code"/>
+          <Item Value="exempted"/>
+          <Item Value="account_type"/>
+          <Item Value="accTypeName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    
+    <methodAction id="fetchRequiredDocumentTitles" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchRequiredDocumentTitles"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.fetchRequiredDocumentTitles_MainClientDAO_dataProvider_fetchRequiredDocumentTitles_result"/>
+    <tree IterBinding="fetchRequiredDocumentTitlesIterator" id="RequiredDocTitles">
+      <nodeDefinition DefName="TurnQuest.view.Documents.RequiredDocument"
+                      Name="RequiredDocument0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="description"/>
+          <Item Value="mandatory"/>
+          <Item Value="dateAdded"/>
+          <Item Value="code"/>
+          <Item Value="exempted"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    
+    <methodAction id="findAccountTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fingAccountTypes"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.fingAccountTypes_AccountsDAO_dataProvider_fingAccountTypes_result"/>
+    <tree IterBinding="findAccountTypesIterator" id="AccountType2">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType20">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="cmapping"/>
+          <Item Value="smapping"/>          
+          <Item Value="appLevelChecked"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    
+    <methodAction id="findTypesByAccountLevel" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findTypesByAccountLevel"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.findTypesByAccountLevel_AccountsDAO_dataProvider_findTypesByAccountLevel_result"/>
+    <tree IterBinding="findTypesByAccountLevelIterator" id="AccountLevelTypes">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountLevelTypes1">
+        <AttrNames>
+          <Item Value="typeCode"/>
+          <Item Value="typeName"/>
+          <Item Value="typeShortDesc"/>          
+          <Item Value="appLevelChecked"/>
+          <Item Value="isAlreadyAssigned"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    
+    <methodAction id="fetchReqDocsAccountTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchReqDocsAccountTypes"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.fetchReqDocsAccountTypes_MainClientDAO_dataProvider_fetchReqDocsAccountTypes_result"/>
+    <tree IterBinding="fetchReqDocsAccountTypesIterator" id="RequiredDocumentAccountTypes">
+      <nodeDefinition DefName="TurnQuest.view.Documents.RequiredDocument"
+                      Name="RequiredDocumentAccountTypes0">
+        <AttrNames>
+          <Item Value="account_doc_type_code"/>
+          <Item Value="docCode"/>
+          <Item Value="docShortDesc"/>
+          <Item Value="docDescription"/>
+          <Item Value="mandatory"/>          
+          <Item Value="account_type"/>
+          <Item Value="account_sub_type"/>
+          <Item Value="accTypeName"/>
+          <Item Value="docAssignmentSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+
+  </bindings>
+</pageDefinition>

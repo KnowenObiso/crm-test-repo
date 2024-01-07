@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="Sacco" Package="TurnQuest.view.Accounts"
+          BeanClass="TurnQuest.view.Accounts.Sacco" isJavaBased="true">
+  <Attribute Name="saccoRegulatorNo" Type="java.lang.String"/>
+  <Attribute Name="saccoName" Type="java.lang.String"/>
+  <Attribute Name="saccoPhysicalAddress" Type="java.lang.String"/>
+  <Attribute Name="saccoPostalAddress" Type="java.lang.String"/>
+  <Attribute Name="saccoCountryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="saccoCountryName" Type="java.lang.String"/>
+  <Attribute Name="saccoStateCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="saccoAdminRegionName" Type="java.lang.String"/>
+  <Attribute Name="saccoStateName" Type="java.lang.String"/>
+  <Attribute Name="saccoTownName" Type="java.lang.String"/>
+  <Attribute Name="saccoEmail" Type="java.lang.String"/>
+  <Attribute Name="saccoTownCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="saccoWebAddress" Type="java.lang.String"/>
+  <Attribute Name="saccoPostalCode" Type="java.lang.String"/>
+  <Attribute Name="saccoContactPerson" Type="java.lang.String"/>
+  <Attribute Name="saccoContactTitle" Type="java.lang.String"/>
+  <Attribute Name="saccoTel1" Type="java.lang.String"/>
+  <Attribute Name="saccoTel2" Type="java.lang.String"/>
+  <Attribute Name="saccoFax" Type="java.lang.String"/>
+  <Attribute Name="saccoAccountNumber" Type="java.lang.String"/>
+  <Attribute Name="saccoPIN" Type="java.lang.String"/>
+  <Attribute Name="saccoStatus" Type="java.lang.String"/>
+  <Attribute Name="saccoDateCreated" Type="java.lang.String"/>
+  <Attribute Name="saccoBranchCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="saccoBranchName" Type="java.lang.String"/>
+  <Attribute Name="saccoBankAccountNo" Type="java.lang.String"/>
+  <Attribute Name="saccoBankBranchCode" Type="java.lang.String"/>
+  <Attribute Name="saccoBankBranch" Type="java.lang.String"/>
+  <Attribute Name="saccoAccountNo" Type="java.lang.String"/>
+  <Attribute Name="saccoSms" Type="java.lang.String"/>
+  <Attribute Name="saccoUniquePrefix" Type="java.lang.String"/>
+  <Attribute Name="saccoLicensed" Type="java.lang.String"/>
+  <Attribute Name="saccoCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="saccoShortDesc" Type="java.lang.String"/>
+  <Attribute Name="saccoCreatedBy" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Accounts.Sacco"
+                     BeanClass="TurnQuest.view.Accounts.Sacco" id="Sacco"/>
+</JavaBean>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="BankBranch" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.BankBranch" isJavaBased="true">
+  <Attribute Name="branchCode" Type="java.lang.String"/>
+  <Attribute Name="branchBankCode" Type="java.lang.String"/>
+  <Attribute Name="branchName" Type="java.lang.String"/>
+  <Attribute Name="remarks" Type="java.lang.String"/>
+  <Attribute Name="shortDesc" Type="java.lang.String"/>
+  <Attribute Name="refCode" Type="java.lang.String"/>
+  <Attribute Name="EFTSupported" Type="java.lang.String"/>
+  <Attribute Name="DDSupported" Type="java.lang.String"/>
+  <Attribute Name="dateCreated" Type="java.util.Date"/>
+  <Attribute Name="createdBy" Type="java.lang.String"/>
+  <Attribute Name="physicalAddress" Type="java.lang.String"/>
+  <Attribute Name="postalAddress" Type="java.lang.String"/>
+  <Attribute Name="KBACode" Type="java.lang.String"/>
+  <Attribute Name="logo" Type="java.sql.Blob"/>
+  <Attribute Name="bankTerritoryCode" Type="java.lang.String"/>
+  <Attribute Name="bankTerritoryName" Type="java.lang.String"/>
+  <Attribute Name="countryCode" Type="java.lang.String"/>
+  <Attribute Name="branchEmail" Type="java.lang.String"/>
+  <Attribute Name="branchPersonName" Type="java.lang.String"/>
+  <Attribute Name="branchPersonEmail" Type="java.lang.String"/>
+  <Attribute Name="branchPersonPhone" Type="java.lang.String"/>
+  <Attribute Name="bankBranchParentCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bankBranchParentName" Type="java.lang.String"/>
+  <Attribute Name="swiftCode" Type="java.lang.String"/>
+  <Attribute Name="reRouteNo" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.setups.BankBranch"
+                     BeanClass="TurnQuest.view.setups.BankBranch"
+                     id="BankBranch"/>
+</JavaBean>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="modSubUnitsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findPropModulesSubUnits.result"
+                    DataControl="ProposalDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                    id="findPropModulesSubUnitsIterator"/>
+    <methodIterator Binds="findPropModulesSubUnitsDet.result"
+                    DataControl="ProposalDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                    id="findPropModulesSubUnitsDetIterator"/>
+    <methodIterator Binds="findPropModulesSubUnitsDetOptions.result"
+                    DataControl="ProposalDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                    id="findPropModulesSubUnitsDetOptionsIterator"/>
+    <methodIterator Binds="findPropModSystems.result" DataControl="ProposalDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                    id="findPropModSystemsIterator"/>
+    <searchRegion Binds="findPropModSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProposalSchedulesBean1Query"/>
+    <methodIterator Binds="findPropMappingColumns.result"
+                    DataControl="ProposalDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                    id="findPropMappingColumnsIterator"/>
+    <searchRegion Binds="findPropMappingColumnsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProposalSchedulesBean4Query"/>
+    <methodIterator Binds="findProducts1.result" DataControl="ProductDetailDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.products.Product"
+                    id="findProducts1Iterator"/>
+    <searchRegion Binds="findProducts1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Product1Query"/>
+    <searchRegion Binds="findPropModulesSubUnitsDetIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProposalSchedulesBean4Query1"/>
+    <searchRegion Binds="findPropModulesSubUnitsDetOptionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProposalSchedulesBean2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProducts"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="data.ProductDAO.methodResults.findProducts_ProductDAO_dataProvider_findProducts_result"/>
+    <methodAction id="findPropModulesSubUnits" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findPropModulesSubUnits"
+                  IsViewObjectMethod="false" DataControl="ProposalDAO"
+                  InstanceName="ProposalDAO.dataProvider"
+                  ReturnName="ProposalDAO.methodResults.findPropModulesSubUnits_ProposalDAO_dataProvider_findPropModulesSubUnits_result"/>
+    <methodAction id="findPropModSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findPropModSystems"
+                  IsViewObjectMethod="false" DataControl="ProposalDAO"
+                  InstanceName="ProposalDAO.dataProvider"
+                  ReturnName="ProposalDAO.methodResults.findPropModSystems_ProposalDAO_dataProvider_findPropModSystems_result"/>
+    <methodAction id="findPropModulesSubUnitsDet" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findPropModulesSubUnitsDet"
+                  IsViewObjectMethod="false" DataControl="ProposalDAO"
+                  InstanceName="ProposalDAO.dataProvider"
+                  ReturnName="ProposalDAO.methodResults.findPropModulesSubUnitsDet_ProposalDAO_dataProvider_findPropModulesSubUnitsDet_result"/>
+    <methodAction id="findPropModulesSubUnitsDetOptions"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="findPropModulesSubUnitsDetOptions"
+                  IsViewObjectMethod="false" DataControl="ProposalDAO"
+                  InstanceName="ProposalDAO.dataProvider"
+                  ReturnName="ProposalDAO.methodResults.findPropModulesSubUnitsDetOptions_ProposalDAO_dataProvider_findPropModulesSubUnitsDetOptions_result"/>
+    <methodAction id="findPropMappingColumns" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findPropMappingColumns"
+                  IsViewObjectMethod="false" DataControl="ProposalDAO"
+                  InstanceName="ProposalDAO.dataProvider"
+                  ReturnName="data.ProposalDAO.methodResults.findPropMappingColumns_ProposalDAO_dataProvider_findPropMappingColumns_result"/>
+    <methodAction id="findProducts1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProducts"
+                  IsViewObjectMethod="false" DataControl="ProductDetailDAO"
+                  InstanceName="ProductDetailDAO.dataProvider"
+                  ReturnName="ProductDetailDAO.methodResults.findProducts_ProductDetailDAO_dataProvider_findProducts_result"/>
+    <tree IterBinding="findProducts1Iterator" id="Product1">
+      <nodeDefinition DefName="TurnQuest.view.products.Product"
+                      Name="Product10">
+        <AttrNames>
+          <Item Value="productCode"/>
+          <Item Value="productShtDesc"/>
+          <Item Value="productDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findPropModSystemsIterator" id="ProposalSchedulesBean5">
+      <nodeDefinition DefName="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                      Name="ProposalSchedulesBean50">
+        <AttrNames>
+          <Item Value="TSMS_SHT_DESC"/>
+          <Item Value="TSMS_DESC"/>
+          <Item Value="TSMS_CODE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findPropModulesSubUnitsIterator"
+          id="ProposalSchedulesBean1">
+      <nodeDefinition DefName="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                      Name="ProposalSchedulesBean10">
+        <AttrNames>
+          <Item Value="TSMS_SHT_DESC"/>
+          <Item Value="TSMS_DESC"/>
+          <Item Value="TSMS_ORDER"/>
+          <Item Value="TSMS_CODE"/>
+          <Item Value="SCL_DESC"/>
+          <Item Value="TSM_DESC"/>
+          <Item Value="TSMS_TSM_CODE"/>
+          <Item Value="TSMS_SCL_CODE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findPropMappingColumnsIterator"
+          id="ProposalSchedulesBean">
+      <nodeDefinition DefName="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                      Name="ProposalSchedulesBean0">
+        <AttrNames>
+          <Item Value="tmsc_desc"/>
+          <Item Value="tmsc_code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findPropModulesSubUnitsDetIterator"
+          id="ProposalSchedulesBean4">
+      <nodeDefinition DefName="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                      Name="ProposalSchedulesBean40">
+        <AttrNames>
+          <Item Value="TSMSD_NAME"/>
+          <Item Value="TSMSD_PROMPT"/>
+          <Item Value="TSMSD_TYPE"/>
+          <Item Value="TSMSD_MORE_DTLS_APPL"/>
+          <Item Value="TSMSD_MORE_DTLS"/>
+          <Item Value="TSMSD_ROOT"/>
+          <Item Value="TSMSD_MORE_DTLS_REQUIRED"/>
+          <Item Value="TSMSD_CODE"/>
+          <Item Value="TSMSD_PARENT"/>
+          <Item Value="TSMSD_ORDER"/>
+          <Item Value="tmsc_desc"/>
+          <Item Value="tmsc_code"/>
+          <Item Value="TSMS_SHT_DESC"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findPropModulesSubUnitsDetOptionsIterator"
+          id="ProposalSchedulesBean2">
+      <nodeDefinition DefName="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                      Name="ProposalSchedulesBean20">
+        <AttrNames>
+          <Item Value="TSSO_CODE"/>
+          <Item Value="TSSO_TSMSD_CODE"/>
+          <Item Value="TSSO_ORDER"/>
+          <Item Value="TSSO_OPTION_NAME"/>
+          <Item Value="TSSO_OPTION_DESC"/>
+          <Item Value="TSSO_TYPE"/>
+          <Item Value="tmsc_desc"/>
+          <Item Value="tmsc_code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

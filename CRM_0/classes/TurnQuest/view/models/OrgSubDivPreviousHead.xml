@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="OrgSubDivPreviousHead" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.OrgSubDivPreviousHead"
+          isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="osdphCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="osdphOsdCode" Type="java.lang.String"/>
+  <Attribute Name="osdphPrevAgnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="osdphWet" Type="java.util.Date"/>
+  <Attribute Name="osdName" Type="java.lang.String"/>
+  <Attribute Name="agencyName" Type="java.lang.String"/>
+  <Attribute Name="osdphOsdId" Type="java.math.BigDecimal"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.OrgSubDivPreviousHead"
+                     BeanClass="TurnQuest.view.models.OrgSubDivPreviousHead"
+                     id="OrgSubDivPreviousHead"/>
+</JavaBean>

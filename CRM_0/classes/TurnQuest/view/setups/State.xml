@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="State" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.State" isJavaBased="true">
+  <Attribute Name="stateCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="stateCountryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="stateShortDesc" Type="java.lang.String"/>
+  <Attribute Name="stateName" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.setups.State"
+                     BeanClass="TurnQuest.view.setups.State" id="State"/>
+</JavaBean>

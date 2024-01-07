@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="clientTitlesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllClientTitles.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.ClientTitle"
+                    id="fetchAllClientTitlesIterator"/>
+    <searchRegion Binds="fetchAllClientTitlesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClientTitle1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllClientTitles" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllClientTitles"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.fetchAllClientTitles_MainClientDAO_dataProvider_fetchAllClientTitles_result"/>
+    <tree IterBinding="fetchAllClientTitlesIterator" id="ClientTitle">
+      <nodeDefinition DefName="TurnQuest.view.client.ClientTitle"
+                      Name="ClientTitle0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllClientTitlesIterator" id="ClientTitle1">
+      <nodeDefinition DefName="TurnQuest.view.client.ClientTitle"
+                      Name="ClientTitle10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

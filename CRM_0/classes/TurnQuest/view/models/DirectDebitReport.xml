@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="DirectDebitReport" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.DirectDebitReport"
+          isJavaBased="true">
+  <Attribute Name="ddrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddrReportDesc" Type="java.lang.String"/>
+  <Attribute Name="dfrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="dfrFailedRemarks" Type="java.lang.String"/>
+  <Attribute Name="dfrApplicationLevel" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.DirectDebitReport"
+                     BeanClass="TurnQuest.view.models.DirectDebitReport"
+                     id="DirectDebitReport"/>
+</JavaBean>

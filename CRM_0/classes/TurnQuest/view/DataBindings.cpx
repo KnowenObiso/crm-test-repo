@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.51.56" id="DataBindings" SeparateXMLFiles="false"
+             Package="TurnQuest.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/index.jspx" usageId="TurnQuest_view_indexPageDef"/>
+    <page path="/Home.jsp" usageId="TurnQuest_view_HomePageDef"/>
+    <page path="/sysRoles.jspx" usageId="TurnQuest_view_sysRolesPageDef"/>    
+    <page path="/organization.jspx"
+          usageId="TurnQuest_view_organizationPageDef"/>
+    <page path="/holdingCompanies.jspx"
+          usageId="TurnQuest_view_holdingCompaniesPageDef"/>
+    <page path="/banks.jspx" usageId="TurnQuest_view_banksPageDef"/>
+    <page path="/agencyClasses.jspx"
+          usageId="TurnQuest_view_agencyClassesPageDef"/>
+    <page path="/currencies.jspx" usageId="TurnQuest_view_currenciesPageDef"/>
+    <page path="/exchangeRates.jspx"
+          usageId="TurnQuest_view_exchangeRatesPageDef"/>
+    <page path="/sectors.jspx" usageId="TurnQuest_view_sectorsPageDef"/>
+    <page path="/serviceProviderTypes.jspx"
+          usageId="TurnQuest_view_serviceProviderTypesPageDef"/>
+    <page path="/countries.jspx" usageId="TurnQuest_view_countriesPageDef"/>
+    <page path="/userParameters.jspx"
+          usageId="TurnQuest_view_userParametersPageDef"/>
+    <page path="/accountdef.jspx" usageId="TurnQuest_view_accountdefPageDef"/>
+    <page path="/CreateClient.jspx"
+          usageId="TurnQuest_view_CreateClientPageDef"/>
+    <page path="/accounttypes.jspx"
+          usageId="TurnQuest_view_accounttypesPageDef"/>
+    <page path="/divisions.jspx" usageId="TurnQuest_view_divisionsPageDef"/>
+    <page path="/requiredDocuments.jspx"
+          usageId="TurnQuest_view_requiredDocumentsPageDef"/>
+    <page path="/serviceProviders.jspx"
+          usageId="TurnQuest_view_serviceProvidersPageDef"/>
+    <page path="/sysProcessRoles.jspx"
+          usageId="TurnQuest_view_sysProcessRolesPageDef"/>
+    <page path="/users.jspx" usageId="TurnQuest_view_usersPageDef"/>
+    <page path="/userRoles.jspx" usageId="TurnQuest_view_userRolesPageDef"/>
+    <page path="/accounts.jspx" usageId="TurnQuest_view_accountsPageDef"/>
+    <page path="/userBranches.jspx"
+          usageId="TurnQuest_view_userBranchesPageDef"/>
+    <page path="/clients.jspx" usageId="TurnQuest_view_clientsPageDef"/>
+    <page path="/clientTitles.jspx"
+          usageId="TurnQuest_view_clientTitlesPageDef"/>
+    <page path="/paymentModes.jspx"
+          usageId="TurnQuest_view_paymentModesPageDef"/>
+    <page path="/updateDirectDebits.jspx"
+          usageId="TurnQuest_view_updateDirectDebitsPageDef"/>
+    <page path="/memoSetup.jspx" usageId="TurnQuest_view_memoSetupPageDef"/>
+    <page path="/prospectsDefinitions.jspx"
+          usageId="TurnQuest_view_prospectsDefinitionsPageDef"/>
+    <page path="/emTemplate.jspx" usageId="TurnQuest_view_emTemplatePageDef"/>
+    <page path="/currencyDefinitions.jspx"
+          usageId="TurnQuest_view_currencyDefinitionsPageDef"/>
+    <page path="/currencyRatesDefinition.jspx"
+          usageId="TurnQuest_view_currencyRatesDefinitionPageDef"/>
+    <page path="/banksDefinition.jspx"
+          usageId="TurnQuest_view_banksDefinitionPageDef"/>
+    <page path="/hierarchies.jspx" usageId="TurnQuest_view_hierarchiesPageDef"/>
+    <page path="/orgSubDivisions.jspx"
+          usageId="TurnQuest_view_orgSubDivisionsPageDef"/>
+    <page path="/agencyActivities.jspx"
+          usageId="TurnQuest_view_agencyActivitiesPageDef"/>
+    <page path="/countryHolidays.jspx"
+          usageId="TurnQuest_view_countryHolidaysPageDef"/>
+    <page path="/activityTypes.jspx"
+          usageId="TurnQuest_view_activityTypesPageDef"/>
+    <page path="/messageTemplate.jspx"
+          usageId="TurnQuest_view_messageTemplatePageDef"/>
+    <page path="/postLevels.jspx" usageId="TurnQuest_view_postLevelsPageDef"/>
+    <page path="/claimPaymentMode.jspx"
+          usageId="TurnQuest_view_claimPaymentModePageDef"/>
+    <page path="/ClaimsPayMode.jspx"
+          usageId="TurnQuest_view_ClaimsPayModePageDef"/>
+    <page path="/mobileServiceProviders.jspx"
+          usageId="TurnQuest_view_mobileServiceProvidersPageDef"/>
+    <page path="/printerSetups.jspx"
+          usageId="TurnQuest_view_printerSetupsPageDef"/>
+    <page path="/singleMessage.jspx"
+          usageId="TurnQuest_view_singleMessagePageDef"/>
+    <page path="/sequences.jspx" usageId="TurnQuest_view_sequencesPageDef"/>
+    <page path="/alerts.jspx" usageId="TurnQuest_view_alertsPageDef"/>
+    <page path="/products.jspx" usageId="TurnQuest_view_productsPageDef"/>
+    <page path="/clientAttributesDefinations.jspx"
+          usageId="TurnQuest_view_clientAttributesDefinationsPageDef"/>
+    <page path="/Activities.jspx" usageId="TurnQuest_view_ActivitiesPageDef"/>
+    <page path="/CampaignManagement.jspx"
+          usageId="TurnQuest_view_CampaignManagementPageDef"/>
+    <page path="/activityStatuses.jspx" usageId="TurnQuest_view_StatusesPageDef"/>
+    <page path="/leads.jspx" usageId="TurnQuest_view_leadsPageDef"/>
+    <page path="/PriorityLevels.jspx"
+          usageId="TurnQuest_view_PriorityLevelsPageDef"/>
+    <page path="/incidenceSetups.jspx"
+          usageId="TurnQuest_view_incidenceSetupsPageDef"/>
+    <page path="/leadSources.jspx" usageId="TurnQuest_view_leadSourcesPageDef"/>
+    <page path="/leadStatuses.jspx"
+          usageId="TurnQuest_view_leadStatusesPageDef"/>
+    <page path="/reportGroups.jspx"
+          usageId="TurnQuest_view_reportGroupsPageDef"/>
+    <page path="/Users1.jspx" usageId="TurnQuest_view_Users1PageDef"/>
+    <page path="/systemApplicableAreas.jspx"
+          usageId="TurnQuest_view_systemApplicableAreasPageDef"/>
+    <page path="/sysReports.jspx" usageId="TurnQuest_view_sysReportsPageDef"/>
+    <page path="/serviceRequests.jspx"
+          usageId="TurnQuest_view_serviceRequestsPageDef"/>
+    <page path="/servReqCat.jspx" usageId="TurnQuest_view_servReqCatPageDef"/>
+    <page path="/requestTrack.jspx"
+          usageId="TurnQuest_view_requestTrackPageDef"/>
+    <page path="/mailSettings.jspx"
+          usageId="TurnQuest_view_mailSettingsPageDef"/>
+    <page path="/scheduler.jspx" usageId="TurnQuest_view_schedulerPageDef"/>
+    <page path="/knowledgeBase.jspx"
+          usageId="TurnQuest_view_knowledgeBasePageDef"/>
+    <page path="/households.jspx" usageId="TurnQuest_view_householdsPageDef"/>
+    <page path="/escalations.jspx" usageId="TurnQuest_view_escalationsPageDef"/>
+    <page path="/msgParameters.jspx"
+          usageId="TurnQuest_view_msgParametersPageDef"/>
+    <page path="/smsSettings.jspx" usageId="TurnQuest_view_smsSettingsPageDef"/>
+    <page path="/consolidateAccounts.jspx"
+          usageId="TurnQuest_view_consolidateAccountsPageDef"/>
+    <page path="/BranchBranches.jspx"
+          usageId="TurnQuest_view_BranchBranchesPageDef"/>
+    <page path="/BankBraches.jspx" usageId="TurnQuest_view_BankBrachesPageDef"/>
+    <page path="/BankBranches.jspx"
+          usageId="TurnQuest_view_BankBranchesPageDef"/>
+    <page path="/Bankbranch.jspx" usageId="TurnQuest_view_BankbranchPageDef"/>
+    <page path="/bankBranches.jspx"
+          usageId="TurnQuest_view_bankBranchesPageDef"/>
+    <page path="/MobileSmsMessages.jspx"
+          usageId="TurnQuest_view_MobileSmsMessagesPageDef"/>
+    <page path="/ClientTypes.jspx" usageId="TurnQuest_view_ClientTypesPageDef"/>
+    <page path="/ClientLoading.jspx"
+          usageId="TurnQuest_view_ClientLoadingPageDef"/>
+    <page path="/agentLoading.jspx"
+          usageId="TurnQuest_view_agentLoadingPageDef"/>
+    <page path="/ecmRpts.jspx" usageId="TurnQuest_view_ecmRptsPageDef"/>
+    <page path="/ecmSetup.jspx" usageId="TurnQuest_view_ecmSetupPageDef"/>
+    <page path="/modSubUnits.jspx" usageId="TurnQuest_view_modSubUnitsPageDef"/>
+    <page path="/product.jspx" usageId="TurnQuest_view_productPageDef"/>
+    <page path="/SubClassDescSetUp.jspx"
+          usageId="TurnQuest_view_SubClassDescSetUpPageDef"/>
+    <page path="/webProducts.jspx" usageId="TurnQuest_view_webProductsPageDef"/>
+    <page path="/serviceReq.jspx" usageId="TurnQuest_view_serviceReqPageDef"/>
+    <page path="/home.jspx" usageId="TurnQuest_view_HomePageDef"/>
+    <page path="/countriesDef.jspx"
+          usageId="TurnQuest_view_countriesDefPageDef"/>
+    <page path="/sysRptDefinition.jspx"
+          usageId="TurnQuest_view_sysRptDefinitionPageDef"/>
+    <page path="/runningJobs.jspx" usageId="TurnQuest_view_runningJobsPageDef"/>
+    <page path="/smsHistory.jspx" usageId="TurnQuest_view_smsHistoryPageDef"/>
+    <page path="/emailHistory.jspx"
+          usageId="TurnQuest_view_emailHistoryPageDef"/>
+    <page path="/DDfailRemarksSetups.jspx"
+          usageId="TurnQuest_view_DDfailRemarksSetupsPageDef"/>
+    <page path="/bankTemplate.jspx"
+          usageId="TurnQuest_view_bankTemplatePageDef"/>
+    <page path="/ratingOrganizations.jspx"
+          usageId="TurnQuest_view_ratingOrganizationsPageDef"/>
+    <page path="/templateSetUps.jspx"
+          usageId="TurnQuest_view_templateSetUpsPageDef"/>
+    <page path="/entities.jspx" usageId="TurnQuest_view_entitiesPageDef"/>
+    <page path="/departments.jspx" usageId="TurnQuest_view_departmentsPageDef"/>
+    <page path="/securityQuestions.jspx"
+          usageId="TurnQuest_view_securityQuestionsPageDef"/>
+    <page path="/sysLabel.jspx" usageId="TurnQuest_view_sysLabelPageDef"/>
+  
+    <page path="/clientsAiico.jspx"
+          usageId="TurnQuest_view_clientsAiicoPageDef"/>
+    <page path="/clientAiico.jspx" usageId="TurnQuest_view_clientAiicoPageDef"/>
+    <page path="/AgentTypes.jspx" usageId="TurnQuest_view_AgentTypesPageDef"/>
+    <page path="/sysProcessRolesNew.jspx"
+          usageId="TurnQuest_view_sysProcessRolesNewPageDef"/>
+    <page path="/reqHist.jspx" usageId="TurnQuest_view_reqHistPageDef"/>
+    <page path="/newEscalations.jspx"
+          usageId="TurnQuest_view_newEscalationsPageDef"/>
+    <page path="/bankAccountsLoading.jspx"
+          usageId="TurnQuest_view_bankAccountsLoadingPageDef"/>
+    <page path="/saccos.jspx" usageId="TurnQuest_view_saccosPageDef"/>
+    <page path="/showEntities.jspx"
+          usageId="TurnQuest_view_showEntitiesPageDef"/>
+    <page path="/userGroups.jspx"
+          usageId="TurnQuest_view_userGroupTypesPageDef"/>
+    <page path="/userGroupCategories.jspx"
+          usageId="TurnQuest_view_userGroupTypesPageDef1"/>
+    <page path="/sysRolesMakerChecker.jspx"
+          usageId="TurnQuest_view_sysRolesMakerCheckerPageDef"/>
+    <page path="/channels.jspx" usageId="TurnQuest_view_channelsPageDef"/>
+    <page path="/employeeOnboarding.jspx"
+          usageId="TurnQuest_view_employeeOnboardingPageDef"/>
+    <page path="/resourceAssignment.jspx"
+          usageId="TurnQuest_view_resourceAssignmentPageDef"/>
+    <page path="/userAuthorization.jspx"
+          usageId="TurnQuest_view_userAuthorizationPageDef"/>
+    <page path="/employeeRolesAssignment.jspx"
+          usageId="TurnQuest_view_employeeRolesAssignmentPageDef"/>
+    <page path="/resourceAssgnSetUps.jspx"
+          usageId="TurnQuest_view_resourceAssgnSetUpsPageDef"/>
+    <page path="/personnelRankSetups.jspx"
+          usageId="TurnQuest_view_personnelRankSetupsPageDef"/>
+    <page path="/userLoading.jspx" usageId="TurnQuest_view_userLoadingPageDef"/>
+    <page path="/servReqStatus.jspx" usageId="TurnQuest_view_servReqStatusPageDef"/>
+    <page path="/amlDtls.jspx" usageId="TurnQuest_view_amlDtlsPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="TurnQuest_view_indexPageDef"
+          path="TurnQuest.view.pageDefs.indexPageDef"/>
+    <page id="TurnQuest_view_HomePageDef"
+          path="TurnQuest.view.pageDefs.HomePageDef"/>
+    <page id="TurnQuest_view_sysRolesPageDef"
+          path="TurnQuest.view.pageDefs.sysRolesPageDef"/>    
+    <page id="TurnQuest_view_organizationPageDef"
+          path="TurnQuest.view.pageDefs.organizationPageDef"/>
+    <page id="TurnQuest_view_holdingCompaniesPageDef"
+          path="TurnQuest.view.pageDefs.holdingCompaniesPageDef"/>
+    <page id="TurnQuest_view_banksPageDef"
+          path="TurnQuest.view.pageDefs.banksPageDef"/>
+    <page id="TurnQuest_view_agencyClassesPageDef"
+          path="TurnQuest.view.pageDefs.agencyClassesPageDef"/>
+    <page id="TurnQuest_view_currenciesPageDef"
+          path="TurnQuest.view.pageDefs.currenciesPageDef"/>
+    <page id="TurnQuest_view_exchangeRatesPageDef"
+          path="TurnQuest.view.pageDefs.exchangeRatesPageDef"/>
+    <page id="TurnQuest_view_sectorsPageDef"
+          path="TurnQuest.view.pageDefs.sectorsPageDef"/>
+    <page id="TurnQuest_view_serviceProviderTypesPageDef"
+          path="TurnQuest.view.pageDefs.serviceProviderTypesPageDef"/>
+    <page id="TurnQuest_view_countriesPageDef"
+          path="TurnQuest.view.pageDefs.countriesPageDef"/>
+    <page id="TurnQuest_view_userParametersPageDef"
+          path="TurnQuest.view.pageDefs.userParametersPageDef"/>
+    <page id="TurnQuest_view_accountdefPageDef"
+          path="TurnQuest.view.pageDefs.accountdefPageDef"/>
+    <page id="TurnQuest_view_CreateClientPageDef"
+          path="TurnQuest.view.pageDefs.CreateClientPageDef"/>
+    <page id="TurnQuest_view_accounttypesPageDef"
+          path="TurnQuest.view.pageDefs.accounttypesPageDef"/>
+    <page id="TurnQuest_view_divisionsPageDef"
+          path="TurnQuest.view.pageDefs.divisionsPageDef"/>
+    <page id="TurnQuest_view_requiredDocumentsPageDef"
+          path="TurnQuest.view.pageDefs.requiredDocumentsPageDef"/>
+    <page id="TurnQuest_view_serviceProvidersPageDef"
+          path="TurnQuest.view.pageDefs.serviceProvidersPageDef"/>
+    <page id="TurnQuest_view_sysProcessRolesPageDef"
+          path="TurnQuest.view.pageDefs.sysProcessRolesPageDef"/>
+    <page id="TurnQuest_view_usersPageDef"
+          path="TurnQuest.view.pageDefs.usersPageDef"/>
+    <page id="TurnQuest_view_userRolesPageDef"
+          path="TurnQuest.view.pageDefs.userRolesPageDef"/>
+    <page id="TurnQuest_view_accountsPageDef"
+          path="TurnQuest.view.pageDefs.accountsPageDef"/>
+    <page id="TurnQuest_view_userBranchesPageDef"
+          path="TurnQuest.view.pageDefs.userBranchesPageDef"/>
+    <page id="TurnQuest_view_clientsPageDef"
+          path="TurnQuest.view.pageDefs.clientsPageDef"/>
+    <page id="TurnQuest_view_clientTitlesPageDef"
+          path="TurnQuest.view.pageDefs.clientTitlesPageDef"/>
+    <page id="TurnQuest_view_paymentModesPageDef"
+          path="TurnQuest.view.pageDefs.paymentModesPageDef"/>
+    <page id="TurnQuest_view_updateDirectDebitsPageDef"
+          path="TurnQuest.view.pageDefs.updateDirectDebitsPageDef"/>
+    <page id="TurnQuest_view_memoSetupPageDef"
+      path="TurnQuest.view.pageDefs.memoSetupPageDef"/>
+    <page id="TurnQuest_view_prospectsDefinitionsPageDef"
+      path="TurnQuest.view.pageDefs.prospectsDefinitionsPageDef"/>
+    <page id="TurnQuest_view_emTemplatePageDef"
+          path="TurnQuest.view.pageDefs.emTemplatePageDef"/>
+	<page id="TurnQuest_view_currencyDefinitionsPageDef"
+          path="TurnQuest.view.pageDefs.currencyDefinitionsPageDef"/>
+    <page id="TurnQuest_view_currencyRatesDefinitionPageDef"
+          path="TurnQuest.view.pageDefs.currencyRatesDefinitionPageDef"/>
+    <page id="TurnQuest_view_banksDefinitionPageDef"
+          path="TurnQuest.view.pageDefs.banksDefinitionPageDef"/>
+    <page id="TurnQuest_view_hierarchiesPageDef"
+          path="TurnQuest.view.pageDefs.hierarchiesPageDef"/>
+    <page id="TurnQuest_view_orgSubDivisionsPageDef"
+          path="TurnQuest.view.pageDefs.orgSubDivisionsPageDef"/>
+    <page id="TurnQuest_view_agencyActivitiesPageDef"
+          path="TurnQuest.view.pageDefs.agencyActivitiesPageDef"/>
+    <page id="TurnQuest_view_countryHolidaysPageDef"
+          path="TurnQuest.view.pageDefs.countryHolidaysPageDef"/>
+    <page id="TurnQuest_view_activityTypesPageDef"
+          path="TurnQuest.view.pageDefs.activityTypesPageDef"/>
+    <page id="TurnQuest_view_messageTemplatePageDef"
+          path="TurnQuest.view.pageDefs.messageTemplatePageDef"/>
+    <page id="TurnQuest_view_postLevelsPageDef"
+          path="TurnQuest.view.pageDefs.postLevelsPageDef"/>
+    <page id="TurnQuest_view_claimPaymentModePageDef"
+          path="TurnQuest.view.pageDefs.claimPaymentModePageDef"/>
+    <page id="TurnQuest_view_ClaimsPayModePageDef"
+          path="TurnQuest.view.pageDefs.ClaimsPayModePageDef"/>
+    <page id="TurnQuest_view_mobileServiceProvidersPageDef"
+          path="TurnQuest.view.pageDefs.mobileServiceProvidersPageDef"/>
+    <page id="TurnQuest_view_printerSetupsPageDef"
+          path="TurnQuest.view.pageDefs.printerSetupsPageDef"/>
+    <page id="TurnQuest_view_singleMessagePageDef"
+          path="TurnQuest.view.pageDefs.singleMessagePageDef"/>
+    <page id="TurnQuest_view_sequencesPageDef"
+          path="TurnQuest.view.pageDefs.sequencesPageDef"/>
+    <page id="TurnQuest_view_alertsPageDef"
+          path="TurnQuest.view.pageDefs.alertsPageDef"/>
+    <page id="TurnQuest_view_productsPageDef"
+          path="TurnQuest.view.pageDefs.productsPageDef"/>
+    <page id="TurnQuest_view_clientAttributesDefinationsPageDef"
+          path="TurnQuest.view.pageDefs.clientAttributesDefinationsPageDef"/>
+    <page id="TurnQuest_view_ActivitiesPageDef"
+          path="TurnQuest.view.pageDefs.ActivitiesPageDef"/>
+    <page id="TurnQuest_view_CampaignManagementPageDef"
+          path="TurnQuest.view.pageDefs.CampaignManagementPageDef"/>
+    <page id="TurnQuest_view_StatusesPageDef"
+          path="TurnQuest.view.pageDefs.StatusesPageDef"/>
+    <page id="TurnQuest_view_leadsPageDef"
+          path="TurnQuest.view.pageDefs.leadsPageDef"/>
+    <page id="TurnQuest_view_PriorityLevelsPageDef"
+          path="TurnQuest.view.pageDefs.PriorityLevelsPageDef"/>
+    <page id="TurnQuest_view_incidenceSetupsPageDef"
+          path="TurnQuest.view.pageDefs.incidenceSetupsPageDef"/>
+    <page id="TurnQuest_view_leadSourcesPageDef"
+          path="TurnQuest.view.pageDefs.leadSourcesPageDef"/>
+    <page id="TurnQuest_view_leadStatusesPageDef"
+          path="TurnQuest.view.pageDefs.leadStatusesPageDef"/>
+    <page id="TurnQuest_view_reportGroupsPageDef"
+          path="TurnQuest.view.pageDefs.reportGroupsPageDef"/>
+    <page id="TurnQuest_view_Users1PageDef"
+          path="TurnQuest.view.pageDefs.Users1PageDef"/>
+    <page id="TurnQuest_view_systemApplicableAreasPageDef"
+          path="TurnQuest.view.pageDefs.systemApplicableAreasPageDef"/>
+    <page id="TurnQuest_view_sysReportsPageDef"
+          path="TurnQuest.view.pageDefs.sysReportsPageDef"/>
+    <page id="TurnQuest_view_serviceRequestsPageDef"
+          path="TurnQuest.view.pageDefs.serviceRequestsPageDef"/>
+    <page id="TurnQuest_view_servReqCatPageDef"
+          path="TurnQuest.view.pageDefs.servReqCatPageDef"/>
+    <page id="TurnQuest_view_requestTrackPageDef"
+          path="TurnQuest.view.pageDefs.requestTrackPageDef"/>
+    <page id="TurnQuest_view_mailSettingsPageDef"
+          path="TurnQuest.view.pageDefs.mailSettingsPageDef"/>
+    <page id="TurnQuest_view_schedulerPageDef"
+          path="TurnQuest.view.pageDefs.schedulerPageDef"/>
+    <page id="TurnQuest_view_knowledgeBasePageDef"
+          path="TurnQuest.view.pageDefs.knowledgeBasePageDef"/>
+    <page id="TurnQuest_view_householdsPageDef"
+          path="TurnQuest.view.pageDefs.householdsPageDef"/>
+    <page id="TurnQuest_view_escalationsPageDef"
+          path="TurnQuest.view.pageDefs.escalationsPageDef"/>
+    <page id="TurnQuest_view_msgParametersPageDef"
+          path="TurnQuest.view.pageDefs.msgParametersPageDef"/>
+    <page id="TurnQuest_view_smsSettingsPageDef"
+          path="TurnQuest.view.pageDefs.smsSettingsPageDef"/>
+    <page id="TurnQuest_view_consolidateAccountsPageDef"
+          path="TurnQuest.view.pageDefs.consolidateAccountsPageDef"/>
+    <page id="TurnQuest_view_BranchBranchesPageDef"
+          path="TurnQuest.view.pageDefs.BranchBranchesPageDef"/>
+    <page id="TurnQuest_view_BankBrachesPageDef"
+          path="TurnQuest.view.pageDefs.BankBrachesPageDef"/>
+    <page id="TurnQuest_view_BankBranchesPageDef"
+          path="TurnQuest.view.pageDefs.BankBranchesPageDef"/>
+    <page id="TurnQuest_view_BankbranchPageDef"
+          path="TurnQuest.view.pageDefs.BankbranchPageDef"/>
+    <page id="TurnQuest_view_bankBranchesPageDef"
+          path="TurnQuest.view.pageDefs.bankBranchesPageDef"/>
+    <page id="TurnQuest_view_MobileSmsMessagesPageDef"
+          path="TurnQuest.view.pageDefs.MobileSmsMessagesPageDef"/>
+    <page id="TurnQuest_view_ClientTypesPageDef"
+          path="TurnQuest.view.pageDefs.ClientTypesPageDef"/>
+    <page id="TurnQuest_view_ClientLoadingPageDef"
+          path="TurnQuest.view.pageDefs.ClientLoadingPageDef"/>
+    <page id="TurnQuest_view_agentLoadingPageDef"
+          path="TurnQuest.view.pageDefs.agentLoadingPageDef"/>
+    <page id="TurnQuest_view_ecmRptsPageDef"
+          path="TurnQuest.view.pageDefs.ecmRptsPageDef"/>
+    <page id="TurnQuest_view_ecmSetupPageDef"
+          path="TurnQuest.view.pageDefs.ecmSetupPageDef"/>
+    <page id="TurnQuest_view_modSubUnitsPageDef"
+          path="TurnQuest.view.pageDefs.modSubUnitsPageDef"/>
+    <page id="TurnQuest_view_productPageDef"
+          path="TurnQuest.view.pageDefs.productPageDef"/>
+    <page id="TurnQuest_view_SubClassDescSetUpPageDef"
+          path="TurnQuest.view.pageDefs.SubClassDescSetUpPageDef"/>
+    <page id="TurnQuest_view_webProductsPageDef"
+          path="TurnQuest.view.pageDefs.webProductsPageDef"/>
+    <page id="TurnQuest_view_serviceReqPageDef"
+          path="TurnQuest.view.pageDefs.serviceReqPageDef"/>
+    <page id="TurnQuest_view_countriesDefPageDef"
+          path="TurnQuest.view.pageDefs.countriesDefPageDef"/>
+    <page id="TurnQuest_view_sysRptDefinitionPageDef"
+          path="TurnQuest.view.pageDefs.sysRptDefinitionPageDef"/>
+    <page id="TurnQuest_view_runningJobsPageDef"
+          path="TurnQuest.view.pageDefs.runningJobsPageDef"/>
+    <page id="TurnQuest_view_smsHistoryPageDef"
+          path="TurnQuest.view.pageDefs.smsHistoryPageDef"/>
+    <page id="TurnQuest_view_emailHistoryPageDef"
+          path="TurnQuest.view.pageDefs.emailHistoryPageDef"/>
+    <page id="TurnQuest_view_DDfailRemarksSetupsPageDef"
+          path="TurnQuest.view.pageDefs.DDfailRemarksSetupsPageDef"/>
+    <page id="TurnQuest_view_bankTemplatePageDef"
+          path="TurnQuest.view.pageDefs.bankTemplatePageDef"/>
+    <page id="TurnQuest_view_ratingOrganizationsPageDef"
+          path="TurnQuest.view.pageDefs.ratingOrganizationsPageDef"/>
+    <page id="TurnQuest_view_templateSetUpsPageDef"
+          path="TurnQuest.view.pageDefs.templateSetUpsPageDef"/>
+    <page id="TurnQuest_view_entitiesPageDef"
+          path="TurnQuest.view.pageDefs.entitiesPageDef"/>
+    <page id="TurnQuest_view_departmentsPageDef"
+          path="TurnQuest.view.pageDefs.departmentsPageDef"/>
+    <page id="TurnQuest_view_securityQuestionsPageDef"
+          path="TurnQuest.view.pageDefs.securityQuestionsPageDef"/>
+    <page id="TurnQuest_view_sysLabelPageDef"
+          path="TurnQuest.view.pageDefs.sysLabelPageDef"/>
+   
+    <page id="TurnQuest_view_clientsAiicoPageDef"
+          path="TurnQuest.view.pageDefs.clientsAiicoPageDef"/>
+    <page id="TurnQuest_view_clientAiicoPageDef"
+          path="TurnQuest.view.pageDefs.clientAiicoPageDef"/>
+    <page id="TurnQuest_view_AgentTypesPageDef"
+          path="TurnQuest.view.pageDefs.AgentTypesPageDef"/>
+    <page id="TurnQuest_view_sysProcessRolesNewPageDef"
+          path="TurnQuest.view.pageDefs.sysProcessRolesNewPageDef"/>
+    <page id="TurnQuest_view_reqHistPageDef"
+          path="TurnQuest.view.pageDefs.reqHistPageDef"/>
+    <page id="TurnQuest_view_newEscalationsPageDef"
+          path="TurnQuest.view.pageDefs.newEscalationsPageDef"/>
+    <page id="TurnQuest_view_bankAccountsLoadingPageDef"
+          path="TurnQuest.view.pageDefs.bankAccountsLoadingPageDef"/>
+    <page id="TurnQuest_view_saccosPageDef"
+          path="TurnQuest.view.pageDefs.saccosPageDef"/>
+    <page id="TurnQuest_view_showEntitiesPageDef"
+          path="TurnQuest.view.pageDefs.showEntitiesPageDef"/>
+    <page id="TurnQuest_view_userGroupTypesPageDef"
+          path="TurnQuest.view.pageDefs.userGroupTypesPageDef"/>
+    <page id="TurnQuest_view_userGroupTypesPageDef1"
+          path="TurnQuest.view.pageDefs.userGroupTypesPageDef1"/>
+    <page id="TurnQuest_view_sysRolesMakerCheckerPageDef"
+          path="TurnQuest.view.pageDefs.sysRolesMakerCheckerPageDef"/>
+    <page id="TurnQuest_view_channelsPageDef"
+          path="TurnQuest.view.pageDefs.channelsPageDef"/>
+    <page id="TurnQuest_view_employeeOnboardingPageDef"
+          path="TurnQuest.view.pageDefs.employeeOnboardingPageDef"/>
+    <page id="TurnQuest_view_resourceAssignmentPageDef"
+          path="TurnQuest.view.pageDefs.resourceAssignmentPageDef"/>
+    <page id="TurnQuest_view_userAuthorizationPageDef"
+          path="TurnQuest.view.pageDefs.userAuthorizationPageDef"/>
+    <page id="TurnQuest_view_employeeRolesAssignmentPageDef"
+          path="TurnQuest.view.pageDefs.employeeRolesAssignmentPageDef"/>
+    <page id="TurnQuest_view_resourceAssgnSetUpsPageDef"
+          path="TurnQuest.view.pageDefs.resourceAssgnSetUpsPageDef"/>
+    <page id="TurnQuest_view_personnelRankSetupsPageDef"
+          path="TurnQuest.view.pageDefs.personnelRankSetupsPageDef"/>
+    <page id="TurnQuest_view_userLoadingPageDef"
+          path="TurnQuest.view.pageDefs.userLoadingPageDef"/>
+    <page id="TurnQuest_view_servReqStatusPageDef" 
+         path="TurnQuest.view.pageDefs.servReqStatusPageDef"/>
+    <page id="TurnQuest_view_amlDtlsPageDef"
+          path="TurnQuest.view.pageDefs.amlDtlsPageDef"/>     
+  </pageDefinitionUsages>
+
+  <dataControlUsages>
+    <dc id="ClientAmlDetailsDAO" path="TurnQuest.view.ClientAmlDetailsDAO"/>
+    <dc id="EmployeeAdminDAO" path="TurnQuest.view.EmployeeAdminDAO"/>
+    <dc id="BankChargeDAO" path="TurnQuest.view.BankChargeDAO"/>
+    <dc id="ChannelDAO" path="TurnQuest.view.ChannelDAO"/>
+    <dc id="ClientTypeDAO" path="TurnQuest.view.ClientTypeDAO"/>
+    <dc id="UserGrpTypeDAO" path="TurnQuest.view.UserGrpTypeDAO"/>
+    <dc id="BpmwDAO" path="TurnQuest.view.BpmwDAO"/>
+    <dc id="AgentsDAO" path="TurnQuest.view.AgentsDAO"/>
+    <dc id="DepartmentsDAO" path="TurnQuest.view.DepartmentsDAO"/>
+    <dc id="BaseSetupDAO1" path="TurnQuest.view.BaseSetupDAO"/>
+    <dc id="ReportsDAO" path="TurnQuest.view.ReportsDAO"/>
+    <dc id="WebDefsDAO" path="TurnQuest.view.WebDefsDAO"/>
+    <dc id="subClassDescDAO" path="TurnQuest.view.subClassDescDAO"/>
+    <dc id="productCategoriesDAO" path="TurnQuest.view.productCategoriesDAO"/>
+    <dc id="ProposalDAO" path="TurnQuest.view.ProposalDAO"/>
+    <dc id="ProductDetailDAO" path="TurnQuest.view.ProductDetailDAO"/>
+    <dc id="EscalationsDAO" path="TurnQuest.view.EscalationsDAO"/>
+    <dc id="KBDAO" path="TurnQuest.view.KBDAO"/>
+    <dc id="AlertDAO" path="TurnQuest.view.AlertDAO"/>
+    <dc id="ServiceReqDAO" path="TurnQuest.view.ServiceReqDAO"/>
+    <dc id="ReportGroupDAO" path="TurnQuest.view.ReportGroupDAO"/>
+    <dc id="IncidenceDAO" path="TurnQuest.view.IncidenceDAO"/>
+    <dc id="LeadsDAO" path="TurnQuest.view.LeadsDAO"/>
+    <dc id="CampaignDAO" path="TurnQuest.view.CampaignDAO"/>
+    <dc id="StatusesDAO" path="TurnQuest.view.StatusesDAO"/>
+    <dc id="StatusDAO" path="TurnQuest.view.StatusDAO"/>
+    <dc id="AccountDAO" path="TurnQuest.view.AccountDAO"/>
+    <dc id="ActivityDAO" path="TurnQuest.view.ActivityDAO"/>
+    <dc id="ProductDAO" path="TurnQuest.view.ProductDAO"/>
+    <dc id="SequenceDAO" path="TurnQuest.view.SequenceDAO"/>
+    <dc id="ClaimPaymentModesDAO" path="TurnQuest.view.ClaimPaymentModesDAO"/>
+    <dc id="ClaimsPaymentModeDAO" path="TurnQuest.view.ClaimsPaymentModeDAO"/>
+    <dc id="SystemPostDAO" path="TurnQuest.view.SystemPostDAO"/>
+    <dc id="MessagingDAO" path="TurnQuest.view.MessagingDAO"/>
+    <dc id="CountryDAO" path="TurnQuest.view.CountryDAO"/>
+    <dc id="HierarchyDAO" path="TurnQuest.view.HierarchyDAO"/>
+    <dc id="BankDAO" path="TurnQuest.view.BankDAO"/>
+    <dc id="MessageDAO" path="TurnQuest.view.MessageDAO"/>
+    <dc id="ProspectDAO" path="TurnQuest.view.ProspectDAO"/>
+    <dc id="CurrencyDAO" path="TurnQuest.view.CurrencyDAO"/>
+    <dc id="MemoDAO" path="TurnQuest.view.MemoDAO"/>
+    <dc id="DirectDebitDAO" path="TurnQuest.view.DirectDebitDAO"/>
+    <dc id="ClientTitle" path="TurnQuest.view.ClientTitle"/>
+    <dc id="ServiceProviderType" path="TurnQuest.view.ServiceProviderType"/>
+    <dc id="MainClientDAO" path="TurnQuest.view.MainClientDAO"/>
+    <dc id="MainAccountsDAO" path="TurnQuest.view.MainAccountsDAO"/>
+    <dc id="ServiceProviderDAO" path="TurnQuest.view.ServiceProviderDAO"/>
+    <dc id="DivisionsDAO" path="TurnQuest.view.DivisionsDAO"/>
+    <dc id="AccountsDAO" path="TurnQuest.view.AccountsDAO"/>
+    <dc id="BaseSetupDAO" path="TurnQuest.view.BaseSetupDAO"/>
+    <dc id="OrganizationDAO" path="TurnQuest.view.OrganizationDAO"/>
+    <dc id="BranchDAO" path="TurnQuest.view.BranchDAO"/>
+    <dc id="ProcessDAO" path="TurnQuest.view.ProcessDAO"/>
+    <dc id="UserDAO" path="TurnQuest.view.UserDAO"/>
+    <dc id="RoleDAO" path="TurnQuest.view.RoleDAO"/>
+    <dc id="AppClientsDAO" path="TurnQuest.view.AppClientsDAO"/>
+    <dc id="AppSettingsDAO" path="TurnQuest.view.AppSettingsDAO"/>
+    <dc id="SettingsDAO" path="TurnQuest.view.SettingsDAO"/>
+    <dc id="ClientDAO" path="TurnQuest.view.ClientDAO"/>
+    <dc id="LOVDAO" path="TurnQuest.view.LOVDAO"/>
+    <dc id="GeneralDAO" path="TurnQuest.view.GeneralDAO"/>
+    <dc id="ZoneDAO" path="TurnQuest.view.ZoneDAO"/>
+    <BC4JDataControl id="AppModuleDataControl" Package="TurnQuest.view.helper"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

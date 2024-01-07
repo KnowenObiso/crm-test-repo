@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="accountsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <!--<methodIterator Binds="fetchAllAccountTypes.result"
+                    DataControl="MainAccountsDAO" RangeSize="-1"
+                    BeanClass="TurnQuest.view.Accounts.AccountsType"
+                    id="fetchAllAccountTypesIterator"/>-->
+    <methodIterator Binds="fetchAllCountries.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Country"
+                    id="fetchAllCountriesIterator"/>
+    <methodIterator Binds="fetchTownsByCountry.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Town"
+                    id="fetchTownsByCountryIterator"/>
+    <searchRegion Binds="fetchTownsByCountryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgentTownsByCountryQuery"/>
+    <methodIterator Binds="fetchAllAgencyHoldingCompanies.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.AgencyHoldingCompany"
+                    id="fetchAllAgencyHoldingCompaniesIterator"/>
+    <searchRegion Binds="fetchAllAgencyHoldingCompaniesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencyHoldingCompanyQuery"/>
+    <methodIterator Binds="fetchAllAgencyClasses.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AgencyClass"
+                    id="fetchAllAgencyClassesIterator"/>
+    <methodIterator Binds="fetchAllSectors.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Sector"
+                    id="fetchAllSectorsIterator"/>
+    <searchRegion Binds="fetchAllSectorsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgentSectorsQuery"/>
+    <methodIterator Binds="fetchAllAgencyClasses1.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.AgencyClass"
+                    id="fetchAllAgencyClasses1Iterator"/>
+    <searchRegion Binds="fetchAllAgencyClasses1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgentClassesQuery"/>
+    <methodIterator Binds="findAccountBranches.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="findAccountBranchesIterator"/>
+    <searchRegion Binds="findAccountBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgentAccountBranchesQuery"/>
+    <methodIterator Binds="findAgentsRegistration.result"
+                    DataControl="AccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="findAgentsRegistrationIterator"/>
+    <methodIterator Binds="findAgentsDirectors.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="findAgentsDirectorsIterator"/>
+    <methodIterator Binds="findAgentsReferees.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="findAgentsRefereesIterator"/>
+    <methodIterator Binds="findwebUserAccounts.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="findwebUserAccountsIterator"/>
+    <iterator Binds="root" RangeSize="25" DataControl="MainAccountsDAO"
+              id="MainAccountsDAOIterator"/>
+    <methodIterator Binds="fetchUnassignedAccountSystems.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchUnassignedAccountSystemsIterator"/>
+    <!--<methodIterator Binds="fetchAssignedAccountSystems.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchAssignedAccountSystemsIterator"/>-->
+    <methodIterator Binds="fetchAllCountriesInfo.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Country"
+                    id="fetchAllCountriesInfoIterator"/>
+    <searchRegion Binds="fetchAllCountriesInfoIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgentCountryQuery"/>
+    <methodIterator Binds="fetchAgencyAccounts.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AgencyAccounts"
+                    id="fetchAgencyAccountsIterator"/>
+    <methodIterator Binds="fetchAllGlAccounts.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountsType"
+                    id="fetchAllGlAccountsIterator"/>
+    <searchRegion Binds="fetchAllGlAccountsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountsType2Query"/>
+    <methodIterator Binds="findDivisions.result" DataControl="DivisionsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Divisions.Division"
+                    id="findDivisionsIterator"/>
+    <searchRegion Binds="findDivisionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DivisionQuery"/>
+    <methodIterator Binds="fetchAllAccountAgenciesInfoOnly.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.Agency"
+                    id="fetchAllAccountAgenciesInfoOnlyIterator"/>
+    <searchRegion Binds="fetchAllAccountAgenciesInfoOnlyIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencyQuery33"/>
+    <methodIterator Binds="fetchAllAccountTypes.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountsType"
+                    id="fetchAllAccountTypesIterator"/>
+    <searchRegion Binds="fetchAllAccountTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountsTypeQuery"/>
+    <methodIterator Binds="fetchAllAgencyAssignedSystems.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.AgencySystem"
+                    id="fetchAllAgencyAssignedSystemsIterator"/>
+    <searchRegion Binds="fetchAllAgencyAssignedSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencySystemQuery"/>
+    <methodIterator Binds="fetchLowestOrgSubDivisionsBySystem.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.OrgSubDivision"
+                    id="fetchLowestOrgSubDivisionsBySystemIterator"/>
+    <searchRegion Binds="fetchLowestOrgSubDivisionsBySystemIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="OrgSubDivisionQuery"/>
+    <methodIterator Binds="fetchAllAccountAgenciesBasedOnNames.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.Agency"
+                    id="fetchAllAccountAgenciesBasedOnNamesIterator"/>
+    <searchRegion Binds="fetchAllAccountAgenciesBasedOnNamesIterator"
+                  Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Agency111Query"/>
+    <methodIterator Binds="fetchAllBanks.result" DataControl="BankDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Bank"
+                    id="fetchAllBanksIterator"/>
+    <searchRegion Binds="fetchAllBanksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BankQuery"/>
+    <methodIterator Binds="fetchBankBranchByBankCode.result"
+                    DataControl="BankDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.BankBranch"
+                    id="fetchBankBranchByBankCodeIterator"/>
+    <searchRegion Binds="fetchBankBranchByBankCodeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BankBranchQuery"/>
+    <methodIterator Binds="fetchTownsByState.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Town"
+                    id="fetchTownsByStateIterator"/>
+    <searchRegion Binds="fetchTownsByStateIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Town1Query"/>
+    <methodIterator Binds="fetchStatesByCountry.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.State"
+                    id="fetchStatesByCountryIterator"/>
+    <searchRegion Binds="fetchStatesByCountryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StateQuery"/>
+    <methodIterator Binds="fetchAgencyClients.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.Client2"
+                    id="fetchAgencyClientsIterator"/>
+    <searchRegion Binds="fetchAgencyClientsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client2Query"/>
+    <methodIterator Binds="fetchAgencyNoneClients.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.Client2"
+                    id="fetchAgencyNoneClientsIterator"/>
+    <searchRegion Binds="fetchAgencyNoneClientsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client21Query"/>
+                  <methodIterator Binds="fetchAllPersonnels.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.Personnel"
+                    id="fetchAllPersonnelsIterator"/>
+    <searchRegion Binds="fetchAllPersonnelsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PersonnelQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllCountries" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCountries"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCountries_BaseSetupDAO_dataProvider_fetchAllCountries_result"/>
+    <tree IterBinding="fetchAllCountriesIterator" id="Country">
+      <nodeDefinition DefName="TurnQuest.view.setups.Country" Name="Country0">
+        <AttrNames>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchTownsByCountry" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchTownsByCountry"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchTownsByCountry_BaseSetupDAO_dataProvider_fetchTownsByCountry_result"/>
+    <tree IterBinding="fetchTownsByCountryIterator" id="Town">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAgencyHoldingCompanies" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchAllAgencyHoldingCompanies"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllAgencyHoldingCompanies_BaseSetupDAO_dataProvider_fetchAllAgencyHoldingCompanies_result"/>
+    <tree IterBinding="fetchAllAgencyHoldingCompaniesIterator"
+          id="AgencyHoldingCompany">
+      <nodeDefinition DefName="TurnQuest.view.setups.AgencyHoldingCompany"
+                      Name="AgencyHoldingCompany0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAgencyClasses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllAgencyClasses"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAllAgencyClasses_MainAccountsDAO_dataProvider_fetchAllAgencyClasses_result"/>
+    <tree IterBinding="fetchAllAgencyClassesIterator" id="AgencyClass">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AgencyClass"
+                      Name="AgencyClass0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="decsription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSectors" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSectors"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllSectors_BaseSetupDAO_dataProvider_fetchAllSectors_result"/>
+    <tree IterBinding="fetchAllSectorsIterator" id="Sector">
+      <nodeDefinition DefName="TurnQuest.view.setups.Sector" Name="Sector0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAgencyClasses1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllAgencyClasses"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllAgencyClasses_BaseSetupDAO_dataProvider_fetchAllAgencyClasses_result"/>
+    <tree IterBinding="fetchAllAgencyClasses1Iterator" id="AgencyClass1">
+      <nodeDefinition DefName="TurnQuest.view.setups.AgencyClass"
+                      Name="AgencyClass10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAccountBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAccountBranches"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.findAccountBranches_AccountsDAO_dataProvider_findAccountBranches_result"/>
+    <tree IterBinding="findAccountBranchesIterator" id="AccountType">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAgentsRegistration" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAgentsRegistration"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.findAgentsRegistration_AccountsDAO_dataProvider_findAgentsRegistration_result"/>
+    <tree IterBinding="findAgentsRegistrationIterator" id="AccountType1">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType10">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="year"/>
+          <Item Value="regno"/>
+          <Item Value="wef"/>
+          <Item Value="wet"/>
+          <Item Value="accepted"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAgentsDirectors" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAgentsDirectors"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.findAgentsDirectors_AccountsDAO_dataProvider_findAgentsDirectors_result"/>
+    <tree IterBinding="findAgentsDirectorsIterator" id="AccountType2">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType20">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="year"/>
+          <Item Value="name"/>
+          <Item Value="qualification"/>
+          <Item Value="shareholding"/>
+          <Item Value="designation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAgentsReferees" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAgentsReferees"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.findAgentsReferees_AccountsDAO_dataProvider_findAgentsReferees_result"/>
+    <tree IterBinding="findAgentsRefereesIterator" id="AccountType3">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType30">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="phyaddress"/>
+          <Item Value="postaddress"/>
+          <Item Value="idno"/>
+          <Item Value="email"/>
+          <Item Value="telno"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findwebUserAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findwebUserAccounts"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.findwebUserAccounts_AccountsDAO_dataProvider_findwebUserAccounts_result"/>
+    <tree IterBinding="findwebUserAccountsIterator" id="AccountType4">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType40">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="username"/>
+          <Item Value="name"/>
+          <Item Value="email"/>
+          <Item Value="personalrank"/>
+          <Item Value="createdby"/>
+          <Item Value="datecreated"/>
+          <Item Value="allowlogin"/>
+          <Item Value="status"/>
+          <Item Value="reset"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUnassignedAccountSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchUnassignedAccountSystems"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchUnassignedAccountSystems_MainAccountsDAO_dataProvider_fetchUnassignedAccountSystems_result"/>
+    <tree IterBinding="fetchUnassignedAccountSystemsIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchUnassignedAccountSystemsIterator" id="User3">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User30">
+        <AttrNames>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllCountriesInfo" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCountriesInfo"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCountriesInfo_BaseSetupDAO_dataProvider_fetchAllCountriesInfo_result"/>
+    <tree IterBinding="fetchAllCountriesInfoIterator" id="Country1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Country" Name="Country10">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="code"/>
+          <Item Value="administrativeType"/>
+          <Item Value="adminTypeMandatory"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAgencyAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAgencyAccounts"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAgencyAccounts_MainAccountsDAO_dataProvider_fetchAgencyAccounts_result"/>
+    <tree IterBinding="fetchAgencyAccountsIterator" id="AgencyAccounts">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AgencyAccounts"
+                      Name="AgencyAccounts0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="createdBy"/>
+          <Item Value="dateCreated"/>
+          <Item Value="status"/>
+          <Item Value="divName"/>
+          <Item Value="divCode"/>
+          <Item Value="code"/>
+          <Item Value="agentCode"/>
+          <Item Value="remarks"/>
+          <Item Value="wef"/>
+          <Item Value="wet"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllGlAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllGlAccounts"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAllGlAccounts_MainAccountsDAO_dataProvider_fetchAllGlAccounts_result"/>
+    <tree IterBinding="fetchAllGlAccountsIterator" id="AccountsType2">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountsType"
+                      Name="AccountsType20">
+        <AttrNames>
+          <Item Value="accNumber"/>
+          <Item Value="accName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranchDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranchDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findBranchDivisions_DivisionsDAO_dataProvider_findBranchDivisions_result"/>
+    <methodAction id="findDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findDivisions"
+                  IsViewObjectMethod="false" DataControl="DivisionsDAO"
+                  InstanceName="DivisionsDAO.dataProvider"
+                  ReturnName="DivisionsDAO.methodResults.findDivisions_DivisionsDAO_dataProvider_findDivisions_result"/>
+    <tree IterBinding="findDivisionsIterator" id="Division">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division0">
+        <AttrNames>
+          <Item Value="DIV_CODE"/>
+          <Item Value="DIV_SHT_DESC"/>
+          <Item Value="DIV_NAME"/>
+          <Item Value="DIV_DIVISION_STATUS"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAccountAgenciesInfoOnly"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchAllAccountAgenciesInfoOnly"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAllAccountAgenciesInfoOnly_MainAccountsDAO_dataProvider_fetchAllAccountAgenciesInfoOnly_result"/>
+    <tree IterBinding="fetchAllAccountAgenciesInfoOnlyIterator" id="Agency">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="code"/>
+          <Item Value="accountCode"/>
+          <Item Value="shortDesc"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="townCode"/>
+          <Item Value="countryCode"/>
+          <Item Value="emailAddress"/>
+          <Item Value="webAddress"/>
+          <Item Value="zip"/>
+          <Item Value="contactPerson"/>
+          <Item Value="contactTitle"/>
+          <Item Value="telephone1"/>
+          <Item Value="telephone2"/>
+          <Item Value="fax"/>
+          <Item Value="accountNum"/>
+          <Item Value="PIN"/>
+          <Item Value="commission"/>
+          <Item Value="creditAllowed"/>
+          <Item Value="witholdTx"/>
+          <Item Value="printDbNote"/>
+          <Item Value="status"/>
+          <Item Value="dateCreated"/>
+          <Item Value="createdBy"/>
+          <Item Value="registrationCode"/>
+          <Item Value="commReserverate"/>
+          <Item Value="annualBudget"/>
+          <Item Value="statusEffectiveDate"/>
+          <Item Value="creditPeriod"/>
+          <Item Value="commStatEffectiveDate"/>
+          <Item Value="commStatusDate"/>
+          <Item Value="commAllowed"/>
+          <Item Value="checked"/>
+          <Item Value="checkedBy"/>
+          <Item Value="checkDate"/>
+          <Item Value="compCommArrears"/>
+          <Item Value="reinsurer"/>
+          <Item Value="branchCode"/>
+          <Item Value="town"/>
+          <Item Value="country"/>
+          <Item Value="statusDesc"/>
+          <Item Value="IDNum"/>
+          <Item Value="conCode"/>
+          <Item Value="agentCode"/>
+          <Item Value="sms"/>
+          <Item Value="holdCompanyCode"/>
+          <Item Value="sectorCode"/>
+          <Item Value="classCode"/>
+          <Item Value="expiriyDate"/>
+          <Item Value="licenseNum"/>
+          <Item Value="runOff"/>
+          <Item Value="licensed"/>
+          <Item Value="licenseGracePeriod"/>
+          <Item Value="oldAccountNum"/>
+          <Item Value="statusRemarks"/>
+          <Item Value="branchName"/>
+          <Item Value="holdCompanyName"/>
+          <Item Value="sectorName"/>
+          <Item Value="className"/>
+          <Item Value="bankCode"/>
+          <Item Value="bankName"/>
+          <Item Value="bankBranchCode"/>
+          <Item Value="bankBranchName"/>
+          <Item Value="accountNo"/>
+          <Item Value="agentPrefix"/>
+          <Item Value="couAdminType"/>
+          <Item Value="agentStateCode"/>
+          <Item Value="agentStateName"/>
+           <Item Value="agentCrRating"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAccountTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllAccountTypes"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAllAccountTypes_MainAccountsDAO_dataProvider_fetchAllAccountTypes_result"/>
+    <tree IterBinding="fetchAllAccountTypesIterator" id="AccountsType">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountsType"
+                      Name="AccountsType0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="accountTypeShortDesc"/>
+          <Item Value="accountType"/>
+          <Item Value="wthtxRate"/>
+          <Item Value="typeId"/>
+          <Item Value="commReserveRate"/>
+          <Item Value="maxAdvAmt"/>
+          <Item Value="maxAdvRepaymentPrd"/>
+          <Item Value="rcptsIncludeComm"/>
+          <Item Value="overideRate"/>
+          <Item Value="idSerialFormat"/>
+          <Item Value="vatRate"/>
+          <Item Value="accNumber"/>
+          <Item Value="accName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAgencyAssignedSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchAllAgencyAssignedSystems"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAllAgencyAssignedSystems_MainAccountsDAO_dataProvider_fetchAllAgencyAssignedSystems_result"/>
+    <tree IterBinding="fetchAllAgencyAssignedSystemsIterator" id="AgencySystem">
+      <nodeDefinition DefName="TurnQuest.view.models.AgencySystem"
+                      Name="AgencySystem0">
+        <AttrNames>
+          <Item Value="sysName"/>
+          <Item Value="subdivisionName"/>
+          <Item Value="asysSysCode"/>
+          <Item Value="asysAgnCode"/>
+          <Item Value="asysWef"/>
+          <Item Value="asysWet"/>
+          <Item Value="asysComment"/>
+          <Item Value="asysOsdId"/>
+          <Item Value="asysOsdCode"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="asysShtDesc"/>
+          <Item Value="sysActive"/>         
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchLowestOrgSubDivisionsBySystem"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchLowestOrgSubDivisionsBySystem"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchLowestOrgSubDivisionsBySystem_HierarchyDAO_dataProvider_fetchLowestOrgSubDivisionsBySystem_result"/>
+    <tree IterBinding="fetchLowestOrgSubDivisionsBySystemIterator"
+          id="OrgSubDivision">
+      <nodeDefinition DefName="TurnQuest.view.models.OrgSubDivision"
+                      Name="OrgSubDivision0">
+        <AttrNames>
+          <Item Value="osdCode"/>
+          <Item Value="osdId"/>
+          <Item Value="osdName"/>
+          <Item Value="osdParentOsdCode"/>
+          <Item Value="osdParentOsdId"/>
+          <Item Value="osdDltCode"/>
+          <Item Value="osdOdlCode"/>
+          <Item Value="osdWef"/>
+          <Item Value="osdDivHeadAgnCode"/>
+          <Item Value="osdSysCode"/>
+          <Item Value="nodeType"/>
+          <Item Value="dltDesc"/>
+          <Item Value="odlDesc"/>
+          <Item Value="agentName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAccountAgenciesBasedOnNames"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchAllAccountAgenciesBasedOnNames"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAllAccountAgenciesBasedOnNames_MainAccountsDAO_dataProvider_fetchAllAccountAgenciesBasedOnNames_result"/>
+    <tree IterBinding="fetchAllAccountAgenciesBasedOnNamesIterator"
+          id="Agency1">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency10">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="branchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllAccountAgenciesBasedOnNamesIterator"
+          id="Agency2">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency20">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="PIN"/>
+          <Item Value="branchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchaAdminRegionsByCountry" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchaAdminRegionsByCountry"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchaAdminRegionsByCountry_OrganizationDAO_dataProvider_fetchaAdminRegionsByCountry_result"/>
+    <methodAction id="fetchTownsByAdminRegion" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchTownsByAdminRegion"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchTownsByAdminRegion_OrganizationDAO_dataProvider_fetchTownsByAdminRegion_result"/>
+    <methodAction id="fetchAllBanks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllBanks"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="BankDAO.methodResults.fetchAllBanks_BankDAO_dataProvider_fetchAllBanks_result"/>
+    <tree IterBinding="fetchAllBanksIterator" id="Bank">
+      <nodeDefinition DefName="TurnQuest.view.setups.Bank" Name="Bank0">
+        <AttrNames>
+          <Item Value="bankCode"/>
+          <Item Value="bankName"/>
+          <Item Value="shortDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchBankBranchByBankCode" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchBankBranchByBankCode"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="BankDAO.methodResults.fetchBankBranchByBankCode_BankDAO_dataProvider_fetchBankBranchByBankCode_result"/>
+    <tree IterBinding="fetchBankBranchByBankCodeIterator" id="BankBranch">
+      <nodeDefinition DefName="TurnQuest.view.setups.BankBranch"
+                      Name="BankBranch0">
+        <AttrNames>
+          <Item Value="branchCode"/>
+          <Item Value="branchBankCode"/>
+          <Item Value="branchName"/>
+          <Item Value="shortDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchTownsByState" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchTownsByState"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchTownsByState_OrganizationDAO_dataProvider_fetchTownsByState_result"/>
+    <tree IterBinding="fetchTownsByStateIterator" id="Town1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="countryCode"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="STSCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchStatesByCountry" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchStatesByCountry"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchStatesByCountry_BaseSetupDAO_dataProvider_fetchStatesByCountry_result"/>
+    <tree IterBinding="fetchStatesByCountryIterator" id="State">
+      <nodeDefinition DefName="TurnQuest.view.setups.State" Name="State0">
+        <AttrNames>
+          <Item Value="stateCode"/>
+          <Item Value="stateCountryCode"/>
+          <Item Value="stateShortDesc"/>
+          <Item Value="stateName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAgencyClients" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAgencyClients"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAgencyClients_MainAccountsDAO_dataProvider_fetchAgencyClients_result"/>
+    <tree IterBinding="fetchAgencyClientsIterator" id="Client2">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client20">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="selected"/>
+          <Item Value="clnt_code"/>
+          <Item Value="clientCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAgencyNoneClients" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAgencyNoneClients"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="MainAccountsDAO.methodResults.fetchAgencyNoneClients_MainAccountsDAO_dataProvider_fetchAgencyNoneClients_result"/>
+    <tree IterBinding="fetchAgencyNoneClientsIterator" id="Client21">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client210">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="clientCode"/>
+          <Item Value="selected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllPersonnels" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllPersonnels"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAllPersonnels_UserDAO_dataProvider_fetchAllPersonnels_result"/>
+    <tree IterBinding="fetchAllPersonnelsIterator" id="Personnel">
+      <nodeDefinition DefName="TurnQuest.view.Usr.Personnel" Name="Personnel0">
+        <AttrNames>
+          <Item Value="perId"/>
+          <Item Value="conCode"/>
+          <Item Value="perFullNames"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

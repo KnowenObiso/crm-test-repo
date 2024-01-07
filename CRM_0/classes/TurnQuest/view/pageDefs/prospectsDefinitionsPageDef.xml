@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="prospectsDefinitionsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllProspects.result" DataControl="ProspectDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.prospects.Prospect"
+                    id="fetchAllProspectsIterator"/>
+    <searchRegion Binds="fetchAllProspectsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ProspectQuery"/>
+    <methodIterator Binds="fetchAllCountries.result" DataControl="ProspectDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Nation"
+                    id="fetchAllCountriesIterator"/>
+    <searchRegion Binds="fetchAllCountriesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="NationQuery"/>
+    <methodIterator Binds="fetchAllTownsByCountry.result"
+                    DataControl="ProspectDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Town"
+                    id="fetchAllTownsByCountryIterator"/>
+    <searchRegion Binds="fetchAllTownsByCountryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="TownQuery"/>
+    <methodIterator Binds="fetchPostalCodesByTown.result"
+                    DataControl="CountryDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.PostalCode"
+                    id="fetchPostalCodesByTownIterator"/>
+    <searchRegion Binds="fetchPostalCodesByTownIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PostalCodeQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllProspects" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllProspects"
+                  IsViewObjectMethod="false" DataControl="ProspectDAO"
+                  InstanceName="ProspectDAO.dataProvider"
+                  ReturnName="ProspectDAO.methodResults.fetchAllProspects_ProspectDAO_dataProvider_fetchAllProspects_result"/>
+    <tree IterBinding="fetchAllProspectsIterator" id="Prospect">
+      <nodeDefinition DefName="TurnQuest.view.prospects.Prospect"
+                      Name="Prospect0">
+        <AttrNames>
+          <Item Value="prsSurname"/>
+          <Item Value="prsOtherNames"/>
+          <Item Value="prsDob"/>
+          <Item Value="prsMobileNo"/>
+          <Item Value="prsEmailAddress"/>
+          <Item Value="countryName"/>
+          <Item Value="townName"/>
+          <Item Value="prsCode"/>
+          <Item Value="prsPhysicalAddress"/>
+          <Item Value="prsPostalAddress"/>
+          <Item Value="prsTelNo"/>
+          <Item Value="prsIdRegNo"/>
+          <Item Value="prsPin"/>
+          <Item Value="prsTownCode"/>
+          <Item Value="prsCountryCode"/>
+          <Item Value="prsPostalCode"/>
+          <Item Value="SQLTypeName"/>
+          <Item Value="proDesc"/>
+          <Item Value="type"/>
+          <Item Value="prsContact"/>
+          <Item Value="prsContactTel"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllCountries" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCountries"
+                  IsViewObjectMethod="false" DataControl="ProspectDAO"
+                  InstanceName="ProspectDAO.dataProvider"
+                  ReturnName="ProspectDAO.methodResults.fetchAllCountries_ProspectDAO_dataProvider_fetchAllCountries_result"/>
+    <tree IterBinding="fetchAllCountriesIterator" id="Nation">
+      <nodeDefinition DefName="TurnQuest.view.setups.Nation" Name="Nation0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllTownsByCountry" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllTownsByCountry"
+                  IsViewObjectMethod="false" DataControl="ProspectDAO"
+                  InstanceName="ProspectDAO.dataProvider"
+                  ReturnName="ProspectDAO.methodResults.fetchAllTownsByCountry_ProspectDAO_dataProvider_fetchAllTownsByCountry_result"/>
+    <tree IterBinding="fetchAllTownsByCountryIterator" id="Town">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="countryCode"/>
+          <Item Value="adminRegCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchPostalCodesByTown" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchPostalCodesByTown"
+                  IsViewObjectMethod="false" DataControl="CountryDAO"
+                  InstanceName="CountryDAO.dataProvider"
+                  ReturnName="CountryDAO.methodResults.fetchPostalCodesByTown_CountryDAO_dataProvider_fetchPostalCodesByTown_result"/>
+    <tree IterBinding="fetchPostalCodesByTownIterator" id="PostalCode">
+      <nodeDefinition DefName="TurnQuest.view.models.PostalCode"
+                      Name="PostalCode0">
+        <AttrNames>
+          <Item Value="pstCode"/>
+          <Item Value="pstTownCode"/>
+          <Item Value="pstDesc"/>
+          <Item Value="pstZipCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="DirectDebitDAO" Package="TurnQuest.view.backing"
+          BeanClass="TurnQuest.view.backing.DirectDebitDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Bank"
+                  BeanClass="TurnQuest.view.setups.Bank" id="fetchBankBranches"
+                  ReturnNodeName="Bank"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.backing.GeneralBean"
+                  BeanClass="TurnQuest.view.backing.GeneralBean"
+                  id="fetchClientRecords" ReturnNodeName="GeneralBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.sql.Date" id="getSqlDate"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="strDate" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Holiday"
+                  BeanClass="TurnQuest.view.models.Holiday" id="fetchHolidays"
+                  ReturnNodeName="Holiday"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Holiday"
+                  BeanClass="TurnQuest.view.models.Holiday"
+                  id="fetchHolidayYearsLov" ReturnNodeName="Holiday"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.DirectDebit"
+                  BeanClass="TurnQuest.view.models.DirectDebit"
+                  id="fetchDirectDebitNonReceipt" ReturnNodeName="DirectDebit"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.DirectDebitHeader"
+                  BeanClass="TurnQuest.view.models.DirectDebitHeader"
+                  id="fetchDirectDebitHeaders"
+                  ReturnNodeName="DirectDebitHeader"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.DirectDebitDetail"
+                  BeanClass="TurnQuest.view.models.DirectDebitDetail"
+                  id="fetchDirectDebitDetails"
+                  ReturnNodeName="DirectDebitDetail"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.DirectDebit"
+                  BeanClass="TurnQuest.view.models.DirectDebit"
+                  id="fetchDirectDebitAuthorised" ReturnNodeName="DirectDebit"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.HolidayDefinition"
+                  BeanClass="TurnQuest.view.models.HolidayDefinition"
+                  id="fetchHolidayDefinitionsByCountry"
+                  ReturnNodeName="HolidayDefinition"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.sql.Date" id="getBusinessDate"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="ddBookDate" Type="java.sql.Date" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="getMonthName"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="monthIndex" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.DirectDebitHeader"
+                  BeanClass="TurnQuest.view.models.DirectDebitHeader"
+                  id="fetchDirectDebitHeaders2"
+                  ReturnNodeName="DirectDebitHeader"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.DirectDebitDetail"
+                  BeanClass="TurnQuest.view.models.DirectDebitDetail"
+                  id="fetchDirectDebitDetails2"
+                  ReturnNodeName="DirectDebitDetail"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.DirectDebit"
+                  BeanClass="TurnQuest.view.models.DirectDebit"
+                  id="fetchDirectDebitReport" ReturnNodeName="DirectDebit"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.DirectDebit"
+                  BeanClass="TurnQuest.view.models.DirectDebit"
+                  id="fetchDirectDebitAllRecords" ReturnNodeName="DirectDebit"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.DirectDebitDetail"
+                  BeanClass="TurnQuest.view.models.DirectDebitDetail"
+                  id="findDDProducts" ReturnNodeName="DirectDebitDetail"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.backing.DirectDebitDAO"
+                     BeanClass="TurnQuest.view.backing.DirectDebitDAO"
+                     id="DirectDebitDAO"/>
+</JavaBean>

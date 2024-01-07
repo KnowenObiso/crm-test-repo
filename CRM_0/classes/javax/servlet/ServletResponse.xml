@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ServletResponse" Package="javax.servlet"
+          BeanClass="javax.servlet.ServletResponse" isJavaBased="true">
+  <Attribute Name="characterEncoding" Type="java.lang.String"/>
+  <Attribute Name="contentType" Type="java.lang.String"/>
+  <Attribute Name="bufferSize" Type="int"/>
+  <Attribute Name="committed" IsUpdateable="0" Type="boolean"/>
+  <Attribute Name="locale" Type="java.util.Locale"/>
+  <AccessorAttribute id="outputStream" IsCollection="false"
+                     BeanClass="javax.servlet.ServletOutputStream"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="writer" IsCollection="false"
+                     BeanClass="java.io.PrintWriter"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setContentLength"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="flushBuffer"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="resetBuffer"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="reset"
+                  ReturnNodeName="Return"/>
+</JavaBean>

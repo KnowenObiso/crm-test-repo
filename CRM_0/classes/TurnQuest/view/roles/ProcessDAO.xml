@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.54.7"
+          id="ProcessDAO" Package="TurnQuest.view.roles"
+          BeanClass="TurnQuest.view.roles.ProcessDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.roles.Process"
+                  BeanClass="TurnQuest.view.roles.Process"
+                  id="findSystemProcess" ReturnNodeName="Process"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.roles.ProcessDAO"
+                     BeanClass="TurnQuest.view.roles.ProcessDAO"
+                     id="ProcessDAO"/>
+</JavaBean>

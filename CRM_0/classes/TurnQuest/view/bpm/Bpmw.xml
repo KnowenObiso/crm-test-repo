@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="Bpmw" Package="TurnQuest.view.bpm"
+          BeanClass="TurnQuest.view.bpm.Bpmw" isJavaBased="true">
+  <Attribute Name="activityName" Type="java.lang.String"/>
+  <Attribute Name="assignee" Type="java.lang.String"/>
+  <Attribute Name="taskID" Type="java.lang.String"/>
+  <Attribute Name="executionID" Type="java.lang.String"/>
+  <Attribute Name="taskCreationDate" Type="java.util.Date"/>
+  <Attribute Name="taskPriority" Type="int"/>
+  <Attribute Name="taskVariableID" Type="java.math.BigDecimal"/>
+  <Attribute Name="taskVariableDesc" Type="java.lang.String"/>
+  <Attribute Name="taskProcess" Type="java.lang.String"/>
+  <Attribute Name="ticketCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ticketClientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="client" Type="java.lang.String"/>
+  <Attribute Name="agnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agent" Type="java.lang.String"/>
+  <Attribute Name="polCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="polNumber" Type="java.lang.String"/>
+  <Attribute Name="claimNo" Type="java.lang.String"/>
+  <Attribute Name="quoteCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="quotationNumber" Type="java.lang.String"/>
+  <Attribute Name="ticketBy" Type="java.lang.String"/>
+  <Attribute Name="ticketDate" Type="java.util.Date"/>
+  <Attribute Name="ticketProcessId" Type="java.lang.String"/>
+  <Attribute Name="sysModuleCode" Type="java.lang.String"/>
+  <Attribute Name="endrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ticketTo" Type="java.lang.String"/>
+  <Attribute Name="ticketRemarks" Type="java.lang.String"/>
+  <Attribute Name="ticketName" Type="java.lang.String"/>
+  <Attribute Name="ticketDueDate" Type="java.util.Date"/>
+  <Attribute Name="ticketTransNo" Type="java.math.BigDecimal"/>
+  <Attribute Name="prodType" Type="java.lang.String"/>
+  <Attribute Name="proposalNo" Type="java.lang.String"/>
+  <Attribute Name="tckSelected" Type="boolean"/>
+  <Attribute Name="assignmentDate" Type="java.util.Date"/>
+  <Attribute Name="endrType" Type="java.lang.String"/>
+  <Attribute Name="ticketNameModified" Type="java.lang.String"/>
+  <Attribute Name="dmsDocType" Type="java.lang.String"/>
+  <Attribute Name="dmsComment" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.bpm.Bpmw"
+                     BeanClass="TurnQuest.view.bpm.Bpmw" id="Bpmw"/>
+</JavaBean>

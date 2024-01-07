@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="QueryDescriptor" Package="oracle.adf.view.rich.model"
+          BeanClass="oracle.adf.view.rich.model.QueryDescriptor"
+          isJavaBased="true">
+  <Attribute Name="name" IsUpdateable="0" Type="java.lang.String"/>
+  <AccessorAttribute id="conjunctionCriterion" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.model.ConjunctionCriterion"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="UIHints" IsCollection="true" Type="java.util.Map"
+                     CollectionBeanClass="UpdateableCollection">
+    <Attribute Name="element" Type="java.lang.String, java.lang.Object"/>
+  </AccessorAttribute>
+  <AccessorAttribute id="currentCriterion" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.model.AttributeCriterion"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="void" id="addCriterion"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="changeMode"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0"
+                   Type="oracle.adf.view.rich.model.QueryDescriptor.QueryMode"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="removeCriterion"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="oracle.adf.view.rich.model.Criterion"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="oracle.adf.view.rich.model.QueryDescriptor"
+                     BeanClass="oracle.adf.view.rich.model.QueryDescriptor"
+                     id="QueryDescriptor"/>
+</JavaBean>

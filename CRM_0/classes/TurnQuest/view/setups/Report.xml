@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Report" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.Report" isJavaBased="true">
+  <Attribute Name="srmName" Type="java.lang.String"/>
+  <Attribute Name="srmDesc" Type="java.lang.String"/>
+  <Attribute Name="srmSysName" Type="java.lang.String"/>
+  <Attribute Name="srmCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="srmSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="rsmCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="rsmName" Type="java.lang.String"/>
+  <Attribute Name="rsmDesc" Type="java.lang.String"/>
+  <Attribute Name="rptCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="rptName" Type="java.lang.String"/>
+  <Attribute Name="rptDesc" Type="java.lang.String"/>
+  <Attribute Name="rptActive" Type="java.lang.String"/>
+  <Attribute Name="selected" Type="boolean"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.setups.Report"
+                     BeanClass="TurnQuest.view.setups.Report" id="Report"/>
+</JavaBean>

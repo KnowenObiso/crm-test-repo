@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="LeadValues" Package="TurnQuest.view.Leads"
+          BeanClass="TurnQuest.view.Leads.LeadValues" isJavaBased="true">
+  <Attribute Name="LDS_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_TITLE" Type="java.lang.String"/>
+  <Attribute Name="LDS_SURNNAME" Type="java.lang.String"/>
+  <Attribute Name="LDS_OTHERNAMES" Type="java.lang.String"/>
+  <Attribute Name="LDS_CAMP_TEL" Type="java.lang.String"/>
+  <Attribute Name="LDS_MOB_TEL" Type="java.lang.String"/>
+  <Attribute Name="LDS_CAMP_NAME" Type="java.lang.String"/>
+  <Attribute Name="LDS_FAX" Type="java.lang.String"/>
+  <Attribute Name="LDS_DESIGN" Type="java.lang.String"/>
+  <Attribute Name="LDS_EMAIL_ADDRS" Type="java.lang.String"/>
+  <Attribute Name="LDS_RATE_TYPE" Type="java.lang.String"/>
+  <Attribute Name="LDS_PHYSICAL_ADDRS" Type="java.lang.String"/>
+  <Attribute Name="LDS_POSTAL_ADDRS" Type="java.lang.String"/>
+  <Attribute Name="LDS_COUNTRY" Type="java.lang.String"/>
+  <Attribute Name="LDS_POSTAL_CODE" Type="java.lang.String"/>
+  <Attribute Name="LDS_STATE" Type="java.lang.String"/>
+  <Attribute Name="LDS_TWN_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_COU_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_DATE" Type="java.util.Date"/>
+  <Attribute Name="LDS_DESC" Type="java.lang.String"/>
+  <Attribute Name="LDS_USR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_ORG_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_SYS_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_CONVERTED" Type="java.lang.String"/>
+  <Attribute Name="LDS_PONT_NAME" Type="java.lang.String"/>
+  <Attribute Name="LDS_PONT_CONRT" Type="java.lang.String"/>
+  <Attribute Name="LDS_PONT_AMOUNT" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_CUR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_PONT_CLOSE_DATE" Type="java.util.Date"/>
+  <Attribute Name="LDS_PONT_SALE_STAGE" Type="java.lang.String"/>
+  <Attribute Name="LDS_INDUSTRY" Type="java.lang.String"/>
+  <Attribute Name="LDS_ANN_REVENUE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_NO_EMPYEE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_WEB_SITE" Type="java.lang.String"/>
+  <Attribute Name="LDS_TEAM_USR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_ACC_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDSRC_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDSRC_DESC" Type="java.lang.String"/>
+  <Attribute Name="leadSysName" Type="java.lang.String"/>
+  <Attribute Name="leadCurName" Type="java.lang.String"/>
+  <Attribute Name="leadProdCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="leadProdName" Type="java.lang.String"/>
+  <Attribute Name="LDS_CMP_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_TOWN_NAME" Type="java.lang.String"/>
+  <Attribute Name="LDS_STATE_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_USR_NAME" Type="java.lang.String"/>
+  <Attribute Name="LDS_ORG_NAME" Type="java.lang.String"/>
+  <Attribute Name="LDS_TEAM_NAME" Type="java.lang.String"/>
+  <Attribute Name="LDS_ACCOUNT_NAME" Type="java.lang.String"/>
+  <Attribute Name="LDS_LSTS_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="LDS_LSTS_DESC" Type="java.lang.String"/>
+  <Attribute Name="leadDivCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="leadDivName" Type="java.lang.String"/>
+  <Attribute Name="occupation" Type="java.lang.String"/>
+  <Attribute Name="companyName" Type="java.lang.String"/>
+  <Attribute Name="clientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clientShtDesc" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Leads.LeadValues"
+                     BeanClass="TurnQuest.view.Leads.LeadValues"
+                     id="LeadValues"/>
+</JavaBean>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="DropOrientation" Package="oracle.adf.view.rich.event.DropEvent"
+          BeanClass="oracle.adf.view.rich.event.DropEvent.DropOrientation"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="oracle.adf.view.rich.event.DropEvent.DropOrientation"
+                  BeanClass="oracle.adf.view.rich.event.DropEvent.DropOrientation"
+                  id="values" ReturnNodeName="DropOrientation"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false"
+                  Type="oracle.adf.view.rich.event.DropEvent.DropOrientation"
+                  BeanClass="oracle.adf.view.rich.event.DropEvent.DropOrientation"
+                  id="valueOf" ReturnNodeName="DropOrientation">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

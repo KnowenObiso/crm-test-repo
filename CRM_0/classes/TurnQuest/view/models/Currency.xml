@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="Currency" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.Currency" isJavaBased="true">
+  <Attribute Name="code" PrimaryKey="true" Type="java.math.BigDecimal"/>
+  <Attribute Name="symbol" Type="java.lang.String"/>
+  <Attribute Name="desc" Type="java.lang.String"/>
+  <Attribute Name="rnd" Type="java.math.BigDecimal"/>
+  <Attribute Name="numWord" Type="java.lang.String"/>
+  <Attribute Name="decimalWord" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.Currency"
+                     BeanClass="TurnQuest.view.models.Currency" id="Currency"/>
+</JavaBean>

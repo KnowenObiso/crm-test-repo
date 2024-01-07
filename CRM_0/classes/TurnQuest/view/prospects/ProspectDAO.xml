@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="ProspectDAO" Package="TurnQuest.view.prospects"
+          BeanClass="TurnQuest.view.prospects.ProspectDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.prospects.Prospect"
+                  BeanClass="TurnQuest.view.prospects.Prospect"
+                  id="fetchAllProspects" ReturnNodeName="Prospect"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town"
+                  id="fetchAllTownsByCountry" ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Nation"
+                  BeanClass="TurnQuest.view.setups.Nation"
+                  id="fetchAllCountries" ReturnNodeName="Nation"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.prospects.ProspectDAO"
+                     BeanClass="TurnQuest.view.prospects.ProspectDAO"
+                     id="ProspectDAO"/>
+</JavaBean>

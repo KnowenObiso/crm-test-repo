@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="DataModel" Package="javax.faces.model"
+          BeanClass="javax.faces.model.DataModel" isJavaBased="true">
+  <Attribute Name="rowAvailable" IsUpdateable="0" Type="boolean"/>
+  <Attribute Name="rowCount" IsUpdateable="0" Type="int"/>
+  <Attribute Name="rowData" IsUpdateable="0" Type="java.lang.Object"/>
+  <Attribute Name="rowIndex" Type="int"/>
+  <Attribute Name="wrappedData" Type="java.lang.Object"/>
+  <AccessorAttribute id="dataModelListeners" IsCollection="true"
+                     RemoveMethod="removeDataModelListener"
+                     AddMethod="addDataModelListener"
+                     BeanClass="javax.faces.model.DataModelListener"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeDataModelListener"/>
+      <Property Name="AddMethod" Value="addDataModelListener"/>
+    </Properties>
+  </AccessorAttribute>
+  <MethodAccessor IsCollection="false" Type="void" id="addDataModelListener"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="javax.faces.model.DataModelListener"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="removeDataModelListener"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="javax.faces.model.DataModelListener"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="javax.faces.model.DataModel"
+                     BeanClass="javax.faces.model.DataModel" id="DataModel"/>
+</JavaBean>

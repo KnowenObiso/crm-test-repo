@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="MessageBean" Package="TurnQuest.view.messaging"
+          BeanClass="TurnQuest.view.messaging.MessageBean" isJavaBased="true">
+  <Attribute Name="msgtCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="msgtShtDesc" Type="java.lang.String"/>
+  <Attribute Name="msgtMsg" Type="java.lang.String"/>
+  <Attribute Name="msgtSysModule" Type="java.lang.String"/>
+  <Attribute Name="msgtType" Type="java.lang.String"/>
+  <Attribute Name="countryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="couShtDesc" Type="java.lang.String"/>
+  <Attribute Name="counntryName" Type="java.lang.String"/>
+  <Attribute Name="stateCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="counCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="stateShtDesc" Type="java.lang.String"/>
+  <Attribute Name="stateName" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.messaging.MessageBean"
+                     BeanClass="TurnQuest.view.messaging.MessageBean"
+                     id="MessageBean"/>
+</JavaBean>

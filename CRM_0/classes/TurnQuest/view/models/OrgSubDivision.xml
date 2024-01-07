@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="OrgSubDivision" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.OrgSubDivision" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="osdCode" Type="java.lang.String"/>
+  <Attribute Name="osdParentOsdCode" Type="java.lang.String"/>
+  <Attribute Name="osdDltCode" Type="java.lang.String"/>
+  <Attribute Name="osdOdlCode" Type="java.lang.String"/>
+  <Attribute Name="osdName" Type="java.lang.String"/>
+  <Attribute Name="osdWef" Type="java.util.Date"/>
+  <Attribute Name="osdDivHeadAgnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="osdSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="nodeType" Type="java.lang.String"/>
+  <Attribute Name="dltDesc" Type="java.lang.String"/>
+  <Attribute Name="odlDesc" Type="java.lang.String"/>
+  <Attribute Name="agentName" Type="java.lang.String"/>
+  <Attribute Name="odlRanking" Type="java.math.BigDecimal"/>
+  <Attribute Name="odlType" Type="java.lang.String"/>
+  <Attribute Name="brnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="regCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="osdPostLevel" Type="java.lang.String"/>
+  <Attribute Name="osdManagerAllowed" Type="java.lang.String"/>
+  <Attribute Name="osdOverCommAllowed" Type="java.lang.String"/>
+  <Attribute Name="osdId" Type="java.math.BigDecimal"/>
+  <Attribute Name="osdParentOsdId" Type="java.math.BigDecimal"/>
+  <Attribute Name="osdStatus" Type="java.lang.String"/>
+  <Attribute Name="osdWet" Type="java.util.Date"/>
+  <Attribute Name="osdLocationCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="osdLocation" Type="java.lang.String"/>
+  <Attribute Name="odh_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="odh_osd_code" Type="java.lang.String"/>
+  <Attribute Name="odh_osd_div_head_agn_code" Type="java.lang.String"/>
+  <Attribute Name="odh_wef_date" Type="java.util.Date"/>
+  <Attribute Name="odh_wet_date" Type="java.util.Date"/>
+  <Attribute Name="odh_agn_name" Type="java.lang.String"/>
+  <Attribute Name="odh_agn_sht_desc" Type="java.lang.String"/>
+  <Attribute Name="urban_status" Type="java.lang.String"/>
+  <Attribute Name="osdUnitPrefix" Type="java.lang.String"/>
+  <Attribute Name="osdAgnSeqNo" Type="java.math.BigDecimal"/>
+  <Attribute Name="urbanStatus" Type="java.lang.String"/>
+  <Attribute Name="oldAgnCode" Type="java.lang.String"/>
+  <AccessorAttribute id="orgSubDivisions" IsCollection="true"
+                     BeanClass="TurnQuest.view.models.OrgSubDivision"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.OrgSubDivision"
+                     BeanClass="TurnQuest.view.models.OrgSubDivision"
+                     id="OrgSubDivision"/>
+</JavaBean>

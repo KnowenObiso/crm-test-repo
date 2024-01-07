@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.59.23"
+          id="KbTopic4" Package="TurnQuest.view.knowledgeBase"
+          BeanClass="TurnQuest.view.knowledgeBase.KbTopic4" isJavaBased="true">
+  <Attribute Name="kbtId" Type="java.lang.String"/>
+  <Attribute Name="kbtOrder" Type="java.lang.String"/>
+  <Attribute Name="kbtShrtDesc" Type="java.lang.String"/>
+  <Attribute Name="kbtDesc" Type="java.lang.String"/>
+  <Attribute Name="kbtParentId" Type="java.lang.String"/>
+  <Attribute Name="nodeType" Type="java.lang.String"/>
+  <Attribute Name="nodeName" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.knowledgeBase.KbTopic4"
+                     BeanClass="TurnQuest.view.knowledgeBase.KbTopic4"
+                     id="KbTopic4"/>
+</JavaBean>

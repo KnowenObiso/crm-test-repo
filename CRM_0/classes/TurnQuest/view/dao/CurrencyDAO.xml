@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="CurrencyDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.CurrencyDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Currency"
+                  BeanClass="TurnQuest.view.setups.Currency"
+                  id="fetchAllCurrencies" ReturnNodeName="Currency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.CurrencyDenomination"
+                  BeanClass="TurnQuest.view.setups.CurrencyDenomination"
+                  id="fetchCurrencyDenominationsByCurrency"
+                  ReturnNodeName="CurrencyDenomination"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.CurrencyRate"
+                  BeanClass="TurnQuest.view.setups.CurrencyRate"
+                  id="fetchCurrencyRatesByBaseCurrency"
+                  ReturnNodeName="CurrencyRate"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Currency"
+                  BeanClass="TurnQuest.view.setups.Currency"
+                  id="fetchCurrenciesExcludeCurrency" ReturnNodeName="Currency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Currency"
+                  BeanClass="TurnQuest.view.setups.Currency"
+                  id="fetchBaseCurrencies" ReturnNodeName="Currency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.CurrencyRate"
+                  BeanClass="TurnQuest.view.setups.CurrencyRate"
+                  id="fetchCurrencyRatesByBaseCurrencyOld"
+                  ReturnNodeName="CurrencyRate"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="updateExchangeRate" ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.ExchangeRate"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="addExchangeRate" ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.ExchangeRate"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.CurrencyDAO"
+                     BeanClass="TurnQuest.view.dao.CurrencyDAO"
+                     id="CurrencyDAO"/>
+</JavaBean>

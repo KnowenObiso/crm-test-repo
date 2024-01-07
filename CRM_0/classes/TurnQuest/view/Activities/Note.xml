@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Note" Package="TurnQuest.view.Activities"
+          BeanClass="TurnQuest.view.Activities.Note" isJavaBased="true">
+  <Attribute Name="noteSubject" Type="java.lang.String"/>
+  <Attribute Name="relatedAccount" Type="java.lang.String"/>
+  <Attribute Name="noteCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="noteAcccountCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="noteContactCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="noteDescription" Type="java.lang.String"/>
+  <Attribute Name="noteActivityCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="noteAttachmentName" Type="java.lang.String"/>
+  <Attribute Name="noteAttachmentType" Type="java.lang.String"/>
+  <AccessorAttribute id="noteAttachmentFile" IsCollection="true"
+                     Type="java.io.InputStream"
+                     CollectionBeanClass="UpdateableSingleValue">
+    <Attribute Name="element" Type="java.io.InputStream"/>
+  </AccessorAttribute>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Activities.Note"
+                     BeanClass="TurnQuest.view.Activities.Note" id="Note"/>
+</JavaBean>

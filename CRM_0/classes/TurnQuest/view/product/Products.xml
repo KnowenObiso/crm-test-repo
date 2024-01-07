@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Products" Package="TurnQuest.view.product"
+          BeanClass="TurnQuest.view.product.Products" isJavaBased="true">
+  <Attribute Name="productCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="productDesc" Type="java.lang.String"/>
+  <Attribute Name="productSubClassCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="productShtDesc" Type="java.lang.String"/>
+  <Attribute Name="coverTypeDesc" Type="java.lang.String"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="coverTypeDetails" Type="java.lang.String"/>
+  <Attribute Name="coverTypeCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="productDetails" Type="java.lang.String"/>
+  <Attribute Name="productPromoName" Type="java.lang.String"/>
+  <Attribute Name="twpcCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="twpcName" Type="java.lang.String"/>
+  <Attribute Name="twpcDesc" Type="java.lang.String"/>
+  <Attribute Name="twpCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prodCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prodName" Type="java.lang.String"/>
+  <Attribute Name="prodDesc" Type="java.lang.String"/>
+  <Attribute Name="twpoCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="popCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="twpoDesc" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.product.Products"
+                     BeanClass="TurnQuest.view.product.Products" id="Products"/>
+</JavaBean>
