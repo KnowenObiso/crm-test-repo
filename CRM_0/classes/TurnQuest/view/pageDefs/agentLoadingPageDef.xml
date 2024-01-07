@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="agentLoadingPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllSectors.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Sector"
+                    id="fetchAllSectorsIterator"/>
+    <methodIterator Binds="findClientTypes.result" DataControl="MainClientDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.client.Client2"
+                    id="findClientTypesIterator"/>
+    <searchRegion Binds="findClientTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client2Query"/>
+    <methodIterator Binds="findLoadedClients.result" DataControl="MainClientDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.client.Client2"
+                    id="findLoadedClientsIterator"/>
+    <searchRegion Binds="findLoadedClientsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client21Query"/>
+    <methodIterator Binds="findLoadedAgents.result" DataControl="MainClientDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.client.Agents"
+                    id="findLoadedAgentsIterator"/>
+    <searchRegion Binds="findLoadedAgentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgentsQuery"/>
+    <methodIterator Binds="selectBranchDetails.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.Agents"
+                    id="selectBranchDetailsIterator"/>
+    <searchRegion Binds="selectBranchDetailsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Agents1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllSectors" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSectors"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllSectors_BaseSetupDAO_dataProvider_fetchAllSectors_result"/>
+    <tree IterBinding="fetchAllSectorsIterator" id="Sector">
+      <nodeDefinition DefName="TurnQuest.view.setups.Sector" Name="Sector0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findClientTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findClientTypes"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.findClientTypes_MainClientDAO_dataProvider_findClientTypes_result"/>
+    <tree IterBinding="findClientTypesIterator" id="Client2">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client20">
+        <AttrNames>
+          <Item Value="CLNTY_CODE"/>
+          <Item Value="CLNTY_CLNT_TYPE"/>
+          <Item Value="CLNTY_CATEGORY"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findLoadedClients" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLoadedClients"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.findLoadedClients_MainClientDAO_dataProvider_findLoadedClients_result"/>
+    <tree IterBinding="findLoadedClientsIterator" id="Client21">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client210">
+        <AttrNames>
+          <Item Value="checked"/>
+          <Item Value="CLN_CODE"/>
+          <Item Value="CLN_CLNT_SHT_DESC"/>
+          <Item Value="CLN_CLNT_NAME"/>
+          <Item Value="CLN_CLNT_OTHER_NAMES"/>
+          <Item Value="CLN_CLNT_ID_REG_NO"/>
+          <Item Value="CLN_CLNT_DOB"/>
+          <Item Value="CLN_CLNT_PIN"/>
+          <Item Value="CLN_CLNT_PHYSICAL_ADDRS"/>
+          <Item Value="CLN_CLNT_POSTAL_ADDRS"/>
+          <Item Value="CLN_CLNT_TWN_CODE"/>
+          <Item Value="CLN_CLNT_COU_CODE"/>
+          <Item Value="CLN_CLNT_TEL"/>
+          <Item Value="CLN_CLNT_ACCNT_NO"/>
+          <Item Value="CLN_CLNT_WEF"/>
+          <Item Value="CLN_CLNT_WET"/>
+          <Item Value="CLN_CLNT_CREATED_BY"/>
+          <Item Value="PRO_DESC"/>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="CLN_CLNT_DOBlov"/>
+          <Item Value="CLN_CLNT_WEFtolov"/>
+          <Item Value="CLN_CLNT_WETfrom"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findLoadedAgents" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLoadedAgents"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.findLoadedAgents_MainClientDAO_dataProvider_findLoadedAgents_result"/>
+    <tree IterBinding="findLoadedAgentsIterator" id="Agents">
+      <nodeDefinition DefName="TurnQuest.view.client.Agents" Name="Agents0">
+        <AttrNames>
+          <Item Value="checked"/>
+          <Item Value="selected"/>
+          <Item Value="select"/>
+          <Item Value="agntCode"/>
+          <Item Value="agentShtDesc"/>
+          <Item Value="agentName"/>
+          <Item Value="physicalAddress"/>
+          <Item Value="postalAddress"/>
+          <Item Value="townCode"/>
+          <Item Value="countryCode"/>
+          <Item Value="emailAddress"/>
+          <Item Value="contactPerson"/>
+          <Item Value="accountNumber"/>
+          <Item Value="creditAllowed"/>
+          <Item Value="dateCreated"/>
+          <Item Value="createdby"/>
+          <Item Value="branchCode"/>
+          <Item Value="agentRunOff"/>
+          <Item Value="creditRating"/>
+          <Item Value="agentAccountCode"/>
+          <Item Value="townCodeStr"/>
+          <Item Value="countryCodeStr"/>
+          <Item Value="branchCodeStr"/>
+          <Item Value="systemName"/>
+          <Item Value="checked"/>
+          <Item Value="selected"/>
+          <Item Value="select"/>
+         </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="selectBranchDetails" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="selectBranchDetails"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.selectBranchDetails_MainClientDAO_dataProvider_selectBranchDetails_result"/>
+    <tree IterBinding="selectBranchDetailsIterator" id="Agents1">
+      <nodeDefinition DefName="TurnQuest.view.client.Agents" Name="Agents10">
+        <AttrNames>
+          <Item Value="branchCodelov"/>
+          <Item Value="branchShtDesc"/>
+          <Item Value="branchName"/>
+          <Item Value="branchRegCode"/>
+          <Item Value="regCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findLoadedAgentsIterator" id="Agents2">
+      <nodeDefinition DefName="TurnQuest.view.client.Agents" Name="Agents20">
+        <AttrNames>
+          <Item Value="agnlCode"/>
+          <Item Value="agnlAccountCode"/>
+          <Item Value="agnlaccountType"/>
+          <Item Value="agnlaccountName"/>
+          <Item Value="agnlphysicalAddress"/>
+          <Item Value="agnlpostalAddress"/>
+          <Item Value="agnlTownName"/>
+          <Item Value="agnlregCode"/>
+          <Item Value="agnlcontactperson"/>
+          <Item Value="agnltelephoneNumber"/>
+          <Item Value="agnlfaxNumber"/>
+          <Item Value="agnlemailAddress"/>
+          <Item Value="agnldateCreated"/>
+          <Item Value="agnlcheckDate"/>
+          <Item Value="checked"/>
+          <Item Value="selected"/>
+          <Item Value="select"/>
+          <Item Value="agntCode"/>
+          <Item Value="branchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

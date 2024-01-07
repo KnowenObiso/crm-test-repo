@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="DirectDebit" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.DirectDebit" isJavaBased="true">
+  <Attribute Name="ddCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddRefNo" Type="java.lang.String"/>
+  <Attribute Name="ddSentYn" Type="java.lang.String"/>
+  <Attribute Name="ddAccountNum" Type="java.lang.String"/>
+  <Attribute Name="ddBookDate" Type="java.util.Date"/>
+  <Attribute Name="ddBbrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddStatus" Type="java.lang.String"/>
+  <Attribute Name="ddReceipted" Type="java.lang.String"/>
+  <Attribute Name="ddValueDate" Type="java.util.Date"/>
+  <Attribute Name="ddRaisedBy" Type="java.lang.String"/>
+  <Attribute Name="ddDate" Type="java.util.Date"/>
+  <Attribute Name="ddBankCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddAuthBy" Type="java.lang.String"/>
+  <Attribute Name="ddAuthDate" Type="java.util.Date"/>
+  <Attribute Name="ddAuthorized" Type="java.lang.String"/>
+  <Attribute Name="bankBranch" Type="java.lang.String"/>
+  <Attribute Name="policyNo" Type="java.lang.String"/>
+  <Attribute Name="accountNo" Type="java.lang.String"/>
+  <Attribute Name="sortCode" Type="java.lang.String"/>
+  <Attribute Name="amount" Type="java.math.BigDecimal"/>
+  <Attribute Name="accName" Type="java.lang.String"/>
+  <Attribute Name="narration" Type="java.lang.String"/>
+  <Attribute Name="company" Type="java.lang.String"/>
+  <Attribute Name="fail" Type="java.lang.String"/>
+  <Attribute Name="failRemarks" Type="java.lang.String"/>
+  <Attribute Name="dddCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bbRefCode" Type="java.lang.String"/>
+  <Attribute Name="payFreq" Type="java.lang.String"/>
+  <Attribute Name="nextDueDate" Type="java.util.Date"/>
+  <Attribute Name="ddRefNumber" Type="java.lang.String"/>
+  <Attribute Name="ddBankBranch" Type="java.lang.String"/>
+  <Attribute Name="ddDebitDay" Type="java.lang.String"/>
+  <Attribute Name="DD_RECEIPT_DATE" Type="java.util.Date"/>
+  <Attribute Name="DD_RECEIPT_NO" Type="java.lang.String"/>
+  <Attribute Name="DD_ALLOC_STATUS" Type="java.lang.String"/>
+  <Attribute Name="DD_TOTAL_RECORDS" Type="java.math.BigDecimal"/>
+  <Attribute Name="DD_RECORDS_ALLOCATED" Type="java.math.BigDecimal"/>
+  <Attribute Name="DD_RECORDS_ALLOC_SUCCESS" Type="java.math.BigDecimal"/>
+  <Attribute Name="DD_RECORDS_ALLOC_FAIL" Type="java.math.BigDecimal"/>
+  <Attribute Name="DD_ALLOC_PERCENT" Type="java.math.BigDecimal"/>
+  <Attribute Name="DD_ALLOC_SUCCESS_PERC" Type="java.math.BigDecimal"/>
+  <Attribute Name="DD_EST_ALLOC_COMPL_DATE" Type="java.util.Date"/>
+  <Attribute Name="DD_ALLOC_STATUS_CODE" Type="java.lang.String"/>
+  <Attribute Name="DD_BOOK_DATE_TO" Type="java.util.Date"/>
+  <Attribute Name="DD_REN_BOOK_DATE_FROM" Type="java.util.Date"/>
+  <Attribute Name="DD_REN_BOOK_DATE_TO" Type="java.util.Date"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.DirectDebit"
+                     BeanClass="TurnQuest.view.models.DirectDebit"
+                     id="DirectDebit"/>
+</JavaBean>

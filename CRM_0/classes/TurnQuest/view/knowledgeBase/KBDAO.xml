@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.59.23"
+          id="KBDAO" Package="TurnQuest.view.knowledgeBase"
+          BeanClass="TurnQuest.view.knowledgeBase.KBDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.knowledgeBase.KbTopic1"
+                  BeanClass="TurnQuest.view.knowledgeBase.KbTopic1"
+                  id="findKbTopics" ReturnNodeName="KbTopic1"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.knowledgeBase.KbContent"
+                  BeanClass="TurnQuest.view.knowledgeBase.KbContent"
+                  id="findKbContentPerTopic" ReturnNodeName="KbContent"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.knowledgeBase.KBDAO"
+                     BeanClass="TurnQuest.view.knowledgeBase.KBDAO" id="KBDAO"/>
+</JavaBean>

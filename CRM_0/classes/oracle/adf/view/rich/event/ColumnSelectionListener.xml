@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ColumnSelectionListener" Package="oracle.adf.view.rich.event"
+          BeanClass="oracle.adf.view.rich.event.ColumnSelectionListener"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="void" id="processColumnSelection"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0"
+                   Type="oracle.adf.view.rich.event.ColumnSelectionEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+</JavaBean>

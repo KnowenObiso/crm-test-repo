@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="userAuthorizationPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchDraftUsers.result"
+                    DataControl="EmployeeAdminDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="fetchDraftUsersIterator"/>
+    <searchRegion Binds="fetchDraftUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdminQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchDraftUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDraftUsers"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.fetchDraftUsers_EmployeeAdminDAO_dataProvider_fetchDraftUsers_result"/>
+    <tree IterBinding="fetchDraftUsersIterator" id="EmployeeAdmin">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin0">
+        <AttrNames>
+          <Item Value="selected"/>
+          <Item Value="STAFF_NO"/>
+          <Item Value="STAFF_NAME"/>
+          <Item Value="STAFF_GENDER"/>
+          <Item Value="STAFF_NATIONAL_ID"/>
+          <Item Value="STAFF_DOB"/>
+          <Item Value="STAFF_DATE_EMPLOYEED"/>
+          <Item Value="STAFF_PIN"/>
+          <Item Value="STAFF_ACTION"/>
+          <Item Value="STAFF_DONE_BY"/>
+          <Item Value="STAFF_DONE_DATE"/>
+          <Item Value="STAFF_AUTHORIZED_BY"/>
+          <Item Value="STAFF_AUTHORIZED_DATE"/>
+          <Item Value="STAFF_DEP_CODE"/>
+          <Item Value="STAFF_EXIT_DATE"/>
+          <Item Value="STAFF_STATUS"/>
+          <Item Value="STAFF_ID"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="DragSource" Package="oracle.adf.view.rich.dnd"
+          BeanClass="oracle.adf.view.rich.dnd.DragSource" isJavaBased="true">
+  <AccessorAttribute id="allowedActions" IsCollection="true"
+                     BeanClass="oracle.adf.view.rich.dnd.DnDAction"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="void" id="preDrop"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="oracle.adf.view.rich.event.DropEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="dragDropEnd"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="oracle.adf.view.rich.event.DropEvent"
+                   isStructured="true"/>
+    <ParameterInfo id="p1" Type="oracle.adf.view.rich.dnd.DnDAction"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="oracle.adf.view.rich.dnd.DragSource"
+                     BeanClass="oracle.adf.view.rich.dnd.DragSource"
+                     id="DragSource">
+    <ParameterInfo id="p0" Type="java.util.Set" isStructured="false"/>
+  </ConstructorMethod>
+</JavaBean>

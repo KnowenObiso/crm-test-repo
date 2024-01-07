@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="EmployeeAdmin" Package="TurnQuest.view.employeeAdministration"
+          BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+          isJavaBased="true">
+  <Attribute Name="STAFF_NO" Type="java.math.BigDecimal"/>
+  <Attribute Name="STAFF_NAME" Type="java.lang.String"/>
+  <Attribute Name="STAFF_GENDER" Type="java.lang.String"/>
+  <Attribute Name="STAFF_NATIONAL_ID" Type="java.lang.String"/>
+  <Attribute Name="STAFF_DOB" Type="java.util.Date"/>
+  <Attribute Name="STAFF_DATE_EMPLOYEED" Type="java.util.Date"/>
+  <Attribute Name="STAFF_PIN" Type="java.lang.String"/>
+  <Attribute Name="STAFF_DEP_CODE" Type="java.lang.String"/>
+  <Attribute Name="STAFF_EXIT_DATE" Type="java.util.Date"/>
+  <Attribute Name="STAFF_STATUS" Type="java.lang.String"/>
+  <Attribute Name="STAFF_ID" Type="java.math.BigDecimal"/>
+  <Attribute Name="STAFF_ACTION" Type="java.lang.String"/>
+  <Attribute Name="STAFF_DONE_BY" Type="java.lang.String"/>
+  <Attribute Name="STAFF_DONE_DATE" Type="java.util.Date"/>
+  <Attribute Name="STAFF_AUTHORIZED_BY" Type="java.lang.String"/>
+  <Attribute Name="STAFF_AUTHORIZED_DATE" Type="java.util.Date"/>
+  <Attribute Name="RESA_RES_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="RES_DESC" Type="java.lang.String"/>
+  <Attribute Name="RESA_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="RESA_STAFF_ID" Type="java.math.BigDecimal"/>
+  <Attribute Name="RESA_REMARKS" Type="java.lang.String"/>
+  <Attribute Name="RESA_STATUS" Type="java.lang.String"/>
+  <Attribute Name="RESA_DONE_BY" Type="java.lang.String"/>
+  <Attribute Name="RESA_DONE_DATE" Type="java.util.Date"/>
+  <Attribute Name="selected" Type="java.lang.Boolean"/>
+  <Attribute Name="checked" Type="java.lang.Boolean"/>
+  <Attribute Name="STAFF_CONTRACT_TYPE" Type="java.lang.String"/>
+  <Attribute Name="STAFF_PRD_EMAILNAME" Type="java.lang.String"/>
+  <Attribute Name="STAFF_REPLACING" Type="java.lang.String"/>
+  <Attribute Name="STAFF_RANK" Type="java.lang.String"/>
+  <Attribute Name="STAFF_DUTY_STATION" Type="java.lang.String"/>
+  <Attribute Name="STAFF_PHONE_NUMBER" Type="java.lang.String"/>
+  <Attribute Name="DEP_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="DEP_NAME" Type="java.lang.String"/>
+  <Attribute Name="BRN_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BRN_NAME" Type="java.lang.String"/>
+  <Attribute Name="STAFF_POSITION" Type="java.lang.String"/>
+  <Attribute Name="USR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="USR_NAME" Type="java.lang.String"/>
+  <Attribute Name="USR_USERNAME" Type="java.lang.String"/>
+  <Attribute Name="ROSA_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="SRLS_NAME" Type="java.lang.String"/>
+  <Attribute Name="SYS_NAME" Type="java.lang.String"/>
+  <Attribute Name="STAFF_ROLE_COMMENTS" Type="java.lang.String"/>
+  <Attribute Name="RES_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="REST_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="REST_DESC" Type="java.lang.String"/>
+  <Attribute Name="RESM_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="RESM_RES_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="RESM_DONE_BY" Type="java.lang.String"/>
+  <Attribute Name="RESM_DONE_DATE" Type="java.util.Date"/>
+  <Attribute Name="PR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="PR_DESC" Type="java.lang.String"/>
+  <Attribute Name="STAFF_NOTIFY_RES_ASSGNM" Type="java.lang.String"/>
+  <Attribute Name="STAFF_REPLACING_NAME" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                     BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                     id="EmployeeAdmin"/>
+</JavaBean>

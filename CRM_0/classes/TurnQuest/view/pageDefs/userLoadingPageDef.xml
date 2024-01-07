@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="userLoadingPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findLoadedUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findLoadedUsersIterator"/>
+    <searchRegion Binds="findLoadedUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Users1Query"/>
+    <methodIterator Binds="fetchUserNonDefaultDivisions.result"
+                    DataControl="UserDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.UtilObject"
+                    id="fetchUserNonDefaultDivisionsIterator"/>
+    <methodIterator Binds="fetchUserNonDefaultBranches.result"
+                    DataControl="UserDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.UtilObject"
+                    id="fetchUserNonDefaultBranchesIterator"/>
+  </executables>
+  <bindings>
+  <methodAction id="findLoadedUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLoadedUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findLoadedUsers_UserDAO_dataProvider_findLoadedUsers_result"/>
+  <tree IterBinding="findLoadedUsersIterator" id="Users1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="usr0">
+        <AttrNames>
+          <Item Value="usrCode"/>
+          <Item Value="username"/>
+          <Item Value="checked"/>
+          <Item Value="usrGisChecked"/>          
+          <Item Value="usrCrmChecked"/>          
+          <Item Value="usrFmsChecked"/>
+          <Item Value="usrLmsChecked"/>
+          <Item Value="name"/>
+          <Item Value="userEmail"/>          
+          <Item Value="phoneNumber"/>          
+          <Item Value="webAccess"/>
+          <Item Value="userStatus"/>
+          <Item Value="defaultBranch"/>
+          <Item Value="defaultDivision"/>
+          <Item Value="userPersonnelRank"/>
+          <Item Value="userType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserNonDefaultDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchUserNonDefaultDivisions"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchUserNonDefaultDivisions_UserDAO_dataProvider_fetchUserNonDefaultDivisions_result"/>
+    <tree IterBinding="fetchUserNonDefaultDivisionsIterator" id="UtilObject1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.UtilObject"
+                      Name="UtilObject10">
+        <AttrNames>
+          <Item Value="divisionCode"/>
+          <Item Value="divisionName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+     <methodAction id="fetchUserNonDefaultBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUserNonDefaultBranches"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchUserNonDefaultBranches_UserDAO_dataProvider_fetchUserNonDefaultBranches_result"/>
+    <tree IterBinding="fetchUserNonDefaultBranchesIterator" id="UtilObject">
+      <nodeDefinition DefName="TurnQuest.view.Usr.UtilObject"
+                      Name="UtilObject0">
+        <AttrNames>
+          <Item Value="branchCode"/>
+          <Item Value="branchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    </bindings>
+</pageDefinition>

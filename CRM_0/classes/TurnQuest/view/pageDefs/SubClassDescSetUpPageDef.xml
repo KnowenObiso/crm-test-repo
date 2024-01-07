@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="SubClassDescSetUpPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findSubClassDesc.result"
+                    DataControl="subClassDescDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.portalsetups.SubClass"
+                    id="findSubClassDescIterator"/>
+    <searchRegion Binds="findSubClassDescIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SubClassQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findSubClassDesc" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSubClassDesc"
+                  IsViewObjectMethod="false" DataControl="subClassDescDAO"
+                  InstanceName="subClassDescDAO.dataProvider"
+                  ReturnName="subClassDescDAO.methodResults.findSubClassDesc_subClassDescDAO_dataProvider_findSubClassDesc_result"/>
+    <tree IterBinding="findSubClassDescIterator" id="SubClass">
+      <nodeDefinition DefName="TurnQuest.view.portalsetups.SubClass"
+                      Name="SubClass0">
+        <AttrNames>
+          <Item Value="sclCode"/>
+          <Item Value="sclDesc"/>
+          <Item Value="sclShtDesc"/>
+          <Item Value="sclWebSclDescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

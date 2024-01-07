@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="PriorityLevel" Package="TurnQuest.view.Activities"
+          BeanClass="TurnQuest.view.Activities.PriorityLevel"
+          isJavaBased="true">
+  <Attribute Name="plCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="plDescription" Type="java.lang.String"/>
+  <Attribute Name="prShortDescription" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Activities.PriorityLevel"
+                     BeanClass="TurnQuest.view.Activities.PriorityLevel"
+                     id="PriorityLevel"/>
+</JavaBean>

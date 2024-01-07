@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.51.56"
+          id="LOV" Package="TurnQuest.view.Base"
+          BeanClass="TurnQuest.view.Base.LOV" isJavaBased="true">
+  <Attribute Name="btrTransCode" Type="java.lang.String"/>
+  <Attribute Name="btrTransType" Type="java.lang.String"/>
+  <Attribute Name="othernames" Type="java.lang.String"/>
+  <Attribute Name="surname" Type="java.lang.String"/>
+  <Attribute Name="town" Type="java.lang.String"/>
+  <Attribute Name="postalCode" Type="java.lang.String"/>
+  <Attribute Name="postalAddress" Type="java.lang.String"/>
+  <Attribute Name="country" Type="java.lang.String"/>
+  <Attribute Name="telphoneOne" Type="java.lang.String"/>
+  <Attribute Name="telphoneTwo" Type="java.lang.String"/>
+  <Attribute Name="fax" Type="java.lang.String"/>
+  <Attribute Name="clientID" Type="java.lang.String"/>
+  <Attribute Name="agentCode" Type="int"/>
+  <Attribute Name="previousLastLoginOn" Type="java.util.Date"/>
+  <Attribute Name="fullname" Type="java.lang.String"/>
+  <Attribute Name="clientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="shortDescription" Type="java.lang.String"/>
+  <Attribute Name="idRegNumber" Type="java.lang.String"/>
+  <Attribute Name="physicalAddress" Type="java.lang.String"/>
+  <Attribute Name="email" Type="java.lang.String"/>
+  <Attribute Name="smsTel" Type="java.lang.String"/>
+  <Attribute Name="policyNumber" Type="java.lang.String"/>
+  <Attribute Name="PINNumber" Type="java.lang.String"/>
+  <Attribute Name="ZIPCode" Type="java.lang.String"/>
+  <Attribute Name="valueCode" Type="java.lang.String"/>
+  <Attribute Name="valueDesc" Type="java.lang.String"/>
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="value" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Base.LOV"
+                     BeanClass="TurnQuest.view.Base.LOV" id="LOV"/>
+</JavaBean>

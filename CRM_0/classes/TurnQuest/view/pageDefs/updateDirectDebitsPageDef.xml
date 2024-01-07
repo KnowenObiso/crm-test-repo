@@ -82,6 +82,13 @@
     <searchRegion Binds="findDDProductsIterator" Criteria=""
                   Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
                   id="DirectDebitDetail4Query"/>
+    <methodIterator Binds="fetchDirectDebitAllRecords.result"
+                    DataControl="DirectDebitDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebit"
+                    id="fetchDirectDebitAllRecordsIterator"/>
+    <searchRegion Binds="fetchDirectDebitAllRecordsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebit3Query"/>
   </executables>
   <bindings>
     <methodAction id="fetchBankBranches" RequiresUpdateModel="true"
@@ -175,6 +182,10 @@
           <Item Value="ddAuthBy"/>
           <Item Value="ddAuthDate"/>
           <Item Value="ddAuthorized"/>
+          <Item Value="DD_TOTAL_RECORDS"/>
+          <Item Value="DD_BOOK_DATE_TO"/>
+          <Item Value="DD_REN_BOOK_DATE_FROM"/>
+          <Item Value="DD_REN_BOOK_DATE_TO"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -522,6 +533,64 @@
           <Item Value="PROD_CLA_CODE"/>
           <Item Value="CLA_DESC"/>
           <Item Value="PROD_TYPE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDirectDebitAllRecords" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDirectDebitAllRecords"
+                  IsViewObjectMethod="false" DataControl="DirectDebitDAO"
+                  InstanceName="DirectDebitDAO.dataProvider"
+                  ReturnName="data.DirectDebitDAO.methodResults.fetchDirectDebitAllRecords_DirectDebitDAO_dataProvider_fetchDirectDebitAllRecords_result"/>
+    <tree IterBinding="fetchDirectDebitAllRecordsIterator" id="DirectDebit3">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebit"
+                      Name="DirectDebit30">
+        <AttrNames>
+          <Item Value="ddCode"/>
+          <Item Value="ddRefNo"/>
+          <Item Value="ddSentYn"/>
+          <Item Value="ddAccountNum"/>
+          <Item Value="ddBookDate"/>
+          <Item Value="ddBbrCode"/>
+          <Item Value="ddStatus"/>
+          <Item Value="ddReceipted"/>
+          <Item Value="ddValueDate"/>
+          <Item Value="ddRaisedBy"/>
+          <Item Value="ddDate"/>
+          <Item Value="ddBankCode"/>
+          <Item Value="ddAuthBy"/>
+          <Item Value="ddAuthDate"/>
+          <Item Value="ddAuthorized"/>
+          <Item Value="bankBranch"/>
+          <Item Value="policyNo"/>
+          <Item Value="accountNo"/>
+          <Item Value="sortCode"/>
+          <Item Value="amount"/>
+          <Item Value="accName"/>
+          <Item Value="narration"/>
+          <Item Value="company"/>
+          <Item Value="fail"/>
+          <Item Value="failRemarks"/>
+          <Item Value="dddCode"/>
+          <Item Value="bbRefCode"/>
+          <Item Value="payFreq"/>
+          <Item Value="nextDueDate"/>
+          <Item Value="ddRefNumber"/>
+          <Item Value="ddBankBranch"/>
+          <Item Value="ddDebitDay"/>
+          <Item Value="DD_RECEIPT_DATE"/>
+          <Item Value="DD_RECEIPT_NO"/>
+          <Item Value="DD_ALLOC_STATUS"/>
+          <Item Value="DD_TOTAL_RECORDS"/>
+          <Item Value="DD_RECORDS_ALLOCATED"/>
+          <Item Value="DD_RECORDS_ALLOC_SUCCESS"/>
+          <Item Value="DD_RECORDS_ALLOC_FAIL"/>
+          <Item Value="DD_ALLOC_PERCENT"/>
+          <Item Value="DD_ALLOC_SUCCESS_PERC"/>
+          <Item Value="DD_EST_ALLOC_COMPL_DATE"/>
+          <Item Value="DD_ALLOC_STATUS_CODE"/>
+          <Item Value="DD_BOOK_DATE_TO"/>
+          <Item Value="DD_REN_BOOK_DATE_FROM"/>
+          <Item Value="DD_REN_BOOK_DATE_TO"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

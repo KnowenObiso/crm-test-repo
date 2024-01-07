@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ClientAttribute" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.ClientAttribute" isJavaBased="true">
+  <Attribute Name="TCA_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="TCA_ATTRIBUTE_NAME" Type="java.lang.String"/>
+  <Attribute Name="TCA_ATT_DESC" Type="java.lang.String"/>
+  <Attribute Name="TCA_PROMPT" Type="java.lang.String"/>
+  <Attribute Name="TCA_ATT_RANGE" Type="java.lang.String"/>
+  <Attribute Name="TCA_ATT_TYPE_INPUT" Type="java.lang.String"/>
+  <Attribute Name="tableName" Type="java.lang.String"/>
+  <Attribute Name="colName" Type="java.lang.String"/>
+  <Attribute Name="colDescription" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.ClientAttribute"
+                     BeanClass="TurnQuest.view.models.ClientAttribute"
+                     id="ClientAttribute"/>
+</JavaBean>

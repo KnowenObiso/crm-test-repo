@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="AgentProcess" xmlns="http://jbpm.org/4.0/jpdl">
+	<start g="24,72,80,40">
+		<transition name="To Agent Status" to="Agent Status"></transition>
+	</start>  
+		
+    <decision name="Agent Status" expr="#{AgentStatus}">
+            <transition name="DRAFT" to="Agent Draft"/>
+            <transition name="READY" to="Agent Ready"/>
+            <transition name="ACTIVE" to="Agent Authorized"/>
+            <transition name="INACTIVE" to="Agent Inactive"/>
+            <transition name="SUSPENDED" to="Agent Suspended"/>			
+	</decision>	
+		
+	<task name="Agent Draft" assignee="#{assignee}">
+		<assignment-handler class="TurnQuest.view.bpm.AssignProcessTask">
+		</assignment-handler>
+		<transition name="To Agent Status" to="Agent Status"></transition>
+	</task>
+	
+	<task name="Agent Ready"  assignee="#{assignee}">
+		<assignment-handler class="TurnQuest.view.bpm.AssignProcessTask">
+		</assignment-handler>
+		<transition name="To Agent Status" to="Agent Status"></transition>
+	</task>
+	
+	<task name="Agent Authorized" assignee="#{assignee}">
+		<assignment-handler class="TurnQuest.view.bpm.AssignProcessTask">
+		</assignment-handler>
+		<transition name="To theEnd" to="theEnd"></transition>
+	</task>
+	
+	<task name="Agent Inactive" assignee="#{assignee}">
+		<assignment-handler class="TurnQuest.view.bpm.AssignProcessTask">
+		</assignment-handler>
+		<transition name="To Agent Status" to="Agent Status"></transition>
+	</task>
+	
+	<task name="Agent Suspended" assignee="#{assignee}">
+		<assignment-handler class="TurnQuest.view.bpm.AssignProcessTask">
+		</assignment-handler>
+		<transition name="To Agent Status" to="Agent Status"></transition>
+	</task>
+
+	<end name="theEnd" g="339,70,80,40" />
+</process>

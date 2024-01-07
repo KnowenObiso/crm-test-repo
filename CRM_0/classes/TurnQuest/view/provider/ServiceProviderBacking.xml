@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ServiceProviderBacking" Package="TurnQuest.view.provider"
+          BeanClass="TurnQuest.view.provider.ServiceProviderBacking"
+          isJavaBased="true">
+  <Attribute Name="selectedValue" Type="java.lang.String"/>
+  <Attribute Name="selectedSystemValue" Type="java.lang.String"/>
+  <Attribute Name="filename" Type="java.lang.String"/>
+  <Attribute Name="filesize" Type="long"/>
+  <Attribute Name="fileContent" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="filetype" Type="java.lang.String"/>
+  <Attribute Name="txtSurnameDisabled" IsUpdateable="0" Type="boolean"/>
+  <Attribute Name="txtOtherNamesDisabled" IsUpdateable="0" Type="boolean"/>
+  <Attribute Name="txtFullNameDisabled" IsUpdateable="0" Type="boolean"/>
+  <Attribute Name="txtGenderDisabled" IsUpdateable="0" Type="boolean"/>
+  <Attribute Name="txtDobDisabled" IsUpdateable="0" Type="boolean"/>
+  <AccessorAttribute id="session" IsCollection="false"
+                     BeanClass="javax.servlet.http.HttpSession"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="elements" IsCollection="true"
+                     BeanClass="javax.faces.model.SelectItem"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="sysElements" IsCollection="true"
+                     BeanClass="javax.faces.model.SelectItem"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="bindings" IsCollection="true"
+                     Type="oracle.binding.BindingContainer"
+                     CollectionBeanClass="UpdateableSingleValue">
+    <Attribute Name="element" Type="oracle.binding.BindingContainer"/>
+  </AccessorAttribute>
+  <AccessorAttribute id="bindings1" IsCollection="true"
+                     Type="oracle.binding.BindingContainer"
+                     CollectionBeanClass="UpdateableSingleValue">
+    <Attribute Name="element" Type="oracle.binding.BindingContainer"/>
+  </AccessorAttribute>
+  <AccessorAttribute id="treeServiceProviders" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTree"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderShortDesc" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderName" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderPhysicalAddress" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderPostalAddress" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderCountryCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderTownCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderType" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderPhone" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderFax" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderEmail" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderTitle" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderZip" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderWef" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputDate"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderWet" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputDate"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderContact" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderAimsCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderBankAccountNum" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderCreatedBy" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderDateCreated" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputDate"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderStatusRemarks" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderTrsOccup" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderProffBody" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderPin" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderDocPhone" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderDocEmail" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderStatus" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichSelectOneChoice"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblCountryPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderCountryName" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblTownPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="panelProviderDetails" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.layout.RichPanelBox"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProviderTownName" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="btnCreateUpdateServiceProvider" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.nav.RichCommandButton"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="btnCancelServiceProvider" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.nav.RichCommandButton"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblProviderActivities" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvActivityCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvActivityDesc" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvActivityTypeCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvActivityType" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvActivityProviderCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvActivityProvider" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvActivityMainAct" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichSelectOneChoice"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="btnCreateUpdateProviderActivity" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.nav.RichCommandButton"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblProviderTypePop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblProviderPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="treeProvUnassignedSys" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTree"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="treeProvAssignedSys" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTree"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtSelectedProvSysCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="panelProvSystems" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.layout.RichPanelBox"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="btnAddProvSystem" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.nav.RichCommandButton"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="btnRemoveProvSystem" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.nav.RichCommandButton"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="textToShow" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.output.RichOutputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblServiceProviderType" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtServiceProviderTypeCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtServiceProviderTypeName" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="servActivitiesLov" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="mainDetailTab" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.layout.RichPanelTabbed"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="panelBoxOuter" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.layout.RichPanelBox"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtGLAccount" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblSpGLAcccount" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblBanks" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBankName" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBankBranchCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBankCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBankBranch" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblBankBranches" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtInhouse" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichSelectOneChoice"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tbl1" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtSms" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="serviceProviderTbl" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtContactPerson" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtContPersonPhone" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtInvoiceNumber" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtHoldingCompanies" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="holdingCompanyTbl" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtContact" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtContactMobile" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtContactEmail" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtContactTel" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBussinessPersons" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="bussinessPersonTbl" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtTelPayPrefix" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="prefixTbl" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtTelPay" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="defaultProvider" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichSelectOneChoice"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtSmsPrefix" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="smsPrefixTbl" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblBnkDetails" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="bankdetailsPopUp" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.RichPopup"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkBrn" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkAccOfficer" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkAccNumber" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkAccName" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkTelNo" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkCellNo" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkCurrency" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkDefault" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichSelectOneChoice"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="saveBankDetailsBtn" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.nav.RichCommandButton"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblCurrencyPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblBankBranchPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblAccountOfficer" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkBrnCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="bnkCurrencyDesc" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="bankBranchTbl" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkIBAN" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtBnkStatus" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichSelectOneChoice"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblReqDocsList" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtDocCodePop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtReqDocCodePop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtReqDocNamePop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtDocAgnCodePop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtDocSubmittedPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichSelectOneChoice"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtDocDateSubmittedPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputDate"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtDocRefNumPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtDocRemarkPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtDocUserReceivedPop" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="btnSaveRequiredDoc" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.nav.RichCommandButton"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="agentRecDocstab" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.layout.RichShowDetailItem"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="upFile" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputFile"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="uploadedFile" IsCollection="false"
+                     BeanClass="org.apache.myfaces.trinidad.model.UploadedFile"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="spRecDocsLov" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="requiredDocsBox" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.layout.RichPanelBox"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtPostalCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtRegNo" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="serviceProviderContactTab" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.layout.RichShowDetailItem"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="btnCreateUpdateProviderContacts" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.nav.RichCommandButton"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvContacCode" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvName" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvOfficeTelNo" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvMobileNo" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvEmail" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvTitle" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblProviderTitles" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="tblProvContDetails" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.data.RichTable"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtProvEmailLabel" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.output.RichOutputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtShortDesc" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtIdType" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichSelectOneChoice"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtIdNo" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="dlgIprsComp" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.RichDialog"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtTqIdNumber" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtTqPinNo" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtTqPassport" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtTqDob" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtTqFullNames" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtTqGender" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtIprsIdNumber" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtIprsPinNo" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtIprsPassport" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtIprsDob" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtIprsFullNames" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="txtIprsGender" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichInputText"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="serviceProviderUnderwritersTab" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.layout.RichShowDetailItem"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="chBoxUnAssigedUnderwriter" IsCollection="false"
+                     BeanClass="oracle.adf.view.rich.component.rich.input.RichSelectBooleanCheckbox"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionCreateUpdateProviderContacts"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="serviceProviderChangeListener" ReturnNodeName="Return">
+    <ParameterInfo id="valueChangeEvent"
+                   Type="javax.faces.event.ValueChangeEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="treeProviderContSelectionListener"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="selectionEvent"
+                   Type="org.apache.myfaces.trinidad.event.SelectionEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="treeServiceProviderSelectionListener"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="selectionEvent"
+                   Type="org.apache.myfaces.trinidad.event.SelectionEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionSelectCountryPop" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionShowTownPopup" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionSelectTownPop" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionNewServiceProvider" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionEditServiceProvider" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionDeleteServiceProvider" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionCreateUpdateServiceProvider"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionCreateNewServiceProvider" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionCancelServiceProvider" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionConfirmDeleteServiceProvider"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionNewProviderActivity" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionEditProviderActivity" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionDeleteProviderActivity" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionDeleteProviderContacts" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptProviderType" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptProvider" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionCreateUpdateProviderActivity"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionCreateNewProviderActivity" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="processAddProvSystem" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="processRemoveProvSystem" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="treeProvUnassignedSysListener" ReturnNodeName="Return">
+    <ParameterInfo id="selectionEvent"
+                   Type="org.apache.myfaces.trinidad.event.SelectionEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="treeProvAssignedSysListener" ReturnNodeName="Return">
+    <ParameterInfo id="selectionEvent"
+                   Type="org.apache.myfaces.trinidad.event.SelectionEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="showMessagePopup"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="msgToDisplay" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptserviceProvider" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptserviceProvider2" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="selectedServActivies"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="dialogEvent"
+                   Type="oracle.adf.view.rich.event.DialogEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionShowGlAccounts" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptGlAccount" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptBank" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptBankBranch" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionShowBankBranches" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="saveServiceProviders"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="dialogEvent"
+                   Type="oracle.adf.view.rich.event.DialogEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="selectHoldingCompanies" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionSelectedHoldingCompanies" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionCreateNewSpr" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="selectBussinessPersons" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="selectBussinessPerson" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="selectPrefix"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="selectSmsPrefix" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="newBankDetailsAction" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="editBankDetailsAction" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="deleteBankDetailsAction" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="saveBankDetailsAction" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptCurrency" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="bankBranchSelected" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="titleSelected" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptAccountOfficer" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setFileContent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="fileContent" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionNewRequiredDoc" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionNewServProCont" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionEditServProCont" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionEditRequiredDoc" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actiondeleteRequiredDoc" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionAcceptRequireddDoc" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionRejectRequiredDoc" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="uploadDoc"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="valueChangeEvent"
+                   Type="javax.faces.event.ValueChangeEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="providerTypeChangeListener" ReturnNodeName="Return">
+    <ParameterInfo id="valueChangeEvent"
+                   Type="javax.faces.event.ValueChangeEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionSaveRequiredDoc" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionEditAgentRequiredDoc" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="saveServiceProvRecDocs" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="viewDoc"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="actionConfirmDeleteRequiredDocs" ReturnNodeName="Return">
+    <ParameterInfo id="dialogEvent"
+                   Type="oracle.adf.view.rich.event.DialogEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="enterSPId"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="valueChangeEvent"
+                   Type="javax.faces.event.ValueChangeEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="fetchWebDetails" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionLoadIprsSpDtls" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="actionUpdateTQRecord" ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.provider.ServiceProviderBacking"
+                     BeanClass="TurnQuest.view.provider.ServiceProviderBacking"
+                     id="ServiceProviderBacking"/>
+</JavaBean>

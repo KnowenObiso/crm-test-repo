@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ClientEmployer" Package="TurnQuest.view.client"
+          BeanClass="TurnQuest.view.client.ClientEmployer" isJavaBased="true">
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="clntCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="townCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="townName" Type="java.lang.String"/>
+  <Attribute Name="sectorCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sectorName" Type="java.lang.String"/>
+  <Attribute Name="employerType" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="payrollNo" Type="java.lang.String"/>
+  <Attribute Name="minSalary" Type="java.math.BigDecimal"/>
+  <Attribute Name="maxSalary" Type="java.math.BigDecimal"/>
+  <Attribute Name="monthlyIncome" Type="java.math.BigDecimal"/>
+  <Attribute Name="employmentDate" Type="java.sql.Date"/>
+  <Attribute Name="employerNos" Type="java.lang.String"/>
+  <Attribute Name="employerCells" Type="java.lang.String"/>
+  <Attribute Name="fax" Type="java.lang.String"/>
+  <Attribute Name="countryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="countryName" Type="java.lang.String"/>
+  <Attribute Name="postalZipCode" Type="java.lang.String"/>
+  <Attribute Name="stateCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="stateName" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.client.ClientEmployer"
+                     BeanClass="TurnQuest.view.client.ClientEmployer"
+                     id="ClientEmployer"/>
+</JavaBean>

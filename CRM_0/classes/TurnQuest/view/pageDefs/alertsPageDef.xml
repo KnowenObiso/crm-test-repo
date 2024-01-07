@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="alertsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAlertTypes.result" DataControl="MessagingDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.AlertType"
+                    id="fetchAlertTypesIterator"/>
+    <searchRegion Binds="fetchAlertTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AlertTypeQuery"/>
+    <methodIterator Binds="fetchAllSystems.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchAllSystemsIterator"/>
+    <searchRegion Binds="fetchAllSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="fetchAgencyActivityLov.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.Agency"
+                    id="fetchAgencyActivityLovIterator"/>
+    <searchRegion Binds="fetchAgencyActivityLovIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencyQuery"/>
+    <methodIterator Binds="fetchAlerts.result" DataControl="MessagingDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.Alert"
+                    id="fetchAlertsIterator"/>
+    <searchRegion Binds="fetchAlertsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AlertQuery"/>
+    <methodIterator Binds="fetchClientsByCriteria.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.Client2"
+                    id="fetchClientsByCriteriaIterator"/>
+    <searchRegion Binds="fetchClientsByCriteriaIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client2Query"/>
+    <methodIterator Binds="findMsgTemplate.result" DataControl="MemoDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.models.MessageTemplate"
+                    id="findMsgTemplateIterator"/>
+    <searchRegion Binds="findMsgTemplateIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageTemplateQuery"/>
+    <methodIterator Binds="findUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersIterator"/>
+    <searchRegion Binds="findUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User1Query"/>
+    <methodIterator Binds="fetchAllSystems1.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="fetchAllSystems1Iterator"/>
+    <searchRegion Binds="fetchAllSystems1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SystemQuery"/>
+    <methodIterator Binds="findSmsTemplate.result" DataControl="MemoDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.models.MessageTemplate"
+                    id="findSmsTemplateIterator"/>
+    <searchRegion Binds="findSmsTemplateIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageTemplate1Query"/>
+    <methodIterator Binds="findEmailTemplate.result" DataControl="MemoDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.models.MessageTemplate"
+                    id="findEmailTemplateIterator"/>
+    <searchRegion Binds="findEmailTemplateIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageTemplate2Query"/>
+    <methodIterator Binds="fetchDispatchDocuments.result"
+                    DataControl="MessagingDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.AlertType"
+                    id="fetchDispatchDocumentsIterator"/>
+    <searchRegion Binds="fetchDispatchDocumentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AlertType1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAlertTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAlertTypes"
+                  IsViewObjectMethod="false" DataControl="MessagingDAO"
+                  InstanceName="MessagingDAO.dataProvider"
+                  ReturnName="MessagingDAO.methodResults.fetchAlertTypes_MessagingDAO_dataProvider_fetchAlertTypes_result"/>
+    <tree IterBinding="fetchAlertTypesIterator" id="AlertType">
+      <nodeDefinition DefName="TurnQuest.view.models.AlertType"
+                      Name="AlertType0">
+        <AttrNames>
+          <Item Value="SQLTypeName"/>
+          <Item Value="ALRT_CODE"/>
+          <Item Value="ALRT_TYPE"/>
+          <Item Value="ALRT_SYS_CODE"/>
+          <Item Value="ALRT_EMAIL"/>
+          <Item Value="ALRT_SMS"/>
+          <Item Value="sysName"/>
+          <Item Value="alertGrpUsrCode"/>
+          <Item Value="alertScreen"/>
+          <Item Value="alertEmailMsgCode"/>
+          <Item Value="alertSmsMsgtCode"/>
+          <Item Value="alertEmail"/>
+          <Item Value="alertSms"/>
+          <Item Value="grpUsers"/>
+          <Item Value="alertCheckAlert"/>
+          <Item Value="alrtshtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.fetchAllSystems_UserDAO_dataProvider_fetchAllSystems_result"/>
+    <tree IterBinding="fetchAllSystemsIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAgencyActivityLov" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAgencyActivityLov"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAgencyActivityLov_HierarchyDAO_dataProvider_fetchAgencyActivityLov_result"/>
+    <tree IterBinding="fetchAgencyActivityLovIterator" id="Agency">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="accountCode"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAlerts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAlerts"
+                  IsViewObjectMethod="false" DataControl="MessagingDAO"
+                  InstanceName="MessagingDAO.dataProvider"
+                  ReturnName="MessagingDAO.methodResults.fetchAlerts_MessagingDAO_dataProvider_fetchAlerts_result"/>
+    <tree IterBinding="fetchAlertsIterator" id="Alert">
+      <nodeDefinition DefName="TurnQuest.view.models.Alert" Name="Alert0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="alrt_code"/>
+          <Item Value="description"/>
+          <Item Value="date"/>
+          <Item Value="period"/>
+          <Item Value="user_code"/>
+          <Item Value="dest_type"/>
+          <Item Value="dest_code"/>
+          <Item Value="msgt_code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchClientsByCriteria" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchClientsByCriteria"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.fetchClientsByCriteria_MainClientDAO_dataProvider_fetchClientsByCriteria_result"/>
+    <tree IterBinding="fetchClientsByCriteriaIterator" id="Client2">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findMsgTemplate" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findMsgTemplate"
+                  IsViewObjectMethod="false" DataControl="MemoDAO"
+                  InstanceName="MemoDAO.dataProvider"
+                  ReturnName="MemoDAO.methodResults.findMsgTemplate_MemoDAO_dataProvider_findMsgTemplate_result"/>
+    <tree IterBinding="findMsgTemplateIterator" id="MessageTemplate">
+      <nodeDefinition DefName="TurnQuest.view.models.MessageTemplate"
+                      Name="MessageTemplate0">
+        <AttrNames>
+          <Item Value="SQLTypeName"/>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysCode"/>
+          <Item Value="msgtSysModule"/>
+          <Item Value="msgtType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAlertsIterator" id="Alert1">
+      <nodeDefinition DefName="TurnQuest.view.models.Alert" Name="Alert10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="alrt_code"/>
+          <Item Value="description"/>
+          <Item Value="date"/>
+          <Item Value="period"/>
+          <Item Value="dest_type"/>
+          <Item Value="dest_code"/>
+          <Item Value="msgt_code"/>
+          <Item Value="agency_name"/>
+          <Item Value="template_sht_desc"/>
+          <Item Value="acc_name"/>
+          <Item Value="status"/>
+          <Item Value="short_desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <tree IterBinding="findUsersIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSystems1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllSystems_HierarchyDAO_dataProvider_fetchAllSystems_result"/>
+    <tree IterBinding="fetchAllSystems1Iterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSmsTemplate" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSmsTemplate"
+                  IsViewObjectMethod="false" DataControl="MemoDAO"
+                  InstanceName="MemoDAO.dataProvider"
+                  ReturnName="MemoDAO.methodResults.findSmsTemplate_MemoDAO_dataProvider_findSmsTemplate_result"/>
+    <tree IterBinding="findSmsTemplateIterator" id="MessageTemplate1">
+      <nodeDefinition DefName="TurnQuest.view.models.MessageTemplate"
+                      Name="MessageTemplate10">
+        <AttrNames>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysCode"/>
+          <Item Value="msgtSysModule"/>
+          <Item Value="msgtType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEmailTemplate" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEmailTemplate"
+                  IsViewObjectMethod="false" DataControl="MemoDAO"
+                  InstanceName="MemoDAO.dataProvider"
+                  ReturnName="MemoDAO.methodResults.findEmailTemplate_MemoDAO_dataProvider_findEmailTemplate_result"/>
+    <tree IterBinding="findEmailTemplateIterator" id="MessageTemplate2">
+      <nodeDefinition DefName="TurnQuest.view.models.MessageTemplate"
+                      Name="MessageTemplate20">
+        <AttrNames>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysCode"/>
+          <Item Value="msgtSysModule"/>
+          <Item Value="msgtType"/>
+          <Item Value="SQLTypeName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findSmsTemplateIterator" id="MessageTemplate3">
+      <nodeDefinition DefName="TurnQuest.view.models.MessageTemplate"
+                      Name="MessageTemplate30">
+        <AttrNames>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysCode"/>
+          <Item Value="msgtSysModule"/>
+          <Item Value="msgtType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDispatchDocuments" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDispatchDocuments"
+                  IsViewObjectMethod="false" DataControl="MessagingDAO"
+                  InstanceName="MessagingDAO.dataProvider"
+                  ReturnName="data.MessagingDAO.methodResults.fetchDispatchDocuments_MessagingDAO_dataProvider_fetchDispatchDocuments_result"/>
+    <tree IterBinding="fetchDispatchDocumentsIterator" id="AlertType1">
+      <nodeDefinition DefName="TurnQuest.view.models.AlertType"
+                      Name="AlertType10">
+        <AttrNames>
+          <Item Value="docCode"/>
+          <Item Value="docShtDesc"/>
+          <Item Value="docDescription"/>
+          <Item Value="dispatchDocName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

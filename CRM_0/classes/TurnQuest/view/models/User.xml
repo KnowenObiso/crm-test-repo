@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="User" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.User" isJavaBased="true">
+  <Attribute Name="code" PrimaryKey="true" Type="java.math.BigDecimal"/>
+  <Attribute Name="username" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="lastDate" Type="java.sql.Timestamp"/>
+  <Attribute Name="dtCreated" Type="java.sql.Timestamp"/>
+  <Attribute Name="status" Type="java.lang.String"/>
+  <Attribute Name="pwd" Type="java.lang.String"/>
+  <Attribute Name="createdBy" Type="java.lang.String"/>
+  <Attribute Name="email" Type="java.lang.String"/>
+  <Attribute Name="perRankId" Type="java.math.BigDecimal"/>
+  <Attribute Name="perRankShtDesc" Type="java.lang.String"/>
+  <Attribute Name="perId" Type="java.math.BigDecimal"/>
+  <Attribute Name="personelRank" Type="java.lang.String"/>
+  <Attribute Name="pwdChanged" Type="java.sql.Timestamp"/>
+  <Attribute Name="pwdReset" Type="java.lang.String"/>
+  <Attribute Name="loginAttempts" Type="java.math.BigDecimal"/>
+  <Attribute Name="sign" Type="java.lang.String"/>
+  <Attribute Name="ref" Type="java.lang.String"/>
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="acctMgr" Type="java.lang.String"/>
+  <Attribute Name="pwdResetCode" Type="java.lang.String"/>
+  <Attribute Name="cellPhoneNo" Type="java.lang.String"/>
+  <Attribute Name="wefDt" Type="java.sql.Timestamp"/>
+  <Attribute Name="wetDt" Type="java.sql.Timestamp"/>
+  <Attribute Name="secqCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="securityAnswer" Type="java.lang.String"/>
+  <Attribute Name="webUser" Type="java.lang.String"/>
+  <Attribute Name="accCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="authorized" Type="java.lang.String"/>
+  <Attribute Name="sactCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="updatedDate" Type="java.sql.Timestamp"/>
+  <Attribute Name="updatedBy" Type="java.lang.String"/>
+  <Attribute Name="authorizedBy" Type="java.lang.String"/>
+  <Attribute Name="couCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="pin" Type="java.lang.String"/>
+  <Attribute Name="resetBy" Type="java.lang.String"/>
+  <Attribute Name="pwWef" Type="java.sql.Timestamp"/>
+  <Attribute Name="pwWet" Type="java.sql.Timestamp"/>
+  <Attribute Name="pwWetAlert" Type="java.sql.Timestamp"/>
+  <Attribute Name="brnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="smsCode" Type="java.lang.String"/>
+  <Attribute Name="authorizedDate" Type="java.sql.Timestamp"/>
+  <Attribute Name="deactivatedDate" Type="java.sql.Timestamp"/>
+  <Attribute Name="deactivatedBy" Type="java.lang.String"/>
+  <Attribute Name="supervisorCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="pwdResetTstamp" Type="java.sql.Timestamp"/>
+  <AccessorAttribute id="signature" IsCollection="true" Type="byte[]"
+                     CollectionBeanClass="UpdateableCollection">
+    <Attribute Name="element" Type="byte"/>
+  </AccessorAttribute>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.User"
+                     BeanClass="TurnQuest.view.models.User" id="User"/>
+</JavaBean>

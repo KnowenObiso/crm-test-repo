@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="banksPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllBanks.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Bank"
+                    id="fetchAllBanksIterator"/>
+    <methodIterator Binds="fetchBankBranchByBankCode.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.BankBranch"
+                    id="fetchBankBranchByBankCodeIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllBanks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllBanks"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllBanks_BaseSetupDAO_dataProvider_fetchAllBanks_result"/>
+    <tree IterBinding="fetchAllBanksIterator" id="Bank">
+      <nodeDefinition DefName="TurnQuest.view.setups.Bank" Name="Bank0">
+        <AttrNames>
+          <Item Value="bankName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchBankBranchByBankCode" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchBankBranchByBankCode"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchBankBranchByBankCode_BaseSetupDAO_dataProvider_fetchBankBranchByBankCode_result"/>
+    <tree IterBinding="fetchBankBranchByBankCodeIterator" id="BankBranch">
+      <nodeDefinition DefName="TurnQuest.view.setups.BankBranch"
+                      Name="BankBranch0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="branchName"/>
+          <Item Value="refCode"/>
+          <Item Value="EFTSupported"/>
+          <Item Value="DDSupported"/>
+          <Item Value="remarks"/>
+          <Item Value="createdBy"/>
+          <Item Value="dateCreated"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

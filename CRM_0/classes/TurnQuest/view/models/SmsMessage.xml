@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="SmsMessage" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.SmsMessage" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="smsCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="smsSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="smsSysModule" Type="java.lang.String"/>
+  <Attribute Name="smsClientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="smsAgnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="smsPolCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="smsPolNo" Type="java.lang.String"/>
+  <Attribute Name="smsClmNo" Type="java.lang.String"/>
+  <Attribute Name="smsTelNo" Type="java.lang.String"/>
+  <Attribute Name="smsMsg" Type="java.lang.String"/>
+  <Attribute Name="smsStatus" Type="java.lang.String"/>
+  <Attribute Name="smsPreparedBy" Type="java.lang.String"/>
+  <Attribute Name="smsPreparedDate" Type="java.util.Date"/>
+  <Attribute Name="smsSendDate" Type="java.util.Date"/>
+  <Attribute Name="smsQuotCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="smsQuotNo" Type="java.lang.String"/>
+  <Attribute Name="smsUsrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="systemName" Type="java.lang.String"/>
+  <Attribute Name="clientName" Type="java.lang.String"/>
+  <Attribute Name="agencyName" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.SmsMessage"
+                     BeanClass="TurnQuest.view.models.SmsMessage"
+                     id="SmsMessage"/>
+</JavaBean>

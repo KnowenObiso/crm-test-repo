@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="OrganizationDAO" Package="TurnQuest.view.orgs"
+          BeanClass="TurnQuest.view.orgs.OrganizationDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findOrganization" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findCountries" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization" id="findTowns"
+                  ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findCurrencies" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization" id="findRegions"
+                  ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization" id="findBranches"
+                  ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findBranchUnits" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findBranchNames" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization" id="findManagers"
+                  ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findBranchAgencies" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findOrgManagers" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchOrganizationInfo" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchUserUnassignedBranches" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchUserAssignedBranches" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchUserUnassignedDivisions"
+                  ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchUserAssignedDivisions" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="fetchOrgDivisions" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Branches.Branch"
+                  BeanClass="TurnQuest.view.Branches.Branch"
+                  id="fetchUnassignedBranchesByRegion" ReturnNodeName="Branch"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="regionCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+    <ParameterInfo id="userCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Branches.Branch"
+                  BeanClass="TurnQuest.view.Branches.Branch"
+                  id="fetchAssignedBranchesByRegion" ReturnNodeName="Branch"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="regionCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+    <ParameterInfo id="userCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.BranchName"
+                  BeanClass="TurnQuest.view.models.BranchName"
+                  id="fetchBranchNames" ReturnNodeName="BranchName"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.AdministrativeRegion"
+                  BeanClass="TurnQuest.view.setups.AdministrativeRegion"
+                  id="fetchaAdminRegionsByCountry"
+                  ReturnNodeName="AdministrativeRegion"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town" id="fetchTownsByRegion"
+                  ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town" id="fetchTownsByState"
+                  ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findOrgBranches" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findAgencyManagers" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findUnitManagers" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town"
+                  id="fetchTownsWithZipCodesByState" ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town" id="fetchTowns"
+                  ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findBranchContacts" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.District"
+                  BeanClass="TurnQuest.view.setups.District"
+                  id="fetchDistrictsByState" ReturnNodeName="District"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findBankRegions" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchTranferableItems" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchTranferedItems" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchUnitAgents" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchDestLovItems" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchOrgBankNames" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchOrgBankBranches" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findAgencyDevelopmentExecutives"
+                  ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Agents.Agent"
+                  BeanClass="TurnQuest.view.Agents.Agent" id="fetchFaAgents"
+                  ReturnNodeName="Agent"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization" id="findKpiTasks"
+                  ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findAgentIntermediaries" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town"
+                  id="fetchTownsWithZipCodesByStateSign" ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town"
+                  id="fetchTownsWithZipCodesByStateClnt" ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town"
+                  id="fetchTownsWithZipCodesByStateDir" ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.orgs.OrganizationDAO"
+                     BeanClass="TurnQuest.view.orgs.OrganizationDAO"
+                     id="OrganizationDAO"/>
+</JavaBean>

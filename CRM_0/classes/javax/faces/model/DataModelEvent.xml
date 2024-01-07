@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="DataModelEvent" Package="javax.faces.model"
+          BeanClass="javax.faces.model.DataModelEvent" isJavaBased="true">
+  <Attribute Name="rowData" IsUpdateable="0" Type="java.lang.Object"/>
+  <Attribute Name="rowIndex" IsUpdateable="0" Type="int"/>
+  <AccessorAttribute id="dataModel" IsCollection="false"
+                     BeanClass="javax.faces.model.DataModel"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="javax.faces.model.DataModelEvent"
+                     BeanClass="javax.faces.model.DataModelEvent"
+                     id="DataModelEvent">
+    <ParameterInfo id="p0" Type="javax.faces.model.DataModel"
+                   isStructured="true"/>
+    <ParameterInfo id="p1" Type="int" isStructured="false"/>
+    <ParameterInfo id="p2" Type="java.lang.Object" isStructured="false"/>
+  </ConstructorMethod>
+</JavaBean>

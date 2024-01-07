@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="userGroupTypesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchUserGroupTypes.result"
+                    DataControl="UserGrpTypeDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.UserGrpType"
+                    id="fetchUserGroupTypesIterator"/>
+    <methodIterator Binds="findAllUsersNotInGroupType.result"
+                    DataControl="UserGrpTypeDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.User"
+                    id="findAllUsersNotInGroupTypeIterator"/>
+    <searchRegion Binds="findAllUsersNotInGroupTypeIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User1Query"/>
+    <methodIterator Binds="findGroupUserTypesMembers.result"
+                    DataControl="UserGrpTypeDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.User"
+                    id="findGroupUserTypesMembersIterator"/>
+    <methodIterator Binds="fetchAllAccountTypes.result"
+                    DataControl="MainAccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountsType"
+                    id="fetchAllAccountTypesIterator"/>
+    <methodIterator Binds="fetchAccountGroupTypes.result"
+                    DataControl="UserGrpTypeDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.MyAccount"
+                    id="fetchAccountGroupTypesIterator"/>
+    <searchRegion Binds="fetchAccountGroupTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MyAccountQuery"/>
+    <methodIterator Binds="findAllAccountsNotInGroupTypes.result"
+                    DataControl="UserGrpTypeDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.MyAccount"
+                    id="findAllAccountsNotInGroupTypesIterator"/>
+    <searchRegion Binds="findAllAccountsNotInGroupTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MyAccount1Query"/>
+    <searchRegion Binds="findGroupUserTypesMembersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User4Query"/>
+    <searchRegion Binds="fetchUserGroupTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserGrpType2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchUserGroupTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUserGroupTypes"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.fetchUserGroupTypes_UserGrpTypeDAO_dataProvider_fetchUserGroupTypes_result"/>
+    <tree IterBinding="fetchUserGroupTypesIterator" id="UserGrpType">
+      <nodeDefinition DefName="TurnQuest.view.Usr.UserGrpType"
+                      Name="UserGrpType0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="typeId"/>
+          <Item Value="idSerialFormat"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchUserGroupTypesIterator" id="UserGrpType1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.UserGrpType"
+                      Name="UserGrpType10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="typeId"/>
+          <Item Value="idSerialFormat"/>
+          <Item Value="groupType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findGroupUserTypesMembers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findGroupUserTypesMembers"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.findGroupUserTypesMembers_UserGrpTypeDAO_dataProvider_findGroupUserTypesMembers_result"/>
+    <methodAction id="findAllUsersNotInGroupType" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllUsersNotInGroupType"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.findAllUsersNotInGroupType_UserGrpTypeDAO_dataProvider_findAllUsersNotInGroupType_result"/>
+    <tree IterBinding="findAllUsersNotInGroupTypeIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findAllUsersNotInGroupTypeIterator" id="User2">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User20">
+        <AttrNames>
+          <Item Value="userSelected"/>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="userPersonnelRank"/>
+          <Item Value="userType"/>
+          <Item Value="userStatus"/>
+          <Item Value="userAuthorized"/>
+          <Item Value="userAuthorizedBy"/>
+          <Item Value="userPassReset"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+          <Item Value="sysActive"/>
+          <Item Value="sysWef"/>
+          <Item Value="userSysCode"/>
+          <Item Value="sysWet"/>
+          <Item Value="nodeType"/>
+          <Item Value="userSys_userCode"/>
+          <Item Value="userSys_sysCode"/>
+          <Item Value="userPerId"/>
+          <Item Value="userCreatedBy"/>
+          <Item Value="gusr_Code"/>
+          <Item Value="grpUsrCode"/>
+          <Item Value="userAccManager"/>
+          <Item Value="phoneNumber"/>
+          <Item Value="usrSecurityQuestion"/>
+          <Item Value="usrSecurityAnswer"/>
+          <Item Value="USR_SACT_CODE"/>
+          <Item Value="SACT_CODE"/>
+          <Item Value="SACT_SHT_DESC"/>
+          <Item Value="SACT_DESCRIPTION"/>
+          <Item Value="updatedBy"/>
+          <Item Value="updatedDate"/>
+          <Item Value="pin"/>
+          <Item Value="usrCode"/>
+          <Item Value="usrName"/>
+          <Item Value="usrFullname"/>
+          <Item Value="userDateCreated"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findAllUsersNotInGroupTypeIterator" id="User3">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User30">
+        <AttrNames>
+          <Item Value="userSelected"/>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findGroupUserTypesMembersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="userPersonnelRank"/>
+          <Item Value="userType"/>
+          <Item Value="userStatus"/>
+          <Item Value="userAuthorized"/>
+          <Item Value="userAuthorizedBy"/>
+          <Item Value="userPassReset"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+          <Item Value="sysActive"/>
+          <Item Value="sysWef"/>
+          <Item Value="userSysCode"/>
+          <Item Value="sysWet"/>
+          <Item Value="nodeType"/>
+          <Item Value="userSys_userCode"/>
+          <Item Value="userSys_sysCode"/>
+          <Item Value="userPerId"/>
+          <Item Value="userCreatedBy"/>
+          <Item Value="gusr_Code"/>
+          <Item Value="grpUsrCode"/>
+          <Item Value="userSelected"/>
+          <Item Value="userAccManager"/>
+          <Item Value="phoneNumber"/>
+          <Item Value="usrSecurityQuestion"/>
+          <Item Value="usrSecurityAnswer"/>
+          <Item Value="USR_SACT_CODE"/>
+          <Item Value="SACT_CODE"/>
+          <Item Value="SACT_SHT_DESC"/>
+          <Item Value="SACT_DESCRIPTION"/>
+          <Item Value="updatedBy"/>
+          <Item Value="updatedDate"/>
+          <Item Value="pin"/>
+          <Item Value="usrCode"/>
+          <Item Value="usrName"/>
+          <Item Value="usrFullname"/>
+          <Item Value="userDateCreated"/>
+          <Item Value="gtUsrGrptUsrCode"/>
+          <Item Value="gtUsrcode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAccountTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllAccountTypes"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="data.MainAccountsDAO.methodResults.fetchAllAccountTypes_MainAccountsDAO_dataProvider_fetchAllAccountTypes_result"/>
+    <tree IterBinding="fetchAllAccountTypesIterator" id="AccountsType">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountsType"
+                      Name="AccountsType0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="accountType"/>
+          <Item Value="accountTypeShortDesc"/>
+          <Item Value="wthtxRate"/>
+          <Item Value="typeId"/>
+          <Item Value="commReserveRate"/>
+          <Item Value="maxAdvAmt"/>
+          <Item Value="maxAdvRepaymentPrd"/>
+          <Item Value="rcptsIncludeComm"/>
+          <Item Value="overideRate"/>
+          <Item Value="idSerialFormat"/>
+          <Item Value="vatRate"/>
+          <Item Value="accNumber"/>
+          <Item Value="accName"/>
+          <Item Value="agentname"/>
+          <Item Value="agentCode"/>
+          <Item Value="agentShtDesc"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysName"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sprCode"/>
+          <Item Value="sprShtDesc"/>
+          <Item Value="sprName"/>
+          <Item Value="sprPhysicalAddress"/>
+          <Item Value="sprPostalAddress"/>
+          <Item Value="sprPhone"/>
+          <Item Value="sprFax"/>
+          <Item Value="sprEmail"/>
+          <Item Value="sprCreatedBy"/>
+          <Item Value="sprDateCreated"/>
+          <Item Value="sprStatusRemarks"/>
+          <Item Value="sprStatus"/>
+          <Item Value="sprPinNumber"/>
+          <Item Value="sprMobileNumber"/>
+          <Item Value="sprInhouse"/>
+          <Item Value="sprSmsNumber"/>
+          <Item Value="cpmShtDesc"/>
+          <Item Value="cpmDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAccountAgenciesInfoOnly"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchAllAccountAgenciesInfoOnly"
+                  IsViewObjectMethod="false" DataControl="MainAccountsDAO"
+                  InstanceName="MainAccountsDAO.dataProvider"
+                  ReturnName="data.MainAccountsDAO.methodResults.fetchAllAccountAgenciesInfoOnly_MainAccountsDAO_dataProvider_fetchAllAccountAgenciesInfoOnly_result"/>
+    <methodAction id="fetchAccountGroupTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAccountGroupTypes"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.fetchAccountGroupTypes_UserGrpTypeDAO_dataProvider_fetchAccountGroupTypes_result"/>
+    <tree IterBinding="fetchAccountGroupTypesIterator" id="MyAccount">
+      <nodeDefinition DefName="TurnQuest.view.Usr.MyAccount" Name="MyAccount0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="grptUsrCode"/>
+          <Item Value="type"/>
+          <Item Value="agnCode"/>
+          <Item Value="agnName"/>
+          <Item Value="accType"/>
+          <Item Value="select"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAllAccountsNotInGroupTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="findAllAccountsNotInGroupTypes"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.findAllAccountsNotInGroupTypes_UserGrpTypeDAO_dataProvider_findAllAccountsNotInGroupTypes_result"/>
+    <tree IterBinding="findAllAccountsNotInGroupTypesIterator" id="MyAccount1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.MyAccount" Name="MyAccount10">
+        <AttrNames>
+          <Item Value="select"/>
+          <Item Value="code"/>
+          <Item Value="grptUsrCode"/>
+          <Item Value="type"/>
+          <Item Value="agnCode"/>
+          <Item Value="agnName"/>
+          <Item Value="accType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAccountGroupTypesIterator" id="MyAccount2">
+      <nodeDefinition DefName="TurnQuest.view.Usr.MyAccount" Name="MyAccount20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="grptUsrCode"/>
+          <Item Value="type"/>
+          <Item Value="agnCode"/>
+          <Item Value="agnName"/>
+          <Item Value="accType"/>
+          <Item Value="select"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findGroupUserTypesMembersIterator" id="User4">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User40">
+        <AttrNames>
+          <Item Value="teamLeader"/>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="userPersonnelRank"/>
+          <Item Value="userType"/>
+          <Item Value="userStatus"/>
+          <Item Value="userAuthorized"/>
+          <Item Value="userAuthorizedBy"/>
+          <Item Value="userPassReset"/>
+          <Item Value="sysCode"/>
+          <Item Value="sysShtDesc"/>
+          <Item Value="sysName"/>
+          <Item Value="sysActive"/>
+          <Item Value="sysWef"/>
+          <Item Value="userSysCode"/>
+          <Item Value="sysWet"/>
+          <Item Value="nodeType"/>
+          <Item Value="userSys_userCode"/>
+          <Item Value="userSys_sysCode"/>
+          <Item Value="userPerId"/>
+          <Item Value="userCreatedBy"/>
+          <Item Value="gusr_Code"/>
+          <Item Value="grpUsrCode"/>
+          <Item Value="userSelected"/>
+          <Item Value="userAccManager"/>
+          <Item Value="phoneNumber"/>
+          <Item Value="usrSecurityQuestion"/>
+          <Item Value="usrSecurityAnswer"/>
+          <Item Value="USR_SACT_CODE"/>
+          <Item Value="SACT_CODE"/>
+          <Item Value="SACT_SHT_DESC"/>
+          <Item Value="SACT_DESCRIPTION"/>
+          <Item Value="updatedBy"/>
+          <Item Value="updatedDate"/>
+          <Item Value="pin"/>
+          <Item Value="usrCode"/>
+          <Item Value="usrName"/>
+          <Item Value="usrFullname"/>
+          <Item Value="userDateCreated"/>
+          <Item Value="gtUsrGrptUsrCode"/>
+          <Item Value="gtUsrcode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchUserGroupTypesIterator" id="UserGrpType2">
+      <nodeDefinition DefName="TurnQuest.view.Usr.UserGrpType"
+                      Name="UserGrpType20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="typeId"/>
+          <Item Value="idSerialFormat"/>
+          <Item Value="groupType"/>
+          <Item Value="branchCode"/>
+          <Item Value="branchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAccountGroupTypesIterator" id="MyAccount3">
+      <nodeDefinition DefName="TurnQuest.view.Usr.MyAccount" Name="MyAccount30">
+        <AttrNames>
+          <Item Value="select"/>
+          <Item Value="code"/>
+          <Item Value="grptUsrCode"/>
+          <Item Value="type"/>
+          <Item Value="agnCode"/>
+          <Item Value="agnName"/>
+          <Item Value="accType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findGroupUserTypesMembersIterator" id="User5">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User50">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findGroupUserTypesMembersIterator" id="User6">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User60">
+        <AttrNames>
+          <Item Value="userSelected"/>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="teamLeader"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findGroupUserTypesMembersIterator" id="User7">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User70">
+        <AttrNames>
+          <Item Value="userSelected"/>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="teamLeader"/>
+          <Item Value="gtUsrcode" />
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

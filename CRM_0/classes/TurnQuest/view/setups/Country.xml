@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="Country" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.Country" isJavaBased="true">
+  <Attribute Name="currencySymbol" Type="java.lang.String"/>
+  <Attribute Name="currencyDesc" Type="java.lang.String"/>
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="shortDesc" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="baseCurrency" Type="java.lang.String"/>
+  <Attribute Name="nationality" Type="java.lang.String"/>
+  <Attribute Name="zipCode" Type="java.lang.String"/>
+  <Attribute Name="couCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="couShortDesc" Type="java.lang.String"/>
+  <Attribute Name="couName" Type="java.lang.String"/>
+  <Attribute Name="couBaseCurr" Type="java.math.BigDecimal"/>
+  <Attribute Name="couNationality" Type="java.lang.String"/>
+  <Attribute Name="couZipCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="administrativeType" Type="java.lang.String"/>
+  <Attribute Name="adminTypeMandatory" Type="java.lang.String"/>
+  <Attribute Name="couShengen" Type="java.lang.String"/>
+  <Attribute Name="couEmbCode" Type="java.lang.String"/>
+  <Attribute Name="couCurrSerial" Type="java.lang.String"/>
+  <Attribute Name="couTelMinLen" Type="java.math.BigDecimal"/>
+  <Attribute Name="couTelMaxLen" Type="java.math.BigDecimal"/>
+  <Attribute Name="couSanctionStatus" Type="java.lang.String"/>
+  <Attribute Name="couRiskLevelStatus" Type="java.lang.String"/>
+  <Attribute Name="couDrugTraffickingSts" Type="java.lang.String"/>
+  <Attribute Name="couSanctionWef" Type="java.util.Date"/>
+  <Attribute Name="couSanctionWet" Type="java.util.Date"/>
+  <Attribute Name="couRiskLevelWef" Type="java.util.Date"/>
+  <Attribute Name="couRiskLevelWet" Type="java.util.Date"/>
+  <Attribute Name="couDrugTraffickingWef" Type="java.util.Date"/>
+  <Attribute Name="couDrugTraffickingWet" Type="java.util.Date"/>
+  <Attribute Name="subAdminType" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.setups.Country"
+                     BeanClass="TurnQuest.view.setups.Country" id="Country"/>
+</JavaBean>

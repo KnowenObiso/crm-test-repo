@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ServReq" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.ServReq" isJavaBased="true">
+  <Attribute Name="servDocReceivedBy" PrimaryKey="true" Type="java.lang.String"/>
+  <Attribute Name="servDocDesc" Type="java.lang.String"/>
+  <Attribute Name="servDocId" Type="java.lang.String"/>
+  <Attribute Name="ServDocName" Type="java.lang.String"/>
+  <Attribute Name="servDocReceivedOn" Type="java.sql.Timestamp"/>
+  <Attribute Name="servDocSrdCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="servDocSrdDesc" Type="java.lang.String"/>	
+  <Attribute Name="servDocRemarks" Type="java.lang.String"/>
+  <Attribute Name="servDocReqCode" Type="java.math.BigDecimal"/>	
+  <Attribute Name="mimeType" Type="java.lang.String"/>	
+  <Attribute Name="serv_doc_file_name" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.ServReq"
+                     BeanClass="TurnQuest.view.models.ServReq" id="ServReq"/>
+</JavaBean>

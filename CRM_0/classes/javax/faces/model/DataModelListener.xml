@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="DataModelListener" Package="javax.faces.model"
+          BeanClass="javax.faces.model.DataModelListener" isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="void" id="rowSelected"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="javax.faces.model.DataModelEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+</JavaBean>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ClientEmployerContact" Package="TurnQuest.view.client"
+          BeanClass="TurnQuest.view.client.ClientEmployerContact"
+          isJavaBased="true">
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="clntCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="employerCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="employerName" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="title" Type="java.lang.String"/>
+  <Attribute Name="phoneNumber" Type="java.lang.String"/>
+  <Attribute Name="emailAddress" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.client.ClientEmployerContact"
+                     BeanClass="TurnQuest.view.client.ClientEmployerContact"
+                     id="ClientEmployerContact"/>
+</JavaBean>

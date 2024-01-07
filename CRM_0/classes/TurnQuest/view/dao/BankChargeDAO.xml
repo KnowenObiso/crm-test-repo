@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="BankChargeDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.BankChargeDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.BankCharge"
+                  BeanClass="TurnQuest.view.models.BankCharge"
+                  id="fetchAllBankCharges" ReturnNodeName="BankCharge"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="updateBankCharge" ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.BankCharge"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="addBankCharge" ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.BankCharge"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="TurnQuest.view.models.BankCharge"
+                  BeanClass="TurnQuest.view.models.BankCharge"
+                  id="fetchBankChargeByBankChargeCode"
+                  ReturnNodeName="BankCharge">
+    <ParameterInfo id="bankchargeCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.BankChargeDAO"
+                     BeanClass="TurnQuest.view.dao.BankChargeDAO"
+                     id="BankChargeDAO"/>
+</JavaBean>

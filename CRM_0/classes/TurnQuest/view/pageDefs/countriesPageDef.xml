@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="countriesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllCountries.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Country"
+                    id="fetchAllCountriesIterator"/>
+    <methodIterator Binds="fetchLocationsByTown.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Location"
+                    id="fetchLocationsByTownIterator"/>
+    <methodIterator Binds="fetchAllCurrencies.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Currency"
+                    id="fetchAllCurrenciesIterator"/>
+    <methodIterator Binds="fetchStatesByCountry.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.State"
+                    id="fetchStatesByCountryIterator"/>
+    <searchRegion Binds="fetchStatesByCountryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StateQuery"/>
+    <methodIterator Binds="fetchPostalCodesByTown.result"
+                    DataControl="CountryDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.PostalCode"
+                    id="fetchPostalCodesByTownIterator"/>
+    <searchRegion Binds="fetchPostalCodesByTownIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PostalCodeQuery"/>
+    <methodIterator Binds="fetchTownsByState.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Town"
+                    id="fetchTownsByStateIterator"/>
+    <searchRegion Binds="fetchTownsByStateIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Town1Query"/>
+    <methodIterator Binds="fetchDistrictsByState.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.District"
+                    id="fetchDistrictsByStateIterator"/>
+    <searchRegion Binds="fetchDistrictsByStateIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="District1Query"/>
+    <methodIterator Binds="fetchAllCountriesInfo.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Country"
+                    id="fetchAllCountriesInfoIterator"/>
+    <searchRegion Binds="fetchAllCountriesInfoIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Country1Query"/>
+    <methodIterator Binds="findEmbassywebUserAccounts.result"
+                    DataControl="AccountsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="findEmbassywebUserAccountsIterator"/>
+    <searchRegion Binds="findEmbassywebUserAccountsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountTypeQuery"/>
+    <methodIterator Binds="fetchStatesByCountryClnt.result"
+                    DataControl="BaseSetupDAO1" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.State"
+                    id="fetchStatesByCountryClntIterator"/>
+    <searchRegion Binds="fetchStatesByCountryClntIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="State9Query"/>              
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllCountries" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCountries"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCountries_BaseSetupDAO_dataProvider_fetchAllCountries_result"/>
+    <tree IterBinding="fetchAllCountriesIterator" id="Country">
+      <nodeDefinition DefName="TurnQuest.view.setups.Country" Name="Country0">
+        <AttrNames>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchLocationsByTown" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchLocationsByTown"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchLocationsByTown_BaseSetupDAO_dataProvider_fetchLocationsByTown_result"/>
+    <tree IterBinding="fetchLocationsByTownIterator" id="Location">
+      <nodeDefinition DefName="TurnQuest.view.setups.Location" Name="Location0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="townCode"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="landmark"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllCurrencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCurrencies"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCurrencies_BaseSetupDAO_dataProvider_fetchAllCurrencies_result"/>
+    <tree IterBinding="fetchAllCurrenciesIterator" id="Currency">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency" Name="Currency0">
+        <AttrNames>
+          <Item Value="symbol"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchStatesByCountry" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchStatesByCountry"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchStatesByCountry_BaseSetupDAO_dataProvider_fetchStatesByCountry_result"/>
+    <tree IterBinding="fetchStatesByCountryIterator" id="State">
+      <nodeDefinition DefName="TurnQuest.view.setups.State" Name="State0">
+        <AttrNames>
+          <Item Value="stateCode"/>
+          <Item Value="stateCountryCode"/>
+          <Item Value="stateShortDesc"/>
+          <Item Value="stateName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllCountriesInfo" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCountriesInfo"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCountriesInfo_BaseSetupDAO_dataProvider_fetchAllCountriesInfo_result"/>
+    <methodAction id="fetchPostalCodesByTown" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchPostalCodesByTown"
+                  IsViewObjectMethod="false" DataControl="CountryDAO"
+                  InstanceName="CountryDAO.dataProvider"
+                  ReturnName="CountryDAO.methodResults.fetchPostalCodesByTown_CountryDAO_dataProvider_fetchPostalCodesByTown_result"/>
+    <tree IterBinding="fetchPostalCodesByTownIterator" id="PostalCode">
+      <nodeDefinition DefName="TurnQuest.view.models.PostalCode"
+                      Name="PostalCode0">
+        <AttrNames>
+          <Item Value="pstDesc"/>
+          <Item Value="pstZipCode"/>
+          <Item Value="pstCode"/>
+          <Item Value="pstTownCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchTownsByState" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchTownsByState"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchTownsByState_OrganizationDAO_dataProvider_fetchTownsByState_result"/>
+    <tree IterBinding="fetchTownsByStateIterator" id="Town1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town10">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="code"/>
+          <Item Value="countryCode"/>
+          <Item Value="STSCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    
+    <methodAction id="fetchDistrictsByState" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDistrictsByState"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchDistrictsByState_OrganizationDAO_dataProvider_fetchDistrictsByState_result"/>
+    <tree IterBinding="fetchDistrictsByStateIterator" id="District1">
+      <nodeDefinition DefName="TurnQuest.view.setups.District" Name="District10">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="code"/>
+          <Item Value="countryCode"/>
+          <Item Value="STSCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllCountriesInfoIterator" id="Country1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Country" Name="Country10">
+        <AttrNames>
+          <Item Value="currencySymbol"/>
+          <Item Value="currencyDesc"/>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="baseCurrency"/>
+          <Item Value="nationality"/>
+          <Item Value="zipCode"/>
+          <Item Value="couCode"/>
+          <Item Value="couShortDesc"/>
+          <Item Value="couName"/>
+          <Item Value="couBaseCurr"/>
+          <Item Value="couNationality"/>
+          <Item Value="couZipCode"/>
+          <Item Value="administrativeType"/>
+          <Item Value="adminTypeMandatory"/>
+          <Item Value="couShengen"/>
+          <Item Value="couEmbCode"/>
+          <Item Value="couCurrSerial"/>
+          <Item Value="couTelMinLen"/>
+          <Item Value="couTelMaxLen"/>
+          <Item Value="couSanctionStatus"/>
+          <Item Value="couRiskLevelStatus"/>
+          <Item Value="couDrugTraffickingSts"/>
+          <Item Value="couSanctionWef"/>
+          <Item Value="couSanctionWet"/>
+          <Item Value="couRiskLevelWef"/>
+          <Item Value="couRiskLevelWet"/>
+          <Item Value="couDrugTraffickingWef"/>
+          <Item Value="couDrugTraffickingWet"/>
+          <Item Value="subAdminType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEmbassywebUserAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEmbassywebUserAccounts"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.findEmbassywebUserAccounts_AccountsDAO_dataProvider_findEmbassywebUserAccounts_result"/>
+    <tree IterBinding="findEmbassywebUserAccountsIterator" id="AccountType">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="cmapping"/>
+          <Item Value="smapping"/>
+          <Item Value="wrate"/>
+          <Item Value="orate"/>
+          <Item Value="crate"/>
+          <Item Value="acformat"/>
+          <Item Value="vatrate"/>
+          <Item Value="year"/>
+          <Item Value="regno"/>
+          <Item Value="wef"/>
+          <Item Value="wet"/>
+          <Item Value="accepted"/>
+          <Item Value="graceperiod"/>
+          <Item Value="name"/>
+          <Item Value="qualification"/>
+          <Item Value="shareholding"/>
+          <Item Value="designation"/>
+          <Item Value="phyaddress"/>
+          <Item Value="postaddress"/>
+          <Item Value="idno"/>
+          <Item Value="email"/>
+          <Item Value="telno"/>
+          <Item Value="username"/>
+          <Item Value="personalrank"/>
+          <Item Value="createdby"/>
+          <Item Value="allowlogin"/>
+          <Item Value="status"/>
+          <Item Value="reset"/>
+          <Item Value="datecreated"/>
+          <Item Value="ACT_CODE"/>
+          <Item Value="type"/>
+          <Item Value="accountFormat"/>
+          <Item Value="odl_code"/>
+          <Item Value="rank"/>
+          <Item Value="mgrNoInFix"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchStatesByCountryClnt" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchStatesByCountryClnt"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="data.BaseSetupDAO.methodResults.fetchStatesByCountryClnt_BaseSetupDAO_dataProvider_fetchStatesByCountryClnt_result"/>
+    <tree IterBinding="fetchStatesByCountryClntIterator" id="State9">
+      <nodeDefinition DefName="TurnQuest.view.setups.State" Name="State90">
+        <AttrNames>
+          <Item Value="stateCode"/>
+          <Item Value="stateCountryCode"/>
+          <Item Value="stateShortDesc"/>
+          <Item Value="stateName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

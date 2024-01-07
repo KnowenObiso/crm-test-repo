@@ -1,0 +1,6 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<MetadataDirectory xmlns="http://xmlns.oracle.com/adfm/metainf" version="11.1.1.0.0">
+   <BusinessComponentServiceRegistry path="TurnQuest/view/helper/common/bc4j.xcfg"/>
+   <DataBindingRegistry path="TurnQuest/view/DataBindings.cpx"/>
+   <DataControlRegistry path="TurnQuest/view/DataControls.dcx"/>
+</MetadataDirectory>

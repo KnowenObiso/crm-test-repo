@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="ServiceProviderType" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.ServiceProviderType"
+          isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="shortDesc" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="status" Type="java.lang.String"/>
+  <Attribute Name="whtxRate" Type="java.lang.String"/>
+  <Attribute Name="vatRate" Type="java.lang.String"/>
+  <Attribute Name="smsmessage" Type="java.lang.String"/>
+  <Attribute Name="emailmessage" Type="java.lang.String"/>
+  <Attribute Name="smsDefault" Type="java.lang.String"/>
+  <Attribute Name="emailDefault" Type="java.lang.String"/>
+  <Attribute Name="smsCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="emailCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="reportDays" Type="java.math.BigDecimal"/>
+  <Attribute Name="suffix" Type="int"/>
+  <Attribute Name="sptCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.ServiceProviderType"
+                     BeanClass="TurnQuest.view.setups.ServiceProviderType"
+                     id="ServiceProviderType"/>
+</JavaBean>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="CollectionModel" Package="org.apache.myfaces.trinidad.model"
+          BeanClass="org.apache.myfaces.trinidad.model.CollectionModel"
+          isJavaBased="true">
+  <Attribute Name="rowKey" Type="java.lang.Object"/>
+  <Attribute Name="estimatedRowCount" IsUpdateable="0" Type="int"/>
+  <Attribute Name="rowAvailable" IsUpdateable="0" Type="boolean"/>
+  <Attribute Name="rowCount" IsUpdateable="0" Type="int"/>
+  <Attribute Name="rowData" IsUpdateable="0" Type="java.lang.Object"/>
+  <Attribute Name="rowIndex" Type="int"/>
+  <Attribute Name="wrappedData" Type="java.lang.Object"/>
+  <AccessorAttribute id="sortCriteria" IsCollection="true"
+                     BeanClass="org.apache.myfaces.trinidad.model.SortCriterion"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="estimatedRowCountConfidence" IsCollection="false"
+                     BeanClass="org.apache.myfaces.trinidad.model.LocalRowKeyIndex.Confidence"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="cachingStrategy" IsCollection="false"
+                     BeanClass="org.apache.myfaces.trinidad.model.LocalRowKeyIndex.LocalCachingStrategy"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="dataModelListeners" IsCollection="true"
+                     RemoveMethod="removeDataModelListener"
+                     AddMethod="addDataModelListener"
+                     BeanClass="javax.faces.model.DataModelListener"
+                     CollectionBeanClass="UpdateableCollection">
+    <Properties>
+      <Property Name="RemoveMethod" Value="removeDataModelListener"/>
+      <Property Name="AddMethod" Value="addDataModelListener"/>
+    </Properties>
+  </AccessorAttribute>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isRowAvailable"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.Object" id="getRowData"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.Object" id="getRowData"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isSortable"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean"
+                  id="areRowsLocallyAvailable" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+    <ParameterInfo id="p1" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean"
+                  id="areRowsLocallyAvailable" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.Object" isStructured="false"/>
+    <ParameterInfo id="p1" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean"
+                  id="areRowsLocallyAvailable" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isRowLocallyAvailable"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isRowLocallyAvailable"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="clearCachedRow"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="clearCachedRow"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="clearCachedRows"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+    <ParameterInfo id="p1" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="clearCachedRows"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.Object" isStructured="false"/>
+    <ParameterInfo id="p1" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="clearLocalCache"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="void" id="ensureRowsAvailable"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="addDataModelListener"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="javax.faces.model.DataModelListener"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="removeDataModelListener"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="javax.faces.model.DataModelListener"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="org.apache.myfaces.trinidad.model.CollectionModel"
+                     BeanClass="org.apache.myfaces.trinidad.model.CollectionModel"
+                     id="CollectionModel"/>
+</JavaBean>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="Prospect" Package="TurnQuest.view.prospects"
+          BeanClass="TurnQuest.view.prospects.Prospect" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="prsCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prsPhysicalAddress" Type="java.lang.String"/>
+  <Attribute Name="prsPostalAddress" Type="java.lang.String"/>
+  <Attribute Name="prsSurname" Type="java.lang.String"/>
+  <Attribute Name="prsOtherNames" Type="java.lang.String"/>
+  <Attribute Name="prsTelNo" Type="java.lang.String"/>
+  <Attribute Name="prsMobileNo" Type="java.lang.String"/>
+  <Attribute Name="prsEmailAddress" Type="java.lang.String"/>
+  <Attribute Name="prsIdRegNo" Type="java.lang.String"/>
+  <Attribute Name="prsDob" Type="java.util.Date"/>
+  <Attribute Name="prsPin" Type="java.lang.String"/>
+  <Attribute Name="prsTownCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prsCountryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prsPostalCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="countryName" Type="java.lang.String"/>
+  <Attribute Name="townName" Type="java.lang.String"/>
+  <Attribute Name="proDesc" Type="java.lang.String"/>
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="prsContact" Type="java.lang.String"/>
+  <Attribute Name="prsContactTel" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.prospects.Prospect"
+                     BeanClass="TurnQuest.view.prospects.Prospect"
+                     id="Prospect"/>
+</JavaBean>

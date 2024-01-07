@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="ClientLoadingPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllSectors.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Sector"
+                    id="fetchAllSectorsIterator"/>
+    <methodIterator Binds="findClientTypes.result" DataControl="MainClientDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.client.Client2"
+                    id="findClientTypesIterator"/>
+    <searchRegion Binds="findClientTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client2Query"/>
+    <methodIterator Binds="findLoadedClients.result" DataControl="MainClientDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.client.Client2"
+                    id="findLoadedClientsIterator"/>
+    <searchRegion Binds="findLoadedClientsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client21Query"/>
+    <methodIterator Binds="selectallUnloadedClients.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.Agents"
+                    id="selectallUnloadedClientsIterator"/>
+    <searchRegion Binds="selectallUnloadedClientsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgentsQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllSectors" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSectors"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllSectors_BaseSetupDAO_dataProvider_fetchAllSectors_result"/>
+    <tree IterBinding="fetchAllSectorsIterator" id="Sector">
+      <nodeDefinition DefName="TurnQuest.view.setups.Sector" Name="Sector0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findClientTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findClientTypes"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.findClientTypes_MainClientDAO_dataProvider_findClientTypes_result"/>
+    <tree IterBinding="findClientTypesIterator" id="Client2">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client20">
+        <AttrNames>
+          <Item Value="CLNTY_CODE"/>
+          <Item Value="CLNTY_CLNT_TYPE"/>
+          <Item Value="CLNTY_CATEGORY"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findLoadedClients" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLoadedClients"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.findLoadedClients_MainClientDAO_dataProvider_findLoadedClients_result"/>
+    <tree IterBinding="findLoadedClientsIterator" id="Client21">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client210">
+        <AttrNames>
+          <Item Value="CLN_CODE"/>
+          <Item Value="CLN_CLNT_SHT_DESC"/>
+          <Item Value="CLN_CLNT_NAME"/>
+          <Item Value="CLN_CLNT_OTHER_NAMES"/>
+          <Item Value="CLN_CLNT_ID_REG_NO"/>
+          <Item Value="CLN_CLNT_DOB"/>
+          <Item Value="CLN_CLNT_PHYSICAL_ADDRS"/>
+          <Item Value="CLN_CLNT_POSTAL_ADDRS"/>
+          <Item Value="CLN_CLNT_TWN_CODE"/>
+          <Item Value="CLN_CLNT_TEL"/>
+          <Item Value="CLN_CLNT_TEL2"/>
+          <Item Value="CLN_CLNT_FAX"/>
+          <Item Value="CLN_CLNT_CNTCT_EMAIL_1"/>
+          <Item Value="checked"/>
+          <Item Value="selected"/>
+          <Item Value="select"/>
+          <Item Value="townCode"/>
+          <Item Value="code"/>
+          <Item Value="clnRemarks"/>
+          <Item Value="clntCIF"/>
+          <Item Value="clntNationality"/>
+          <Item Value="clntGender"/>
+          <Item Value="clntTitle"/>
+          <Item Value="clntMilitaryId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="selectallUnloadedClients" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="selectallUnloadedClients"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="data.MainClientDAO.methodResults.selectallUnloadedClients_MainClientDAO_dataProvider_selectallUnloadedClients_result"/>
+    <tree IterBinding="selectallUnloadedClientsIterator" id="Agents">
+      <nodeDefinition DefName="TurnQuest.view.client.Agents" Name="Agents0">
+        <AttrNames>
+          <Item Value="logClnCode"/>
+          <Item Value="logClnDesc"/>
+          <Item Value="logClnPin"/>
+          <Item Value="logClnRegNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

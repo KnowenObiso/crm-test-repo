@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="ServiceProviderActivity" Package="TurnQuest.view.provider"
+          BeanClass="TurnQuest.view.provider.ServiceProviderActivity"
+          isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="providerTypeCode" Type="java.lang.String"/>
+  <Attribute Name="providerTypeShortDesc" Type="java.lang.String"/>
+  <Attribute Name="serviceProviderCode" Type="java.lang.String"/>
+  <Attribute Name="serviceProviderShortDesc" Type="java.lang.String"/>
+  <Attribute Name="mainAct" Type="java.lang.String"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="providerTypeName" Type="java.lang.String"/>
+  <Attribute Name="providerName" Type="java.lang.String"/>
+  <Attribute Name="restrictOnDebitBalance" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.provider.ServiceProviderActivity"
+                     BeanClass="TurnQuest.view.provider.ServiceProviderActivity"
+                     id="ServiceProviderActivity"/>
+</JavaBean>

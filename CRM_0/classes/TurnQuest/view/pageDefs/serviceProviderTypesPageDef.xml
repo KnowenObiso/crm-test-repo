@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="serviceProviderTypesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  
+    <methodIterator Binds="fetchAllServiceProviderTypesActivities.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.ServiceProviderType"
+                    id="fetchAllServiceProviderTypesActivitiesIterator"/>
+    <methodIterator Binds="findEmailServiceProviders.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                    id="findEmailServiceProvidersIterator"/>
+    <searchRegion Binds="findEmailServiceProvidersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SysApplicableAreaQuery"/>
+    <methodIterator Binds="findSmsServiceProviders.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                    id="findSmsServiceProvidersIterator"/>
+    <searchRegion Binds="findSmsServiceProvidersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SysApplicableArea1Query"/>
+    <methodIterator Binds="findSystems.result" DataControl="BaseSetupDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                    id="findSystemsIterator"/>
+    <methodIterator Binds="findRequiredDocuments.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                    id="findRequiredDocumentsIterator"/>
+    <searchRegion Binds="findRequiredDocumentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SysApplicableArea3Query"/>
+ 
+    <methodIterator Binds="fetchAllServiceProviderTypes.result"
+                    DataControl="BaseSetupDAO" RangeSize="100"
+                    BeanClass="TurnQuest.view.setups.ServiceProviderType"
+                    id="fetchAllServiceProviderTypesIterator"/>
+    <searchRegion Binds="fetchAllServiceProviderTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceProviderTypeQuery"/>
+  </executables>
+  <bindings>
+   
+    <methodAction id="fetchAllServiceProviderTypesActivities"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchAllServiceProviderTypesActivities"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllServiceProviderTypesActivities_BaseSetupDAO_dataProvider_fetchAllServiceProviderTypesActivities_result"/>
+    <tree IterBinding="fetchAllServiceProviderTypesActivitiesIterator"
+          id="ServiceProviderType1">
+      <nodeDefinition DefName="TurnQuest.view.setups.ServiceProviderType"
+                      Name="ServiceProviderType10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="emailmessage"/>
+          <Item Value="smsmessage"/>
+          <Item Value="smsDefault"/>
+          <Item Value="emailDefault"/>
+          <Item Value="smsCode"/>
+          <Item Value="emailCode"/>
+          <Item Value="reportDays"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findEmailServiceProviders" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEmailServiceProviders"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findEmailServiceProviders_BaseSetupDAO_dataProvider_findEmailServiceProviders_result"/>
+    <tree IterBinding="findEmailServiceProvidersIterator"
+          id="SysApplicableArea">
+      <nodeDefinition DefName="TurnQuest.view.setups.SysApplicableArea"
+                      Name="SysApplicableArea0">
+        <AttrNames>
+          <Item Value="msgCode"/>
+          <Item Value="msgShtDesc"/>
+          <Item Value="message"/>
+          <Item Value="systemCode"/>
+          <Item Value="sysModule"/>
+          <Item Value="mesageType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSmsServiceProviders" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSmsServiceProviders"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findSmsServiceProviders_BaseSetupDAO_dataProvider_findSmsServiceProviders_result"/>
+    <tree IterBinding="findSmsServiceProvidersIterator" id="SysApplicableArea1">
+      <nodeDefinition DefName="TurnQuest.view.setups.SysApplicableArea"
+                      Name="SysApplicableArea10">
+        <AttrNames>
+          <Item Value="msgCode"/>
+          <Item Value="msgShtDesc"/>
+          <Item Value="message"/>
+          <Item Value="systemCode"/>
+          <Item Value="sysModule"/>
+          <Item Value="mesageType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystems"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findSystems_BaseSetupDAO_dataProvider_findSystems_result"/>
+    <tree IterBinding="findSystemsIterator" id="SysApplicableArea2">
+      <nodeDefinition DefName="TurnQuest.view.setups.SysApplicableArea"
+                      Name="SysApplicableArea20">
+        <AttrNames>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRequiredDocuments" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRequiredDocuments"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.findRequiredDocuments_BaseSetupDAO_dataProvider_findRequiredDocuments_result"/>
+    <tree IterBinding="findRequiredDocumentsIterator" id="SysApplicableArea3">
+      <nodeDefinition DefName="TurnQuest.view.setups.SysApplicableArea"
+                      Name="SysApplicableArea30">
+        <AttrNames>
+          <Item Value="docId"/>
+          <Item Value="docSht"/>
+          <Item Value="docDesc"/>
+          <Item Value="mandatory"/>
+          <Item Value="ndDoc"/>
+          <Item Value="enDoc"/>
+          <Item Value="rnDoc"/>
+          <Item Value="certDoc"/>
+          <Item Value="lopDoc"/>
+          <Item Value="clmPayDoc"/>
+          <Item Value="validPrd"/>
+           <Item Value="checked"/>
+          <Item Value="sysAppAreaCode"/>
+          <Item Value="rqcCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+
+    <methodAction id="fetchAllServiceProviderTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchAllServiceProviderTypes"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllServiceProviderTypes_BaseSetupDAO_dataProvider_fetchAllServiceProviderTypes_result"/>
+    <tree IterBinding="fetchAllServiceProviderTypesIterator"
+          id="ServiceProviderType">
+      <nodeDefinition DefName="TurnQuest.view.setups.ServiceProviderType"
+                      Name="ServiceProviderType0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="status"/>
+          <Item Value="whtxRate"/>
+          <Item Value="vatRate"/>
+          <Item Value="suffix"/>
+          <Item Value="sptCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

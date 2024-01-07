@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="UtilObject" Package="TurnQuest.view.Usr"
+          BeanClass="TurnQuest.view.Usr.UtilObject" isJavaBased="true">
+  <Attribute Name="orgCode" Type="java.lang.String"/>
+  <Attribute Name="orgName" Type="java.lang.String"/>
+  <Attribute Name="regionCode" Type="java.lang.String"/>
+  <Attribute Name="regionName" Type="java.lang.String"/>
+  <Attribute Name="branchCode" Type="java.lang.String"/>
+  <Attribute Name="branchName" Type="java.lang.String"/>
+  <Attribute Name="divisionCode" Type="java.lang.String"/>
+  <Attribute Name="divisionName" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Usr.UtilObject"
+                     BeanClass="TurnQuest.view.Usr.UtilObject" id="UtilObject"/>
+</JavaBean>

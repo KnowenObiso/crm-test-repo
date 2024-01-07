@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ServletContext" Package="javax.servlet"
+          BeanClass="javax.servlet.ServletContext" isJavaBased="true">
+  <Attribute Name="contextPath" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="majorVersion" IsUpdateable="0" Type="int"/>
+  <Attribute Name="minorVersion" IsUpdateable="0" Type="int"/>
+  <Attribute Name="servlets" IsUpdateable="0" Type="java.util.Enumeration"/>
+  <Attribute Name="servletNames" IsUpdateable="0" Type="java.util.Enumeration"/>
+  <Attribute Name="serverInfo" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="initParameterNames" IsUpdateable="0"
+             Type="java.util.Enumeration"/>
+  <Attribute Name="attributeNames" IsUpdateable="0"
+             Type="java.util.Enumeration"/>
+  <Attribute Name="servletContextName" IsUpdateable="0"
+             Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="javax.servlet.ServletContext"
+                  BeanClass="javax.servlet.ServletContext" id="getContext"
+                  ReturnNodeName="ServletContext">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="getMimeType"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="java.util.Set" id="getResourcePaths"
+                  ReturnNodeName="returnValue"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.net.URL"
+                  BeanClass="java.net.URL" id="getResource"
+                  ReturnNodeName="URL">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.io.InputStream"
+                  BeanClass="java.io.InputStream" id="getResourceAsStream"
+                  ReturnNodeName="InputStream">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="javax.servlet.RequestDispatcher"
+                  BeanClass="javax.servlet.RequestDispatcher"
+                  id="getRequestDispatcher" ReturnNodeName="RequestDispatcher">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="javax.servlet.RequestDispatcher"
+                  BeanClass="javax.servlet.RequestDispatcher"
+                  id="getNamedDispatcher" ReturnNodeName="RequestDispatcher">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="javax.servlet.Servlet"
+                  BeanClass="javax.servlet.Servlet" id="getServlet"
+                  ReturnNodeName="Servlet">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="log"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="log"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.Exception" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="log"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.Throwable" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="getRealPath"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="getInitParameter" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.Object" id="getAttribute"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="setAttribute"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="removeAttribute"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

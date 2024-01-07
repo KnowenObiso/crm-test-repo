@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="productPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+   <methodIterator Binds="findLifeProductCategories.result"
+                    DataControl="ProductDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.product.Products"
+                    id="findLifeProductCategoriesIterator"/>
+    <methodIterator Binds="findCategoryProducts.result" DataControl="ProductDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.product.Products"
+                    id="findCategoryProductsIterator"/>
+    <methodIterator Binds="findProductOptions.result" DataControl="ProductDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.product.Products"
+                    id="findProductOptionsIterator"/>
+    <methodIterator Binds="findLifeProductCategories1.result"
+                    DataControl="productCategoriesDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.product.Products"
+                    id="findLifeProductCategories1Iterator"/>
+  </executables>
+  <bindings>
+   <methodAction id="findLifeProductCategories" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLifeProductCategories"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findLifeProductCategories_ProductDAO_dataProvider_findLifeProductCategories_result"/>
+    <tree IterBinding="findLifeProductCategoriesIterator" id="Products3">
+      <nodeDefinition DefName="TurnQuest.view.product.Products"
+                      Name="Products30">
+        <AttrNames>
+          <Item Value="twpcCode"/>
+          <Item Value="twpcDesc"/>
+          <Item Value="twpcName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findLifeProductCategoriesIterator" id="Products4">
+      <nodeDefinition DefName="TurnQuest.view.product.Products"
+                      Name="Products40">
+        <AttrNames>
+          <Item Value="twpcCode"/>
+          <Item Value="twpcDesc"/>
+          <Item Value="twpcName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findProductOptions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProductOptions"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findProductOptions_ProductDAO_dataProvider_findProductOptions_result"/>
+    <methodAction id="findCategoryProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCategoryProducts"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findCategoryProducts_ProductDAO_dataProvider_findCategoryProducts_result"/>
+    <tree IterBinding="findCategoryProductsIterator" id="Products6">
+      <nodeDefinition DefName="TurnQuest.view.product.Products"
+                      Name="Products60">
+        <AttrNames>
+          <Item Value="prodDesc"/>
+          <Item Value="prodName"/>
+          <Item Value="twpCode"/>
+          <Item Value="prodCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findProductOptionsIterator" id="Products5">
+      <nodeDefinition DefName="TurnQuest.view.product.Products"
+                      Name="Products50">
+        <AttrNames>
+          <Item Value="twpoCode"/>
+          <Item Value="popCode"/>
+          <Item Value="twpoDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findLifeProductCategories1" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLifeProductCategories"
+                  IsViewObjectMethod="false" DataControl="productCategoriesDAO"
+                  InstanceName="productCategoriesDAO.dataProvider"
+                  ReturnName="productCategoriesDAO.methodResults.findLifeProductCategories_productCategoriesDAO_dataProvider_findLifeProductCategories_result"/>
+    <tree IterBinding="findLifeProductCategories1Iterator" id="Products">
+      <nodeDefinition DefName="TurnQuest.view.product.Products"
+                      Name="Products0">
+        <AttrNames>
+          <Item Value="twpcCode"/>
+          <Item Value="twpcDesc"/>
+          <Item Value="twpcName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findLifeProductCategories1Iterator" id="Products1">
+      <nodeDefinition DefName="TurnQuest.view.product.Products"
+                      Name="Products10">
+        <AttrNames>
+          <Item Value="twpcDesc"/>
+          <Item Value="twpcName"/>
+          <Item Value="twpCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

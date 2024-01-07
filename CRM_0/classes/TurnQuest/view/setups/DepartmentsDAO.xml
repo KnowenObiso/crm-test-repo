@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="DepartmentsDAO" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.DepartmentsDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Departments"
+                  BeanClass="TurnQuest.view.setups.Departments"
+                  id="fetchDepartmentDtls" ReturnNodeName="Departments"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Departments"
+                  BeanClass="TurnQuest.view.setups.Departments" id="findUsers"
+                  ReturnNodeName="Departments"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.DepartmentsDAO"
+                     BeanClass="TurnQuest.view.setups.DepartmentsDAO"
+                     id="DepartmentsDAO"/>
+</JavaBean>

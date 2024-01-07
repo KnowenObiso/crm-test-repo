@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="UserGrpTypeDAO" Package="TurnQuest.view.Usr"
+          BeanClass="TurnQuest.view.Usr.UserGrpTypeDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="findGroupUserTypesMembers" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.UserGrpType"
+                  BeanClass="TurnQuest.view.Usr.UserGrpType"
+                  id="fetchUserGroupTypes" ReturnNodeName="UserGrpType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.User"
+                  BeanClass="TurnQuest.view.Usr.User"
+                  id="findAllUsersNotInGroupType" ReturnNodeName="User"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.MyAccount"
+                  BeanClass="TurnQuest.view.Usr.MyAccount"
+                  id="fetchAccountGroupTypes" ReturnNodeName="MyAccount"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.MyAccount"
+                  BeanClass="TurnQuest.view.Usr.MyAccount"
+                  id="findAllAccountsNotInGroupTypes" ReturnNodeName="MyAccount"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Usr.GroupType"
+                  BeanClass="TurnQuest.view.Usr.GroupType"
+                  id="fetchAllGroupTypes" ReturnNodeName="GroupType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Branches.Branch"
+                  BeanClass="TurnQuest.view.Branches.Branch"
+                  id="fetchAllBranches" ReturnNodeName="Branch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Usr.UserGrpTypeDAO"
+                     BeanClass="TurnQuest.view.Usr.UserGrpTypeDAO"
+                     id="UserGrpTypeDAO"/>
+</JavaBean>

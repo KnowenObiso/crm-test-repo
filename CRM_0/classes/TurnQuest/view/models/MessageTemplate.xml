@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="MessageTemplate" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.MessageTemplate" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="msgtCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="msgtShtDesc" Type="java.lang.String"/>
+  <Attribute Name="msgtMsg" Type="java.lang.String"/>
+  <Attribute Name="msgtSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="msgtSysModule" Type="java.lang.String"/>
+  <Attribute Name="msgtType" Type="java.lang.String"/>
+  <Attribute Name="msgtCreatedBy" Type="java.lang.String"/>
+  <Attribute Name="msgtUpdatedBy" Type="java.lang.String"/>
+  <Attribute Name="msgtSysProd" Type="java.math.BigDecimal"/>
+  <Attribute Name="msgtSysProdName" Type="java.lang.String"/>
+  <Attribute Name="msgtSubject" Type="java.lang.String"/>	
+  <Attribute Name="msgTmpPurpose" Type="java.lang.String"/>
+  <Attribute Name="msgTmpStatus" Type="java.lang.String"/>
+  <Attribute Name="msgTmpRecipient" Type="java.lang.String"/>
+  <Attribute Name="msgEmailRecipient" Type="java.lang.String"/>
+  <Attribute Name="msgEmailRecipientName" Type="java.lang.String"/>
+  <Attribute Name="msgImageUrl" Type="java.lang.String"/>
+  
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.MessageTemplate"
+                     BeanClass="TurnQuest.view.models.MessageTemplate"
+                     id="MessageTemplate"/>
+</JavaBean>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ClaimPaymentModes" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+          isJavaBased="true">
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="shortdesc" Type="java.lang.String"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="maxAmt" Type="java.lang.String"/>
+  <Attribute Name="minAmt" Type="java.lang.String"/>
+  <Attribute Name="default_value" Type="java.lang.String"/>
+  <Attribute Name="remarks" Type="java.lang.String"/>
+  <Attribute Name="couCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prefix" Type="java.lang.String"/>
+  <Attribute Name="mptCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="mptpCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.ClaimPaymentModes"
+                     BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+                     id="ClaimPaymentModes"/>
+</JavaBean>

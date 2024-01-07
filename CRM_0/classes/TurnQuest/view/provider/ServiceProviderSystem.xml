@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="ServiceProviderSystem" Package="TurnQuest.view.provider"
+          BeanClass="TurnQuest.view.provider.ServiceProviderSystem"
+          isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="serviceProviderCode" Type="java.lang.String"/>
+  <Attribute Name="systemCode" Type="java.lang.String"/>
+  <Attribute Name="wef" Type="java.util.Date"/>
+  <Attribute Name="wet" Type="java.util.Date"/>
+  <Attribute Name="createdBy" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.provider.ServiceProviderSystem"
+                     BeanClass="TurnQuest.view.provider.ServiceProviderSystem"
+                     id="ServiceProviderSystem"/>
+</JavaBean>

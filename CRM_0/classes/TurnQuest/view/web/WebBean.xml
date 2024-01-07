@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="WebBean" Package="TurnQuest.view.web"
+          BeanClass="TurnQuest.view.web.WebBean" isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="shortdesc" Type="java.lang.String"/>
+  <Attribute Name="desc" Type="java.lang.String"/>
+  <Attribute Name="product" Type="java.lang.String"/>
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="twpCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prodCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prodDesc" Type="java.lang.String"/>
+  <Attribute Name="twpProdDesc" Type="java.lang.String"/>
+  <Attribute Name="twpoCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="popCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="twpoDesc" Type="java.lang.String"/>
+  <Attribute Name="popShtDesc" Type="java.lang.String"/>
+  <Attribute Name="popDesc" Type="java.lang.String"/>
+  <Attribute Name="prodShtDesc" Type="java.lang.String"/>
+  <Attribute Name="systemCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="systemName" Type="java.lang.String"/>
+  <Attribute Name="twpcName" Type="java.lang.String"/>
+  <Attribute Name="twpcDesc" Type="java.lang.String"/>
+  <Attribute Name="nodeType" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.web.WebBean"
+                     BeanClass="TurnQuest.view.web.WebBean" id="WebBean"/>
+</JavaBean>

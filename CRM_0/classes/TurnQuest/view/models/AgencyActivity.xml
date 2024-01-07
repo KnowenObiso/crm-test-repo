@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="AgencyActivity" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.AgencyActivity" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="aacCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="aacActyCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="aacWef" Type="java.util.Date"/>
+  <Attribute Name="aacEstimateWet" Type="java.util.Date"/>
+  <Attribute Name="aacActualWet" Type="java.util.Date"/>
+  <Attribute Name="aacRemarks" Type="java.lang.String"/>
+  <Attribute Name="aacAgnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="aacClientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="aacSprCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="aacSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="aacMktrAgnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="activityDesc" Type="java.lang.String"/>
+  <Attribute Name="clientName" Type="java.lang.String"/>
+  <Attribute Name="agencyName" Type="java.lang.String"/>
+  <Attribute Name="marketerAgencyName" Type="java.lang.String"/>
+  <Attribute Name="providerName" Type="java.lang.String"/>
+  <Attribute Name="systemName" Type="java.lang.String"/>
+  <Attribute Name="aacReasnsforActivity" Type="java.lang.String"/>
+  <Attribute Name="aacActivityByType" Type="java.lang.String"/>
+  <Attribute Name="participActivityDesc" Type="java.lang.String"/>
+  <Attribute Name="participId" Type="java.math.BigDecimal"/>
+  <Attribute Name="participActType" Type="java.lang.String"/>
+  <Attribute Name="participCode" Type="java.lang.String"/>
+  <Attribute Name="participName" Type="java.lang.String"/>
+  <Attribute Name="participByCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="aacActivityTypeName" Type="java.lang.String"/>
+  <Attribute Name="aacType" Type="java.lang.String"/>
+  <Attribute Name="aacActivityByCode" Type="java.math.BigDecimal"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.AgencyActivity"
+                     BeanClass="TurnQuest.view.models.AgencyActivity"
+                     id="AgencyActivity"/>
+</JavaBean>

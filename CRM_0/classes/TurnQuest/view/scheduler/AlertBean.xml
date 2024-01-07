@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.59.23"
+          id="AlertBean" Package="TurnQuest.view.scheduler"
+          BeanClass="TurnQuest.view.scheduler.AlertBean" isJavaBased="true">
+  <Attribute Name="qtJobName" Type="java.lang.String"/>
+  <Attribute Name="qtDescription" Type="java.lang.String"/>
+  <Attribute Name="qtNextFireTime" Type="java.util.Date"/>
+  <Attribute Name="qtPrevFireTime" Type="java.util.Date"/>
+  <Attribute Name="qtStartTime" Type="java.sql.Timestamp"/>
+  <Attribute Name="qtEndTime" Type="java.util.Date"/>
+  <Attribute Name="qtSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="qtRecurrence" Type="java.lang.String"/>
+  <Attribute Name="qtRecurrenceType" Type="java.lang.String"/>
+  <Attribute Name="qtJobAssignee" Type="java.math.BigDecimal"/>
+  <Attribute Name="qtNotifiedFailUser" Type="java.math.BigDecimal"/>
+  <Attribute Name="qtNotifiedSuccUser" Type="java.math.BigDecimal"/>
+  <Attribute Name="qtReccurenceInterval" Type="java.lang.String"/>
+  <Attribute Name="qtJobType" Type="java.lang.String"/>
+  <Attribute Name="qtJobTemplate" Type="java.lang.String"/>
+  <Attribute Name="qtFailNotifyTemplate" Type="java.lang.String"/>
+  <Attribute Name="qtSuccNotifyTemplate" Type="java.lang.String"/>
+  <Attribute Name="qtCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="assignee" Type="java.lang.String"/>
+  <Attribute Name="failUser" Type="java.lang.String"/>
+  <Attribute Name="succUser" Type="java.lang.String"/>
+  <Attribute Name="jobTemplate" Type="java.lang.String"/>
+  <Attribute Name="failTemplate" Type="java.lang.String"/>
+  <Attribute Name="succTemplate" Type="java.lang.String"/>
+  <Attribute Name="assigneeEmail" Type="java.lang.String"/>
+  <Attribute Name="failEmail" Type="java.lang.String"/>
+  <Attribute Name="succEmail" Type="java.lang.String"/>
+  <Attribute Name="qtStatus" Type="java.lang.String"/>
+  <Attribute Name="objType" Type="java.lang.String"/>
+  <Attribute Name="objCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="objDesc" Type="java.lang.String"/>
+  <Attribute Name="objLocation" Type="java.lang.String"/>
+  <Attribute Name="qtThreshType" Type="java.lang.String"/>
+  <Attribute Name="qtThreshValue" Type="java.math.BigDecimal"/>
+  <Attribute Name="qtCronExpresion" Type="java.lang.String"/>
+  <Attribute Name="objChecked" Type="boolean"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.scheduler.AlertBean"
+                     BeanClass="TurnQuest.view.scheduler.AlertBean"
+                     id="AlertBean"/>
+</JavaBean>

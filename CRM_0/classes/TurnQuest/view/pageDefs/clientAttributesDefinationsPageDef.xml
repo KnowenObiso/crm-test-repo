@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="clientAttributesDefinationsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findClientAttributes.result" DataControl="ProductDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ClientAttribute"
+                    id="findClientAttributesIterator"/>
+    <searchRegion Binds="findClientAttributesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClientAttributeQuery"/>
+    <methodIterator Binds="findClientTableAttributes.result"
+                    DataControl="ClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Clients.ClientTable"
+                    id="findClientTableAttributesIterator"/>
+    <searchRegion Binds="findClientTableAttributesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClientTableQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findClientAttributes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findClientAttributes"
+                  IsViewObjectMethod="false" DataControl="ProductDAO"
+                  InstanceName="ProductDAO.dataProvider"
+                  ReturnName="ProductDAO.methodResults.findClientAttributes_ProductDAO_dataProvider_findClientAttributes_result"/>
+    <tree IterBinding="findClientAttributesIterator" id="ClientAttribute">
+      <nodeDefinition DefName="TurnQuest.view.models.ClientAttribute"
+                      Name="ClientAttribute0">
+        <AttrNames>
+          <Item Value="TCA_CODE"/>
+          <Item Value="TCA_ATTRIBUTE_NAME"/>
+          <Item Value="TCA_ATT_DESC"/>
+          <Item Value="TCA_PROMPT"/>
+          <Item Value="TCA_ATT_RANGE"/>
+          <Item Value="TCA_ATT_TYPE_INPUT"/>
+          <Item Value="tableName"/>
+          <Item Value="colName"/>
+          <Item Value="colDescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findClientTableAttributes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findClientTableAttributes"
+                  IsViewObjectMethod="false" DataControl="ClientDAO"
+                  InstanceName="ClientDAO.dataProvider"
+                  ReturnName="ClientDAO.methodResults.findClientTableAttributes_ClientDAO_dataProvider_findClientTableAttributes_result"/>
+    <tree IterBinding="findClientTableAttributesIterator" id="ClientTable">
+      <nodeDefinition DefName="TurnQuest.view.Clients.ClientTable"
+                      Name="ClientTable0">
+        <AttrNames>
+          <Item Value="colName"/>
+          <Item Value="colDescription"/>
+          <Item Value="tableName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="DivisionsDAO" Package="TurnQuest.view.Divisions"
+          BeanClass="TurnQuest.view.Divisions.DivisionsDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="findDivisions" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="findSubDivisions" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="findBranchDivisions" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="findBranches" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="fetchUserDivisions" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="findDivisionsByOrg" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="findBranchUnassignedDivisions" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="fetchDivisionsByBranch" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Divisions.DivisionsDAO"
+                     BeanClass="TurnQuest.view.Divisions.DivisionsDAO"
+                     id="DivisionsDAO"/>
+</JavaBean>

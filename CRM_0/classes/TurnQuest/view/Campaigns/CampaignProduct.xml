@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="CampaignProduct" Package="TurnQuest.view.Campaigns"
+          BeanClass="TurnQuest.view.Campaigns.CampaignProduct"
+          isJavaBased="true">
+  <Attribute Name="productCode" Type="java.lang.String"/>
+  <Attribute Name="productShortDesc" Type="java.lang.String"/>
+  <Attribute Name="prodDesc" Type="java.lang.String"/>
+  <Attribute Name="prodSystem" Type="java.lang.String"/>
+  <Attribute Name="checked" Type="boolean"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Campaigns.CampaignProduct"
+                     BeanClass="TurnQuest.view.Campaigns.CampaignProduct"
+                     id="CampaignProduct"/>
+</JavaBean>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ProductDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.ProductDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Product"
+                  BeanClass="TurnQuest.view.models.Product"
+                  id="findProductAttribute" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Product"
+                  BeanClass="TurnQuest.view.models.Product"
+                  id="findSystemProducts" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.ClientAttribute"
+                  BeanClass="TurnQuest.view.models.ClientAttribute"
+                  id="findClientAttributes" ReturnNodeName="ClientAttribute"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.ProductClientAttribute"
+                  BeanClass="TurnQuest.view.models.ProductClientAttribute"
+                  id="findProductClientAttribute"
+                  ReturnNodeName="ProductClientAttribute"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.ClientAttribute"
+                  BeanClass="TurnQuest.view.models.ClientAttribute"
+                  id="findUndefinedClientAttributes"
+                  ReturnNodeName="ClientAttribute"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Clients.client"
+                  BeanClass="TurnQuest.view.Clients.client"
+                  id="findClientsPerProduct" ReturnNodeName="client"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.product.Products"
+                  BeanClass="TurnQuest.view.product.Products"
+                  id="findWebProductsPromotion" ReturnNodeName="Products"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.product.Products"
+                  BeanClass="TurnQuest.view.product.Products"
+                  id="findLifeProductCategories" ReturnNodeName="Products"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.product.Products"
+                  BeanClass="TurnQuest.view.product.Products"
+                  id="findCategoryProducts" ReturnNodeName="Products"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.product.Products"
+                  BeanClass="TurnQuest.view.product.Products"
+                  id="findProductOptions" ReturnNodeName="Products"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.ProductDAO"
+                     BeanClass="TurnQuest.view.dao.ProductDAO" id="ProductDAO"/>
+</JavaBean>

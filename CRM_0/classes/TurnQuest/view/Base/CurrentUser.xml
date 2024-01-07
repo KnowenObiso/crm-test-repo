@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.51.56"
+          id="CurrentUser" Package="TurnQuest.view.Base"
+          BeanClass="TurnQuest.view.Base.CurrentUser" isJavaBased="true">
+  <Attribute Name="userCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="username" Type="java.lang.String"/>
+  <Attribute Name="currencyCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="currencySymbol" Type="java.lang.String"/>
+  <Attribute Name="selectedCurrency" Type="int"/>
+  <Attribute Name="loginDate" Type="java.util.Date"/>
+  <Attribute Name="tasks" Type="java.lang.String"/>
+  <Attribute Name="tasksCount" Type="int"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Base.CurrentUser"
+                     BeanClass="TurnQuest.view.Base.CurrentUser"
+                     id="CurrentUser"/>
+</JavaBean>

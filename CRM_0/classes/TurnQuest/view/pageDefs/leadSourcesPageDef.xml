@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="leadSourcesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findLeadSources.result" DataControl="LeadsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Leads.LeadSource"
+                    id="findLeadSourcesIterator"/>
+    <searchRegion Binds="findLeadSourcesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LeadSourceQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findLeadSources" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLeadSources"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="LeadsDAO.methodResults.findLeadSources_LeadsDAO_dataProvider_findLeadSources_result"/>
+    <tree IterBinding="findLeadSourcesIterator" id="LeadSource">
+      <nodeDefinition DefName="TurnQuest.view.Leads.LeadSource"
+                      Name="LeadSource0">
+        <AttrNames>
+          <Item Value="leadSourceCode"/>
+          <Item Value="leadSourceDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

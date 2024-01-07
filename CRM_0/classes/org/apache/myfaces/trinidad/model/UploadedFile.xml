@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="UploadedFile" Package="org.apache.myfaces.trinidad.model"
+          BeanClass="org.apache.myfaces.trinidad.model.UploadedFile"
+          isJavaBased="true">
+  <Attribute Name="filename" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="contentType" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="length" IsUpdateable="0" Type="long"/>
+  <Attribute Name="opaqueData" IsUpdateable="0" Type="java.lang.Object"/>
+  <AccessorAttribute id="inputStream" IsCollection="false"
+                     BeanClass="java.io.InputStream"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="void" id="dispose"
+                  ReturnNodeName="Return"/>
+</JavaBean>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ActivityDAO" Package="TurnQuest.view.Activities"
+          BeanClass="TurnQuest.view.Activities.ActivityDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Activities.Activity"
+                  BeanClass="TurnQuest.view.Activities.Activity"
+                  id="findActivities" ReturnNodeName="Activity"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Activities.Note"
+                  BeanClass="TurnQuest.view.Activities.Note"
+                  id="findActivityNotes" ReturnNodeName="Note"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ActivityParticipant"
+                  BeanClass="TurnQuest.view.Activities.ActivityParticipant"
+                  id="findActivityParticipants"
+                  ReturnNodeName="ActivityParticipant"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.PriorityLevel"
+                  BeanClass="TurnQuest.view.Activities.PriorityLevel"
+                  id="findPriorityLevels" ReturnNodeName="PriorityLevel"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Activities.Status"
+                  BeanClass="TurnQuest.view.Activities.Status" id="findStatuses"
+                  ReturnNodeName="Status"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Activities.ActivityTask"
+                  BeanClass="TurnQuest.view.Activities.ActivityTask"
+                  id="findActivityTasks" ReturnNodeName="ActivityTask"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Activities.Status"
+                  BeanClass="TurnQuest.view.Activities.Status"
+                  id="findSecurityQuestions" ReturnNodeName="Status"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Activities.ActivityDAO"
+                     BeanClass="TurnQuest.view.Activities.ActivityDAO"
+                     id="ActivityDAO"/>
+</JavaBean>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="AdministrativeRegion" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.AdministrativeRegion"
+          isJavaBased="true">
+  <Attribute Name="regCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="regShortDesc" Type="java.lang.String"/>
+  <Attribute Name="regName" Type="java.lang.String"/>
+  <Attribute Name="regCouCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.AdministrativeRegion"
+                     BeanClass="TurnQuest.view.setups.AdministrativeRegion"
+                     id="AdministrativeRegion"/>
+</JavaBean>

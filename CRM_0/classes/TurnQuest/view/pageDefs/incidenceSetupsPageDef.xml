@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="incidenceSetupsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findIncidenceTypes.result" DataControl="IncidenceDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                    id="findIncidenceTypesIterator"/>
+    <searchRegion Binds="findIncidenceTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="IncidenceValuesQuery"/>
+    <methodIterator Binds="findIncidenceStatuses.result"
+                    DataControl="IncidenceDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                    id="findIncidenceStatusesIterator"/>
+    <searchRegion Binds="findIncidenceStatusesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="IncidenceValues1Query"/>
+    <methodIterator Binds="findAllSystems.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findAllSystemsIterator"/>
+    <methodIterator Binds="findIncidenceDepartments.result"
+                    DataControl="IncidenceDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                    id="findIncidenceDepartmentsIterator"/>
+    <searchRegion Binds="findIncidenceDepartmentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="IncidenceValues2Query"/>
+    <methodIterator Binds="findIDepartmentIncidTypes.result"
+                    DataControl="IncidenceDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                    id="findIDepartmentIncidTypesIterator"/>
+    <searchRegion Binds="findIDepartmentIncidTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="IncidenceValues3Query"/>
+    <methodIterator Binds="findSystemBranches.result" DataControl="IncidenceDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Incidences.IncidenceValues"
+                    id="findSystemBranchesIterator"/>
+    <searchRegion Binds="findSystemBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="IncidenceValues4Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findIncidenceTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findIncidenceTypes"
+                  IsViewObjectMethod="false" DataControl="IncidenceDAO"
+                  InstanceName="IncidenceDAO.dataProvider"
+                  ReturnName="IncidenceDAO.methodResults.findIncidenceTypes_IncidenceDAO_dataProvider_findIncidenceTypes_result"/>
+    <tree IterBinding="findIncidenceTypesIterator" id="IncidenceValues">
+      <nodeDefinition DefName="TurnQuest.view.Incidences.IncidenceValues"
+                      Name="IncidenceValues0">
+        <AttrNames>
+          <Item Value="INCT_CODE"/>
+          <Item Value="INCT_SHT_DESC"/>
+          <Item Value="INCT_DESC"/>
+          <Item Value="INCT_OWNER"/>
+          <Item Value="INCT_OWNER_DESC"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findIncidenceStatuses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findIncidenceStatuses"
+                  IsViewObjectMethod="false" DataControl="IncidenceDAO"
+                  InstanceName="IncidenceDAO.dataProvider"
+                  ReturnName="IncidenceDAO.methodResults.findIncidenceStatuses_IncidenceDAO_dataProvider_findIncidenceStatuses_result"/>
+    <tree IterBinding="findIncidenceStatusesIterator" id="IncidenceValues1">
+      <nodeDefinition DefName="TurnQuest.view.Incidences.IncidenceValues"
+                      Name="IncidenceValues10">
+        <AttrNames>
+          <Item Value="ICTY_CODE"/>
+          <Item Value="ICTY_SHT_DESC"/>
+          <Item Value="ICTY_DESC"/>
+          <Item Value="ICTY_DATE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findAllSystems_UserDAO_dataProvider_findAllSystems_result"/>
+    <tree IterBinding="findAllSystemsIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findIncidenceDepartments" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findIncidenceDepartments"
+                  IsViewObjectMethod="false" DataControl="IncidenceDAO"
+                  InstanceName="IncidenceDAO.dataProvider"
+                  ReturnName="IncidenceDAO.methodResults.findIncidenceDepartments_IncidenceDAO_dataProvider_findIncidenceDepartments_result"/>
+    <tree IterBinding="findIncidenceDepartmentsIterator" id="IncidenceValues2">
+      <nodeDefinition DefName="TurnQuest.view.Incidences.IncidenceValues"
+                      Name="IncidenceValues20">
+        <AttrNames>
+          <Item Value="IDEP_CODE"/>
+          <Item Value="IDEP_SHT_DESC"/>
+          <Item Value="IDEP_DESC"/>
+          <Item Value="BRN_SHT_DESC"/>
+          <Item Value="BRN_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findIDepartmentIncidTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findIDepartmentIncidTypes"
+                  IsViewObjectMethod="false" DataControl="IncidenceDAO"
+                  InstanceName="IncidenceDAO.dataProvider"
+                  ReturnName="IncidenceDAO.methodResults.findIDepartmentIncidTypes_IncidenceDAO_dataProvider_findIDepartmentIncidTypes_result"/>
+    <tree IterBinding="findIDepartmentIncidTypesIterator" id="IncidenceValues3">
+      <nodeDefinition DefName="TurnQuest.view.Incidences.IncidenceValues"
+                      Name="IncidenceValues30">
+        <AttrNames>
+          <Item Value="DEPICT_CODE"/>
+          <Item Value="INCT_SHT_DESC"/>
+          <Item Value="IDEP_DESC"/>
+          <Item Value="DEPICT_SEND_EMAIL"/>
+          <Item Value="DEPICT_PRIORITY_LVL"/>
+          <Item Value="DEPICT_ESCALATE"/>
+          <Item Value="DEPICT_ESC_DAYS"/>
+          <Item Value="DEPICT_CLOSE_DAYS"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSystemBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystemBranches"
+                  IsViewObjectMethod="false" DataControl="IncidenceDAO"
+                  InstanceName="IncidenceDAO.dataProvider"
+                  ReturnName="IncidenceDAO.methodResults.findSystemBranches_IncidenceDAO_dataProvider_findSystemBranches_result"/>
+    <tree IterBinding="findSystemBranchesIterator" id="IncidenceValues4">
+      <nodeDefinition DefName="TurnQuest.view.Incidences.IncidenceValues"
+                      Name="IncidenceValues40">
+        <AttrNames>
+          <Item Value="BRN_SHT_DESC"/>
+          <Item Value="BRN_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findIncidenceTypesIterator" id="IncidenceValues5">
+      <nodeDefinition DefName="TurnQuest.view.Incidences.IncidenceValues"
+                      Name="IncidenceValues50">
+        <AttrNames>
+          <Item Value="INCT_SHT_DESC"/>
+          <Item Value="INCT_DESC"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

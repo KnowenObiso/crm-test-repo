@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="amlDtlsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchEntitiesAmldetails.result"
+                    DataControl="ClientAmlDetailsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.ClientAmlDetails"
+                    id="fetchEntitiesAmldetailsIterator"/>
+    <methodIterator Binds="fetchAllCountriesInfo.result" DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Country" id="fetchAllCountriesInfoIterator"/>
+    <searchRegion Binds="fetchAllCountriesInfoIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CountryQuery"/>
+    <methodIterator Binds="fetchSourceFunds.result"
+                    DataControl="ClientAmlDetailsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Town"
+                    id="fetchSourceFundsIterator"/>
+    <searchRegion Binds="fetchSourceFundsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="TownQuery"/>
+    <methodIterator Binds="fetchSourceWealth.result"
+                    DataControl="ClientAmlDetailsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Town"
+                    id="fetchSourceWealthIterator"/>
+    <searchRegion Binds="fetchSourceWealthIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Town1Query"/>              
+  </executables>
+  <bindings>
+    <methodAction id="fetchEntitiesAmldetails" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchEntitiesAmldetails"
+                  IsViewObjectMethod="false" DataControl="ClientAmlDetailsDAO"
+                  InstanceName="ClientAmlDetailsDAO.dataProvider"
+                  ReturnName="data.ClientAmlDetailsDAO.methodResults.fetchEntitiesAmldetails_ClientAmlDetailsDAO_dataProvider_fetchEntitiesAmldetails_result"/>
+    <tree IterBinding="fetchEntitiesAmldetailsIterator" id="ClientAmlDetails">
+      <nodeDefinition DefName="TurnQuest.view.client.ClientAmlDetails"
+                      Name="ClientAmlDetails0">
+        <AttrNames>
+          <Item Value="CAML_CODE"/>
+          <Item Value="CAML_CLNT_CODE"/>
+          <Item Value="CAML_TRADE_NAME"/>
+          <Item Value="CAML_REG_NAME"/>
+          <Item Value="CAML_CERT_REG_NO"/>
+          <Item Value="CAML_CERT_REG_YR"/>
+          <Item Value="CAML_INCORP_COU_CODE"/>
+          <Item Value="CAML_PARENT_COU_CODE"/>
+          <Item Value="CAML_SOU_CODE"/>
+          <Item Value="CAML_CREATED_BY"/>
+          <Item Value="CAML_CREATED_DATE"/>
+          <Item Value="CAML_UPDATED_BY"/>
+          <Item Value="CAML_UPDATED_DATE"/>
+          <Item Value="CLNT_NAME"/>
+          <Item Value="INCORP_COU_NAME"/>
+          <Item Value="PARENT_COU_NAME"/>
+          <Item Value="SOU_NAME"/>
+          <Item Value="CAML_ID_TYPE"/>
+          <Item Value="CAML_ID_EXP_DT"/>
+          <Item Value="CAML_CITIZEN_COU_CODE"/>
+          <Item Value="CAML_NATIONALITY_COU_CODE"/>
+          <Item Value="CAML_PAY_FREQ"/>
+          <Item Value="CAML_EMPLOYED_STATUS"/>
+          <Item Value="CAML_SELF_EMPLOYED"/>
+          <Item Value="CAML_MARITAL_STATUS"/>
+          <Item Value="CITIZEN_COU_NAME"/>
+          <Item Value="NATIONALITY_COU_NAME"/>
+          <Item Value="CAML_CLIENT_TYPE"/>
+          <Item Value="CAML_ACCOUNT_TYPE"/>
+          <Item Value="CAML_WLTH_CODE"/>
+          <Item Value="WLTH_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllCountriesInfo" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCountriesInfo"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="data.BaseSetupDAO.methodResults.fetchAllCountriesInfo_BaseSetupDAO_dataProvider_fetchAllCountriesInfo_result"/>
+    <tree IterBinding="fetchAllCountriesInfoIterator" id="Country">
+      <nodeDefinition DefName="TurnQuest.view.setups.Country" Name="Country0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchSourceFunds" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchSourceFunds"
+                  IsViewObjectMethod="false" DataControl="ClientAmlDetailsDAO"
+                  InstanceName="ClientAmlDetailsDAO.dataProvider"
+                  ReturnName="data.ClientAmlDetailsDAO.methodResults.fetchSourceFunds_ClientAmlDetailsDAO_dataProvider_fetchSourceFunds_result"/>
+    <tree IterBinding="fetchSourceFundsIterator" id="Town">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+     <methodAction id="fetchSourceWealth" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchSourceWealth"
+                  IsViewObjectMethod="false" DataControl="ClientAmlDetailsDAO"
+                  InstanceName="ClientAmlDetailsDAO.dataProvider"
+                  ReturnName="data.ClientAmlDetailsDAO.methodResults.fetchSourceWealth_ClientAmlDetailsDAO_dataProvider_fetchSourceWealth_result"/>
+    <tree IterBinding="fetchSourceWealthIterator" id="Town1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

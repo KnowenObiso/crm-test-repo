@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ProductDetailDAO" Package="TurnQuest.view.products"
+          BeanClass="TurnQuest.view.products.ProductDetailDAO"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.products.Product"
+                  BeanClass="TurnQuest.view.products.Product" id="findProducts"
+                  ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.products.Product"
+                  BeanClass="TurnQuest.view.products.Product"
+                  id="findProductOptions" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.products.Product"
+                  BeanClass="TurnQuest.view.products.Product"
+                  id="findProductMasks" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.products.Product"
+                  BeanClass="TurnQuest.view.products.Product"
+                  id="findProductsByAgentCode" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.products.Product"
+                  BeanClass="TurnQuest.view.products.Product"
+                  id="findAllProducts" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.products.Product"
+                  BeanClass="TurnQuest.view.products.Product"
+                  id="findProductSubClasses" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.products.Product"
+                  BeanClass="TurnQuest.view.products.Product"
+                  id="findProductSCoverTypes" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.products.Product"
+                  BeanClass="TurnQuest.view.products.Product"
+                  id="findProductCoverTypes" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.products.Product"
+                  BeanClass="TurnQuest.view.products.Product"
+                  id="findProductBinders" ReturnNodeName="Product"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.products.ProductDetailDAO"
+                     BeanClass="TurnQuest.view.products.ProductDetailDAO"
+                     id="ProductDetailDAO"/>
+</JavaBean>

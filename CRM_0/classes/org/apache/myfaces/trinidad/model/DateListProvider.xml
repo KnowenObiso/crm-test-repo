@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="DateListProvider" Package="org.apache.myfaces.trinidad.model"
+          BeanClass="org.apache.myfaces.trinidad.model.DateListProvider"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="java.util.List" id="getDateList"
+                  ReturnNodeName="Date"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="javax.faces.context.FacesContext"
+                   isStructured="true"/>
+    <ParameterInfo id="p1" Type="java.util.Calendar" isStructured="false"/>
+    <ParameterInfo id="p2" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="p3" Type="java.util.Date" isStructured="false"/>
+    <Attribute Name="element" Type="java.util.Date"/>
+  </MethodAccessor>
+</JavaBean>

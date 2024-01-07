@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Authenticator" Package="TurnQuest.view.Authenticator"
+          BeanClass="TurnQuest.view.Authenticator.Authenticator"
+          isJavaBased="true">
+  <Attribute Name="language" Type="java.lang.String"/>
+  <Attribute Name="orgType" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="Authenticate"
+                  ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="ResetLanguage" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="Logout"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Authenticator.Authenticator"
+                     BeanClass="TurnQuest.view.Authenticator.Authenticator"
+                     id="Authenticator"/>
+</JavaBean>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="Currency" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.Currency" isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="symbol" Type="java.lang.String"/>
+  <Attribute Name="ref" Type="java.lang.String"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="round" Type="java.lang.String"/>
+  <Attribute Name="curNumWord" Type="java.lang.String"/>
+  <Attribute Name="curDecimalWord" Type="java.lang.String"/>
+  <Attribute Name="numWords" Type="java.lang.String"/>
+  <Attribute Name="decimalWord" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.setups.Currency"
+                     BeanClass="TurnQuest.view.setups.Currency" id="Currency"/>
+</JavaBean>

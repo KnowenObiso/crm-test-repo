@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Product" Package="TurnQuest.view.products"
+          BeanClass="TurnQuest.view.products.Product" isJavaBased="true">
+  <Attribute Name="productCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="productShtDesc" Type="java.lang.String"/>
+  <Attribute Name="productDesc" Type="java.lang.String"/>
+  <Attribute Name="productType" Type="java.lang.String"/>
+  <Attribute Name="popCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="popShtDesc" Type="java.lang.String"/>
+  <Attribute Name="popDesc" Type="java.lang.String"/>
+  <Attribute Name="PMasCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="PMasShtDesc" Type="java.lang.String"/>
+  <Attribute Name="PMasDesc" Type="java.lang.String"/>
+  <Attribute Name="productSubClassCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="coverTypeDesc" Type="java.lang.String"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="coverTypeDetails" Type="java.lang.String"/>
+  <Attribute Name="coverTypeCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="productDetails" Type="java.lang.String"/>
+  <Attribute Name="productExpiryPeriod" Type="java.lang.String"/>
+  <Attribute Name="subClassCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="subClassDesc" Type="java.lang.String"/>
+  <Attribute Name="bindName" Type="java.lang.String"/>
+  <Attribute Name="bindCode" Type="java.math.BigDecimal"/>
+  <AccessorAttribute id="covertypes" IsCollection="true"
+                     BeanClass="TurnQuest.view.products.CoverTypes"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.products.Product"
+                     BeanClass="TurnQuest.view.products.Product" id="Product"/>
+</JavaBean>

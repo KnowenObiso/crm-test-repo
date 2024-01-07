@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ZoneDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.ZoneDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Zone"
+                  BeanClass="TurnQuest.view.models.Zone" id="fetchAllZones"
+                  ReturnNodeName="Zone"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="updateZone"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.Zone"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="addZone"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.Zone"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="TurnQuest.view.models.Zone"
+                  BeanClass="TurnQuest.view.models.Zone"
+                  id="fetchZoneByZoneCode" ReturnNodeName="Zone">
+    <ParameterInfo id="zoneCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.ZoneDAO"
+                     BeanClass="TurnQuest.view.dao.ZoneDAO" id="ZoneDAO"/>
+</JavaBean>

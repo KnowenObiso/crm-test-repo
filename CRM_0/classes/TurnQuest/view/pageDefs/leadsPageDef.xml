@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="leadsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findActivities.result" DataControl="ActivityDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.Activity"
+                    id="findActivitiesIterator"/>
+    <searchRegion Binds="findActivitiesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ActivityQuery"/>
+    <methodIterator Binds="fetchAllCountriesInfo.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Country"
+                    id="fetchAllCountriesInfoIterator"/>
+    <searchRegion Binds="fetchAllCountriesInfoIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CountryQuery"/>
+    <methodIterator Binds="fetchStatesByCountry.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.State"
+                    id="fetchStatesByCountryIterator"/>
+    <searchRegion Binds="fetchStatesByCountryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StateQuery"/>
+    <methodIterator Binds="fetchTownsByCountry.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Town"
+                    id="fetchTownsByCountryIterator"/>
+    <searchRegion Binds="fetchTownsByCountryIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="TownQuery"/>
+    <methodIterator Binds="findAllIndividualUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findAllIndividualUsersIterator"/>
+    <searchRegion Binds="findAllIndividualUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="findGroupUser.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findGroupUserIterator"/>
+    <searchRegion Binds="findGroupUserIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User1Query"/>
+    <methodIterator Binds="findAllAccounts.result" DataControl="AccountDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Activities.Account"
+                    id="findAllAccountsIterator"/>
+    <searchRegion Binds="findAllAccountsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountQuery"/>
+    <methodIterator Binds="findOrganization.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findOrganizationIterator"/>
+    <searchRegion Binds="findOrganizationIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="OrganizationQuery"/>
+    <searchRegion Binds="findLeadsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LeadValuesQuery"/>
+    <methodIterator Binds="findLeads.result" DataControl="LeadsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Leads.LeadValues"
+                    id="findLeadsIterator"/>
+    <methodIterator Binds="findCampaignSystems.result" DataControl="CampaignDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="findCampaignSystemsIterator"/>
+    <methodIterator Binds="findCampaigns.result" DataControl="CampaignDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Campaigns.Campaign"
+                    id="findCampaignsIterator"/>
+    <searchRegion Binds="findCampaignsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CampaignQuery"/>
+    <methodIterator Binds="findCampaignProducts.result"
+                    DataControl="CampaignDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Campaigns.CampaignProduct"
+                    id="findCampaignProductsIterator"/>
+    <searchRegion Binds="findCampaignProductsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CampaignProductQuery"/>
+    <methodIterator Binds="fetchAllCurrencies.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Currency"
+                    id="fetchAllCurrenciesIterator"/>
+    <searchRegion Binds="fetchAllCurrenciesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CurrencyQuery"/>
+    <methodIterator Binds="findLeadSources.result" DataControl="LeadsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Leads.LeadSource"
+                    id="findLeadSourcesIterator"/>
+    <searchRegion Binds="findLeadSourcesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LeadSourceQuery"/>
+    <methodIterator Binds="findLeadStatuses.result" DataControl="LeadsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Leads.LeadStatus"
+                    id="findLeadStatusesIterator"/>
+    <searchRegion Binds="findLeadStatusesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LeadStatusQuery"/>
+    <methodIterator Binds="findLeadComments.result" DataControl="LeadsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Leads.LeadComment"
+                    id="findLeadCommentsIterator"/>
+    <searchRegion Binds="findLeadCommentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LeadCommentQuery"/>
+    <methodIterator Binds="findLeadActivities.result" DataControl="LeadsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Leads.LeadActivity"
+                    id="findLeadActivitiesIterator"/>
+    <searchRegion Binds="findLeadActivitiesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="LeadActivityQuery"/>
+    <methodIterator Binds="fetchOrgDivisions.result"
+                    DataControl="OrganizationDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Divisions.Division"
+                    id="fetchOrgDivisionsIterator"/>
+    <searchRegion Binds="fetchOrgDivisionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DivisionQuery"/>
+    <methodIterator Binds="fetchAllSectors.result" DataControl="LeadsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Sector"
+                    id="fetchAllSectorsIterator"/>
+    <methodIterator Binds="fetchPostalCodesByTown.result" DataControl="LeadsDAO"
+                    RangeSize="1000" BeanClass="TurnQuest.view.models.PostalCode"
+                    id="fetchPostalCodesByTownIterator"/>
+    <methodIterator Binds="findClientTypes.result" DataControl="LeadsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.client.Client2"
+                    id="findClientTypesIterator"/>
+    <searchRegion Binds="fetchPostalCodesByTownIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="PostalCode1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findLeads" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLeads"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="LeadsDAO.methodResults.findLeads_LeadsDAO_dataProvider_findLeads_result"/>
+    <methodAction id="findLeadSources" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLeadSources"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="LeadsDAO.methodResults.findLeadSources_LeadsDAO_dataProvider_findLeadSources_result"/>
+    <methodAction id="findLeadStatuses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLeadStatuses"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="LeadsDAO.methodResults.findLeadStatuses_LeadsDAO_dataProvider_findLeadStatuses_result"/>
+    <methodAction id="findLeadComments" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLeadComments"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="LeadsDAO.methodResults.findLeadComments_LeadsDAO_dataProvider_findLeadComments_result"/>
+    <methodAction id="findLeadActivities" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findLeadActivities"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="LeadsDAO.methodResults.findLeadActivities_LeadsDAO_dataProvider_findLeadActivities_result"/>
+    <methodAction id="findActivities" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findActivities"
+                  IsViewObjectMethod="false" DataControl="ActivityDAO"
+                  InstanceName="ActivityDAO.dataProvider"
+                  ReturnName="ActivityDAO.methodResults.findActivities_ActivityDAO_dataProvider_findActivities_result"/>
+    <tree IterBinding="findActivitiesIterator" id="Activity">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Activity"
+                      Name="Activity0">
+        <AttrNames>
+          <Item Value="activitysubject"/>
+          <Item Value="activityLocation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchMessageTemplatesByType" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchMessageTemplatesByType"
+                  IsViewObjectMethod="false" DataControl="MessagingDAO"
+                  InstanceName="MessagingDAO.dataProvider"
+                  ReturnName="MessagingDAO.methodResults.fetchMessageTemplatesByType_MessagingDAO_dataProvider_fetchMessageTemplatesByType_result"/>
+    <methodAction id="fetchAllCountriesInfo" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCountriesInfo"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCountriesInfo_BaseSetupDAO_dataProvider_fetchAllCountriesInfo_result"/>
+    <tree IterBinding="fetchAllCountriesInfoIterator" id="Country">
+      <nodeDefinition DefName="TurnQuest.view.setups.Country" Name="Country0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchStatesByCountry" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchStatesByCountry"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchStatesByCountry_BaseSetupDAO_dataProvider_fetchStatesByCountry_result"/>
+    <tree IterBinding="fetchStatesByCountryIterator" id="State">
+      <nodeDefinition DefName="TurnQuest.view.setups.State" Name="State0">
+        <AttrNames>
+          <Item Value="stateCode"/>
+          <Item Value="stateCountryCode"/>
+          <Item Value="stateShortDesc"/>
+          <Item Value="stateName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchTownsByCountry" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchTownsByCountry"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchTownsByCountry_BaseSetupDAO_dataProvider_fetchTownsByCountry_result"/>
+    <tree IterBinding="fetchTownsByCountryIterator" id="Town">
+      <nodeDefinition DefName="TurnQuest.view.setups.Town" Name="Town0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAllIndividualUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllIndividualUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findAllIndividualUsers_UserDAO_dataProvider_findAllIndividualUsers_result"/>
+    <tree IterBinding="findAllIndividualUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findGroupUser" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findGroupUser"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.findGroupUser_HierarchyDAO_dataProvider_findGroupUser_result"/>
+    <tree IterBinding="findGroupUserIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAllAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllAccounts"
+                  IsViewObjectMethod="false" DataControl="AccountDAO"
+                  InstanceName="AccountDAO.dataProvider"
+                  ReturnName="AccountDAO.methodResults.findAllAccounts_AccountDAO_dataProvider_findAllAccounts_result"/>
+    <tree IterBinding="findAllAccountsIterator" id="Account">
+      <nodeDefinition DefName="TurnQuest.view.Activities.Account"
+                      Name="Account0">
+        <AttrNames>
+          <Item Value="accountCode"/>
+          <Item Value="accountName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findOrganization" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findOrganization"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findOrganization_OrganizationDAO_dataProvider_findOrganization_result"/>
+    <tree IterBinding="findOrganizationIterator" id="Organization">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization0">
+        <AttrNames>
+          <Item Value="orgCode"/>
+          <Item Value="orgShortDesc"/>
+          <Item Value="orgName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findLeadsIterator" id="LeadValues">
+      <nodeDefinition DefName="TurnQuest.view.Leads.LeadValues"
+                      Name="LeadValues0">
+        <AttrNames>
+          <Item Value="LDS_CODE"/>
+          <Item Value="LDS_TITLE"/>
+          <Item Value="LDS_SURNNAME"/>
+          <Item Value="LDS_OTHERNAMES"/>
+          <Item Value="LDS_CAMP_TEL"/>
+          <Item Value="LDS_MOB_TEL"/>
+          <Item Value="LDS_CAMP_NAME"/>
+          <Item Value="LDS_FAX"/>
+          <Item Value="LDS_DESIGN"/>
+          <Item Value="LDS_EMAIL_ADDRS"/>
+          <Item Value="LDS_TOWN_NAME"/>
+          <Item Value="LDS_STATE_CODE"/>
+          <Item Value="LDS_EMAIL_ADDRS"/>
+          <Item Value="LDS_RATE_TYPE"/>
+          <Item Value="LDS_PHYSICAL_ADDRS"/>
+          <Item Value="LDS_POSTAL_ADDRS"/>
+          <Item Value="LDS_COUNTRY"/>
+          <Item Value="LDS_LSTS_CODE"/>
+          <Item Value="LDS_LSTS_DESC"/>
+          <Item Value="LDS_POSTAL_CODE"/>
+          <Item Value="LDS_STATE"/>
+          <Item Value="LDS_TWN_CODE"/>
+          <Item Value="LDS_COU_CODE"/>
+          <Item Value="LDS_DATE"/>
+          <Item Value="LDS_DESC"/>
+          <Item Value="LDS_USR_CODE"/>
+          <Item Value="LDS_USR_NAME"/>
+          <Item Value="LDS_ORG_CODE"/>
+          <Item Value="LDS_ORG_NAME"/>
+          <Item Value="LDS_SYS_CODE"/>
+          <Item Value="LDS_CONVERTED"/>
+          <Item Value="LDS_PONT_NAME"/>
+          <Item Value="LDS_PONT_CONRT"/>
+          <Item Value="LDS_PONT_AMOUNT"/>
+          <Item Value="LDS_CUR_CODE"/>
+          <Item Value="LDS_PONT_CLOSE_DATE"/>
+          <Item Value="LDS_PONT_SALE_STAGE"/>
+          <Item Value="LDS_INDUSTRY"/>
+          <Item Value="LDS_ANN_REVENUE"/>
+          <Item Value="LDS_NO_EMPYEE"/>
+          <Item Value="LDS_WEB_SITE"/>
+          <Item Value="LDS_TEAM_USR_CODE"/>
+          <Item Value="LDS_TEAM_NAME"/>
+          <Item Value="LDS_ACC_CODE"/>
+          <Item Value="LDS_ACCOUNT_NAME"/>
+          <Item Value="LDSRC_CODE"/>
+          <Item Value="LDSRC_DESC"/>
+          <Item Value="LDS_CMP_CODE"/>
+          <Item Value="leadSysName"/>
+          <Item Value="leadCurName"/>
+          <Item Value="leadProdCode"/>
+          <Item Value="leadProdName"/>
+          <Item Value="leadDivCode"/>
+          <Item Value="leadDivName"/>
+          <Item Value="occupation"/>
+          <Item Value="companyName"/>
+          <Item Value="clientCode"/>
+          <Item Value="clientShtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findCampaignSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaignSystems"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaignSystems_CampaignDAO_dataProvider_findCampaignSystems_result"/>
+    <tree IterBinding="findCampaignSystemsIterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findCampaigns" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaigns"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaigns_CampaignDAO_dataProvider_findCampaigns_result"/>
+    <tree IterBinding="findCampaignsIterator" id="Campaign">
+      <nodeDefinition DefName="TurnQuest.view.Campaigns.Campaign"
+                      Name="Campaign0">
+        <AttrNames>
+          <Item Value="campCode"/>
+          <Item Value="campName"/>
+          <Item Value="campStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findCampaignProducts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCampaignProducts"
+                  IsViewObjectMethod="false" DataControl="CampaignDAO"
+                  InstanceName="CampaignDAO.dataProvider"
+                  ReturnName="CampaignDAO.methodResults.findCampaignProducts_CampaignDAO_dataProvider_findCampaignProducts_result"/>
+    <tree IterBinding="findCampaignProductsIterator" id="CampaignProduct">
+      <nodeDefinition DefName="TurnQuest.view.Campaigns.CampaignProduct"
+                      Name="CampaignProduct0">
+        <AttrNames>
+          <Item Value="productCode"/>
+          <Item Value="productShortDesc"/>
+          <Item Value="prodDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllCurrencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCurrencies"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCurrencies_BaseSetupDAO_dataProvider_fetchAllCurrencies_result"/>
+    <tree IterBinding="fetchAllCurrenciesIterator" id="Currency">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency" Name="Currency0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="symbol"/>
+          <Item Value="description"/>
+          <Item Value="round"/>
+          <Item Value="curNumWord"/>
+          <Item Value="curDecimalWord"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findLeadSourcesIterator" id="LeadSource">
+      <nodeDefinition DefName="TurnQuest.view.Leads.LeadSource"
+                      Name="LeadSource0">
+        <AttrNames>
+          <Item Value="leadSourceCode"/>
+          <Item Value="leadSourceDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findLeadStatusesIterator" id="LeadStatus">
+      <nodeDefinition DefName="TurnQuest.view.Leads.LeadStatus"
+                      Name="LeadStatus0">
+        <AttrNames>
+          <Item Value="leadStatusCode"/>
+          <Item Value="leadStatusDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findLeadCommentsIterator" id="LeadComment">
+      <nodeDefinition DefName="TurnQuest.view.Leads.LeadComment"
+                      Name="LeadComment0">
+        <AttrNames>
+          <Item Value="leadCommentCode"/>
+          <Item Value="leadComment"/>
+          <Item Value="leadCommentDate"/>
+          <Item Value="user_name"/>
+          <Item Value="leadCommentDisposition"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findLeadActivitiesIterator" id="LeadActivity">
+      <nodeDefinition DefName="TurnQuest.view.Leads.LeadActivity"
+                      Name="LeadActivity0">
+        <AttrNames>
+          <Item Value="leadActivityCode"/>
+          <Item Value="activityCode"/>
+          <Item Value="activitySubject"/>
+          <Item Value="activityLocation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findCampaignSystemsIterator" id="System1">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchOrgDivisions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchOrgDivisions"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.fetchOrgDivisions_OrganizationDAO_dataProvider_fetchOrgDivisions_result"/>
+    <tree IterBinding="fetchOrgDivisionsIterator" id="Division">
+      <nodeDefinition DefName="TurnQuest.view.Divisions.Division"
+                      Name="Division0">
+        <AttrNames>
+          <Item Value="DIV_CODE"/>
+          <Item Value="DIV_NAME"/>
+          <Item Value="DIV_SHT_DESC"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSectors" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSectors"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="data.LeadsDAO.methodResults.fetchAllSectors_LeadsDAO_dataProvider_fetchAllSectors_result"/>
+    <list IterBinding="fetchAllSectorsIterator" ListOperMode="navigation"
+          ListIter="fetchAllSectorsIterator" id="Sector" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <methodAction id="fetchPostalCodesByTown" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchPostalCodesByTown"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="data.LeadsDAO.methodResults.fetchPostalCodesByTown_LeadsDAO_dataProvider_fetchPostalCodesByTown_result"/>
+    <list IterBinding="fetchPostalCodesByTownIterator" ListOperMode="navigation"
+          ListIter="fetchPostalCodesByTownIterator" id="PostalCode"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="pstZipCode"/>
+      </AttrNames>
+    </list>
+    <methodAction id="findClientTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findClientTypes"
+                  IsViewObjectMethod="false" DataControl="LeadsDAO"
+                  InstanceName="LeadsDAO.dataProvider"
+                  ReturnName="data.LeadsDAO.methodResults.findClientTypes_LeadsDAO_dataProvider_findClientTypes_result"/>
+    <list IterBinding="findClientTypesIterator" ListOperMode="navigation"
+          ListIter="findClientTypesIterator" id="Client2" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="CLNTY_CLNT_TYPE"/>
+      </AttrNames>
+    </list>
+    <tree IterBinding="fetchPostalCodesByTownIterator" id="PostalCode1">
+      <nodeDefinition DefName="TurnQuest.view.models.PostalCode"
+                      Name="PostalCode10">
+        <AttrNames>
+          <Item Value="pstDesc"/>
+          <Item Value="pstZipCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
