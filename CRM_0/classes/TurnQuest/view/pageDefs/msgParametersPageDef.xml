@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.59.23" id="msgParametersPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findReservedWords.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findReservedWordsIterator"/>
+    <searchRegion Binds="findReservedWordsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReqQuery"/>
+    <methodIterator Binds="fetchAllSystems.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="fetchAllSystemsIterator"/>
+    <methodIterator Binds="findRequestCats.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findRequestCatsIterator"/>
+    <searchRegion Binds="findRequestCatsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReq1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findSystemProcesses" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystemProcesses"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="data.EscalationsDAO.methodResults.findSystemProcesses_EscalationsDAO_dataProvider_findSystemProcesses_result"/>
+    <methodAction id="findProcessDefActivities" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findProcessDefActivities"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="data.EscalationsDAO.methodResults.findProcessDefActivities_EscalationsDAO_dataProvider_findProcessDefActivities_result"/>
+    <methodAction id="findEscalationLevels" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findEscalationLevels"
+                  IsViewObjectMethod="false" DataControl="EscalationsDAO"
+                  InstanceName="EscalationsDAO.dataProvider"
+                  ReturnName="data.EscalationsDAO.methodResults.findEscalationLevels_EscalationsDAO_dataProvider_findEscalationLevels_result"/>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <methodAction id="findReservedWords" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findReservedWords"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findReservedWords_ServiceReqDAO_dataProvider_findReservedWords_result"/>
+    <tree IterBinding="findReservedWordsIterator" id="ServiceReq">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq0">
+        <AttrNames>
+          <Item Value="tsrcCode"/>
+          <Item Value="code"/>
+          <Item Value="sysCode"/>
+          <Item Value="editable"/>
+          <Item Value="name"/>
+          <Item Value="desc"/>
+          <Item Value="type"/>
+          <Item Value="tsrcName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="data.HierarchyDAO.methodResults.fetchAllSystems_HierarchyDAO_dataProvider_fetchAllSystems_result"/>
+    <tree IterBinding="fetchAllSystemsIterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRequestCats" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRequestCats"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findRequestCats_ServiceReqDAO_dataProvider_findRequestCats_result"/>
+    <tree IterBinding="findRequestCatsIterator" id="ServiceReq1">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq10">
+        <AttrNames>
+          <Item Value="tsrcCode"/>
+          <Item Value="tsrcName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.59.23" id="schedulerPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllSystems.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="fetchAllSystemsIterator"/>
+    <searchRegion Binds="fetchAllSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SystemQuery"/>
+    <methodIterator Binds="findUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersIterator"/>
+    <searchRegion Binds="findUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+     <methodIterator Binds="findAllActiveUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findAllActiveUsersIterator"/>
+    <methodIterator Binds="findSchedules.result" DataControl="AlertDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.scheduler.AlertBean"
+                    id="findSchedulesIterator"/>
+    <searchRegion Binds="findSchedulesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AlertBeanQuery"/>
+    <methodIterator Binds="findMessageTemplates.result" DataControl="MessageDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.messaging.MessageBean"
+                    id="findMessageTemplatesIterator"/>
+    <searchRegion Binds="findMessageTemplatesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="MessageBeanQuery"/>
+    <methodIterator Binds="findExecutionObjects.result" DataControl="AlertDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.scheduler.AlertBean"
+                    id="findExecutionObjectsIterator"/>
+    <searchRegion Binds="findExecutionObjectsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AlertBean1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <tree IterBinding="findUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+     <methodAction id="findAllActiveUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllActiveUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.findAllActiveUsers_UserDAO_dataProvider_findAllActiveUsers_result"/>
+    <tree IterBinding="findAllActiveUsersIterator" id="User15">
+        <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="checked"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findUsersIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findUsersIterator" id="User2">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User20">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSchedules" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSchedules"
+                  IsViewObjectMethod="false" DataControl="AlertDAO"
+                  InstanceName="AlertDAO.dataProvider"
+                  ReturnName="data.AlertDAO.methodResults.findSchedules_AlertDAO_dataProvider_findSchedules_result"/>
+    <tree IterBinding="findSchedulesIterator" id="AlertBean">
+      <nodeDefinition DefName="TurnQuest.view.scheduler.AlertBean"
+                      Name="AlertBean0">
+        <AttrNames>
+          <Item Value="qtJobName"/>
+          <Item Value="qtDescription"/>
+          <Item Value="qtNextFireTime"/>
+          <Item Value="qtPrevFireTime"/>
+          <Item Value="qtStartTime"/>
+          <Item Value="qtEndTime"/>
+          <Item Value="qtSysCode"/>
+          <Item Value="qtRecurrence"/>
+          <Item Value="qtRecurrenceType"/>
+          <Item Value="qtJobAssignee"/>
+          <Item Value="qtNotifiedFailUser"/>
+          <Item Value="qtNotifiedSuccUser"/>
+          <Item Value="qtReccurenceInterval"/>
+          <Item Value="qtJobType"/>
+          <Item Value="qtJobTemplate"/>
+          <Item Value="qtFailNotifyTemplate"/>
+          <Item Value="qtSuccNotifyTemplate"/>
+          <Item Value="qtCode"/>
+          <Item Value="assignee"/>
+          <Item Value="failUser"/>
+          <Item Value="succUser"/>
+          <Item Value="jobTemplate"/>
+          <Item Value="failTemplate"/>
+          <Item Value="succTemplate"/>
+          <Item Value="assigneeEmail"/>
+          <Item Value="failEmail"/>
+          <Item Value="succEmail"/>
+          <Item Value="qtStatus"/>
+           <Item Value="qtThreshType"/>
+            <Item Value="qtThreshValue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findMessageTemplates" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findMessageTemplates"
+                  IsViewObjectMethod="false" DataControl="MessageDAO"
+                  InstanceName="MessageDAO.dataProvider"
+                  ReturnName="data.MessageDAO.methodResults.findMessageTemplates_MessageDAO_dataProvider_findMessageTemplates_result"/>
+    <tree IterBinding="findMessageTemplatesIterator" id="MessageBean">
+      <nodeDefinition DefName="TurnQuest.view.messaging.MessageBean"
+                      Name="MessageBean0">
+        <AttrNames>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysModule"/>
+          <Item Value="msgtType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllSystems_HierarchyDAO_dataProvider_fetchAllSystems_result"/>
+    <tree IterBinding="fetchAllSystemsIterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findExecutionObjects" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findExecutionObjects"
+                  IsViewObjectMethod="false" DataControl="AlertDAO"
+                  InstanceName="AlertDAO.dataProvider"
+                  ReturnName="data.AlertDAO.methodResults.findExecutionObjects_AlertDAO_dataProvider_findExecutionObjects_result"/>
+    <tree IterBinding="findExecutionObjectsIterator" id="AlertBean1">
+      <nodeDefinition DefName="TurnQuest.view.scheduler.AlertBean"
+                      Name="AlertBean10">
+        <AttrNames>
+          <Item Value="objType"/>
+          <Item Value="objCode"/>
+          <Item Value="objDesc"/>
+          <Item Value="objLocation"/>
+          <Item Value="objChecked"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

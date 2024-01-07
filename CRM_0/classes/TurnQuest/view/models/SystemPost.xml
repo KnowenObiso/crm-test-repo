@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="SystemPost" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.SystemPost" isJavaBased="true">
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <Attribute Name="spostSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="spostSysplCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="spostParentSpostCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="spostCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="spostShtDesc" Type="java.lang.String"/>
+  <Attribute Name="spostDesc" Type="java.lang.String"/>
+  <Attribute Name="spostRemarks" Type="java.lang.String"/>
+  <Attribute Name="spostWef" Type="java.util.Date"/>
+  <Attribute Name="spostBrnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="spostSubdivOsdCode" Type="java.lang.String"/>
+  <Attribute Name="spostUsrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="BBR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BBR_BNK_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BBR_BRANCH_NAME" Type="java.lang.String"/>
+  <Attribute Name="BBR_REMARKS" Type="java.lang.String"/>
+  <Attribute Name="BBR_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="BBR_REF_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BBR_EFT_SUPPORTED" Type="java.lang.String"/>
+  <Attribute Name="BBR_DD_SUPPORTED" Type="java.lang.String"/>
+  <Attribute Name="BBR_CREATED_BY" Type="java.lang.String"/>
+  <Attribute Name="BBR_PHYSICAL_ADDRS" Type="java.lang.String"/>
+  <Attribute Name="BBR_DATE_CREATED" Type="java.util.Date"/>
+  <Attribute Name="BBB_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BBB_BRN_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BBB_BRN_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="BBB_BRN_REG_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BBB_BRN_NAME" Type="java.lang.String"/>
+  <Attribute Name="BBB_BRN_PHY_ADDRS" Type="java.lang.String"/>
+  <Attribute Name="BBB_BBR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BBB_BBR_BNK_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BBB_BBR_BRANCH_NAME" Type="java.lang.String"/>
+  <Attribute Name="BBB_BBR_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="BBB_BBR_PHYSICAL_ADDRS" Type="java.lang.String"/>
+  <AccessorAttribute id="systemPostList" IsCollection="true"
+                     BeanClass="TurnQuest.view.models.SystemPost"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.SystemPost"
+                     BeanClass="TurnQuest.view.models.SystemPost"
+                     id="SystemPost"/>
+</JavaBean>

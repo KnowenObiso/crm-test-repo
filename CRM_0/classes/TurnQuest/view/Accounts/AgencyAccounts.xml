@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="AgencyAccounts" Package="TurnQuest.view.Accounts"
+          BeanClass="TurnQuest.view.Accounts.AgencyAccounts" isJavaBased="true">
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="shortDesc" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="agentCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="createdBy" Type="java.lang.String"/>
+  <Attribute Name="dateCreated" Type="java.util.Date"/>
+  <Attribute Name="status" Type="java.lang.String"/>
+  <Attribute Name="remarks" Type="java.lang.String"/>
+  <Attribute Name="wef" Type="java.util.Date"/>
+  <Attribute Name="wet" Type="java.util.Date"/>
+  <Attribute Name="divName" Type="java.lang.String"/>
+  <Attribute Name="divCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Accounts.AgencyAccounts"
+                     BeanClass="TurnQuest.view.Accounts.AgencyAccounts"
+                     id="AgencyAccounts"/>
+</JavaBean>

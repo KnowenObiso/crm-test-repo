@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ActivityTask" Package="TurnQuest.view.Activities"
+          BeanClass="TurnQuest.view.Activities.ActivityTask" isJavaBased="true">
+  <Attribute Name="tastCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="activityCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="taskFrom" Type="java.sql.Date"/>
+  <Attribute Name="taskTo" Type="java.sql.Date"/>
+  <Attribute Name="taskSubject" Type="java.lang.String"/>
+  <Attribute Name="taskStatusCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="taskPriorityCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="taskAccountCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="status" Type="java.lang.String"/>
+  <Attribute Name="priority" Type="java.lang.String"/>
+  <Attribute Name="relatedAccount" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Activities.ActivityTask"
+                     BeanClass="TurnQuest.view.Activities.ActivityTask"
+                     id="ActivityTask"/>
+</JavaBean>

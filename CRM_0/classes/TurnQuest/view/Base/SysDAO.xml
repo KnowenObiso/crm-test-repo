@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="SysDAO" Package="TurnQuest.view.Base"
+          BeanClass="TurnQuest.view.Base.SysDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Base.sys"
+                  BeanClass="TurnQuest.view.Base.sys" id="findUserSystems"
+                  ReturnNodeName="sys"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Base.sys"
+                  BeanClass="TurnQuest.view.Base.sys" id="findSystems"
+                  ReturnNodeName="sys"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Base.SysDAO"
+                     BeanClass="TurnQuest.view.Base.SysDAO" id="SysDAO"/>
+</JavaBean>

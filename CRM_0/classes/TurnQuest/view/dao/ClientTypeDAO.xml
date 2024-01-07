@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ClientTypeDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.ClientTypeDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.ClientType"
+                  BeanClass="TurnQuest.view.models.ClientType"
+                  id="fetchClientTypes" ReturnNodeName="ClientType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="updateClientType" ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.ClientType"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="addClientType" ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.ClientType"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="TurnQuest.view.models.ClientType"
+                  BeanClass="TurnQuest.view.models.ClientType"
+                  id="fetchClientTypeByClientTypeCode"
+                  ReturnNodeName="ClientType">
+    <ParameterInfo id="clienttypeCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.ClientTypeDAO"
+                     BeanClass="TurnQuest.view.dao.ClientTypeDAO"
+                     id="ClientTypeDAO"/>
+</JavaBean>

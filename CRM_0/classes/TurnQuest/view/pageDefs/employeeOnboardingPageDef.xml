@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="employeeOnboardingPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchInActiveEmployees.result"
+                    DataControl="EmployeeAdminDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="fetchInActiveEmployeesIterator"/>
+    <searchRegion Binds="fetchInActiveEmployeesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdminQuery"/>
+    <methodIterator Binds="fetchActiveEmployees.result"
+                    DataControl="EmployeeAdminDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="fetchActiveEmployeesIterator"/>
+    <searchRegion Binds="fetchActiveEmployeesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdmin1Query"/>
+    <methodIterator Binds="fetchEmployeeBranches.result"
+                    DataControl="EmployeeAdminDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="fetchEmployeeBranchesIterator"/>
+    <searchRegion Binds="fetchEmployeeBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdmin2Query"/>
+    <methodIterator Binds="fetchEmployeeDepartments.result"
+                    DataControl="EmployeeAdminDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="fetchEmployeeDepartmentsIterator"/>
+    <searchRegion Binds="fetchEmployeeDepartmentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdmin3Query"/>
+    <methodIterator Binds="fetchPersonnelRanks.result"
+                    DataControl="EmployeeAdminDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="fetchPersonnelRanksIterator"/>
+    <searchRegion Binds="fetchPersonnelRanksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdmin4Query"/>
+    <methodIterator Binds="fetchAllEmployees.result"
+                    DataControl="EmployeeAdminDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="fetchAllEmployeesIterator"/>
+    <searchRegion Binds="fetchAllEmployeesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdmin5Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchInActiveEmployees" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchInActiveEmployees"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.fetchInActiveEmployees_EmployeeAdminDAO_dataProvider_fetchInActiveEmployees_result"/>
+    <tree IterBinding="fetchInActiveEmployeesIterator" id="EmployeeAdmin">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin0">
+        <AttrNames>
+          <Item Value="STAFF_NO"/>
+          <Item Value="STAFF_NAME"/>
+          <Item Value="STAFF_GENDER"/>
+          <Item Value="STAFF_NATIONAL_ID"/>
+          <Item Value="STAFF_DOB"/>
+          <Item Value="STAFF_DATE_EMPLOYEED"/>
+          <Item Value="STAFF_PIN"/>
+          <Item Value="STAFF_EXIT_DATE"/>
+          <Item Value="STAFF_STATUS"/>
+          <Item Value="STAFF_DEP_CODE"/>
+          <Item Value="STAFF_ID"/>
+          <Item Value="STAFF_CONTRACT_TYPE"/>
+          <Item Value="STAFF_PRD_EMAILNAME"/>
+          <Item Value="STAFF_REPLACING"/>
+          <Item Value="STAFF_RANK"/>
+          <Item Value="STAFF_DUTY_STATION"/>
+          <Item Value="STAFF_PHONE_NUMBER"/>
+          <Item Value="BRN_CODE"/>
+          <Item Value="BRN_NAME"/>
+          <Item Value="DEP_CODE"/>
+          <Item Value="DEP_NAME"/>
+          <Item Value="STAFF_POSITION"/>
+          <Item Value="STAFF_DONE_BY"/>
+          <Item Value="STAFF_REPLACING_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchActiveEmployees" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchActiveEmployees"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.fetchActiveEmployees_EmployeeAdminDAO_dataProvider_fetchActiveEmployees_result"/>
+    <tree IterBinding="fetchActiveEmployeesIterator" id="EmployeeAdmin1">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin10">
+        <AttrNames>
+          <Item Value="STAFF_NO"/>
+          <Item Value="STAFF_NAME"/>
+          <Item Value="STAFF_GENDER"/>
+          <Item Value="STAFF_NATIONAL_ID"/>
+          <Item Value="STAFF_DOB"/>
+          <Item Value="STAFF_DATE_EMPLOYEED"/>
+          <Item Value="STAFF_PIN"/>
+          <Item Value="STAFF_EXIT_DATE"/>
+          <Item Value="STAFF_STATUS"/>
+          <Item Value="STAFF_DEP_CODE"/>
+          <Item Value="STAFF_ID"/>
+          <Item Value="STAFF_PRD_EMAILNAME"/>
+          <Item Value="STAFF_CONTRACT_TYPE"/>
+          <Item Value="STAFF_REPLACING"/>
+          <Item Value="STAFF_RANK"/>
+          <Item Value="STAFF_POSITION"/>
+          <Item Value="STAFF_DUTY_STATION"/>
+          <Item Value="STAFF_PHONE_NUMBER"/>
+          <Item Value="BRN_CODE"/>
+          <Item Value="DEP_CODE"/>
+          <Item Value="DEP_NAME"/>
+          <Item Value="STAFF_REPLACING_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchEmployeeBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchEmployeeBranches"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.fetchEmployeeBranches_EmployeeAdminDAO_dataProvider_fetchEmployeeBranches_result"/>
+    <tree IterBinding="fetchEmployeeBranchesIterator" id="EmployeeAdmin2">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin20">
+        <AttrNames>
+          <Item Value="BRN_CODE"/>
+          <Item Value="BRN_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchEmployeeDepartments" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchEmployeeDepartments"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.fetchEmployeeDepartments_EmployeeAdminDAO_dataProvider_fetchEmployeeDepartments_result"/>
+    <tree IterBinding="fetchEmployeeDepartmentsIterator" id="EmployeeAdmin3">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin30">
+        <AttrNames>
+          <Item Value="DEP_CODE"/>
+          <Item Value="DEP_NAME"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchPersonnelRanks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchPersonnelRanks"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.fetchPersonnelRanks_EmployeeAdminDAO_dataProvider_fetchPersonnelRanks_result"/>
+    <tree IterBinding="fetchPersonnelRanksIterator" id="EmployeeAdmin4">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin40">
+        <AttrNames>
+          <Item Value="PR_DESC"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllEmployees" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllEmployees"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.fetchAllEmployees_EmployeeAdminDAO_dataProvider_fetchAllEmployees_result"/>
+    <tree IterBinding="fetchAllEmployeesIterator" id="EmployeeAdmin5">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin50">
+        <AttrNames>
+          <Item Value="STAFF_NAME"/>
+          <Item Value="STAFF_GENDER"/>
+          <Item Value="STAFF_NO"/>
+          <Item Value="STAFF_ID"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="Holiday" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.Holiday" isJavaBased="true">
+  <Attribute Name="hldDate" Type="java.util.Date"/>
+  <Attribute Name="hldDesc" Type="java.lang.String"/>
+  <Attribute Name="HYear" Type="java.math.BigDecimal"/>
+  <Attribute Name="SQLTypeName" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="void" id="readSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLInput" isStructured="false"/>
+    <ParameterInfo id="typeName" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeSQL"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.sql.SQLOutput" isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.Holiday"
+                     BeanClass="TurnQuest.view.models.Holiday" id="Holiday"/>
+</JavaBean>

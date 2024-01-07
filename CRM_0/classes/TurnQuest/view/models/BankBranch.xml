@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="BankBranch" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.BankBranch" isJavaBased="true">
+  <Attribute Name="code" PrimaryKey="true" Type="java.math.BigDecimal"/>
+  <Attribute Name="bnkCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="branchName" Type="java.lang.String"/>
+  <Attribute Name="remarks" Type="java.lang.String"/>
+  <Attribute Name="shtDesc" Type="java.lang.String"/>
+  <Attribute Name="refCode" Type="java.lang.String"/>
+  <Attribute Name="eftSupported" Type="java.lang.String"/>
+  <Attribute Name="ddSupported" Type="java.lang.String"/>
+  <Attribute Name="dateCreated" Type="java.sql.Timestamp"/>
+  <Attribute Name="createdBy" Type="java.lang.String"/>
+  <Attribute Name="physicalAddrs" Type="java.lang.String"/>
+  <Attribute Name="postalAddrs" Type="java.lang.String"/>
+  <Attribute Name="kbaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bnktShtDesc" Type="java.lang.String"/>
+  <Attribute Name="email" Type="java.lang.String"/>
+  <Attribute Name="personName" Type="java.lang.String"/>
+  <Attribute Name="personEmail" Type="java.lang.String"/>
+  <Attribute Name="personCouCode" Type="java.lang.String"/>
+  <Attribute Name="personPhone" Type="java.lang.String"/>
+  <Attribute Name="terCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bnktCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="brnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="parentCode" Type="java.math.BigDecimal"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="toString"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.BankBranch"
+                     BeanClass="TurnQuest.view.models.BankBranch"
+                     id="BankBranch"/>
+</JavaBean>

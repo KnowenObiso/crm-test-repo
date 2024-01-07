@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="LeadsDAO" Package="TurnQuest.view.Leads"
+          BeanClass="TurnQuest.view.Leads.LeadsDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Leads.LeadValues"
+                  BeanClass="TurnQuest.view.Leads.LeadValues" id="findLeads"
+                  ReturnNodeName="LeadValues"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Leads.LeadStatus"
+                  BeanClass="TurnQuest.view.Leads.LeadStatus"
+                  id="findLeadStatuses" ReturnNodeName="LeadStatus"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Leads.LeadComment"
+                  BeanClass="TurnQuest.view.Leads.LeadComment"
+                  id="findLeadComments" ReturnNodeName="LeadComment"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Leads.LeadActivity"
+                  BeanClass="TurnQuest.view.Leads.LeadActivity"
+                  id="findLeadActivities" ReturnNodeName="LeadActivity"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Leads.LeadSource"
+                  BeanClass="TurnQuest.view.Leads.LeadSource"
+                  id="findLeadSources" ReturnNodeName="LeadSource"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2" id="findClientTypes"
+                  ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.PostalCode"
+                  BeanClass="TurnQuest.view.models.PostalCode"
+                  id="fetchPostalCodesByTown" ReturnNodeName="PostalCode"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town" id="fetchTownsByState"
+                  ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Sector"
+                  BeanClass="TurnQuest.view.setups.Sector" id="fetchAllSectors"
+                  ReturnNodeName="Sector"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Leads.LeadsDAO"
+                     BeanClass="TurnQuest.view.Leads.LeadsDAO" id="LeadsDAO"/>
+</JavaBean>

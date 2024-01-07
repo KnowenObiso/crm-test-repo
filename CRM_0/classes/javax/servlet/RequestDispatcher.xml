@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="RequestDispatcher" Package="javax.servlet"
+          BeanClass="javax.servlet.RequestDispatcher" isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="void" id="forward"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="javax.servlet.ServletRequest"
+                   isStructured="true"/>
+    <ParameterInfo id="p1" Type="javax.servlet.ServletResponse"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="include"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="javax.servlet.ServletRequest"
+                   isStructured="true"/>
+    <ParameterInfo id="p1" Type="javax.servlet.ServletResponse"
+                   isStructured="true"/>
+  </MethodAccessor>
+</JavaBean>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="Manager" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.Manager" isJavaBased="true">
+ <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="shtDesc" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/> 
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.Manager"
+                     BeanClass="TurnQuest.view.models.Manager" id="Manager"/>
+</JavaBean>

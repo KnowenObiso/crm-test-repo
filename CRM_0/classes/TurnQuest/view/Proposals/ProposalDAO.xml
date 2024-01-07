@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ProposalDAO" Package="TurnQuest.view.Proposals"
+          BeanClass="TurnQuest.view.Proposals.ProposalDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findProposal" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findLaunchData" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findPropCancDtls" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findPropPendingStatus" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findRetireAges" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findLifeCoverFactors" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findPendingStatus" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findCachedProposal" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findProposalReceipts" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal"
+                  id="findProposalDefects" ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Proposals.Proposal"
+                  BeanClass="TurnQuest.view.Proposals.Proposal" id="findDefects"
+                  ReturnNodeName="Proposal"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  id="findPropModSystems" ReturnNodeName="ProposalSchedulesBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  id="findPropModulesSubUnits"
+                  ReturnNodeName="ProposalSchedulesBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  id="findPropModulesSubUnitsDet"
+                  ReturnNodeName="ProposalSchedulesBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  id="findPropMappingColumns"
+                  ReturnNodeName="ProposalSchedulesBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                  id="findPropModulesSubUnitsDetOptions"
+                  ReturnNodeName="ProposalSchedulesBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Proposals.ProposalDAO"
+                     BeanClass="TurnQuest.view.Proposals.ProposalDAO"
+                     id="ProposalDAO"/>
+</JavaBean>

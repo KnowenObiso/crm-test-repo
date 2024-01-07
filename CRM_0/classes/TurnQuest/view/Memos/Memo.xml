@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Memo" Package="TurnQuest.view.Memos"
+          BeanClass="TurnQuest.view.Memos.Memo" isJavaBased="true">
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="sysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysShortDesc" Type="java.lang.String"/>
+  <Attribute Name="sysName" Type="java.lang.String"/>
+  <Attribute Name="mtypCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="mtypSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="mtypMemoType" Type="java.lang.String"/>
+  <Attribute Name="mtypApplLvl" Type="java.lang.String"/>
+  <Attribute Name="mtypStatus" Type="java.lang.String"/>
+  <Attribute Name="mtypSubCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sclDesc" Type="java.lang.String"/>
+  <Attribute Name="sclCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="memoCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="memoSubject" Type="java.lang.String"/>
+  <Attribute Name="memoMtypCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="memdetCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="memdetContent" Type="java.lang.String"/>
+  <Attribute Name="memdetMemoCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <AccessorAttribute id="produces" IsCollection="true"
+                     BeanClass="TurnQuest.view.Memos.memoValues"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Memos.Memo"
+                     BeanClass="TurnQuest.view.Memos.Memo" id="Memo"/>
+</JavaBean>

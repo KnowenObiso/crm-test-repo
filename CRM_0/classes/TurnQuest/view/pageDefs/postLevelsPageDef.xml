@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="postLevelsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllSystems.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="fetchAllSystemsIterator"/>
+    <searchRegion Binds="fetchAllSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SystemQuery"/>
+    <methodIterator Binds="fetchSystemPostLevels.result"
+                    DataControl="SystemPostDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.SystemPostLevel"
+                    id="fetchSystemPostLevelsIterator"/>
+    <searchRegion Binds="fetchSystemPostLevelsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SystemPostLevelQuery"/>
+    <methodIterator Binds="fetchSystemPostsByLevel.result"
+                    DataControl="SystemPostDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.SystemPost"
+                    id="fetchSystemPostsByLevelIterator"/>
+    <methodIterator Binds="fetchOrgSubDivisionsBySystem.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.OrgSubDivision"
+                    id="fetchOrgSubDivisionsBySystemIterator"/>
+    <searchRegion Binds="fetchOrgSubDivisionsBySystemIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="OrgSubDivisionQuery"/>
+    <methodIterator Binds="findAccountBranches.result" DataControl="AccountsDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.AccountType"
+                    id="findAccountBranchesIterator"/>
+    <searchRegion Binds="findAccountBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AccountTypeQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllSystems_HierarchyDAO_dataProvider_fetchAllSystems_result"/>
+    <tree IterBinding="fetchAllSystemsIterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="active"/>
+          <Item Value="dbUsername"/>
+          <Item Value="dbPassword"/>
+          <Item Value="dbString"/>
+          <Item Value="path"/>
+          <Item Value="orgCode"/>
+          <Item Value="agentMainFormName"/>
+          <Item Value="kbaCode"/>
+          <Item Value="signaturePath"/>
+          <Item Value="sysTemplate"/>
+          <Item Value="nodeType"/>
+          <Item Value="mainFormName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchSystemPostLevels" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchSystemPostLevels"
+                  IsViewObjectMethod="false" DataControl="SystemPostDAO"
+                  InstanceName="SystemPostDAO.dataProvider"
+                  ReturnName="SystemPostDAO.methodResults.fetchSystemPostLevels_SystemPostDAO_dataProvider_fetchSystemPostLevels_result"/>
+    <tree IterBinding="fetchSystemPostLevelsIterator" id="SystemPostLevel">
+      <nodeDefinition DefName="TurnQuest.view.models.SystemPostLevel"
+                      Name="SystemPostLevel0">
+        <AttrNames>
+          <Item Value="sysplShtDesc"/>
+          <Item Value="sysplDesc"/>
+          <Item Value="sysplWef"/>
+          <Item Value="sysplRanking"/>
+          <Item Value="sysplSysCode"/>
+          <Item Value="sysplCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchSystemPostsByLevel" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchSystemPostsByLevel"
+                  IsViewObjectMethod="false" DataControl="SystemPostDAO"
+                  InstanceName="SystemPostDAO.dataProvider"
+                  ReturnName="SystemPostDAO.methodResults.fetchSystemPostsByLevel_SystemPostDAO_dataProvider_fetchSystemPostsByLevel_result"/>
+    <tree IterBinding="fetchSystemPostsByLevelIterator" id="SystemPost">
+      <nodeDefinition DefName="TurnQuest.view.models.SystemPost"
+                      Name="SystemPost0">
+        <AttrNames>
+          <Item Value="spostDesc"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="systemPostList"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchOrgSubDivisionsBySystem" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="fetchOrgSubDivisionsBySystem"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchOrgSubDivisionsBySystem_HierarchyDAO_dataProvider_fetchOrgSubDivisionsBySystem_result"/>
+    <tree IterBinding="fetchOrgSubDivisionsBySystemIterator"
+          id="OrgSubDivision">
+      <nodeDefinition DefName="TurnQuest.view.models.OrgSubDivision"
+                      Name="OrgSubDivision0">
+        <AttrNames>
+          <Item Value="osdCode"/>
+          <Item Value="osdId"/>
+          <Item Value="osdName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAccountBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAccountBranches"
+                  IsViewObjectMethod="false" DataControl="AccountsDAO"
+                  InstanceName="AccountsDAO.dataProvider"
+                  ReturnName="AccountsDAO.methodResults.findAccountBranches_AccountsDAO_dataProvider_findAccountBranches_result"/>
+    <tree IterBinding="findAccountBranchesIterator" id="AccountType">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.AccountType"
+                      Name="AccountType0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

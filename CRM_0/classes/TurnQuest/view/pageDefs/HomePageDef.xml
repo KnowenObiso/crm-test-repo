@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="HomePageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <methodIterator Binds="findUserByAgencyCode.result" DataControl="ClientDAO"
+                    RangeSize="25" BeanClass=""
+                    id="findUserByAgencyCodeIterator"/>
+    <methodIterator Binds="findRequestsByUser.result"
+                    DataControl="ServiceReqDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findRequestsByUserIterator"/>
+    <searchRegion Binds="findRequestsByUserIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceReqQuery"/>
+ <!--                 <methodIterator Binds="findUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersIterator"/>
+    <searchRegion Binds="findUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>-->
+    <methodIterator Binds="findUserTasks.result" DataControl="BpmwDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.bpm.Bpmw"
+                    id="findUserTasksIterator"/>
+    <searchRegion Binds="findUserTasksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BpmwQuery"/>
+    <methodIterator Binds="fetchUserTasks.result" DataControl="BpmwDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.bpm.BpmTask"
+                    id="fetchUserTasksIterator"/>
+    <searchRegion Binds="fetchUserTasksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BpmTaskQuery"/>
+    <methodIterator Binds="fetchAllUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="fetchAllUsersIterator"/>
+    <searchRegion Binds="fetchAllUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="User1Query"/>
+    <methodIterator Binds="findUsers.result" DataControl="UserDAO"	
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"	
+                    id="findUsersIterator"/>	
+    <searchRegion Binds="findUsersIterator" Criteria=""	
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"	
+                  id="UserQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="findUserByAgencyCode" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUserByAgencyCode"
+                  IsViewObjectMethod="false" DataControl="ClientDAO"
+                  InstanceName="ClientDAO.dataProvider"
+                  ReturnName="ClientDAO.methodResults.findUserByAgencyCode_ClientDAO_dataProvider_findUserByAgencyCode_result"/>
+    <methodAction id="findRequestsByUser" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRequestsByUser"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="ServiceReqDAO.methodResults.findRequestsByUser_ServiceReqDAO_dataProvider_findRequestsByUser_result"/>
+    <tree IterBinding="findRequestsByUserIterator" id="ServiceReq">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReq0">
+        <AttrNames>
+          <Item Value="tsrCode"/>
+          <Item Value="tsrcCode"/>
+          <Item Value="tsrType"/>
+          <Item Value="accType"/>
+          <Item Value="accCode"/>
+          <Item Value="tsrDate"/>
+          <Item Value="tsrDate1"/>
+          <Item Value="assignee"/>
+          <Item Value="ownType"/>
+          <Item Value="ownerCode"/>
+          <Item Value="status"/>
+          <Item Value="dueDate"/>
+          <Item Value="resDate"/>
+          <Item Value="summary"/>
+          <Item Value="desc"/>
+          <Item Value="solution"/>
+          <Item Value="tsrcName"/>
+          <Item Value="accTypeDesc"/>
+          <Item Value="assigneeDesc"/>
+          <Item Value="accountName"/>
+          <Item Value="ownerType"/>
+          <Item Value="owner"/>
+          <Item Value="tsrMode"/>
+          <Item Value="requestRefNumber"/>
+          <Item Value="comments"/>
+          <Item Value="sprShtDesc"/>
+          <Item Value="agnPhysicalAddress"/>
+          <Item Value="agnEmailAddress"/>
+          <Item Value="agnSmsNumber"/>
+          <Item Value="tsr_reporter"/>
+          <Item Value="TSR_POLICY_NO"/>
+          <Item Value="clientName"/>
+          <Item Value="idNo"/>
+          <Item Value="tckSelected"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <tree IterBinding="findUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUserTasks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUserTasks"
+                  IsViewObjectMethod="false" DataControl="BpmwDAO"
+                  InstanceName="BpmwDAO.dataProvider"
+                  ReturnName="data.BpmwDAO.methodResults.findUserTasks_BpmwDAO_dataProvider_findUserTasks_result"/>
+    <tree IterBinding="findUserTasksIterator" id="Bpmw">
+      <nodeDefinition DefName="TurnQuest.view.bpm.Bpmw" Name="Bpmw0">
+        <AttrNames>
+          <Item Value="activityName"/>
+          <Item Value="assignee"/>
+          <Item Value="taskID"/>
+          <Item Value="executionID"/>
+          <Item Value="taskCreationDate"/>
+          <Item Value="taskPriority"/>
+          <Item Value="taskVariableID"/>
+          <Item Value="taskVariableDesc"/>
+          <Item Value="taskProcess"/>
+          <Item Value="ticketCode"/>
+          <Item Value="ticketClientCode"/>
+          <Item Value="client"/>
+          <Item Value="agnCode"/>
+          <Item Value="agent"/>
+          <Item Value="polCode"/>
+          <Item Value="polNumber"/>
+          <Item Value="claimNo"/>
+          <Item Value="quoteCode"/>
+          <Item Value="quotationNumber"/>
+          <Item Value="ticketBy"/>
+          <Item Value="ticketDate"/>
+          <Item Value="ticketProcessId"/>
+          <Item Value="sysModuleCode"/>
+          <Item Value="endrCode"/>
+          <Item Value="ticketTo"/>
+          <Item Value="ticketRemarks"/>
+          <Item Value="ticketName"/>
+          <Item Value="ticketDueDate"/>
+          <Item Value="ticketTransNo"/>
+          <Item Value="prodType"/>
+          <Item Value="proposalNo"/>
+          <Item Value="tckSelected"/>
+          <Item Value="assignmentDate"/>
+          <Item Value="endrType"/>
+          <Item Value="ticketNameModified"/>
+          <Item Value="dmsDocType"/>
+          <Item Value="dmsComment"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserTasks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUserTasks"
+                  IsViewObjectMethod="false" DataControl="BpmwDAO"
+                  InstanceName="BpmwDAO.dataProvider"
+                  ReturnName="data.BpmwDAO.methodResults.fetchUserTasks_BpmwDAO_dataProvider_fetchUserTasks_result"/>
+    <tree IterBinding="fetchUserTasksIterator" id="BpmTask">
+      <nodeDefinition DefName="TurnQuest.view.bpm.BpmTask" Name="BpmTask0">
+        <AttrNames>
+          <Item Value="assignee"/>
+          <Item Value="taskID"/>
+          <Item Value="ticketBy"/>
+          <Item Value="ticketDate"/>
+          <Item Value="assignmentDate"/>
+          <Item Value="ticketProcessId"/>
+          <Item Value="ticketProcessShtDesc"/>
+          <Item Value="ticketProcessName"/>
+          <Item Value="sysModuleCode"/>
+          <Item Value="sysModule"/>
+          <Item Value="ticketTo"/>
+          <Item Value="ticketRemarks"/>
+          <Item Value="ticketName"/>
+          <Item Value="ticketNameModified"/>
+          <Item Value="ticketDueDate"/>
+          <Item Value="ticketTransNo"/>
+          <Item Value="tckSelected"/>
+          <Item Value="ticketEntityCode"/>
+          <Item Value="ticketEntityRefNo"/>
+          <Item Value="ticketEntityName"/>
+          <Item Value="ticketScreen"/>
+          <Item Value="ticketType"/>
+          <Item Value="ticketProcessPDL"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="data.UserDAO.methodResults.fetchAllUsers_UserDAO_dataProvider_fetchAllUsers_result"/>
+    <tree IterBinding="fetchAllUsersIterator" id="User1">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User10">
+        <AttrNames>
+          <Item Value="usrCode"/>
+          <Item Value="usrName"/>
+          <Item Value="usrFullname"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

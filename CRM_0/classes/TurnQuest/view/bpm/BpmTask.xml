@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="BpmTask" Package="TurnQuest.view.bpm"
+          BeanClass="TurnQuest.view.bpm.BpmTask" isJavaBased="true">
+  <Attribute Name="assignee" Type="java.lang.String"/>
+  <Attribute Name="taskID" Type="java.lang.String"/>
+  <Attribute Name="ticketBy" Type="java.lang.String"/>
+  <Attribute Name="ticketDate" Type="java.util.Date"/>
+  <Attribute Name="assignmentDate" Type="java.util.Date"/>
+  <Attribute Name="ticketProcessId" Type="java.lang.String"/>
+  <Attribute Name="ticketProcessShtDesc" Type="java.lang.String"/>
+  <Attribute Name="ticketProcessName" Type="java.lang.String"/>
+  <Attribute Name="sysModuleCode" Type="java.lang.String"/>
+  <Attribute Name="sysModule" Type="java.lang.String"/>
+  <Attribute Name="ticketTo" Type="java.lang.String"/>
+  <Attribute Name="ticketRemarks" Type="java.lang.String"/>
+  <Attribute Name="ticketName" Type="java.lang.String"/>
+  <Attribute Name="ticketNameModified" Type="java.lang.String"/>
+  <Attribute Name="ticketDueDate" Type="java.util.Date"/>
+  <Attribute Name="ticketTransNo" Type="java.lang.String"/>
+  <Attribute Name="tckSelected" Type="boolean"/>
+  <Attribute Name="ticketEntityCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ticketEntityRefNo" Type="java.lang.String"/>
+  <Attribute Name="ticketEntityName" Type="java.lang.String"/>
+  <Attribute Name="ticketScreen" Type="java.lang.String"/>
+  <Attribute Name="ticketType" Type="java.lang.String"/>
+  <Attribute Name="ticketProcessPDL" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.bpm.BpmTask"
+                     BeanClass="TurnQuest.view.bpm.BpmTask" id="BpmTask"/>
+</JavaBean>

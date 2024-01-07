@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="AgencyClass" Package="TurnQuest.view.Accounts"
+          BeanClass="TurnQuest.view.Accounts.AgencyClass" isJavaBased="true">
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="decsription" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="agentCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="accountCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agntShtDesc" Type="java.lang.String"/>
+  <Attribute Name="agentName" Type="java.lang.String"/>
+  <Attribute Name="physicalAddress" Type="java.lang.String"/>
+  <Attribute Name="postalAddress" Type="java.lang.String"/>
+  <Attribute Name="emailAddress" Type="java.lang.String"/>
+  <Attribute Name="agntSubagnt" Type="java.lang.String"/>
+  <Attribute Name="mainAgnt_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="accountTypes" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setDescription"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="description" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Accounts.AgencyClass"
+                     BeanClass="TurnQuest.view.Accounts.AgencyClass"
+                     id="AgencyClass"/>
+</JavaBean>

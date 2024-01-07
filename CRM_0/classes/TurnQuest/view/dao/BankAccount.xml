@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="BankAccount" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.BankAccount" isJavaBased="true">
+  <Attribute Name="BACT_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BACT_NAME" Type="java.lang.String"/>
+  <Attribute Name="BACT_ACCOUNT_NO" Type="java.lang.String"/>
+  <Attribute Name="BACT_BBR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BACT_CELL_NOS" Type="java.lang.String"/>
+  <Attribute Name="BACT_TEL_NOS" Type="java.lang.String"/>
+  <Attribute Name="BACT_ACCOUNT_TYPE" Type="java.lang.String"/>
+  <Attribute Name="BACT_DEFAULT" Type="java.lang.String"/>
+  <Attribute Name="BACT_CUR_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BACT_ACC_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BACT_ACCOUNT_OFFICER" Type="java.lang.String"/>
+  <Attribute Name="BACT_BANK_BRANCH" Type="java.lang.String"/>
+  <Attribute Name="BACT_CURRENCY" Type="java.lang.String"/>
+  <Attribute Name="BACT_USER_CODE" Type="java.lang.String"/>
+  <Attribute Name="BACT_BANK_NAME" Type="java.lang.String"/>
+  <Attribute Name="BACT_IBAN" Type="java.lang.String"/>
+  <Attribute Name="BACT_STATUS" Type="java.lang.String"/>
+  <Attribute Name="BACT_BVN_NO" Type="java.lang.String"/>
+  <Attribute Name="BACT_WEF_DATE" Type="java.util.Date"/>
+  <Attribute Name="BACT_WET_DATE" Type="java.util.Date"/>
+  <Attribute Name="BACT_DDI_DEFAULT" Type="java.util.String"/>
+  <Attribute Name="BACT_ACC_TYPE" Type="java.util.String"/>
+  <Attribute Name="accountTypeName" Type="java.util.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.BankAccount"
+                     BeanClass="TurnQuest.view.dao.BankAccount"
+                     id="BankAccount"/>
+</JavaBean>

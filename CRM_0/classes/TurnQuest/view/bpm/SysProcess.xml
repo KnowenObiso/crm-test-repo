@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.59.23"
+          id="SysProcess" Package="TurnQuest.view.bpm"
+          BeanClass="TurnQuest.view.bpm.SysProcess" isJavaBased="true">
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="sysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="jpdlDesc" Type="java.lang.String"/>
+  <Attribute Name="deployment" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.bpm.SysProcess"
+                     BeanClass="TurnQuest.view.bpm.SysProcess" id="SysProcess"/>
+</JavaBean>

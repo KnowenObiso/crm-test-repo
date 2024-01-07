@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="BranchName" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.BranchName" isJavaBased="true">
+  <Attribute Name="bns_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="bns_sht_desc" Type="java.lang.String"/>
+  <Attribute Name="bns_name" Type="java.lang.String"/>
+  <Attribute Name="bns_phy_addrs" Type="java.lang.String"/>
+  <Attribute Name="bns_email_addrs" Type="java.lang.String"/>
+  <Attribute Name="bns_post_addrs" Type="java.lang.String"/>
+  <Attribute Name="bns_twn_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="bns_cou_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="bns_contact" Type="java.lang.String"/>
+  <Attribute Name="bns_manager" Type="java.lang.String"/>
+  <Attribute Name="bns_tel" Type="java.lang.String"/>
+  <Attribute Name="bns_fax" Type="java.lang.String"/>
+  <Attribute Name="state_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="townName" Type="java.lang.String"/>
+  <Attribute Name="countryName" Type="java.lang.String"/>
+  <Attribute Name="stateName" Type="java.lang.String"/>
+  <Attribute Name="accType" Type="java.lang.String"/>
+  <Attribute Name="region" Type="java.lang.String"/>
+  <Attribute Name="bnsPostalCod" Type="java.math.BigDecimal"/>
+  <Attribute Name="bnsEmailFrom" Type="java.lang.String"/>
+  <Attribute Name="bnsManager" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.models.BranchName"
+                     BeanClass="TurnQuest.view.models.BranchName"
+                     id="BranchName"/>
+</JavaBean>

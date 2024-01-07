@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Account" Package="TurnQuest.view.Activities"
+          BeanClass="TurnQuest.view.Activities.Account" isJavaBased="true">
+  <Attribute Name="accountCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="accountType" Type="java.lang.String"/>
+  <Attribute Name="accountTypeCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="accountName" Type="java.lang.String"/>
+  <Attribute Name="accountEmail" Type="java.lang.String"/>
+  <Attribute Name="targetSelected" Type="java.lang.Boolean"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Activities.Account"
+                     BeanClass="TurnQuest.view.Activities.Account"
+                     id="Account"/>
+</JavaBean>

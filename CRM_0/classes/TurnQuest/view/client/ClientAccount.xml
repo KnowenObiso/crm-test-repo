@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="ClientAccount" Package="TurnQuest.view.client"
+          BeanClass="TurnQuest.view.client.ClientAccount" isJavaBased="true">
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="shortDesc" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="clientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="createdBy" Type="java.lang.String"/>
+  <Attribute Name="dateCreated" Type="java.util.Date"/>
+  <Attribute Name="status" Type="java.lang.String"/>
+  <Attribute Name="remarks" Type="java.lang.String"/>
+  <Attribute Name="wef" Type="java.util.Date"/>
+  <Attribute Name="wet" Type="java.util.Date"/>
+  <Attribute Name="brnName" Type="java.lang.String"/>
+  <Attribute Name="divName" Type="java.lang.String"/>
+  <Attribute Name="bdivCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clcoCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="clcoName" Type="java.lang.String"/>
+  <Attribute Name="clcoPostAdd" Type="java.lang.String"/>
+  <Attribute Name="clcoPhysAdd" Type="java.lang.String"/>
+  <Attribute Name="secCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="secName" Type="java.lang.String"/>
+  <Attribute Name="contactName" Type="java.lang.String"/>
+  <Attribute Name="contactTitle" Type="java.lang.String"/>
+  <Attribute Name="contactSmsNo" Type="java.lang.String"/>
+  <Attribute Name="contactEmail" Type="java.lang.String"/>
+  <Attribute Name="clcoCnctEmail" Type="java.lang.String"/>
+  <Attribute Name="clcoCnctPhoneNo" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.client.ClientAccount"
+                     BeanClass="TurnQuest.view.client.ClientAccount"
+                     id="ClientAccount"/>
+</JavaBean>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ClientAmlDetailsDAO" Package="TurnQuest.view.client"
+          BeanClass="TurnQuest.view.client.ClientAmlDetailsDAO"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.client.ClientAmlDetails"
+                  BeanClass="TurnQuest.view.client.ClientAmlDetails"
+                  id="findClientAmldetails" ReturnNodeName="ClientAmlDetails"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Country"
+                  BeanClass="TurnQuest.view.setups.Country"
+                  id="fetchAllCountriesInfo" ReturnNodeName="Country"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Country"
+                  BeanClass="TurnQuest.view.setups.Country" id="fetchCountries"
+                  ReturnNodeName="Country"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="session" Type="javax.servlet.http.HttpSession"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town" id="fetchSourceFunds"
+                  ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.client.ClientAmlDetails"
+                  BeanClass="TurnQuest.view.client.ClientAmlDetails"
+                  id="findClientCr12details" ReturnNodeName="ClientAmlDetails"
+                  CollectionBeanClass="UpdateableCollection"/>                  
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.client.ClientAmlDetails"
+                  BeanClass="TurnQuest.view.client.ClientAmlDetails"
+                  id="fetchEntitiesAmldetails" ReturnNodeName="ClientAmlDetails"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town" id="fetchSourceWealth"
+                  ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>              
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.client.ClientAmlDetailsDAO"
+                     BeanClass="TurnQuest.view.client.ClientAmlDetailsDAO"
+                     id="ClientAmlDetailsDAO"/>
+</JavaBean>

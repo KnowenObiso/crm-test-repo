@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="emTemplatePageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findSystems.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findSystemsIterator"/>
+    <methodIterator Binds="findMessageTemplates.result" DataControl="MessageDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.messaging.MessageBean"
+                    id="findMessageTemplatesIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="findSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSystems"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findSystems_UserDAO_dataProvider_findSystems_result"/>
+    <tree IterBinding="findSystemsIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="sysName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findMessageTemplates" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findMessageTemplates"
+                  IsViewObjectMethod="false" DataControl="MessageDAO"
+                  InstanceName="MessageDAO.dataProvider"
+                  ReturnName="MessageDAO.methodResults.findMessageTemplates_MessageDAO_dataProvider_findMessageTemplates_result"/>
+    <tree IterBinding="findMessageTemplatesIterator" id="MessageBean">
+      <nodeDefinition DefName="TurnQuest.view.messaging.MessageBean"
+                      Name="MessageBean0">
+        <AttrNames>
+          <Item Value="msgtCode"/>
+          <Item Value="msgtShtDesc"/>
+          <Item Value="msgtMsg"/>
+          <Item Value="msgtSysModule"/>
+          <Item Value="msgtType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

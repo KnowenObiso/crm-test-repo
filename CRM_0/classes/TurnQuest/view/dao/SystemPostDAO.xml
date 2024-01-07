@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="SystemPostDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.SystemPostDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.models.SystemPostLevel"
+                  BeanClass="TurnQuest.view.models.SystemPostLevel"
+                  id="fetchSystemPostLevels" ReturnNodeName="SystemPostLevel"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.SystemPost"
+                  BeanClass="TurnQuest.view.models.SystemPost"
+                  id="fetchSystemPostsByLevel" ReturnNodeName="SystemPost"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.SystemPost"
+                  BeanClass="TurnQuest.view.models.SystemPost"
+                  id="fetchSystemPostsByPost" ReturnNodeName="SystemPost"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="spostCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.SystemPost"
+                  BeanClass="TurnQuest.view.models.SystemPost"
+                  id="fetchSystemPostsBySystem" ReturnNodeName="SystemPost"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.SystemPost"
+                  BeanClass="TurnQuest.view.models.SystemPost"
+                  id="fetchBankBranches" ReturnNodeName="SystemPost"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.SystemPost"
+                  BeanClass="TurnQuest.view.models.SystemPost"
+                  id="fetchBankBranchDetails" ReturnNodeName="SystemPost"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.SystemPostDAO"
+                     BeanClass="TurnQuest.view.dao.SystemPostDAO"
+                     id="SystemPostDAO"/>
+</JavaBean>

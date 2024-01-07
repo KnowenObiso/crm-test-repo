@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="DDfailRemarksSetupsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllClientTitles.result"
+                    DataControl="MainClientDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.client.ClientTitle"
+                    id="fetchAllClientTitlesIterator"/>
+    <searchRegion Binds="fetchAllClientTitlesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClientTitle1Query"/>
+    <methodIterator Binds="fetchDDFailedRemarks.result" DataControl="BankDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.models.DirectDebitReport"
+                    id="fetchDDFailedRemarksIterator"/>
+    <searchRegion Binds="fetchDDFailedRemarksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DirectDebitReportQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllClientTitles" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllClientTitles"
+                  IsViewObjectMethod="false" DataControl="MainClientDAO"
+                  InstanceName="MainClientDAO.dataProvider"
+                  ReturnName="MainClientDAO.methodResults.fetchAllClientTitles_MainClientDAO_dataProvider_fetchAllClientTitles_result"/>
+    <tree IterBinding="fetchAllClientTitlesIterator" id="ClientTitle">
+      <nodeDefinition DefName="TurnQuest.view.client.ClientTitle"
+                      Name="ClientTitle0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllClientTitlesIterator" id="ClientTitle1">
+      <nodeDefinition DefName="TurnQuest.view.client.ClientTitle"
+                      Name="ClientTitle10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchDDFailedRemarks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchDDFailedRemarks"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="BankDAO.methodResults.fetchDDFailedRemarks_BankDAO_dataProvider_fetchDDFailedRemarks_result"/>
+    <tree IterBinding="fetchDDFailedRemarksIterator" id="DirectDebitReport">
+      <nodeDefinition DefName="TurnQuest.view.models.DirectDebitReport"
+                      Name="DirectDebitReport0">
+        <AttrNames>
+          <Item Value="dfrCode"/>
+          <Item Value="dfrFailedRemarks"/>
+          <Item Value="dfrApplicationLevel"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

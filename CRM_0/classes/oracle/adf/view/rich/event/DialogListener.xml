@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="DialogListener" Package="oracle.adf.view.rich.event"
+          BeanClass="oracle.adf.view.rich.event.DialogListener"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="void" id="processDialog"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="oracle.adf.view.rich.event.DialogEvent"
+                   isStructured="true"/>
+  </MethodAccessor>
+</JavaBean>

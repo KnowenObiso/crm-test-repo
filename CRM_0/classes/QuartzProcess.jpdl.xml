@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="QuartzProcess" xmlns="http://jbpm.org/4.0/jpdl">
+   <start g="180,49,48,48" name="start1">
+      <transition g="-82,-18" name="to Start Process" to="Start Process"/>
+   </start>
+   <task g="307,204,92,52" assignee = "#{assignee}" name="Start Process">
+      <transition g="-42,-18" name="to end" to="end"/>
+   </task>
+   <end g="171,316,48,48" name="end"/>
+</process>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="EcmBean" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.EcmBean" isJavaBased="true">
+  <Attribute Name="estecmurl" Type="java.lang.String"/>
+  <Attribute Name="estecmusername" Type="java.lang.String"/>
+  <Attribute Name="estecmpassword" Type="java.lang.String"/>
+  <Attribute Name="estrootfolder" Type="java.lang.String"/>
+  <Attribute Name="sysname" Type="java.lang.String"/>
+  <Attribute Name="estcode" Type="java.math.BigDecimal"/>
+  <Attribute Name="estsyscode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processName" Type="java.lang.String"/>
+  <Attribute Name="sysShtDesc" Type="java.lang.String"/>
+  <Attribute Name="syscode" Type="java.math.BigDecimal"/>
+  <Attribute Name="rptcode" Type="java.math.BigDecimal"/>
+  <Attribute Name="rptname" Type="java.lang.String"/>
+  <Attribute Name="rptdesc" Type="java.lang.String"/>
+  <Attribute Name="sprrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sprrDesc" Type="java.lang.String"/>
+  <Attribute Name="type" Type="java.lang.String"/>
+  <Attribute Name="content_name" Type="java.lang.String"/>
+  <Attribute Name="content_desc" Type="java.lang.String"/>
+  <Attribute Name="sdt_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="contDesc" Type="java.lang.String"/>
+  <Attribute Name="contentType" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.setups.EcmBean"
+                     BeanClass="TurnQuest.view.setups.EcmBean" id="EcmBean"/>
+</JavaBean>

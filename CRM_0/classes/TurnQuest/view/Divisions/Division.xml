@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="Division" Package="TurnQuest.view.Divisions"
+          BeanClass="TurnQuest.view.Divisions.Division" isJavaBased="true">
+  <Attribute Name="DIV_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="DIV_NAME" Type="java.lang.String"/>
+  <Attribute Name="DIV_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="DIV_DIVISION_STATUS" Type="java.lang.String"/>
+  <Attribute Name="SDIV_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="SDIV_NAME" Type="java.lang.String"/>
+  <Attribute Name="SDIV_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="SDIV_DIV_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BDIV_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="BRN_NAME" Type="java.lang.String"/>
+  <Attribute Name="BDIV_WEF" Type="java.util.Date"/>
+  <Attribute Name="BDIV_WET" Type="java.util.Date"/>
+  <Attribute Name="BRN_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="userDiv_code" Type="java.math.BigDecimal"/>
+  <Attribute Name="userDiv_userCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="userDiv_divCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="userDiv_default" Type="java.lang.String"/>
+  <Attribute Name="nodeType" Type="java.lang.String"/>
+  <Attribute Name="divOrder" Type="java.lang.String"/>
+  <Attribute Name="divDirectorCode" Type="java.lang.String"/>
+  <Attribute Name="divDirectorName" Type="java.lang.String"/>
+  <Attribute Name="divAssDirectorCode" Type="java.lang.String"/>
+  <Attribute Name="divAssDirectorName" Type="java.lang.String"/>
+  <Attribute Name="divisionSelected" Type="java.lang.Boolean"/>
+  <Attribute Name="orgCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="branchCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="rorgCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="rorgDesc" Type="java.lang.String"/>
+  <Attribute Name="rorgShtDesc" Type="java.lang.String"/>
+ <Attribute Name="rorgcontractType" Type="java.lang.String"/>
+  <Attribute Name="orsDesc" Type="java.lang.String"/>
+  <Attribute Name="orsCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="orsLevel" Type="java.lang.String"/>
+  <Attribute Name="divBranchCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Divisions.Division"
+                     BeanClass="TurnQuest.view.Divisions.Division"
+                     id="Division"/>
+</JavaBean>

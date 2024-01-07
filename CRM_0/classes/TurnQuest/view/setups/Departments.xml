@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Departments" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.Departments" isJavaBased="true">
+  <Attribute Name="depCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="depShtDesc" Type="java.lang.String"/>
+  <Attribute Name="depName" Type="java.lang.String"/>
+  <Attribute Name="depWef" Type="java.sql.Date"/>
+  <Attribute Name="depWet" Type="java.sql.Date"/>
+  <Attribute Name="depUsrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="userName" Type="java.lang.String"/>
+  <Attribute Name="usersName" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.Departments"
+                     BeanClass="TurnQuest.view.setups.Departments"
+                     id="Departments"/>
+</JavaBean>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="mobileServiceProvidersPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAlLMobileTypes.result"
+                    DataControl="ClaimPaymentModesDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+                    id="fetchAlLMobileTypesIterator"/>
+    <searchRegion Binds="fetchAlLMobileTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClaimPaymentModesQuery"/>
+    <methodIterator Binds="findCountries.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findCountriesIterator"/>
+    <searchRegion Binds="findCountriesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="OrganizationQuery"/>
+    <methodIterator Binds="fetchAlLMobileTypePrefix.result"
+                    DataControl="ClaimPaymentModesDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+                    id="fetchAlLMobileTypePrefixIterator"/>
+    <searchRegion Binds="fetchAlLMobileTypePrefixIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClaimPaymentModes1Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAlLMobileTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAlLMobileTypes"
+                  IsViewObjectMethod="false" DataControl="ClaimPaymentModesDAO"
+                  InstanceName="ClaimPaymentModesDAO.dataProvider"
+                  ReturnName="ClaimPaymentModesDAO.methodResults.fetchAlLMobileTypes_ClaimPaymentModesDAO_dataProvider_fetchAlLMobileTypes_result"/>
+    <tree IterBinding="fetchAlLMobileTypesIterator" id="ClaimPaymentModes">
+      <nodeDefinition DefName="TurnQuest.view.models.ClaimPaymentModes"
+                      Name="ClaimPaymentModes0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortdesc"/>
+          <Item Value="description"/>
+          <Item Value="maxAmt"/>
+          <Item Value="minAmt"/>
+          <Item Value="default_value"/>
+          <Item Value="remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findCountries" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCountries"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="OrganizationDAO.methodResults.findCountries_OrganizationDAO_dataProvider_findCountries_result"/>
+    <tree IterBinding="findCountriesIterator" id="Organization">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization0">
+        <AttrNames>
+          <Item Value="couCode"/>
+          <Item Value="couShortDesc"/>
+          <Item Value="couName"/>
+          <Item Value="couBaseCurr"/>
+          <Item Value="couNationality"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAlLMobileTypePrefix" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAlLMobileTypePrefix"
+                  IsViewObjectMethod="false" DataControl="ClaimPaymentModesDAO"
+                  InstanceName="ClaimPaymentModesDAO.dataProvider"
+                  ReturnName="ClaimPaymentModesDAO.methodResults.fetchAlLMobileTypePrefix_ClaimPaymentModesDAO_dataProvider_fetchAlLMobileTypePrefix_result"/>
+    <tree IterBinding="fetchAlLMobileTypePrefixIterator"
+          id="ClaimPaymentModes1">
+      <nodeDefinition DefName="TurnQuest.view.models.ClaimPaymentModes"
+                      Name="ClaimPaymentModes10">
+        <AttrNames>
+          <Item Value="prefix"/>
+          <Item Value="mptCode"/>
+          <Item Value="mptpCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="sectorsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllSectors.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Sector"
+                    id="fetchAllSectorsIterator"/>
+    <searchRegion Binds="fetchAllSectorsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Sector1Query"/>
+    <methodIterator Binds="findSectorOccupations.result"
+                    DataControl="SettingsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Occupation"
+                    id="findSectorOccupationsIterator"/>
+    <methodIterator Binds="findAllOccupations.result" DataControl="SettingsDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Occupation"
+                    id="findAllOccupationsIterator"/>
+    <searchRegion Binds="findAllOccupationsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Occupation1Query"/>
+    <searchRegion Binds="findSectorOccupationsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Occupation2Query"/>
+    <methodIterator Binds="fetchSelectedOccupations.result"
+                    DataControl="SettingsDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.Occupation"
+                    id="fetchSelectedOccupationsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllSectors" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSectors"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllSectors_BaseSetupDAO_dataProvider_fetchAllSectors_result"/>
+    <tree IterBinding="fetchAllSectorsIterator" id="Sector">
+      <nodeDefinition DefName="TurnQuest.view.setups.Sector" Name="Sector0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+          <Item Value="code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllSectorsIterator" id="Sector1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Sector" Name="Sector10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findSectorOccupations" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findSectorOccupations"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="SettingsDAO.methodResults.findSectorOccupations_SettingsDAO_dataProvider_findSectorOccupations_result"/>
+    <methodAction id="findAllOccupations" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAllOccupations"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="data.SettingsDAO.methodResults.findAllOccupations_SettingsDAO_dataProvider_findAllOccupations_result"/>
+    <tree IterBinding="findAllOccupationsIterator" id="Occupation1">
+      <nodeDefinition DefName="TurnQuest.view.setups.Occupation"
+                      Name="Occupation10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="selected"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findSectorOccupationsIterator" id="Occupation2">
+      <nodeDefinition DefName="TurnQuest.view.setups.Occupation"
+                      Name="Occupation20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchSelectedOccupations" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchSelectedOccupations"
+                  IsViewObjectMethod="false" DataControl="SettingsDAO"
+                  InstanceName="SettingsDAO.dataProvider"
+                  ReturnName="data.SettingsDAO.methodResults.fetchSelectedOccupations_SettingsDAO_dataProvider_fetchSelectedOccupations_result"/>
+    <tree IterBinding="fetchSelectedOccupationsIterator" id="Occupation">
+      <nodeDefinition DefName="TurnQuest.view.setups.Occupation"
+                      Name="Occupation0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="selected"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

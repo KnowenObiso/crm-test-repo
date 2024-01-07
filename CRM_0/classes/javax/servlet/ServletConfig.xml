@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ServletConfig" Package="javax.servlet"
+          BeanClass="javax.servlet.ServletConfig" isJavaBased="true">
+  <Attribute Name="servletName" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="initParameterNames" IsUpdateable="0"
+             Type="java.util.Enumeration"/>
+  <AccessorAttribute id="servletContext" IsCollection="false"
+                     BeanClass="javax.servlet.ServletContext"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="getInitParameter" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="UtilDAO" Package="TurnQuest.view.commons"
+          BeanClass="TurnQuest.view.commons.UtilDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="fetchCountryName" ReturnNodeName="Return">
+    <ParameterInfo id="countryCode" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="fetchTownName" ReturnNodeName="Return">
+    <ParameterInfo id="townCode" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="fetchBranchName" ReturnNodeName="Return">
+    <ParameterInfo id="branchCode" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="fetchSectorName" ReturnNodeName="Return">
+    <ParameterInfo id="sectorCode" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="fetchAgencyClassName" ReturnNodeName="Return">
+    <ParameterInfo id="agencyClassCode" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="fetchHoldingCompanyName" ReturnNodeName="Return">
+    <ParameterInfo id="holdingCompanyCode" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.commons.UtilDAO"
+                     BeanClass="TurnQuest.view.commons.UtilDAO" id="UtilDAO"/>
+</JavaBean>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="bankAccountsLoadingPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchLoadedBankAccounts.result" DataControl="BankDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.dao.BankAccount"
+                    id="fetchLoadedBankAccountsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchLoadedBankAccounts" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchLoadedBankAccounts"
+                  IsViewObjectMethod="false" DataControl="BankDAO"
+                  InstanceName="BankDAO.dataProvider"
+                  ReturnName="data.BankDAO.methodResults.fetchLoadedBankAccounts_BankDAO_dataProvider_fetchLoadedBankAccounts_result"/>
+    <tree IterBinding="fetchLoadedBankAccountsIterator" id="BankAccount">
+      <nodeDefinition DefName="TurnQuest.view.dao.BankAccount"
+                      Name="BankAccount0">
+        <AttrNames>
+          <Item Value="BACT_CODE"/>
+          <Item Value="BACT_NAME"/>
+          <Item Value="BACT_ACCOUNT_NO"/>
+          <Item Value="BACT_BBR_CODE"/>
+          <Item Value="BACT_CELL_NOS"/>
+          <Item Value="BACT_TEL_NOS"/>
+          <Item Value="BACT_ACCOUNT_TYPE"/>
+          <Item Value="BACT_DEFAULT"/>
+          <Item Value="BACT_CUR_CODE"/>
+          <Item Value="BACT_ACC_CODE"/>
+          <Item Value="BACT_ACCOUNT_OFFICER"/>
+          <Item Value="BACT_BANK_BRANCH"/>
+          <Item Value="BACT_CURRENCY"/>
+          <Item Value="BACT_USER_CODE"/>
+          <Item Value="BACT_BANK_NAME"/>
+          <Item Value="BACT_IBAN"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

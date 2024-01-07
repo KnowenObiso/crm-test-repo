@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="Region" Package="TurnQuest.view.Branches"
+          BeanClass="TurnQuest.view.Branches.Region" isJavaBased="true">
+  <Attribute Name="regionCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="regOrgCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="regionName" Type="java.lang.String"/>
+  <Attribute Name="nodeType" Type="java.lang.String"/>
+  <AccessorAttribute id="branchesList" IsCollection="true"
+                     BeanClass="TurnQuest.view.Branches.Branch"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Branches.Region"
+                     BeanClass="TurnQuest.view.Branches.Region" id="Region"/>
+</JavaBean>

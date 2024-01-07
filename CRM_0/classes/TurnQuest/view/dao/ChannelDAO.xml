@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ChannelDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.ChannelDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Channel"
+                  BeanClass="TurnQuest.view.models.Channel"
+                  id="fetchChannelsByCriteria" ReturnNodeName="Channel"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="updateChannel" ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.Channel"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="addChannel"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.Channel"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="TurnQuest.view.models.Channel"
+                  BeanClass="TurnQuest.view.models.Channel"
+                  id="fetchChannelByChannelCode" ReturnNodeName="Channel">
+    <ParameterInfo id="channelCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.ChannelDAO"
+                     BeanClass="TurnQuest.view.dao.ChannelDAO" id="ChannelDAO"/>
+</JavaBean>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="SysApplicableArea" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.SysApplicableArea"
+          isJavaBased="true">
+  <Attribute Name="sysAppAreaCode" Type="java.lang.String"/>
+  <Attribute Name="sysCode" Type="java.lang.String"/>
+  <Attribute Name="sysName" Type="java.lang.String"/>
+  <Attribute Name="sysAppAreaDesc" Type="java.lang.String"/>
+  <Attribute Name="msgCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="msgShtDesc" Type="java.lang.String"/>
+  <Attribute Name="message" Type="java.lang.String"/>
+  <Attribute Name="systemCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysModule" Type="java.lang.String"/>
+  <Attribute Name="mesageType" Type="java.lang.String"/>
+  <Attribute Name="sysShtDesc" Type="java.lang.String"/>
+  <Attribute Name="docId" Type="java.math.BigDecimal"/>
+  <Attribute Name="docSht" Type="java.lang.String"/>
+  <Attribute Name="docShtDesc" Type="java.lang.String"/>
+  <Attribute Name="docDesc" Type="java.lang.String"/>
+  <Attribute Name="mandatory" Type="java.lang.String"/>
+  <Attribute Name="ndDoc" Type="java.lang.String"/>
+  <Attribute Name="enDoc" Type="java.lang.String"/>
+  <Attribute Name="rnDoc" Type="java.lang.String"/>
+  <Attribute Name="certDoc" Type="java.lang.String"/>
+  <Attribute Name="lopDoc" Type="java.lang.String"/>
+  <Attribute Name="clmPayDoc" Type="java.lang.String"/>
+  <Attribute Name="validPrd" Type="java.math.BigDecimal"/>
+  <Attribute Name="checked" Type="boolean"/>
+  <Attribute Name="rqcCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="code" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysCode1" IsUpdateable="0" Type="java.math.BigDecimal"/>
+  <Attribute Name="sysModule1" Type="java.lang.String"/>
+  <Attribute Name="clntCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="policyNumber" Type="java.lang.String"/>
+  <Attribute Name="clmNumber" Type="java.lang.String"/>
+  <Attribute Name="smsTelNumber" Type="java.lang.String"/>
+  <Attribute Name="messages" Type="java.lang.String"/>
+  <Attribute Name="status" Type="java.lang.String"/>
+  <Attribute Name="preparedBy" Type="java.lang.String"/>
+  <Attribute Name="preparedDate" Type="java.lang.String"/>
+  <Attribute Name="sendDate" Type="java.lang.String"/>
+  <Attribute Name="qoutCode" Type="java.lang.String"/>
+  <Attribute Name="quotationNumber" Type="java.lang.String"/>
+  <Attribute Name="userCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sentResponse" Type="java.lang.String"/>
+  <Attribute Name="clientName" Type="java.lang.String"/>
+  <Attribute Name="agentName" Type="java.lang.String"/>
+  <Attribute Name="userName" Type="java.lang.String"/>
+  <Attribute Name="policyCode" Type="java.lang.String"/>
+  <Attribute Name="locCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="locTwnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="locShtDesc" Type="java.lang.String"/>
+  <Attribute Name="locName" Type="java.lang.String"/>
+  <Attribute Name="emailAddress" Type="java.lang.String"/>
+  <Attribute Name="emailSubject" Type="java.lang.String"/>
+  <Attribute Name="bpnCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bpnIdNumber" Type="java.lang.String"/>
+  <Attribute Name="bpnAddress" Type="java.lang.String"/>
+  <Attribute Name="bpnTel" Type="java.lang.String"/>
+  <Attribute Name="bpnMobile" Type="java.lang.String"/>
+  <Attribute Name="bpnEmail" Type="java.lang.String"/>
+  <Attribute Name="bpnType" Type="java.lang.String"/>
+  <Attribute Name="bpnZip" Type="java.lang.String"/>
+  <Attribute Name="bpnTown" Type="java.lang.String"/>
+  <Attribute Name="bpnCountryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bpnName" Type="java.lang.String"/>
+  <Attribute Name="bpnPin" Type="java.lang.String"/>
+  <Attribute Name="bpnBbrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bpnBankAccountNumber" Type="java.lang.String"/>
+  <Attribute Name="bpnBbSwift" Type="java.math.BigDecimal"/>
+  <Attribute Name="bpnRegClmtCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bpnbranch" Type="java.lang.String"/>
+  <Attribute Name="bpnCountry" Type="java.lang.String"/>
+  <Attribute Name="claimantCde" Type="java.lang.String"/>
+  <Attribute Name="bbrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bbrBnkCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bbrBranchName" Type="java.lang.String"/>
+  <Attribute Name="bbrRemarks" Type="java.lang.String"/>
+  <Attribute Name="bbrShtDesc" Type="java.lang.String"/>
+  <Attribute Name="regClaimantCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="cldCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="cldIdNumber" Type="java.lang.String"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setSysCode"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="SysCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.SysApplicableArea"
+                     BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                     id="SysApplicableArea"/>
+</JavaBean>

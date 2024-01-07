@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="MessageProduct" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.MessageProduct" isJavaBased="true">
+  <Attribute Name="prodCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prodDesc" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.dao.MessageProduct"
+                     BeanClass="TurnQuest.view.dao.MessageProduct"
+                     id="MessageProduct"/>
+</JavaBean>

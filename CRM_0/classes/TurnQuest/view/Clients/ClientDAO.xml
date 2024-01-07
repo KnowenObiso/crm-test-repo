@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.51.88"
+          id="ClientDAO" Package="TurnQuest.view.Clients"
+          BeanClass="TurnQuest.view.Clients.ClientDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Clients.client"
+                  BeanClass="TurnQuest.view.Clients.client"
+                  id="findUserByAgencyCode" ReturnNodeName="client"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Divisions.Division"
+                  BeanClass="TurnQuest.view.Divisions.Division"
+                  id="fetchDivisionByBranch" ReturnNodeName="Division"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Clients.ClientTable"
+                  BeanClass="TurnQuest.view.Clients.ClientTable"
+                  id="findClientTableAttributes" ReturnNodeName="ClientTable"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.PostalCode"
+                  BeanClass="TurnQuest.view.models.PostalCode"
+                  id="fetchPostalCodesByTown" ReturnNodeName="PostalCode"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Clients.ClientDAO"
+                     BeanClass="TurnQuest.view.Clients.ClientDAO"
+                     id="ClientDAO"/>
+</JavaBean>

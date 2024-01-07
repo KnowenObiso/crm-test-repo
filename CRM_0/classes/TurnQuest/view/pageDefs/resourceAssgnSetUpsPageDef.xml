@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="resourceAssgnSetUpsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchResources.result" DataControl="EmployeeAdminDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="fetchResourcesIterator"/>
+    <searchRegion Binds="fetchResourcesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdminQuery"/>
+    <methodIterator Binds="findUnAssignedRescStatus.result"
+                    DataControl="EmployeeAdminDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="findUnAssignedRescStatusIterator"/>
+    <searchRegion Binds="findUnAssignedRescStatusIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdmin1Query"/>
+    <methodIterator Binds="findAssignedRescStatus.result"
+                    DataControl="EmployeeAdminDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                    id="findAssignedRescStatusIterator"/>
+    <searchRegion Binds="findAssignedRescStatusIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="EmployeeAdmin2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchResources" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchResources"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.fetchResources_EmployeeAdminDAO_dataProvider_fetchResources_result"/>
+    <tree IterBinding="fetchResourcesIterator" id="EmployeeAdmin">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin0">
+        <AttrNames>
+          <Item Value="RES_CODE"/>
+          <Item Value="RES_DESC"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUnAssignedRescStatus" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUnAssignedRescStatus"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.findUnAssignedRescStatus_EmployeeAdminDAO_dataProvider_findUnAssignedRescStatus_result"/>
+    <tree IterBinding="findUnAssignedRescStatusIterator" id="EmployeeAdmin1">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin10">
+        <AttrNames>
+          <Item Value="selected"/>
+          <Item Value="REST_CODE"/>
+          <Item Value="REST_DESC"/>
+          <Item Value="RESM_CODE"/>
+          <Item Value="RESM_RES_CODE"/>
+          <Item Value="RESM_DONE_BY"/>
+          <Item Value="RESM_DONE_DATE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findAssignedRescStatus" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findAssignedRescStatus"
+                  IsViewObjectMethod="false" DataControl="EmployeeAdminDAO"
+                  InstanceName="EmployeeAdminDAO.dataProvider"
+                  ReturnName="data.EmployeeAdminDAO.methodResults.findAssignedRescStatus_EmployeeAdminDAO_dataProvider_findAssignedRescStatus_result"/>
+    <tree IterBinding="findAssignedRescStatusIterator" id="EmployeeAdmin2">
+      <nodeDefinition DefName="TurnQuest.view.employeeAdministration.EmployeeAdmin"
+                      Name="EmployeeAdmin20">
+        <AttrNames>
+          <Item Value="checked"/>
+          <Item Value="REST_CODE"/>
+          <Item Value="REST_DESC"/>
+          <Item Value="RESM_CODE"/>
+          <Item Value="RESM_RES_CODE"/>
+          <Item Value="RESM_DONE_BY"/>
+          <Item Value="RESM_DONE_DATE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

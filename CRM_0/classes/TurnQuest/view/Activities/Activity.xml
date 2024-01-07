@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Activity" Package="TurnQuest.view.Activities"
+          BeanClass="TurnQuest.view.Activities.Activity" isJavaBased="true">
+  <Attribute Name="activityCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="activityTypeCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="activityWEF" Type="java.sql.Date"/>
+  <Attribute Name="activityWET" Type="java.sql.Date"/>
+  <Attribute Name="activityDuration" Type="java.math.BigDecimal"/>
+  <Attribute Name="activitysubject" Type="java.lang.String"/>
+  <Attribute Name="activityLocation" Type="java.lang.String"/>
+  <Attribute Name="activityAssignedTo" Type="java.math.BigDecimal"/>
+  <Attribute Name="activityRelatedTo" Type="java.math.BigDecimal"/>
+  <Attribute Name="activityStatusId" Type="java.math.BigDecimal"/>
+  <Attribute Name="activityDescription" Type="java.lang.String"/>
+  <Attribute Name="activityReminder" Type="java.lang.String"/>
+  <Attribute Name="activityTeam" Type="java.math.BigDecimal"/>
+  <Attribute Name="activityType" Type="java.lang.String"/>
+  <Attribute Name="activityAssignedUser" Type="java.lang.String"/>
+  <Attribute Name="activityStatus" Type="java.lang.String"/>
+  <Attribute Name="activityTeamName" Type="java.lang.String"/>
+  <Attribute Name="activityRelatedAccount" Type="java.lang.String"/>
+  <Attribute Name="activityReminderTime" Type="java.sql.Date"/>
+  <Attribute Name="msgTemplateCode" Type="java.lang.String"/>
+  <Attribute Name="msgTemplateDesc" Type="java.lang.String"/>
+  <Attribute Name="actWef" Type="java.sql.Date"/>
+  <Attribute Name="actWet" Type="java.sql.Date"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Activities.Activity"
+                     BeanClass="TurnQuest.view.Activities.Activity"
+                     id="Activity"/>
+</JavaBean>

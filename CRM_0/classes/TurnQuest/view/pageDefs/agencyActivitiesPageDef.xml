@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="agencyActivitiesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAgencyActivities.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.AgencyActivity"
+                    id="fetchAgencyActivitiesIterator"/>
+    <searchRegion Binds="fetchAgencyActivitiesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencyActivityQuery"/>
+    <methodIterator Binds="fetchAllActivityTypes.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ActivityType"
+                    id="fetchAllActivityTypesIterator"/>
+    <searchRegion Binds="fetchAllActivityTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ActivityTypeQuery"/>
+    <methodIterator Binds="fetchAllSystems.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.provider.System"
+                    id="fetchAllSystemsIterator"/>
+    <searchRegion Binds="fetchAllSystemsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SystemQuery"/>
+    <methodIterator Binds="fetchAllClientsLov.result" DataControl="HierarchyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.client.Client2"
+                    id="fetchAllClientsLovIterator"/>
+    <searchRegion Binds="fetchAllClientsLovIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Client2Query"/>
+    <methodIterator Binds="fetchAllServiceProvidersLov.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.provider.ServiceProvider"
+                    id="fetchAllServiceProvidersLovIterator"/>
+    <searchRegion Binds="fetchAllServiceProvidersLovIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServiceProviderQuery"/>
+    <methodIterator Binds="fetchAllAgencyMarketersLov.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.Agency"
+                    id="fetchAllAgencyMarketersLovIterator"/>
+    <searchRegion Binds="fetchAllAgencyMarketersLovIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencyQuery"/>
+    <methodIterator Binds="fetchActivityTypeBySystem.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ActivityType"
+                    id="fetchActivityTypeBySystemIterator"/>
+    <searchRegion Binds="fetchActivityTypeBySystemIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ActivityType1Query"/>
+    <methodIterator Binds="fetchActivityByParticipants.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.AgencyActivity"
+                    id="fetchActivityByParticipantsIterator"/>
+    <searchRegion Binds="fetchActivityByParticipantsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="AgencyActivity1Query"/>
+    <methodIterator Binds="fetchAgencyActivityLov.result"
+                    DataControl="HierarchyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Accounts.Agency"
+                    id="fetchAgencyActivityLovIterator"/>
+    <searchRegion Binds="fetchAgencyActivityLovIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Agency2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAgencyActivities" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAgencyActivities"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAgencyActivities_HierarchyDAO_dataProvider_fetchAgencyActivities_result"/>
+    <tree IterBinding="fetchAgencyActivitiesIterator" id="AgencyActivity">
+      <nodeDefinition DefName="TurnQuest.view.models.AgencyActivity"
+                      Name="AgencyActivity0">
+        <AttrNames>
+          <Item Value="activityDesc"/>
+          <Item Value="aacWef"/>
+          <Item Value="aacEstimateWet"/>
+          <Item Value="aacActualWet"/>
+          <Item Value="aacRemarks"/>
+          <Item Value="aacCode"/>
+          <Item Value="aacActyCode"/>
+          <Item Value="aacAgnCode"/>
+          <Item Value="aacClientCode"/>
+          <Item Value="aacSprCode"/>
+          <Item Value="aacSysCode"/>
+          <Item Value="aacMktrAgnCode"/>
+          <Item Value="clientName"/>
+          <Item Value="agencyName"/>
+          <Item Value="marketerAgencyName"/>
+          <Item Value="providerName"/>
+          <Item Value="systemName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllActivityTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllActivityTypes"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllActivityTypes_HierarchyDAO_dataProvider_fetchAllActivityTypes_result"/>
+    <tree IterBinding="fetchAllActivityTypesIterator" id="ActivityType">
+      <nodeDefinition DefName="TurnQuest.view.models.ActivityType"
+                      Name="ActivityType0">
+        <AttrNames>
+          <Item Value="actyCode"/>
+          <Item Value="actyDesc"/>
+          <Item Value="actySysCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllSystems" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllSystems"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllSystems_HierarchyDAO_dataProvider_fetchAllSystems_result"/>
+    <tree IterBinding="fetchAllSystemsIterator" id="System">
+      <nodeDefinition DefName="TurnQuest.view.provider.System" Name="System0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllClientsLov" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllClientsLov"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllClientsLov_HierarchyDAO_dataProvider_fetchAllClientsLov_result"/>
+    <tree IterBinding="fetchAllClientsLovIterator" id="Client2">
+      <nodeDefinition DefName="TurnQuest.view.client.Client2" Name="Client20">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllServiceProvidersLov" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllServiceProvidersLov"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllServiceProvidersLov_HierarchyDAO_dataProvider_fetchAllServiceProvidersLov_result"/>
+    <tree IterBinding="fetchAllServiceProvidersLovIterator"
+          id="ServiceProvider">
+      <nodeDefinition DefName="TurnQuest.view.provider.ServiceProvider"
+                      Name="ServiceProvider0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllAgencyMarketersLov" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllAgencyMarketersLov"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAllAgencyMarketersLov_HierarchyDAO_dataProvider_fetchAllAgencyMarketersLov_result"/>
+    <tree IterBinding="fetchAllAgencyMarketersLovIterator" id="Agency">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAllAgencyMarketersLovIterator" id="Agency1">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency10">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchActivityTypeBySystem" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchActivityTypeBySystem"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchActivityTypeBySystem_HierarchyDAO_dataProvider_fetchActivityTypeBySystem_result"/>
+    <tree IterBinding="fetchActivityTypeBySystemIterator" id="ActivityType1">
+      <nodeDefinition DefName="TurnQuest.view.models.ActivityType"
+                      Name="ActivityType10">
+        <AttrNames>
+          <Item Value="SQLTypeName"/>
+          <Item Value="actyCode"/>
+          <Item Value="actySysCode"/>
+          <Item Value="actyDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchActivityByParticipants" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchActivityByParticipants"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchActivityByParticipants_HierarchyDAO_dataProvider_fetchActivityByParticipants_result"/>
+    <tree IterBinding="fetchActivityByParticipantsIterator"
+          id="AgencyActivity1">
+      <nodeDefinition DefName="TurnQuest.view.models.AgencyActivity"
+                      Name="AgencyActivity10">
+        <AttrNames>
+          <Item Value="SQLTypeName"/>
+          <Item Value="aacCode"/>
+          <Item Value="participId"/>
+          <Item Value="participActType"/>
+          <Item Value="participCode"/>
+          <Item Value="participName"/>
+          <Item Value="participByCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAgencyActivityLov" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAgencyActivityLov"
+                  IsViewObjectMethod="false" DataControl="HierarchyDAO"
+                  InstanceName="HierarchyDAO.dataProvider"
+                  ReturnName="HierarchyDAO.methodResults.fetchAgencyActivityLov_HierarchyDAO_dataProvider_fetchAgencyActivityLov_result"/>
+    <tree IterBinding="fetchAgencyActivityLovIterator" id="Agency2">
+      <nodeDefinition DefName="TurnQuest.view.Accounts.Agency" Name="Agency20">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="shortDesc"/>
+          <Item Value="code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="fetchAgencyActivitiesIterator" id="AgencyActivity2">
+      <nodeDefinition DefName="TurnQuest.view.models.AgencyActivity"
+                      Name="AgencyActivity20">
+        <AttrNames>
+          <Item Value="SQLTypeName"/>
+          <Item Value="aacCode"/>
+          <Item Value="aacActyCode"/>
+          <Item Value="aacWef"/>
+          <Item Value="aacEstimateWet"/>
+          <Item Value="aacActualWet"/>
+          <Item Value="aacRemarks"/>
+          <Item Value="aacAgnCode"/>
+          <Item Value="aacSysCode"/>
+          <Item Value="activityDesc"/>
+          <Item Value="systemName"/>
+          <Item Value="aacReasnsforActivity"/>
+          <Item Value="aacActivityByType"/>
+          <Item Value="aacActivityTypeName"/>
+          <Item Value="aacType"/>
+          <Item Value="aacActivityByCode"/>
+          <Item Value="aacReasnsforActivity"/>
+          <Item Value="agencyName"/>
+          
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

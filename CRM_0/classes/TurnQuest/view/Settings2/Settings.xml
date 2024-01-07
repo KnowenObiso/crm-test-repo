@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.51.88"
+          id="Settings" Package="TurnQuest.view.Settings2"
+          BeanClass="TurnQuest.view.Settings2.Settings" isJavaBased="true">
+  <Attribute Name="countryCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="countryShtDesc" Type="java.lang.String"/>
+  <Attribute Name="countryName" Type="java.lang.String"/>
+  <Attribute Name="townCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="postalDesc" Type="java.lang.String"/>
+  <Attribute Name="townShtDesc" Type="java.lang.String"/>
+  <Attribute Name="townName" Type="java.lang.String"/>
+  <Attribute Name="postalZIPCode" Type="java.lang.String"/>
+  <Attribute Name="sectorShtDesc" Type="java.lang.String"/>
+  <Attribute Name="sectorName" Type="java.lang.String"/>
+  <Attribute Name="sectorCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="bankName" Type="java.lang.String"/>
+  <Attribute Name="branchName" Type="java.lang.String"/>
+  <Attribute Name="bankBranchCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Settings2.Settings"
+                     BeanClass="TurnQuest.view.Settings2.Settings"
+                     id="Settings"/>
+</JavaBean>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="InboxMessage" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.InboxMessage" isJavaBased="true">
+  <Attribute Name="ibxCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ibxSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ibxSysModule" Type="java.lang.String"/>
+  <Attribute Name="ibxTelNo" Type="java.lang.String"/>
+  <Attribute Name="ibxMessage" Type="java.lang.String"/>
+  <Attribute Name="ibxStatus" Type="java.lang.String"/>
+  <Attribute Name="ibxDate" Type="java.util.Date"/>
+  <Attribute Name="ibxAssignedDate" Type="java.util.Date"/>
+  <Attribute Name="ibxMessageReplied" Type="java.lang.String"/>
+  <Attribute Name="ibxUserInformed" Type="java.lang.String"/>
+  <Attribute Name="ibxAssignedTo" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.InboxMessage"
+                     BeanClass="TurnQuest.view.models.InboxMessage"
+                     id="InboxMessage"/>
+</JavaBean>

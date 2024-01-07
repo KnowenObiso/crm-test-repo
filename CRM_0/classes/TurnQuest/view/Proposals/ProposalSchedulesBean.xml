@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ProposalSchedulesBean" Package="TurnQuest.view.Proposals"
+          BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+          isJavaBased="true">
+  <Attribute Name="TSMS_SHT_DESC" Type="java.lang.String"/>
+  <Attribute Name="TSMS_DESC" Type="java.lang.String"/>
+  <Attribute Name="SCL_DESC" Type="java.lang.String"/>
+  <Attribute Name="TSM_DESC" Type="java.lang.String"/>
+  <Attribute Name="TSMS_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="TSMS_TSM_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="TSMS_SCL_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="TSMS_ORDER" Type="java.math.BigDecimal"/>
+  <Attribute Name="TSMSD_NAME" Type="java.lang.String"/>
+  <Attribute Name="TSMSD_PROMPT" Type="java.lang.String"/>
+  <Attribute Name="TSMSD_TYPE" Type="java.lang.String"/>
+  <Attribute Name="TSMSD_MORE_DTLS_APPL" Type="java.lang.String"/>
+  <Attribute Name="TSMSD_MORE_DTLS" Type="java.lang.String"/>
+  <Attribute Name="TSMSD_ROOT" Type="java.lang.String"/>
+  <Attribute Name="TSMSD_MORE_DTLS_REQUIRED" Type="java.lang.String"/>
+  <Attribute Name="TSMSD_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="TSMSD_PARENT" Type="java.math.BigDecimal"/>
+  <Attribute Name="TSMSD_ORDER" Type="java.lang.String"/>
+  <Attribute Name="TSSO_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="TSSO_TSMSD_CODE" Type="java.math.BigDecimal"/>
+  <Attribute Name="TSSO_ORDER" Type="java.math.BigDecimal"/>
+  <Attribute Name="TSSO_OPTION_NAME" Type="java.lang.String"/>
+  <Attribute Name="TSSO_OPTION_DESC" Type="java.lang.String"/>
+  <Attribute Name="TSSO_TYPE" Type="java.lang.String"/>
+  <Attribute Name="tmsc_desc" Type="java.lang.String"/>
+  <Attribute Name="tmsc_code" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                     BeanClass="TurnQuest.view.Proposals.ProposalSchedulesBean"
+                     id="ProposalSchedulesBean"/>
+</JavaBean>

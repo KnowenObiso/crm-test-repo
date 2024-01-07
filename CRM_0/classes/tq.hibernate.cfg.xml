@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+ <session-factory> 
+  <property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+  <property name="connection.datasource">jdbc/CRMDS</property>
+   
+  <property name="hibernate.format_sql">true</property>
+  <property name="hibernate.id.new_generator_mappings">true</property> 
+  <property name="hibernate.hbm2ddl.auto">update</property>
+  <property name="show_sql">true</property> 
+  
+  <mapping class="TurnQuest.view.models.Client"/>
+  <mapping class="TurnQuest.view.models.ClientSignatory"/>
+  <mapping class="TurnQuest.view.models.ClientDirector"/>
+  <mapping class="TurnQuest.view.models.TransferItem"/>
+  <mapping class="TurnQuest.view.models.ExchangeRate"/> 
+  <mapping class="TurnQuest.view.models.Currency"/> 
+  <mapping class="TurnQuest.view.models.SourceOfIncome"/> 
+  <mapping class="TurnQuest.view.models.Agent"/> 
+  <mapping class="TurnQuest.view.models.AccountType"/> 
+  <mapping class="TurnQuest.view.models.ClientType"/>
+  <mapping class="TurnQuest.view.models.Channel"/> 
+  <mapping class="TurnQuest.view.models.BankCharge"/> 
+  <mapping class="TurnQuest.view.models.BankBranch"/> 
+  <mapping class="TurnQuest.view.models.Zone"/> 
+  <mapping class="TurnQuest.view.models.User"/>
+  <mapping class="TurnQuest.view.models.Manager"/>
+  <mapping class="TurnQuest.view.models.IncomeSources"/>
+  <mapping class="TurnQuest.view.models.ServReq"/> 
+  <mapping class="TurnQuest.view.models.PepClassifications"/>
+  <mapping class="TurnQuest.view.models.UserGroupTypes"/>  
+  <mapping class="TurnQuest.view.models.UserPersonalRanks"/>
+  <mapping class="TurnQuest.view.models.Gender"/>
+  <mapping class="TurnQuest.view.models.MsgTemplate"/>
+ </session-factory>
+</hibernate-configuration>

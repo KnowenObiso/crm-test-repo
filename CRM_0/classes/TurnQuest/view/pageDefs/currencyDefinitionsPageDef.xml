@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="currencyDefinitionsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllCurrencies.result" DataControl="CurrencyDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Currency"
+                    id="fetchAllCurrenciesIterator"/>
+    <searchRegion Binds="fetchAllCurrenciesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CurrencyQuery"/>
+    <methodIterator Binds="fetchCurrencyDenominationsByCurrency.result"
+                    DataControl="CurrencyDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.CurrencyDenomination"
+                    id="fetchCurrencyDenominationsByCurrencyIterator"/>
+    <searchRegion Binds="fetchCurrencyDenominationsByCurrencyIterator"
+                  Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CurrencyDenominationQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllCurrencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCurrencies"
+                  IsViewObjectMethod="false" DataControl="CurrencyDAO"
+                  InstanceName="CurrencyDAO.dataProvider"
+                  ReturnName="CurrencyDAO.methodResults.fetchAllCurrencies_CurrencyDAO_dataProvider_fetchAllCurrencies_result"/>
+    <tree IterBinding="fetchAllCurrenciesIterator" id="Currency">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency" Name="Currency0">
+        <AttrNames>
+          <Item Value="symbol"/>
+          <Item Value="description"/>
+          <Item Value="ref"/>          
+          <Item Value="round"/>
+          <Item Value="code"/>
+          <Item Value="curNumWord"/>
+          <Item Value="curDecimalWord"/>
+          <Item Value="numWords"/>
+          <Item Value="decimalWord"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchCurrencyDenominationsByCurrency"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchCurrencyDenominationsByCurrency"
+                  IsViewObjectMethod="false" DataControl="CurrencyDAO"
+                  InstanceName="CurrencyDAO.dataProvider"
+                  ReturnName="CurrencyDAO.methodResults.fetchCurrencyDenominationsByCurrency_CurrencyDAO_dataProvider_fetchCurrencyDenominationsByCurrency_result"/>
+    <tree IterBinding="fetchCurrencyDenominationsByCurrencyIterator"
+          id="CurrencyDenomination">
+      <nodeDefinition DefName="TurnQuest.view.setups.CurrencyDenomination"
+                      Name="CurrencyDenomination0">
+        <AttrNames>
+          <Item Value="value"/>
+          <Item Value="name"/>
+          <Item Value="wef"/>
+          <Item Value="code"/>
+          <Item Value="currencyCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

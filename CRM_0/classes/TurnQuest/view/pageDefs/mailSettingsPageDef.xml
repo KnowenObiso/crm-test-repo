@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.59.23" id="mailSettingsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="findOutgoingMail.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findOutgoingMailIterator"/>
+    <searchRegion Binds="findOutgoingMailIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="OutgoingMailQuery"/>                
+    <methodIterator Binds="findIncomingMail.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findIncomingMailIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="findOutgoingMail" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findOutgoingMail"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findOutgoingMail_ServiceReqDAO_dataProvider_findOutgoingMail_result"/>
+    <attributeValues IterBinding="findOutgoingMailIterator" id="mailServerName">
+      <AttrNames>
+        <Item Value="mailServerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findOutgoingMailIterator" id="mailType1">
+      <AttrNames>
+        <Item Value="mailType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findOutgoingMailIterator" id="mailHost">
+      <AttrNames>
+        <Item Value="mailHost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findOutgoingMailIterator" id="mailUsername">
+      <AttrNames>
+        <Item Value="mailUsername"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findOutgoingMailIterator" id="mailPass">
+      <AttrNames>
+        <Item Value="mailPass"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findOutgoingMailIterator" id="secure">
+      <AttrNames>
+        <Item Value="secure"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findOutgoingMailIterator" id="mailPort">
+      <AttrNames>
+        <Item Value="mailPort"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findOutgoingMailIterator" id="mailEmail">
+      <AttrNames>
+        <Item Value="mailEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="findOutgoingMailIterator" id="outGoingEmailSetup">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq" Name="outGoingEmailSetup">
+        <AttrNames>
+          <Item Value="mailType"/>
+          <Item Value="mailServerName"/>
+          <Item Value="mailHost"/>
+          <Item Value="mailUsername"/>
+          <Item Value="mailPass"/>
+          <Item Value="secure"/>
+          <Item Value="mailPort"/>
+          <Item Value="mailEmail"/>
+          <Item Value="mailStatus"/>
+          <Item Value="mailCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findIncomingMail" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findIncomingMail"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findIncomingMail_ServiceReqDAO_dataProvider_findIncomingMail_result"/>
+    <attributeValues IterBinding="findIncomingMailIterator"
+                     id="mailServerName1">
+      <AttrNames>
+        <Item Value="mailServerName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findIncomingMailIterator" id="mailHost1">
+      <AttrNames>
+        <Item Value="mailHost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findIncomingMailIterator" id="mailUsername1">
+      <AttrNames>
+        <Item Value="mailUsername"/>
+      </AttrNames>
+    </attributeValues>
+    
+    <attributeValues IterBinding="findIncomingMailIterator" id="mailType">
+      <AttrNames>
+        <Item Value="mailType"/>
+      </AttrNames>
+    </attributeValues>
+    
+    <attributeValues IterBinding="findIncomingMailIterator" id="secure1">
+      <AttrNames>
+        <Item Value="secure"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findIncomingMailIterator" id="mailPort1">
+      <AttrNames>
+        <Item Value="mailPort"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="findIncomingMailIterator" id="mailPass1">
+      <AttrNames>
+        <Item Value="mailPass"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="channelsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchChannelsByCriteria.result"
+                    DataControl="ChannelDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.Channel"
+                    id="fetchChannelsByCriteriaIterator"/>
+    <searchRegion Binds="fetchChannelsByCriteriaIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ChannelQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchChannelsByCriteria" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchChannelsByCriteria"
+                  IsViewObjectMethod="false" DataControl="ChannelDAO"
+                  InstanceName="ChannelDAO.dataProvider"
+                  ReturnName="data.ChannelDAO.methodResults.fetchChannelsByCriteria_ChannelDAO_dataProvider_fetchChannelsByCriteria_result"/>
+    <tree IterBinding="fetchChannelsByCriteriaIterator" id="Channel">
+      <nodeDefinition DefName="TurnQuest.view.models.Channel" Name="Channel0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+          <Item Value="desc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

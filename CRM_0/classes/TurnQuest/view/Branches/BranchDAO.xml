@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.54.7"
+          id="BranchDAO" Package="TurnQuest.view.Branches"
+          BeanClass="TurnQuest.view.Branches.BranchDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Branches.Branch"
+                  BeanClass="TurnQuest.view.Branches.Branch"
+                  id="findOrganizations" ReturnNodeName="Branch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Branches.Branch"
+                  BeanClass="TurnQuest.view.Branches.Branch" id="findRegions"
+                  ReturnNodeName="Branch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Branches.Branch"
+                  BeanClass="TurnQuest.view.Branches.Branch"
+                  id="findUserBranches" ReturnNodeName="Branch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Branches.Branch"
+                  BeanClass="TurnQuest.view.Branches.Branch"
+                  id="fetchAllBranches" ReturnNodeName="Branch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchUserUnassignedBranches" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.orgs.Organization"
+                  BeanClass="TurnQuest.view.orgs.Organization"
+                  id="fetchUserAssignedBranches" ReturnNodeName="Organization"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Branches.BranchDAO"
+                     BeanClass="TurnQuest.view.Branches.BranchDAO"
+                     id="BranchDAO"/>
+</JavaBean>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="paymentModesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllPaymentModes.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.PaymentMode"
+                    id="fetchAllPaymentModesIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllPaymentModes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllPaymentModes"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllPaymentModes_BaseSetupDAO_dataProvider_fetchAllPaymentModes_result"/>
+    <tree IterBinding="fetchAllPaymentModesIterator" id="PaymentMode">
+      <nodeDefinition DefName="TurnQuest.view.setups.PaymentMode"
+                      Name="PaymentMode0">
+        <AttrNames>
+          <Item Value="shortDesc"/>
+          <Item Value="description"/>
+          <Item Value="naration"/>
+          <Item Value="defaultMode"/>          
+          <Item Value="code"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

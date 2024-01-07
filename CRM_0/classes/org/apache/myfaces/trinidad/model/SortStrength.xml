@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="SortStrength" Package="org.apache.myfaces.trinidad.model"
+          BeanClass="org.apache.myfaces.trinidad.model.SortStrength"
+          isJavaBased="true">
+  <Attribute Name="strength" IsUpdateable="0" Type="int"/>
+  <MethodAccessor IsCollection="true"
+                  Type="org.apache.myfaces.trinidad.model.SortStrength"
+                  BeanClass="org.apache.myfaces.trinidad.model.SortStrength"
+                  id="values" ReturnNodeName="SortStrength"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false"
+                  Type="org.apache.myfaces.trinidad.model.SortStrength"
+                  BeanClass="org.apache.myfaces.trinidad.model.SortStrength"
+                  id="valueOf" ReturnNodeName="SortStrength">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

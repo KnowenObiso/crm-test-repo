@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="currenciesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAllCurrencies.result" DataControl="BaseSetupDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.setups.Currency"
+                    id="fetchAllCurrenciesIterator"/>
+    <methodIterator Binds="fetchCurrencyDenominationsByCurrency.result"
+                    DataControl="BaseSetupDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.setups.CurrencyDenomination"
+                    id="fetchCurrencyDenominationsByCurrencyIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAllCurrencies" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllCurrencies"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchAllCurrencies_BaseSetupDAO_dataProvider_fetchAllCurrencies_result"/>
+    <tree IterBinding="fetchAllCurrenciesIterator" id="Currency">
+      <nodeDefinition DefName="TurnQuest.view.setups.Currency" Name="Currency0">
+        <AttrNames>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchCurrencyDenominationsByCurrency"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="fetchCurrencyDenominationsByCurrency"
+                  IsViewObjectMethod="false" DataControl="BaseSetupDAO"
+                  InstanceName="BaseSetupDAO.dataProvider"
+                  ReturnName="BaseSetupDAO.methodResults.fetchCurrencyDenominationsByCurrency_BaseSetupDAO_dataProvider_fetchCurrencyDenominationsByCurrency_result"/>
+    <tree IterBinding="fetchCurrencyDenominationsByCurrencyIterator"
+          id="CurrencyDenomination">
+      <nodeDefinition DefName="TurnQuest.view.setups.CurrencyDenomination"
+                      Name="CurrencyDenomination0">
+        <AttrNames>
+          <Item Value="value"/>
+          <Item Value="name"/>
+          <Item Value="wef"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

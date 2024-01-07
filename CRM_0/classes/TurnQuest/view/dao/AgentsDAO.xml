@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="AgentsDAO" Package="TurnQuest.view.dao"
+          BeanClass="TurnQuest.view.dao.AgentsDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.Agents.AgentType"
+                  BeanClass="TurnQuest.view.Agents.AgentType"
+                  id="fetchAllAgentTypes" ReturnNodeName="AgentType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Manager"
+                  BeanClass="TurnQuest.view.models.Manager" id="fetchManagers"
+                  ReturnNodeName="Manager"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Agent"
+                  BeanClass="TurnQuest.view.models.Agent" id="fetchAgents"
+                  ReturnNodeName="Agent"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="updateAgent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.Agent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="addAgent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="val" Type="TurnQuest.view.models.Agent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="TurnQuest.view.models.Agent"
+                  BeanClass="TurnQuest.view.models.Agent"
+                  id="fetchAgentByAgentCode" ReturnNodeName="Agent">
+    <ParameterInfo id="agentCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.dao.AgentsDAO"
+                     BeanClass="TurnQuest.view.dao.AgentsDAO" id="AgentsDAO"/>
+</JavaBean>

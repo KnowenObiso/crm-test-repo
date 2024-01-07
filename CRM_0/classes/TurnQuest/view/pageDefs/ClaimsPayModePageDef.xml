@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="ClaimsPayModePageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchAlClaimsModes.result"
+                    DataControl="ClaimPaymentModesDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.models.ClaimPaymentModes"
+                    id="fetchAlClaimsModesIterator"/>
+    <searchRegion Binds="fetchAlClaimsModesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ClaimPaymentModesQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="fetchAlClaimsModes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAlClaimsModes"
+                  IsViewObjectMethod="false" DataControl="ClaimPaymentModesDAO"
+                  InstanceName="ClaimPaymentModesDAO.dataProvider"
+                  ReturnName="ClaimPaymentModesDAO.methodResults.fetchAlClaimsModes_ClaimPaymentModesDAO_dataProvider_fetchAlClaimsModes_result"/>
+    <tree IterBinding="fetchAlClaimsModesIterator" id="ClaimPaymentModes">
+      <nodeDefinition DefName="TurnQuest.view.models.ClaimPaymentModes"
+                      Name="ClaimPaymentModes0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortdesc"/>
+          <Item Value="description"/>
+          <Item Value="maxAmt"/>
+          <Item Value="minAmt"/>
+          <Item Value="default_value"/>
+          <Item Value="remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.56.60" id="runningJobsPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="AlertDAO"
+              id="AlertDAOIterator"/>
+    <accessorIterator MasterBinding="AlertDAOIterator"
+                      Binds="currentRunningJobs" RangeSize="25"
+                      DataControl="AlertDAO"
+                      BeanClass="TurnQuest.view.scheduler.AlertBean"
+                      id="currentRunningJobsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="currentRunningJobsIterator" id="currentRunningJobs">
+      <nodeDefinition DefName="TurnQuest.view.scheduler.AlertBean"
+                      Name="currentRunningJobs0">
+        <AttrNames>
+          <Item Value="qtJobName"/>
+          <Item Value="qtDescription"/>
+          <Item Value="qtNextFireTime"/>
+          <Item Value="qtPrevFireTime"/>
+          <Item Value="qtStatus"/>
+          <Item Value="qtCronExpresion"/>
+          <Item Value="objLocation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="Campaign" Package="TurnQuest.view.Campaigns"
+          BeanClass="TurnQuest.view.Campaigns.Campaign" isJavaBased="true">
+  <Attribute Name="campSysName" Type="java.lang.String"/>
+  <Attribute Name="campCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="campUserCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="campUserName" Type="java.lang.String"/>
+  <Attribute Name="campTeamUserCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="campTeamName" Type="java.lang.String"/>
+  <Attribute Name="campDate" Type="java.sql.Date"/>
+  <Attribute Name="campSponsor" Type="java.lang.String"/>
+  <Attribute Name="campOrgCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="campOrgName" Type="java.lang.String"/>
+  <Attribute Name="campProdCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="campProdName" Type="java.lang.String"/>
+  <Attribute Name="campSysCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="campName" Type="java.lang.String"/>
+  <Attribute Name="campType" Type="java.lang.String"/>
+  <Attribute Name="campStatus" Type="java.lang.String"/>
+  <Attribute Name="campExpCloseDate" Type="java.sql.Date"/>
+  <Attribute Name="campTargetAudience" Type="java.lang.String"/>
+  <Attribute Name="campTargetSize" Type="java.math.BigDecimal"/>
+  <Attribute Name="campNumSent" Type="java.lang.String"/>
+  <Attribute Name="campBudgetedCost" Type="java.math.BigDecimal"/>
+  <Attribute Name="campExpRevenue" Type="java.math.BigDecimal"/>
+  <Attribute Name="campExpSalesCount" Type="java.math.BigDecimal"/>
+  <Attribute Name="campActualSalesCount" Type="java.math.BigDecimal"/>
+  <Attribute Name="campExpResponseCount" Type="java.math.BigDecimal"/>
+  <Attribute Name="campExpROI" Type="java.math.BigDecimal"/>
+  <Attribute Name="campActualROI" Type="java.math.BigDecimal"/>
+  <Attribute Name="campDescription" Type="java.lang.String"/>
+  <Attribute Name="currencyCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="currencyName" Type="java.lang.String"/>
+  <Attribute Name="campActualCost" Type="java.math.BigDecimal"/>
+  <Attribute Name="campObjective" Type="java.lang.String"/>
+  <Attribute Name="campActualResponseCount" Type="java.math.BigDecimal"/>
+  <Attribute Name="campImpressionCount" Type="java.math.BigDecimal"/>
+  <Attribute Name="campExpCost" Type="java.math.BigDecimal"/>
+  <Attribute Name="event" Type="java.lang.String"/>
+  <Attribute Name="venue" Type="java.lang.String"/>
+  <Attribute Name="eventTime" Type="java.sql.Timestamp"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.Campaigns.Campaign"
+                     BeanClass="TurnQuest.view.Campaigns.Campaign"
+                     id="Campaign"/>
+</JavaBean>

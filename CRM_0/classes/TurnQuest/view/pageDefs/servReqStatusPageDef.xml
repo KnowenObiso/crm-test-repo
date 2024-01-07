@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.55.36" id="servReqStatusPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+     <variableIterator id="variables"/>				  
+     <methodIterator Binds="findRequestStatus.result" DataControl="ServiceReqDAO"
+                    RangeSize="25"
+                    BeanClass="TurnQuest.view.Activities.ServiceReq"
+                    id="findRequestStatusIterator"/>
+     <searchRegion Binds="findRequestStatusIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ServReqStatusQuery"/> 
+  </executables>
+  <bindings>
+    <methodAction id="findRequestStatus" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRequestStatus"
+                  IsViewObjectMethod="false" DataControl="ServiceReqDAO"
+                  InstanceName="ServiceReqDAO.dataProvider"
+                  ReturnName="data.ServiceReqDAO.methodResults.findRequestStatus_ServiceReqDAO_dataProvider_findRequestStatus_result"/>
+    <tree IterBinding="findRequestStatusIterator" id="ServiceReqStatus">
+      <nodeDefinition DefName="TurnQuest.view.Activities.ServiceReq"
+                      Name="ServiceReqStatus">
+        <AttrNames>
+          <Item Value="srsCode"/>
+          <Item Value="srsName"/>
+          <Item Value="srsDesc"/>
+          <Item Value="srsMainStatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

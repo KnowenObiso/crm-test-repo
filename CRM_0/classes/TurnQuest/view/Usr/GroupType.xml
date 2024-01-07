@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="GroupType" Package="TurnQuest.view.Usr"
+          BeanClass="TurnQuest.view.Usr.GroupType" isJavaBased="true">
+  <Attribute Name="typeId" Type="java.lang.String"/>
+  <Attribute Name="typeName" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.Usr.GroupType"
+                     BeanClass="TurnQuest.view.Usr.GroupType" id="GroupType"/>
+</JavaBean>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.54.7"
+          id="SubRole" Package="TurnQuest.view.roles"
+          BeanClass="TurnQuest.view.roles.SubRole" isJavaBased="true">
+  <Attribute Name="processRoleSubAreaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processSubAreaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processSubArea" Type="java.lang.String"/>
+  <Attribute Name="processSubAreaType" Type="java.lang.String"/>
+  <Attribute Name="processSubAreaDebitLimit" Type="java.math.BigDecimal"/>
+  <Attribute Name="processSubAredCreditLimit" Type="java.math.BigDecimal"/>
+  <Attribute Name="areaSubArea" Type="java.lang.String"/>
+  <Attribute Name="processAreaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processSubAreaShtDesc" Type="java.lang.String"/>
+  <Attribute Name="tqualCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="sprsaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="levelId" Type="java.math.BigDecimal"/>
+  <Attribute Name="srlsCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="srlsName" Type="java.lang.String"/>
+  <Attribute Name="subArea" Type="java.lang.String"/>
+  <Attribute Name="processSubAreaSelected" Type="boolean"/>
+  <Attribute Name="checked" Type="boolean"/>
+  <Attribute Name="processArea" Type="java.lang.String"/>
+  <Attribute Name="processRoleAreaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="processAreaSelected" Type="boolean"/>
+  <Attribute Name="roleProcessCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.roles.SubRole"
+                     BeanClass="TurnQuest.view.roles.SubRole" id="SubRole"/>
+</JavaBean>

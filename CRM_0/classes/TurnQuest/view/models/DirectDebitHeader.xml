@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="DirectDebitHeader" Package="TurnQuest.view.models"
+          BeanClass="TurnQuest.view.models.DirectDebitHeader"
+          isJavaBased="true">
+  <Attribute Name="ddhCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddhDDCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddhClientCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddhClientBbrCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddhBbrBankCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddhClientShortDesc" Type="java.lang.String"/>
+  <Attribute Name="ddhClientName" Type="java.lang.String"/>
+  <Attribute Name="ddhClientBankAccNum" Type="java.lang.String"/>
+  <Attribute Name="ddhBbrBranchName" Type="java.lang.String"/>
+  <Attribute Name="ddhBbrShortDesc" Type="java.lang.String"/>
+  <Attribute Name="ddhBbrRefCode" Type="java.lang.String"/>
+  <Attribute Name="ddhTotAmount" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddhStatus" Type="java.lang.String"/>
+  <Attribute Name="ddhReceipted" Type="java.lang.String"/>
+  <Attribute Name="ddhFailDate" Type="java.util.Date"/>
+  <Attribute Name="ddhFailUpdatedBy" Type="java.lang.String"/>
+  <Attribute Name="ddhFailUpdateDate" Type="java.util.Date"/>
+  <Attribute Name="ddhFailRemarks" Type="java.lang.String"/>
+  <Attribute Name="bankBranch" Type="java.lang.String"/>
+  <Attribute Name="ddhRelaunchDate" Type="java.util.Date"/>
+  <Attribute Name="ddhRelaunchStopDate" Type="java.util.Date"/>
+  <Attribute Name="ddhRelaunchedBy" Type="java.lang.String"/>
+  <Attribute Name="ddhRelaunchStoppedBy" Type="java.lang.String"/>
+  <Attribute Name="ddhInitialBookDate" Type="java.util.Date"/>
+  <Attribute Name="ddhPrevDdhCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="ddhAccHolder" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.models.DirectDebitHeader"
+                     BeanClass="TurnQuest.view.models.DirectDebitHeader"
+                     id="DirectDebitHeader"/>
+</JavaBean>

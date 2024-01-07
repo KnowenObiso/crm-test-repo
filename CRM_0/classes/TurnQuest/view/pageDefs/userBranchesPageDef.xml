@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.54.7" id="userBranchesPageDef"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables" Refresh="RefreshAfter"/>
+    <methodIterator Binds="findUsers.result" DataControl="UserDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Usr.User"
+                    id="findUsersIterator"/>
+    <searchRegion Binds="findUsersIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserQuery"/>
+    <methodIterator Binds="findOrganizations.result" DataControl="BranchDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Branches.Branch"
+                    id="findOrganizationsIterator"/>
+    <searchRegion Binds="findOrganizationsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BranchQuery"/>
+    <methodIterator Binds="findRegions.result" DataControl="BranchDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Branches.Branch"
+                    id="findRegionsIterator"/>
+    <searchRegion Binds="findRegionsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Branch1Query"/>
+    <methodIterator Binds="findUserBranches.result" DataControl="BranchDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Branches.Branch"
+                    id="findUserBranchesIterator"/>
+    <searchRegion Binds="findUserBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Branch2Query"/>
+  </executables>
+  <bindings>
+    <methodAction id="findUsers" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUsers"
+                  IsViewObjectMethod="false" DataControl="UserDAO"
+                  InstanceName="UserDAO.dataProvider"
+                  ReturnName="UserDAO.methodResults.findUsers_UserDAO_dataProvider_findUsers_result"/>
+    <tree IterBinding="findUsersIterator" id="User">
+      <nodeDefinition DefName="TurnQuest.view.Usr.User" Name="User0">
+        <AttrNames>
+          <Item Value="userCode"/>
+          <Item Value="username"/>
+          <Item Value="userFullname"/>
+          <Item Value="userEmail"/>
+          <Item Value="userPersonnelRank"/>
+          <Item Value="userDateCreated"/>
+          <Item Value="userType"/>
+          <Item Value="userStatus"/>
+          <Item Value="userPassReset"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findOrganizations" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findOrganizations"
+                  IsViewObjectMethod="false" DataControl="BranchDAO"
+                  InstanceName="BranchDAO.dataProvider"
+                  ReturnName="BranchDAO.methodResults.findOrganizations_BranchDAO_dataProvider_findOrganizations_result"/>
+    <tree IterBinding="findOrganizationsIterator" id="Branch">
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch" Name="Branch0">
+        <AttrNames>
+          <Item Value="orgCode"/>
+          <Item Value="orgShtDesc"/>
+          <Item Value="orgName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findRegions" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findRegions"
+                  IsViewObjectMethod="false" DataControl="BranchDAO"
+                  InstanceName="BranchDAO.dataProvider"
+                  ReturnName="BranchDAO.methodResults.findRegions_BranchDAO_dataProvider_findRegions_result"/>
+    <tree IterBinding="findRegionsIterator" id="Branch1">
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch" Name="Branch10">
+        <AttrNames>
+          <Item Value="regCode"/>
+          <Item Value="regOrgCode"/>
+          <Item Value="regName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findUserBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findUserBranches"
+                  IsViewObjectMethod="false" DataControl="BranchDAO"
+                  InstanceName="BranchDAO.dataProvider"
+                  ReturnName="BranchDAO.methodResults.findUserBranches_BranchDAO_dataProvider_findUserBranches_result"/>
+    <tree IterBinding="findUserBranchesIterator" id="Branch2">
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch" Name="Branch20">
+        <AttrNames>
+          <Item Value="usrBranchCode"/>
+          <Item Value="branchCode"/>
+          <Item Value="usrCode"/>
+          <Item Value="usrStatus"/>
+          <Item Value="usrDftBranch"/>
+          <Item Value="orgCode"/>
+          <Item Value="branchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

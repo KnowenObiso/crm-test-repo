@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="HttpSession" Package="javax.servlet.http"
+          BeanClass="javax.servlet.http.HttpSession" isJavaBased="true">
+  <Attribute Name="creationTime" IsUpdateable="0" Type="long"/>
+  <Attribute Name="id" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="lastAccessedTime" IsUpdateable="0" Type="long"/>
+  <Attribute Name="maxInactiveInterval" Type="int"/>
+  <Attribute Name="attributeNames" IsUpdateable="0"
+             Type="java.util.Enumeration"/>
+  <Attribute Name="new" IsUpdateable="0" Type="boolean"/>
+  <AccessorAttribute id="servletContext" IsCollection="false"
+                     BeanClass="javax.servlet.ServletContext"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="sessionContext" IsCollection="false"
+                     BeanClass="javax.servlet.http.HttpSessionContext"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="valueNames" IsCollection="true"
+                     Type="java.lang.String[]"
+                     CollectionBeanClass="UpdateableCollection">
+    <Attribute Name="element" Type="java.lang.String"/>
+  </AccessorAttribute>
+  <MethodAccessor IsCollection="false" Type="java.lang.Object" id="getAttribute"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.Object" id="getValue"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="setAttribute"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="putValue"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="removeAttribute"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="removeValue"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="invalidate"
+                  ReturnNodeName="Return"/>
+</JavaBean>

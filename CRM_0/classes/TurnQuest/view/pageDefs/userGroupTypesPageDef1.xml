@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.64.93" id="userGroupTypesPageDef1"
+                Package="TurnQuest.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="fetchUserGroupTypes.result"
+                    DataControl="UserGrpTypeDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.UserGrpType"
+                    id="fetchUserGroupTypesIterator"/>
+    <searchRegion Binds="fetchUserGroupTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="UserGrpTypeQuery"/>
+    <methodIterator Binds="fetchAllGroupTypes.result"
+                    DataControl="UserGrpTypeDAO" RangeSize="25"
+                    BeanClass="TurnQuest.view.Usr.GroupType"
+                    id="fetchAllGroupTypesIterator"/>
+    <searchRegion Binds="fetchAllGroupTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="GroupTypeQuery"/>
+    <methodIterator Binds="fetchAllBranches.result" DataControl="UserGrpTypeDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.Branches.Branch"
+                    id="fetchAllBranchesIterator"/>
+    <searchRegion Binds="fetchAllBranchesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="BranchQuery"/>
+    <methodIterator Binds="findBranchNames.result" DataControl="OrganizationDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.orgs.Organization"
+                    id="findBranchNamesIterator"/>
+    <searchRegion Binds="findBranchNamesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="OrganizationQuery"/>
+    <methodIterator Binds="fetchAllUserGroupTypes.result" DataControl="UserGrpTypeDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.UserGroupTypes"
+                    id="fetchAllUserGroupTypesIterator"/>
+    <searchRegion Binds="fetchAllUserGroupTypesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="grpType1Query"/>
+    <methodIterator Binds="fetchAllUserRanks.result" DataControl="UserGrpTypeDAO"
+                    RangeSize="25" BeanClass="TurnQuest.view.models.UserPersonalRanks"
+                    id="fetchAllUserRanksIterator"/>
+    <searchRegion Binds="fetchAllUserRanksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="userRank1Query"/>
+  </executables>
+  <bindings>
+  <methodAction id="fetchAllUserGroupTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllUserGroupTypes"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.fetchAllUserGroupTypes_UserGrpTypeDAO_dataProvider_fetchAllUserGroupTypes_result"/>
+    <tree IterBinding="fetchAllUserGroupTypesIterator" id="grpType10">
+      <nodeDefinition DefName="TurnQuest.view.models.UserGroupTypes" Name="grpType12">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+          <Item Value="shtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllUserRanks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllUserRanks"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.fetchAllUserRanks_UserGrpTypeDAO_dataProvider_fetchAllUserRanks_result"/>
+    <tree IterBinding="fetchAllUserRanksIterator" id="userRank10">
+      <nodeDefinition DefName="TurnQuest.view.models.UserPersonalRanks" Name="userRank12">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="name"/>
+          <Item Value="shtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchUserGroupTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchUserGroupTypes"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.fetchUserGroupTypes_UserGrpTypeDAO_dataProvider_fetchUserGroupTypes_result"/>
+    <tree IterBinding="fetchUserGroupTypesIterator" id="UserGrpType">
+      <nodeDefinition DefName="TurnQuest.view.Usr.UserGrpType"
+                      Name="UserGrpType0">
+        <AttrNames>
+          <Item Value="code"/>
+          <Item Value="shortDesc"/>
+          <Item Value="typeId"/>
+          <Item Value="idSerialFormat"/>
+          <Item Value="groupType"/>
+          <Item Value="teamLeader"/>
+          <Item Value="branchCode"/>
+          <Item Value="branchName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="fetchUserGroupTypesIterator" id="shortDesc">
+      <AttrNames>
+        <Item Value="shortDesc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="fetchUserGroupTypesIterator" id="groupType">
+      <AttrNames>
+        <Item Value="groupType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="fetchUserGroupTypesIterator" id="branchCode">
+      <AttrNames>
+        <Item Value="branchCode"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="fetchAllGroupTypes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllGroupTypes"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.fetchAllGroupTypes_UserGrpTypeDAO_dataProvider_fetchAllGroupTypes_result"/>
+    <tree IterBinding="fetchAllGroupTypesIterator" id="GroupType">
+      <nodeDefinition DefName="TurnQuest.view.Usr.GroupType" Name="GroupType0">
+        <AttrNames>
+          <Item Value="typeId"/>
+          <Item Value="typeName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="fetchAllBranches" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="fetchAllBranches"
+                  IsViewObjectMethod="false" DataControl="UserGrpTypeDAO"
+                  InstanceName="UserGrpTypeDAO.dataProvider"
+                  ReturnName="data.UserGrpTypeDAO.methodResults.fetchAllBranches_UserGrpTypeDAO_dataProvider_fetchAllBranches_result"/>
+    <tree IterBinding="fetchAllBranchesIterator" id="Branch">
+      <nodeDefinition DefName="TurnQuest.view.Branches.Branch" Name="Branch0">
+        <AttrNames>
+          <Item Value="regCode"/>
+          <Item Value="regOrgCode"/>
+          <Item Value="branchCode"/>
+          <Item Value="branchName"/>
+          <Item Value="branchShtDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="findBranchNames" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findBranchNames"
+                  IsViewObjectMethod="false" DataControl="OrganizationDAO"
+                  InstanceName="OrganizationDAO.dataProvider"
+                  ReturnName="data.OrganizationDAO.methodResults.findBranchNames_OrganizationDAO_dataProvider_findBranchNames_result"/>
+    <tree IterBinding="findBranchNamesIterator" id="Organization">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization0">
+        <AttrNames>
+          <Item Value="orgCode"/>
+          <Item Value="orgShortDesc"/>
+          <Item Value="orgName"/>
+          <Item Value="orgAddrs"/>
+          <Item Value="orgTwnCode"/>
+          <Item Value="orgCouCode"/>
+          <Item Value="orgEmail"/>
+          <Item Value="orgPhyAddrs"/>
+          <Item Value="orgCurCode"/>
+          <Item Value="orgZip"/>
+          <Item Value="orgFax"/>
+          <Item Value="orgTel1"/>
+          <Item Value="orgTel2"/>
+          <Item Value="orgRptLogo"/>
+          <Item Value="orgMotto"/>
+          <Item Value="orgPinNo"/>
+          <Item Value="orgEdCode"/>
+          <Item Value="orgItemAccCode"/>
+          <Item Value="orgOtherName"/>
+          <Item Value="orgType"/>
+          <Item Value="orgWebBrnCode"/>
+          <Item Value="orgWebAddrs"/>
+          <Item Value="orgAgnCode"/>
+          <Item Value="orgDirectors"/>
+          <Item Value="orgLangCode"/>
+          <Item Value="orgAvatar"/>
+          <Item Value="twnCode"/>
+          <Item Value="twnCouCode"/>
+          <Item Value="twnShortDesc"/>
+          <Item Value="twnName"/>
+          <Item Value="twnStsCode"/>
+          <Item Value="couCode"/>
+          <Item Value="couShortDesc"/>
+          <Item Value="couName"/>
+          <Item Value="couBaseCurr"/>
+          <Item Value="couNationality"/>
+          <Item Value="couZipCode"/>
+          <Item Value="curCode"/>
+          <Item Value="curSymbol"/>
+          <Item Value="curDesc"/>
+          <Item Value="curRnd"/>
+          <Item Value="regCode"/>
+          <Item Value="regOrgCode"/>
+          <Item Value="regShortDesc"/>
+          <Item Value="regName"/>
+          <Item Value="regWef"/>
+          <Item Value="regWet"/>
+          <Item Value="regAgnCode"/>
+          <Item Value="regPostLevel"/>
+          <Item Value="regMngrAllowed"/>
+          <Item Value="regOverideCommEarned"/>
+          <Item Value="brnCode"/>
+          <Item Value="brnShortDesc"/>
+          <Item Value="brnRegCode"/>
+          <Item Value="brnName"/>
+          <Item Value="brnPhyAddrs"/>
+          <Item Value="brnEmail"/>
+          <Item Value="brnPostAddrs"/>
+          <Item Value="brnTwnCode"/>
+          <Item Value="brnCouCode"/>
+          <Item Value="brnContact"/>
+          <Item Value="brnManager"/>
+          <Item Value="brnTel"/>
+          <Item Value="brnFax"/>
+          <Item Value="brnGenPolClm"/>
+          <Item Value="brnBnsCode"/>
+          <Item Value="brnAgnCode"/>
+          <Item Value="brnPostLevel"/>
+          <Item Value="bruCode"/>
+          <Item Value="bruBrnCode"/>
+          <Item Value="bruShortDesc"/>
+          <Item Value="bruName"/>
+          <Item Value="bruSupervisor"/>
+          <Item Value="bruStatus"/>
+          <Item Value="bruAgnCode"/>
+          <Item Value="bruBraCode"/>
+          <Item Value="bruManager"/>
+          <Item Value="bruPostLevel"/>
+          <Item Value="bnsCode"/>
+          <Item Value="bnsShortDesc"/>
+          <Item Value="bnsName"/>
+          <Item Value="bnsPhyAddrs"/>
+          <Item Value="bnsEmail"/>
+          <Item Value="bnsPostAddrs"/>
+          <Item Value="bnsTwnCode"/>
+          <Item Value="bnsCouCode"/>
+          <Item Value="bnsContact"/>
+          <Item Value="bnsManager"/>
+          <Item Value="bnsTel"/>
+          <Item Value="bnsFax"/>
+          <Item Value="agnCode"/>
+          <Item Value="agnShortDesc"/>
+          <Item Value="agnName"/>
+          <Item Value="agnTwnName"/>
+          <Item Value="regManager"/>
+          <Item Value="braCode"/>
+          <Item Value="braBrnCode"/>
+          <Item Value="braShortDesc"/>
+          <Item Value="braName"/>
+          <Item Value="braStatus"/>
+          <Item Value="braManager"/>
+          <Item Value="braAgnCode"/>
+          <Item Value="braPostLevel"/>
+          <Item Value="nodeType"/>
+          <Item Value="orgStsCode"/>
+          <Item Value="stateName"/>
+          <Item Value="braMngrAllowed"/>
+          <Item Value="braOverideCommEarned"/>
+          <Item Value="brnMngrAllowed"/>
+          <Item Value="brnOverideCommEarned"/>
+          <Item Value="bruMngrAllowed"/>
+          <Item Value="bruOverideCommEarned"/>
+          <Item Value="orgGrpLogo"/>
+          <Item Value="regBrnMngrSeq_no"/>
+          <Item Value="regAgnSeqNo"/>
+          <Item Value="brnBrnMngrSeq_no"/>
+          <Item Value="brnAgnSeqNo"/>
+          <Item Value="bruBrnMngrSeq_no"/>
+          <Item Value="bruAgnSeqNo"/>
+          <Item Value="braBrnMngrSeq_no"/>
+          <Item Value="braAgnSeqNo"/>
+          <Item Value="administrativeType"/>
+          <Item Value="brnAgnPolPrefix"/>
+          <Item Value="policySeq"/>
+          <Item Value="propSeq"/>
+          <Item Value="agencypolicySeq"/>
+          <Item Value="agencypropSeq"/>
+          <Item Value="unitspolicySeq"/>
+          <Item Value="unitspropSeq"/>
+          <Item Value="vatNumber"/>
+          <Item Value="mobile1"/>
+          <Item Value="mobile2"/>
+          <Item Value="tbcCode"/>
+          <Item Value="tbcName"/>
+          <Item Value="tbcDesignation"/>
+          <Item Value="tbcMobile"/>
+          <Item Value="tbcPhone"/>
+          <Item Value="tbcIdNumber"/>
+          <Item Value="tbcPhysicalAdd"/>
+          <Item Value="tbcEmailAdd"/>
+          <Item Value="bnkrCode"/>
+          <Item Value="bnkrOrgCode"/>
+          <Item Value="bnkrShtDesc"/>
+          <Item Value="bnkrName"/>
+          <Item Value="bnkrWef"/>
+          <Item Value="bnkrWet"/>
+          <Item Value="bnkrRegCode"/>
+          <Item Value="bnkrAgnCode"/>
+          <Item Value="bnkrManager"/>
+          <Item Value="certSign"/>
+          <Item Value="ttCode"/>
+          <Item Value="ttTransType"/>
+          <Item Value="ttTransDate"/>
+          <Item Value="ttTransTo"/>
+          <Item Value="ttTransFrom"/>
+          <Item Value="ttDoneBy"/>
+          <Item Value="ttDoneDate"/>
+          <Item Value="ttAuthorized"/>
+          <Item Value="ttAuthorizedBy"/>
+          <Item Value="ttAuthorizedDate"/>
+          <Item Value="ttiCode"/>
+          <Item Value="ttiTtCode"/>
+          <Item Value="ttiItemCode"/>
+          <Item Value="ttiItemName"/>
+          <Item Value="ttiItemShtDesc"/>
+          <Item Value="ttiItemType"/>
+          <Item Value="shtDescPrefix"/>
+          <Item Value="agnTxtCombuss"/>
+          <Item Value="unaCode"/>
+          <Item Value="unaBruCode"/>
+          <Item Value="unaShortDesc"/>
+          <Item Value="unaName"/>
+          <Item Value="destCode"/>
+          <Item Value="destName"/>
+          <Item Value="bnkCode"/>
+          <Item Value="bnkName"/>
+          <Item Value="bbrCode"/>
+          <Item Value="bbrName"/>
+          <Item Value="ORG_BNK_CODE"/>
+          <Item Value="ORG_BBR_CODE"/>
+          <Item Value="ORG_BANK_ACCOUNT_NO"/>
+          <Item Value="ORG_BANK_ACCOUNT_NAME"/>
+          <Item Value="ORG_SWIFT_CODE"/>
+          <Item Value="ORG_BANK_NAME"/>
+          <Item Value="ORG_BANK_BRANCH"/>
+          <Item Value="ttiFromCode"/>
+          <Item Value="ttiFromName"/>
+          <Item Value="ref"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="findBranchNamesIterator" id="Organization1">
+      <nodeDefinition DefName="TurnQuest.view.orgs.Organization"
+                      Name="Organization10">
+        <AttrNames>
+          <Item Value="bnsCode"/>
+          <Item Value="bnsShortDesc"/>
+          <Item Value="bnsName"/>
+          <Item Value="bnsPhyAddrs"/>
+          <Item Value="bnsEmail"/>
+          <Item Value="bnsPostAddrs"/>
+          <Item Value="bnsTwnCode"/>
+          <Item Value="bnsCouCode"/>
+          <Item Value="bnsContact"/>
+          <Item Value="bnsManager"/>
+          <Item Value="bnsTel"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

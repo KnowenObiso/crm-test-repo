@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="ServletRequest" Package="javax.servlet"
+          BeanClass="javax.servlet.ServletRequest" isJavaBased="true">
+  <Attribute Name="attributeNames" IsUpdateable="0"
+             Type="java.util.Enumeration"/>
+  <Attribute Name="characterEncoding" Type="java.lang.String"/>
+  <Attribute Name="contentLength" IsUpdateable="0" Type="int"/>
+  <Attribute Name="contentType" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="parameterNames" IsUpdateable="0"
+             Type="java.util.Enumeration"/>
+  <Attribute Name="protocol" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="scheme" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="serverName" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="serverPort" IsUpdateable="0" Type="int"/>
+  <Attribute Name="remoteAddr" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="remoteHost" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="locale" IsUpdateable="0" Type="java.util.Locale"/>
+  <Attribute Name="locales" IsUpdateable="0" Type="java.util.Enumeration"/>
+  <Attribute Name="secure" IsUpdateable="0" Type="boolean"/>
+  <Attribute Name="remotePort" IsUpdateable="0" Type="int"/>
+  <Attribute Name="localName" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="localAddr" IsUpdateable="0" Type="java.lang.String"/>
+  <Attribute Name="localPort" IsUpdateable="0" Type="int"/>
+  <AccessorAttribute id="inputStream" IsCollection="false"
+                     BeanClass="javax.servlet.ServletInputStream"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="parameterMap" IsCollection="true" Type="java.util.Map"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="reader" IsCollection="false"
+                     BeanClass="java.io.BufferedReader"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.Object" id="getAttribute"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="getParameter"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="java.lang.String[]"
+                  id="getParameterValues" ReturnNodeName="String"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+    <Attribute Name="element" Type="java.lang.String"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="setAttribute"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.Object" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="removeAttribute"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="javax.servlet.RequestDispatcher"
+                  BeanClass="javax.servlet.RequestDispatcher"
+                  id="getRequestDispatcher" ReturnNodeName="RequestDispatcher">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.String" id="getRealPath"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

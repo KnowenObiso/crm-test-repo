@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.59.23"
+          id="AlertDAO" Package="TurnQuest.view.scheduler"
+          BeanClass="TurnQuest.view.scheduler.AlertDAO" isJavaBased="true">
+  <AccessorAttribute id="currentRunningJobs" IsCollection="true"
+                     BeanClass="TurnQuest.view.scheduler.AlertBean"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.scheduler.AlertBean"
+                  BeanClass="TurnQuest.view.scheduler.AlertBean"
+                  id="findSchedules" ReturnNodeName="AlertBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.scheduler.AlertBean"
+                  BeanClass="TurnQuest.view.scheduler.AlertBean"
+                  id="findExecutionObjects" ReturnNodeName="AlertBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="boolean" id="checkExists"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="alerts" Type="java.util.List" isStructured="false"/>
+    <ParameterInfo id="key" Type="org.quartz.JobKey" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.scheduler.AlertBean"
+                  BeanClass="TurnQuest.view.scheduler.AlertBean"
+                  id="findAllSchedules" ReturnNodeName="AlertBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.scheduler.AlertDAO"
+                     BeanClass="TurnQuest.view.scheduler.AlertDAO"
+                     id="AlertDAO"/>
+</JavaBean>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.64.93"
+          id="HttpSessionContext" Package="javax.servlet.http"
+          BeanClass="javax.servlet.http.HttpSessionContext" isJavaBased="true">
+  <Attribute Name="ids" IsUpdateable="0" Type="java.util.Enumeration"/>
+  <MethodAccessor IsCollection="false" Type="javax.servlet.http.HttpSession"
+                  BeanClass="javax.servlet.http.HttpSession" id="getSession"
+                  ReturnNodeName="HttpSession">
+    <ParameterInfo id="p0" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

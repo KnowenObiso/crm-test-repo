@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.55.36"
+          id="BaseSetupDAO" Package="TurnQuest.view.setups"
+          BeanClass="TurnQuest.view.setups.BaseSetupDAO" isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.AgencyHoldingCompany"
+                  BeanClass="TurnQuest.view.setups.AgencyHoldingCompany"
+                  id="fetchAllAgencyHoldingCompanies"
+                  ReturnNodeName="AgencyHoldingCompany"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Bank"
+                  BeanClass="TurnQuest.view.setups.Bank" id="fetchAllBanks"
+                  ReturnNodeName="Bank"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.BankBranch"
+                  BeanClass="TurnQuest.view.setups.BankBranch"
+                  id="fetchBankBranchByBankCode" ReturnNodeName="BankBranch"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.AgencyClass"
+                  BeanClass="TurnQuest.view.setups.AgencyClass"
+                  id="fetchAllAgencyClasses" ReturnNodeName="AgencyClass"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Currency"
+                  BeanClass="TurnQuest.view.setups.Currency"
+                  id="fetchAllCurrencies" ReturnNodeName="Currency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.CurrencyDenomination"
+                  BeanClass="TurnQuest.view.setups.CurrencyDenomination"
+                  id="fetchCurrencyDenominationsByCurrency"
+                  ReturnNodeName="CurrencyDenomination"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.CurrencyRate"
+                  BeanClass="TurnQuest.view.setups.CurrencyRate"
+                  id="fetchCurrencyRatesByCurrency"
+                  ReturnNodeName="CurrencyRate"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Sector"
+                  BeanClass="TurnQuest.view.setups.Sector" id="fetchAllSectors"
+                  ReturnNodeName="Sector"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.ServiceProviderType"
+                  BeanClass="TurnQuest.view.setups.ServiceProviderType"
+                  id="fetchAllServiceProviderTypes"
+                  ReturnNodeName="ServiceProviderType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Country"
+                  BeanClass="TurnQuest.view.setups.Country"
+                  id="fetchAllCountries" ReturnNodeName="Country"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Town"
+                  BeanClass="TurnQuest.view.setups.Town"
+                  id="fetchTownsByCountry" ReturnNodeName="Town"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Location"
+                  BeanClass="TurnQuest.view.setups.Location"
+                  id="fetchLocationsByTown" ReturnNodeName="Location"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Parameter"
+                  BeanClass="TurnQuest.view.setups.Parameter"
+                  id="fetchAllParameters" ReturnNodeName="Parameter"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.PaymentMode"
+                  BeanClass="TurnQuest.view.setups.PaymentMode"
+                  id="fetchAllPaymentModes" ReturnNodeName="PaymentMode"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Country"
+                  BeanClass="TurnQuest.view.setups.Country"
+                  id="fetchAllCountriesInfo" ReturnNodeName="Country"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.State"
+                  BeanClass="TurnQuest.view.setups.State"
+                  id="fetchStatesByCountry" ReturnNodeName="State"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Currency"
+                  BeanClass="TurnQuest.view.setups.Currency"
+                  id="fetchCurrenciesExcludeCurrency" ReturnNodeName="Currency"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="java.lang.String"
+                  id="getCurrencyName" ReturnNodeName="Return">
+    <ParameterInfo id="currencyCode" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.ServiceProviderType"
+                  BeanClass="TurnQuest.view.setups.ServiceProviderType"
+                  id="fetchAllServiceProviderTypesActivities"
+                  ReturnNodeName="ServiceProviderType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.ServiceProviderType"
+                  BeanClass="TurnQuest.view.setups.ServiceProviderType"
+                  id="findServActivities" ReturnNodeName="ServiceProviderType"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.PrintServer"
+                  BeanClass="TurnQuest.view.setups.PrintServer"
+                  id="fetchAllPrintServers" ReturnNodeName="PrintServer"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.AdministrativeRegion"
+                  BeanClass="TurnQuest.view.setups.AdministrativeRegion"
+                  id="fetchAdminRegionsByCountry"
+                  ReturnNodeName="AdministrativeRegion"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="fetchSystemApplicableAreas"
+                  ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.EcmBean"
+                  BeanClass="TurnQuest.view.setups.EcmBean" id="findEcmSetups"
+                  ReturnNodeName="EcmBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.EcmBean"
+                  BeanClass="TurnQuest.view.setups.EcmBean" id="findEcmSystems"
+                  ReturnNodeName="EcmBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.EcmBean"
+                  BeanClass="TurnQuest.view.setups.EcmBean"
+                  id="findEcmProcesses" ReturnNodeName="EcmBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.EcmBean"
+                  BeanClass="TurnQuest.view.setups.EcmBean"
+                  id="findEcmsystemReports" ReturnNodeName="EcmBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.EcmBean"
+                  BeanClass="TurnQuest.view.setups.EcmBean"
+                  id="findEcmProcessReports" ReturnNodeName="EcmBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.EcmBean"
+                  BeanClass="TurnQuest.view.setups.EcmBean"
+                  id="findEcmProcessDocTypes" ReturnNodeName="EcmBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.EcmBean"
+                  BeanClass="TurnQuest.view.setups.EcmBean"
+                  id="findEcmProcessContentTypes" ReturnNodeName="EcmBean"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Sector"
+                  BeanClass="TurnQuest.view.setups.Sector"
+                  id="fetchAllMarketers" ReturnNodeName="Sector"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="findSmsServiceProviders"
+                  ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="findEmailServiceProviders"
+                  ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="findSystems" ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="findRequiredDocuments" ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="findEmailDetails" ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Sector"
+                  BeanClass="TurnQuest.view.setups.Sector"
+                  id="fetchAllSectorsOccups" ReturnNodeName="Sector"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="findLocationDtls" ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="findBussinessPerson" ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="findBankBranches" ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true"
+                  Type="TurnQuest.view.setups.SysApplicableArea"
+                  BeanClass="TurnQuest.view.setups.SysApplicableArea"
+                  id="findRegisteredClaimants"
+                  ReturnNodeName="SysApplicableArea"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Parameter"
+                  BeanClass="TurnQuest.view.setups.Parameter"
+                  id="fetchAllLabels" ReturnNodeName="Parameter"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.provider.System"
+                  BeanClass="TurnQuest.view.provider.System" id="findSmsDetails"
+                  ReturnNodeName="System"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Country"
+                  BeanClass="TurnQuest.view.setups.Country"
+                  id="fetchAllCountriesInfoGsm" ReturnNodeName="Country"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Country"
+                  BeanClass="TurnQuest.view.setups.Country"
+                  id="fetchAllCountriesInfoForeign" ReturnNodeName="Country"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Country"
+                  BeanClass="TurnQuest.view.setups.Country" id="fetchCountries"
+                  ReturnNodeName="Country"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="session" Type="javax.servlet.http.HttpSession"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.Parameter"
+                  BeanClass="TurnQuest.view.setups.Parameter"
+                  id="fetchTaxAuthorities" ReturnNodeName="Parameter"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.State"
+                  BeanClass="TurnQuest.view.setups.State"
+                  id="fetchStatesByCountrySign" ReturnNodeName="State"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.State"
+                  BeanClass="TurnQuest.view.setups.State"
+                  id="fetchStatesByCountryDir" ReturnNodeName="State"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.setups.State"
+                  BeanClass="TurnQuest.view.setups.State"
+                  id="fetchStatesByCountryClnt" ReturnNodeName="State"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.models.Gender"
+                  BeanClass="TurnQuest.view.models.Gender"
+                  id="findGenders" ReturnNodeName="Gender"
+                  CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="TurnQuest.view.client.Client2"
+                  BeanClass="TurnQuest.view.client.Client2"
+                  id="findOccupations" ReturnNodeName="Client2"
+                  CollectionBeanClass="UpdateableCollection"/>                    
+  <ConstructorMethod IsCollection="true"
+                     Type="TurnQuest.view.setups.BaseSetupDAO"
+                     BeanClass="TurnQuest.view.setups.BaseSetupDAO"
+                     id="BaseSetupDAO"/>
+</JavaBean>

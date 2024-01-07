@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="WebDefs" Package="TurnQuest.view.web"
+          BeanClass="TurnQuest.view.web.WebDefs" isJavaBased="true">
+  <Attribute Name="twpcCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="twpcName" Type="java.lang.String"/>
+  <Attribute Name="twpcDesc" Type="java.lang.String"/>
+  <Attribute Name="twpCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prodCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="prodDesc" Type="java.lang.String"/>
+  <Attribute Name="twpProdDesc" Type="java.lang.String"/>
+  <Attribute Name="twpoCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="popCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="twpoDesc" Type="java.lang.String"/>
+  <Attribute Name="popShtDesc" Type="java.lang.String"/>
+  <Attribute Name="popDesc" Type="java.lang.String"/>
+  <Attribute Name="prodShtDesc" Type="java.lang.String"/>
+  <Attribute Name="systemName" Type="java.lang.String"/>
+  <Attribute Name="systemCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="nodeType" Type="java.lang.String"/>
+  <Attribute Name="binderCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="binderShtDesc" Type="java.lang.String"/>
+  <Attribute Name="binderName" Type="java.lang.String"/>
+  <Attribute Name="productCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="productShtCode" Type="java.lang.String"/>
+  <Attribute Name="productDesc" Type="java.lang.String"/>
+  <Attribute Name="pgntShtDesc" Type="java.lang.String"/>
+  <Attribute Name="productAccomodation" Type="java.lang.String"/>
+  <Attribute Name="proPreReqShtDesc" Type="java.lang.String"/>
+  <Attribute Name="productMinimumPremium" Type="java.math.BigDecimal"/>
+  <Attribute Name="proEditPolNo" Type="java.lang.String"/>
+  <Attribute Name="agntCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agntName" Type="java.lang.String"/>
+  <Attribute Name="AGN_COMM_ALLOWED" Type="java.lang.String"/>
+  <Attribute Name="prgType" Type="java.lang.String"/>
+  <Attribute Name="agntShtDesc" Type="java.lang.String"/>
+  <Attribute Name="bindCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="binder" Type="java.lang.String"/>
+  <Attribute Name="bindName" Type="java.lang.String"/>
+  <Attribute Name="agencyAccounts" Type="java.lang.String"/>
+  <Attribute Name="agencyCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agaCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="agaShtDesc" Type="java.lang.String"/>
+  <Attribute Name="agaName" Type="java.lang.String"/>
+  <Attribute Name="agaCreatedBy" Type="java.lang.String"/>
+  <AccessorAttribute id="products" IsCollection="true"
+                     BeanClass="TurnQuest.view.web.WebBean"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <ConstructorMethod IsCollection="true" Type="TurnQuest.view.web.WebDefs"
+                     BeanClass="TurnQuest.view.web.WebDefs" id="WebDefs"/>
+</JavaBean>
